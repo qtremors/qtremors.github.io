@@ -1,0 +1,969 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Website - Material 3 Expressive</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        /*
+         * MATERIAL 3 EXPRESSIVE STYLE
+         * Design inspired by Google's Material 3 guidelines.
+         *
+         * Key Principles:
+         * 1. Color: A vibrant, expressive palette using CSS variables.
+         * 2. Typography: Clean, modern, and scalable using 'Plus Jakarta Sans'.
+         * 3. Shape: Prominent use of rounded corners for a soft, friendly UI.
+         * 4. Elevation: Subtle shadows and surface tints to create depth.
+         * 5. Space: Generous padding and margins for a clean, scannable layout.
+        */
+
+        :root {
+            /* Color Palette */
+            --md-sys-color-primary: #6C55D6;
+            --md-sys-color-on-primary: #FFFFFF;
+            --md-sys-color-primary-container: #E9DDFF;
+            --md-sys-color-on-primary-container: #22005D;
+
+            --md-sys-color-secondary: #625B71;
+            --md-sys-color-on-secondary: #FFFFFF;
+            --md-sys-color-secondary-container: #E8DEF8;
+            --md-sys-color-on-secondary-container: #1E192B;
+
+            --md-sys-color-tertiary: #7D5260;
+            --md-sys-color-on-tertiary: #FFFFFF;
+            --md-sys-color-tertiary-container: #FFD8E4;
+            --md-sys-color-on-tertiary-container: #31111D;
+
+            --md-sys-color-background: #FFFBFE;
+            --md-sys-color-on-background: #1C1B1F;
+            --md-sys-color-surface: #FFFBFE;
+            --md-sys-color-on-surface: #1C1B1F;
+
+            --md-sys-color-surface-variant: #E7E0EC;
+            --md-sys-color-on-surface-variant: #49454F;
+            --md-sys-color-outline: #79747E;
+            --md-sys-color-shadow: #000000;
+
+            /* Typography */
+            --md-sys-font-family: 'Plus Jakarta Sans', sans-serif;
+
+            /* Shape */
+            --md-sys-shape-corner-small: 8px;
+            --md-sys-shape-corner-medium: 12px;
+            --md-sys-shape-corner-large: 16px;
+            --md-sys-shape-corner-xlarge: 28px;
+            --md-sys-shape-corner-full: 999px;
+
+            /* Elevation (Shadows) */
+            --md-sys-elevation-1: 0 1px 2px 0 rgba(0, 0, 0, 0.15), 0 1px 3px 1px rgba(0, 0, 0, 0.1);
+            --md-sys-elevation-2: 0 1px 2px 0 rgba(0, 0, 0, 0.3), 0 2px 6px 2px rgba(0, 0, 0, 0.15);
+            --md-sys-elevation-3: 0 4px 8px 3px rgba(0, 0, 0, 0.15), 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+
+        }
+
+        /* Base Styles & Custom Scrollbar */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--md-sys-font-family);
+            background-color: var(--md-sys-color-background);
+            color: var(--md-sys-color-on-background);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--md-sys-color-surface-variant);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--md-sys-color-outline);
+            border-radius: var(--md-sys-shape-corner-full);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--md-sys-color-secondary);
+        }
+
+        /* Reusable Components */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.75rem;
+            font-weight: 800;
+            color: var(--md-sys-color-on-background);
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: var(--md-sys-shape-corner-full);
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .button-filled {
+            background-color: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+        }
+        .button-filled:hover {
+            box-shadow: var(--md-sys-elevation-1);
+            transform: translateY(-2px);
+        }
+
+        /* Header */
+        .header {
+            background-color: rgba(255, 251, 254, 0.85); /* Surface with transparency */
+            backdrop-filter: blur(10px);
+            padding: 16px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--md-sys-color-surface-variant);
+        }
+        .header-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--md-sys-color-primary);
+            text-decoration: none;
+        }
+        .nav-links a {
+            color: var(--md-sys-color-on-surface-variant);
+            text-decoration: none;
+            margin-left: 16px;
+            padding: 8px 16px;
+            font-weight: 500;
+            border-radius: var(--md-sys-shape-corner-full);
+            transition: all 0.3s ease;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--md-sys-color-on-primary-container);
+            background-color: var(--md-sys-color-primary-container);
+        }
+
+        /* Main Content */
+        main {
+            padding-top: 74px; /* Header height */
+        }
+
+        /* Home Section */
+        #home {
+            background-color: var(--md-sys-color-surface);
+            min-height: calc(100vh - 74px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .home-content {
+            padding-bottom: 74px; /* To vertically center more accurately */
+        }
+        #home .profile-image {
+            width: 160px;
+            height: 160px;
+            border-radius: var(--md-sys-shape-corner-full);
+            object-fit: cover;
+            margin-bottom: 24px;
+            border: 4px solid var(--md-sys-color-primary-container);
+            box-shadow: var(--md-sys-elevation-2);
+        }
+        #home h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--md-sys-color-primary);
+            margin-bottom: 16px;
+        }
+        #home p {
+            font-size: 1.5rem;
+            color: var(--md-sys-color-on-surface-variant);
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+
+        /* About Section */
+        #about {
+             background-color: var(--md-sys-color-secondary-container);
+        }
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+        }
+        .about-image-wrapper {
+            flex-basis: 40%;
+            flex-shrink: 0;
+        }
+        .about-image-wrapper img {
+            width: 100%;
+            border-radius: var(--md-sys-shape-corner-xlarge);
+            box-shadow: var(--md-sys-elevation-3);
+            object-fit: cover;
+        }
+        .about-text {
+            flex-basis: 60%;
+        }
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--md-sys-color-on-secondary-container);
+            margin-bottom: 16px;
+        }
+        
+        /* Skills & Portfolio Section */
+        #skills, #portfolio {
+            background-color: var(--md-sys-color-surface);
+        }
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        .card {
+            background-color: var(--md-sys-color-surface);
+            border: 1px solid var(--md-sys-color-surface-variant);
+            border-radius: var(--md-sys-shape-corner-large);
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--md-sys-elevation-2);
+            border-color: var(--md-sys-color-primary);
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--md-sys-color-primary);
+            margin-bottom: 16px;
+        }
+        .skills-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .skills-list li {
+            padding: 8px 0;
+            color: var(--md-sys-color-on-surface-variant);
+            border-bottom: 1px solid var(--md-sys-color-surface-variant);
+        }
+        .skills-list li:last-child {
+            border-bottom: none;
+        }
+        .portfolio-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: var(--md-sys-shape-corner-medium);
+            margin-bottom: 16px;
+        }
+        .portfolio-card .card-content {
+            padding: 0; /* Padding is already on the card itself */
+        }
+        .portfolio-card p {
+            color: var(--md-sys-color-on-surface-variant);
+            margin-bottom: 16px;
+        }
+        .portfolio-card a {
+            color: var(--md-sys-color-primary);
+            text-decoration: none;
+            font-weight: 700;
+        }
+        .portfolio-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: var(--md-sys-color-tertiary-container);
+        }
+        .contact-wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: var(--md-sys-color-surface);
+            padding: 40px;
+            border-radius: var(--md-sys-shape-corner-xlarge);
+            box-shadow: var(--md-sys-elevation-1);
+        }
+        .form-group {
+            margin-bottom: 24px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--md-sys-color-on-surface-variant);
+        }
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid var(--md-sys-color-outline);
+            border-radius: var(--md-sys-shape-corner-small);
+            background-color: var(--md-sys-color-surface);
+            font-family: var(--md-sys-font-family);
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--md-sys-color-primary);
+            box-shadow: 0 0 0 2px var(--md-sys-color-primary-container);
+        }
+        .form-textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        .form-submit-wrapper {
+            text-align: center;
+        }
+        .social-links {
+            text-align: center;
+            margin-top: 32px;
+        }
+        .social-links p {
+            color: var(--md-sys-color-on-surface-variant);
+            margin-bottom: 16px;
+        }
+        .social-icons a {
+            color: var(--md-sys-color-on-surface-variant);
+            margin: 0 12px;
+            transition: color 0.3s;
+        }
+        .social-icons a:hover {
+            color: var(--md-sys-color-primary);
+        }
+        .social-icons svg {
+            width: 28px;
+            height: 28px;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--md-sys-color-surface-variant);
+            color: var(--md-sys-color-on-surface-variant);
+            text-align: center;
+            padding: 40px 0;
+        }
+        .footer p {
+            margin-bottom: 16px;
+        }
+        .footer-links a {
+            color: var(--md-sys-color-on-surface-variant);
+            text-decoration: none;
+            margin: 0 12px;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--md-sys-color-primary);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Simplification for this example. A real site would use a hamburger menu */
+            }
+            #home h1 {
+                font-size: 3rem;
+            }
+            #home p {
+                font-size: 1.25rem;
+            }
+            .section-title {
+                font-size: 2.25rem;
+            }
+            .about-content {
+                flex-direction: column;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="container header-nav">
+            <a href="#" class="logo">MyName</a>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="section">
+            <div class="container home-content">
+                <img src="assets/pfp.jpg" alt="A profile photo" class="profile-image">
+                <h1>Hi, I'm Tremors</h1>
+                <p>A passionate [Your Profession] with a love for [Your Hobby/Interest].</p>
+                <a href="#portfolio" class="button button-filled">View My Work</a>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <div class="about-image-wrapper">
+                        <img src="images/about-me.jpg" alt="A photo representing about me section">
+                    </div>
+                    <div class="about-text">
+                        <p>Hello! I'm [Your Name], a [Your Profession] based in [Your City/Country]. I specialize in [Your Specialty] and have a strong passion for creating impactful and user-friendly experiences.</p>
+                        <p>My journey in [Your Field] began [Number] years ago, and since then, I've had the opportunity to work on a variety of exciting projects. I thrive on challenges and constantly seek to learn new technologies.</p>
+                        <p>Outside of work, I enjoy [Hobby 1], [Hobby 2], and [Hobby 3]. I'm always open to new collaborations and interesting projects, so feel free to reach out!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <div class="container">
+                <h2 class="section-title">My Skills</h2>
+                <div class="grid-layout">
+                    <div class="card">
+                        <h3>Web Development</h3>
+                        <ul class="skills-list">
+                            <li>HTML5, CSS3, JavaScript (ES6+)</li>
+                            <li>React, Vue.js, Angular</li>
+                            <li>Node.js, Express.js</li>
+                            <li>MongoDB, PostgreSQL</li>
+                            <li>Responsive Design</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Graphic Design</h3>
+                        <ul class="skills-list">
+                            <li>Adobe Photoshop, Illustrator</li>
+                            <li>UI/UX Principles</li>
+                            <li>Branding & Logo Design</li>
+                            <li>Typography & Color Theory</li>
+                            <li>Figma, Sketch</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Content Creation</h3>
+                        <ul class="skills-list">
+                            <li>Copywriting</li>
+                            <li>Blog Post Writing</li>
+                            <li>SEO Optimization</li>
+                            <li>Social Media Content</li>
+                            <li>Video Scripting</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="section">
+            <div class="container">
+                <h2 class="section-title">My Portfolio</h2>
+                <div class="grid-layout">
+                    <div class="card portfolio-card">
+                        <img src="images/project-1-screenshot.png" alt="Project 1 Screenshot">
+                        <div class="card-content">
+                            <h3>Project Title One</h3>
+                            <p>A brief description of Project One, highlighting the technologies used and the problem it solved.</p>
+                            <a href="#">View Project &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="card portfolio-card">
+                        <img src="images/project-2-screenshot.png" alt="Project 2 Screenshot">
+                        <div class="card-content">
+                            <h3>Project Title Two</h3>
+                            <p>A brief description of Project Two, highlighting the technologies used and the problem it solved.</p>
+                            <a href="#">View Project &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="card portfolio-card">
+                        <img src="images/project-3-screenshot.png" alt="Project 3 Screenshot">
+                        <div class="card-content">
+                            <h3>Project Title Three</h3>
+                            <p>A brief description of Project Three, highlighting the technologies used and the problem it solved.</p>
+                            <a href="#">View Project &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 class="section-title">Get in Touch</h2>
+                <div class="contact-wrapper">
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" class="form-input" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="your.email@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" class="form-textarea" placeholder="Your message here..." required></textarea>
+                        </div>
+                        <div class="form-submit-wrapper">
+                            <button type="submit" class="button button-filled">Send Message</button>
+                        </div>
+                    </form>
+                    <div class="social-links">
+                        <p>Or connect with me on:</p>
+                        <div class="social-icons">
+                            <a href="#" target="_blank" title="LinkedIn">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                            <a href="#" target="_blank" title="GitHub">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.197-6.091 8.197-11.387c0-6.627-5.373-12-12-12z"/></svg>
+                            </a>
+                            <a href="#" target="_blank" title="Email">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12.713l-11.75 7.287h23.5l-11.75-7.287zm0-2.713l-12 8.75v-15.5h24v15.5l-12-8.75z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 [Your Name]. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Website - Mobile Friendly</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        /*
+         * MATERIAL 3 EXPRESSIVE - MOBILE & DOCK UPDATE
+         *
+         * Key Changes:
+         * 1. Floating Dock Nav: On mobile, the header becomes a floating dock at the bottom.
+         * 2. Responsive Layouts: Font sizes, padding, and grids now adapt to screen size.
+         * 3. SVG Icons: Added icons to navigation links for an app-like feel on mobile.
+         * 4. Body Padding: Added padding to the bottom of the body to avoid content being obscured by the dock.
+        */
+
+        :root {
+            /* Color Palette */
+            --md-sys-color-primary: #6C55D6;
+            --md-sys-color-on-primary: #FFFFFF;
+            --md-sys-color-primary-container: #E9DDFF;
+            --md-sys-color-on-primary-container: #22005D;
+
+            --md-sys-color-secondary: #625B71;
+            --md-sys-color-on-secondary: #FFFFFF;
+            --md-sys-color-secondary-container: #E8DEF8;
+            --md-sys-color-on-secondary-container: #1E192B;
+
+            --md-sys-color-tertiary: #7D5260;
+            --md-sys-color-on-tertiary: #FFFFFF;
+            --md-sys-color-tertiary-container: #FFD8E4;
+            --md-sys-color-on-tertiary-container: #31111D;
+
+            --md-sys-color-background: #FFFBFE;
+            --md-sys-color-on-background: #1C1B1F;
+            --md-sys-color-surface: #FFFBFE;
+            --md-sys-color-on-surface: #1C1B1F;
+
+            --md-sys-color-surface-variant: #E7E0EC;
+            --md-sys-color-on-surface-variant: #49454F;
+            --md-sys-color-outline: #79747E;
+            --md-sys-color-shadow: #000000;
+
+            /* Typography */
+            --md-sys-font-family: 'Plus Jakarta Sans', sans-serif;
+
+            /* Shape */
+            --md-sys-shape-corner-small: 8px;
+            --md-sys-shape-corner-medium: 12px;
+            --md-sys-shape-corner-large: 16px;
+            --md-sys-shape-corner-xlarge: 28px;
+            --md-sys-shape-corner-full: 999px;
+
+            /* Elevation (Shadows) */
+            --md-sys-elevation-1: 0 1px 2px 0 rgba(0, 0, 0, 0.15), 0 1px 3px 1px rgba(0, 0, 0, 0.1);
+            --md-sys-elevation-2: 0 1px 2px 0 rgba(0, 0, 0, 0.3), 0 2px 6px 2px rgba(0, 0, 0, 0.15);
+            --md-sys-elevation-3: 0 4px 8px 3px rgba(0, 0, 0, 0.15), 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        /* Base Styles & Custom Scrollbar */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--md-sys-font-family);
+            background-color: var(--md-sys-color-background);
+            color: var(--md-sys-color-on-background);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--md-sys-color-surface-variant); }
+        ::-webkit-scrollbar-thumb { background: var(--md-sys-color-outline); border-radius: var(--md-sys-shape-corner-full); }
+        ::-webkit-scrollbar-thumb:hover { background: var(--md-sys-color-secondary); }
+
+        /* Reusable Components */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .section { padding: 80px 0; }
+        .section-title { font-size: 2.75rem; font-weight: 800; color: var(--md-sys-color-on-background); text-align: center; margin-bottom: 48px; }
+        .button { display: inline-block; padding: 12px 24px; border-radius: var(--md-sys-shape-corner-full); font-weight: 700; font-size: 1rem; text-decoration: none; text-align: center; cursor: pointer; border: none; transition: all 0.3s ease; }
+        .button-filled { background-color: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); }
+        .button-filled:hover { box-shadow: var(--md-sys-elevation-1); transform: translateY(-2px); }
+
+        /* Desktop Header */
+        .header { background-color: rgba(255, 251, 254, 0.85); backdrop-filter: blur(10px); padding: 16px 0; position: fixed; width: 100%; top: 0; z-index: 100; border-bottom: 1px solid var(--md-sys-color-surface-variant); transition: all 0.3s ease-in-out; }
+        .header-nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.75rem; font-weight: 800; color: var(--md-sys-color-primary); text-decoration: none; }
+        .nav-links { display: flex; align-items: center; gap: 8px; }
+        .nav-item { color: var(--md-sys-color-on-surface-variant); text-decoration: none; padding: 8px 16px; font-weight: 500; border-radius: var(--md-sys-shape-corner-full); transition: all 0.3s ease; display: flex; align-items: center; gap: 8px; }
+        .nav-item:hover { color: var(--md-sys-color-on-primary-container); background-color: var(--md-sys-color-primary-container); }
+        .nav-item .nav-icon { display: none; } /* Hide icons on desktop */
+
+        /* Main Content */
+        main { padding-top: 74px; /* Header height */ }
+
+        /* Home Section */
+        #home { min-height: calc(100vh - 74px); display: flex; align-items: center; text-align: center; }
+        .home-content { margin: auto; }
+        #home .profile-image { width: 160px; height: 160px; border-radius: var(--md-sys-shape-corner-full); object-fit: cover; margin-bottom: 24px; border: 4px solid var(--md-sys-color-primary-container); box-shadow: var(--md-sys-elevation-2); }
+        #home h1 { font-size: 4rem; font-weight: 800; color: var(--md-sys-color-primary); margin-bottom: 16px; }
+        #home p { font-size: 1.5rem; color: var(--md-sys-color-on-surface-variant); max-width: 600px; margin: 0 auto 32px; }
+
+        /* About Section */
+        #about { background-color: var(--md-sys-color-secondary-container); }
+        .about-content { display: flex; align-items: center; gap: 48px; }
+        .about-image-wrapper { flex-basis: 40%; flex-shrink: 0; }
+        .about-image-wrapper img { width: 100%; border-radius: var(--md-sys-shape-corner-xlarge); box-shadow: var(--md-sys-elevation-3); object-fit: cover; }
+        .about-text { flex-basis: 60%; }
+        .about-text p { font-size: 1.1rem; color: var(--md-sys-color-on-secondary-container); margin-bottom: 16px; }
+        
+        /* Skills & Portfolio Section */
+        #skills, #portfolio { background-color: var(--md-sys-color-surface); }
+        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+        .card { background-color: var(--md-sys-color-surface); border: 1px solid var(--md-sys-color-surface-variant); border-radius: var(--md-sys-shape-corner-large); padding: 24px; transition: all 0.3s ease; }
+        .card:hover { transform: translateY(-8px); box-shadow: var(--md-sys-elevation-2); border-color: var(--md-sys-color-primary); }
+        .card h3 { font-size: 1.5rem; font-weight: 700; color: var(--md-sys-color-primary); margin-bottom: 16px; }
+        .skills-list { list-style: none; }
+        .skills-list li { padding: 8px 0; color: var(--md-sys-color-on-surface-variant); border-bottom: 1px solid var(--md-sys-color-surface-variant); }
+        .skills-list li:last-child { border-bottom: none; }
+        .portfolio-card img { width: 100%; height: 200px; object-fit: cover; border-radius: var(--md-sys-shape-corner-medium); margin-bottom: 16px; }
+        .portfolio-card p { color: var(--md-sys-color-on-surface-variant); margin-bottom: 16px; }
+        .portfolio-card a { color: var(--md-sys-color-primary); text-decoration: none; font-weight: 700; }
+        .portfolio-card a:hover { text-decoration: underline; }
+
+        /* Contact Section */
+        #contact { background-color: var(--md-sys-color-tertiary-container); }
+        .contact-wrapper { max-width: 700px; margin: 0 auto; background-color: var(--md-sys-color-surface); padding: 40px; border-radius: var(--md-sys-shape-corner-xlarge); box-shadow: var(--md-sys-elevation-1); }
+        .form-group { margin-bottom: 24px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 500; color: var(--md-sys-color-on-surface-variant); }
+        .form-input, .form-textarea { width: 100%; padding: 16px; border: 1px solid var(--md-sys-color-outline); border-radius: var(--md-sys-shape-corner-small); background-color: var(--md-sys-color-surface); font-family: var(--md-sys-font-family); font-size: 1rem; transition: border-color 0.3s, box-shadow 0.3s; }
+        .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--md-sys-color-primary); box-shadow: 0 0 0 2px var(--md-sys-color-primary-container); }
+        .form-textarea { resize: vertical; min-height: 150px; }
+        .form-submit-wrapper { text-align: center; }
+        .social-links { text-align: center; margin-top: 32px; }
+        .social-links p { color: var(--md-sys-color-on-surface-variant); margin-bottom: 16px; }
+        .social-icons a { color: var(--md-sys-color-on-surface-variant); margin: 0 12px; transition: color 0.3s; }
+        .social-icons a:hover { color: var(--md-sys-color-primary); }
+        .social-icons svg { width: 28px; height: 28px; }
+        
+        /* Footer */
+        .footer { background-color: var(--md-sys-color-surface-variant); color: var(--md-sys-color-on-surface-variant); text-align: center; padding: 40px 0; }
+        .footer p { margin-bottom: 16px; }
+        .footer-links a { color: var(--md-sys-color-on-surface-variant); text-decoration: none; margin: 0 12px; transition: color 0.3s; }
+        .footer-links a:hover { color: var(--md-sys-color-primary); }
+        
+        /* === MOBILE RESPONSIVE & FLOATING DOCK === */
+        @media (max-width: 768px) {
+            body { padding-bottom: 80px; /* Space for the floating dock */ }
+            .container { padding: 0 16px; }
+            .section { padding: 64px 0; }
+            .section-title { font-size: 2rem; }
+
+            /* Hide Desktop Logo */
+            .logo { display: none; }
+
+            /* Floating Dock Navigation */
+            .header {
+                top: auto;
+                bottom: 0;
+                padding: 0;
+                border-top: 1px solid var(--md-sys-color-surface-variant);
+                border-bottom: none;
+                background-color: rgba(255, 251, 254, 0.95);
+            }
+            .header-nav {
+                height: 80px;
+                padding: 0 8px;
+            }
+            .nav-links {
+                width: 100%;
+                justify-content: space-around;
+            }
+            .nav-item {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 4px;
+                padding: 12px 4px;
+                height: 100%;
+                flex-grow: 1;
+                font-size: 0.75rem;
+                color: var(--md-sys-color-on-surface-variant);
+            }
+            .nav-item:hover {
+                background-color: transparent;
+                color: var(--md-sys-color-primary);
+            }
+            .nav-item.active { /* Style for active link */
+                color: var(--md-sys-color-primary);
+            }
+            .nav-item .nav-icon {
+                display: block; /* Show icons on mobile */
+                width: 24px;
+                height: 24px;
+                transition: transform 0.2s ease-in-out;
+            }
+            .nav-item.active .nav-icon {
+                transform: scale(1.1);
+            }
+
+            /* Content Adjustments */
+            #home { min-height: calc(100vh - 74px - 80px); /* Full height minus header and dock */ }
+            #home h1 { font-size: 2.5rem; }
+            #home p { font-size: 1.1rem; }
+            .about-content { flex-direction: column; gap: 32px; }
+            .contact-wrapper { padding: 24px; }
+            .footer { padding-bottom: 24px; } /* Add extra padding to footer on mobile */
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="container header-nav">
+            <a href="#" class="logo">MyName</a>
+            <div class="nav-links">
+                <a href="#home" class="nav-item active">
+                    <svg class="nav-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                    <span class="nav-label">Home</span>
+                </a>
+                <a href="#about" class="nav-item">
+                    <svg class="nav-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    <span class="nav-label">About</span>
+                </a>
+                <a href="#skills" class="nav-item">
+                    <svg class="nav-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M9.4 16.6 4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+                    <span class="nav-label">Skills</span>
+                </a>
+                <a href="#portfolio" class="nav-item">
+                    <svg class="nav-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-2 14H6V8h12v10z"/></svg>
+                    <span class="nav-label">Portfolio</span>
+                </a>
+                <a href="#contact" class="nav-item">
+                    <svg class="nav-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    <span class="nav-label">Contact</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="section">
+            <div class="container home-content">
+                <img src="assets/pfp.jpg" alt="A profile photo" class="profile-image">
+                <h1>Hi, I'm Tremors</h1>
+                <p>A passionate [Your Profession] with a love for [Your Hobby/Interest].</p>
+                <a href="#portfolio" class="button button-filled">View My Work</a>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <div class="about-image-wrapper">
+                        <img src="images/about-me.jpg" alt="A photo representing about me section">
+                    </div>
+                    <div class="about-text">
+                        <p>Hello! I'm [Your Name], a [Your Profession] based in [Your City/Country]. I specialize in [Your Specialty] and have a strong passion for creating impactful and user-friendly experiences.</p>
+                        <p>My journey in [Your Field] began [Number] years ago, and since then, I've had the opportunity to work on a variety of exciting projects. I thrive on challenges and constantly seek to learn new technologies.</p>
+                        <p>Outside of work, I enjoy [Hobby 1], [Hobby 2], and [Hobby 3]. I'm always open to new collaborations and interesting projects, so feel free to reach out!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <div class="container">
+                <h2 class="section-title">My Skills</h2>
+                <div class="grid-layout">
+                    <div class="card">
+                        <h3>Web Development</h3>
+                        <ul class="skills-list">
+                            <li>HTML5, CSS3, JavaScript (ES6+)</li>
+                            <li>React, Vue.js, Angular</li>
+                            <li>Node.js, Express.js</li>
+                            <li>MongoDB, PostgreSQL</li>
+                            <li>Responsive Design</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Graphic Design</h3>
+                        <ul class="skills-list">
+                            <li>Adobe Photoshop, Illustrator</li>
+                            <li>UI/UX Principles</li>
+                            <li>Branding & Logo Design</li>
+                            <li>Typography & Color Theory</li>
+                            <li>Figma, Sketch</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Content Creation</h3>
+                        <ul class="skills-list">
+                            <li>Copywriting</li>
+                            <li>Blog Post Writing</li>
+                            <li>SEO Optimization</li>
+                            <li>Social Media Content</li>
+                            <li>Video Scripting</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="section">
+            <div class="container">
+                <h2 class="section-title">My Portfolio</h2>
+                <div class="grid-layout">
+                    <div class="card portfolio-card">
+                        <img src="images/project-1-screenshot.png" alt="Project 1 Screenshot">
+                        <div class="card-content">
+                            <h3>Project Title One</h3>
+                            <p>A brief description of Project One, highlighting the technologies used and the problem it solved.</p>
+                            <a href="#">View Project &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="card portfolio-card">
+                        <img src="images/project-2-screenshot.png" alt="Project 2 Screenshot">
+                        <div class="card-content">
+                            <h3>Project Title Two</h3>
+                            <p>A brief description of Project Two, highlighting the technologies used and the problem it solved.</p>
+                            <a href="#">View Project &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="card portfolio-card">
+                        <img src="images/project-3-screenshot.png" alt="Project 3 Screenshot">
+                        <div class="card-content">
+                            <h3>Project Title Three</h3>
+                            <p>A brief description of Project Three, highlighting the technologies used and the problem it solved.</p>
+                            <a href="#">View Project &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 class="section-title">Get in Touch</h2>
+                <div class="contact-wrapper">
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" class="form-input" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="your.email@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" class="form-textarea" placeholder="Your message here..." required></textarea>
+                        </div>
+                        <div class="form-submit-wrapper">
+                            <button type="submit" class="button button-filled">Send Message</button>
+                        </div>
+                    </form>
+                    <div class="social-links">
+                        <p>Or connect with me on:</p>
+                        <div class="social-icons">
+                            <a href="#" target="_blank" title="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                            <a href="#" target="_blank" title="GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.197-6.091 8.197-11.387c0-6.627-5.373-12-12-12z"/></svg></a>
+                            <a href="#" target="_blank" title="Email"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12.713l-11.75 7.287h23.5l-11.75-7.287zm0-2.713l-12 8.75v-15.5h24v15.5l-12-8.75z"/></svg></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 [Your Name]. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
