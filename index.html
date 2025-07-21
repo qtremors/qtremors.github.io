@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Website</title>
+    <title>Aman | Python & AI/ML Developer</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    
     <style>
         /* --- CSS Variables for easy theme customization --- */
         :root {
@@ -19,6 +18,18 @@
             --shadow-color: rgba(0, 0, 0, 0.1);
         }
 
+        /* --- Dark Theme Variables --- */
+        body[data-theme='dark'] {
+            --primary-color: #4f8ff7;
+            --secondary-color: #9d72f8;
+            --background-light: #111827; /* Darkest background */
+            --background-white: #1f2937; /* Lighter background for cards */
+            --text-dark: #f9fafb;        /* Light text */
+            --text-light: #f9fafb;      /* Light text */
+            --text-muted: #9ca3af;      /* Muted light text */
+            --shadow-color: rgba(0, 0, 0, 0.4);
+        }
+
         /* --- Base Styles --- */
         html {
             scroll-behavior: smooth; /* Enables smooth scrolling for anchor links */
@@ -30,6 +41,7 @@
             color: var(--text-dark);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         /* --- Global Styles & Utilities --- */
@@ -41,24 +53,25 @@
 
         section {
             padding: 5rem 0;
+            transition: background-color 0.3s ease;
         }
 
         h1, h2, h3 {
             font-weight: 700;
+            color: var(--text-dark);
         }
 
         h2 {
             font-size: 2.5rem;
             text-align: center;
             margin-bottom: 3rem;
-            color: var(--text-dark);
         }
 
         @media (min-width: 768px) {
             h2 {
                 font-size: 3rem;
             }
-             .hero h1 {
+            .hero h1 {
                 font-size: 4rem;
             }
         }
@@ -81,12 +94,18 @@
             padding: 0.75rem 2rem;
             box-shadow: 0 8px 32px 0 var(--shadow-color);
             z-index: 1000;
-            transition: transform 0.4s ease-in-out;
+            transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out, background-color 0.3s ease;
         }
         
+        body[data-theme='dark'] .main-nav-dock {
+            background: rgba(31, 41, 55, 0.85); /* Dark background for dock */
+        }
+
         /* Class to hide the nav dock */
-        .nav-hidden {
+        .main-nav-dock.nav-hidden {
             transform: translateX(-50%) translateY(150%);
+            opacity: 0;
+            pointer-events: none; /* Disable interactions when hidden */
         }
 
         .main-nav-dock a {
@@ -151,7 +170,7 @@
             border-radius: 9999px;
             font-weight: 600;
             text-decoration: none;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s, color 0.3s;
         }
 
         .hero .cta-button:hover {
@@ -159,6 +178,11 @@
             box-shadow: 0 10px 20px var(--shadow-color);
         }
 
+        body[data-theme='dark'] .hero .cta-button {
+            background-color: var(--text-light);
+            color: var(--secondary-color);
+        }
+        
         /* --- About Section --- */
         #about {
             background-color: var(--background-white);
@@ -189,7 +213,7 @@
             padding: 2rem;
             border-radius: 1rem;
             box-shadow: 0 4px 6px var(--shadow-color);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
         }
 
         .skill-card:hover {
@@ -224,7 +248,7 @@
 
         /* --- Portfolio Section --- */
         #portfolio {
-             background-color: var(--background-white);
+            background-color: var(--background-white);
         }
 
         .portfolio-grid {
@@ -238,10 +262,10 @@
             border-radius: 1rem;
             overflow: hidden;
             box-shadow: 0 4px 6px var(--shadow-color);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
         }
         .portfolio-item:hover {
-             transform: translateY(-5px);
+            transform: translateY(-5px);
             box-shadow: 0 12px 20px var(--shadow-color);
         }
 
@@ -253,7 +277,7 @@
         .portfolio-content {
             padding: 1.5rem;
         }
-         .portfolio-content h3 {
+        .portfolio-content h3 {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
         }
@@ -306,13 +330,17 @@
             height: 48px;
         }
 
-
         /* --- Footer --- */
         footer {
             background-color: var(--text-dark);
             color: var(--text-light);
             text-align: center;
             padding: 2rem 1.5rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        body[data-theme='dark'] footer {
+            background-color: #111827; /* Darker footer background */
         }
 
         .footer-links a {
@@ -324,6 +352,60 @@
 
         .footer-links a:hover {
             color: var(--text-light);
+        }
+
+        /* --- Theme Toggle Switch --- */
+        .theme-toggle-button {
+            background-color: var(--background-white);
+            border: 2px solid var(--text-muted);
+            border-radius: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 1rem;
+            right: 20px;
+            width: 50px;
+            height: 30px;
+            z-index: 1001;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            overflow: hidden;
+            /* Added opacity and transform for smooth hiding/showing */
+            transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out, background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .theme-toggle-button.nav-hidden {
+            transform: translateY(-150px); /* Move it sufficiently off-screen upwards */
+            opacity: 0; /* Make it invisible */
+            pointer-events: none; /* Disable interactions when hidden */
+        }
+
+        .theme-toggle-button .emoji {
+            font-size: 1rem;
+            position: absolute;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            pointer-events: none; /* Ensure clicks pass through to the button */
+        }
+
+        .theme-toggle-button .sun {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .theme-toggle-button .moon {
+            transform: translateX(24px);
+            opacity: 0;
+        }
+
+        body[data-theme='dark'] .theme-toggle-button .sun {
+            transform: translateX(24px);
+            opacity: 0;
+        }
+
+        body[data-theme='dark'] .theme-toggle-button .moon {
+            transform: translateX(0);
+            opacity: 1;
         }
     </style>
 </head>
@@ -352,6 +434,11 @@
         </a>
     </nav>
 
+    <button id="theme-toggle" class="theme-toggle-button" title="Toggle theme">
+        <span class="emoji sun">☀️</span>
+        <span class="emoji moon">🌙</span>
+    </button>
+    
     <main>
         <section id="home" class="hero">
             <img src="assets/aman.jpg" alt="Profile Photo" onerror="this.onerror=null;this.src='https://placehold.co/160x160/8b5cf6/f9fafb?text=Me';">
@@ -365,11 +452,9 @@
                 <h2>About Me</h2>
                 <div class="about-content">
                     <div class="about-text">
-                        <div class="about-text">
-                            <p>Hello! I'm a Python developer with a deep passion for the intersection of web technologies and Artificial Intelligence. I'm particularly excited about leveraging machine learning to create intelligent, data-driven applications that solve real-world problems.</p>
-                            <p>My enthusiasm for this field is showcased in projects like my <strong>Plant Disease Detector</strong>, where I integrated a TensorFlow model into a Django web app to identify diseases from images. This experience solidified my skills in both back-end development and practical machine learning implementation. I also have a strong foundation in building robust applications, demonstrated by my full-featured e-commerce website built with Django.</p>
-                            <p>As a fast learner proficient with libraries like NumPy, Pandas, and TensorFlow, I am actively seeking opportunities in the AI/ML field. I'm eager to apply my problem-solving abilities to new challenges and contribute to innovative projects.</p>
-                        </div>
+                        <p>Hello! I'm a Python developer with a deep passion for the intersection of web technologies and Artificial Intelligence. I'm particularly excited about leveraging machine learning to create intelligent, data-driven applications that solve real-world problems.</p>
+                        <p>My enthusiasm for this field is showcased in projects like my **Plant Disease Detector**, where I integrated a TensorFlow model into a Django web app to identify diseases from images. This experience solidified my skills in both back-end development and practical machine learning implementation. I also have a strong foundation in building robust applications, demonstrated by my full-featured e-commerce website built with Django.</p>
+                        <p>As a fast learner proficient with libraries like NumPy, Pandas, and TensorFlow, I am actively seeking opportunities in the AI/ML field. I'm eager to apply my problem-solving abilities to new challenges and contribute to innovative projects.</p>
                     </div>
                 </div>
             </div>
@@ -379,7 +464,6 @@
             <div class="container">
                 <h2>My Skills</h2>
                 <div class="skills-grid">
-                    
                     <div class="skill-card">
                         <h3>Frontend Development 💻</h3>
                         <ul>
@@ -388,7 +472,6 @@
                             <li>React (Beginner)</li>
                         </ul>
                     </div>
-
                     <div class="skill-card">
                         <h3>Backend & Databases ⚙️</h3>
                         <ul>
@@ -398,7 +481,6 @@
                             <li>MongoDB (Beginner)</li>
                         </ul>
                     </div>
-
                     <div class="skill-card">
                         <h3>AI / Machine Learning 🧠</h3>
                         <ul>
@@ -408,7 +490,6 @@
                             <li>Jupyter Notebook</li>
                         </ul>
                     </div>
-
                     <div class="skill-card">
                         <h3>Platforms & Tools 🛠️</h3>
                         <ul>
@@ -417,7 +498,6 @@
                             <li>Virtual Environments</li>
                         </ul>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -427,36 +507,36 @@
                 <h2>My Portfolio</h2>
                 <div class="portfolio-grid">
                     <div class="portfolio-item">
-                         <img src="assets/calculator-preview.jpg" alt="Calculator App">
-                         <div class="portfolio-content">
+                        <img src="assets/calculator-preview.jpg" alt="Calculator App" onerror="this.onerror=null;this.src='https://placehold.co/400x200/8b5cf6/f9fafb?text=Calculator';">
+                        <div class="portfolio-content">
                             <h3>Calculator App (PYgame)</h3>
                             <p>A fully functional desktop calculator built with Python and Pygame. This project demonstrates how to create a responsive GUI application with persistent history and full keyboard/mouse support using pygame.</p>
                             <a href="https://github.com/qtremors/pygame-calculator-app" target="_blank" rel="noopener noreferrer">View Project &rarr;</a>
-                         </div>
+                        </div>
                     </div>
                     <div class="portfolio-item">
-                         <img src="assets/eshopper-preview.jpg" alt="E-commerce Project" onerror="this.onerror=null;this.src='https://placehold.co/400x200/3b82f6/ffffff?text=E-commerce';">
-                         <div class="portfolio-content">
+                        <img src="assets/eshopper-preview.jpg" alt="E-commerce Project" onerror="this.onerror=null;this.src='https://placehold.co/400x200/3b82f6/ffffff?text=E-commerce';">
+                        <div class="portfolio-content">
                             <h3>E-commerce Website</h3>
                             <p>A full-featured e-commerce website built from the ground up using the Django framework, focusing on a clean and functional user experience.</p>
                             <a href="https://github.com/qtremors/eshopper" target="_blank" rel="noopener noreferrer">View Project &rarr;</a>
-                         </div>
+                        </div>
                     </div>
                     <div class="portfolio-item">
-                         <img src="assets/plant-disease-detector-preview.jpg" alt="Plant Disease Detector" onerror="this.onerror=null;this.src='https://placehold.co/400x200/3b82f6/ffffff?text=Plant+AI';">
-                         <div class="portfolio-content">
+                        <img src="assets/plant-disease-detector-preview.jpg" alt="Plant Disease Detector" onerror="this.onerror=null;this.src='https://placehold.co/400x200/3b82f6/ffffff?text=Plant+AI';">
+                        <div class="portfolio-content">
                             <h3>Plant Disease Detector</h3>
                             <p>A web app using Django and TensorFlow to detect plant diseases from images. Utilized Pillow, NumPy, and Plotly for data handling and visualization.</p>
                             <a href="https://github.com/qtremors/plant-disease-detector" target="_blank" rel="noopener noreferrer">View Project &rarr;</a>
-                         </div>
+                        </div>
                     </div>
                     <div class="portfolio-item">
-                         <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2070&auto=format&fit=crop" alt="Future Project" onerror="this.onerror=null;this.src='https://placehold.co/400x200/3b82f6/ffffff?text=Coming+Soon';">
-                         <div class="portfolio-content">
+                        <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2070&auto=format&fit=crop" alt="Future Project" onerror="this.onerror=null;this.src='https://placehold.co/400x200/3b82f6/ffffff?text=Coming+Soon';">
+                        <div class="portfolio-content">
                             <h3>More Projects Coming Soon</h3>
                             <p>Actively learning and building new applications to expand my skillset in both frontend and backend development.</p>
                             <a href="#">Learn More &rarr;</a>
-                         </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -464,24 +544,22 @@
 
         <section id="contact">
             <div class="container">
-                 <h2>Get in Touch</h2>
-                 <p class="contact-intro">I'm currently looking for new opportunities. My inbox is always open, whether you have a question or just want to say hi.</p>
-                 <div class="social-links">
-                     <a href="https://github.com/qtremors" class="social-link" title="GitHub" target="_blank" rel="noopener noreferrer">
-                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.197-6.091 8.197-11.387C24 5.373 12 0 12 0Z"/></svg>
-                     </a>
-                     
-                     <a href="mailto:singhamankumar207@gmail.com" class="social-link" title="Email">
-                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                           <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
-                           <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
-                         </svg>
-                     </a>
-
-                     <a href="https://www.linkedin.com/in/aman-singh-0a1938301" class="social-link" title="LinkedIn" target="_blank" rel="noopener noreferrer">
-                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                     </a>
-                 </div>
+                <h2>Get in Touch</h2>
+                <p class="contact-intro">I'm currently looking for new opportunities. My inbox is always open, whether you have a question or just want to say hi.</p>
+                <div class="social-links">
+                    <a href="https://github.com/qtremors" class="social-link" title="GitHub" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.197-6.091 8.197-11.387C24 5.373 12 0 12 0Z"/></svg>
+                    </a>
+                    <a href="mailto:singhamankumar207@gmail.com" class="social-link" title="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
+                            <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/aman-singh-0a1938301" class="social-link" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                </div>
             </div>
         </section>
     </main>
@@ -489,55 +567,51 @@
     <footer>
         <div class="container">
             <p>&copy; 2025 Tremors. All rights reserved.</p>
-             <div class="footer-links" style="margin-top: 1rem;">
+            <div class="footer-links" style="margin-top: 1rem;">
                 <a href="#">Privacy Policy</a>
                 <span>&bull;</span>
                 <a href="#">Terms of Service</a>
-             </div>
+            </div>
         </div>
     </footer>
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            
-            // --- CACHE DOM ELEMENTS ---
             const sections = document.querySelectorAll('section');
             const navDock = document.querySelector('.main-nav-dock');
             const navLinks = document.querySelectorAll('.main-nav-dock a');
+            const themeToggleButton = document.getElementById('theme-toggle');
 
-            // --- HIDE NAVIGATION DOCK ON SCROLL ---
             let lastScrollTop = 0;
+            const hideThreshold = 200; // Pixels scrolled before hiding
+
             window.addEventListener('scroll', function() {
                 let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                // Hide on scroll down (after passing 200px), show on scroll up
-                if (scrollTop > lastScrollTop && scrollTop > 200) { 
+
+                // Hide on scroll down (after passing hideThreshold), show on scroll up
+                if (scrollTop > lastScrollTop && scrollTop > hideThreshold) {
                     navDock.classList.add('nav-hidden');
+                    themeToggleButton.classList.add('nav-hidden'); // Hide theme toggle as well
                 } else {
                     navDock.classList.remove('nav-hidden');
+                    themeToggleButton.classList.remove('nav-hidden'); // Show theme toggle
                 }
                 lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
             }, false);
 
-
-            // --- ACTIVE LINK HIGHLIGHTING ON SCROLL ---
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
-                threshold: 0.5 
+                threshold: 0.5
             };
 
             const observerCallback = (entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const id = entry.target.getAttribute('id');
-                        const activeLink = document.querySelector(`.main-nav-dock a[href="#${id}"]`);
-
-                        if (activeLink) {
-                            navLinks.forEach(link => {
-                                // Set 'active' class based on whether the link matches the intersecting section
-                                link.classList.toggle('active', link === activeLink);
-                            });
-                        }
+                        navLinks.forEach(link => {
+                            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+                        });
                     }
                 });
             };
@@ -546,8 +620,32 @@
             sections.forEach(section => {
                 observer.observe(section);
             });
+
+            const body = document.body;
+            
+            const applyTheme = (theme) => {
+                body.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+            };
+
+            themeToggleButton.addEventListener('click', () => {
+                const currentTheme = body.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                applyTheme(newTheme);
+            });
+
+            // Initial theme application based on localStorage or system preference
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme) {
+                applyTheme(savedTheme);
+            } else if (prefersDark) {
+                applyTheme('dark');
+            } else {
+                applyTheme('light');
+            }
         });
     </script>
-
 </body>
 </html>
