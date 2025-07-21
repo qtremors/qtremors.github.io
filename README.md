@@ -1,11 +1,3 @@
-# Personal Portfolio Website
-
-**Version**: 1.0.0
-**Last Updated**: July 21, 2025
-**Author**: Tremors
-
----
-
 ## 🌐 Project Overview
 
 A sleek, single-page personal portfolio website built with clean HTML, CSS, and vanilla JavaScript. It showcases your skills, projects, and contact info with a mobile-first, responsive design. The star of the show? A smart, floating navigation dock that hides on scroll and adapts beautifully across all devices.
