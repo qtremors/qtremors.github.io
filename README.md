@@ -1,93 +1,86 @@
-# 💻 Personal Portfolio Website
+# Personal Portfolio Website
 
-A clean, modern, and fully responsive personal portfolio website built with **HTML** and **CSS**. It's designed to showcase your **skills**, **projects**, and **contact information** in a professional and visually appealing way.
-
----
-
-## ✨ Features
-
-* **Modern & Clean Design**: Simple and elegant layout to highlight your content
-* **Fully Responsive**: Looks great on all devices from phones to desktops
-* **Desktop Navigation**: Sleek, fixed header with scroll-linked highlighting
-* **Mobile Navigation**: Floating dock at the bottom for quick access
-
-### 🌐 Dynamic Content Sections:
-
-* **Hero Section**: Your name, title, and a profile picture front and center
-* **About Me**: A personal story and background summary
-* **Skills**: Cards to present your technical and soft skills
-* **Portfolio**: Grid layout to display your projects
-* **Contact**: Social media and email links for networking
-
-### 💡 Built With:
-
-* **Pure HTML/CSS**: For simplicity and speed
-* **Minimal JavaScript**: Used only for dynamic navigation highlights
+**Version**: 1.0.0
+**Last Updated**: July 21, 2025
+**Author**: Tremors
 
 ---
 
-## 🚀 Installation & Deployment
+## 🌐 Project Overview
 
-No installations or dependencies needed. Just download and open in your browser.
-
-### View Locally
-
-1. Download the project
-2. Open `index.html` in your web browser
-
-### Deploy Online
-
-* **GitHub Pages**: Fork the repo, rename to `your-username.github.io`, and it's live!
-* **Netlify / Vercel**: Drag & drop the project folder into their deployment UI
-* **Traditional Hosting**: Upload `index.html` and the `assets/` folder to your hosting provider
+A sleek, single-page personal portfolio website built with clean HTML, CSS, and vanilla JavaScript. It showcases your skills, projects, and contact info with a mobile-first, responsive design. The star of the show? A smart, floating navigation dock that hides on scroll and adapts beautifully across all devices.
 
 ---
 
-## 🔧 Customization Guide
+## ✨ Key Features
 
-### 1. ✏️ Update Content
+* **🔁 Fully Responsive** – Seamlessly adapts from phones to large monitors.
+* **🧭 Floating Navigation Dock** – A unified nav bar that works across all screen sizes.
+* **🙈 Auto-Hide Nav** – Dock slides away on scroll down and reappears on scroll up.
+* **🎯 Active Link Highlighting** – Highlights current section in view using Intersection Observer.
+* **🧭 Smooth Scroll** – Navigation links gently scroll to the respective sections.
+* **🎨 Easy Theming** – Customize colors using CSS variables.
+* **🎲 Interactive UI** – Hover effects make cards and buttons feel alive.
+* **🖼️ Fallback Images** – Placeholders ensure layout stays pretty even when images break.
 
-Open `index.html` in a text editor:
+---
 
-* **Hero Section**: Replace the name and subtitle
-* **About Me**: Edit paragraph text to reflect your story
-* **Skills**: Update skill cards with your tech stack
-* **Portfolio**: Change project titles and descriptions
-* **Contact**: Edit `mailto:` and social media URLs
+## 🔧 Technologies Used
 
-### 2. 📸 Change Images
+* **HTML5** – Structure and semantics.
+* **CSS3** – Styling, animations, layout.
 
-* **Profile Picture**: Replace `assets/pfp.jpg` with your image
-* **Project Images**: Add your images in `assets/` and update their `src` attributes:
+  * CSS Variables for easy theme tweaks
+  * Flexbox & Grid for clean layouts
+  * Smooth transitions and hover effects
+* **Vanilla JavaScript (ES6+)**
 
-```html
-<!-- Example Before -->
-<img src="assets/project1.jpg" alt="E-commerce Project">
+  * DOM manipulation
+  * Intersection Observer API for section tracking
 
-<!-- Example After -->
-<img src="assets/my-awesome-app.png" alt="My Awesome App">
-```
+---
 
-### 3. 🖌️ Adjust Colors
+## 🚀 Getting Started
 
-Modify the CSS variables inside `<style>` at the top of `index.html`:
+1. **Clone or Download** the repo to your computer.
+2. Open the project folder and launch `index.html` in your browser of choice (Chrome, Firefox, Edge, etc).
+
+---
+
+## 🎨 Customization
+
+### 🖌️ Theme Colors
+
+Update color variables at the top of your `<style>` block in `index.html`:
 
 ```css
 :root {
   --primary-color: #3b82f6;   /* Main accent color */
-  --secondary-color: #8b5cf6; /* Secondary accent color */
-  /* ... other colors */
+  --secondary-color: #8b5cf6; /* Gradient/secondary tone */
+  /* Add more variables as needed */
 }
+```
+
+### 🧱 Adding a New Portfolio Item
+
+1. Scroll to the **Portfolio Section** in `index.html`.
+2. Copy an existing `.portfolio-item` block.
+3. Paste it within the `portfolio-grid` container.
+4. Update the image, title, description, and link:
+
+```html
+<!-- New portfolio item -->
+<div class="portfolio-item">
+  <img src="path/to/your/new-image.jpg" alt="New Project Title">
+  <div class="portfolio-content">
+    <h3>New Project Title</h3>
+    <p>A short description of your new project.</p>
+    <a href="link/to/your/project" target="_blank" rel="noopener noreferrer">View Project &rarr;</a>
+  </div>
+</div>
 ```
 
 ---
 
-## 📄 Technologies Used
 
-* **HTML5**: Structure and content
-* **CSS3**: Styling, layout, and responsiveness
-* **JavaScript**: Navigation highlighting on scroll
-
----
-
-Start customizing and make it yours! 🚀👩‍💻
+Crafted with ❤️ by **Tremors**
