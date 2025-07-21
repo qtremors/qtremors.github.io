@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Personal Website</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* --- CSS Variables for easy theme customization --- */
         :root {
             --primary-color: #3b82f6;
             --secondary-color: #8b5cf6;
@@ -17,9 +19,9 @@
             --shadow-color: rgba(0, 0, 0, 0.1);
         }
 
-        /* Smooth scrolling behavior */
+        /* --- Base Styles --- */
         html {
-            scroll-behavior: smooth;
+            scroll-behavior: smooth; /* Enables smooth scrolling for anchor links */
         }
 
         body {
@@ -30,7 +32,7 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* --- Global Styles --- */
+        /* --- Global Styles & Utilities --- */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -52,32 +54,42 @@
             color: var(--text-dark);
         }
 
-        /* --- Header --- */
-        .desktop-nav {
-            display: none; /* Hidden on mobile */
+        @media (min-width: 768px) {
+            h2 {
+                font-size: 3rem;
+            }
+             .hero h1 {
+                font-size: 4rem;
+            }
         }
 
-        /* --- Floating Island Dock Navigation for Mobile --- */
-        .mobile-nav {
+        /* --- Main Navigation: Floating Island Dock --- */
+        .main-nav-dock {
             display: flex;
-            justify-content: space-around;
+            justify-content: center; /* Center the links */
             align-items: center;
+            gap: 1rem; /* Space between icons */
             position: fixed;
             bottom: 1.5rem;
             left: 50%;
             transform: translateX(-50%);
-            width: 90%;
-            max-width: 350px;
+            width: auto; /* Width based on content */
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border-radius: 2rem;
-            padding: 0.75rem 1rem;
+            padding: 0.75rem 2rem;
             box-shadow: 0 8px 32px 0 var(--shadow-color);
             z-index: 1000;
+            transition: transform 0.4s ease-in-out;
+        }
+        
+        /* Class to hide the nav dock */
+        .nav-hidden {
+            transform: translateX(-50%) translateY(150%);
         }
 
-        .mobile-nav a {
+        .main-nav-dock a {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -85,14 +97,15 @@
             font-size: 0.7rem;
             text-decoration: none;
             transition: color 0.3s;
+            width: 50px; /* Give each item a fixed width */
         }
 
-        .mobile-nav a:hover,
-        .mobile-nav a.active {
+        .main-nav-dock a:hover,
+        .main-nav-dock a.active {
             color: var(--primary-color);
         }
 
-        .mobile-nav svg {
+        .main-nav-dock svg {
             width: 24px;
             height: 24px;
             margin-bottom: 0.2rem;
@@ -103,7 +116,7 @@
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: var(--text-light);
             text-align: center;
-            padding: 10rem 1.5rem 6rem; /* Adjusted padding */
+            padding: 10rem 1.5rem 6rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -111,8 +124,8 @@
         }
 
         .hero img {
-            width: 160px; /* Increased size */
-            height: 160px; /* Increased size */
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
             border: 4px solid var(--background-white);
             object-fit: cover;
@@ -235,7 +248,7 @@
         .portfolio-item img {
             width: 100%;
             height: 200px; /* Fixed height for consistent size */
-            object-fit: cover; /* Cover the area, may crop */
+            object-fit: cover; /* Ensures image covers the area without distortion */
         }
         .portfolio-content {
             padding: 1.5rem;
@@ -247,7 +260,7 @@
         .portfolio-content p {
             color: var(--text-muted);
             margin-bottom: 1rem;
-            min-height: 80px; /* Ensures cards have similar height */
+            min-height: 80px;
         }
         .portfolio-content a {
             color: var(--primary-color);
@@ -312,96 +325,12 @@
         .footer-links a:hover {
             color: var(--text-light);
         }
-
-
-        /* --- Responsive Design --- */
-        @media (min-width: 768px) {
-            h2 {
-                font-size: 3rem;
-            }
-
-            .mobile-nav {
-                display: none; /* Hide mobile nav on desktop */
-            }
-
-            .desktop-nav {
-                display: flex;
-                align-items: center;
-                gap: 1.5rem;
-            }
-
-            .header {
-                position: fixed;
-                width: 100%;
-                top: 0;
-                background: rgba(255, 255, 255, 0.8);
-                backdrop-filter: blur(10px);
-                z-index: 1000;
-                padding: 1rem 0;
-                transition: box-shadow 0.3s;
-            }
-
-            .header-scrolled {
-                 box-shadow: 0 2px 10px var(--shadow-color);
-            }
-
-            .nav-link {
-                 color: var(--text-muted);
-                 text-decoration: none;
-                 font-weight: 600;
-                 position: relative;
-                 padding: 0.5rem;
-            }
-             .nav-link::after {
-                 content: '';
-                 position: absolute;
-                 width: 0;
-                 height: 2px;
-                 bottom: 0;
-                 left: 50%;
-                 background-color: var(--primary-color);
-                 transition: all 0.3s ease;
-             }
-             .nav-link:hover::after, .nav-link.active::after {
-                width: 100%;
-                left: 0;
-             }
-             .nav-link:hover, .nav-link.active {
-                 color: var(--primary-color);
-             }
-
-
-            .hero h1 {
-                font-size: 4rem;
-            }
-
-            .about-content {
-                /* No grid needed for single column */
-            }
-
-            main {
-                padding-top: 80px; /* Adjust for fixed header */
-            }
-        }
     </style>
 </head>
 <body>
 
-    <header class="header">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-            <a href="#home" style="font-size: 1.5rem; color: var(--text-dark); text-decoration: none; font-weight: 700;">Tremors</a>
-            <nav class="desktop-nav">
-                <a href="#home" class="nav-link active">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#portfolio" class="nav-link">Portfolio</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </nav>
-        </div>
-    </header>
-
-    <nav class="mobile-nav">
-        <a href="#home" class="active">
+    <nav class="main-nav-dock">
+        <a href="#home">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" /></svg>
             Home
         </a>
@@ -409,20 +338,23 @@
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" /></svg>
             About
         </a>
+        <a href="#skills">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 8.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25v2.25A2.25 2.25 0 0 1 8.25 21H6a2.25 2.25 0 0 1-2.25-2.25V15.75ZM13.5 6A2.25 2.25 0 0 1 15.75 3.75h2.25A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25A2.25 2.25 0 0 1 13.5 8.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25h2.25a2.25 2.25 0 0 1 2.25 2.25v2.25A2.25 2.25 0 0 1 18 21h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" /></svg>
+            Skills
+        </a>
         <a href="#portfolio">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 00-1.883 2.542l.857 6a2.25 2.25 0 002.227 1.932H19.05a2.25 2.25 0 002.227-1.932l.857-6a2.25 2.25 0 00-1.883-2.542m-16.5 0A2.25 2.25 0 015.625 7.5h12.75c1.13 0 2.094.787 2.236 1.872M5.25 9.75h13.5" /></svg>
             Work
         </a>
         <a href="#contact">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" /></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25-2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" /></svg>
             Contact
         </a>
     </nav>
 
-
     <main>
         <section id="home" class="hero">
-            <img src="assets/pfp.jpg" alt="Your Photo">
+            <img src="assets/pfp.jpg" alt="Your Photo" onerror="this.onerror=null;this.src='https://placehold.co/160x160/8b5cf6/f9fafb?text=Me';">
             <h1>Hi, I'm Tremors</h1>
             <p>A Junior Python Developer specializing in building dynamic web applications with Django.</p>
             <a href="#portfolio" class="cta-button">View My Work</a>
@@ -484,23 +416,23 @@
                 <h2>My Portfolio</h2>
                 <div class="portfolio-grid">
                     <div class="portfolio-item">
-                         <img src="assets/eshopper-preview.jpg" alt="E-commerce Project">
+                         <img src="assets/eshopper-preview.jpg" alt="E-commerce Project" onerror="this.onerror=null;this.src='https://placehold.co/400x200/3b82f6/ffffff?text=E-commerce';">
                          <div class="portfolio-content">
                             <h3>E-commerce Website</h3>
                             <p>A full-featured e-commerce website built from the ground up using the Django framework, focusing on a clean and functional user experience.</p>
-                            <a href="https://github.com/qtremors/eshopper">View Project &rarr;</a>
+                            <a href="https://github.com/qtremors/eshopper" target="_blank" rel="noopener noreferrer">View Project &rarr;</a>
                          </div>
                     </div>
-                     <div class="portfolio-item">
-                         <img src="assets/plant-disease-detector-preview.jpg" alt="Plant Disease Detector">
+                    <div class="portfolio-item">
+                         <img src="assets/plant-disease-detector-preview.jpg" alt="Plant Disease Detector" onerror="this.onerror=null;this.src='https://placehold.co/400x200/3b82f6/ffffff?text=Plant+AI';">
                          <div class="portfolio-content">
                             <h3>Plant Disease Detector</h3>
                             <p>A web app using Django and TensorFlow to detect plant diseases from images. Utilized Pillow, NumPy, and Plotly for data handling and visualization.</p>
-                            <a href="https://github.com/qtremors/plant-disease-detector">View Project &rarr;</a>
+                            <a href="https://github.com/qtremors/plant-disease-detector" target="_blank" rel="noopener noreferrer">View Project &rarr;</a>
                          </div>
                     </div>
-                     <div class="portfolio-item">
-                         <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2070&auto=format&fit=crop" alt="Future Project">
+                    <div class="portfolio-item">
+                         <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2070&auto=format&fit=crop" alt="Future Project" onerror="this.onerror=null;this.src='https://placehold.co/400x200/3b82f6/ffffff?text=Coming+Soon';">
                          <div class="portfolio-content">
                             <h3>More Projects Coming Soon</h3>
                             <p>Actively learning and building new applications to expand my skillset in both frontend and backend development.</p>
@@ -516,20 +448,20 @@
                  <h2>Get in Touch</h2>
                  <p class="contact-intro">I'm currently looking for new opportunities. My inbox is always open, whether you have a question or just want to say hi.</p>
                  <div class="social-links">
-                    <a href="https://github.com/qtremors" class="social-link" title="GitHub">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.197-6.091 8.197-11.387C24 5.373 12 0 12 0Z"/></svg>
-                    </a>
-                    
-                    <a href="mailto:singhamankumar207@gmail.com" class="social-link" title="Email">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
-                          <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
-                        </svg>
-                    </a>
+                     <a href="https://github.com/qtremors" class="social-link" title="GitHub" target="_blank" rel="noopener noreferrer">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.197-6.091 8.197-11.387C24 5.373 12 0 12 0Z"/></svg>
+                     </a>
+                     
+                     <a href="mailto:singhamankumar207@gmail.com" class="social-link" title="Email">
+                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                           <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
+                           <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
+                         </svg>
+                     </a>
 
-                    <a href="https://www.linkedin.com/in/aman-singh-0a1938301?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link" title="LinkedIn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                    </a>
+                     <a href="https://www.linkedin.com/in/aman-singh-0a1938301" class="social-link" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                     </a>
                  </div>
             </div>
         </section>
@@ -542,72 +474,61 @@
                 <a href="#">Privacy Policy</a>
                 <span>&bull;</span>
                 <a href="#">Terms of Service</a>
-            </div>
+             </div>
         </div>
     </footer>
     
     <script>
-        // This script is essential for the navigation highlighting to work correctly.
         document.addEventListener('DOMContentLoaded', function() {
+            
+            // --- CACHE DOM ELEMENTS ---
             const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.desktop-nav a, .mobile-nav a');
-            const header = document.querySelector('.header');
+            const navDock = document.querySelector('.main-nav-dock');
+            const navLinks = document.querySelectorAll('.main-nav-dock a');
 
-            // Function to add a shadow to the desktop header on scroll
-            const handleHeaderShadow = () => {
-                if (window.scrollY > 50) {
-                    header.classList.add('header-scrolled');
+            // --- HIDE NAVIGATION DOCK ON SCROLL ---
+            let lastScrollTop = 0;
+            window.addEventListener('scroll', function() {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                // Hide on scroll down (after passing 200px), show on scroll up
+                if (scrollTop > lastScrollTop && scrollTop > 200) { 
+                    navDock.classList.add('nav-hidden');
                 } else {
-                    header.classList.remove('header-scrolled');
+                    navDock.classList.remove('nav-hidden');
                 }
-            };
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            }, false);
 
-            // Options for the Intersection Observer
+
+            // --- ACTIVE LINK HIGHLIGHTING ON SCROLL ---
             const observerOptions = {
-                root: null, // observes intersections relative to the viewport
+                root: null,
                 rootMargin: '0px',
-                threshold: 0.5 // Triggers when 50% of the section is visible
+                threshold: 0.5 
             };
 
-            // The observer callback function
             const observerCallback = (entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const id = entry.target.getAttribute('id');
-                        // Remove 'active' from all links
-                        navLinks.forEach(link => {
-                            link.classList.remove('active');
-                        });
-                        // Add 'active' to the corresponding links
-                        document.querySelectorAll(`.desktop-nav a:not([href="#"]), .mobile-nav a:not([href="#"])`).forEach(link => {
-                            const linkTarget = link.getAttribute('href').substring(1);
-                            if (linkTarget === id) {
-                                link.classList.add('active');
-                            }
-                        });
+                        const activeLink = document.querySelector(`.main-nav-dock a[href="#${id}"]`);
+
+                        if (activeLink) {
+                            navLinks.forEach(link => {
+                                // Set 'active' class based on whether the link matches the intersecting section
+                                link.classList.toggle('active', link === activeLink);
+                            });
+                        }
                     }
                 });
             };
 
-            // Create and start the observer
             const observer = new IntersectionObserver(observerCallback, observerOptions);
             sections.forEach(section => {
                 observer.observe(section);
-            });
-
-            // Add scroll listener for the header shadow
-            window.addEventListener('scroll', handleHeaderShadow);
-
-            // Update active class on load to highlight the home section
-            document.addEventListener('DOMContentLoaded', () => {
-                const homeLinkDesktop = document.querySelector('.desktop-nav a:first-child');
-                const homeLinkMobile = document.querySelector('.mobile-nav a:first-child');
-                if (homeLinkDesktop) homeLinkDesktop.classList.add('active');
-                if (homeLinkMobile) homeLinkMobile.classList.add('active');
             });
         });
     </script>
 
 </body>
 </html>
-`
