@@ -22,17 +22,17 @@
         body[data-theme='dark'] {
             --primary-color: #4f8ff7;
             --secondary-color: #9d72f8;
-            --background-light: #111827; /* Darkest background */
-            --background-white: #1f2937; /* Lighter background for cards */
-            --text-dark: #f9fafb;        /* Light text */
-            --text-light: #f9fafb;      /* Light text */
-            --text-muted: #9ca3af;      /* Muted light text */
+            --background-light: #111827;
+            --background-white: #1f2937;
+            --text-dark: #f9fafb;
+            --text-light: #f9fafb;
+            --text-muted: #9ca3af;
             --shadow-color: rgba(0, 0, 0, 0.4);
         }
 
         /* --- Base Styles --- */
         html {
-            scroll-behavior: smooth; /* Enables smooth scrolling for anchor links */
+            scroll-behavior: smooth;
         }
 
         body {
@@ -79,9 +79,9 @@
         /* --- Main Navigation: Floating Island Dock --- */
         .main-nav-dock {
             display: flex;
-            justify-content: center; /* Center the links */
+            justify-content: center;
             align-items: center;
-            gap: 1rem; /* Space between icons */
+            gap: 1rem;
             position: fixed;
             bottom: 1.5rem;
             left: 50%;
@@ -98,14 +98,14 @@
         }
         
         body[data-theme='dark'] .main-nav-dock {
-            background: rgba(31, 41, 55, 0.85); /* Dark background for dock */
+            background: rgba(31, 41, 55, 0.85);
         }
 
         /* Class to hide the nav dock */
         .main-nav-dock.nav-hidden {
             transform: translateX(-50%) translateY(150%);
             opacity: 0;
-            pointer-events: none; /* Disable interactions when hidden */
+            pointer-events: none;
         }
 
         .main-nav-dock a {
@@ -116,7 +116,7 @@
             font-size: 0.7rem;
             text-decoration: none;
             transition: color 0.3s;
-            width: 50px; /* Give each item a fixed width */
+            width: 50px;
         }
 
         .main-nav-dock a:hover,
@@ -246,6 +246,17 @@
             font-weight: bold;
         }
 
+     /* .skill-card ul li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 8px 0;
+        }
+        .skill-card img {
+            height: 24px;
+        } */
+
+
         /* --- Portfolio Section --- */
         #portfolio {
             background-color: var(--background-white);
@@ -271,8 +282,8 @@
 
         .portfolio-item img {
             width: 100%;
-            height: 200px; /* Fixed height for consistent size */
-            object-fit: cover; /* Ensures image covers the area without distortion */
+            height: 200px;
+            object-fit: cover;
         }
         .portfolio-content {
             padding: 1.5rem;
@@ -340,7 +351,7 @@
         }
         
         body[data-theme='dark'] footer {
-            background-color: #111827; /* Darker footer background */
+            background-color: #111827;
         }
 
         .footer-links a {
@@ -371,21 +382,20 @@
             z-index: 1001;
             box-shadow: 0 4px 12px var(--shadow-color);
             overflow: hidden;
-            /* Added opacity and transform for smooth hiding/showing */
             transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out, background-color 0.3s ease, border-color 0.3s ease;
         }
 
         .theme-toggle-button.nav-hidden {
-            transform: translateY(-150px); /* Move it sufficiently off-screen upwards */
-            opacity: 0; /* Make it invisible */
-            pointer-events: none; /* Disable interactions when hidden */
+            transform: translateY(-150px);
+            opacity: 0;
+            pointer-events: none;
         }
 
         .theme-toggle-button .emoji {
             font-size: 1rem;
             position: absolute;
             transition: transform 0.3s ease, opacity 0.3s ease;
-            pointer-events: none; /* Ensure clicks pass through to the button */
+            pointer-events: none;
         }
 
         .theme-toggle-button .sun {
@@ -460,7 +470,7 @@
             </div>
         </section>
 
-        <section id="skills">
+        <!-- <section id="skills">
             <div class="container">
                 <h2>My Skills</h2>
                 <div class="skills-grid">
@@ -502,7 +512,54 @@
                     </div>
                 </div>
             </div>
+        </section> -->
+
+        <section id="skills">
+            <div class="container">
+                <h2>My Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3>Frontend Development 💻</h3>
+                        <ul>
+                            <li><img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white" alt="HTML5 Badge"></li>
+                            <li><img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white" alt="CSS3 Badge"></li>
+                            <li><img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black" alt="JS Badge"></li>
+                            <li><img src="https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB" alt="React Badge"></li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Backend & Databases ⚙️</h3>
+                        <ul>
+                            <li><img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" alt="Python Badge"></li>
+                            <li><img src="https://img.shields.io/badge/Django-092E20?style=flat&logo=django&logoColor=white" alt="Django Badge"></li>
+                            <li><img src="https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white" alt="Node.js Badge"></li>
+                            <li><img src="https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white" alt="MongoDB Badge"></li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <h3>AI / Machine Learning 🧠</h3>
+                        <ul>
+                            <li><img src="https://img.shields.io/badge/Numpy-013243?style=flat&logo=numpy&logoColor=white" alt="Numpy Badge"></li>
+                            <li><img src="https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white" alt="Pandas Badge"></li>
+                            <li><img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white" alt="TensorFlow Badge"></li>
+                            <li><img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=flat&logo=pytorch&logoColor=white" alt="PyTorch Badge"></li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Platforms & Tools 🛠️</h3>
+                        <ul>
+                            <li><img src="https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white" alt="Git Badge"></li>
+                            <li><img src="https://img.shields.io/badge/VS%20Code-007ACC?style=flat&logo=visualstudiocode&logoColor=white" alt="VS Code Badge"></li>
+                            <li><img src="https://img.shields.io/badge/Jupyter-F37626?style=flat&logo=jupyter&logoColor=white" alt="Jupyter Badge"></li>
+                            <li><img src="https://img.shields.io/badge/Windows-0078D6?style=flat&logo=windows&logoColor=white" alt="Windows Badge">
+                                <img src="https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black" alt="Linux Badge">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </section>
+
 
         <section id="portfolio">
             <div class="container">
