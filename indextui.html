@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aman.sh</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- Dracula Dark Theme Variables --- */
+        :root {
+            --background: #21222C; /* Darker background */
+            --panel-bg: #282a36;   /* Standard Dracula background for panels */
+            --border: #6272a4;
+            --foreground: #f8f8f2;
+            --primary: #ff79c6; /* Pink */
+            --purple: #bd93f9; /* Purple */
+            --green: #50fa7b;   /* Green */
+            --yellow: #f1fa8c;  /* Yellow */
+            --muted: #6272a4;   /* Comment */
+        }
+
+        /* --- Base Styles --- */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Fira Code', monospace;
+            background-color: var(--background);
+            color: var(--foreground);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            margin: 0;
+            padding: 1rem;
+        }
+
+        /* --- Global Styles & Utilities --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        a:hover {
+            background-color: var(--primary);
+            color: var(--background);
+        }
+        
+        .prompt {
+            color: var(--green);
+        }
+
+        .path {
+            color: var(--purple);
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 0.6em;
+            height: 1.2em;
+            background-color: var(--foreground);
+            animation: blink 1s steps(1) infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .tui-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .tui-nav a {
+            color: var(--foreground);
+        }
+        
+        .tui-nav a:hover {
+             background-color: var(--foreground);
+             color: var(--background);
+        }
+
+        /* --- TUI Panel System --- */
+        .tui-panel {
+            background-color: var(--panel-bg);
+            border: 1px solid var(--border);
+            margin-bottom: 2rem;
+            border-radius: 4px;
+        }
+
+        .tui-panel-header {
+            border-bottom: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            font-weight: bold;
+            color: var(--yellow);
+        }
+
+        .tui-panel-body {
+            padding: 1.5rem;
+        }
+
+        /* --- Hero Section --- */
+        .hero-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .ascii-art {
+            font-family: 'Fira Code', monospace;
+            white-space: pre;
+            color: var(--muted);
+            font-size: 10px; /* Fine-tune font size for art */
+            line-height: 1.0;
+            text-align: left;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            background-color: var(--background);
+            border-radius: 4px;
+            overflow-x: auto; /* Allows scrolling on small screens */
+            flex-shrink: 0; /* Prevents the box from shrinking */
+            /* --- FIX --- */
+            overflow-wrap: normal;
+            word-break: normal;
+        }
+        
+        .hero-text {
+            flex: 1; /* Allows this element to grow and fill available space */
+            min-width: 300px; /* Prevents the text from getting too squished */
+        }
+        
+        .hero-text h1 {
+            font-size: 1.5rem;
+            margin: 0 0 1rem 0;
+            color: var(--green);
+        }
+
+        .hero-text p {
+            margin: 0;
+            max-width: 60ch;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--primary);
+            background-color: transparent;
+        }
+
+        /* --- About Section --- */
+        .about-text p {
+            margin: 0 0 1rem 0;
+            line-height: 1.6;
+            max-width: 80ch;
+        }
+        .about-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* --- Skills Section --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .skill-category h3 {
+            color: var(--purple);
+            margin-top: 0;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .skill-category ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .skill-category li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .skill-category li::before {
+            content: '>';
+            color: var(--green);
+            margin-right: 0.75rem;
+        }
+        
+        /* --- Portfolio Section --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .portfolio-item {
+            border: 1px dashed var(--border);
+            padding: 1rem;
+            border-radius: 4px;
+        }
+        
+        .portfolio-item h3 {
+            margin: 0 0 0.5rem 0;
+            color: var(--yellow);
+        }
+        
+        .portfolio-item p {
+            margin: 0 0 1rem 0;
+            color: var(--muted);
+            max-width: 70ch;
+        }
+
+        /* --- Contact Section --- */
+        .contact-intro {
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        
+        /* --- Footer --- */
+        footer {
+            margin-top: 2rem;
+            color: var(--muted);
+        }
+
+        /* --- Mobile Styles --- */
+        @media (max-width: 768px) {
+            body {
+                padding: 0.5rem;
+                font-size: 0.9rem;
+            }
+
+            .tui-panel-body {
+                padding: 1rem;
+            }
+            
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text {
+                text-align: center;
+                min-width: 100%; /* Allow text to take full width in column layout */
+            }
+
+            .hero-text h1 {
+                font-size: 1.3rem;
+            }
+
+            .ascii-art {
+                max-width: 100%;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div>
+                <span class="prompt">user@tremors</span>:<span class="path">~/aman</span>$ ls -a
+            </div>
+            <nav class="tui-nav">
+                <a href="#home">./home</a>
+                <a href="#about">./about</a>
+                <a href="#skills">./skills</a>
+                <a href="#portfolio">./portfolio</a>
+                <a href="#contact">./contact</a>
+            </nav>
+        </header>
+
+        <main>
+            <section id="home" class="tui-panel">
+                <div class="tui-panel-header">
+                    README.md
+                </div>
+                <div class="tui-panel-body hero-content">
+                    <div class="ascii-art">
+       ▒▒▒▒      ▒▒▒▒     
+       ▒▒▒▒▒▒  ▒▒▒▒▒▒     
+   ▒▒   ▒▒▒▒▒▒▒▒▒▒▒▒   ▒▓ 
+  ▓▒▒▒ ▒▒▒▒▒▒▒▒▒▒▒▒▒▒ ▒▒▓▓
+  ▓▓▒▒ ▒▒▒▒ ▒▒▒▒ ▒▒▒▒ ▓▓▓▓
+  ▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓
+     ▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓   
+       ▓▓▓▓▓▓▓▓▓▓▓▓▓▓     
+        ▓▓▓▓▓▓▓▓▓▓▓▓      
+       ▓▓▓▓▓▓  ▓▓▓▓▓▓     
+       ▓▓▓▓      ▓▓▓▓       
+                    </div>
+                    <div class="hero-text">
+                        <h1>Hi, I'm Aman</h1>
+                        <p>A Junior Python Developer building AI-powered applications at the intersection of machine learning and web development.</p>
+                        <a href="#portfolio" class="cta-button">cat ./portfolio.log</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about" class="tui-panel">
+                <div class="tui-panel-header">
+                    whoami
+                </div>
+                <div class="tui-panel-body about-text">
+                    <p>Hello! I'm a Python developer with a deep passion for the intersection of web technologies and Artificial Intelligence. I'm particularly excited about leveraging machine learning to create intelligent, data-driven applications that solve real-world problems.</p>
+                    <p>My enthusiasm for this field is showcased in projects like my Plant Disease Detector, where I integrated a TensorFlow model into a Django web app to identify diseases from images. This experience solidified my skills in both back-end development and practical machine learning implementation.</p>
+                    <p>As a fast learner proficient with libraries like NumPy, Pandas, and TensorFlow, I am actively seeking opportunities in the AI/ML field. I'm eager to apply my problem-solving abilities to new challenges and contribute to innovative projects.</p>
+                </div>
+            </section>
+
+            <section id="skills" class="tui-panel">
+                <div class="tui-panel-header">
+                    /usr/bin/skills
+                </div>
+                <div class="tui-panel-body skills-grid">
+                    <div class="skill-category">
+                        <h3>Frontend 💻</h3>
+                        <ul>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                            <li>React</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Backend & Databases ⚙️</h3>
+                        <ul>
+                            <li>Python</li>
+                            <li>Django</li>
+                            <li>Node.js</li>
+                            <li>MongoDB</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>AI / Machine Learning 🧠</h3>
+                        <ul>
+                            <li>Numpy</li>
+                            <li>Pandas</li>
+                            <li>TensorFlow</li>
+                            <li>PyTorch</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Platforms & Tools 🛠️</h3>
+                        <ul>
+                            <li>Git & Github</li>
+                            <li>VS Code</li>
+                            <li>Jupyter Notebook</li>
+                            <li>Windows & Linux</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="portfolio" class="tui-panel">
+                <div class="tui-panel-header">
+                    /var/log/portfolio.log
+                </div>
+                <div class="tui-panel-body portfolio-grid">
+                    <div class="portfolio-item">
+                        <h3>Plant Disease Detector</h3>
+                        <p>A web app using Django and TensorFlow to detect plant diseases from images. Utilized Pillow, NumPy, and Plotly.</p>
+                        <a href="https://github.com/qtremors/plant-disease-detector" target="_blank" rel="noopener noreferrer">git show HEAD</a>
+                    </div>
+                    
+                    <div class="portfolio-item">
+                        <h3>E-commerce Website</h3>
+                        <p>A full-featured e-commerce website built from the ground up using the Django framework.</p>
+                        <a href="https://github.com/qtremors/eshopper" target="_blank" rel="noopener noreferrer">git show HEAD</a>
+                    </div>
+
+                    <div class="portfolio-item">
+                        <h3>Calculator App (PYgame)</h3>
+                        <p>A fully functional desktop calculator built with Python and Pygame. Demonstrates responsive GUI with persistent history.</p>
+                        <a href="https://github.com/qtremors/pygame-calculator-app" target="_blank" rel="noopener noreferrer">git show HEAD</a>
+                    </div>
+
+                    <div class="portfolio-item">
+                        <h3>More Projects...</h3>
+                        <p>Actively learning and building new applications to expand my skillset.</p>
+                        <a href="#">tail -f /dev/null</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="tui-panel">
+                <div class="tui-panel-header">
+                    ./contact.sh
+                </div>
+                <div class="tui-panel-body">
+                    <p class="contact-intro">I'm currently looking for new opportunities. My inbox is always open.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/qtremors" target="_blank" rel="noopener noreferrer">[ GitHub ]</a>
+                        <a href="mailto:singhamankumar207@gmail.com">[ Email ]</a>
+                        <a href="https://www.linkedin.com/in/aman-singh-0a1938301" target="_blank" rel="noopener noreferrer">[ LinkedIn ]</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <span class="prompt">user@tremors</span>:<span class="path">~/aman</span>$ 
+            <a href="index.html">exit</a>
+            <span class="cursor"></span>
+        </footer>
+    </div>
+    
+</body>
+</html>
