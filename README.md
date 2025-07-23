@@ -2,8 +2,8 @@
 
 This repository features **two** versions of a personal portfolio website:
 
-1. [`index.html`](./index.html) – A modern, animated UI with floating navigation and theme toggle.
-2. [`indextui.html`](./indextui.html) – A terminal-inspired TUI (Text User Interface) with ASCII art and hacker-chic vibes.
+1. [`index.html`](https://qtremors.github.io/tremors) – A modern, animated UI with floating navigation and theme toggle.
+2. [`indextui.html`](https://qtremors.github.io/tremors/indextui.html) – A terminal-inspired TUI (Text User Interface) with ASCII art and hacker-chic vibes.
 
 Both are mobile-friendly, minimalist, and built with clean HTML and CSS. Only `index.html` uses JavaScript — `indextui.html` is completely JS-free for a feather-light experience.
 
