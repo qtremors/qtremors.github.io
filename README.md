@@ -58,7 +58,7 @@ For **indextui.html**:
 
 ---
 
-## 🧭 Quick Links
+## 📃 HTML Files
 
 * [Open `index.html`](./index.html) – 🌇 Visual UI version (with JavaScript)  
 * [Open `indextui.html`](./indextui.html) – 👨‍💻 Terminal TUI version (no JavaScript)
