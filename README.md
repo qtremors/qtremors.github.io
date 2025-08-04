@@ -2,8 +2,9 @@
 
 This repository features **two** versions of a personal portfolio website:
 
-1. [`index.html`](./index.html) – A modern, animated UI with floating navigation and theme toggle.
-2. [`indextui.html`](./indextui.html) – A terminal-inspired TUI (Text User Interface) with ASCII art and hacker-chic vibes.
+1. 🌇  [`index.html`](https://qtremors.github.io/tremors) – A modern, animated UI with floating navigation and theme toggle.
+
+2. 👨‍💻  [`indextui.html`](https://qtremors.github.io/tremors/indextui.html) – A terminal-inspired TUI (Text User Interface) with ASCII art.
 
 Both are mobile-friendly, minimalist, and built with clean HTML and CSS. Only `index.html` uses JavaScript — `indextui.html` is completely JS-free for a feather-light experience.
 
@@ -11,7 +12,7 @@ Both are mobile-friendly, minimalist, and built with clean HTML and CSS. Only `i
 
 ## ✨ Key Features
 
-### 🖥️ [`index.html`](./index.html)
+### 🌇 [`index.html`](./index.html)
 * **🔁 Fully Responsive** – Looks great on phones, tablets, and desktops.
 * **🧭 Floating Navigation Dock** – Fixed pill-shaped nav dock that highlights active sections.
 * **🌗 Dark Mode Toggle** – Switch between light and dark themes with emoji flair (☀️/🌙).
@@ -19,7 +20,7 @@ Both are mobile-friendly, minimalist, and built with clean HTML and CSS. Only `i
 * **🎨 Customizable Themes** – Edit CSS variables for easy color changes.
 * **📜 Powered by JavaScript** – Handles theme switching, scroll detection, and active section tracking.
 
-### 🧮 [`indextui.html`](./indextui.html)
+### 👨‍💻 [`indextui.html`](./indextui.html)
 * **🖼️ ASCII Art Header** – Terminal-style greeting powered by monospaced fonts.
 * **📁 TUI Layout** – File-path inspired nav (`./about`, `/usr/bin/skills`, etc).
 * **🎨 Dracula-Themed** – Uses Dracula palette and Fira Code font for max hacker feels.
@@ -58,7 +59,7 @@ For **indextui.html**:
 
 ---
 
-## 🧭 Quick Links
+## 📃 HTML Files
 
 * [Open `index.html`](./index.html) – 🌇 Visual UI version (with JavaScript)  
 * [Open `indextui.html`](./indextui.html) – 👨‍💻 Terminal TUI version (no JavaScript)
