@@ -22,8 +22,8 @@ Both are mobile-friendly, minimalist, and built with clean HTML and CSS. Only `i
 
 ### 👨‍💻 [`indextui.html`](./indextui.html)
 * **🖼️ ASCII Art Header** – Terminal-style greeting powered by monospaced fonts.
-* **📁 TUI Layout** – File-path inspired nav (`./about`, `/usr/bin/skills`, etc).
-* **🎨 Dracula-Themed** – Uses Dracula palette and Fira Code font for max hacker feels.
+* **📁 TUI Layout** – File-path inspired nav
+* **🎨 Dracula-Themed** – Uses Dracula palette and Fira Code font for max terminal feels.
 * **💨 Zero JavaScript** – Fully functional with just HTML and CSS for lightning-fast loading.
 
 ---
