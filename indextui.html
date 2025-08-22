@@ -25,14 +25,17 @@
             display: none;
         }
 
-        #font-fira-code:checked ~ .container {
+        #font-fira-code:checked ~ .container,
+        #font-fira-code:checked ~ .splash-screen {
             --font-family: 'Fira Code', monospace;
         }
-        #font-roboto-mono:checked ~ .container {
+        #font-roboto-mono:checked ~ .container,
+        #font-roboto-mono:checked ~ .splash-screen {
             --font-family: 'Roboto Mono', monospace;
         }
 
-        #theme-dracula:checked ~ .container {
+        #theme-dracula:checked ~ .container,
+        #theme-dracula:checked ~ .splash-screen {
             --background: #282a36;
             --panel-bg: #21222C;
             --border: #6272a4;
@@ -44,7 +47,8 @@
             --muted: #6272a4;
         }
 
-        #theme-catppuccin:checked ~ .container {
+        #theme-catppuccin:checked ~ .container,
+        #theme-catppuccin:checked ~ .splash-screen {
             --background: #24273a;
             --panel-bg: #1e2030;
             --border: #5b6078;
@@ -68,6 +72,65 @@
             padding: 1rem;
             transition: background-color 0.3s, color 0.3s;
         }
+
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 1rem; 
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            background-color: var(--background);
+            z-index: 9999;
+            animation: fadeOut 0.1s ease-out 1s forwards;
+        }
+
+        .splash-screen .container,
+        .splash-screen header,
+        .splash-screen .tui-panel,
+        .splash-screen .tui-panel-header {
+            background-color: transparent !important;
+            color: transparent !important;
+            border-color: transparent !important;
+            pointer-events: none; 
+            user-select: none;
+        }
+        
+        .splash-screen .ascii-art {
+            color: var(--muted) !important;
+            background-color: var(--background) !important;
+            border-color: transparent !important;
+            height: 0;
+            overflow: hidden;
+            animation: 
+                revealArt 0.8s steps(15, end) forwards,
+                fadeInBorder 0.2s ease-in 0.6s forwards;
+        }
+        
+        .splash-screen header {
+            visibility: hidden;
+        }
+
+        @keyframes revealArt {
+            to {
+                height: 138px;
+            }
+        }
+
+        @keyframes fadeInBorder {
+            to {
+                border-color: var(--border) !important;
+            }
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
 
         .container {
             max-width: 1000px;
@@ -328,7 +391,7 @@
         }
 
         @media (max-width: 768px) {
-            body {
+            body, .splash-screen {
                 padding: 0.5rem;
             }
             
@@ -365,7 +428,47 @@
     </style>
 </head>
 <body>
-    
+
+    <div class="splash-screen">
+        <div class="container">
+            <header>
+                <div>
+                    <span class="prompt">user@tremors</span>:<span class="path">~/aman</span>$ ls -a
+                </div>
+                <nav class="tui-nav">
+                    <a href="#home">./home</a>
+                    <a href="#about">./about</a>
+                    <a href="#skills">./skills</a>
+                    <a href="#portfolio">./portfolio</a>
+                    <a href="#contact">./contact</a>
+                </nav>
+            </header>
+            <main>
+                <section id="home" class="tui-panel">
+                    <div class="tui-panel-header">
+                        README.md
+                    </div>
+                    <div class="tui-panel-body hero-content">
+                        <div class="ascii-art">
+<pre>
+       ▒▒▒▒      ▒▒▒▒     
+       ▒▒▒▒▒▒  ▒▒▒▒▒▒     
+   ▒▒   ▒▒▒▒▒▒▒▒▒▒▒▒   ▒▓ 
+  ▓▒▒▒ ▒▒▒▒▒▒▒▒▒▒▒▒▒▒ ▒▒▓▓
+  ▓▓▒▒ ▒▒▒▒ ▒▒▒▒ ▒▒▒▒ ▓▓▓▓
+  ▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓
+     ▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓   
+       ▓▓▓▓▓▓▓▓▓▓▓▓▓▓     
+        ▓▓▓▓▓▓▓▓▓▓▓▓      
+       ▓▓▓▓▓▓  ▓▓▓▓▓▓     
+       ▓▓▓▓      ▓▓▓▓       
+</pre>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
     <input type="radio" name="theme-switcher" id="theme-dracula" class="theme-radio" checked>
     <input type="radio" name="theme-switcher" id="theme-catppuccin" class="theme-radio">
     
@@ -409,6 +512,7 @@
                 </div>
                 <div class="tui-panel-body hero-content">
                     <div class="ascii-art">
+<pre>
        ▒▒▒▒      ▒▒▒▒     
        ▒▒▒▒▒▒  ▒▒▒▒▒▒     
    ▒▒   ▒▒▒▒▒▒▒▒▒▒▒▒   ▒▓ 
@@ -420,6 +524,7 @@
         ▓▓▓▓▓▓▓▓▓▓▓▓      
        ▓▓▓▓▓▓  ▓▓▓▓▓▓     
        ▓▓▓▓      ▓▓▓▓       
+</pre>
                     </div>
                     <div class="hero-text">
                         <h1>Hi, I'm Aman</h1>
