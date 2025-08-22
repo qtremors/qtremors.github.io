@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <style>
-        /* --- Gemini-Inspired Color Palette (Light Theme) --- */
         :root {
             --md-primary: #1a73e8;
             --md-on-primary: #ffffff;
@@ -26,7 +25,6 @@
             --md-shadow-color: rgba(32, 33, 36, 0.1);
         }
 
-        /* --- Gemini-Inspired Color Palette (Dark Theme) --- */
         body[data-theme='dark'] {
             --md-primary: #8ab4f8;
             --md-on-primary: #202124;
@@ -94,7 +92,14 @@
             background-color: var(--md-surface);
             box-shadow: 0 1px 2px var(--md-shadow-color);
             border-bottom: 1px solid var(--md-outline);
+            transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
         }
+
+        .top-app-bar.hidden {
+            transform: translateY(-150%);
+            opacity: 0;
+        }
+
 
         body[data-theme='dark'] .top-app-bar {
              border-bottom: 1px solid var(--md-outline);
@@ -204,11 +209,10 @@
             padding: 0.75rem;
             border-radius: 999px;
             box-shadow: 0 4px 12px var(--md-shadow-color);
-            transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out; /* --- UPDATED for smooth hiding --- */
+            transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
             border: 1px solid var(--md-outline);
         }
         
-        /* --- NEW: Class to hide the navigation bar --- */
         .navigation-bar.hidden {
             transform: translateX(-50%) translateY(200%);
             opacity: 0;
@@ -240,8 +244,8 @@
         }
 
         .nav-item.active {
-            color: var(--md-primary); /* Changed to primary accent color */
-            background-color: transparent; /* Removed the background */
+            color: var(--md-primary);
+            background-color: transparent;
         }
         .hero {
             text-align: center;
@@ -250,6 +254,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+        
+
+        #home .container {
+            transform: scale(1.05);
         }
 
         .hero img {
@@ -625,9 +634,9 @@
             const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('.navigation-bar .nav-item');
             const themeToggleButton = document.getElementById('theme-toggle');
-            const navBar = document.querySelector('.navigation-bar'); // --- NEW: Select the nav bar ---
+            const navBar = document.querySelector('.navigation-bar'); 
+            const topAppBar = document.querySelector('.top-app-bar');
             
-            // --- Intersection Observer for active nav links ---
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -640,7 +649,6 @@
             }, { rootMargin: '-50% 0px -50% 0px', threshold: 0 });
             sections.forEach(section => observer.observe(section));
 
-            // --- Theme Toggling Logic ---
             const body = document.body;
             const applyTheme = (theme) => {
                 body.setAttribute('data-theme', theme);
@@ -656,16 +664,15 @@
             applyTheme(savedTheme || 'dark');
 
 
-            // --- NEW: Scroll logic for hiding/showing the navigation dock ---
             let lastScrollY = window.scrollY;
 
             window.addEventListener('scroll', () => {
-                if (lastScrollY < window.scrollY) {
-                    // Scrolling Down
+                if (window.scrollY > lastScrollY) {
                     navBar.classList.add('hidden');
+                    topAppBar.classList.add('hidden');
                 } else {
-                    // Scrolling Up
                     navBar.classList.remove('hidden');
+                    topAppBar.classList.remove('hidden');
                 }
                 lastScrollY = window.scrollY;
             });
