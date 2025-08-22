@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags for character set, viewport, and title -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aman | Python & AI/ML Developer</title>
+    
+    <!-- Google Fonts import -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS Variables for easy theme customization --- */
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #8b5cf6;
+            --background-light: #f0f2f5;
+            --background-white: #ffffff;
+            --text-dark: #1f2937;
+            --text-light: #f9fafb;
+            --text-muted: #6b7280;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- Dark Theme Variables --- */
+        /* These variables override the root variables when the body has the 'data-theme="dark"' attribute */
+        body[data-theme='dark'] {
+            --primary-color: #4f8ff7;
+            --secondary-color: #9d72f8;
+            --background-light: #111827;
+            --background-white: #1f2937;
+            --text-dark: #f9fafb;
+            --text-light: #f9fafb;
+            --text-muted: #9ca3af;
+            --shadow-color: rgba(0, 0, 0, 0.4);
+        }
+
+        /* --- Base Styles --- */
+        html {
+            scroll-behavior: smooth; /* Enables smooth scrolling for anchor links */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            -webkit-font-smoothing: antialiased; /* Improves font rendering on WebKit browsers */
+            -moz-osx-font-smoothing: grayscale; /* Improves font rendering on Firefox */
+            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for theme changes */
+        }
+
+        /* --- Global Styles & Utilities --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 5rem 0;
+            transition: background-color 0.3s ease;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        /* Responsive adjustments for larger screens */
+        @media (min-width: 768px) {
+            h2 {
+                font-size: 3rem;
+            }
+            .hero h1 {
+                font-size: 4rem;
+            }
+        }
+
+        /* --- Top Bar for Buttons --- */
+        .top-bar {
+            position: fixed;
+            top: 1rem;
+            left: 20px;
+            right: 20px;
+            z-index: 1001; /* Ensures it's above other elements */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            pointer-events: none; /* Allows clicks to pass through the container to the page content */
+        }
+
+        .top-bar > * {
+            pointer-events: auto; /* Re-enables pointer events for direct children (the buttons) */
+        }
+
+
+        /* --- Main Navigation: Floating Island Dock --- */
+        .main-nav-dock {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            position: fixed;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: auto; /* Width adjusts to content */
+            background: rgba(255, 255, 255, 0.85); /* Semi-transparent background */
+            backdrop-filter: blur(10px); /* Frosted glass effect */
+            -webkit-backdrop-filter: blur(10px); /* For Safari */
+            border-radius: 2rem;
+            padding: 0.75rem 2rem;
+            box-shadow: 0 8px 32px 0 var(--shadow-color);
+            z-index: 1000;
+            transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out, background-color 0.3s ease;
+        }
+        
+        /* Dark theme style for the navigation dock */
+        body[data-theme='dark'] .main-nav-dock {
+            background: rgba(31, 41, 55, 0.85);
+        }
+
+        /* Class to hide the nav dock on scroll */
+        .main-nav-dock.nav-hidden {
+            transform: translateX(-50%) translateY(150%); /* Moves it off-screen */
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .main-nav-dock a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            text-decoration: none;
+            transition: color 0.3s;
+            width: 50px;
+        }
+
+        /* Style for active and hovered nav links */
+        .main-nav-dock a:hover,
+        .main-nav-dock a.active {
+            color: var(--primary-color);
+        }
+
+        .main-nav-dock svg {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 0.2rem;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-light);
+            text-align: center;
+            padding: 10rem 1.5rem 6rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 4px solid var(--background-white);
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero .cta-button {
+            background-color: var(--background-white);
+            color: var(--primary-color);
+            padding: 0.75rem 2rem;
+            border-radius: 9999px; /* Pill shape */
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s, color 0.3s;
+        }
+
+        .hero .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px var(--shadow-color);
+        }
+
+        /* Dark theme style for the hero CTA button */
+        body[data-theme='dark'] .hero .cta-button {
+            background-color: var(--text-light);
+            color: var(--secondary-color);
+        }
+        
+        /* --- About Section --- */
+        #about {
+            background-color: var(--background-white);
+        }
+
+        .about-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        /* --- Skills Section --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background-color: var(--background-white);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px var(--shadow-color);
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px var(--shadow-color);
+        }
+
+        .skill-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+
+       .skill-card ul li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 8px 0;
+        }
+        .skill-card img {
+            height: 24px;
+        }
+
+
+        /* --- Portfolio Section --- */
+        #portfolio {
+            background-color: var(--background-white);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            background-color: var(--background-light);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px var(--shadow-color);
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+        }
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px var(--shadow-color);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+        .portfolio-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .portfolio-content p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            min-height: 80px;
+        }
+        .portfolio-content a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .portfolio-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Contact Section --- */
+        #contact {
+            text-align: center;
+        }
+
+        .contact-intro {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .social-link {
+            display: inline-block;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+        }
+        .social-link:hover {
+            color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        .social-link svg {
+            width: 48px;
+            height: 48px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--text-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem 1.5rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        body[data-theme='dark'] footer {
+            background-color: #111827;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin: 0 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-light);
+        }
+
+        /* --- Top Bar Buttons (Shared Styles) --- */
+        .page-switch-button,
+        .theme-toggle-button {
+            background-color: var(--background-white);
+            border: 2px solid var(--text-muted);
+            border-radius: 50%; /* Makes the buttons circular */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;   /* Set a fixed width */
+            height: 40px;  /* Set a fixed height */
+            box-shadow: 0 4px 12px var(--shadow-color);
+            transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out, background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        /* --- Page Switch Button Specific Styles --- */
+        .page-switch-button {
+            text-decoration: none;
+            font-family: monospace;
+            font-weight: 600;
+            font-size: 1.2rem; /* Adjusted font size for better fit */
+            color: var(--text-muted);
+        }
+
+        .page-switch-button:hover {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        /* --- Theme Toggle Button Specific Styles --- */
+        .theme-toggle-button {
+            overflow: hidden;
+            position: relative; /* Needed for positioning emojis inside */
+        }
+
+        /* --- Hidden State for Top Buttons & Nav Dock --- */
+        .page-switch-button.nav-hidden,
+        .theme-toggle-button.nav-hidden {
+            transform: translateY(-150px); /* Moves buttons off-screen */
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* --- Theme Toggle Emoji Styles & Animation --- */
+        .theme-toggle-button .emoji {
+            font-size: 1.2rem; /* Increased emoji size */
+            position: absolute;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        /* Light mode state */
+        .theme-toggle-button .sun {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        .theme-toggle-button .moon {
+            transform: translateX(28px);
+            opacity: 0;
+        }
+
+        /* Dark mode state */
+        body[data-theme='dark'] .theme-toggle-button .sun {
+            transform: translateX(28px);
+            opacity: 0;
+        }
+        body[data-theme='dark'] .theme-toggle-button .moon {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Container for top-left and top-right buttons -->
+    <div class="top-bar">
+        <!-- Button to switch to the TUI version of the page -->
+        <a href="indextui.html" id="page-switch-button" class="page-switch-button" title="A minimal lightweight TUI version of this page">
+            &gt;_
+        </a>
+        <!-- Button to toggle between light and dark themes -->
+        <button id="theme-toggle" class="theme-toggle-button" title="Toggle theme">
+            <span class="emoji sun">☀️</span>
+            <span class="emoji moon">🌙</span>
+        </button>
+    </div>
+
+    <!-- Main floating navigation dock at the bottom of the page -->
+    <nav class="main-nav-dock">
+        <a href="#home">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" /></svg>
+            Home
+        </a>
+        <a href="#about">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" /></svg>
+            About
+        </a>
+        <a href="#skills">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 8.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25v2.25A2.25 2.25 0 0 1 8.25 21H6a2.25 2.25 0 0 1-2.25-2.25V15.75ZM13.5 6A2.25 2.25 0 0 1 15.75 3.75h2.25A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25A2.25 2.25 0 0 1 13.5 8.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25h2.25a2.25 2.25 0 0 1 2.25 2.25v2.25A2.25 2.25 0 0 1 18 21h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" /></svg>
+            Skills
+        </a>
+        <a href="#portfolio">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 00-1.883 2.542l.857 6a2.25 2.25 0 002.227 1.932H19.05a2.25 2.25 0 002.227-1.932l.857-6a2.25 2.25 0 00-1.883-2.542m-16.5 0A2.25 2.25 0 015.625 7.5h12.75c1.13 0 2.094.787 2.236 1.872M5.25 9.75h13.5" /></svg>
+            Work
+        </a>
+        <a href="#contact">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25-2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" /></svg>
+            Contact
+        </a>
+    </nav>
+    
+    <!-- Main content of the page -->
+    <main>
+        <!-- Hero Section: Introduction -->
+        <section id="home" class="hero">
+            <img src="assets/aman.jpg" alt="Profile Photo" onerror="this.onerror=null;this.src='https://placehold.co/160x160/8b5cf6/f9fafb?text=Me';">
+            <h1>Hi, I'm Aman</h1>
+            <p>A Junior Python Developer building AI-powered applications at the intersection of machine learning and web development.</p>
+            <a href="#portfolio" class="cta-button">View My Work</a>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about">
+            <div class="container">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Hello! I'm a Python developer passionate about building intelligent, data-driven web applications using machine learning.</p>
+                        <p>My project experience includes developing a Plant Disease Detector by integrating a TensorFlow model into a Django app, and building a full-featured e-commerce platform with Django and MySQL.</p>
+                        <p>As a fast learner proficient with libraries like NumPy, Pandas, and TensorFlow, I am actively seeking an AI/ML role where I can apply my problem-solving skills to contribute to innovative projects.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <div class="container">
+                <h2>My Skills</h2>
+                <div class="skills-grid">
+                    <!-- Frontend Skills -->
+                    <div class="skill-card">
+                        <h3>Frontend Development 💻</h3>
+                        <ul>
+                            <li><img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white" alt="HTML5 Badge"></li>
+                            <li><img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white" alt="CSS3 Badge"></li>
+                            <li><img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black" alt="JS Badge"></li>
+                            <li><img src="https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB" alt="React Badge"></li>
+                        </ul>
+                    </div>
+                    <!-- Backend Skills -->
+                    <div class="skill-card">
+                        <h3>Backend & Databases ⚙️</h3>
+                        <ul>
+                            <li><img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" alt="Python Badge"></li>
+                            <li><img src="https://img.shields.io/badge/Django-092E20?style=flat&logo=django&logoColor=white" alt="Django Badge"></li>
+                            <li><img src="https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white" alt="Node.js Badge"></li>
+                            <li><img src="https://img.shields.io/badge/MySQL-005C84?style=flat&logo=mysql&logoColor=white" alt="MySQL Badge"></li>
+
+                        </ul>
+                    </div>
+                    <!-- AI/ML Skills -->
+                    <div class="skill-card">
+                        <h3>AI / Machine Learning 🧠</h3>
+                        <ul>
+                            <li><img src="https://img.shields.io/badge/Numpy-013243?style=flat&logo=numpy&logoColor=white" alt="Numpy Badge"></li>
+                            <li><img src="https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white" alt="Pandas Badge"></li>
+                            <li><img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white" alt="TensorFlow Badge"></li>
+                            <li><img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=flat&logo=pytorch&logoColor=white" alt="PyTorch Badge"></li>
+                        </ul>
+                    </div>
+                    <!-- Tools and Platforms -->
+                    <div class="skill-card">
+                        <h3>Platforms & Tools 🛠️</h3>
+                        <ul>
+                            <li><img src="https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white" alt="Git Badge"></li>
+                            <li><img src="https://img.shields.io/badge/VS%20Code-007ACC?style=flat&logo=visualstudiocode&logoColor=white" alt="VS Code Badge"></li>
+                            <li><img src="https://img.shields.io/badge/Jupyter-F37626?style=flat&logo=jupyter&logoColor=white" alt="Jupyter Badge"></li>
+                            <li><img src="https://img.shields.io/badge/Windows-0078D6?style=flat&logo=windows&logoColor=white" alt="Windows Badge">
+                                <img src="https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black" alt="Linux Badge">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio/Work Section -->
+        <section id="portfolio">
+            <div class="container">
+                <h2>My Portfolio</h2>
+                <div class="portfolio-grid">
+                    <!-- Project 1 -->
+                    <div class="portfolio-item">
+                        <img src="assets/plant-disease-detector-preview.jpg" alt="Plant Disease Detector" onerror="this.onerror=null;this.src='https://placehold.co/400x200/3b82f6/ffffff?text=Plant+AI';">
+                        <div class="portfolio-content">
+                            <h3>Plant Disease Detector</h3>
+                            <p>A web app using Django and TensorFlow to detect plant diseases from images. Utilized Pillow, NumPy, and Plotly for data handling and visualization.</p>
+                            <a href="https://github.com/qtremors/plant-disease-detector" target="_blank" rel="noopener noreferrer">View Project &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="portfolio-item">
+                        <img src="assets/eshopper-preview.jpg" alt="E-commerce Project" onerror="this.onerror=null;this.src='https://placehold.co/400x200/3b82f6/ffffff?text=E-commerce';">
+                        <div class="portfolio-content">
+                            <h3>E-commerce Website</h3>
+                            <p>A full-featured e-commerce website built from the ground up using the Django framework, focusing on a clean and functional user experience.</p>
+                            <a href="https://github.com/qtremors/eshopper" target="_blank" rel="noopener noreferrer">View Project &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="portfolio-item">
+                        <img src="assets/calculator-preview.jpg" alt="Calculator App" onerror="this.onerror=null;this.src='https://placehold.co/400x200/8b5cf6/f9fafb?text=Calculator';">
+                        <div class="portfolio-content">
+                            <h3>Calculator App (PYgame)</h3>
+                            <p>A fully functional desktop calculator built with Python and Pygame. This project demonstrates how to create a responsive GUI application with persistent history and full keyboard/mouse support using pygame.</p>
+                            <a href="https://github.com/qtremors/pygame-calculator-app" target="_blank" rel="noopener noreferrer">View Project &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Coming Soon Project -->
+                    <div class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2070&auto=format&fit=crop" alt="Future Project" onerror="this.onerror=null;this.src='https://placehold.co/400x200/3b82f6/ffffff?text=Coming+Soon';">
+                        <div class="portfolio-content">
+                            <h3>More Projects Coming Soon</h3>
+                            <p>Actively learning and building new applications to expand my skillset in both frontend and backend development.</p>
+                            <a href="#">Learn More &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <h2>Get in Touch</h2>
+                <p class="contact-intro">I'm currently looking for new opportunities. My inbox is always open, whether you have a question or just want to say hi.</p>
+                <div class="social-links">
+                    <a href="https://github.com/qtremors" class="social-link" title="GitHub" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.197-6.091 8.197-11.387C24 5.373 12 0 12 0Z"/></svg>
+                    </a>
+                    <a href="mailto:singhamankumar207@gmail.com" class="social-link" title="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
+                            <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/aman-singh-0a1938301" class="social-link" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Page Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Tremors. All rights reserved.</p>
+            <div class="footer-links" style="margin-top: 1rem;">
+                <a href="#">Privacy Policy</a>
+                <span>&bull;</span>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Wait for the DOM to be fully loaded before running the script
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // --- 1. Element Selections ---
+            // Select all major interactive elements and sections to be manipulated
+            const sections = document.querySelectorAll('section');
+            const navDock = document.querySelector('.main-nav-dock');
+            const navLinks = document.querySelectorAll('.main-nav-dock a');
+            const themeToggleButton = document.getElementById('theme-toggle');
+            const pageSwitchButton = document.getElementById('page-switch-button');
+
+            // --- 2. Scroll-based Navigation Visibility ---
+            let lastScrollTop = 0;
+            const hideThreshold = 200; // Pixels to scroll before hiding nav elements
+
+            window.addEventListener('scroll', function() {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                // Condition to hide/show nav elements
+                // Hides on scroll down (if past the threshold), shows on scroll up
+                if (scrollTop > lastScrollTop && scrollTop > hideThreshold) {
+                    // Scrolling Down
+                    navDock.classList.add('nav-hidden');
+                    themeToggleButton.classList.add('nav-hidden');
+                    pageSwitchButton.classList.add('nav-hidden');
+                } else {
+                    // Scrolling Up
+                    navDock.classList.remove('nav-hidden');
+                    themeToggleButton.classList.remove('nav-hidden');
+                    pageSwitchButton.classList.remove('nav-hidden');
+                }
+                // Update last scroll position
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            }, false);
+
+            // --- 3. Active Navigation Link Highlighting ---
+            // Uses Intersection Observer to detect which section is in view
+            const observerOptions = {
+                root: null, // observes intersections relative to the viewport
+                rootMargin: '0px',
+                threshold: 0.5 // 50% of the section must be visible
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    // If a section is intersecting the viewport
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        // Update the 'active' class on the corresponding nav link
+                        navLinks.forEach(link => {
+                            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+                        });
+                    }
+                });
+            };
+
+            // Create and start the observer
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // --- 4. Theme Toggling Functionality ---
+            const body = document.body;
+            
+            // Function to apply a theme and save it to localStorage
+            const applyTheme = (theme) => {
+                body.setAttribute('data-theme', theme); // Applies the theme styles
+                localStorage.setItem('theme', theme);   // Saves the preference
+            };
+
+            // Event listener for the theme toggle button
+            themeToggleButton.addEventListener('click', () => {
+                const currentTheme = body.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                applyTheme(newTheme);
+            });
+
+            // --- 5. Initial Theme Application on Page Load ---
+            // Check for a saved theme in localStorage
+            const savedTheme = localStorage.getItem('theme');
+            // Check for the user's OS-level color scheme preference
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme) {
+                // If a theme is saved, apply it
+                applyTheme(savedTheme);
+            } else if (prefersDark) {
+                // Otherwise, if the user prefers dark mode, apply it
+                applyTheme('dark');
+            } else {
+                // Otherwise, default to light mode
+                applyTheme('light');
+            }
+        });
+    </script>
+</body>
+</html>

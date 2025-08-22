@@ -6,12 +6,15 @@
     <title>aman.sh</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* --- Dracula Dark Theme Variables --- */
         :root {
-            --background: #21222C; /* Darker background */
-            --panel-bg: #282a36;   /* Standard Dracula background for panels */
+            /* Default Font */
+            --font-family: 'Fira Code', monospace;
+            
+            /* Default Theme: Dracula */
+            --background: #282a36;
+            --panel-bg: #21222C;
             --border: #6272a4;
             --foreground: #f8f8f2;
             --primary: #ff79c6; /* Pink */
@@ -20,6 +23,44 @@
             --yellow: #f1fa8c;  /* Yellow */
             --muted: #6272a4;   /* Comment */
         }
+        
+        /* --- Hidden Radio Buttons --- */
+        .theme-radio, .font-radio {
+            display: none;
+        }
+
+        /* --- Font Switching Logic --- */
+        #font-fira-code:checked ~ .container {
+            --font-family: 'Fira Code', monospace;
+        }
+        #font-roboto-mono:checked ~ .container {
+            --font-family: 'Roboto Mono', monospace;
+        }
+
+        /* --- Theme Switching Logic --- */
+        #theme-dracula:checked ~ .container {
+            --background: #282a36;
+            --panel-bg: #21222C;
+            --border: #6272a4;
+            --foreground: #f8f8f2;
+            --primary: #ff79c6;
+            --purple: #bd93f9;
+            --green: #50fa7b;
+            --yellow: #f1fa8c;
+            --muted: #6272a4;
+        }
+
+        #theme-catppuccin:checked ~ .container {
+            --background: #24273a;
+            --panel-bg: #1e2030;
+            --border: #5b6078;
+            --foreground: #cad3f5;
+            --primary: #f5bde6;
+            --purple: #c6a0f6;
+            --green: #a6da95;
+            --yellow: #eed49f;
+            --muted: #5b6078;
+        }
 
         /* --- Base Styles --- */
         html {
@@ -27,19 +68,20 @@
         }
 
         body {
-            font-family: 'Fira Code', monospace;
             background-color: var(--background);
-            color: var(--foreground);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             margin: 0;
             padding: 1rem;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         /* --- Global Styles & Utilities --- */
         .container {
             max-width: 1000px;
             margin: 0 auto;
+            font-family: var(--font-family); /* Font family is now correctly scoped */
+            color: var(--foreground);
         }
 
         a {
@@ -86,6 +128,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
+            align-items: center;
             margin-top: 0.5rem;
         }
 
@@ -97,6 +140,56 @@
              background-color: var(--foreground);
              color: var(--background);
         }
+        
+        /* --- Dropdowns (Theme & Font) --- */
+        .dropdown-container {
+            position: relative;
+        }
+        
+        .dropdown-container summary {
+            list-style: none;
+            cursor: pointer;
+            color: var(--foreground);
+            display: inline-block;
+        }
+        
+        .dropdown-container summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .dropdown-container summary:hover {
+            background-color: var(--foreground);
+            color: var(--background);
+        }
+        
+        .dropdown-options {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 0.5rem;
+            padding: 0.5rem;
+            background-color: var(--panel-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .dropdown-options label {
+            white-space: nowrap;
+            padding: 0.25rem 0.5rem;
+            color: var(--primary);
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        
+        .dropdown-options label:hover {
+            background-color: var(--primary);
+            color: var(--background);
+        }
+
 
         /* --- TUI Panel System --- */
         .tui-panel {
@@ -104,6 +197,7 @@
             border: 1px solid var(--border);
             margin-bottom: 2rem;
             border-radius: 4px;
+            transition: background-color 0.3s, border-color 0.3s;
         }
 
         .tui-panel-header {
@@ -111,6 +205,7 @@
             padding: 0.5rem 1rem;
             font-weight: bold;
             color: var(--yellow);
+            transition: border-color 0.3s, color 0.3s;
         }
 
         .tui-panel-body {
@@ -126,26 +221,26 @@
         }
         
         .ascii-art {
-            font-family: 'Fira Code', monospace;
+            font-family: 'Fira Code', monospace; /* Keep ASCII art consistent */
             white-space: pre;
             color: var(--muted);
-            font-size: 10px; /* Fine-tune font size for art */
+            font-size: 10px;
             line-height: 1.0;
             text-align: left;
             padding: 1rem;
             border: 1px solid var(--border);
             background-color: var(--background);
             border-radius: 4px;
-            overflow-x: auto; /* Allows scrolling on small screens */
-            flex-shrink: 0; /* Prevents the box from shrinking */
-            /* --- FIX --- */
+            overflow-x: auto;
+            flex-shrink: 0;
             overflow-wrap: normal;
             word-break: normal;
+            transition: color 0.3s, border-color 0.3s, background-color 0.3s;
         }
         
         .hero-text {
-            flex: 1; /* Allows this element to grow and fill available space */
-            min-width: 300px; /* Prevents the text from getting too squished */
+            flex: 1;
+            min-width: 300px;
         }
         
         .hero-text h1 {
@@ -253,6 +348,9 @@
         @media (max-width: 768px) {
             body {
                 padding: 0.5rem;
+            }
+            
+            .container {
                 font-size: 0.9rem;
             }
 
@@ -267,7 +365,7 @@
 
             .hero-text {
                 text-align: center;
-                min-width: 100%; /* Allow text to take full width in column layout */
+                min-width: 100%;
             }
 
             .hero-text h1 {
@@ -282,10 +380,15 @@
                 grid-template-columns: 1fr;
             }
         }
-
     </style>
 </head>
 <body>
+    
+    <input type="radio" name="theme-switcher" id="theme-dracula" class="theme-radio" checked>
+    <input type="radio" name="theme-switcher" id="theme-catppuccin" class="theme-radio">
+    
+    <input type="radio" name="font-switcher" id="font-fira-code" class="font-radio" checked>
+    <input type="radio" name="font-switcher" id="font-roboto-mono" class="font-radio">
 
     <div class="container">
         <header>
@@ -298,6 +401,22 @@
                 <a href="#skills">./skills</a>
                 <a href="#portfolio">./portfolio</a>
                 <a href="#contact">./contact</a>
+                
+                <details class="dropdown-container">
+                    <summary>./theme</summary>
+                    <div class="dropdown-options">
+                        <label for="theme-dracula">[ Dracula ]</label>
+                        <label for="theme-catppuccin">[ Catppuccin ]</label>
+                    </div>
+                </details>
+
+                <details class="dropdown-container">
+                    <summary>./font</summary>
+                    <div class="dropdown-options">
+                        <label for="font-fira-code">[ Fira Code ]</label>
+                        <label for="font-roboto-mono">[ Roboto Mono ]</label>
+                    </div>
+                </details>
             </nav>
         </header>
 
