@@ -5,456 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tremors</title>
     
+    <link rel="stylesheet" href="index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <style>
-        :root {
-            --md-primary: #1a73e8;
-            --md-on-primary: #ffffff;
-            --md-primary-container: #d9e6ff;
-            --md-on-primary-container: #1967d2;
-            --md-secondary: #5f6368;
-            --md-on-secondary: #ffffff;
-            --md-background: #f8f9fa;
-            --md-surface: #ffffff;
-            --md-surface-variant: #f1f3f4;
-            --md-on-surface: #202124;
-            --md-on-surface-variant: #5f6368;
-            --md-outline: #d1d5db;
-            --md-shadow-color: rgba(32, 33, 36, 0.1);
-        }
-
-        body[data-theme='dark'] {
-            --md-primary: #8ab4f8;
-            --md-on-primary: #202124;
-            --md-primary-container: #1967d2;
-            --md-on-primary-container: #d9e6ff;
-            --md-secondary: #9aa0a6;
-            --md-on-secondary: #202124;
-            --md-background: #131314;
-            --md-surface: #1e1f21;
-            --md-surface-variant: #282a2c;
-            --md-on-surface: #e8eaed;
-            --md-on-surface-variant: #9aa0a6;
-            --md-outline: #5f6368;
-            --md-shadow-color: rgba(0, 0, 0, 0.3);
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--md-background);
-            color: var(--md-on-surface);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            margin: 0;
-            padding-top: 70px;
-            padding-bottom: 90px;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        section {
-            padding: 4rem 0;
-            transition: background-color 0.3s ease;
-        }
-
-        h1, h2, h3 {
-            color: var(--md-on-surface);
-            font-weight: 700;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .top-app-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem 1rem;
-            background-color: var(--md-surface);
-            box-shadow: 0 1px 2px var(--md-shadow-color);
-            border-bottom: 1px solid var(--md-outline);
-            transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
-        }
-
-        .top-app-bar.hidden {
-            transform: translateY(-150%);
-            opacity: 0;
-        }
-
-
-        body[data-theme='dark'] .top-app-bar {
-             border-bottom: 1px solid var(--md-outline);
-        }
-
-
-        .top-app-bar .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--md-primary);
-        }
-
-        .app-bar-actions {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-        .icon-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: none;
-            background-color: transparent;
-            color: var(--md-on-surface-variant);
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-        
-        .icon-button:hover {
-            background-color: rgba(0, 0, 0, 0.05);
-        }
-
-        body[data-theme='dark'] .icon-button:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        
-        .tui-button-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            border: none;
-            color: var(--md-on-surface-variant);
-            text-decoration: none;
-            font-family: 'Courier New', Courier, monospace;
-            font-weight: bold;
-            font-size: 1rem;
-            transition: background-color 0.2s;
-        }
-        
-        .tui-button-link:hover {
-            background-color: rgba(0, 0, 0, 0.05);
-        }
-
-        body[data-theme='dark'] .tui-button-link:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        
-        .theme-toggle-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: none;
-            background-color: transparent;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            font-size: 22px;
-            padding: 0;
-        }
-
-        .theme-toggle-button:hover {
-            background-color: rgba(0, 0, 0, 0.05);
-        }
-
-        body[data-theme='dark'] .theme-toggle-button:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        body[data-theme='dark'] .theme-toggle-button .sun {
-            display: none;
-        }
-
-        body[data-theme='light'] .theme-toggle-button .moon {
-            display: none;
-        }
-
-        .navigation-bar {
-            position: fixed;
-            bottom: 1rem;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            background-color: var(--md-surface-variant);
-            padding: 0.75rem;
-            border-radius: 999px;
-            box-shadow: 0 4px 12px var(--md-shadow-color);
-            transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
-            border: 1px solid var(--md-outline);
-        }
-        
-        .navigation-bar.hidden {
-            transform: translateX(-50%) translateY(200%);
-            opacity: 0;
-        }
-
-
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            color: var(--md-on-surface-variant);
-            padding: 0.25rem 0.75rem;
-            border-radius: 999px;
-            min-width: 50px;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .nav-item .icon {
-            margin-bottom: 2px;
-            display: flex; 
-            align-items: center;
-        }
-
-        .nav-item .label {
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-
-        .nav-item.active {
-            color: var(--md-primary);
-            background-color: transparent;
-        }
-        .hero {
-            text-align: center;
-            padding: 2rem 1rem;
-            min-height: calc(100vh - 160px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-
-        #home .container {
-            transform: scale(1.05);
-        }
-
-        .hero img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 1.5rem;
-            border: 4px solid var(--md-primary-container);
-        }
-
-        .hero h1 {
-            font-size: 2.75rem;
-            color: var(--md-primary);
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 2.5rem;
-            color: var(--md-on-surface-variant);
-        }
-
-        .hero .extended-fab {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.9rem 1.5rem;
-            border-radius: 1.5rem;
-            background-color: var(--md-primary);
-            color: var(--md-on-primary);
-            font-weight: 500;
-            text-decoration: none;
-            box-shadow: 0 4px 8px var(--md-shadow-color);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .hero .extended-fab:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px var(--md-shadow-color);
-        }
-
-        #about {
-            background-color: var(--md-surface-variant);
-        }
-        
-        .about-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--md-on-surface-variant);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-        .skill-card {
-            background-color: var(--md-surface);
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px var(--md-shadow-color);
-            border: 1px solid var(--md-outline);
-            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
-        }
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 20px var(--md-shadow-color);
-        }
-        .skill-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .skill-card ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-        }
-        .skill-card img {
-            height: 24px;
-        }
-
-        #portfolio {
-            background-color: var(--md-surface-variant);
-        }
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        .portfolio-item {
-            background-color: var(--md-surface);
-            border-radius: 1rem;
-            overflow: hidden;
-            box-shadow: 0 4px 6px var(--md-shadow-color);
-            border: 1px solid var(--md-outline);
-            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
-            display: flex;
-            flex-direction: column;
-        }
-        .portfolio-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 20px var(--md-shadow-color);
-        }
-        .portfolio-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        .portfolio-content {
-            padding: 1.5rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        .portfolio-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-        .portfolio-content p {
-            color: var(--md-on-surface-variant);
-            margin-bottom: 1rem;
-            flex-grow: 1;
-        }
-        .portfolio-content a {
-            color: var(--md-primary);
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .portfolio-content a:hover {
-            text-decoration: underline;
-        }
-
-        .contact-intro {
-            color: var(--md-on-surface-variant);
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-        
-        footer {
-            background-color: var(--md-surface-variant);
-            text-align: center;
-            padding: 2rem 1rem;
-            color: var(--md-on-surface-variant);
-            border-top: 1px solid var(--md-outline);
-        }
-
-        @media (max-width: 768px) {
-            h2 {
-                font-size: 2rem;
-            }
-            .hero h1 {
-                font-size: 2.25rem;
-            }
-            section {
-                padding: 3rem 0;
-            }
-            .container {
-                padding: 0 1rem;
-            }
-            .navigation-bar {
-                bottom: 1rem;
-                padding: 0.5rem;
-            }
-            .nav-item {
-                min-width: unset;
-                padding: 0.25rem 0.5rem;
-            }
-             .nav-item .label {
-                font-size: 0.7rem;
-            }
-        }
-
-    </style>
 </head>
 <body data-theme="dark">
     
@@ -530,6 +84,7 @@
                             <li><img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white" alt="CSS3 Badge"></li>
                             <li><img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black" alt="JS Badge"></li>
                             <li><img src="https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB" alt="React Badge"></li>
+                            <li><img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white" alt="TypeScript Badge"></li>
                         </ul>
                     </div>
 
@@ -538,6 +93,7 @@
                         <ul>
                             <li><img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" alt="Python Badge"></li>
                             <li><img src="https://img.shields.io/badge/Django-092E20?style=flat&logo=django&logoColor=white" alt="Django Badge"></li>
+                            <li><img src="https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white" alt="FastAPI Badge"></li>
                             <li><img src="https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white" alt="Node.js Badge"></li>
                             <li><img src="https://img.shields.io/badge/MySQL-005C84?style=flat&logo=mysql&logoColor=white" alt="MySQL Badge"></li>
                         </ul>
@@ -559,6 +115,7 @@
                             <li><img src="https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white" alt="Git Badge"></li>
                             <li><img src="https://img.shields.io/badge/VS%20Code-007ACC?style=flat&logo=visualstudiocode&logoColor=white" alt="VS Code Badge"></li>
                             <li><img src="https://img.shields.io/badge/Jupyter-F37626?style=flat&logo=jupyter&logoColor=white" alt="Jupyter Badge"></li>
+                            <li><img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white" alt="Docker Badge"></li>
                             <li><img src="https://img.shields.io/badge/Windows-0078D6?style=flat&logo=windows&logoColor=white" alt="Windows Badge">
                                 <img src="https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black" alt="Linux Badge">
                             </li>
@@ -574,10 +131,31 @@
 
                 <div class="portfolio-grid">
                     <div class="portfolio-item">
+                        <img src="assets/algoviz-preview.jpg" alt="Algorithm Visualizer" loading="lazy" onerror="this.onerror=null;this.src='https.placehold.co/400x200/8ab4f8/202124?text=Plant+AI';">
+                        <div class="portfolio-content">
+                            <h3>Algorithm Visualizer</h3>
+                            <p>A full-stack app for real-time, interactive algorithm visualizations using React (TypeScript) and FastAPI (Python). It helps users understand algorithms step by step in an engaging way.</p>
+                            <div class="tech-badges">
+                                <span>React (Typescript)</span>
+                                <span>Python (FastAPI)</span>
+                                <span>Uvicorn (ASGI)</span>
+                            </div>
+                            <a href="https://github.com/qtremors/algorithm-visualizer" target="_blank" rel="noopener noreferrer">View Project &rarr;</a>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item">
                         <img src="assets/plant-disease-detector-preview.jpg" alt="Plant Disease Detector" loading="lazy" onerror="this.onerror=null;this.src='https.placehold.co/400x200/8ab4f8/202124?text=Plant+AI';">
                         <div class="portfolio-content">
                             <h3>Plant Disease Detector</h3>
-                            <p>A web app using Django and TensorFlow to detect plant diseases from images. Utilized Pillow, NumPy, and Plotly for data handling and visualization.</p>
+                            <p>A Django and TensorFlow web app that classifies plant diseases from leaf images, allowing users to upload an image and get health predictions with confidence scores.</p>
+                            <div class="tech-badges">
+                                <span>Django</span>
+                                <span>TensorFlow</span>
+                                <span>Pillow</span>
+                                <span>NumPy</span>
+                                <span>Plotly</span>
+                            </div>
                             <a href="https://github.com/qtremors/plant-disease-detector" target="_blank" rel="noopener noreferrer">View Project &rarr;</a>
                         </div>
                     </div>
@@ -586,7 +164,14 @@
                         <img src="assets/eshopper-preview.jpg" alt="E-commerce Project" loading="lazy" onerror="this.onerror=null;this.src='https.placehold.co/400x200/8ab4f8/202124?text=E-commerce';">
                         <div class="portfolio-content">
                             <h3>E-commerce Website</h3>
-                            <p>A full-featured e-commerce website built from the ground up using the Django framework, focusing on a clean and functional user experience.</p>
+                            <p>A fully functional e-commerce site built with Python and Django, using the "EShopper" template and offering a complete storefront, cart, orders, and account management.</p>
+                            <div class="tech-badges">
+                                <span>Django</span>
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                                <span>SQL</span>
+                            </div>
                             <a href="https://github.com/qtremors/eshopper" target="_blank" rel="noopener noreferrer">View Project &rarr;</a>
                         </div>
                     </div>
@@ -595,7 +180,11 @@
                         <img src="assets/calculator-preview.jpg" alt="Calculator App" loading="lazy" onerror="this.onerror=null;this.src='https.placehold.co/400x200/9aa0a6/202124?text=Calculator';">
                         <div class="portfolio-content">
                             <h3>Calculator App (PYgame)</h3>
-                             <p>A fully functional desktop calculator built with Python and Pygame, featuring a responsive GUI and persistent history.</p>
+                            <p>A fully functional calculator implemented as a single Python script using Pygame. The project demonstrates a responsive GUI with persistent history and complete keyboard and mouse support.</p>
+                            <div class="tech-badges">
+                                <span>Python</span>
+                                <span>Pygame</span>
+                            </div>
                             <a href="https://github.com/qtremors/pygame-calculator-app" target="_blank" rel="noopener noreferrer">View Project &rarr;</a>
                         </div>
                     </div>
