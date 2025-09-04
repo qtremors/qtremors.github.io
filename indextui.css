@@ -342,6 +342,8 @@
             margin-right: 0.75rem;
         }
         
+        
+
         .portfolio-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -352,6 +354,7 @@
             border: 1px dashed var(--border);
             padding: 1rem;
             border-radius: 4px;
+            container-type: inline-size;
         }
         
         .portfolio-item h3 {
@@ -379,6 +382,34 @@
             border-radius: 3px;
         }
         
+
+
+        .portfolio-ascii-art {
+            color: var(--muted);
+            font-family: 'Fira Code', monospace;
+            line-height: 1.2;
+            text-align: center;
+            border-bottom: 1px dashed var(--border);
+            margin-bottom: 1rem;
+            white-space: pre;
+            overflow: hidden;
+            font-size: clamp(4.5px, 3cqw, 20px);
+            transition: color 0.3s ease-in-out;
+        }
+
+        .portfolio-item:hover .portfolio-ascii-art {
+            color: var(--green);
+            animation: jitter 0.2s infinite;
+        }
+
+        @keyframes jitter {
+        0%, 100% { transform: translate(0, 0); }
+        25% { transform: translate(1px, -1px); }
+        50% { transform: translate(-1px, 1px); }
+        75% { transform: translate(1px, 1px); }
+        }
+
+
 
         .contact-intro {
             margin-bottom: 1.5rem;
