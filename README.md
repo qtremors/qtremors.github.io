@@ -1,69 +1,46 @@
-## 🌐 Project Overview
+# 🌐 Project Overview
 
-This repository features **two** versions of a personal portfolio website:
+This repository features two distinct versions of a personal portfolio website, each with its own unique aesthetic and technical approach:
 
-1. 🌇  [`index.html`](https://qtremors.github.io/tremors) – A modern, animated UI with floating navigation and theme toggle.
+- 🌇 **[`index.html`](https://qtremors.github.io/tremors)** – A modern, Material Design-inspired UI with smooth animations, a dark mode toggle, and interactive elements.  
+- 👨‍💻 **[`indextui.html`](https://qtremors.github.io/tremors/indextui.html)** – A terminal-inspired TUI (Text User Interface) with a retro feel, featuring multiple themes, fonts, and a CSS-only splash screen.  
 
-2. 👨‍💻  [`indextui.html`](https://qtremors.github.io/tremors/indextui.html) – A terminal-inspired TUI (Text User Interface) with ASCII art.
-
-Both are mobile-friendly, minimalist, and built with clean HTML and CSS. Only `index.html` uses JavaScript — `indextui.html` is completely JS-free for a feather-light experience.
+Both versions are fully responsive, minimalist, and built with clean, semantic HTML and CSS. The TUI version is completely JavaScript-free, while the modern version uses vanilla JS to enhance user experience.
 
 ---
 
 ## ✨ Key Features
 
-### 🌇 [`index.html`](./index.html)
-* **🔁 Fully Responsive** – Looks great on phones, tablets, and desktops.
-* **🧭 Floating Navigation Dock** – Fixed pill-shaped nav dock that highlights active sections.
-* **🌗 Dark Mode Toggle** – Switch between light and dark themes with emoji flair (☀️/🌙).
-* **🙈 Auto-Hide UI** – Nav dock and buttons hide on scroll and reappear gracefully.
-* **🎨 Customizable Themes** – Edit CSS variables for easy color changes.
-* **📜 Powered by JavaScript** – Handles theme switching, scroll detection, and active section tracking.
+### 🌇 Modern UI (`index.html`)
 
-### 👨‍💻 [`indextui.html`](./indextui.html)
-* **🖼️ ASCII Art Header** – Terminal-style greeting powered by monospaced fonts.
-* **📁 TUI Layout** – File-path inspired nav (`./about`, `./skills`, `./work`, etc).
-* **🎨 Dracula-Themed** – Uses Dracula palette and Fira Code font for max terminal feels.
-* **💨 Zero JavaScript** – Fully functional with just HTML and CSS for lightning-fast loading.
+- 🔁 **Fully Responsive** – Adapts beautifully to phones, tablets, and desktops.  
+- 🌗 **Dark Mode Toggle** – Switch between light and dark themes that persist across sessions.  
+- 🙈 **Auto-Hiding UI** – The top app bar and bottom navigation bar gracefully hide on scroll-down and reappear on scroll-up for an immersive experience.  
+- 📊 **Interactive Skill Badges** – Skill proficiency is visualized with a subtle animated bar on hover.  
+- 🚀 **Modern Stack** – Built with vanilla HTML, CSS, and JavaScript, focusing on clean code and performance.  
+
+### 👨‍💻 Terminal UI (`indextui.html`)
+
+- 🎨 **Multi-Theme & Font Support** – Switch between Dracula and Catppuccin themes, and Fira Code and Roboto Mono fonts using TUI-style dropdown menus.  
+- 🎬 **Animated Splash Screen** – A retro ASCII art logo animates on page load for a classic terminal boot-up feel.  
+- 📁 **TUI Layout** – A file-path-inspired navigation system (`./about`, `./skills`, etc.) enhances the terminal aesthetic.  
+- 💨 **Zero JavaScript** – All features, including the splash screen, theme switcher, and font selector, are implemented purely with HTML and CSS for a lightning-fast, lightweight experience.  
 
 ---
 
 ## 🔧 Technologies Used
 
-* **HTML5** – Structure and semantics.
-* **CSS3** – Layouts, transitions, dark theme stylings.
-* **Vanilla JavaScript (only in `index.html`)** – Theme toggle, scroll detection, active link highlighting.
-
----
-
-## 🚀 Getting Started
-
-1. **Clone or Download** this repo.
-2. Open either `index.html` or `indextui.html` in your browser.
-
----
-
-## 🎨 Customization Tips
-
-### ✏️ Changing Theme Colors (`index.html`)
-
-In `index.html`, scroll to the top `<style>` block. Modify the `:root` and `body[data-theme='dark']` sections for your own color palette.
-
-### 🧱 Add Portfolio Items
-
-For **index.html**:
-- Scroll to the `#portfolio` section and duplicate any `.portfolio-item` inside the `portfolio-grid`.
-
-For **indextui.html**:
-- Locate the `/var/log/portfolio.log` section and copy a `.portfolio-item` block.
+| Technology | Usage |
+|------------|-------|
+| HTML5      | Structure & semantics |
+| CSS3       | Layouts, animations, variables, responsive design |
+| JavaScript | Only in `index.html` for theme toggle, scroll detection & active links |
 
 ---
 
 ## 📃 HTML Files
 
-* [Open `index.html`](./index.html) – 🌇 Visual UI version (with JavaScript)  
-* [Open `indextui.html`](./indextui.html) – 👨‍💻 Terminal TUI version (no JavaScript)
+- `index.html` – 🌇 Modern UI version (with JavaScript)  
+- `indextui.html` – 👨‍💻 Terminal TUI version (no JavaScript)  
 
----
-
-Crafted with ❤️ by **Tremors**
+Crafted with ❤️ by Tremors
