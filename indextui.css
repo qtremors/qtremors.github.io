@@ -278,6 +278,27 @@
             word-break: normal;
             transition: color 0.3s, border-color 0.3s, background-color 0.3s;
         }
+
+        @keyframes glow {
+          0%, 100% { text-shadow: 0 0 3px var(--green); }
+          50% { text-shadow: 0 0 10px var(--green); }
+        }
+
+        @keyframes jitter {
+        0%, 100% { transform: translate(0, 0); }
+        25% { transform: translate(5px, -5px); }
+        50% { transform: translate(-5px, 5px); }
+        75% { transform: translate(5px, 5px); }
+        }
+
+        .ascii-art:hover {
+            animation: glow 1.5s ease-in-out forwards, 
+                    jitter 0.5s infinite;
+            animation-delay: 0s, 1.5s;
+            animation-fill-mode: forwards, none;
+        }
+
+
         
         .hero-text {
             flex: 1;
@@ -388,20 +409,18 @@
             color: var(--muted);
             font-family: 'Fira Code', monospace;
             line-height: 1.2;
-            -webkit-text-size-adjust: none;
-            text-size-adjust: none;
             text-align: center;
             border-bottom: 1px dashed var(--border);
             margin-bottom: 1rem;
             white-space: pre;
             overflow: hidden;
             font-size: 1.9vw;
-            transition: color 0.3s ease-in-out;
+            transition: color 0.5s ease-in-out;
         }
 
-        .portfolio-item:hover .portfolio-ascii-art {
+        .portfolio-ascii-art:hover {
             color: var(--green);
-            animation: jitter 0.2s infinite;
+            animation: jitter1 0.5s infinite;
         }
 
         @media (min-width: 1200px) {
@@ -410,12 +429,21 @@
             }
         }
 
-        @keyframes jitter {
-        0%, 100% { transform: translate(0, 0); }
-        25% { transform: translate(1px, -1px); }
-        50% { transform: translate(-1px, 1px); }
-        75% { transform: translate(1px, 1px); }
+        @keyframes jitter1 {
+            0%   { transform: translate(0, 0); }
+            10%  { transform: translate(3px, -3px); }
+            20%  { transform: translate(-4px, 4px); }
+            30%  { transform: translate(5px, -5px); }
+            40%  { transform: translate(-5px, 5px); }
+            50%  { transform: translate(4px, 4px); }
+            60%  { transform: translate(-3px, -3px); }
+            70%  { transform: translate(5px, 2px); }
+            80%  { transform: translate(-4px, -5px); }
+            90%  { transform: translate(2px, 5px); }
+            100% { transform: translate(0, 0); }
         }
+
+
 
 
 
