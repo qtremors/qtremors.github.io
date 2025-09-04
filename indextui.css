@@ -184,18 +184,20 @@
              background-color: var(--foreground);
              color: var(--background);
         }
-        
+
+
+
         .dropdown-container {
             position: relative;
+            display: inline-block;
         }
-        
+
         .dropdown-container summary {
             list-style: none;
             cursor: pointer;
             color: var(--foreground);
-            display: inline-block;
         }
-        
+
         .dropdown-container summary::-webkit-details-marker {
             display: none;
         }
@@ -204,7 +206,7 @@
             background-color: var(--foreground);
             color: var(--background);
         }
-        
+
         .dropdown-options {
             position: absolute;
             top: 100%;
@@ -220,18 +222,23 @@
             gap: 0.5rem;
         }
 
-        .dropdown-options label {
+        .dropdown-options label,
+        .dropdown-options .dropdown-link {
             white-space: nowrap;
             padding: 0.25rem 0.5rem;
             color: var(--primary);
             cursor: pointer;
+            text-decoration: none;
             transition: background-color 0.2s, color 0.2s;
         }
-        
-        .dropdown-options label:hover {
+
+        .dropdown-options label:hover,
+        .dropdown-options .dropdown-link:hover {
             background-color: var(--primary);
             color: var(--background);
         }
+
+
 
 
         .tui-panel {
