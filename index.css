@@ -342,6 +342,42 @@
             height: 24px;
         }
 
+
+
+        .badge-wrapper {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: flex-start;
+            cursor: pointer;
+            width: fit-content;
+            outline: none;
+        }
+
+        .badge-wrapper img {
+            display: block;
+            border-radius: 6px;
+        }
+
+        .badge-wrapper::after {
+            content: '';
+            display: block;
+            height: 4px;
+            width: 0%;
+            margin-top: 2px;
+            margin-left: 4px;
+            background: var(--bar-color, #61DAFB);
+            border-radius: 2px;
+            transition: width 0.5s ease;
+        }
+
+        .badge-wrapper:hover::after {
+            /* width: calc(var(--fill, 100%) - 8px); */
+            width: calc((100% - 8px) * var(--fill, 0.8));
+
+        }
+
+
+
         #portfolio {
             background-color: var(--md-surface-variant);
         }
