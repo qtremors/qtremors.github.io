@@ -393,7 +393,7 @@
             margin-bottom: 1rem;
             white-space: pre;
             overflow: hidden;
-            font-size: clamp(4.5px, 3cqw, 20px);
+            font-size: clamp(4.5px, 2.5cqw, 20px);
             transition: color 0.3s ease-in-out;
         }
 
