@@ -395,13 +395,19 @@
             margin-bottom: 1rem;
             white-space: pre;
             overflow: hidden;
-            font-size: clamp(4.5px, 3cqw, 20px);
+            font-size: 1.9vw;
             transition: color 0.3s ease-in-out;
         }
 
         .portfolio-item:hover .portfolio-ascii-art {
             color: var(--green);
             animation: jitter 0.2s infinite;
+        }
+
+        @media (min-width: 1080px) {
+            .portfolio-ascii-art {
+                font-size: 16px;
+            }
         }
 
         @keyframes jitter {
