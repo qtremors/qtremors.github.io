@@ -388,6 +388,8 @@
             color: var(--muted);
             font-family: 'Fira Code', monospace;
             line-height: 1.2;
+            -webkit-text-size-adjust: none;
+            text-size-adjust: none;
             text-align: center;
             border-bottom: 1px dashed var(--border);
             margin-bottom: 1rem;
