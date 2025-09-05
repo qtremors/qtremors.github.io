@@ -4,7 +4,7 @@
             --panel-bg: #21222C;
             --border: #6272a4;
             --foreground: #f8f8f2;
-            --primary: #ff79c6;
+            --primary: #ff7g9c6;
             --purple: #bd93f9;
             --green: #50fa7b;
             --yellow: #f1fa8c;
@@ -410,6 +410,7 @@
             border-radius: 3px;
         }
         
+        
 
 
         .portfolio-ascii-art {
@@ -450,10 +451,6 @@
             100% { transform: translate(0, 0); }
         }
 
-
-
-
-
         .contact-intro {
             margin-bottom: 1.5rem;
         }
@@ -467,6 +464,74 @@
         footer {
             margin-top: 2rem;
             color: var(--muted);
+        }
+
+
+        .portfolio-links {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .portfolio-command {
+            display: inline-flex;
+            gap: 0.5rem;
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            transition: background-color 0.2s, color 0.2s;
+            text-decoration: none;
+        }
+        .portfolio-command .command-text {
+            color: var(--primary);
+            transition: color 0.2s;
+        }
+
+        .portfolio-command:hover {
+            background-color: var(--primary);
+        }
+
+        .portfolio-command:hover .prompt,
+        .portfolio-command:hover .command-text {
+            color: var(--background);
+        }
+
+        .run-live-container {
+            margin-top: 1rem;
+        }
+        
+        .hidden-toggle {
+            display: none;
+        }
+
+        .portfolio-output {
+            margin-top: 1rem;
+            display: none;
+        }
+        
+        .hidden-toggle:checked ~ .portfolio-output {
+            display: block;
+        }
+
+        .live-link-output {
+            display: inline-block;
+            border: 1px dashed var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            color: var(--foreground);
+            background-color: var(--panel-bg);
+        }
+
+        .live-link-output a {
+            color: var(--green);
+            text-decoration: underline;
+        }
+
+        .live-link-output a:hover {
+            background-color: var(--green);
+            color: var(--background);
         }
 
         @media (max-width: 768px) {
@@ -504,3 +569,4 @@
                 grid-template-columns: 1fr;
             }
         }
+

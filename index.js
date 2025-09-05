@@ -65,5 +65,5 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     window.addEventListener('scroll', debounce(handleScroll));
-
+    
 });
