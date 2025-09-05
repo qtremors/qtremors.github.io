@@ -180,9 +180,11 @@
             color: var(--foreground);
         }
         
-        .tui-nav a:hover {
-             background-color: var(--foreground);
+        .tui-nav a:hover,
+        .dropdown-container summary:hover {
+             background-color: var(--primary);
              color: var(--background);
+             border-radius: 3px;
         }
 
 
@@ -200,11 +202,6 @@
 
         .dropdown-container summary::-webkit-details-marker {
             display: none;
-        }
-
-        .dropdown-container summary:hover {
-            background-color: var(--foreground);
-            color: var(--background);
         }
 
         .dropdown-options {
@@ -569,4 +566,4 @@
                 grid-template-columns: 1fr;
             }
         }
-
+        
