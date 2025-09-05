@@ -231,6 +231,7 @@
 
         .dropdown-options label:hover,
         .dropdown-options .dropdown-link:hover {
+            border-radius: 3px;
             background-color: var(--primary);
             color: var(--background);
         }
