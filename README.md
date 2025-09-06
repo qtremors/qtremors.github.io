@@ -12,11 +12,10 @@ The TUI version is completely **JavaScript-free**, while the modern version uses
 
 ## 📸 Screenshots
 
-### 🌇 Material UI
-[](https://qtremors.github.io/tremors)  
+### 🌇 Material UI ([▶](https://qtremors.github.io/tremors))  
 ![Modern UI Screenshot](assets/index_ss.png)
 
-### 👨‍💻 Terminal TUI [![Open Project](https://img.shields.io/badge/Open%20Project-000000?style=for-the-badge&logo=terminal&logoColor=white)](https://qtremors.github.io/tremors/indextui.html)
+### 👨‍💻 Terminal TUI ([>_](https://qtremors.github.io/tremors/indextui.html))
 ![Terminal TUI Screenshot](assets/indextui_ss.png)
 
 ---
