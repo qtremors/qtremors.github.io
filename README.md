@@ -1,11 +1,12 @@
 # 🌐 Project Overview
 
-This repository features two distinct versions of a personal portfolio website, each with its own unique aesthetic and technical approach:
+This repository hosts my **personal portfolio**, which I've built in two distinct versions, each with its own unique aesthetic and technical approach:
 
-- 🌇 **[`index.html`](https://qtremors.github.io/tremors)** – A modern, Material Design-inspired UI with smooth animations, a dark mode toggle, and interactive elements.  
-- 👨‍💻 **[`indextui.html`](https://qtremors.github.io/tremors/indextui.html)** – A terminal-inspired TUI (Text User Interface) with a retro feel, featuring multiple themes, fonts, and a CSS-only splash screen.  
+- 🌇 **[`index.html`](https://qtremors.github.io/tremors)** – A modern, Material Design-inspired UI with smooth animations, a dark mode toggle, and interactive elements.
+- 👨‍💻 **[`indextui.html`](https://qtremors.github.io/tremors/indextui.html)** – A terminal-inspired TUI (Text User Interface) with a retro feel, featuring multiple themes, fonts, and a CSS-only splash screen.
 
-Both versions are fully responsive, minimalist, and built with clean, semantic HTML and CSS. The TUI version is completely JavaScript-free, while the modern version uses vanilla JS to enhance user experience.
+Both versions are **fully responsive**, minimalist, and built with **clean, semantic HTML and CSS**.  
+The TUI version is completely **JavaScript-free**, while the modern version uses **vanilla JS** to enhance user experience.
 
 ---
 
@@ -13,34 +14,72 @@ Both versions are fully responsive, minimalist, and built with clean, semantic H
 
 ### 🌇 Modern UI (`index.html`)
 
-- 🔁 **Fully Responsive** – Adapts beautifully to phones, tablets, and desktops.  
-- 🌗 **Dark Mode Toggle** – Switch between light and dark themes that persist across sessions.  
-- 🙈 **Auto-Hiding UI** – The top app bar and bottom navigation bar gracefully hide on scroll-down and reappear on scroll-up for an immersive experience.  
-- 📊 **Interactive Skill Badges** – Skill proficiency is visualized with a subtle animated bar on hover.  
-- 🚀 **Modern Stack** – Built with vanilla HTML, CSS, and JavaScript, focusing on clean code and performance.  
+This version focuses on a clean, modern user experience with smooth interactions and a professional aesthetic.
+
+#### **UI & Visual Design**
+- **Layout:** Material Design-inspired, card-based layout that is spacious and clean.
+- **Responsiveness:** Fully responsive design with:
+  - **Mobile:** Bottom navigation bar.
+  - **Desktop:** Top app bar.
+- **Dynamic Theming:** A **JavaScript-powered light/dark mode toggle**.  
+  The user's choice is stored in `localStorage` for a **persistent experience**.
+
+#### **UX & Interactivity**
+- **Immersive Navigation:**  
+  - Navigation bars **auto-hide on scroll down** and **reappear on scroll up**.  
+    Implemented with a **debounced scroll listener** in vanilla JS for performance.
+- **Active Section Highlighting:**  
+  - Uses the **IntersectionObserver API** to efficiently detect the current section in view and update active states.
+- **Rich Micro-interactions:**  
+  - **Animated Skill Badges:** Subtle CSS-animated underline on hover.
+  - **Gradient Hover Effects:** Profile picture and header icons have **rotating conic-gradient borders** on hover.
+
+---
 
 ### 👨‍💻 Terminal UI (`indextui.html`)
 
-- 🎨 **Multi-Theme & Font Support** – Switch between Dracula and Catppuccin themes, and Fira Code and Roboto Mono fonts using TUI-style dropdown menus.  
-- 🎬 **Animated Splash Screen** – A retro ASCII art logo animates on page load for a classic terminal boot-up feel.  
-- 📁 **TUI Layout** – A file-path-inspired navigation system (`./about`, `./skills`, etc.) enhances the terminal aesthetic.  
-- 💨 **Zero JavaScript** – All features, including the splash screen, theme switcher, and font selector, are implemented purely with HTML and CSS for a lightning-fast, lightweight experience.  
+This version is a **creative exploration of what's possible with only HTML and CSS**, prioritizing performance and a unique retro aesthetic.
+
+#### **UI & Visual Design**
+- **Retro TUI Aesthetic:**  
+  - Classic command-line look with monospaced fonts, panel-based layout, and prompt-style navigation.
+- **JS-Free Customization:**  
+  - **Themes:** Dracula & Catppuccin  
+  - **Fonts:** Fira Code & Roboto Mono  
+  Achieved using **hidden radio inputs** and the **CSS general sibling combinator (`~`)** (the "checkbox hack").
+
+#### **UX & Interactivity**
+- **CSS-Only Animations:**  
+  - Retro ASCII art logo on an animated splash screen simulating a **terminal boot-up sequence**.
+- **JavaScript-Free Interactivity:**  
+  - All interactive elements (e.g., dropdowns using `<details>`) built without JS.
+- **Uncompromising Performance:**  
+  - Zero JavaScript = **lightning-fast loading** and **maximum reliability**.
+
+---
+
+## 🚧 Development Status
+This project is a **work in progress**.  
+Some project links under **"Work" / "Portfolio"** may currently lead to an **"Under Construction"** page.  
+This is intentional while I continue building and deploying live demos.
 
 ---
 
 ## 🔧 Technologies Used
 
-| Technology | Usage |
-|------------|-------|
-| HTML5      | Structure & semantics |
-| CSS3       | Layouts, animations, variables, responsive design |
-| JavaScript | Only in `index.html` for theme toggle, scroll detection & active links |
+| Technology   | Usage                                                                 |
+|-------------|------------------------------------------------------------------------|
+| **HTML5**   | Structure & semantics                                                 |
+| **CSS3**    | Layouts, animations, variables, responsive design, JS-free interactivity |
+| **JavaScript** | Only in `index.html` for theme toggle, scroll detection & active links |
 
 ---
 
 ## 📃 HTML Files
+- `index.html` – 🌇 Modern UI version (with JavaScript)
+- `indextui.html` – 👨‍💻 Terminal TUI version (no JavaScript)
+- **`construction.html` & `constructiontui.html`** – Placeholder pages for projects under development.
 
-- `index.html` – 🌇 Modern UI version (with JavaScript)  
-- `indextui.html` – 👨‍💻 Terminal TUI version (no JavaScript)  
+---
 
-Crafted with ❤️ by Tremors
+**Crafted with ❤️ by Tremors**
