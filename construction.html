@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Working on it</title>
-    <link rel="icon" type="image" href="assets/loading_cat.gif">
+    <title>Working On It</title>
+    <link rel="icon" type="image/gif" href="assets/loading_cat.gif">
     <style>
-
+        /* ==========================================================================
+           1. Global Styles & Variables
+           ========================================================================== */
         :root {
             --md-primary: #1a73e8;
             --md-on-primary: #ffffff;
@@ -28,7 +30,7 @@
             --md-outline: #5f6368;
             --md-shadow-color: rgba(0, 0, 0, 0.3);
         }
-        
+
         body {
             margin: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -38,6 +40,9 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
+        /* ==========================================================================
+           2. Layout and Card Styles
+           ========================================================================== */
         .container {
             display: flex;
             align-items: center;
@@ -58,13 +63,17 @@
             max-width: 32rem;
         }
 
+        /* ==========================================================================
+           3. Content and Interactive Elements
+           ========================================================================== */
         .construction-gif {
             width: 12rem;
             height: 12rem;
             margin: 0 auto 1.5rem auto;
             display: block;
         }
-        
+
+        /* GIF Toggling Logic */
         .gif-toggle-checkbox {
             display: none;
         }
@@ -73,38 +82,41 @@
             cursor: pointer;
             display: block;
         }
-        
+
         .gif-2 {
             display: none;
         }
 
+        /* Show gif-2 and hide gif-1 when checkbox is checked */
         .gif-toggle-checkbox:checked + .gif-toggle-label .gif-1 {
             display: none;
         }
-        
+
         .gif-toggle-checkbox:checked + .gif-toggle-label .gif-2 {
             display: block;
         }
-        
+
+        /* Typography */
         .card-title {
             font-size: 2.5rem;
             font-weight: bold;
             color: var(--md-primary);
             margin: 0 0 1rem 0;
         }
-        
+
         .card-subtitle {
             font-size: 1.25rem;
             color: var(--md-on-surface);
             margin: 0 0 0.5rem 0;
         }
-        
+
         .card-description {
             color: var(--md-on-surface-variant);
             max-width: 28rem;
             margin: 0 auto;
         }
-        
+
+        /* Button Styles */
         .button-container {
             margin-top: 2rem;
         }
@@ -131,7 +143,7 @@
 
     <main class="container">
         <div class="card">
-            
+            <!-- Interactive GIF Container -->
             <div class="gif-container">
                 <input type="checkbox" id="gif-toggle" class="gif-toggle-checkbox">
                 <label for="gif-toggle" class="gif-toggle-label" title="Click me!">
@@ -139,25 +151,18 @@
                     <img src="assets/coding.gif" alt="A different work in progress animation" class="construction-gif gif-2">
                 </label>
             </div>
-            
-            <h1 class="card-title">
-                Working on it
-            </h1>
-            
-            <p class="card-subtitle">
-                Deployment is still under development.
-            </p>
-            
+
+            <!-- Card Content -->
+            <h1 class="card-title">Working On It</h1>
+            <p class="card-subtitle">This page is currently under development.</p>
             <p class="card-description">
                 I'm busy working behind the scenes to get this polished up. Stay tuned for updates!
             </p>
-            
-            <div class="button-container">
-                <a href="index.html#portfolio" class="home-button">
-                    Go Back
-                </a>
-            </div>
 
+            <!-- Action Button -->
+            <div class="button-container">
+                <a href="index.html#portfolio" class="home-button">Go Back</a>
+            </div>
         </div>
     </main>
 
