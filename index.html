@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags for character set and viewport -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
+    <!-- Page Title and Favicon -->
     <title>Tremors</title>
-    <link rel="icon" type="image" href="assets/alien.svg">
-    
+    <link rel="icon" type="image/svg+xml" href="assets/alien.svg">
+
+    <!-- Stylesheets and Font Preconnections -->
     <link rel="stylesheet" href="index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 </head>
 <body data-theme="dark">
-    
+
+    <!-- Top Application Bar -->
     <header class="top-app-bar">
-        <a href="#home" class="logo">
+        <a href="#home" class="logo" aria-label="Go to homepage">
             <img src="assets/logo.gif" alt="Tremors Animated Logo">
         </a>
+
+        <!-- Desktop Navigation -->
         <nav class="desktop-nav">
             <a href="#home" class="nav-item active">Home</a>
             <a href="#about" class="nav-item">About</a>
@@ -25,173 +31,145 @@
             <a href="#portfolio" class="nav-item">Work</a>
             <a href="#contact" class="nav-item">Contact</a>
         </nav>
+
+        <!-- Action Buttons -->
         <div class="app-bar-actions">
+
+            <!-- Download Resume -->
             <a href="assets/Aman_Singh.pdf" download="Aman_Singh.pdf" class="icon-button" title="Download Resume" aria-label="Download my resume">
-                <img src="assets/cv.svg" alt="CV" width="25" height="25">
+                <img src="assets/cv.svg" alt="CV Icon" width="25" height="25">
             </a>
-            <a href="indextui.html" class="tui-button-link" title="A minimal lightweight TUI version of this page">
+
+            <!-- Switch to TUI -->
+            <a href="indextui.html" class="tui-button-link" title="A minimal lightweight TUI version of this page" aria-label="Switch to TUI version">
                  <img src="assets/tui.svg" alt="TUI Icon" width="25" height="25">
             </a>
-            <button id="theme-toggle" class="theme-toggle-button" title="Toggle theme">
-                <!-- <span class="emoji sun">☀️</span>
-                <span class="emoji moon">🌙</span> -->
-                <img src="assets/sun.svg" alt="Sun" class="sun" width="25" height="25">
-                <img src="assets/moon.svg" alt="Moon" class="moon" width="25" height="25">
-                
+
+            <!-- Theme Toggle -->
+            <button id="theme-toggle" class="theme-toggle-button" title="Toggle theme" aria-label="Toggle color theme">
+                <img src="assets/sun.svg" alt="Sun Icon for light mode" class="sun" width="25" height="25">
+                <img src="assets/moon.svg" alt="Moon Icon for dark mode" class="moon" width="25" height="25">
             </button>
         </div>
     </header>
 
+    <!-- Mobile Navigation Bar -->
     <nav class="navigation-bar">
-        <a href="#home" class="nav-item active">
+        <a href="#home" class="nav-item active" aria-label="Go to Home section">
             <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5z"/></svg></span>
             <span class="label">Home</span>
         </a>
-        <a href="#about" class="nav-item">
+        <a href="#about" class="nav-item" aria-label="Go to About section">
             <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></span>
             <span class="label">About</span>
         </a>
-        <a href="#skills" class="nav-item">
+        <a href="#skills" class="nav-item" aria-label="Go to Skills section">
             <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg></span>
             <span class="label">Skills</span>
         </a>
-        <a href="#portfolio" class="nav-item">
+        <a href="#portfolio" class="nav-item" aria-label="Go to Work section">
             <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg></span>
             <span class="label">Work</span>
         </a>
-        <a href="#contact" class="nav-item">
+        <a href="#contact" class="nav-item" aria-label="Go to Contact section">
             <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg></span>
             <span class="label">Contact</span>
         </a>
     </nav>
-    
+
+    <!-- Main Content -->
     <main>
+        <!-- Home Section -->
         <section id="home" class="hero">
             <div class="container">
-                <img src="assets/aman.jpg" alt="Profile Photo" loading="lazy">
+                <div class="profile-img-wrapper">
+                    <img src="assets/aman.jpg" alt="Profile Photo of Aman" loading="lazy">
+                </div>
+                <!-- <img src="assets/aman.jpg" alt="Profile Photo of Aman" loading="lazy"> -->
                 <h1>Hi, I'm Aman</h1>
                 <p>A Python Developer specializing in building intelligent web applications and bringing machine learning models to life.</p>
-                <a href="#portfolio" class="extended-fab">
-                    View My Work
-                </a>
+                <a href="#portfolio" class="extended-fab">View My Work</a>
             </div>
         </section>
 
+        <!-- About Section -->
         <section id="about">
             <div class="container">
                 <h2>About Me</h2>
                 <div class="about-content">
                     <div class="about-text">
                         <p>I'm a Python developer driven by the challenge of transforming complex data into practical, user-friendly web applications. My focus lies at the intersection of back-end development and machine learning, where I leverage frameworks like Django and FastAPI alongside libraries such as TensorFlow and Pandas to build intelligent systems from the ground up.</p>
-
                         <p>My project work reflects this focus: I engineered a plant disease detector by training and integrating a TensorFlow model into a web interface to provide actionable insights from images. This passion for creating tangible solutions extends to full-stack development, from building a feature-rich e-commerce platform to developing an interactive algorithm visualizer with React.</p>
-
                         <p>I am currently seeking an opportunity where I can apply my skills in Python and AI to contribute to challenging and impactful projects.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-
+        <!-- Skills Section -->
         <section id="skills">
             <div class="container">
+
                 <h2>My Skills</h2>
 
                 <div class="skills-grid">
+
                     <div class="skill-card">
                         <h3>Frontend Development 💻</h3>
                         <ul>
-                            <div class="badge-wrapper" style="--fill:0.9; --bar-color:#E34F26;" title="Proficiency: 90%">
-                                <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white" alt="HTML5 Badge">
-                            </div>
-                            <div class="badge-wrapper" style="--fill:0.9; --bar-color:#1572B6;" title="Proficiency: 90%">
-                                <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white" alt="CSS3 Badge">
-                            </div>
-                            <div class="badge-wrapper" style="--fill:0.5; --bar-color:#F7DF1E;" title="Proficiency: 50%">
-                                <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black" alt="JS Badge">
-                            </div>
-                            <div class="badge-wrapper" style="--fill:0.5; --bar-color:#61DAFB;" title="Proficiency: 50%">
-                                <img src="https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB" alt="React Badge">
-                            </div>
-                            <div class="badge-wrapper" style="--fill:0.3; --bar-color:#3178C6;" title="Proficiency: 30%">
-                                <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white" alt="TypeScript Badge">
-                            </div>
+                            <li><div class="badge-wrapper" style="--fill:0.9; --bar-color:#E34F26;" title="Proficiency: 90%"><img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white" alt="HTML5 Badge"></div></li>
+                            <li><div class="badge-wrapper" style="--fill:0.9; --bar-color:#1572B6;" title="Proficiency: 90%"><img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white" alt="CSS3 Badge"></div></li>
+                            <li><div class="badge-wrapper" style="--fill:0.5; --bar-color:#F7DF1E;" title="Proficiency: 50%"><img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black" alt="JavaScript Badge"></div></li>
+                            <li><div class="badge-wrapper" style="--fill:0.5; --bar-color:#61DAFB;" title="Proficiency: 50%"><img src="https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB" alt="React Badge"></div></li>
+                            <li><div class="badge-wrapper" style="--fill:0.3; --bar-color:#3178C6;" title="Proficiency: 30%"><img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white" alt="TypeScript Badge"></div></li>
                         </ul>
                     </div>
 
                     <div class="skill-card">
                         <h3>Backend & Databases ⚙️</h3>
                         <ul>
-                            <div class="badge-wrapper" style="--fill:0.9; --bar-color:#3776AB;" title="Proficiency: 90%">
-                                <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" alt="Python Badge">
-                            </div>
-                            <div class="badge-wrapper" style="--fill:0.8; --bar-color:#44B78B;" title="Proficiency: 80%">
-                                <img src="https://img.shields.io/badge/Django-092E20?style=flat&logo=django&logoColor=white" alt="Django Badge">
-                            </div>
-                            <div class="badge-wrapper" style="--fill:0.3; --bar-color:#009688;" title="Proficiency: 30%">
-                                <img src="https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white" alt="FastAPI Badge">
-                            </div>
-                            <div class="badge-wrapper" style="--fill:0.4; --bar-color:#339933;" title="Proficiency: 40%">
-                                <img src="https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white" alt="Node.js Badge">
-                            </div>
-                            <div class="badge-wrapper" style="--fill:0.3; --bar-color:#005C84;" title="Proficiency: 30%">
-                                <img src="https://img.shields.io/badge/MySQL-005C84?style=flat&logo=mysql&logoColor=white" alt="MySQL Badge">
-                            </div>
+                            <li><div class="badge-wrapper" style="--fill:0.9; --bar-color:#3776AB;" title="Proficiency: 90%"><img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" alt="Python Badge"></div></li>
+                            <li><div class="badge-wrapper" style="--fill:0.8; --bar-color:#44B78B;" title="Proficiency: 80%"><img src="https://img.shields.io/badge/Django-092E20?style=flat&logo=django&logoColor=white" alt="Django Badge"></div></li>
+                            <li><div class="badge-wrapper" style="--fill:0.3; --bar-color:#009688;" title="Proficiency: 30%"><img src="https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white" alt="FastAPI Badge"></div></li>
+                            <li><div class="badge-wrapper" style="--fill:0.4; --bar-color:#339933;" title="Proficiency: 40%"><img src="https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white" alt="Node.js Badge"></div></li>
+                            <li><div class="badge-wrapper" style="--fill:0.3; --bar-color:#005C84;" title="Proficiency: 30%"><img src="https://img.shields.io/badge/MySQL-005C84?style=flat&logo=mysql&logoColor=white" alt="MySQL Badge"></div></li>
                         </ul>
                     </div>
 
                     <div class="skill-card">
                         <h3>AI / Machine Learning 🧠</h3>
                         <ul>
-                            <div class="badge-wrapper" style="--fill:0.8; --bar-color:#0D98BA;" title="Proficiency: 80%">
-                                <img src="https://img.shields.io/badge/Numpy-013243?style=flat&logo=numpy&logoColor=white" alt="Numpy Badge">
-                            </div>
-                            <div class="badge-wrapper" style="--fill:0.8; --bar-color:#703BE7;" title="Proficiency: 80%">
-                                <img src="https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white" alt="Pandas Badge">
-                            </div>
-                            <div class="badge-wrapper" style="--fill:0.5; --bar-color:#FF6F00;" title="Proficiency: 50%">
-                                <img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white" alt="TensorFlow Badge">
-                            </div>
-                            <div class="badge-wrapper" style="--fill:0.5; --bar-color:#EE4C2C;" title="Proficiency: 50%">
-                                <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=flat&logo=pytorch&logoColor=white" alt="PyTorch Badge">
-                            </div>
+                            <li><div class="badge-wrapper" style="--fill:0.8; --bar-color:#0D98BA;" title="Proficiency: 80%"><img src="https://img.shields.io/badge/Numpy-013243?style=flat&logo=numpy&logoColor=white" alt="Numpy Badge"></div></li>
+                            <li><div class="badge-wrapper" style="--fill:0.8; --bar-color:#703BE7;" title="Proficiency: 80%"><img src="https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white" alt="Pandas Badge"></div></li>
+                            <li><div class="badge-wrapper" style="--fill:0.5; --bar-color:#FF6F00;" title="Proficiency: 50%"><img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white" alt="TensorFlow Badge"></div></li>
+                            <li><div class="badge-wrapper" style="--fill:0.5; --bar-color:#EE4C2C;" title="Proficiency: 50%"><img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=flat&logo=pytorch&logoColor=white" alt="PyTorch Badge"></div></li>
                         </ul>
                     </div>
-
+                    
                     <div class="skill-card">
                         <h3>Platforms & Tools 🛠️</h3>
                         <ul>
-                            <div class="badge-wrapper" style="--fill:0.7; --bar-color:#F05032;" title="Proficiency: 70%">
-                                <img src="https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white" alt="Git Badge">
-                            </div>
-                            <div class="badge-wrapper" style="--fill:0.9; --bar-color:#007ACC;" title="Proficiency: 90%">
-                                <img src="https://img.shields.io/badge/VS%20Code-007ACC?style=flat&logo=visualstudiocode&logoColor=white" alt="VS Code Badge">
-                            </div>
-                            <div class="badge-wrapper" style="--fill:0.5; --bar-color:#F37626;" title="Proficiency: 50%">
-                                <img src="https://img.shields.io/badge/Jupyter-F37626?style=flat&logo=jupyter&logoColor=white" alt="Jupyter Badge">
-                            </div>
-                            <div class="badge-wrapper" style="--fill:0.3; --bar-color:#2496ED;" title="Proficiency: 30%">
-                                <img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white" alt="Docker Badge">
-                            </div>
-                            <div class="badge-wrapper" style="--fill:0.9; --bar-color:#0078D6;" title="Proficiency: 90%">
-                                <img src="https://img.shields.io/badge/Windows-0078D6?style=flat&logo=windows&logoColor=white" alt="Windows Badge">
-                            </div>
-                            <div class="badge-wrapper" style="--fill:0.5; --bar-color:#FCC624;" title="Proficiency: 50%">
-                                <img src="https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black" alt="Linux Badge">
-                            </div>
+                            <li><div class="badge-wrapper" style="--fill:0.7; --bar-color:#F05032;" title="Proficiency: 70%"><img src="https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white" alt="Git Badge"></div></li>
+                            <li><div class="badge-wrapper" style="--fill:0.9; --bar-color:#007ACC;" title="Proficiency: 90%"><img src="https://img.shields.io/badge/VS%20Code-007ACC?style=flat&logo=visualstudiocode&logoColor=white" alt="VS Code Badge"></div></li>
+                            <li><div class="badge-wrapper" style="--fill:0.5; --bar-color:#F37626;" title="Proficiency: 50%"><img src="https://img.shields.io/badge/Jupyter-F37626?style=flat&logo=jupyter&logoColor=white" alt="Jupyter Badge"></div></li>
+                            <li><div class="badge-wrapper" style="--fill:0.3; --bar-color:#2496ED;" title="Proficiency: 30%"><img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white" alt="Docker Badge"></div></li>
+                            <li><div class="badge-wrapper" style="--fill:0.9; --bar-color:#0078D6;" title="Proficiency: 90%"><img src="https://img.shields.io/badge/Windows-0078D6?style=flat&logo=windows&logoColor=white" alt="Windows Badge"></div></li>
+                            <li><div class="badge-wrapper" style="--fill:0.5; --bar-color:#FCC624;" title="Proficiency: 50%"><img src="https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black" alt="Linux Badge"></div></li>
                         </ul>
                     </div>
                 </div>
             </div>
-        </section>        
+        </section>
 
+        <!-- Portfolio Section -->
         <section id="portfolio">
             <div class="container">
+                
                 <h2>My Portfolio</h2>
-
                 <div class="portfolio-grid">
-                    <div class="portfolio-item">
-                        <img src="assets/algoviz-preview.jpg" alt="Algorithm Visualizer" loading="lazy">
+
+                    <article class="portfolio-item">
+                        <img src="assets/algoviz-preview.jpg" alt="Algorithm Visualizer Project Preview" loading="lazy">
                         <div class="portfolio-content">
                             <h3>Algorithm Visualizer</h3>
                             <p>A full-stack app for real-time, interactive algorithm visualizations using React (TypeScript) and FastAPI (Python). It helps users understand algorithms step by step.</p>
@@ -206,10 +184,10 @@
                                 <a href="https://github.com/qtremors/algorithm-visualizer" target="_blank" rel="noopener noreferrer" class="link-secondary">View on GitHub &rarr;</a>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="portfolio-item">
-                        <img src="assets/plant-disease-detector-preview.jpg" alt="Plant Disease Detector" loading="lazy">
+                    </article>
+
+                    <article class="portfolio-item">
+                        <img src="assets/plant-disease-detector-preview.jpg" alt="Plant Disease Detector Project Preview" loading="lazy">
                         <div class="portfolio-content">
                             <h3>Plant Disease Detector</h3>
                             <p>A Django and TensorFlow web app that classifies plant diseases from leaf images, allowing users to upload an image and get health predictions.</p>
@@ -225,10 +203,10 @@
                                 <a href="https://github.com/qtremors/plant-disease-detector" target="_blank" rel="noopener noreferrer" class="link-secondary">View on GitHub &rarr;</a>
                             </div>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="portfolio-item">
-                        <img src="assets/eshopper-preview.jpg" alt="E-commerce Project" loading="lazy">
+                    <article class="portfolio-item">
+                        <img src="assets/eshopper-preview.jpg" alt="E-commerce Project Preview" loading="lazy">
                         <div class="portfolio-content">
                             <h3>E-commerce Website</h3>
                             <p>A fully functional e-commerce site built with Python and Django, using the "EShopper" template and offering a complete storefront.</p>
@@ -244,10 +222,10 @@
                                 <a href="https://github.com/qtremors/eshopper" target="_blank" rel="noopener noreferrer" class="link-secondary">View on GitHub &rarr;</a>
                             </div>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="portfolio-item">
-                        <img src="assets/calculator-preview.jpg" alt="Calculator App" loading="lazy">
+                    <article class="portfolio-item">
+                        <img src="assets/calculator-preview.jpg" alt="Calculator App Project Preview" loading="lazy">
                         <div class="portfolio-content">
                             <h3>Calculator App (PYgame)</h3>
                             <p>A fully functional calculator implemented as a single Python script using Pygame with a responsive GUI and persistent history.</p>
@@ -259,31 +237,30 @@
                                 <a href="https://github.com/qtremors/pygame-calculator-app" target="_blank" rel="noopener noreferrer" class="link-secondary">View on GitHub &rarr;</a>
                             </div>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="portfolio-item portfolio-item-more">
+                    <article class="portfolio-item portfolio-item-more">
                         <div class="portfolio-image-container">
                             <img src="assets/tremors_github.png" alt="More Projects on GitHub" loading="lazy">
                         </div>
-                        
                         <div class="portfolio-content">
                             <h3>Explore More Projects</h3>
                             <p>See the rest of my experiments and contributions on my GitHub profile.</p>
-                            <a href="https://github.com/qtremors" target="_blank" rel="noopener noreferrer" class="cta-link">
-                                Visit GitHub &rarr;
-                            </a>
+                            <a href="https://github.com/qtremors" target="_blank" rel="noopener noreferrer" class="cta-link">Visit GitHub &rarr;</a>
                         </div>
-                    </div>
+                    </article>
 
                 </div>
             </div>
         </section>
 
+        <!-- Contact Section -->
         <section id="contact">
             <div class="container">
                 <h2>Get in Touch</h2>
                 <p class="contact-intro">I'm currently looking for new opportunities. My inbox is always open, whether you have a question or just want to say hi.</p>
                 <div class="social-links">
+
                     <a href="https://github.com/qtremors" class="icon-button" title="GitHub" aria-label="Visit my GitHub profile" target="_blank" rel="noopener noreferrer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.197-6.091 8.197-11.387C24 5.373 12 0 12 0Z"/></svg>
                     </a>
@@ -293,17 +270,19 @@
                     <a href="https://www.linkedin.com/in/aman-singh-0a1938301" class="icon-button" title="LinkedIn" aria-label="Visit my LinkedIn profile" target="_blank" rel="noopener noreferrer">
                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     </a>
+
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2025 Tremors. All rights reserved.</p>
         </div>
     </footer>
-    
+
     <script src="index.js" defer></script>
 
 </body>
