@@ -16,8 +16,8 @@ The TUI version is completely **JavaScript-free**, while the modern version uses
 [Live Demo](https://qtremors.github.io/tremors)  
 ![Modern UI Screenshot](assets/index_ss.png)
 
-### 👨‍💻 Terminal TUI
-[Live Demo](https://qtremors.github.io/tremors/indextui.html)  
+
+[### 👨‍💻 Terminal TUI](https://qtremors.github.io/tremors/indextui.html)  
 ![Terminal TUI Screenshot](assets/indextui_ss.png)
 
 ---
