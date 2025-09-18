@@ -732,6 +732,10 @@ body[data-theme="dark"] {
 .tech-js {background-color: #F7DF1E;color: black;}
 .tech-sql {background-color: #00758F;color: white;}
 .tech-pygame {background-color: #6E9C45;color: white;}
+.tech-nextjs {background-color: #000000;color: #FFFFFF;border: 1px solid #888888;}
+.tech-framermotion {background-color: #171120;color: #9F40FF;border: 1px solid #9F40FF;}
+.tech-tsparticles {background-color: #111827;color: #38BDF8;border: 1px solid #38BDF8;}
+
 
 
 /* Dark theme overrides for specific tech badges for better contrast */
