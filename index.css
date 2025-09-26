@@ -49,6 +49,27 @@ body[data-theme='dark'] {
     --md-shadow-color: rgba(0, 0, 0, 0.3);
 }
 
+/* ==========================================================================
+   1.5 Animations
+   ========================================================================== */
+@keyframes infinite-rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes jiggle {
+    0%   { transform: translateY(0) rotate(0); }
+    20%  { transform: translateY(-4px) rotate(-3deg); }
+    40%  { transform: translateY(0) rotate(0); }
+    60%  { transform: translateY(-2px) rotate(3deg); }
+    80%  { transform: translateY(0) rotate(0); }
+    100% { transform: translateY(0) rotate(0); }
+}
+
 
 /* ==========================================================================
    2. Global & Base Styles
@@ -224,11 +245,10 @@ body[data-theme='dark'] .theme-toggle-button:hover {
 }
 
 
-/* --- Animated Gradient Border on Hover --- */
+/* --- Animated Icon Hovers --- */
 
-/* The pseudo-element that creates the conic gradient border */
+/* Base styles for conic gradient border, used by Logo and TUI link */
 .top-app-bar .logo::before,
-.app-bar-actions .icon-button::before,
 .app-bar-actions .tui-button-link::before {
     content: "";
     position: absolute;
@@ -245,19 +265,36 @@ body[data-theme='dark'] .theme-toggle-button:hover {
         #f1fa8c 300deg 360deg
     );
     z-index: 1;
-    transform: rotate(0deg);
     opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Logo: Infinite rotation on hover */
+.top-app-bar .logo:hover::before {
+    opacity: 1;
+    animation: infinite-rotate 2s linear infinite;
+}
+
+/* TUI Link: Single rotation on hover (original effect) */
+.app-bar-actions .tui-button-link::before {
+    transform: rotate(0deg);
     transition: transform 0.6s linear, opacity 0.3s ease-in-out;
 }
 
-/* On hover, rotate the pseudo-element 360 degrees and fade it in */
-.top-app-bar .logo:hover::before,
-.app-bar-actions .icon-button:hover::before,
 .app-bar-actions .tui-button-link:hover::before {
     transform: rotate(360deg);
     opacity: 1;
 }
 
+/* CV Icon: Jiggle on hover */
+.app-bar-actions a[title="Download Resume"]:hover img {
+    animation: jiggle 0.6s ease-in-out;
+}
+
+/* Nexus Icon: Infinite rotation on hover */
+.app-bar-actions a[title="Nexus"]:hover img {
+    animation: infinite-rotate 2s linear infinite;
+}
 
 
 /* --- Theme Toggle Specific Styles --- */
@@ -922,4 +959,3 @@ footer {
         display: none;
     }
 }
-
