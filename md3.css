@@ -259,20 +259,25 @@ h3 {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    padding: 0;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
     border: none;
-    border-radius: var(--md-sys-shape-corner-full);
     background-color: transparent;
-    color: var(--md-sys-color-on-surface-variant);
+    color: var(--md-on-surface-variant);
     cursor: pointer;
-    transition: background-color var(--md-sys-motion-duration-short);
+    transition: background-color 0.2s;
+    padding: 0;
 }
 
 .icon-button:hover,
 .theme-toggle-button:hover {
     background-color: color-mix(in srgb, var(--md-sys-color-on-surface) 8%, transparent);
+}
+
+body:not([data-theme='light']) .icon-button:hover,
+body:not([data-theme='light']) .theme-toggle-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 #dropdown-toggle:hover {
@@ -289,8 +294,8 @@ h3 {
 /* --- App Bar Icon Animations --- */
 .app-bar-actions a[title="Download Resume"]:hover img { animation: jiggle 0.6s ease-in-out; }
 
-:root { --theme-icon-shadow: #ffffff; }
-body[data-theme="light"] { --theme-icon-shadow: #202124; }
+:root { --theme-icon-shadow: #202124; }
+body:not([data-theme="light"]) { --theme-icon-shadow: #ffffff; }
 
 .app-bar-actions a[title="Nexus"]:hover img { 
     animation: infinite-rotate 2s linear infinite; 
@@ -357,8 +362,8 @@ body[data-theme='light'] .theme-toggle-button .moon { display: none; }
     flex-direction: column;
     gap: 4px;
     background-color: var(--md-sys-color-surface-container-low);
+    border-radius: 12px;
     border: 1px solid var(--md-sys-color-outline-variant);
-    border-radius: var(--md-sys-shape-corner-medium);
     box-shadow: 0 4px 12px 0 rgba(0,0,0,0.15);
     opacity: 0;
     visibility: hidden;

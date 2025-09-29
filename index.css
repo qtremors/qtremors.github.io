@@ -212,7 +212,7 @@ body:not([data-theme='light']) .theme-toggle-button:hover {
 
 /* Glow effect variable for icons */
 :root { --theme-icon-shadow: #202124; }
-body[data-theme="dark"] { --theme-icon-shadow: #ffffff; }
+body:not([data-theme="light"]) { --theme-icon-shadow: #ffffff; }
 
 .app-bar-actions a[title="Nexus"]:hover img {
     animation: infinite-rotate 2s linear infinite;
@@ -221,8 +221,8 @@ body[data-theme="dark"] { --theme-icon-shadow: #ffffff; }
 
 
 /* --- Theme Toggle --- */
-body[data-theme='light'] .theme-toggle-button .sun { display: none; }
-body:not([data-theme='light']) .theme-toggle-button .moon { display: none; }
+body:not([data-theme='light']) .theme-toggle-button .sun { display: none; }
+body[data-theme='light'] .theme-toggle-button .moon { display: none; }
 
 .app-bar-actions .theme-toggle-button:hover img {
     filter: drop-shadow(0 0 4px var(--theme-icon-shadow));
