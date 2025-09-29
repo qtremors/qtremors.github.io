@@ -271,7 +271,7 @@ body[data-theme='light'] .theme-toggle-button .moon { display: none; }
 
 .dropdown-card {
     position: absolute;
-    top: calc(100% + 8px);
+    top: calc(100% + 9px);
     right: 0;
     z-index: 1001;
     width: max-content;
@@ -312,6 +312,13 @@ body[data-theme='light'] .theme-toggle-button .moon { display: none; }
     font-size: 0.9rem;
     font-family: inherit;
     transition: background-color 0.2s ease;
+}
+
+.menu-separator {
+  border: none;
+  height: 1px;
+  background-color: #555560;
+  margin: 4px 0;
 }
 
 .dropdown-item:hover {
