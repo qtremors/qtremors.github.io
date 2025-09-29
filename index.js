@@ -28,9 +28,14 @@ document.addEventListener('DOMContentLoaded', function () {
         const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
         if (savedTheme) {
+            // 1. User has a saved preference, so apply it.
             applyTheme(savedTheme);
+        } else if (systemPrefersDark) {
+            // 2. No saved preference, but system prefers dark, so respect it.
+            applyTheme('dark');
         } else {
-            applyTheme(systemPrefersDark ? 'dark' : 'light');
+            // 3. Neither a saved preference nor a dark system preference, so default to DARK.
+            applyTheme('dark');
         }
     };
 
