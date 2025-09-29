@@ -3,6 +3,44 @@
    Based on source color: #825599
    ========================================================================== */
 :root {
+    /* Dark Theme Color Tokens */
+    --md-sys-color-primary: #e9b3ff;
+    --md-sys-color-on-primary: #4f2667;
+    --md-sys-color-primary-container: #683d7f;
+    --md-sys-color-on-primary-container: #ffd6ff;
+    --md-sys-color-secondary: #d3bee3;
+    --md-sys-color-on-secondary: #392b40;
+    --md-sys-color-secondary-container: #504157;
+    --md-sys-color-on-secondary-container: #efdafa;
+    --md-sys-color-tertiary: #f2b7bf;
+    --md-sys-color-on-tertiary: #4b252d;
+    --md-sys-color-tertiary-container: #653b43;
+    --md-sys-color-on-tertiary-container: #ffd9dd;
+    --md-sys-color-error: #ffb4ab;
+    --md-sys-color-on-error: #690005;
+    --md-sys-color-error-container: #93000a;
+    --md-sys-color-on-error-container: #ffdad6;
+    --md-sys-color-background: #161218;
+    --md-sys-color-on-background: #e9e0ea;
+    --md-sys-color-surface: #161218;
+    --md-sys-color-on-surface: #e9e0ea;
+    --md-sys-color-surface-variant: #4b4450;
+    --md-sys-color-on-surface-variant: #cfc3d2;
+    --md-sys-color-outline: #978e9b;
+    --md-sys-color-outline-variant: #4b4450;
+    --md-sys-color-shadow: #000000;
+    --md-sys-color-surface-container-highest: #38333c;
+    --md-sys-color-surface-container-high: #2d2831;
+    --md-sys-color-surface-container: #231e26;
+    --md-sys-color-surface-container-low: #1e1a20;
+    --md-sys-color-surface-container-lowest: #100d13;
+
+    /* Dark theme overrides for tech badges */
+    --tech-react-bg: #475569;
+    --tech-django-bg: #104F34;
+}
+
+body[data-theme='light'] {
     /* Shape & Motion */
     --md-sys-shape-corner-small: 4px;
     --md-sys-shape-corner-medium: 8px;
@@ -63,44 +101,6 @@
     --tech-nextjs-bg: #000000; --tech-nextjs-fg: #FFFFFF; --tech-nextjs-border: #888888;
     --tech-framermotion-bg: #171120; --tech-framermotion-fg: #9F40FF; --tech-framermotion-border: #9F40FF;
     --tech-tsparticles-bg: #111827; --tech-tsparticles-fg: #38BDF8; --tech-tsparticles-border: #38BDF8;
-}
-
-body[data-theme='dark'] {
-    /* Dark Theme Color Tokens */
-    --md-sys-color-primary: #e9b3ff;
-    --md-sys-color-on-primary: #4f2667;
-    --md-sys-color-primary-container: #683d7f;
-    --md-sys-color-on-primary-container: #ffd6ff;
-    --md-sys-color-secondary: #d3bee3;
-    --md-sys-color-on-secondary: #392b40;
-    --md-sys-color-secondary-container: #504157;
-    --md-sys-color-on-secondary-container: #efdafa;
-    --md-sys-color-tertiary: #f2b7bf;
-    --md-sys-color-on-tertiary: #4b252d;
-    --md-sys-color-tertiary-container: #653b43;
-    --md-sys-color-on-tertiary-container: #ffd9dd;
-    --md-sys-color-error: #ffb4ab;
-    --md-sys-color-on-error: #690005;
-    --md-sys-color-error-container: #93000a;
-    --md-sys-color-on-error-container: #ffdad6;
-    --md-sys-color-background: #161218;
-    --md-sys-color-on-background: #e9e0ea;
-    --md-sys-color-surface: #161218;
-    --md-sys-color-on-surface: #e9e0ea;
-    --md-sys-color-surface-variant: #4b4450;
-    --md-sys-color-on-surface-variant: #cfc3d2;
-    --md-sys-color-outline: #978e9b;
-    --md-sys-color-outline-variant: #4b4450;
-    --md-sys-color-shadow: #000000;
-    --md-sys-color-surface-container-highest: #38333c;
-    --md-sys-color-surface-container-high: #2d2831;
-    --md-sys-color-surface-container: #231e26;
-    --md-sys-color-surface-container-low: #1e1a20;
-    --md-sys-color-surface-container-lowest: #100d13;
-
-    /* Dark theme overrides for tech badges */
-    --tech-react-bg: #475569;
-    --tech-django-bg: #104F34;
 }
 
 /* ==========================================================================
@@ -289,8 +289,8 @@ h3 {
 /* --- App Bar Icon Animations --- */
 .app-bar-actions a[title="Download Resume"]:hover img { animation: jiggle 0.6s ease-in-out; }
 
-:root { --theme-icon-shadow: #202124; }
-body[data-theme="dark"] { --theme-icon-shadow: #ffffff; }
+:root { --theme-icon-shadow: #ffffff; }
+body[data-theme="light"] { --theme-icon-shadow: #202124; }
 
 .app-bar-actions a[title="Nexus"]:hover img { 
     animation: infinite-rotate 2s linear infinite; 
@@ -298,8 +298,8 @@ body[data-theme="dark"] { --theme-icon-shadow: #ffffff; }
 }
 
 /* --- Theme Toggle --- */
-body[data-theme='dark'] .theme-toggle-button .sun { display: none; }
-body:not([data-theme='dark']) .theme-toggle-button .moon { display: none; }
+body:not([data-theme='light']) .theme-toggle-button .sun { display: none; }
+body[data-theme='light'] .theme-toggle-button .moon { display: none; }
 
 .app-bar-actions .theme-toggle-button:hover img {
     filter: drop-shadow(0 0 4px var(--theme-icon-shadow));
