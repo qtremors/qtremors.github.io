@@ -2,9 +2,9 @@
 
 This repository hosts my **personal portfolio**, built in two distinct versions:
 
-- 🌇 **[`index.html`](https://qtremors.github.io/tremors)** – Modern, Material Design-inspired UI with animations, dark mode toggle, and interactive elements.
+- 🌇 **[`index.html`](https://qtremors.github.io/)** – Modern, Material Design-inspired UI with animations, dark mode toggle, and interactive elements.
 
-- 👾 **[`indextui.html`](https://qtremors.github.io/tremors/indextui.html)** – Terminal-inspired TUI with multiple themes, fonts, and a CSS-only splash screen.
+- 👾 **[`indextui.html`](https://qtremors.github.io/indextui.html)** – Terminal-inspired TUI with multiple themes, fonts, and a CSS-only splash screen.
 
 All versions are **fully responsive**, minimalist, and built with **clean, semantic HTML and CSS**.  
 The TUI version is completely **JavaScript-free**, while the modern version uses **vanilla JS** to enhance user experience.
@@ -13,10 +13,10 @@ The TUI version is completely **JavaScript-free**, while the modern version uses
 
 ## 📸 Screenshots
 
-### 🌇 Material UI [▶](https://qtremors.github.io/tremors) 
+### 🌇 Material UI [▶](https://qtremors.github.io/) 
 ![Modern UI Screenshot](assets/index_ss.png)
 
-### 👾 Terminal TUI [▶](https://qtremors.github.io/tremors/indextui.html)
+### 👾 Terminal TUI [▶](https://qtremors.github.io/indextui.html)
 ![Terminal TUI Screenshot](assets/indextui_ss.png)
 
 ---
