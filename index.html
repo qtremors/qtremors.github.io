@@ -13,6 +13,28 @@
 </head>
 
 <body>
+
+    <noscript>
+
+        <input type="checkbox" id="no-js-toggle">
+        <div class="no-js-overlay">
+            <div class="no-js-modal">
+                <h2>JavaScript Disabled</h2>
+                    <p>It looks like JavaScript is disabled. If you stay here, the following features will <strong>not work</strong>:</p>
+                    <ul class="no-js-list">
+                        <li>❌ Theme Toggling (Dark/Light Mode)</li>
+                        <li>❌ Viewing the list of projects</li>
+                        <li>❌ Scroll Animations & Navigation</li>
+                    </ul>
+                    <p>Would you like to switch to the simplified TUI version 👾?</p>
+                <div class="no-js-actions">
+                    <label for="no-js-toggle" class="no-js-btn btn-no">No, Stay Here</label>
+                    <a href="tui.html" class="no-js-btn btn-yes">Yes, Switch</a>
+                </div>
+            </div>
+        </div>
+    </noscript>
+    
     <header class="top-app-bar">
         <a href="#home" class="logo" aria-label="Go to homepage">
             <img src="assets/logo.gif" alt="Tremors Animated Logo">
