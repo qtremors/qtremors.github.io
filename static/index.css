@@ -16,3 +16,6 @@
 
 /* 5. Page Sections (Hero, Skills, Work, Contact) & Footer */
 @import 'index-sections.css';
+
+/* 6. No Script Modal  */
+@import 'index-noscript.css';
