@@ -1,0 +1,120 @@
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+@keyframes infinite-rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes jiggle {
+    0%   { transform: translateY(0) rotate(0); }
+    20%  { transform: translateY(-4px) rotate(-3deg); }
+    40%  { transform: translateY(0) rotate(0); }
+    60%  { transform: translateY(-2px) rotate(3deg); }
+    80%  { transform: translateY(0) rotate(0); }
+    100% { transform: translateY(0) rotate(0); }
+}
+
+/* Jiggle animation for the potfolio titles */
+@keyframes jigglet {
+  0%   { transform: translateY(-2px) rotate(-1deg); }
+  25%  { transform: translateY(-3px) rotate(1deg); }
+  50%  { transform: translateY(-2px) rotate(-1deg); }
+  75%  { transform: translateY(-3px) rotate(1deg); }
+  100% { transform: translateY(-2px) rotate(0deg); }
+}
+
+
+/* --- App Bar Icon Animations --- */
+
+.top-app-bar .logo::before {
+    content: "";
+    position: absolute;
+    top: -2px; left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    border-radius: 50%;
+    background: conic-gradient(from -60deg, #EA4335 0%, #4285F4 35%, #34A853 70%, #FBBC05 90%, #EA4335 100%);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.top-app-bar .logo:hover::before {
+    opacity: 1;
+    animation: infinite-rotate 2s linear infinite;
+}
+
+.top-app-bar .logo img {
+    position: relative;
+    z-index: 2;
+    border-radius: 50%;
+    border: 2px solid var(--md-surface);
+    box-sizing: border-box;
+    width: 35px;
+    height: 35px;
+    background-color: var(--md-surface);
+    object-fit: cover;
+}
+
+.app-bar-actions a[title="Download Resume"]:hover img,
+.app-bar-actions a[title="Nexus"]:hover img,
+.app-bar-actions .theme-toggle-button:hover img {
+    filter: drop-shadow(0 0 7px var(--theme-icon-shadow));
+}
+
+.app-bar-actions a[title="Download Resume"]:hover img {
+    animation: pulse 1s ease-in-out infinite;
+}
+
+.app-bar-actions a[title="Nexus"]:hover img {
+    animation: infinite-rotate 2s linear infinite;
+}
+
+/* --- Theme Toggle --- */
+body:not([data-theme='light']) .theme-toggle-button .sun { display: none; }
+body[data-theme='light'] .theme-toggle-button .moon { display: none; }
+
+
+/* Portfolio title style & animations */
+.portfolio-item h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+  color: var(--accent-color, #000000);
+  letter-spacing: 0.5px;
+  transform: translateY(0);
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+/* Hover */
+.portfolio-item:hover h3 {
+  animation: jigglet 0.35s ease forwards;
+  text-shadow: 0 0 8px rgba(97, 218, 251, 0.35);
+}
+
+/* Dark mode override */
+body[data-theme="dark"] .portfolio-item h3 {
+  color: #ffffff;
+}
+
+/* Animation for new items appearing */
+@keyframes slideUpFade {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: slideUpFade 0.5s ease-in-out forwards;
+}

@@ -1,0 +1,95 @@
+/* ==========================================================================
+   MD3 Expressive Theme & Variable Mapping
+   ========================================================================== */
+:root {
+    /* --- 1. Define MD3 Primitive Colors --- */
+    --md-sys-color-primary: #e9b3ff;
+    --md-sys-color-on-primary: #4f2667;
+    --md-sys-color-primary-container: #683d7f;
+    --md-sys-color-on-primary-container: #ffd6ff;
+    --md-sys-color-secondary: #d3bee3;
+    --md-sys-color-on-secondary: #392b40;
+    --md-sys-color-secondary-container: #504157;
+    --md-sys-color-on-secondary-container: #efdafa;
+    --md-sys-color-surface: #161218;
+    --md-sys-color-on-surface: #e9e0ea;
+    --md-sys-color-surface-variant: #4b4450;
+    --md-sys-color-on-surface-variant: #cfc3d2;
+    --md-sys-color-outline: #978e9b;
+    --md-sys-color-outline-variant: #4b4450;
+    --md-sys-color-shadow: #000000;
+    --md-sys-color-background: #161218;
+    --md-sys-color-surface-container: #231e26;
+    --md-sys-color-surface-container-low: #1e1a20;
+    --md-sys-color-surface-container-lowest: #100d13;
+
+    /* --- 2. MAP Original Variables to MD3 Colors --- */
+    --md-primary: var(--md-sys-color-primary);
+    --md-on-primary: var(--md-sys-color-on-primary);
+    --md-primary-container: var(--md-sys-color-primary-container);
+    --md-on-primary-container: var(--md-sys-color-on-primary-container);
+    --md-secondary: var(--md-sys-color-secondary);
+    --md-on-secondary: var(--md-sys-color-on-secondary);
+    --md-background: var(--md-sys-color-background);
+    --md-surface: var(--md-sys-color-surface-container-low);
+    --md-surface-variant: var(--md-sys-color-surface-container);
+    --md-on-surface: var(--md-sys-color-on-surface);
+    --md-on-surface-variant: var(--md-sys-color-on-surface-variant);
+    --md-outline: var(--md-sys-color-outline);
+    --md-shadow-color: rgba(0, 0, 0, 0.5);
+
+    /* Tech Badge MD3 Colors */
+    --tech-react-bg: #475569;
+    --tech-react-fg: #61DAFB;
+    --tech-django-bg: #104F34;
+    --tech-django-fg: #44B78B;
+
+    /* Typography */
+    --md-sys-font-family: 'Manrope', sans-serif;
+
+    /* White glow for Dark Mode icons */
+    --theme-icon-shadow: #ffffff;
+}
+
+body[data-theme='light'] {
+    /* --- 1. Define Light MD3 Colors --- */
+    --md-sys-color-primary: #825599;
+    --md-sys-color-on-primary: #ffffff;
+    --md-sys-color-primary-container: #ffd6ff;
+    --md-sys-color-on-primary-container: #34114d;
+    --md-sys-color-secondary: #68586f;
+    --md-sys-color-on-secondary: #ffffff;
+    --md-sys-color-secondary-container: #efdafa;
+    --md-sys-color-on-secondary-container: #23162a;
+    --md-sys-color-background: #fff7ff;
+    --md-sys-color-surface: #fff7ff;
+    --md-sys-color-on-surface: #1e1a20;
+    --md-sys-color-surface-variant: #eadeed;
+    --md-sys-color-on-surface-variant: #4b4450;
+    --md-sys-color-outline: #7d7481;
+    --md-sys-color-surface-container: #f5ecf6;
+    --md-sys-color-surface-container-low: #fbf2fc;
+    --md-sys-color-surface-container-lowest: #ffffff;
+
+    /* --- 2. Re-Map for Light Mode --- */
+    --md-primary: var(--md-sys-color-primary);
+    --md-on-primary: var(--md-sys-color-on-primary);
+    --md-primary-container: var(--md-sys-color-primary-container);
+    --md-on-primary-container: var(--md-sys-color-on-primary-container);
+    --md-secondary: var(--md-sys-color-secondary);
+    --md-on-secondary: var(--md-sys-color-on-secondary);
+    --md-background: var(--md-sys-color-background);
+    --md-surface: var(--md-sys-color-surface-container-lowest);
+    --md-surface-variant: var(--md-sys-color-surface-container);
+    --md-on-surface: var(--md-sys-color-on-surface);
+    --md-on-surface-variant: var(--md-sys-color-on-surface-variant);
+    --md-outline: var(--md-sys-color-outline);
+    --md-shadow-color: rgba(0, 0, 0, 0.2);
+
+    /* Tech Badge Light Colors */
+    --tech-react-bg: #20232A;
+    --tech-django-bg: #092E20;
+
+    /* Dark glow for Light Mode icons */
+    --theme-icon-shadow: #202124;
+}
