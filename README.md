@@ -60,7 +60,6 @@ This version is a **creative exploration of what's possible with only HTML and C
 ---
 
 ## 🚧 Development Status
-This project is a **work in progress**.  
 Some project links under **"Work" / "Portfolio"** may lead to a custom **404 Page** (`index-404.html` or `tui-404.html`).  
 This is intentional while I continue building and deploying live demos.
 
