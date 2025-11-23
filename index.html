@@ -7,7 +7,7 @@
     <title>Tremors</title>
     <link rel="icon" type="image/svg+xml" href="assets/alien.svg">
 
-    <link rel="stylesheet" href="index.css" id="main-stylesheet">
+    <link rel="stylesheet" href="static/index.css" id="main-stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
@@ -41,7 +41,7 @@
                 </button>
 
                 <div class="dropdown-card" id="main-dropdown">
-                    <button class="dropdown-item" title="A minimal lightweight TUI version of this page" onclick="location.href='indextui.html'">
+                    <button class="dropdown-item" title="A minimal lightweight TUI version of this page" onclick="location.href='tui.html'">
                         <img src="assets/alien.svg" class="dropdown-icon" alt="TUI Icon">
                         <span class="dropdown-title">TUI Version</span>
                     </button>
@@ -92,7 +92,7 @@
                     <img src="assets/aman.png" alt="Profile Photo of Aman" loading="lazy">
                 </div>
                 <h1>Hi, I'm Aman</h1>
-                <p>A junior Python Dev bringing ideas to life with Python and Django, with a focus on code quality and intuitive design.</p>
+                <p>A Full-Stack Python Developer building AI-powered platforms, real-time systems, and advanced developer tooling..</p>
                 <a href="#portfolio" class="extended-fab">View My Work</a>
             </div>
         </section>
@@ -102,9 +102,9 @@
                 <h2>About Me</h2>
                 <div class="about-content">
                     <div class="about-text">
-                        <p>I am a Computer Science Engineering graduate specializing in Python and Django. My professional experience includes a 6-month internship as a Junior Developer, where I contributed to real-world web applications and strengthened my problem-solving skills.</p>
-                        <p>My approach to software development is built on a foundation of pragmatic problem-solving and a methodical debugging process. I am committed to writing clean, maintainable code and implementing best practices to ensure quality and security. While my expertise is in crafting backend logic, I have a strong appreciation for user experience and intuitive design, always keeping the end-user in mind.</p>
-                        <p>While my immediate goal is to excel as a Python dev, I am actively learning AI/ML in my personal time and plan to transition into that field after building a solid foundation in software engineering. I am eager to join a forward-thinking team where I can contribute to challenging projects and continue to grow as a developer.</p>
+                        <p>I am a Computer Science graduate and a Full-Stack Python Developer focused on the Django and FastAPI ecosystems. I build scalable backend systems and web applications, with experience ranging from real-time features using WebSockets to integrating generative AI models into production-ready apps.</p>
+                        <p>Beyond application development, I enjoy building utilities that improve workflows or solve specific system-level problems. My recent work includes creating a CLI for Git visualization, a remote control API for system management, and a custom Terminal UI. I appreciate the details of how software interacts with the underlying system and strive to write clean, efficient code.</p>
+                        <p>Currently, I am working on combining traditional web engineering with LLM capabilities to create smarter applications. I am looking for a developer role where I can apply my skills in Python and modern web technologies to build reliable and practical software.</p>
                     </div>
                 </div>
             </div>
@@ -120,8 +120,8 @@
                             <li><div class="badge-wrapper" style="--fill:0.9; --bar-color:#E34F26;" title="Proficiency: 90%"><img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white" alt="HTML5 Badge"></div></li>
                             <li><div class="badge-wrapper" style="--fill:0.9; --bar-color:#1572B6;" title="Proficiency: 90%"><img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white" alt="CSS3 Badge"></div></li>
                             <li><div class="badge-wrapper" style="--fill:0.4; --bar-color:#F7DF1E;" title="Proficiency: 40%"><img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black" alt="JavaScript Badge"></div></li>
-                            <!-- <li><div class="badge-wrapper" style="--fill:0.2; --bar-color:#61DAFB;" title="Proficiency: 20%"><img src="https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB" alt="React Badge"></div></li> -->
-                            <li><div class="badge-wrapper" style="--fill:0.3; --bar-color:#000000;" title="Proficiency: 30%"><img src="https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white" alt="Next.js Badge"></div></li>
+                             <li><div class="badge-wrapper" style="--fill:0.3; --bar-color:#61DAFB;" title="Proficiency: 30%"><img src="https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB" alt="React Badge"></div></li> 
+                            <!--<li><div class="badge-wrapper" style="--fill:0.3; --bar-color:#000000;" title="Proficiency: 30%"><img src="https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white" alt="Next.js Badge"></div></li>-->
                         </ul>
                     </div>
                     <div class="skill-card">
@@ -163,133 +163,30 @@
         </section>
 
         <section id="portfolio">
-            <div class="container">
-                <h2>My Portfolio</h2>
-                <div class="portfolio-grid">
-                    
-                    <article class="portfolio-item">
-                        <img src="assets/qtrmrs-preview.png" alt="AI Quiz App Preview" loading="lazy">
-                        <div class="portfolio-content">
-                            <h3>AI Quiz App</h3>
-                            <p>An quiz app that dynamically generates quizzes using Gemini API with personalized questions, instant feedback & explanations for mistakes.</p>
-                            <div class="tech-badges">
-                                <span class="tech-python">Python</span>
-                                <span class="tech-django">Django</span>
-                                <span class="tech-ts">Gemini API</span>
-                                <span class="tech-html">HTML</span>
-                                <span class="tech-css">CSS</span>
-                                <span class="tech-js">JavaScript</span>
-                            </div>
-                            <div class="portfolio-links">
-                                <a href="https://ai-quiz-project.onrender.com/" target="_blank" rel="noopener noreferrer" class="link-primary">Website &rarr;</a>
-                                <a href="https://github.com/qtremors/ai-quiz-project" target="_blank" rel="noopener noreferrer" class="link-secondary">View on GitHub &rarr;</a>
-                            </div>
+                    <div class="container">
+                        <h2>My Portfolio</h2>
+                        <div class="portfolio-grid" id="portfolio-grid">
+                            
+                            <article class="portfolio-item portfolio-item-more" id="github-card">
+                                <div class="portfolio-image-container">
+                                    <img src="assets/tremors_github.png" alt="More Projects on GitHub" loading="lazy">
+                                </div>
+                                
+                                <div class="portfolio-content">
+                                    <h3>Explore More Projects</h3>
+                                    <p>See the rest of my experiments and contributions on my GitHub profile.</p>
+                                    
+                                    <div class="card-actions" id="github-card-actions">
+                                        <a href="https://github.com/qtremors" target="_blank" rel="noopener noreferrer" class="card-btn btn-github">
+                                            Visit GitHub &rarr;
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+        
                         </div>
-                    </article>
-                    
-                    <article class="portfolio-item">
-                        <img src="assets/algoviz-preview.jpg" alt="Algorithm Visualizer Project Preview" loading="lazy">
-                        <div class="portfolio-content">
-                            <h3>Algorithm Visualizer</h3>
-                            <p>A full-stack app for real-time, interactive algorithm visualizations using React (TypeScript) and FastAPI (Python). It helps users understand algorithms step by step.</p>
-                            <div class="tech-badges">
-                                <span class="tech-react">React</span>
-                                <span class="tech-ts">TypeScript</span>
-                                <span class="tech-python">Python</span>
-                                <span class="tech-fastapi">FastAPI</span>
-                            </div>
-                            <div class="portfolio-links">
-                                <a href="https://tremors-algoviz.netlify.app" target="_blank" rel="noopener noreferrer" class="link-primary">Website &rarr;</a>
-                                <a href="https://github.com/qtremors/algorithm-visualizer" target="_blank" rel="noopener noreferrer" class="link-secondary">View on GitHub &rarr;</a>
-                            </div>
-                        </div>
-                    </article>
-                    
-                    <article class="portfolio-item">
-                        <img src="assets/plant-disease-detector-preview.jpg" alt="Plant Disease Detector Project Preview" loading="lazy">
-                        <div class="portfolio-content">
-                            <h3>Plant Disease Detector</h3>
-                            <p>A Django and TensorFlow web app that classifies plant diseases from leaf images, allowing users to upload an image and get health predictions.</p>
-                            <div class="tech-badges">
-                                <span class="tech-django">Django</span>
-                                <span class="tech-tensorflow">TensorFlow</span>
-                                <span class="tech-pillow">Pillow</span>
-                                <span class="tech-numpy">NumPy</span>
-                                <span class="tech-plotly">Plotly</span>
-                            </div>
-                            <div class="portfolio-links">
-                                <a href="construction.html" class="link-primary">Website &rarr;</a>
-                                <a href="https://github.com/qtremors/plant-disease-detector" target="_blank" rel="noopener noreferrer" class="link-secondary">View on GitHub &rarr;</a>
-                            </div>
-                        </div>
-                    </article>
-                    
-                    <article class="portfolio-item">
-                        <img src="assets/eshopper-preview.jpg" alt="E-commerce Project Preview" loading="lazy">
-                        <div class="portfolio-content">
-                            <h3>E-commerce Website</h3>
-                            <p>A fully functional e-commerce site built with Python and Django, using the "EShopper" template and offering a complete storefront.</p>
-                            <div class="tech-badges">
-                                <span class="tech-django">Django</span>
-                                <span class="tech-html">HTML</span>
-                                <span class="tech-css">CSS</span>
-                                <span class="tech-js">JavaScript</span>
-                                <span class="tech-sql">SQL</span>
-                            </div>
-                            <div class="portfolio-links">
-                                <a href="https://tremors.pythonanywhere.com/" target="_blank" rel="noopener noreferrer" class="link-primary">Website &rarr;</a>
-                                <a href="https://github.com/qtremors/eshopper" target="_blank" rel="noopener noreferrer" class="link-secondary">View on GitHub &rarr;</a>
-                            </div>
-                        </div>
-                    </article>
-                    
-                    <!-- <article class="portfolio-item">
-                        <img src="assets/calculator-preview.jpg" alt="Calculator App Project Preview" loading="lazy">
-                        <div class="portfolio-content">
-                            <h3>Calculator App (PYgame)</h3>
-                            <p>A fully functional calculator implemented as a single Python script using Pygame with a responsive GUI and persistent history.</p>
-                            <div class="tech-badges">
-                                <span class="tech-python">Python</span>
-                                <span class="tech-pygame">Pygame</span>
-                            </div>
-                            <div class="portfolio-links">
-                                <a href="https://github.com/qtremors/pygame-calculator-app" target="_blank" rel="noopener noreferrer" class="link-secondary">View on GitHub &rarr;</a>
-                            </div>
-                        </div>
-                    </article> -->
-                    
-                    <article class="portfolio-item">
-                        <img src="assets/nexus-preview.png" alt="Nexus Preview" loading="lazy">
-                        <div class="portfolio-content">
-                            <h3>Nexus</h3>
-                            <p>A creative landing page designed to navigate through my digital universe by deploying a fleet of spaceships from the space station.</p>
-                            <div class="tech-badges">
-                                <span class="tech-nextjs">NextJs</span>
-                                <span class="tech-react">React</span>
-                                <span class="tech-framermotion">Framer-Motion</span>
-                                <span class="tech-tsparticles">tsParticles</span>
-                                <span class="tech-css">CSS</span>
-                            </div>
-                            <div class="portfolio-links">
-                                <a href="https://tremors.vercel.app" target="_blank" rel="noopener noreferrer" class="link-primary">Website &rarr;</a>
-                                <a href="https://github.com/qtremors/nexus" target="_blank" rel="noopener noreferrer" class="link-secondary">View on GitHub &rarr;</a>
-                            </div>
-                        </div>
-                    </article>
-                    
-                    <article class="portfolio-item portfolio-item-more">
-                        <div class="portfolio-image-container">
-                            <img src="assets/tremors_github.png" alt="More Projects on GitHub" loading="lazy">
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>Explore More Projects</h3>
-                            <p>See the rest of my experiments and contributions on my GitHub profile.</p>
-                            <a href="https://github.com/qtremors" target="_blank" rel="noopener noreferrer" class="cta-link">Visit GitHub &rarr;</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
+                    </div>
+                </section>
 
         <section id="contact">
             <div class="container">

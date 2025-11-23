@@ -1,0 +1,18 @@
+/* ==========================================================================
+   Main Stylesheet - Import Manager
+   ========================================================================== */
+
+/* 1. Variables & Theme Configuration */
+@import 'index-variables.css';
+
+/* 2. Keyframe Animations */
+@import 'index-animations.css';
+
+/* 3. Base Styles (Typography, Resets) & Media Queries */
+@import 'index-base.css';
+
+/* 4. Navigation & Header Components */
+@import 'index-navigation.css';
+
+/* 5. Page Sections (Hero, Skills, Work, Contact) & Footer */
+@import 'index-sections.css';
