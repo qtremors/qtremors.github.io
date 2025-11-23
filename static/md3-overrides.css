@@ -1,0 +1,68 @@
+/* ==========================================================================
+   MD3 Specific Overrides
+   (Shapes, Fonts, Colors, & Gradients)
+   ========================================================================== */
+
+/* --- 1. Typography --- */
+body {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* --- 2. SHAPE ENGINE: Force Squircles --- */
+
+/* Large Squircles (16px) */
+.extended-fab,
+.portfolio-links a,
+.cta-link {
+    border-radius: 16px !important;
+}
+
+/* Card Squircles (16px) */
+.skill-card,
+.portfolio-item {
+    border-radius: 16px !important;
+}
+
+/* Mobile Navigation Bar (28px) */
+.navigation-bar {
+    border-radius: 28px !important;
+}
+
+/* Mobile Nav Item Icon (16px) */
+.navigation-bar .nav-item .icon {
+    border-radius: 16px !important;
+}
+
+/* Tech Badges (8px) */
+.tech-badges span {
+    border-radius: 8px !important;
+}
+
+/* Desktop Nav Items (12px) */
+.desktop-nav .nav-item {
+    border-radius: 12px !important;
+}
+
+/* --- 3. COMPONENT TWEAKS --- */
+
+/* Fix App Bar Appearance for MD3 */
+.top-app-bar,
+body:not([data-theme='light']) .top-app-bar {
+    background-color: var(--md-sys-color-surface-container) !important;
+    border-bottom: 1px solid var(--md-sys-color-outline-variant) !important;
+}
+
+/* Mobile Nav Active Colors */
+.navigation-bar .nav-item.active .icon {
+    background-color: var(--md-sys-color-secondary-container) !important;
+    color: var(--md-sys-color-on-secondary-container) !important;
+}
+
+/* --- 4. GRADIENT OVERRIDES (Neon Theme) --- */
+/* This applies the Pink/Purple/Cyan gradient to the Logo, Dropdown, and Profile Image */
+
+.top-app-bar .logo::before,
+#dropdown-toggle::before,
+.profile-img-wrapper::before {
+    background: conic-gradient(#ff79c6, #bd93f9, #8be9fd, #50fa7b, #ffb86c, #f1fa8c, #ff79c6) !important;
+}

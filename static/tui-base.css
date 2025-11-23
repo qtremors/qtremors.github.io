@@ -1,0 +1,447 @@
+/* ==========================================================================
+   TUI Base Styles & Layout
+   ========================================================================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--background);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* --- Core Layout --- */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    font-family: var(--font-family);
+    color: var(--foreground);
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+a:hover {
+    background-color: var(--primary);
+    color: var(--background);
+}
+
+.prompt {
+    color: var(--green);
+}
+
+.path {
+    color: var(--purple);
+}
+
+.cursor {
+    display: inline-block;
+    width: 0.6em;
+    height: 1.2em;
+    background-color: var(--foreground);
+    animation: blink 1s steps(1) infinite;
+    vertical-align: middle;
+}
+
+header {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.tui-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.tui-nav a {
+    color: var(--foreground);
+}
+
+.tui-nav a:hover,
+.dropdown-container summary:hover {
+    background-color: var(--primary);
+    color: var(--background);
+    border-radius: 3px;
+}
+
+/* --- Dropdowns --- */
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-container summary {
+    list-style: none;
+    cursor: pointer;
+    color: var(--foreground);
+}
+
+.dropdown-container summary::-webkit-details-marker {
+    display: none;
+}
+
+.dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background-color: var(--panel-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.dropdown-options label,
+.dropdown-options .dropdown-link {
+    white-space: nowrap;
+    padding: 0.25rem 0.5rem;
+    color: var(--primary);
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.dropdown-options label:hover,
+.dropdown-options .dropdown-link:hover {
+    border-radius: 3px;
+    background-color: var(--primary);
+    color: var(--background);
+}
+
+/* --- Panels --- */
+.tui-panel {
+    background-color: var(--panel-bg);
+    border: 1px solid var(--border);
+    margin-bottom: 2rem;
+    border-radius: 4px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.tui-panel-header {
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    color: var(--yellow);
+    transition: border-color 0.3s, color 0.3s;
+}
+
+.tui-panel-body {
+    padding: 1.5rem;
+}
+
+/* --- Hero Section --- */
+.hero-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+}
+
+.hero-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.hero-text h1 {
+    font-size: 1.5rem;
+    margin: 0 0 1rem 0;
+    color: var(--green);
+}
+
+.hero-text p {
+    margin: 0;
+    max-width: 60ch;
+}
+
+.cta-button {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--primary);
+    background-color: transparent;
+}
+
+/* --- Content Sections --- */
+.about-text p {
+    margin: 0 0 1rem 0;
+    line-height: 1.6;
+    max-width: 80ch;
+}
+
+.about-text p:last-child {
+    margin-bottom: 0;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.skill-category h3 {
+    color: var(--purple);
+    margin-top: 0;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.skill-category ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skill-category li {
+    margin-bottom: 0.5rem;
+}
+
+.skill-category li::before {
+    content: '>';
+    color: var(--green);
+    margin-right: 0.75rem;
+}
+
+/* --- Portfolio --- */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.portfolio-item {
+    border: 1px dashed var(--border);
+    border-radius: 4px;
+    container-type: inline-size;
+    margin: 0;
+    padding: 1rem;
+}
+
+.portfolio-item h3 {
+    margin: 0 0 0.5rem 0;
+    color: var(--yellow);
+}
+
+.portfolio-item p.description {
+    margin: 0 0 1rem 0;
+    color: var(--muted);
+    max-width: 70ch;
+}
+
+.portfolio-content {
+    margin-top: -1rem;
+}
+
+.portfolio-item legend {
+    color: var(--yellow);
+    font-weight: bold;
+    font-size: 1.1em;
+    padding: 0 0.5rem;
+    margin-left: 1rem;
+}
+
+.tech-badges {
+    max-width: 70ch;
+    margin: 0 0 1rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tech-badges span {
+    border: 2px dotted var(--border);
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+.portfolio-links {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+
+.portfolio-command {
+    display: inline-flex;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
+    transition: background-color 0.2s, color 0.2s;
+    text-decoration: none;
+}
+
+.portfolio-command .command-text {
+    color: var(--primary);
+    transition: color 0.2s;
+}
+
+.portfolio-command:hover {
+    background-color: var(--primary);
+}
+
+.portfolio-command:hover .prompt,
+.portfolio-command:hover .command-text {
+    color: var(--background);
+}
+
+.run-live-container {
+    margin-top: 1rem;
+}
+
+.hidden-toggle {
+    display: none;
+}
+
+.portfolio-output {
+    margin-top: 1rem;
+    display: none;
+}
+
+.hidden-toggle:checked~.portfolio-output {
+    display: block;
+}
+
+.live-link-output {
+    display: inline-block;
+    border: 1px dashed var(--border);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    color: var(--foreground);
+    background-color: var(--panel-bg);
+}
+
+.live-link-output a {
+    color: var(--green);
+    text-decoration: underline;
+}
+
+.live-link-output a:hover {
+    background-color: var(--green);
+    color: var(--background);
+}
+
+/* --- Hidden Projects Toggle Logic --- */
+
+/* 1. Hide the 6th fieldset and onwards by default (the hidden projects) */
+.portfolio-grid fieldset:nth-of-type(n+6) {
+    display: none;
+}
+
+/* --- Hidden Projects Toggle Logic (:target method) --- */
+
+/* 1. Hide the group container by default */
+.hidden-group {
+    display: none;
+}
+
+/* 2. When the URL contains #hidden-projects (clicked), Show it */
+.hidden-group:target {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    /* Matches the main grid gap */
+    animation: fadeInBorder 0.5s ease-in;
+}
+
+/* 3. Button Swapping Logic */
+
+/* By default, hide the 'Hide' button, show the 'Show' button */
+.btn-hide {
+    display: none;
+}
+
+.btn-show {
+    display: inline-flex;
+}
+
+/* When target is active, Hide the 'Show' button */
+#hidden-projects:target~.portfolio-item .btn-show {
+    display: none;
+}
+
+/* When target is active, Show the 'Hide' button */
+#hidden-projects:target~.portfolio-item .btn-hide {
+    display: inline-flex;
+}
+
+
+/* --- Footer & Contact --- */
+.contact-intro {
+    margin-bottom: 1.5rem;
+}
+
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+footer {
+    margin-top: 2rem;
+    color: var(--muted);
+}
+
+
+@media (max-width: 768px) {
+
+    body,
+    .splash-screen {
+        padding: 0.5rem;
+    }
+
+    .container {
+        font-size: 0.9rem;
+    }
+
+    .tui-panel-body {
+        padding: 1rem;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-text {
+        text-align: center;
+        min-width: 100%;
+    }
+
+    .hero-text h1 {
+        font-size: 1.3rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    :root {
+        --font-family: 'Fira Code', monospace;
+        font-size: 14px;
+        /* Slightly smaller base font for mobile TUI */
+    }
+
+    .ascii-art {
+        font-size: 6px;
+        /* Tiny font for ASCII art on phones */
+    }
+}

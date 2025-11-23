@@ -1,0 +1,80 @@
+/* ==========================================================================
+   Theme Configuration
+   ========================================================================== */
+
+/* Hide the inputs used for logic */
+.theme-radio {
+    display: none;
+}
+
+/* --- 1. DRACULA (Default) --- */
+/* Applied to :root for default, and when radio is checked */
+:root,
+#theme-dracula:checked~.container,
+#theme-dracula:checked~.splash-screen {
+    --background: #282a36;
+    --panel-bg: #21222C;
+    --border: #6272a4;
+    --foreground: #f8f8f2;
+    --primary: #ff79c6;
+    /* Fixed typo from original css */
+    --purple: #bd93f9;
+    --green: #50fa7b;
+    --yellow: #f1fa8c;
+    --muted: #6272a4;
+}
+
+/* --- 2. CATPPUCCIN (Macchiato) --- */
+#theme-catppuccin:checked~.container,
+#theme-catppuccin:checked~.splash-screen {
+    --background: #24273a;
+    --panel-bg: #1e2030;
+    --border: #5b6078;
+    --foreground: #cad3f5;
+    --primary: #f5bde6;
+    --purple: #c6a0f6;
+    --green: #a6da95;
+    --yellow: #eed49f;
+    --muted: #5b6078;
+}
+
+/* --- 3. TOKYO NIGHT (New!) --- */
+#theme-tokyo-night:checked~.container,
+#theme-tokyo-night:checked~.splash-screen {
+    --background: #1a1b26;
+    --panel-bg: #24283b;
+    --border: #414868;
+    --foreground: #c0caf5;
+    --primary: #7aa2f7;
+    /* Blue */
+    --purple: #bb9af7;
+    --green: #9ece6a;
+    --yellow: #e0af68;
+    --muted: #565f89;
+}
+
+
+/* ==========================================================================
+   Font Configuration
+   ========================================================================== */
+
+/* Default Fallback */
+:root {
+    --font-family: 'Fira Code', monospace;
+}
+
+/* Hide the inputs used for logic */
+.font-radio {
+    display: none;
+}
+
+/* --- Font Logic --- */
+#font-fira-code:checked~.container,
+#font-fira-code:checked~.splash-screen {
+    --font-family: 'Fira Code', monospace;
+}
+
+#font-roboto-mono:checked~.container,
+#font-roboto-mono:checked~.splash-screen {
+    --font-family: 'Roboto Mono', monospace;
+}

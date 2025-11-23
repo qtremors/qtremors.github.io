@@ -1,0 +1,101 @@
+[
+  {
+    "title": "Quizzer AI",
+    "image": "assets/quizzer-preview.png",
+    "description": "An quiz app that dynamically generates quizzes using Gemini API with personalized questions, instant feedback & explanations for mistakes.",
+    "badges": ["tech-python", "tech-django", "tech-ts", "tech-html", "tech-css", "tech-js"],
+    "links": [
+      { "text": "Website", "url": "https://quizzer-ai-dc4m.onrender.com/", "class": "link-primary" },
+      { "text": "View on GitHub", "url": "https://github.com/qtremors/quizzer-ai", "class": "link-secondary" }
+    ]
+  },
+  {
+    "title": "Algorithm Visualizer",
+    "image": "assets/algorithm-preview.png",
+    "description": "A full-stack app that visualizes algorithms in real time. React (TypeScript) on the front, FastAPI on the back — letting users see each algorithm’s steps as they happen.",
+    "badges": ["tech-react", "tech-ts", "tech-python", "tech-fastapi"],
+    "links": [
+      { "text": "Website", "url": "https://tremors-algoviz.netlify.app", "class": "link-primary" },
+      { "text": "View on GitHub", "url": "https://github.com/qtremors/algorithm-visualizer", "class": "link-secondary" }
+    ]
+  },
+  {
+    "title": "GitNexus",
+    "image": "assets/git-nexus-preview.png",
+    "description": "A powerful, self-hosted web application for exploring GitHub repositories with server-side caching and advanced filtering to bypass API limits.",
+    "badges": ["tech-python", "tech-flask", "tech-js", "tech-html", "tech-css", "tech-sql"],
+    "links": [
+      { "text": "Live Demo", "url": "https://qtremors.github.io/repo-nav", "class": "link-primary" },
+      { "text": "View on GitHub", "url": "https://github.com/qtremors/git-nexus", "class": "link-secondary" }
+    ]
+  },
+  {
+    "title": "Plant Disease Detector",
+    "image": "assets/plant-disease-detector-preview.jpg",
+    "description": "A Django and TensorFlow web app that classifies plant diseases from leaf images, allowing users to upload an image and get health predictions.",
+    "badges": ["tech-django", "tech-tensorflow", "tech-pillow", "tech-numpy", "tech-plotly"],
+    "links": [
+      { "text": "Website", "url": "404/index-404.html", "class": "link-primary" },
+      { "text": "View on GitHub", "url": "https://github.com/qtremors/plant-disease-detector", "class": "link-secondary" }
+    ]
+  },
+  {
+    "title": "Tremors Music Player",
+    "image": "assets/music-preview.png",
+    "description": "A high-performance, local-first desktop music player with a Python backend and a modern React UI — lightning-fast library scanning, smart metadata, lyrics sync, and a premium Apple-Music-style design.",
+    "badges": ["tech-python", "tech-fastapi", "tech-react", "tech-ts", "tech-framermotion"],
+    "links": [
+      { "text": "Website", "url": "404/index-404.html", "class": "link-primary" },
+      { "text": "View on GitHub", "url": "https://github.com/qtremors/tremors-music", "class": "link-secondary" }
+    ]
+  },
+  
+  
+  {
+    "title": "E-commerce Website",
+    "image": "assets/eshopper-preview.jpg",
+    "description": "A fully functional e-commerce site built with Python and Django, using the 'EShopper' template and offering a complete storefront.",
+    "badges": ["tech-django", "tech-html", "tech-css", "tech-js", "tech-sql"],
+    "links": [
+      { "text": "Website", "url": "https://tremors.pythonanywhere.com/", "class": "link-primary" },
+      { "text": "View on GitHub", "url": "https://github.com/qtremors/eshopper", "class": "link-secondary" }
+    ]
+  },
+  {
+    "title": "RepoTree Generator",
+    "image": "assets/rtree-preview.png",
+    "description": "A Git-aware CLI that generates clean directory trees, filtering files using .gitignore so only real source code shows up — no build junk, no clutter.",
+    "badges": ["tech-python", "tech-cli", "tech-git"],
+    "links": [
+      { "text": "View on GitHub", "url": "https://github.com/qtremors/file-tree-generator", "class": "link-primary" }
+    ]
+  },
+  {
+    "title": "PC Remote Control API",
+    "image": "assets/pcrc-preview.png",
+    "description": "A Python + FastAPI tool that lets you control your PC from your phone — media playback, system power, screenshots, and app launching over a clean local web interface.",
+    "badges": ["tech-python", "tech-fastapi", "tech-cli"],
+    "links": [
+      { "text": "View on GitHub", "url": "https://github.com/qtremors/pc-rc", "class": "link-primary" }
+    ]
+  },
+  {
+    "title": "Calculator App (PYgame)",
+    "image": "assets/calculator-preview.jpg",
+    "description": "A fully functional calculator implemented as a single Python script using Pygame with a responsive GUI and persistent history.",
+    "badges": ["tech-python", "tech-pygame"],
+    "links": [
+      { "text": "View on GitHub", "url": "https://github.com/qtremors/pygame-calculator-app", "class": "link-secondary" }
+    ]
+  },
+  {
+    "title": "Nexus",
+    "image": "assets/nexus-preview.png",
+    "description": "A creative landing page designed to navigate through my digital universe by deploying a fleet of spaceships from the space station.",
+    "badges": ["tech-nextjs", "tech-react", "tech-framermotion", "tech-tsparticles", "tech-css"],
+    "links": [
+      { "text": "Website", "url": "https://tremors.vercel.app", "class": "link-primary" },
+      { "text": "View on GitHub", "url": "https://github.com/qtremors/nexus", "class": "link-secondary" }
+    ]
+  }
+]

@@ -2,22 +2,22 @@
 
 This repository hosts my **personal portfolio**, built in two distinct versions:
 
-- 🌇 **[`index.html`](https://qtremors.github.io/)** – Modern, Material Design-inspired UI with animations, dark mode toggle, and interactive elements.
+- 🌇 **[`index.html`](https://qtremors.github.io/)** – Modern, Material Design-inspired UI with animations, dynamic JSON content loading, and a switchable MD3 theme.
 
-- 👾 **[`indextui.html`](https://qtremors.github.io/indextui.html)** – Terminal-inspired TUI with multiple themes, fonts, and a CSS-only splash screen.
+- 👾 **[`tui.html`](https://qtremors.github.io/tui.html)** – Terminal-inspired TUI with multiple themes, fonts, and a CSS-only splash screen.
 
 All versions are **fully responsive**, minimalist, and built with **clean, semantic HTML and CSS**.  
-The TUI version is completely **JavaScript-free**, while the modern version uses **vanilla JS** to enhance user experience.
+The TUI version is completely **JavaScript-free**, utilizing advanced CSS selectors for interactivity, while the modern version uses **vanilla JS** for data fetching and theme logic.
 
 ---
 
 ## 📸 Screenshots
 
 ### 🌇 Material UI [▶](https://qtremors.github.io/) 
-![Modern UI Screenshot](assets/index_ss.png)
+![Modern UI Screenshot](assets/index.png)
 
-### 👾 Terminal TUI [▶](https://qtremors.github.io/indextui.html)
-![Terminal TUI Screenshot](assets/indextui_ss.png)
+### 👾 Terminal TUI [▶](https://qtremors.github.io/tui.html)
+![Terminal TUI Screenshot](assets/tui.png)
 
 ---
 
@@ -25,54 +25,43 @@ The TUI version is completely **JavaScript-free**, while the modern version uses
 
 ### 🌇 Modern UI (`index.html`)
 
-This version focuses on a clean, modern user experience with smooth interactions and a professional aesthetic.
+This version focuses on a scalable, data-driven user experience with a professional aesthetic.
+
+#### **Architecture & Data**
+- **Dynamic Content Loading:** - Projects are no longer hardcoded in HTML. They are fetched dynamically from **`projects.json`** using the Fetch API.
+  - Includes logic for **"Load More" / "Show Less"** to keep the initial load lightweight.
+- **Modular CSS:** - Styles are split into modular files (`variables`, `animations`, `sections`, `navigation`) for better maintainability.
 
 #### **UI & Visual Design**
-- **Layout:** Material Design-inspired, card-based layout that is spacious and clean.
-- **Responsiveness:** Fully responsive design with:
-  - **Mobile:** Bottom navigation bar.
-  - **Desktop:** Top app bar.
-- **Dynamic Theming:** A **JavaScript-powered light/dark mode toggle**.
-- **Custom Theming:** Toggle buttons for applying **custom themes**.   
-  The user's choice is stored in `localStorage` for a **persistent experience**.
-
-#### **UX & Interactivity**
-- **Immersive Navigation:**  
-  - Navigation bars **auto-hide on scroll down** and **reappear on scroll up**.  
-    Implemented with a **debounced scroll listener** in vanilla JS for performance.
-- **Active Section Highlighting:**  
-  - Uses the **IntersectionObserver API** to efficiently detect the current section in view and update active states.
-- **Rich Micro-interactions:**  
-  - **Animated Skill Badges:** Subtle CSS-animated underline on hover.
-  - **Gradient Hover Effects:** Profile picture and header icons have **rotating conic-gradient borders** on hover.
+- **Material Design 3 (MD3) Support:** - Includes a dedicated **MD3 Theme engine** (`md3.css`) that reshapes buttons into "squircles" and applies a new expressive color palette.
+- **Dynamic Theming:** - **JavaScript-powered light/dark mode toggle** with `localStorage` persistence.
+  - **Neon Gradients:** Rotating conic-gradients on the logo and profile picture borders.
+- **Immersive Navigation:** - Navigation bars **auto-hide on scroll down** and **reappear on scroll up** (debounced for performance).
+  - **Active Section Highlighting** using the `IntersectionObserver` API.
 
 ---
 
-### 👾 Terminal UI (`indextui.html`)
+### 👾 Terminal UI (`tui.html`)
 
 This version is a **creative exploration of what's possible with only HTML and CSS**, prioritizing performance and a unique retro aesthetic.
 
 #### **UI & Visual Design**
-- **Retro TUI Aesthetic:**  
-  - Classic command-line look with monospaced fonts, panel-based layout, and prompt-style navigation.
-- **JS-Free Customization:**  
-  - **Themes:** Dracula & Catppuccin  
-  - **Fonts:** Fira Code & Roboto Mono  
-  Achieved using **hidden radio inputs** and the **CSS general sibling combinator (`~`)** (the "checkbox hack").
+- **Retro TUI Aesthetic:** - Classic command-line look with monospaced fonts and prompt-style navigation.
+- **Expanded Themes:** - **Dracula** (Default)
+  - **Catppuccin** (Macchiato)
+  - **Tokyo Night** (New!)  
+  Achieved using **hidden radio inputs** and the **CSS general sibling combinator (`~`)**.
 
 #### **UX & Interactivity**
-- **CSS-Only Animations:**  
-  - Retro ASCII art logo on an animated splash screen simulating a **terminal boot-up sequence**.
-- **JavaScript-Free Interactivity:**  
-  - All interactive elements (e.g., dropdowns using `<details>`) built without JS.
-- **Uncompromising Performance:**  
-  - Zero JavaScript = **lightning-fast loading** and **maximum reliability**.
+- **CSS-Only "Show More":** - Uses the **`:target` CSS pseudo-class** to reveal hidden projects without a single line of JavaScript.
+- **Boot Sequence:** - Animated splash screen simulating a **terminal boot-up** using CSS keyframes.
+- **Uncompromising Performance:** - Zero JavaScript = **lightning-fast loading** and **maximum reliability**.
 
 ---
 
 ## 🚧 Development Status
 This project is a **work in progress**.  
-Some project links under **"Work" / "Portfolio"** may currently lead to an **"Under Construction"** page.  
+Some project links under **"Work" / "Portfolio"** may lead to a custom **404 Page** (`index-404.html` or `tui-404.html`).  
 This is intentional while I continue building and deploying live demos.
 
 ---
@@ -81,9 +70,10 @@ This is intentional while I continue building and deploying live demos.
 
 | Technology   | Usage                                                                 |
 |-------------|------------------------------------------------------------------------|
-| **HTML5**   | Structure & semantics                                                 |
-| **CSS3**    | Layouts, animations, variables, responsive design, JS-free interactivity |
-| **JavaScript** | Only in `index.html` for theme toggle, scroll detection & active links |
+| **HTML5** | Structure & semantics                                                 |
+| **CSS3** | Layouts, variables, animations, MD3 overrides, JS-free interactivity |
+| **JavaScript** | Fetch API (JSON loading), IntersectionObserver, Theme Logic          |
+| **JSON** | Data storage for Portfolio projects                                   |
 
 ---
 
