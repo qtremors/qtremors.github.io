@@ -127,7 +127,8 @@ document.addEventListener('DOMContentLoaded', function () {
           'tech-sql': 'SQL', 'tech-tensorflow': 'TensorFlow', 'tech-pillow': 'Pillow',
           'tech-numpy': 'NumPy', 'tech-plotly': 'Plotly', 'tech-cli': 'CLI',
           'tech-git': 'Git', 'tech-pygame': 'Pygame', 'tech-nextjs': 'NextJs',
-          'tech-framermotion': 'Framer Motion', 'tech-tsparticles': 'tsParticles'
+          'tech-framermotion': 'Framer Motion', 'tech-tsparticles': 'tsParticles',
+          'tech-sqlite': 'SQLite'
       };
       return labels[badgeClass] || badgeClass.replace('tech-', '');
     };
