@@ -22,8 +22,8 @@
   {
     "title": "GitNexus",
     "image": "assets/git-nexus-preview.png",
-    "description": "A powerful, self-hosted web application for exploring GitHub repositories with server-side caching and advanced filtering to bypass API limits.",
-    "badges": ["tech-python", "tech-flask", "tech-js", "tech-html", "tech-css", "tech-sql"],
+    "description": "A powerful, self-hosted web application for monitoring repository updates, managing local downloads, and exploring GitHub profiles.",
+    "badges": ["tech-python", "tech-flask", "tech-js", "tech-html", "tech-css", "tech-sqlite"],
     "links": [
       { "text": "Live Demo", "url": "https://qtremors.github.io/repo-nav", "class": "link-primary" },
       { "text": "View on GitHub", "url": "https://github.com/qtremors/git-nexus", "class": "link-secondary" }
