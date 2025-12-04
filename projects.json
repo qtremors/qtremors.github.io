@@ -67,7 +67,7 @@
     "description": "A Git-aware CLI that generates clean directory trees, filtering files using .gitignore so only real source code shows up — no build junk, no clutter.",
     "badges": ["tech-python", "tech-cli", "tech-git"],
     "links": [
-      { "text": "View on GitHub", "url": "https://github.com/qtremors/file-tree-generator", "class": "link-primary" }
+      { "text": "View on GitHub", "url": "https://github.com/qtremors/rtree", "class": "link-primary" }
     ]
   },
   {
