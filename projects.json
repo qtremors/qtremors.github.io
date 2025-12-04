@@ -71,6 +71,15 @@
     ]
   },
   {
+    "title": "Lines of Code in Repo",
+    "image": "assets/locr-preview.png",
+    "description": "Count lines of code in your repo instantly. No dependencies, no configuration needed.",
+    "badges": ["tech-python", "tech-cli", "tech-git"],
+    "links": [
+      { "text": "View on GitHub", "url": "https://github.com/qtremors/locr", "class": "link-primary" }
+    ]
+  },
+  {
     "title": "PC Remote Control API",
     "image": "assets/pcrc-preview.png",
     "description": "A Python + FastAPI tool that lets you control your PC from your phone — media playback, system power, screenshots, and app launching over a clean local web interface.",
