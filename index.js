@@ -128,41 +128,61 @@ document.addEventListener('DOMContentLoaded', function () {
           'tech-numpy': 'NumPy', 'tech-plotly': 'Plotly', 'tech-cli': 'CLI',
           'tech-git': 'Git', 'tech-pygame': 'Pygame', 'tech-nextjs': 'NextJs',
           'tech-framermotion': 'Framer Motion', 'tech-tsparticles': 'tsParticles',
-          'tech-sqlite': 'SQLite'
+          'tech-sqlite': 'SQLite', 'tech-github': 'Github', 'tech-tailwind': 'Tailwind',
       };
       return labels[badgeClass] || badgeClass.replace('tech-', '');
     };
   
     // Helper: Create the HTML string for a project
-    const createProjectCard = (project, isDynamic = false) => {
-      const dynamicClass = isDynamic ? 'dynamic-project' : '';
-      
-      const badgesHtml = project.badges.map(badge => 
-          `<span class="${badge}">${getBadgeLabel(badge)}</span>`
-      ).join('');
-  
-      const linksHtml = project.links.map(link => 
-          `<a href="${link.url}" target="_blank" rel="noopener noreferrer" class="${link.class}">
-              ${link.text} &rarr;
-          </a>`
-      ).join('');
-  
-      return `
-        <article class="portfolio-item fade-in ${dynamicClass}">
-            <img src="${project.image}" alt="${project.title} Preview" loading="lazy">
-            <div class="portfolio-content">
-                <h3>${project.title}</h3>
-                <p>${project.description}</p>
-                <div class="tech-badges">
-                    ${badgesHtml}
-                </div>
-                <div class="portfolio-links">
-                    ${linksHtml}
-                </div>
-            </div>
-        </article>
-      `;
-    };
+  const createProjectCard = (project, isDynamic = false) => {
+    const dynamicClass = isDynamic ? 'dynamic-project' : '';
+    
+    // Check for WIP status
+    const isWip = project.status === 'wip';
+    const wipClass = isWip ? 'is-wip' : '';
+    
+    // Badge HTML (Optional, but looks good with the theme)
+    const wipBadge = isWip ? '<div class="wip-badge">⚠️ Development</div>' : '';
+
+    const detailUrl = project.id ? `project.html?id=${project.id}` : '#';
+
+    const badgesHtml = project.badges.map(badge => 
+        `<span class="${badge}">${getBadgeLabel(badge)}</span>`
+    ).join('');
+
+    const linksHtml = project.links.map(link => 
+        `<a href="${link.url}" target="_blank" rel="noopener noreferrer" class="${link.class}">
+            ${link.text} &rarr;
+        </a>`
+    ).join('');
+
+    return `
+      <article class="portfolio-item fade-in ${dynamicClass} ${wipClass}">
+          <a href="${detailUrl}" class="project-card-link" style="display:block; cursor:pointer;">
+              
+              <div class="img-wrapper" style="position: relative; overflow: hidden;">
+                  ${wipBadge}
+                  <img src="${project.image}" alt="${project.title} Preview" loading="lazy" style="width: 100%; display: block;">
+              </div>
+
+          </a>
+
+          <div class="portfolio-content">
+              <h3>
+                  <a href="${detailUrl}" style="text-decoration:none; color:inherit;">${project.title}</a>
+              </h3>
+
+              <p>${project.description}</p>
+              <div class="tech-badges">
+                  ${badgesHtml}
+              </div>
+              <div class="portfolio-links">
+                  ${linksHtml}
+              </div>
+          </div>
+      </article>
+    `;
+  };
   
     // Helper: Insert a card BEFORE the static GitHub card
     const insertBeforeGithub = (htmlString) => {
