@@ -337,13 +337,6 @@ header {
     color: var(--background);
 }
 
-/* --- Hidden Projects Toggle Logic --- */
-
-/* 1. Hide the 6th fieldset and onwards by default (the hidden projects) */
-.portfolio-grid fieldset:nth-of-type(n+6) {
-    display: none;
-}
-
 /* --- Hidden Projects Toggle Logic (:target method) --- */
 
 /* 1. Hide the group container by default */
