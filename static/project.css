@@ -141,7 +141,7 @@
     font-family: 'Fira Code', monospace; /* Inherited if available, else monospace */
     font-size: 0.9rem;
     overflow-x: auto;
-    white-space: pre;
+    white-space: pre-wrap;
 }
 
 /* --- Copy Button Styles --- */
