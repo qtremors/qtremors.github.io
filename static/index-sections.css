@@ -304,37 +304,6 @@
     transform: scale(1.05);
 }
 
-/* Tech Badge Colors */
-.tech-react { background-color: #20232A; color: #61DAFB; border-color: #61DAFB;}
-.tech-ts { background-color: #3178C6; color: white;}
-.tech-python { background-color: #306998; color: #FFD43B;}
-.tech-flask { background-color: #333333; color: #FFFFFF; border: 1px solid #FFFFFF;}
-.tech-fastapi { background-color: #009688; color: white;}
-.tech-django { background-color: #092E20; color: #44B78B; border-color: #44B78B;}
-.tech-tensorflow { background-color: #FF6F00; color: white;}
-.tech-pillow { background-color: #9B59B6; color: white;}
-.tech-numpy { background-color: #4D77CF; color: white;}
-.tech-plotly { background-color: #3F51B5; color: white;}
-.tech-html { background-color: #E34F26; color: white;}
-.tech-css { background-color: #1572B6; color: white;}
-.tech-js { background-color: #F7DF1E; color: black;}
-.tech-sql { background-color: #00758F; color: white;}
-.tech-sqlite {background-color: #00758F; color: white;}
-.tech-pygame { background-color: #6E9C45; color: white;}
-.tech-nextjs { background-color: #000000; color: #FFFFFF; border: 1px solid #888888;}
-.tech-framermotion { background-color: #171120; color: #9F40FF; border: 1px solid #9F40FF;}
-.tech-tsparticles { background-color: #111827; color: #38BDF8; border: 1px solid #38BDF8;}
-.tech-git {background-color: #F05033; color: #FFFFFF; border-color: #FFFFFF;}
-.tech-cli { background-color: #2D2D2D; color: #FFFFFF; border-color: #FFFFFF;}
-
-
-body:not([data-theme='light']) .tech-react {
-    background-color: #475569;
-}
-
-body:not([data-theme='light']) .tech-django {
-    background-color: #104F34;
-}
 
 .portfolio-image-container {
     border-bottom: 2px dotted var(--md-outline);
@@ -432,6 +401,79 @@ body:not([data-theme='light']) .tech-django {
 .btn-github:hover {
     transform: translateY(-2px);
     filter: brightness(1.1);
+}
+
+/* ==========================================================================
+   WIP (Work In Progress) Styles
+   ========================================================================== */
+
+/* 1. Base State: Amber Border */
+.portfolio-item.is-wip {
+    border: 1px solid #ffb700 !important; /* Force override grey border */
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+/* 2. Hover State: Radioactive Glow */
+.portfolio-item.is-wip:hover {
+    box-shadow: 0 0 20px rgba(255, 183, 0, 0.4);
+    transform: translateY(-5px);
+}
+
+/* 3. The Badge (Top Right) */
+.wip-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ffb700;
+    color: #000;
+    font-weight: 700;
+    font-size: 0.7rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* 4. The "Construction Zone" Stripes Overlay */
+.portfolio-item.is-wip .img-wrapper::after {
+    content: "CURRENTLY IN DEVELOPMENT";
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    
+    /* The Stripes */
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0.75),
+        rgba(0, 0, 0, 0.75) 20px,
+        rgba(255, 183, 0, 0.75) 20px,
+        rgba(255, 183, 0, 0.75) 40px
+    );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 1rem;
+    color: red;
+    font-weight: 900;
+    font-size: 1.4rem;
+    text-shadow: 2px 2px 0px #000;
+    letter-spacing: 1px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    backdrop-filter: blur(2px);
+}
+
+/* Show stripes on hover */
+.portfolio-item.is-wip:hover .img-wrapper::after {
+    opacity: 1;
 }
 
 /* --- Contact Section --- */
