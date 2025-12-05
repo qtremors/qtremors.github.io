@@ -4,6 +4,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     const params = new URLSearchParams(window.location.search);
     const projectId = params.get('id');
 
+    const backLink = document.querySelector('.back-link');
+    if (backLink) {
+        backLink.addEventListener('click', (e) => {
+            // Only use history.back if the user actually came from index.html (preserves scroll position)
+            if (document.referrer.includes('index.html')) {
+                e.preventDefault();
+                history.back();
+            }
+        });
+    }
+
     // If no ID is in the URL, redirect back to home
     if (!projectId) {
         window.location.href = 'index.html';
@@ -57,8 +68,13 @@ function renderProjectPage(project, allProjects) {
     if (project.image) {
         banner.src = project.image;
         banner.alt = `${project.title} Banner`;
+
+        // Error Handler: If image is 404/broken, hide the container
+        banner.onerror = function() {
+            document.querySelector('.project-banner-wrapper').style.display = 'none';
+        };
     } else {
-        // Hide the banner container if no image exists
+        // Hide the banner container if no image exists in JSON
         document.querySelector('.project-banner-wrapper').style.display = 'none';
     }
 
@@ -173,10 +189,11 @@ function renderProjectPage(project, allProjects) {
                 'tech-python': 'Python', 'tech-django': 'Django', 'tech-ts': 'TypeScript',
                 'tech-html': 'HTML', 'tech-css': 'CSS', 'tech-js': 'JavaScript',
                 'tech-react': 'React', 'tech-fastapi': 'FastAPI', 'tech-flask': 'Flask',
-                'tech-nextjs': 'Next.js', 'tech-framermotion': 'Framer', 'tech-sql': 'SQL',
-                'tech-sqlite': 'SQLite', 'tech-tensorflow': 'TensorFlow', 'tech-pillow': 'Pillow',
+                'tech-sql': 'SQL', 'tech-tensorflow': 'TensorFlow', 'tech-pillow': 'Pillow',
                 'tech-numpy': 'NumPy', 'tech-plotly': 'Plotly', 'tech-cli': 'CLI',
-                'tech-git': 'Git', 'tech-pygame': 'Pygame', 'tech-tsparticles': 'tsParticles'
+                'tech-git': 'Git', 'tech-pygame': 'Pygame', 'tech-nextjs': 'NextJs',
+                'tech-framermotion': 'Framer Motion', 'tech-tsparticles': 'tsParticles',
+                'tech-sqlite': 'SQLite', 'tech-github': 'Github', 'tech-tailwind': 'Tailwind',
             };
             return labels[b] || b.replace('tech-', '').charAt(0).toUpperCase() + b.replace('tech-', '').slice(1);
         };

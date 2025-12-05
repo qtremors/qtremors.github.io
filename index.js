@@ -89,19 +89,54 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  // --- MD3 Theme Logic ---
+  
+  // 1. Get Elements
+  const md3Vars = document.getElementById('md3-vars');
+  const md3Overrides = document.getElementById('md3-overrides');
+  const md3ToggleBtn = document.querySelector('.theme-option');
+  const md3BtnText = document.querySelector('.theme-option .dropdown-title');
 
-  if (md3ThemeToggle) {
-    md3ThemeToggle.addEventListener('click', () => {
-      const currentHref = mainStylesheet.getAttribute('href');
-      const originalTheme = 'static/index.css';
-      const alternateTheme = 'static/md3.css';
+  // Helper: Update button text based on state
+  const updateMd3ButtonText = (isActive) => {
+    if (md3BtnText) {
+        md3BtnText.textContent = isActive ? "Switch to MD" : "Switch to MD3";
+    }
+  };
 
-      if (currentHref && currentHref.includes(alternateTheme)) {
-        mainStylesheet.setAttribute('href', originalTheme);
-        console.log(`Switched stylesheet to: ${originalTheme}`);
+  // 2. Initialize: Check LocalStorage & Set Initial Text
+  if (md3Vars && md3Overrides) {
+    const isMd3Active = localStorage.getItem('use_md3') === 'true';
+    
+    // Set State
+    if (isMd3Active) {
+        md3Vars.disabled = false;
+        md3Overrides.disabled = false;
+    }
+    
+    // Set Text (Runs on both index.html and project.html)
+    updateMd3ButtonText(isMd3Active);
+  }
+
+  // 3. Interaction: Toggle Event Listener (Only if button exists)
+  if (md3ToggleBtn && md3Vars && md3Overrides) {
+    md3ToggleBtn.addEventListener('click', () => {
+      const isDisabled = md3Vars.disabled; // If disabled, MD3 is OFF.
+
+      if (isDisabled) {
+        // Enable MD3
+        md3Vars.disabled = false;
+        md3Overrides.disabled = false;
+        localStorage.setItem('use_md3', 'true');
+        updateMd3ButtonText(true); // Update text
+        console.log('Switched to Material Design 3');
       } else {
-        mainStylesheet.setAttribute('href', alternateTheme);
-        console.log(`Switched stylesheet to: ${alternateTheme}`);
+        // Disable MD3
+        md3Vars.disabled = true;
+        md3Overrides.disabled = true;
+        localStorage.setItem('use_md3', 'false');
+        updateMd3ButtonText(false); // Update text
+        console.log('Switched to Standard Theme');
       }
     });
   }

@@ -1,6 +1,29 @@
 # Changelog
 
 
+## [v1.7.0] - 05-12-2025
+
+### 🚀 **Fixes and Improvements**
+
+- **CSS Performance Refactor:** Completely removed the `@import` "waterfall" structure. Styles are now modular (`base`, `sections`, `animations`) and linked directly in HTML for faster First Contentful Paint (FCP).
+- **SEO Overhaul:** Added comprehensive Open Graph tags, descriptions, and Canonical links to prevent duplicate content penalties between the TUI and Modern versions.
+
+### 🎨 **Theme Engine (MD3)**
+
+- **No-FOUC Theming:** Refactored the Material Design 3 engine to use direct link toggling (via the `disabled` attribute) instead of HREF swapping. This prevents "Flash of Unstyled Content" and ensures instant theme switching.
+- **Variable Mapping:** Standardized the mapping between generic MD3 tokens (`sys-color`) and base variables, allowing the MD3 theme to "infect" the entire site structure seamlessly.
+
+### ⚡ **UX & Logic Enhancements**
+
+- **Smart Navigation History:** The "Back to Portfolio" button on project details pages now detects if the user came from the home page and uses `history.back()` to preserve scroll position and "Load More" states.
+- **Fail-Safe Image Loading:** Implemented error handling in `project.js` to automatically hide banner containers if the image fails to load (404), preventing broken image icons.
+
+### 🐛 **Bug Fixes & Polish**
+
+- **Accessibility (A11y):** Replaced `display: none` on TUI radio inputs with the `clip-path` pattern, making the theme toggles accessible to screen readers.
+
+---
+
 ## [v1.6.0] - 05-12-2025
 
 ### 🚀 **New Feature: Project Detail Pages**

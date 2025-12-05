@@ -138,35 +138,41 @@ h2 {
 }
 
 
-/* Tech Badge Colors */
-.tech-react { background-color: #20232A; color: #61DAFB; border-color: #61DAFB;}
-.tech-ts { background-color: #3178C6; color: white;}
-.tech-python { background-color: #306998; color: #FFD43B;}
-.tech-flask { background-color: #333333; color: #FFFFFF; border: 1px solid #FFFFFF;}
-.tech-fastapi { background-color: #009688; color: white;}
-.tech-django { background-color: #092E20; color: #44B78B; border-color: #44B78B;}
-.tech-tensorflow { background-color: #FF6F00; color: white;}
-.tech-pillow { background-color: #9B59B6; color: white;}
-.tech-numpy { background-color: #4D77CF; color: white;}
-.tech-plotly { background-color: #3F51B5; color: white;}
-.tech-html { background-color: #E34F26; color: white;}
-.tech-css { background-color: #1572B6; color: white;}
-.tech-js { background-color: #F7DF1E; color: black;}
-.tech-sql { background-color: #00758F; color: white;}
-.tech-sqlite {background-color: #00758F; color: white;}
-.tech-pygame { background-color: #6E9C45; color: white;}
-.tech-nextjs { background-color: #000000; color: #FFFFFF; border: 1px solid #888888;}
-.tech-framermotion { background-color: #171120; color: #9F40FF; border: 1px solid #9F40FF;}
-.tech-tsparticles { background-color: #111827; color: #38BDF8; border: 1px solid #38BDF8;}
-.tech-git {background-color: #F05033; color: #FFFFFF; border-color: #FFFFFF;}
-.tech-cli { background-color: #2D2D2D; color: #FFFFFF; border-color: #FFFFFF;}
-.tech-github { background-color: #24292e; color: #ffffff; border: 1px solid #ffffff; }
-.tech-tailwind { background-color: #38B2AC; color: #ffffff; border: 1px solid #ffffff; }
+/* Tech Badge Colors - Flatter, Borderless Design */
+.tech-react { background-color: #20232A; color: #61DAFB; }
+.tech-ts { background-color: #3178C6; color: white; }
+.tech-python { background-color: #3776AB; color: #FFD43B; }
+.tech-flask { background-color: #444444; color: #FFFFFF; } /* Lightened for visibility */
+.tech-fastapi { background-color: #009688; color: white; }
+.tech-django { background-color: #092E20; color: #44B78B; }
+.tech-tensorflow { background-color: #FF6F00; color: white; }
+.tech-pillow { background-color: #9B59B6; color: white; }
+.tech-numpy { background-color: #013243; color: white; }
+.tech-plotly { background-color: #3F51B5; color: white; }
+.tech-html { background-color: #E34F26; color: white; }
+.tech-css { background-color: #1572B6; color: white; }
+.tech-js { background-color: #F7DF1E; color: black; }
+.tech-sql { background-color: #00758F; color: white; }
+.tech-sqlite { background-color: #003B57; color: white; }
+.tech-pygame { background-color: #6E9C45; color: white; }
+.tech-nextjs { background-color: #111111; color: #FFFFFF; } /* Pure black sometimes disappears */
+.tech-framermotion { background-color: #2D1A38; color: #9F40FF; }
+.tech-tsparticles { background-color: #0d1117; color: #38BDF8; }
+.tech-git { background-color: #F05033; color: #FFFFFF; }
+.tech-cli { background-color: #2D2D2D; color: #FFFFFF; }
+.tech-github { background-color: #24292e; color: #ffffff; }
+.tech-tailwind { background-color: #38B2AC; color: #ffffff; }
 
-body:not([data-theme='light']) .tech-react {background-color: #475569;}
-body:not([data-theme='light']) .tech-django {background-color: #104F34;}
+/* Dark Mode Adjustments for contrast */
+body:not([data-theme='light']) .tech-react { background-color: #282c34; }
+body:not([data-theme='light']) .tech-django { background-color: #0c4b33; }
+body:not([data-theme='light']) .tech-nextjs { background-color: #222; } 
+body:not([data-theme='light']) .tech-flask { background-color: #555; }
+
+/* Light Mode Overrides */
 body[data-theme='light'] .tech-github { background-color: #111111; color: #ffffff; }
 body[data-theme='light'] .tech-tailwind { background-color: #0ea5a4; color: #ffffff; }
+body[data-theme='light'] .tech-nextjs { background-color: #000; }
 
 
 @media (min-width: 769px) {
