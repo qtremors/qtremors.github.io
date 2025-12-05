@@ -1,3 +1,35 @@
+# Changelog
+
+
+## [v1.6.0] - 05-12-2025
+
+### 🚀 **New Feature: Project Detail Pages**
+
+- **Deep Linking:** Clicking any project card now opens a dedicated detail page (`project.html?id=...`).
+    
+- **Rich Data:** Expanded `projects.json` to support `longDescription`, `features`, and `installation` fields.
+    
+- **Responsive Layout:**
+    
+    - **Desktop:** Split-view with sticky sidebar and full-width banners.
+        
+    - **Mobile:** Optimized stacking order (Banner → Links → Overview) for immediate access to actions.
+        
+- **Navigation:** Added an infinite-loop "Previous / Next" project navigation footer with preview cards.
+    
+
+### 🎨 **UI Improvements**
+
+- **Portfolio Effects:** Added a `In Development Warning` effect to portfolio cards if they have `wip` id in the json.
+
+- **Card Design:** Implemented "Tech Spec" style feature lists with accent bars.
+    
+- **Micro-interactions:** Added copy-to-clipboard functionality for installation code blocks.
+    
+- **Dynamic Icons:** SVG icons in the sidebar now automatically adapt based on link type (GitHub vs. Web).
+
+---
+
 ## [v1.5.0] - 23-11-2025
 
 ### 🚀 **Major Architectural Changes**

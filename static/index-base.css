@@ -46,6 +46,129 @@ h2 {
     margin-bottom: 3rem;
 }
 
+
+/* ==========================================================================
+   ------- No Script -------
+   ========================================================================== */
+.no-js-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.no-js-modal {
+    background: rgba(30, 31, 33, 0.70);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+
+    color: #e8eaed;
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center;
+    max-width: 450px;
+    margin: 0 1rem;
+}
+
+.no-js-modal h2 {
+    margin-top: 0;
+    color: #8ab4f8;
+    margin-bottom: 1rem;
+}
+
+.no-js-modal p {
+    color: #9aa0a6;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.no-js-list {
+    text-align: left;
+    color: #9aa0a6;
+    margin: 0 auto 1.5rem auto;
+    width: fit-content;
+    line-height: 1.6;
+}
+
+.no-js-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.no-js-btn {
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: filter 0.2s;
+}
+
+.btn-yes {
+    background-color: #8ab4f8;
+    color: #202124;
+    border: none;
+}
+
+.btn-no {
+    background-color: transparent;
+    border: 1px solid #5f6368;
+    color: #e8eaed;
+}
+
+.no-js-btn:hover {
+    filter: brightness(1.1);
+}
+
+#no-js-toggle {
+    display: none;
+}
+
+#no-js-toggle:checked+.no-js-overlay {
+    display: none;
+}
+
+
+/* Tech Badge Colors */
+.tech-react { background-color: #20232A; color: #61DAFB; border-color: #61DAFB;}
+.tech-ts { background-color: #3178C6; color: white;}
+.tech-python { background-color: #306998; color: #FFD43B;}
+.tech-flask { background-color: #333333; color: #FFFFFF; border: 1px solid #FFFFFF;}
+.tech-fastapi { background-color: #009688; color: white;}
+.tech-django { background-color: #092E20; color: #44B78B; border-color: #44B78B;}
+.tech-tensorflow { background-color: #FF6F00; color: white;}
+.tech-pillow { background-color: #9B59B6; color: white;}
+.tech-numpy { background-color: #4D77CF; color: white;}
+.tech-plotly { background-color: #3F51B5; color: white;}
+.tech-html { background-color: #E34F26; color: white;}
+.tech-css { background-color: #1572B6; color: white;}
+.tech-js { background-color: #F7DF1E; color: black;}
+.tech-sql { background-color: #00758F; color: white;}
+.tech-sqlite {background-color: #00758F; color: white;}
+.tech-pygame { background-color: #6E9C45; color: white;}
+.tech-nextjs { background-color: #000000; color: #FFFFFF; border: 1px solid #888888;}
+.tech-framermotion { background-color: #171120; color: #9F40FF; border: 1px solid #9F40FF;}
+.tech-tsparticles { background-color: #111827; color: #38BDF8; border: 1px solid #38BDF8;}
+.tech-git {background-color: #F05033; color: #FFFFFF; border-color: #FFFFFF;}
+.tech-cli { background-color: #2D2D2D; color: #FFFFFF; border-color: #FFFFFF;}
+.tech-github { background-color: #24292e; color: #ffffff; border: 1px solid #ffffff; }
+.tech-tailwind { background-color: #38B2AC; color: #ffffff; border: 1px solid #ffffff; }
+
+body:not([data-theme='light']) .tech-react {background-color: #475569;}
+body:not([data-theme='light']) .tech-django {background-color: #104F34;}
+body[data-theme='light'] .tech-github { background-color: #111111; color: #ffffff; }
+body[data-theme='light'] .tech-tailwind { background-color: #0ea5a4; color: #ffffff; }
+
+
 @media (min-width: 769px) {
     body {
         padding-bottom: 0;

@@ -1,0 +1,398 @@
+/* =========================================
+   PROJECT PAGE SPECIFIC STYLES
+   ========================================= */
+
+.project-mode-main {
+    padding-top: 2rem;
+}
+
+.project-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* --- Navigation --- */
+.back-link {
+    display: inline-block;
+    color: var(--md-primary);
+    text-decoration: none;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    transition: transform 0.2s;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+    transform: translateX(-5px);
+}
+
+/* --- Header --- */
+.project-header {
+    margin-bottom: 2.5rem;
+}
+
+.project-subtitle {
+    color: var(--md-primary);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+}
+
+.project-title {
+    font-size: 3rem;
+    line-height: 1.1;
+    margin: 0;
+    color: var(--md-on-surface);
+}
+
+/* --- Grid Layout --- */
+.project-grid {
+    display: grid;
+    /* Ratio: roughly 2/3 content, 1/3 sidebar */
+    grid-template-columns: 1fr 300px; 
+    gap: 3rem;
+    align-items: start;
+    margin-bottom: 4rem;
+}
+
+/* --- Banner --- */
+.project-banner-wrapper {
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--md-outline);
+    box-shadow: 0 10px 30px var(--md-shadow-color);
+    margin-bottom: 2.5rem;
+    background-color: var(--md-surface-variant);
+}
+
+.project-banner {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* --- Main Content Area --- */
+.content-section {
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    color: var(--md-on-surface);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--md-outline);
+}
+
+.text-body {
+    color: var(--md-on-surface-variant);
+    line-height: 1.8;
+    font-size: 1.05rem;
+    white-space: pre-line;
+}
+
+/* --- Feature List --- */
+.features-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    padding: 0; 
+    margin: 0;
+}
+
+.features-list li {
+    position: relative;
+    background-color: var(--md-surface-variant);
+    padding: 1.25rem 1.5rem;
+    border-radius: 8px; 
+    border: 1px solid transparent;
+    list-style: none;
+    border-left: 4px solid var(--md-primary);
+    color: var(--md-on-surface);
+    font-weight: 500;
+    line-height: 1.5;
+    font-size: 0.95rem;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Hover Effect: Lift and Glow */
+.features-list li:hover {
+    transform: translateY(-3px);
+    background-color: var(--md-surface);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border-top: 1px solid var(--md-outline);
+    border-right: 1px solid var(--md-outline);
+    border-bottom: 1px solid var(--md-outline);
+}
+
+/* Code Block / Installation */
+.code-block {
+    background: #1e1e1e; /* Always dark for code */
+    color: #d4d4d4;
+    border: 1px solid var(--md-outline);
+    padding: 1.5rem;
+    border-radius: 12px;
+    font-family: 'Fira Code', monospace; /* Inherited if available, else monospace */
+    font-size: 0.9rem;
+    overflow-x: auto;
+    white-space: pre;
+}
+
+/* --- Copy Button Styles --- */
+.code-block-wrapper {
+    position: relative;
+    margin-top: 1rem;
+}
+
+.copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--md-outline);
+    color: var(--md-on-surface-variant);
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.copy-btn:hover {
+    background: var(--md-primary);
+    color: var(--md-on-primary);
+    border-color: var(--md-primary);
+}
+
+/* --- Footer Navigation (Detailed Cards) --- */
+.project-footer-nav {
+    margin-top: 6rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--md-outline);
+    width: 100%;
+    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.nav-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background-color: var(--md-surface-variant);
+    border: 1px solid var(--md-outline);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    overflow: hidden;
+}
+
+.nav-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--md-primary);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    background-color: var(--md-surface);
+}
+
+/* Square Image */
+.nav-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 1px solid rgba(255,255,255,0.1);
+    flex-shrink: 0; /* Prevent squishing */
+}
+
+/* Content Column */
+.nav-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    min-width: 0; /* Fix for text-overflow in Flexbox */
+}
+
+.nav-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.nav-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--md-primary);
+    font-weight: 700;
+}
+
+.nav-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--md-on-surface);
+    margin: 0 0 0.5rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nav-desc {
+    font-size: 0.9rem;
+    color: var(--md-on-surface-variant);
+    margin: 0;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit to 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Mini Badges */
+.nav-badges {
+    display: flex;
+    margin-left: auto;
+    gap: 6px;
+}
+
+.mini-badge {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    .project-footer-nav {
+        grid-template-columns: 1fr; /* Stack vertically */
+        gap: 1.5rem;
+    }
+    
+    .nav-card {
+        padding: 1rem;
+    }
+    
+    .nav-img {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+/* --- Sidebar --- */
+.sidebar-card {
+    background-color: var(--md-surface-variant);
+    border: 1px solid var(--md-outline);
+    border-radius: 16px;
+    padding: 1.5rem;
+    position: sticky;
+    top: 90px;
+    box-shadow: 0 4px 12px var(--md-shadow-color);
+}
+
+.sidebar-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--md-on-surface-variant);
+    margin: 0 0 1rem 0;
+    font-weight: 700;
+}
+
+.sidebar-separator {
+    height: 1px;
+    background: var(--md-outline);
+    margin: 1.5rem 0;
+    opacity: 0.5;
+}
+
+/* Sidebar Buttons */
+.sidebar-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.85rem 1rem;
+    margin-bottom: 0.75rem;
+    background-color: var(--md-surface);
+    border: 1px solid var(--md-outline);
+    border-radius: 8px;
+    color: var(--md-on-surface);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.sidebar-btn .btn-left-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sidebar-btn .btn-arrow {
+    opacity: 0.5;
+    font-size: 1.1em;
+    transition: transform 0.2s;
+}
+
+.sidebar-btn:hover {
+    background-color: var(--md-primary);
+    color: var(--md-on-primary);
+    border-color: var(--md-primary);
+    transform: translateY(-2px);
+}
+
+.sidebar-btn:hover .btn-arrow {
+    opacity: 1;
+    transform: translate(2px, -2px);
+}
+
+.sidebar-btn svg {
+    flex-shrink: 0;
+}
+
+/* Tech Tags */
+.project-container .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* --- Mobile / Responsive --- */
+@media (max-width: 900px) {
+    /* Switch Grid to Flex Column */
+    .project-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .sidebar-col {
+        order: 0; 
+        width: 100%;
+    }
+    
+    .sidebar-card {
+        position: static;
+        margin-top: 0;
+    }
+
+    .project-title {
+        font-size: 2.25rem;
+    }
+    
+    .next-project-link {
+        width: 100%;
+    }
+}
