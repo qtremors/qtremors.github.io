@@ -189,8 +189,10 @@
                 <div class="tui-panel-header">
                     /var/log/portfolio.log
                 </div>
-                <div class="tui-panel-body portfolio-grid">
 
+                <!-- PROJECTS START -->
+                 
+                <div class="tui-panel-body portfolio-grid">
                     <fieldset class="portfolio-item">
                         <legend>Quizzer AI</legend>
                         <div class="portfolio-content">
@@ -209,16 +211,48 @@
                                     <span class="command-text">git show HEAD</span>
                                 </a>
                             </div>
-
                             <div class="run-live-container">
-                                <input type="checkbox" id="run-live-toggle-quizzer" class="hidden-toggle">
-                                <label for="run-live-toggle-quizzer" class="portfolio-command">
+                                <input type="checkbox" id="run-live-toggle-quizzer-ai" class="hidden-toggle">
+                                <label for="run-live-toggle-quizzer-ai" class="portfolio-command">
                                     <span class="prompt">$</span>
                                     <span class="command-text">./run-live</span>
                                 </label>
                                 <div class="portfolio-output">
                                     <div class="live-link-output">
                                         server running on <a href="https://quizzer-ai-dc4m.onrender.com/" target="_blank" rel="noopener noreferrer">https://quizzer-ai-dc4m.onrender.com/</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="portfolio-item">
+                        <legend>GitNexus</legend>
+                        <div class="portfolio-content">
+                            <p>A powerful, self-hosted web application for monitoring repository updates, managing local downloads, and exploring GitHub profiles.</p>
+                            <div class="tech-badges">
+                                <span>Python</span>
+                                <span>Flask</span>
+                                <span>JavaScript</span>
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>SQLite</span>
+                            </div>
+                            <div class="portfolio-links">
+                                <a href="https://github.com/qtremors/git-nexus" target="_blank" rel="noopener noreferrer" class="portfolio-command">
+                                    <span class="prompt">$</span>
+                                    <span class="command-text">git show HEAD</span>
+                                </a>
+                            </div>
+                            <div class="run-live-container">
+                                <input type="checkbox" id="run-live-toggle-git-nexus" class="hidden-toggle">
+                                <label for="run-live-toggle-git-nexus" class="portfolio-command">
+                                    <span class="prompt">$</span>
+                                    <span class="command-text">./run-live</span>
+                                </label>
+                                <div class="portfolio-output">
+                                    <div class="live-link-output">
+                                        server running on <a href="https://qtremors.github.io/repo-nav" target="_blank" rel="noopener noreferrer">https://qtremors.github.io/repo-nav</a>
                                     </div>
                                 </div>
                             </div>
@@ -241,83 +275,15 @@
                                     <span class="command-text">git show HEAD</span>
                                 </a>
                             </div>
-
                             <div class="run-live-container">
-                                <input type="checkbox" id="run-live-toggle-algoviz" class="hidden-toggle">
-                                <label for="run-live-toggle-algoviz" class="portfolio-command">
+                                <input type="checkbox" id="run-live-toggle-algorithm-visualizer" class="hidden-toggle">
+                                <label for="run-live-toggle-algorithm-visualizer" class="portfolio-command">
                                     <span class="prompt">$</span>
                                     <span class="command-text">./run-live</span>
                                 </label>
                                 <div class="portfolio-output">
                                     <div class="live-link-output">
                                         server running on <a href="https://tremors-algoviz.netlify.app" target="_blank" rel="noopener noreferrer">https://tremors-algoviz.netlify.app</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </fieldset>
-
-                    <fieldset class="portfolio-item">
-                        <legend>GitNexus</legend>
-                        <div class="portfolio-content">
-                            <p>A powerful, self-hosted web application for exploring GitHub repositories with server-side caching and advanced filtering to bypass API limits.</p>
-                            <div class="tech-badges">
-                                <span>Python</span>
-                                <span>Flask</span>
-                                <span>JavaScript</span>
-                                <span>HTML</span>
-                                <span>CSS</span>
-                                <span>SQLite</span>
-                            </div>
-                            <div class="portfolio-links">
-                                <a href="https://github.com/qtremors/git-nexus" target="_blank" rel="noopener noreferrer" class="portfolio-command">
-                                    <span class="prompt">$</span>
-                                    <span class="command-text">git show HEAD</span>
-                                </a>
-                            </div>
-
-                            <div class="run-live-container">
-                                <input type="checkbox" id="run-live-toggle-gitnexus" class="hidden-toggle">
-                                <label for="run-live-toggle-gitnexus" class="portfolio-command">
-                                    <span class="prompt">$</span>
-                                    <span class="command-text">./run-live</span>
-                                </label>
-                                <div class="portfolio-output">
-                                    <div class="live-link-output">
-                                        server running on <a href="https://qtremors.github.io/repo-nav" target="_blank" rel="noopener noreferrer">https://qtremors.github.io/repo-nav</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </fieldset>
-
-                    <fieldset class="portfolio-item">
-                        <legend>Plant Disease Detector</legend>
-                        <div class="portfolio-content">
-                            <p>A Django and TensorFlow web app that classifies plant diseases from leaf images, allowing users to upload an image and get health predictions.</p>
-                            <div class="tech-badges">
-                                <span>Django</span>
-                                <span>TensorFlow</span>
-                                <span>Pillow</span>
-                                <span>NumPy</span>
-                                <span>Plotly</span>
-                            </div>
-                            <div class="portfolio-links">
-                                <a href="https://github.com/qtremors/plant-disease-detector" target="_blank" rel="noopener noreferrer" class="portfolio-command">
-                                    <span class="prompt">$</span>
-                                    <span class="command-text">git show HEAD</span>
-                                </a>
-                            </div>
-
-                            <div class="run-live-container">
-                                <input type="checkbox" id="run-live-toggle-pdd" class="hidden-toggle">
-                                <label for="run-live-toggle-pdd" class="portfolio-command">
-                                    <span class="prompt">$</span>
-                                    <span class="command-text">./run-live</span>
-                                </label>
-                                <div class="portfolio-output">
-                                    <div class="live-link-output">
-                                        server running on <a href="404/tui-404.html">404/tui-404.html</a>
                                     </div>
                                 </div>
                             </div>
@@ -341,22 +307,54 @@
                                     <span class="command-text">git show HEAD</span>
                                 </a>
                             </div>
-
                             <div class="run-live-container">
-                                <input type="checkbox" id="run-live-toggle-music" class="hidden-toggle">
-                                <label for="run-live-toggle-music" class="portfolio-command">
+                                <input type="checkbox" id="run-live-toggle-tremors-music" class="hidden-toggle">
+                                <label for="run-live-toggle-tremors-music" class="portfolio-command">
                                     <span class="prompt">$</span>
                                     <span class="command-text">./run-live</span>
                                 </label>
                                 <div class="portfolio-output">
                                     <div class="live-link-output">
-                                        server running on <a href="404/tui-404.html" target="_blank" rel="noopener noreferrer">404/tui-404.html</a>
+                                        server running on <a href="404/index-404.html" target="_blank" rel="noopener noreferrer">404/index-404.html</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </fieldset>
 
+                    <fieldset class="portfolio-item">
+                        <legend>Plant Disease Detector</legend>
+                        <div class="portfolio-content">
+                            <p>A Django and TensorFlow web app that classifies plant diseases from leaf images, allowing users to upload an image and get health predictions.</p>
+                            <div class="tech-badges">
+                                <span>Django</span>
+                                <span>TensorFlow</span>
+                                <span>Pillow</span>
+                                <span>NumPy</span>
+                                <span>Plotly</span>
+                            </div>
+                            <div class="portfolio-links">
+                                <a href="https://github.com/qtremors/plant-disease-detector" target="_blank" rel="noopener noreferrer" class="portfolio-command">
+                                    <span class="prompt">$</span>
+                                    <span class="command-text">git show HEAD</span>
+                                </a>
+                            </div>
+                            <div class="run-live-container">
+                                <input type="checkbox" id="run-live-toggle-plant-disease-detector" class="hidden-toggle">
+                                <label for="run-live-toggle-plant-disease-detector" class="portfolio-command">
+                                    <span class="prompt">$</span>
+                                    <span class="command-text">./run-live</span>
+                                </label>
+                                <div class="portfolio-output">
+                                    <div class="live-link-output">
+                                        server running on <a href="404/index-404.html" target="_blank" rel="noopener noreferrer">404/index-404.html</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- HIDDEN PROJECTS START -->
                     <div id="hidden-projects" class="hidden-group">
 
                         <fieldset class="portfolio-item">
@@ -376,10 +374,9 @@
                                         <span class="command-text">git show HEAD</span>
                                     </a>
                                 </div>
-
                                 <div class="run-live-container">
-                                    <input type="checkbox" id="run-live-toggle-ecommerce" class="hidden-toggle">
-                                    <label for="run-live-toggle-ecommerce" class="portfolio-command">
+                                    <input type="checkbox" id="run-live-toggle-eshopper" class="hidden-toggle">
+                                    <label for="run-live-toggle-eshopper" class="portfolio-command">
                                         <span class="prompt">$</span>
                                         <span class="command-text">./run-live</span>
                                     </label>
@@ -393,27 +390,9 @@
                         </fieldset>
 
                         <fieldset class="portfolio-item">
-                            <legend>RTREE</legend>
+                            <legend>Lines of Code in Repo</legend>
                             <div class="portfolio-content">
-                                <p>A Git-aware CLI that generates clean directory trees, filtering files using .gitignore so only real source code shows up — no build junk, no clutter.</p>
-                                <div class="tech-badges">
-                                    <span>Python</span>
-                                    <span>CLI</span>
-                                    <span>Git</span>
-                                </div>
-                                <div class="portfolio-links">
-                                    <a href="https://github.com/qtremors/rtree" target="_blank" rel="noopener noreferrer" class="portfolio-command">
-                                        <span class="prompt">$</span>
-                                        <span class="command-text">git show HEAD</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </fieldset>
-
-                        <fieldset class="portfolio-item">
-                            <legend>LOCR</legend>
-                            <div class="portfolio-content">
-                                <p>Count lines of code in your repo instantly. No dependencies, no configuration needed.</p>
+                                <p>A Git-aware CLI that counts lines of code in your repo instantly. No dependencies(just python), no configuration needed.</p>
                                 <div class="tech-badges">
                                     <span>Python</span>
                                     <span>CLI</span>
@@ -447,6 +426,44 @@
                         </fieldset>
 
                         <fieldset class="portfolio-item">
+                            <legend>RepoTree Generator</legend>
+                            <div class="portfolio-content">
+                                <p>A Git-aware CLI that generates clean directory trees, filtering files using .gitignore so only real source code shows up — no build junk, no clutter.</p>
+                                <div class="tech-badges">
+                                    <span>Python</span>
+                                    <span>CLI</span>
+                                    <span>Git</span>
+                                </div>
+                                <div class="portfolio-links">
+                                    <a href="https://github.com/qtremors/rtree" target="_blank" rel="noopener noreferrer" class="portfolio-command">
+                                        <span class="prompt">$</span>
+                                        <span class="command-text">git show HEAD</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="portfolio-item">
+                            <legend>Local Team Chat</legend>
+                            <div class="portfolio-content">
+                                <p>A self-hosted, real-time messaging platform for local LAN networks, featuring DMs and Group chats.</p>
+                                <div class="tech-badges">
+                                    <span>Python</span>
+                                    <span>FastAPI</span>
+                                    <span>React</span>
+                                    <span>TypeScript</span>
+                                    <span>SQL</span>
+                                </div>
+                                <div class="portfolio-links">
+                                    <a href="https://github.com/qtremors/team-chat-app" target="_blank" rel="noopener noreferrer" class="portfolio-command">
+                                        <span class="prompt">$</span>
+                                        <span class="command-text">git show HEAD</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="portfolio-item">
                             <legend>Calculator App (PYgame)</legend>
                             <div class="portfolio-content">
                                 <p>A fully functional calculator implemented as a single Python script using Pygame with a responsive GUI and persistent history.</p>
@@ -456,6 +473,26 @@
                                 </div>
                                 <div class="portfolio-links">
                                     <a href="https://github.com/qtremors/pygame-calculator-app" target="_blank" rel="noopener noreferrer" class="portfolio-command">
+                                        <span class="prompt">$</span>
+                                        <span class="command-text">git show HEAD</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="portfolio-item">
+                            <legend>Earnslate Finance</legend>
+                            <div class="portfolio-content">
+                                <p>A modern PWA for personal finance tracking with budget management, analytics, and subscription monitoring.</p>
+                                <div class="tech-badges">
+                                    <span>Next.js</span>
+                                    <span>TypeScript</span>
+                                    <span>SQL</span>
+                                    <span>Tailwind</span>
+                                    <span>React</span>
+                                </div>
+                                <div class="portfolio-links">
+                                    <a href="https://github.com/qtremors/earnslate" target="_blank" rel="noopener noreferrer" class="portfolio-command">
                                         <span class="prompt">$</span>
                                         <span class="command-text">git show HEAD</span>
                                     </a>
@@ -480,7 +517,6 @@
                                         <span class="command-text">git show HEAD</span>
                                     </a>
                                 </div>
-
                                 <div class="run-live-container">
                                     <input type="checkbox" id="run-live-toggle-nexus" class="hidden-toggle">
                                     <label for="run-live-toggle-nexus" class="portfolio-command">
@@ -495,6 +531,39 @@
                                 </div>
                             </div>
                         </fieldset>
+
+                        <fieldset class="portfolio-item">
+                            <legend>The Scrapyard</legend>
+                            <div class="portfolio-content">
+                                <p>A 3D scroll-based archive for abandoned project ideas, visualizing them as scattered notes.</p>
+                                <div class="tech-badges">
+                                    <span>HTML</span>
+                                    <span>CSS</span>
+                                    <span>JavaScript</span>
+                                    <span>GitHub</span>
+                                </div>
+                                <div class="portfolio-links">
+                                    <a href="https://github.com/qtremors/scrap" target="_blank" rel="noopener noreferrer" class="portfolio-command">
+                                        <span class="prompt">$</span>
+                                        <span class="command-text">git show HEAD</span>
+                                    </a>
+                                </div>
+                                <div class="run-live-container">
+                                    <input type="checkbox" id="run-live-toggle-scrapped-projects" class="hidden-toggle">
+                                    <label for="run-live-toggle-scrapped-projects" class="portfolio-command">
+                                        <span class="prompt">$</span>
+                                        <span class="command-text">./run-live</span>
+                                    </label>
+                                    <div class="portfolio-output">
+                                        <div class="live-link-output">
+                                            server running on <a href="https://qtremors.github.io/scrap" target="_blank" rel="noopener noreferrer">https://qtremors.github.io/scrap</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <!-- ALL PROJECTS END -->
 
                     </div>
                     <div class="portfolio-item">
