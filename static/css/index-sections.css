@@ -140,6 +140,10 @@ section::before {
     font-size: 2.75rem;
     color: var(--md-primary);
     margin-bottom: 1rem;
+    min-height: 2.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .hero p {
@@ -184,6 +188,18 @@ section::before {
     .hero p {
         font-size: 1.4rem;
         max-width: 1000px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .hero {
+        padding-bottom: 150px; 
+    }
+
+    .hero h1 {
+        font-size: 2.25rem;
+        min-height: 5.5rem; 
     }
 }
 
