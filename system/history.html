@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History | Tremors</title>
+    <link rel="icon" type="image/png" href="../assets/history.png">
+
+    <link rel="stylesheet" href="../static/css/index-variables.css">
+    <link rel="stylesheet" href="../static/css/index-animations.css">
+    <link rel="stylesheet" href="../static/css/index-base.css">
+    <link rel="stylesheet" href="../static/css/index-navigation.css">
+    <link rel="stylesheet" href="../static/css/index-sections.css">
+
+    <link rel="stylesheet" href="../static/css/md3-variables.css" id="md3-vars" disabled>
+    <link rel="stylesheet" href="../static/css/md3-overrides.css" id="md3-overrides" disabled>
+
+    <style>
+        /* --- TIMELINE SPECIFIC STYLES --- */
+        body { padding-top: 80px; }
+        
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .timeline-header h1 {
+            font-size: 3rem;
+            color: var(--md-primary);
+            margin-bottom: 0.5rem;
+        }
+        .timeline-header p {
+            color: var(--md-on-surface-variant);
+        }
+
+        /* The Line */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 20px;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, var(--md-outline), transparent);
+        }
+
+        /* The Cards */
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 60px;
+        }
+
+        /* The Dot */
+        .timeline-marker {
+            position: absolute;
+            left: 11px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--md-background);
+            border: 4px solid var(--md-primary);
+            z-index: 2;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .timeline-item:hover .timeline-marker {
+            transform: scale(1.2);
+            box-shadow: 0 0 15px var(--md-primary);
+        }
+
+        /* Content Box */
+        .timeline-content {
+            background-color: var(--md-surface-variant);
+            border: 1px solid var(--md-outline);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: transform 0.2s;
+        }
+        
+        .timeline-item:hover .timeline-content {
+            transform: translateX(5px);
+            border-color: var(--md-primary);
+        }
+
+        .version-tag {
+            display: inline-block;
+            background-color: var(--md-primary);
+            color: var(--md-on-primary);
+            padding: 4px 12px;
+            border-radius: 99px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-date {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--md-on-surface-variant);
+            margin-bottom: 1rem;
+            font-family: monospace;
+        }
+
+        .commit-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .commit-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--md-on-surface);
+            line-height: 1.6;
+        }
+
+        .commit-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--md-primary);
+        }
+
+        /* MD3 Morphing for dots */
+        body[data-style-mode="md3"] .timeline-marker {
+            border-radius: 4px;
+        }
+        
+        @media (min-width: 768px) {
+            .timeline::before { left: 50%; }
+            
+            .timeline-item {
+                width: 50%;
+                padding-left: 0;
+                padding-right: 40px;
+                box-sizing: border-box;
+            }
+            
+            .timeline-item:nth-child(even) {
+                margin-left: 50%;
+                padding-left: 40px;
+                padding-right: 0;
+            }
+
+            .timeline-marker {
+                left: 50%;
+                margin-left: -9px;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content { text-align: right; }
+            .timeline-item:nth-child(even) .timeline-content { text-align: left; }
+            .timeline-item:nth-child(odd) .commit-list li {
+                padding-left: 0; padding-right: 1.5rem;
+            }
+            .timeline-item:nth-child(odd) .commit-list li::before {
+                left: auto; right: 0; content: '◃';
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="top-app-bar">
+        <a href="../index.html" class="logo"><img src="../assets/logo.gif" alt="Logo"></a>
+        <nav class="desktop-nav">
+            <a href="../index.html" class="nav-item">Back to Home</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="timeline-header">
+            <h1>Architecture Evolution</h1>
+            <p>From static HTML (v0) to a Modular Engine (v2)</p>
+        </div>
+
+        <div class="video-wrapper" style="max-width: 800px; margin: 0 auto 4rem auto; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px var(--md-shadow-color);">
+            <video width="100%" height="auto" controls autoplay muted loop playsinline style="display: block;">
+                <source src="../assets/v0.0.0-v2.0.0.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <span class="version-tag">v2.0.0</span>
+                    <span class="timeline-date">Dec 06, 2025</span>
+                    <h3>The Architecture Overhaul</h3>
+                    <ul class="commit-list">
+                        <li><strong>Decoupled JS:</strong> Split monolithic logic into <code>home.js</code>, <code>project.js</code>, and <code>extras.js</code>.</li>
+                        <li><strong>Smart Terminal:</strong> Added interactive OS-aware terminal widget to project pages.</li>
+                        <li><strong>Universal Fog:</strong> Implemented context-aware background blending system.</li>
+                        <li><strong>Performance:</strong> Removed CSS @imports and added scroll debouncing.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <span class="version-tag">v1.5.0 - v1.9.0</span>
+                    <span class="timeline-date">Nov 2025</span>
+                    <h3>The Feature Surge</h3>
+                    <ul class="commit-list">
+                        <li><strong>MD3 Engine:</strong> Built a custom theme engine with SVG morphing animations.</li>
+                        <li><strong>Dynamic Content:</strong> Replaced static HTML with JSON-based "Load More" pagination.</li>
+                        <li><strong>TUI V1:</strong> Launched the first version of the Terminal User Interface.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <span class="version-tag">v1.0.0 - v1.4.0</span>
+                    <span class="timeline-date">Sep 2025</span>
+                    <h3>The Visual Identity</h3>
+                    <ul class="commit-list">
+                        <li><strong>Material Design:</strong> Shifted from generic styles to strict Material guidelines.</li>
+                        <li><strong>Tech Badges:</strong> Added proficiency bars and shield.io badges.</li>
+                        <li><strong>File Split:</strong> First separation of HTML and CSS files.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <span class="version-tag">v0.0.0</span>
+                    <span class="timeline-date">July 02, 2025</span>
+                    <h3>Hello World</h3>
+                    <ul class="commit-list">
+                        <li>Initial release of the personal portfolio.</li>
+                        <li>Static HTML/CSS structure.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="static/js/index.js"></script>
+
+</body>
+</html>
