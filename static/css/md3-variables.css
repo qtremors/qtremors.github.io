@@ -2,7 +2,7 @@
    MD3 Expressive Theme & Variable Mapping
    ========================================================================== */
 :root {
-    /* --- 1. Define MD3 Primitive Colors --- */
+    /* --- Define MD3 Primitive Colors --- */
     --md-sys-color-primary: #e9b3ff;
     --md-sys-color-on-primary: #4f2667;
     --md-sys-color-primary-container: #683d7f;
@@ -23,7 +23,7 @@
     --md-sys-color-surface-container-low: #1e1a20;
     --md-sys-color-surface-container-lowest: #100d13;
 
-    /* --- 2. MAP Original Variables to MD3 Colors --- */
+    /* --- MAP Original Variables to MD3 Colors --- */
     --md-primary: var(--md-sys-color-primary);
     --md-on-primary: var(--md-sys-color-on-primary);
     --md-primary-container: var(--md-sys-color-primary-container);
@@ -52,7 +52,7 @@
 }
 
 body[data-theme='light'] {
-    /* --- 1. Define Light MD3 Colors --- */
+    /* --- Define Light MD3 Colors --- */
     --md-sys-color-primary: #825599;
     --md-sys-color-on-primary: #ffffff;
     --md-sys-color-primary-container: #ffd6ff;
@@ -71,7 +71,7 @@ body[data-theme='light'] {
     --md-sys-color-surface-container-low: #fbf2fc;
     --md-sys-color-surface-container-lowest: #ffffff;
 
-    /* --- 2. Re-Map for Light Mode --- */
+    /* --- Re-Map for Light Mode --- */
     --md-primary: var(--md-sys-color-primary);
     --md-on-primary: var(--md-sys-color-on-primary);
     --md-primary-container: var(--md-sys-color-primary-container);

@@ -3,12 +3,12 @@
    (Shapes, Fonts, Colors, & Gradients)
    ========================================================================== */
 
-/* --- 1. Typography --- */
+/* --- Typography --- */
 body {
     font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* --- 2. SHAPE ENGINE: Force Squircles --- */
+/* --- SHAPE ENGINE: Force Squircles --- */
 
 /* Large Squircles (16px) */
 .extended-fab,
@@ -43,9 +43,8 @@ body {
     border-radius: 12px !important;
 }
 
-/* --- 3. COMPONENT TWEAKS --- */
+/* --- COMPONENT TWEAKS --- */
 
-/* Fix App Bar Appearance for MD3 */
 .top-app-bar,
 body:not([data-theme='light']) .top-app-bar {
     background-color: var(--md-sys-color-surface-container) !important;
@@ -58,8 +57,7 @@ body:not([data-theme='light']) .top-app-bar {
     color: var(--md-sys-color-on-secondary-container) !important;
 }
 
-/* --- 4. GRADIENT OVERRIDES (Neon Theme) --- */
-/* This applies the Pink/Purple/Cyan gradient to the Logo, Dropdown, and Profile Image */
+/* --- GRADIENT OVERRIDES (Neon Theme) --- */
 
 .top-app-bar .logo::before,
 #dropdown-toggle::before,
