@@ -1,6 +1,97 @@
 # Changelog
 
 
+## [v2.0.0] - 06-12-2025
+
+### 🚀 **Architecture & Refactoring**
+
+- **Page-Specific JS Split:** Further decoupled logic by creating `home.js` (Typewriter, Portfolio Grid) and ensuring `project.js` handles only detail pages. `index.js` now strictly manages shared global logic (Themes, Navigation, Toast).
+    
+- **JS Decoupling & Extras:** Split the monolithic `index.js` to isolate concerns, including an `extras.js` file for handling visual effects (Magnetic Text, Easter Eggs, Console Logs).
+    
+- **Script Optimization:** Updated `index.html` and `project.html` to only load the specific JavaScript files required for that context, reducing unused code execution.
+    
+- **CSS Modularization:** Removed the `@import` waterfall performance bottleneck. CSS is now split into modular files (`base`, `sections`, `animations`) linked directly in HTML.
+    
+- **Project CSS Isolation:** Added a CSS reset in `project.css` to prevent global homepage styles (fog effects, large vertical padding) from bleeding into and breaking the project detail layout.
+    
+- **Scroll Spy Logic:** Updated `index.js` `IntersectionObserver` to target both standard `<section>` tags and `.content-section` classes, ensuring navigation highlighting works on project pages without altering HTML structure.
+    
+- **Dynamic Portfolio Logic:** Replaced static HTML hiding with a true JavaScript "Load More" system that dynamically appends projects from the JSON source.
+    
+- **Project Page Cleanup:** Removed the deprecated static "Installation & Usage" section, replacing it with the new Smart Terminal widget.
+    
+
+### ✨ **New Features**
+
+- **Smart Terminal Widget:** Transformed the plain text installation block into a fully interactive Terminal window on project pages.
+    
+    - **Syntax Highlighting:** Automatically detects comments vs. commands.
+        
+    - **OS Detection:** Detects user OS (Windows/Mac/Linux) to render appropriate window controls (Traffic lights vs. Minimize/Maximize).
+        
+    - **Persistent Switcher:** Added a toolbar to manually toggle OS styles, saved to `localStorage`.
+        
+- **MD3 Theme Engine:** Implemented a Material Design 3 theme engine with direct-link toggling (no FOUC).
+    
+- **SVG Theme Morph:** Implemented a smooth animation where the "MD3" theme button physically morphs from a circle to a squircle when active.
+    
+- **SEO & Open Graph:** Added meta tags and canonical links to resolve duplicate content issues and improve social sharing previews.
+    
+
+### 🎨 **Visual Overhaul (Atmosphere)**
+
+- **Universal Fog System:** Implemented a global `section::after` fog layer with context-aware blending (Dark sections fade to Light Grey; Light sections fade to Dark Grey).
+    
+- **Hero Redesign:** Replaced animated "Aurora Blobs" with a cleaner **Material Wash** (Ambient Light) and **Tech Grid** background.
+    
+- **Mouse Spotlights:** Added mouse-tracking radial gradients to the Hero background and Skill cards for depth.
+    
+- **Magnetic Text:** Added physics-based hover effects to the text in the "About" section.
+    
+- **Dropdown Menu Polish:** Switched to Inline SVGs for theme buttons to fix gradient clipping bugs; centered the "Visual Theme" label and improved spacing.
+    
+
+### 📄 **Project Page Layout**
+
+- **Responsive Reordering:** Restructured HTML into split rows (`top-row` / `bottom-row`) to ensure the **Links Sidebar** appears immediately after the Banner on mobile.
+    
+- **Banner Constraints:** Added logical height constraints to prevent the banner from dominating mobile viewports.
+    
+- **Footer Navigation:** Enforced a strict **2-column grid** for "Related Projects" on both Desktop and Mobile.
+    
+
+### ⚡ **UX & Performance**
+
+- **Scroll Debounce:** Added a 15ms debounce utility to `window.scroll` listeners.
+    
+- **Toast Notifications:** Added visual feedback ("Email Copied!") for the contact card.
+    
+- **Navbar Integration:** Updated the navigation bar to have a transparent border, sitting seamlessly atop new fog effects.
+    
+- **History Management:** Fixed the "Back to Portfolio" button to respect browser history and scroll position.
+    
+- **TUI Accessibility:** Replaced `display:none` with `clip-path` for the TUI version to improve screen reader access.
+    
+
+### 🐛 **Bug Fixes**
+
+- **Project Navigation Fix:** Resolved issue where navbar buttons on `project.html` remained inactive by expanding the scroll observer targets.
+    
+- **Back Button Logic:** Removed custom history interception in `project.js`. The "Back to Portfolio" link now reliably functions as a standard anchor link to the portfolio section.
+    
+- **Scroll Animation Glitch:** Updated `IntersectionObserver` to use "Play Once" logic (`unobserve`) to stop elements from flickering at the viewport threshold.
+    
+- **Project Layout Crash:** Fixed a critical structural bug (extra closing `</div>`) that broke the footer navigation layout.
+    
+- **JS Safety:** Added safe navigation `(proj.badges || [])` in `project.js` to prevent crashes on projects with missing tags.
+    
+- **CSS Conflicts:** Resolved collision between `.hero::after` spotlight and fog effects.
+    
+- **Mobile Overflow:** Applied global `box-sizing` reset to fix horizontal scroll bugs caused by Sidebar padding.
+    
+---
+
 ## [v1.7.0] - 05-12-2025
 
 ### 🚀 **Fixes and Improvements**

@@ -339,30 +339,24 @@ header {
 
 /* --- Hidden Projects Toggle Logic (:target method) --- */
 
-/* 1. Hide the group container by default */
+/* Hide the group container by default */
 .hidden-group {
     display: none;
 }
 
-/* 2. When the URL contains #hidden-projects (clicked), Show it */
+/* When the URL contains #hidden-projects (clicked), Show it */
 .hidden-group:target {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    /* Matches the main grid gap */
     animation: fadeInBorder 0.5s ease-in;
 }
 
-/* 3. Button Swapping Logic */
+/* Button Swapping Logic */
 
 /* By default, hide the 'Hide' button, show the 'Show' button */
-.btn-hide {
-    display: none;
-}
-
-.btn-show {
-    display: inline-flex;
-}
+.btn-hide {display: none;}
+.btn-show {display: inline-flex;}
 
 /* When target is active, Hide the 'Show' button */
 #hidden-projects:target~.portfolio-item .btn-show {
