@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git History - Tremors</title>
+    <link rel="icon" type="image/png" href="../assets/history.png">
+
+    <link rel="stylesheet" href="../static/css/tui-animations.css">
+    <link rel="stylesheet" href="../static/css/tui-base.css">
+    <link rel="stylesheet" href="../static/css/tui-themes.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Specific overrides for the Git Log look */
+        .git-log-container {
+            font-family: 'Fira Code', monospace;
+            white-space: pre;
+            overflow-x: auto;
+            line-height: 1.5;
+            font-size: 0.9rem;
+        }
+
+        .git-hash { color: var(--purple); }
+        .git-tag  { color: var(--yellow); font-weight: bold; }
+        .git-date { color: var(--muted); font-style: italic; }
+        .git-head { color: var(--primary); font-weight: bold; }
+        .git-msg  { color: var(--foreground); }
+        .git-tree { color: var(--border); }
+        
+        .commit-block {
+            margin-bottom: 0.5rem;
+        }
+
+
+        .tui-media-player {
+            border: 1px dashed var(--green);
+            padding: 4px;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .media-header {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            color: var(--green);
+            margin-bottom: 4px;
+            text-align: center;
+            border-bottom: 1px dashed var(--green);
+            padding-bottom: 4px;
+        }
+
+        video {
+            display: block;
+            width: 100%;
+            height: auto;
+            outline: none;
+        }
+
+        @media (max-width: 600px) {
+            .git-log-container { font-size: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <input type="radio" name="theme-switcher" id="theme-dracula" class="theme-radio" checked>
+    <input type="radio" name="theme-switcher" id="theme-catppuccin" class="theme-radio">
+    <input type="radio" name="theme-switcher" id="theme-tokyo-night" class="theme-radio">
+
+    <input type="radio" name="font-switcher" id="font-fira-code" class="font-radio" checked>
+    <input type="radio" name="font-switcher" id="font-roboto-mono" class="font-radio">
+
+    <div class="container">
+        <header>
+            <div>
+                <span class="prompt">user@tui</span>:<span class="path">~/tremors</span>$ git log --graph --oneline --decorate
+            </div>
+            
+            <nav class="tui-nav">
+                <a href="../tui.html">./home</a>
+                
+                <details class="dropdown-container">
+                    <summary>./theme</summary>
+                    <div class="dropdown-options">
+                        <label for="theme-dracula">[ Dracula ]</label>
+                        <label for="theme-catppuccin">[ Catppuccin ]</label>
+                        <label for="theme-tokyo-night">[ Tokyo Night ]</label>
+                    </div>
+                </details>
+            </nav>
+        </header>
+
+        <main>
+            
+            <section class="tui-panel">
+                <div class="tui-panel-header">
+                    HISTORY.log
+                </div>
+                <div class="tui-panel-body">
+
+                    <div class="tui-media-player">
+                        <div class="media-header">
+                            [▶] playing: evolution_timelapse.mp4
+                        </div>
+                        <video controls autoplay muted loop playsinline>
+                            <source src="../assets/v0.0.0-v2.0.0.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+
+                    <div class="git-log-container">
+<span class="git-tree">*</span> <span class="git-hash">a1b2c3d</span> <span class="git-head">(HEAD -> main, tag: v2.0.0)</span> <span class="git-msg">Architecture Overhaul & Visual Redesign</span>
+<span class="git-tree">|</span> <span class="git-date">   Date:   Dec 06 2025</span>
+<span class="git-tree">|</span>    <span class="git-msg">• Decoupled JS: Split monolithic index.js into home/project/extras</span>
+<span class="git-tree">|</span>    <span class="git-msg">• Smart Terminal: Added interactive OS-aware widget</span>
+<span class="git-tree">|</span>    <span class="git-msg">• Universal Fog: Implemented context-aware background blending</span>
+<span class="git-tree">|</span>    <span class="git-msg">• Performance: Removed CSS @imports, added scroll debounce</span>
+<span class="git-tree">|</span>
+<span class="git-tree">*</span> <span class="git-hash">f4e5d6c</span> <span class="git-tag">(tag: v1.9.0)</span> <span class="git-msg">The Feature Surge</span>
+<span class="git-tree">|</span> <span class="git-date">   Date:   Nov 15 2025</span>
+<span class="git-tree">|</span>    <span class="git-msg">• MD3 Engine: Custom theme engine with SVG morphing</span>
+<span class="git-tree">|</span>    <span class="git-msg">• Dynamic Content: Replaced static HTML with JSON loader</span>
+<span class="git-tree">|</span>    <span class="git-msg">• TUI V1: Initial release of Terminal UI</span>
+<span class="git-tree">|</span>
+<span class="git-tree">*</span> <span class="git-hash">9a8b7c6</span> <span class="git-tag">(tag: v1.0.0)</span> <span class="git-msg">The Visual Identity</span>
+<span class="git-tree">|</span> <span class="git-date">   Date:   Sep 01 2025</span>
+<span class="git-tree">|</span>    <span class="git-msg">• Material Design: Shifted to strict Material guidelines</span>
+<span class="git-tree">|</span>    <span class="git-msg">• Tech Badges: Added proficiency bars and shield.io badges</span>
+<span class="git-tree">|</span>    <span class="git-msg">• File Split: First separation of HTML and CSS</span>
+<span class="git-tree">|</span>
+<span class="git-tree">*</span> <span class="git-hash">1x2y3z0</span> <span class="git-tag">(tag: v0.0.0)</span> <span class="git-msg">Initial Commit</span>
+<span class="git-tree">|</span> <span class="git-date">   Date:   Jul 02 2025</span>
+<span class="git-tree">|</span>    <span class="git-msg">• Hello World: Static HTML/CSS personal website</span>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+
+        <footer>
+            <span class="prompt">user@tui</span>:<span class="path">~/tremors</span>$
+            <a href="../tui.html">cd ..</a>
+            <span class="cursor"></span>
+        </footer>
+    </div>
+
+</body>
+</html>

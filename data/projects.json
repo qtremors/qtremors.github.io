@@ -71,7 +71,7 @@
     "installation": "# Backend\ncd backend\nuv sync\nuv run uvicorn main:app --reload\n\n# Frontend\ncd frontend\nnpm install\nnpm run dev",
     "badges": ["tech-python", "tech-fastapi", "tech-react", "tech-ts", "tech-framermotion"],
     "links": [
-      { "text": "Website", "url": "404/index-404.html", "class": "link-primary" },
+      { "text": "Website", "url": "system/index-404.html", "class": "link-primary" },
       { "text": "View on GitHub", "url": "https://github.com/qtremors/tremors-music", "class": "link-secondary" }
     ]
   },
@@ -90,7 +90,7 @@
     "installation": "uv sync\nuv run python manage.py migrate\nuv run python manage.py runserver",
     "badges": ["tech-django", "tech-tensorflow", "tech-pillow", "tech-numpy", "tech-plotly"],
     "links": [
-      { "text": "Website", "url": "404/index-404.html", "class": "link-primary" },
+      { "text": "Website", "url": "system/index-404.html", "class": "link-primary" },
       { "text": "View on GitHub", "url": "https://github.com/qtremors/plant-disease-detector", "class": "link-secondary" }
     ]
   },
