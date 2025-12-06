@@ -1,6 +1,36 @@
 # Changelog
 
 
+## [v2.1.0] - 06-12-2025
+
+### ✨ **New Features**
+
+- **Time Machine (Project History):** Added a dedicated timeline page (`history.html`) to visualize the project's evolution from v0.0.0 to v2.0.0.
+    
+- **TUI Git Log:** Added a terminal-styled history page (`history-tui.html`) featuring an ASCII git graph and command-line aesthetics.
+    
+- **Evolution Visualization:** Embedded a 60fps **Gource timelapse video** (`v0.0.0-v2.0.0.mp4`) showing the codebase growth over time.
+    
+- **Navigation Shortcuts:** Added a "Time Machine" shortcut to the main Dropdown menu and a version stamp (`v2.0.0`) to the footer.
+    
+
+### ♻️ **Refactoring & Architecture**
+
+- **Directory Restructure:** Moved meta-pages (`index-404.html`, `tui-404.html`, `history.html`) into a clean **`system/`** directory.
+    
+- **Path Standardization:** Updated all asset references (CSS/JS/Images) in system pages to use relative paths (`../`).
+    
+
+### 🐛 **Bug Fixes (Mobile)**
+
+- **Hero Visibility:** Reduced mobile hero section height (`min-height: calc(100svh - 100px)`) to ensure the "View My Work" button is visible above the floating nav dock.
+    
+- **Typewriter Jitter:** Fixed layout shifting in the Hero text by enforcing a reserved `min-height` for the typing animation container.
+    
+- **Video Optimization:** Constrained the TUI video player width to prevent upscaling blur on large screens.
+    
+---
+
 ## [v2.0.0] - 06-12-2025
 
 ### 🚀 **Architecture & Refactoring**
