@@ -37,7 +37,7 @@ This version focuses on a scalable, data-driven user experience with a professio
     
 - **Decoupled JavaScript:** Logic is split into context-aware files (`home.js`, `project.js`, `extras.js`) to ensure only necessary code loads per page.
     
-- **Modular CSS Architecture:** Styles are split into distinct files (`base`, `sections`, `animations`) and linked directly to avoid `@import` performance bottlenecks.
+- **Modular CSS Architecture:** Styles are split into distinct files (`base`, `sections`, `animations`) linked directly to avoid `@import` performance bottlenecks.
     
 - **Project Detail Views:**
     - **Deep Linking:** URLs like `project.html?id=quizzer-ai` dynamically render content.
@@ -56,6 +56,10 @@ This version focuses on a scalable, data-driven user experience with a professio
 - **Dynamic Theming:** **JavaScript-powered light/dark mode toggle** with `localStorage` persistence and no flash of unstyled content (FOUC).
         
 - **Immersive Navigation:** Navigation bars **auto-hide on scroll** (debounced) and feature active section highlighting using an enhanced `IntersectionObserver`.
+
+#### **⏱️ Time Machine (History)**
+- **Visual Timeline:** A dedicated page (`system/history.html`) visualizing the project's evolution from v0.0.0 to v2.1.0.
+- **Gource Visualization:** Embedded 60fps timelapse video showing the codebase growth and file restructuring over time.
     
 
 ---
@@ -68,12 +72,15 @@ This version is a **creative exploration of what's possible with only HTML and C
 
 - **Retro TUI Aesthetic:** Classic command-line look with monospaced fonts and prompt-style navigation.
     
-- **Expanded Themes:** - **Dracula** (Default)
+- **Expanded Themes:**
+    - **Dracula** (Default)
     - **Catppuccin** (Macchiato)
     - **Tokyo Night**
     - *Themes are switched using hidden radio inputs and CSS sibling combinators.*
 
 #### **UX & Interactivity**
+
+- **Git Log History:** A terminal-styled history page (`system/history-tui.html`) featuring an ASCII git graph and command-line aesthetics.
 
 - **CSS-Only "Show More":** Uses the **`:target` CSS pseudo-class** to reveal hidden projects without JavaScript.
     
@@ -89,8 +96,9 @@ The system includes specialized handling for projects that are currently being b
 
 - **Visual WIP Indicators:** Projects marked as `wip` in the JSON data are automatically rendered with a **"Hazard" theme**—featuring a yellow border and a holographic "Construction Zone" stripe overlay.
     
-- **Custom 404 Handling:** - **Modern UI:** Redirects to `index-404.html`, featuring an interactive toggle between "Cat" and "Coding" animations.
-    - **TUI:** Redirects to `tui-404.html`, a text-only error page with CRT glitch effects.
+- **Custom 404 & System Pages:**
+    - **Modern UI:** Redirects to `system/index-404.html`, featuring an interactive toggle between "Cat" and "Coding" animations.
+    - **TUI:** Redirects to `system/tui-404.html`, a text-only error page with CRT glitch effects.
 
 ---
 
@@ -102,6 +110,22 @@ The system includes specialized handling for projects that are currently being b
 |**CSS3**|Layouts, variables, animations, Fog systems, JS-free interactivity|
 |**JavaScript**|ES6 Modules, Fetch API, IntersectionObserver, LocalStorage|
 |**JSON**|Data storage for Portfolio projects|
+|**FFmpeg / Gource**|Version control visualization and video optimization|
+
+---
+
+## 📈 Evolution of the Project
+
+This portfolio has evolved from a simple static page to a complex engineering project. You can explore the full timeline in the **Time Machine** (accessible via the alien icon 👽 menu).
+
+### 📽️ Watch the Evolution
+## 📺 [History - v0.0.0-v2.0.0](https://qtremors.github.io/system/history.html)
+
+* **v2.1.0 (The Time Machine):** Introduced the `system/` directory structure, visual history timelines, and embedded Gource visualization.
+* **v2.0.0 (The Architecture Era):** A complete rewrite of the core logic. Introduced a decoupled JavaScript architecture, a "Smart Terminal" widget, and a context-aware Fog system.
+* **v1.5.0 - v1.9.0 (The Feature Surge):** Transitioned to **Material Design 3 (MD3)** with a dedicated theme engine. Added "Load More" dynamic pagination and the first iteration of the TUI.
+* **v1.0.0 - v1.4.0 (The Visual Identity):** Moved away from generic styles to a distinct **Material Design** aesthetic. Introduced tech badges and proficiency bars.
+* **v0.0.0 (The Beginning):** Initial release as a lightweight, static HTML/CSS personal website.
 
 ---
 
