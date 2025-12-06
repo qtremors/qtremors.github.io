@@ -13,7 +13,7 @@
     white-space: nowrap; 
 }
 
-/* --- 1. DRACULA (Default) --- */
+/* --- DRACULA (Default) --- */
 /* Applied to :root for default, and when radio is checked */
 :root,
 #theme-dracula:checked~.container,
@@ -23,14 +23,13 @@
     --border: #6272a4;
     --foreground: #f8f8f2;
     --primary: #ff79c6;
-    /* Fixed typo from original css */
     --purple: #bd93f9;
     --green: #50fa7b;
     --yellow: #f1fa8c;
     --muted: #6272a4;
 }
 
-/* --- 2. CATPPUCCIN (Macchiato) --- */
+/* --- CATPPUCCIN (Macchiato) --- */
 #theme-catppuccin:checked~.container,
 #theme-catppuccin:checked~.splash-screen {
     --background: #24273a;
@@ -44,7 +43,7 @@
     --muted: #5b6078;
 }
 
-/* --- 3. TOKYO NIGHT (New!) --- */
+/* --- TOKYO NIGHT --- */
 #theme-tokyo-night:checked~.container,
 #theme-tokyo-night:checked~.splash-screen {
     --background: #1a1b26;
@@ -52,7 +51,6 @@
     --border: #414868;
     --foreground: #c0caf5;
     --primary: #7aa2f7;
-    /* Blue */
     --purple: #bb9af7;
     --green: #9ece6a;
     --yellow: #e0af68;
