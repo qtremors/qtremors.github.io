@@ -14,21 +14,12 @@ body {
     -moz-osx-font-smoothing: grayscale;
     transition: background-color 0.3s ease, color 0.3s ease;
     margin: 0;
-    padding-top: 70px;
+    /* padding-top: 70px; */
     padding-bottom: 90px;
 }
 
 section {
     scroll-margin-top: 80px;
-}
-
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
-section {
     padding: 4rem 0;
     transition: background-color 0.3s ease;
 }
@@ -46,103 +37,94 @@ h2 {
     margin-bottom: 3rem;
 }
 
+/* ==========================================================================
+   RESPONSIVE CONTAINER & SCALING (Mobile -> 4K)
+   ========================================================================== */
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+    max-width: 1200px;
+    /* Default Laptop */
+}
+
+/* 1. Large Desktop (1440p) */
+@media (min-width: 1440px) {
+    .container {
+        max-width: 1400px;
+    }
+}
+
+/* 2. Ultrawide (1920p+) -> Scale Text & Layout */
+@media (min-width: 1920px) {
+    html {
+        font-size: 18px;
+        /* Zooms entire site by ~12.5% */
+    }
+
+    .container {
+        max-width: 1800px;
+    }
+
+    h2 {
+        margin-bottom: 4rem;
+    }
+}
+
+/* 3. Massive Screens / 4K (2560p+) -> Major Scaling */
+@media (min-width: 2560px) {
+    html {
+        font-size: 22px;
+        /* Zooms entire site by ~37.5% */
+    }
+
+    .container {
+        max-width: 2400px;
+    }
+}
 
 /* ==========================================================================
    ------- No Script -------
    ========================================================================== */
 .no-js-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    z-index: 99999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85); z-index: 99999;
+    display: flex; justify-content: center; align-items: center;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 .no-js-modal {
     background: rgba(30, 31, 33, 0.70);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-
-    color: #e8eaed;
-    padding: 2rem;
-    border-radius: 16px;
-    text-align: center;
-    max-width: 450px;
-    margin: 0 1rem;
+    color: #e8eaed; padding: 2rem; border-radius: 16px;
+    text-align: center; max-width: 450px; margin: 0 1rem;
 }
 
-.no-js-modal h2 {
-    margin-top: 0;
-    color: #8ab4f8;
-    margin-bottom: 1rem;
-}
-
-.no-js-modal p {
-    color: #9aa0a6;
-    line-height: 1.5;
-    margin-bottom: 1rem;
-}
-
-.no-js-list {
-    text-align: left;
-    color: #9aa0a6;
-    margin: 0 auto 1.5rem auto;
-    width: fit-content;
-    line-height: 1.6;
-}
-
-.no-js-actions {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-}
+.no-js-modal h2 { margin-top: 0; color: #8ab4f8; margin-bottom: 1rem; }
+.no-js-modal p { color: #9aa0a6; line-height: 1.5; margin-bottom: 1rem; }
+.no-js-list { text-align: left; color: #9aa0a6; margin: 0 auto 1.5rem auto; width: fit-content; line-height: 1.6; }
+.no-js-actions { display: flex; justify-content: center; gap: 1rem; }
 
 .no-js-btn {
-    padding: 0.6rem 1.2rem;
-    border-radius: 20px;
-    text-decoration: none;
-    font-weight: 500;
-    cursor: pointer;
-    transition: filter 0.2s;
+    padding: 0.6rem 1.2rem; border-radius: 20px; text-decoration: none;
+    font-weight: 500; cursor: pointer; transition: filter 0.2s;
 }
 
-.btn-yes {
-    background-color: #8ab4f8;
-    color: #202124;
-    border: none;
-}
+.btn-yes { background-color: #8ab4f8; color: #202124; border: none; }
+.btn-no { background-color: transparent; border: 1px solid #5f6368; color: #e8eaed; }
+.no-js-btn:hover { filter: brightness(1.1); }
+#no-js-toggle { display: none; }
+#no-js-toggle:checked+.no-js-overlay { display: none; }
 
-.btn-no {
-    background-color: transparent;
-    border: 1px solid #5f6368;
-    color: #e8eaed;
-}
-
-.no-js-btn:hover {
-    filter: brightness(1.1);
-}
-
-#no-js-toggle {
-    display: none;
-}
-
-#no-js-toggle:checked+.no-js-overlay {
-    display: none;
-}
-
-
-/* Tech Badge Colors - Flatter, Borderless Design */
+/* ==========================================================================
+   ------- Badge Colors -------
+   ========================================================================== */
 .tech-react { background-color: #20232A; color: #61DAFB; }
 .tech-ts { background-color: #3178C6; color: white; }
 .tech-python { background-color: #3776AB; color: #FFD43B; }
-.tech-flask { background-color: #444444; color: #FFFFFF; } /* Lightened for visibility */
+.tech-flask { background-color: #444444; color: #FFFFFF; }
 .tech-fastapi { background-color: #009688; color: white; }
 .tech-django { background-color: #092E20; color: #44B78B; }
 .tech-tensorflow { background-color: #FF6F00; color: white; }
@@ -155,7 +137,7 @@ h2 {
 .tech-sql { background-color: #00758F; color: white; }
 .tech-sqlite { background-color: #003B57; color: white; }
 .tech-pygame { background-color: #6E9C45; color: white; }
-.tech-nextjs { background-color: #111111; color: #FFFFFF; } /* Pure black sometimes disappears */
+.tech-nextjs { background-color: #111111; color: #FFFFFF; }
 .tech-framermotion { background-color: #2D1A38; color: #9F40FF; }
 .tech-tsparticles { background-color: #0d1117; color: #38BDF8; }
 .tech-git { background-color: #F05033; color: #FFFFFF; }
@@ -163,17 +145,14 @@ h2 {
 .tech-github { background-color: #24292e; color: #ffffff; }
 .tech-tailwind { background-color: #38B2AC; color: #ffffff; }
 
-/* Dark Mode Adjustments for contrast */
 body:not([data-theme='light']) .tech-react { background-color: #282c34; }
 body:not([data-theme='light']) .tech-django { background-color: #0c4b33; }
 body:not([data-theme='light']) .tech-nextjs { background-color: #222; } 
 body:not([data-theme='light']) .tech-flask { background-color: #555; }
 
-/* Light Mode Overrides */
 body[data-theme='light'] .tech-github { background-color: #111111; color: #ffffff; }
 body[data-theme='light'] .tech-tailwind { background-color: #0ea5a4; color: #ffffff; }
 body[data-theme='light'] .tech-nextjs { background-color: #000; }
-
 
 @media (min-width: 769px) {
     body {
