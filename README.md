@@ -2,7 +2,7 @@
 
 This repository hosts my **personal portfolio**, built in two distinct versions:
 
-- 🌇 **[`index.html`](https://qtremors.github.io/)** – Modern, Material Design-inspired UI with animations, dynamic JSON content loading, and a switchable MD3 theme.
+- 🌇 **[`index.html`](https://qtremors.github.io/)** – Modern, Material Design-inspired UI with animations, dynamic JSON content loading, and a modular Theme & Effects engine.
     
 - 📄 **`project.html`** – A dedicated, dynamic detail view for every project, featuring deep linking, interactive terminal widgets, and tech specs.
     
@@ -33,7 +33,7 @@ This version focuses on a scalable, data-driven user experience with a professio
 
 #### **Architecture & Data**
 
-- **Dynamic Content Loading:** Projects are fetched dynamically from **`projects.json`** using the Fetch API with a "Load More" logic.
+- **Dynamic Content Loading:** Projects are fetched dynamically from **`projects.json`** using the Fetch API with a "Load More" logic and state persistence.
     
 - **Decoupled JavaScript:** Logic is split into context-aware files (`home.js`, `project.js`, `extras.js`) to ensure only necessary code loads per page.
     
@@ -46,8 +46,9 @@ This version focuses on a scalable, data-driven user experience with a professio
 
 #### **UI & Visual Design**
 
-- **Atmospheric Visuals:**
-    - **Universal Fog System:** Context-aware fog layers that blend sections seamlessly.
+- **Advanced Theme & Effects Engine:**
+    - **Settings Modal:** A centralized UI to toggle Themes (Default/MD3/OLED), Visual Effects (Fog/Glass/None), and Spotlight logic.
+    - **Universal Fog/Glass:** Context-aware backgrounds that either blend sections seamlessly (Fog) or provide high-tech frosted glass borders (Glass).
     - **Mouse Spotlights:** Radial gradients that track mouse movement on the Hero and Skill cards.
     - **Magnetic Text:** Physics-based hover effects on text elements.
 
@@ -107,7 +108,7 @@ The system includes specialized handling for projects that are currently being b
 |**Technology**|**Usage**|
 |---|---|
 |**HTML5**|Structure & semantics|
-|**CSS3**|Layouts, variables, animations, Fog systems, JS-free interactivity|
+|**CSS3**|Modular architecture, Themes, Effects (Fog/Glass), Animations|
 |**JavaScript**|ES6 Modules, Fetch API, IntersectionObserver, LocalStorage|
 |**JSON**|Data storage for Portfolio projects|
 |**FFmpeg / Gource**|Version control visualization and video optimization|
@@ -121,6 +122,7 @@ This portfolio has evolved from a simple static page to a complex engineering pr
 ### 📽️ Watch the Evolution
 ## 📺 [History - v0.0.0-v2.0.0](https://qtremors.github.io/system/history.html)
 
+* **v2.2.0 (The Theme & Effects Engine):** Introduced a modular theme system with independent effects (Fog, Glass, Spotlight) and a centralized Settings Modal.
 * **v2.1.0 (The Time Machine):** Introduced the `system/` directory structure, visual history timelines, and embedded Gource visualization.
 * **v2.0.0 (The Architecture Era):** A complete rewrite of the core logic. Introduced a decoupled JavaScript architecture, a "Smart Terminal" widget, and a context-aware Fog system.
 * **v1.5.0 - v1.9.0 (The Feature Surge):** Transitioned to **Material Design 3 (MD3)** with a dedicated theme engine. Added "Load More" dynamic pagination and the first iteration of the TUI.

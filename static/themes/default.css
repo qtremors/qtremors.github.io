@@ -1,0 +1,49 @@
+/* =========================================
+   THEME: DEFAULT (Blue/Grey)
+   ========================================= */
+
+:root {
+    /* --- Core Palette (Dark Mode Default) --- */
+    --md-primary: #8ab4f8;
+    --md-on-primary: #202124;
+    --md-primary-container: #1967d2;
+    --md-on-primary-container: #d9e6ff;
+    --md-secondary: #9aa0a6;
+    --md-on-secondary: #202124;
+    --md-background: #131314;
+    --md-surface: #1e1f21;
+    --md-surface-variant: #282a2c;
+    --md-on-surface: #e8eaed;
+    --md-on-surface-variant: #9aa0a6;
+    --md-outline: #5f6368;
+    --md-shadow-color: rgba(0, 0, 0, 0.3);
+    
+    /* White glow for Dark Mode icons */
+    --theme-icon-shadow: #202124;
+
+    --hero-grid-color: rgba(128, 128, 128, 0.05);
+    --spotlight-color: rgba(255, 255, 255, 0.05);
+}
+
+/* --- Light Mode Overrides --- */
+body[data-theme='light'] {
+    --md-primary: #1a73e8;
+    --md-on-primary: #ffffff;
+    --md-primary-container: #d9e6ff;
+    --md-on-primary-container: #1967d2;
+    --md-secondary: #5f6368;
+    --md-on-secondary: #ffffff;
+    --md-background: #f8f9fa;
+    --md-surface: #ffffff;
+    --md-surface-variant: #f1f3f4;
+    --md-on-surface: #202124;
+    --md-on-surface-variant: #5f6368;
+    --md-outline: #d1d5db;
+    --md-shadow-color: rgba(32, 33, 6, 0.1);
+    
+    /* Dark glow for Light Mode icons */
+    --theme-icon-shadow: #000000;
+
+    --hero-grid-color: rgba(0, 0, 0, 0.06);
+    --spotlight-color: rgba(0, 0, 0, 0.15);
+}

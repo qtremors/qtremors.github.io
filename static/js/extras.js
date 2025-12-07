@@ -138,7 +138,13 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('%c>>> tremors.hire()', 'color: #50fa7b; font-family: monospace; font-size: 14px; font-weight: bold;');
     console.log('%c"You won\'t regret it! plzzzzzz 🥺"', 'color: #f1fa8c; font-family: monospace; font-size: 14px;');
 
-    alert("🐍 Python Mode Activated!");
+    // Use the Universal Toast
+    if (window.showToast) {
+        window.showToast("🐍 Python Mode Activated!");
+    } else {
+        // Fallback if index.js hasn't loaded (rare)
+        alert("🐍 Python Mode Activated!");
+    }
   };
 
   /* ========================================================================== */

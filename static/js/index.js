@@ -1,77 +1,189 @@
 /* ==========================================================================
    static/js/index.js
-   (SHARED Global Logic: Themes, Navigation, Email Toast)
+   (Themes, Settings, Navigation, Universal Toast)
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', function () {
 
   const body = document.body;
 
-  // --- THEME ELEMENTS ---
-  const md3Vars = document.getElementById('md3-vars');
-  const md3Overrides = document.getElementById('md3-overrides');
-  const themeToggleButton = document.getElementById('theme-toggle');
-  const toast = document.getElementById('toast'); // Needed for Email feature
+  /* ==========================================================================
+     1. UNIVERSAL TOAST SYSTEM
+     ========================================================================== */
+  const toastElement = document.getElementById('toast');
+  let toastTimeout;
 
-  // --- NAVIGATION ELEMENTS ---
+  // Global function to show toast from anywhere (extras.js, project.js, etc.)
+  window.showToast = (message, duration = 3000) => {
+    if (!toastElement) return;
+
+    // Clear existing timeout to handle rapid clicks
+    if (toastTimeout) clearTimeout(toastTimeout);
+
+    toastElement.textContent = message;
+    toastElement.classList.add("show");
+
+    toastTimeout = setTimeout(() => {
+        toastElement.classList.remove("show");
+    }, duration);
+  };
+
+
+  /* ==========================================================================
+     2. SETTINGS MODAL LOGIC
+     ========================================================================== */
+  const modal = document.getElementById('settings-modal');
+  const openBtn = document.getElementById('open-settings-btn');
+  const closeBtn = document.getElementById('close-settings-btn');
+
+  if (openBtn) {
+    openBtn.addEventListener('click', () => {
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+    });
+  }
+
+  const closeModal = () => {
+    if (modal) {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+    }
+  };
+
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+  }
+
+
+  /* ==========================================================================
+     3. THEME & APPEARANCE ENGINE
+     ========================================================================== */
+
+  const state = {
+    theme: localStorage.getItem('style_mode') || 'default',
+    effect: localStorage.getItem('effect_mode') || 'fog',
+    mode: localStorage.getItem('theme_pref') || 'system',
+    spotlight: localStorage.getItem('spotlight_mode') || 'on'
+  };
+
+  const sheets = {
+    themes: {
+        default: document.getElementById('theme-default'),
+        md3: document.getElementById('theme-md3'),
+        oled: document.getElementById('theme-oled')
+    },
+    effects: {
+        fog: document.getElementById('effect-fog'),
+        glass: document.getElementById('effect-glass')
+    },
+    spotlight: document.getElementById('effect-spotlight')
+  };
+
+  // Buttons
+  const modeBtns = document.querySelectorAll('[data-set-mode]');
+  const themeBtns = document.querySelectorAll('[data-set-theme]');
+  const effectBtns = document.querySelectorAll('[data-set-effect]');
+  const spotlightBtns = document.querySelectorAll('[data-set-spotlight]');
+
+
+  const applyAppearance = () => {
+    // A. Themes
+    if (sheets.themes.default) {
+        Object.values(sheets.themes).forEach(t => { if(t) t.disabled = true; });
+        const activeTheme = sheets.themes[state.theme] || sheets.themes.default;
+        if (activeTheme) activeTheme.disabled = false;
+        body.setAttribute('data-style-mode', state.theme);
+    }
+
+    // B. Scene Effects
+    if (sheets.effects.fog) {
+        Object.values(sheets.effects).forEach(e => { if(e) e.disabled = true; });
+        if (state.effect !== 'none') {
+            const activeEffect = sheets.effects[state.effect] || sheets.effects.fog;
+            if (activeEffect) activeEffect.disabled = false;
+        }
+    }
+
+    // C. Spotlight Effect
+    if (sheets.spotlight) {
+        sheets.spotlight.disabled = (state.spotlight === 'off');
+    }
+
+    // D. Color Mode
+    let effectiveMode = state.mode;
+    if (state.mode === 'system') {
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        effectiveMode = systemDark ? 'dark' : 'light';
+    }
+    body.setAttribute('data-theme', effectiveMode);
+
+    updateActiveButtons();
+
+    // Save State
+    localStorage.setItem('style_mode', state.theme);
+    localStorage.setItem('effect_mode', state.effect);
+    localStorage.setItem('theme_pref', state.mode);
+    localStorage.setItem('spotlight_mode', state.spotlight);
+  };
+
+
+  const updateActiveButtons = () => {
+    const updateGroup = (btns, currentVal, datasetKey) => {
+        btns.forEach(btn => {
+            if (btn.dataset[datasetKey] === currentVal) btn.classList.add('active');
+            else btn.classList.remove('active');
+        });
+    };
+    updateGroup(modeBtns, state.mode, 'setMode');
+    updateGroup(themeBtns, state.theme, 'setTheme');
+    updateGroup(effectBtns, state.effect, 'setEffect');
+    updateGroup(spotlightBtns, state.spotlight, 'setSpotlight');
+  };
+
+
+  // --- Listeners ---
+  modeBtns.forEach(btn => btn.addEventListener('click', () => { state.mode = btn.dataset.setMode; applyAppearance(); }));
+  themeBtns.forEach(btn => btn.addEventListener('click', () => { state.theme = btn.dataset.setTheme; applyAppearance(); }));
+  effectBtns.forEach(btn => btn.addEventListener('click', () => { state.effect = btn.dataset.setEffect; applyAppearance(); }));
+
+  // Spotlight Listener
+  spotlightBtns.forEach(btn => btn.addEventListener('click', () => {
+      state.spotlight = btn.dataset.setSpotlight;
+      applyAppearance();
+  }));
+
+  const themeToggleButton = document.getElementById('theme-toggle');
+  if (themeToggleButton) {
+    themeToggleButton.addEventListener('click', () => {
+        const currentEffective = body.getAttribute('data-theme');
+        state.mode = currentEffective === 'dark' ? 'light' : 'dark';
+        applyAppearance();
+    });
+  }
+
+  // Init
+  applyAppearance();
+
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    if (state.mode === 'system') applyAppearance();
+  });
+
+
+  /* ==========================================================================
+     4. NAVIGATION LOGIC
+     ========================================================================== */
   const allNavLinks = document.querySelectorAll('.nav-item');
   const mobileNavBar = document.querySelector('.navigation-bar');
   const topAppBar = document.querySelector('.top-app-bar');
   const sections = document.querySelectorAll('section, .content-section');
 
-  /* ==========================================================================
-     GLOBAL THEME MANAGER
-     ========================================================================== */
-  window.setGlobalTheme = (mode) => {
-    body.setAttribute('data-style-mode', mode);
-    if (mode === 'md3') {
-      if (md3Vars) md3Vars.disabled = false;
-      if (md3Overrides) md3Overrides.disabled = false;
-    } else {
-      if (md3Vars) md3Vars.disabled = true;
-      if (md3Overrides) md3Overrides.disabled = true;
-    }
-    localStorage.setItem('style_mode', mode);
-  };
-
-  const savedMode = localStorage.getItem('style_mode') || 'default';
-  setGlobalTheme(savedMode);
-
-
-  /* ==========================================================================
-     LIGHT / DARK TOGGLE
-     ========================================================================== */
-  const toggleLightDark = () => {
-    const currentTheme = body.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    body.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme_pref', newTheme);
-  };
-
-  const initLightDark = () => {
-    const savedPref = localStorage.getItem('theme_pref');
-    if (savedPref) {
-      body.setAttribute('data-theme', savedPref);
-    } else {
-      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      body.setAttribute('data-theme', systemPrefersDark ? 'dark' : 'light');
-    }
-  };
-
-  initLightDark();
-  if (themeToggleButton) {
-    themeToggleButton.addEventListener('click', toggleLightDark);
-  }
-
-
-  /* ==========================================================================
-     NAVIGATION LOGIC
-     ========================================================================== */
   const updateActiveNav = (visibleSectionId) => {
     allNavLinks.forEach(link => {
       const href = link.getAttribute('href');
-      // Check if href matches exactly OR ends with the ID (handles index.html#about vs #about)
-      if (!visibleSectionId) return; // Guard clause
+      if (!visibleSectionId) return;
       const isActive = href === `#${visibleSectionId}` || href.endsWith(`#${visibleSectionId}`);
       link.classList.toggle('active', isActive);
     });
@@ -79,27 +191,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const navObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        updateActiveNav(entry.target.getAttribute('id'));
-      }
+      if (entry.isIntersecting) updateActiveNav(entry.target.getAttribute('id'));
     });
   }, { rootMargin: '-50% 0px -50% 0px', threshold: 0 });
 
-  if (sections.length > 0) {
-    sections.forEach(section => navObserver.observe(section));
-  }
+  if (sections.length > 0) sections.forEach(section => navObserver.observe(section));
 
   let lastScrollY = window.scrollY;
-
   const handleNavVisibility = () => {
     const currentScrollY = window.scrollY;
     if (Math.abs(currentScrollY - lastScrollY) <= 5) return;
 
     const isScrollingDown = currentScrollY > lastScrollY;
     const headerHeight = topAppBar ? topAppBar.offsetHeight : 100;
-    const isPastHeader = currentScrollY > headerHeight;
 
-    if (isScrollingDown && isPastHeader) {
+    if (isScrollingDown && currentScrollY > headerHeight) {
       if (mobileNavBar) mobileNavBar.classList.add('hidden');
       if (topAppBar) topAppBar.classList.add('hidden');
     } else {
@@ -120,18 +226,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* ==========================================================================
-     EMAIL UTILS (Global because Footer is on all pages)
+     5. EMAIL CLIPBOARD (Uses Universal Toast)
      ========================================================================== */
   const emailBtn = document.getElementById('email-btn');
   if (emailBtn) {
     emailBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      navigator.clipboard.writeText("singhamankumar207@gmail.com").then(() => {
-        if (toast) {
-          toast.classList.add("show");
-          setTimeout(() => { toast.classList.remove("show"); }, 3000);
-        }
-      }).catch(() => { window.location.href = "mailto:singhamankumar207@gmail.com"; });
+      const email = "singhamankumar207@gmail.com";
+      navigator.clipboard.writeText(email).then(() => {
+        window.showToast("Email Copied! 📋");
+      }).catch(() => {
+        window.location.href = `mailto:${email}`;
+      });
     });
   }
+
 });
