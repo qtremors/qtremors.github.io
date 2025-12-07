@@ -12,10 +12,25 @@
       "HTMX-powered SPA feel without page reloads"
     ],
     "installation": "git clone https://github.com/qtremors/quizzer-ai\npip install -r requirements.txt\npython manage.py migrate\npython manage.py runserver",
-    "badges": ["tech-python", "tech-django", "tech-ts", "tech-html", "tech-css", "tech-js"],
+    "badges": [
+      "tech-python",
+      "tech-django",
+      "tech-ts",
+      "tech-html",
+      "tech-css",
+      "tech-js"
+    ],
     "links": [
-      { "text": "Website", "url": "https://quizzer-ai-dc4m.onrender.com/", "class": "link-primary" },
-      { "text": "View on GitHub", "url": "https://github.com/qtremors/quizzer-ai", "class": "link-secondary" }
+      {
+        "text": "Website",
+        "url": "https://quizzer-ai-dc4m.onrender.com/",
+        "class": "link-primary"
+      },
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/quizzer-ai",
+        "class": "link-secondary"
+      }
     ]
   },
   {
@@ -30,18 +45,33 @@
       "Deep User Profiling & Contribution Graphs",
       "Multiple Theme Engine (Dark/Dimmed/AMOLED)"
     ],
-    "installation": "uv sync\nuv run app.py\n# Open http://127.0.0.1:5000",
-    "badges": ["tech-python", "tech-flask", "tech-js", "tech-html", "tech-css", "tech-sqlite"],
+    "installation": "git clone https://github.com/qtremors/git-nexus.git\ncd git-nexus\nuv sync\nuv run app.py",
+    "badges": [
+      "tech-python",
+      "tech-flask",
+      "tech-js",
+      "tech-html",
+      "tech-css",
+      "tech-sqlite"
+    ],
     "links": [
-      { "text": "Live Demo", "url": "https://qtremors.github.io/repo-nav", "class": "link-primary" },
-      { "text": "View on GitHub", "url": "https://github.com/qtremors/git-nexus", "class": "link-secondary" }
+      {
+        "text": "Live Demo",
+        "url": "https://qtremors.github.io/repo-nav",
+        "class": "link-primary"
+      },
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/git-nexus",
+        "class": "link-secondary"
+      }
     ]
   },
   {
     "id": "algorithm-visualizer",
     "title": "Algorithm Visualizer",
     "image": "assets/algorithm-preview.png",
-    "description": "A full-stack app that visualizes algorithms in real time. React (TypeScript) on the front, FastAPI on the back — letting users see each algorithm’s steps as they happen.",
+    "description": "A full-stack app that visualizes algorithms in real time. React (TypeScript) on the front, FastAPI on the back \u2014 letting users see each algorithm\u2019s steps as they happen.",
     "longDescription": "Unlike standard visualizers that pre-calculate steps, AlgoVisualizer runs the actual algorithm on the Python backend and streams the state frame-by-frame to the React frontend via WebSockets.\n\nIt supports Sorting (Bubble, Insertion, Selection) and Pathfinding (Dijkstra, BFS, DFS) with features like wall drawing, VCR-style playback controls, and adjustable execution speed.",
     "features": [
       "Real-time WebSocket State Streaming",
@@ -50,17 +80,30 @@
       "Metadata-Driven UI Architecture"
     ],
     "installation": "# Clone and setup\ncd backend && pip install -r requirements.txt\ncd frontend && npm install\n\n# Run\nuvicorn main:app --reload\nnpm run dev",
-    "badges": ["tech-react", "tech-ts", "tech-python", "tech-fastapi"],
+    "badges": [
+      "tech-react",
+      "tech-ts",
+      "tech-python",
+      "tech-fastapi"
+    ],
     "links": [
-      { "text": "Website", "url": "https://tremors-algoviz.netlify.app", "class": "link-primary" },
-      { "text": "View on GitHub", "url": "https://github.com/qtremors/algorithm-visualizer", "class": "link-secondary" }
+      {
+        "text": "Website",
+        "url": "https://tremors-algoviz.netlify.app",
+        "class": "link-primary"
+      },
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/algorithm-visualizer",
+        "class": "link-secondary"
+      }
     ]
   },
   {
     "id": "tremors-music",
     "title": "Tremors Music Player",
     "image": "assets/music-preview.png",
-    "description": "A high-performance, local-first desktop music player with a Python backend and a modern React UI — lightning-fast library scanning, smart metadata, lyrics sync, and a premium Apple-Music-style design.",
+    "description": "A high-performance, local-first desktop music player with a Python backend and a modern React UI \u2014 lightning-fast library scanning, smart metadata, lyrics sync, and a premium Apple-Music-style design.",
     "longDescription": "Built for audiophiles who prefer local libraries over cloud streaming. Tremors Music combines a Python FastAPI backend for high-speed file system access and metadata parsing with a modern React UI.\n\nIt handles libraries of 5,000+ songs effortlessly using virtualization, fetches synchronized lyrics automatically, and extracts technical audio specs (Bitrate, Sample Rate) in real-time.",
     "features": [
       "Virtualization for 5,000+ song libraries",
@@ -68,11 +111,25 @@
       "Real-time ID3 Tag & Cover Art Extraction",
       "Glassmorphism UI with Dynamic Accent Colors"
     ],
-    "installation": "# Backend\ncd backend\nuv sync\nuv run uvicorn main:app --reload\n\n# Frontend\ncd frontend\nnpm install\nnpm run dev",
-    "badges": ["tech-python", "tech-fastapi", "tech-react", "tech-ts", "tech-framermotion"],
+    "installation": "git clone https://github.com/qtremors/tremors-music.git\ncd tremors-music\n\n# Install Backend\ncd backend\nuv sync\ncd ..\n\n# Install Frontend\ncd frontend\nnpm install\ncd ..\n\n# Run Backend\ncd backend\nuv run uvicorn main:app --reload\n\n# Run Frontend\ncd frontend\nnpm run dev",
+    "badges": [
+      "tech-python",
+      "tech-fastapi",
+      "tech-react",
+      "tech-ts",
+      "tech-framermotion"
+    ],
     "links": [
-      { "text": "Website", "url": "system/index-404.html", "class": "link-primary" },
-      { "text": "View on GitHub", "url": "https://github.com/qtremors/tremors-music", "class": "link-secondary" }
+      {
+        "text": "Website",
+        "url": "system/index-404.html",
+        "class": "link-primary"
+      },
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/tremors-music",
+        "class": "link-secondary"
+      }
     ]
   },
   {
@@ -87,11 +144,25 @@
       "Interactive Confidence Charts (Plotly)",
       "SQLite History Tracking"
     ],
-    "installation": "uv sync\nuv run python manage.py migrate\nuv run python manage.py runserver",
-    "badges": ["tech-django", "tech-tensorflow", "tech-pillow", "tech-numpy", "tech-plotly"],
+    "installation": "git clone https://github.com/qtremors/plant-disease-detector.git\ncd plant-disease-detector\nuv sync\nuv run python manage.py migrate\nuv run python manage.py runserver",
+    "badges": [
+      "tech-django",
+      "tech-tensorflow",
+      "tech-pillow",
+      "tech-numpy",
+      "tech-plotly"
+    ],
     "links": [
-      { "text": "Website", "url": "system/index-404.html", "class": "link-primary" },
-      { "text": "View on GitHub", "url": "https://github.com/qtremors/plant-disease-detector", "class": "link-secondary" }
+      {
+        "text": "Website",
+        "url": "system/index-404.html",
+        "class": "link-primary"
+      },
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/plant-disease-detector",
+        "class": "link-secondary"
+      }
     ]
   },
   {
@@ -106,11 +177,25 @@
       "Full User Auth flow with Email OTP",
       "Product Reviews & Advanced Filtering"
     ],
-    "installation": "pip install -r requirements.txt\npython manage.py migrate\npython manage.py runserver",
-    "badges": ["tech-django", "tech-html", "tech-css", "tech-js", "tech-sql"],
+    "installation": "git clone https://github.com/qtremors/eshopper\ncd shopping\npython -m venv venv\n# Activate venv\npip install -r requirements.txt\npython manage.py migrate\npython manage.py createsuperuser\npython manage.py runserver",
+    "badges": [
+      "tech-django",
+      "tech-html",
+      "tech-css",
+      "tech-js",
+      "tech-sql"
+    ],
     "links": [
-      { "text": "Website", "url": "https://tremors.pythonanywhere.com/", "class": "link-primary" },
-      { "text": "View on GitHub", "url": "https://github.com/qtremors/eshopper", "class": "link-secondary" }
+      {
+        "text": "Website",
+        "url": "https://tremors.pythonanywhere.com/",
+        "class": "link-primary"
+      },
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/eshopper",
+        "class": "link-secondary"
+      }
     ]
   },
   {
@@ -125,17 +210,25 @@
       "Graceful Interrupts (Ctrl+C shows results)",
       "Smart Colors & Comment Density Stats"
     ],
-    "installation": "git clone https://github.com/qtremors/locr.git\ncd locr\npip install -e .",
-    "badges": ["tech-python", "tech-cli", "tech-git"],
+    "installation": "# Clone or download this repo, then navigate to it\ngit clone https://github.com/qtremors/locr.git\ncd locr\n\n# Install in editable mode\npip install -e .",
+    "badges": [
+      "tech-python",
+      "tech-cli",
+      "tech-git"
+    ],
     "links": [
-      { "text": "View on GitHub", "url": "https://github.com/qtremors/locr", "class": "link-primary" }
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/locr",
+        "class": "link-primary"
+      }
     ]
   },
   {
     "id": "pc-remote-control",
     "title": "PC Remote Control API",
     "image": "assets/pcrc-preview.png",
-    "description": "A Python + FastAPI tool that lets you control your PC from your phone — media playback, system power, screenshots, and app launching over a clean local web interface.",
+    "description": "A Python + FastAPI tool that lets you control your PC from your phone \u2014 media playback, system power, screenshots, and app launching over a clean local web interface.",
     "longDescription": "This tool turns your smartphone into a remote control for your PC. It runs a lightweight FastAPI server that listens for commands from a mobile-friendly web interface.\n\nYou can control system volume, media playback (Spotify/YouTube), take screenshots that appear on your phone, and perform system power actions like Sleep or Lock.",
     "features": [
       "Media Control (Vol, Play, Pause, Next)",
@@ -143,17 +236,25 @@
       "Instant Screen Mirroring to Phone",
       "Zero-Dependency Frontend"
     ],
-    "installation": "uv pip install -r requirements.txt\npython main.py\n# Open IP on Phone",
-    "badges": ["tech-python", "tech-fastapi", "tech-cli"],
+    "installation": "git clone https://github.com/qtremors/pc-rc\ncd pc-rc\nuv venv\n# Activate venv (Windows: .venv\\Scripts\\activate, Linux: source .venv/bin/activate)\nuv pip install -r requirements.txt\n# Create .env with HOST=0.0.0.0 PORT=8000\npython main.py",
+    "badges": [
+      "tech-python",
+      "tech-fastapi",
+      "tech-cli"
+    ],
     "links": [
-      { "text": "View on GitHub", "url": "https://github.com/qtremors/pc-rc", "class": "link-primary" }
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/pc-rc",
+        "class": "link-primary"
+      }
     ]
   },
   {
     "id": "repo-tree",
     "title": "RepoTree Generator",
     "image": "assets/rtree-preview.png",
-    "description": "A Git-aware CLI that generates clean directory trees, filtering files using .gitignore so only real source code shows up — no build junk, no clutter.",
+    "description": "A Git-aware CLI that generates clean directory trees, filtering files using .gitignore so only real source code shows up \u2014 no build junk, no clutter.",
     "longDescription": "RepoTree solves the problem of 'dirty' directory dumps. It automatically parses .gitignore files to hide build artifacts and caches, ensuring your diagram only shows relevant source code.\n\nIt supports multiple visualization modes (ASCII tree, Flat list), depth limiting for high-level overviews, and can output directly to files without ANSI color codes.",
     "features": [
       "Context-Aware .gitignore Parsing",
@@ -161,10 +262,18 @@
       "Multiple Output Modes (Tree, Flat, Raw)",
       "Auto-Colorization for Terminal"
     ],
-    "installation": "git clone https://github.com/qtremors/file-tree-generator.git\npip install -e .",
-    "badges": ["tech-python", "tech-cli", "tech-git"],
+    "installation": "# Clone the repository\ngit clone https://github.com/qtremors/file-tree-generator.git\n\n# Navigate to the project folder\ncd file-tree-generator\n\n# Install the CLI in editable mode\npip install -e .",
+    "badges": [
+      "tech-python",
+      "tech-cli",
+      "tech-git"
+    ],
     "links": [
-      { "text": "View on GitHub", "url": "https://github.com/qtremors/rtree", "class": "link-primary" }
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/rtree",
+        "class": "link-primary"
+      }
     ]
   },
   {
@@ -180,10 +289,20 @@
       "JWT Authentication & Pydantic Validation",
       "Responsive React Layout (Mobile/Desktop)"
     ],
-    "installation": "# Backend\nuv run uvicorn app.main:app --host 0.0.0.0 --port 8000\n\n# Frontend\n# Edit .env.local with Host IP\nnpm run dev",
-    "badges": ["tech-python", "tech-fastapi", "tech-react", "tech-ts", "tech-sql"],
+    "installation": "# Backend\ncd backend\nuv venv\n# Activate venv\nuv sync\nuvicorn app.main:app --host 0.0.0.0 --port 8000 --reload\n\n# Frontend\ncd frontend\nnpm install\n# Set VITE_API_HOST in .env.local\nnpm run dev",
+    "badges": [
+      "tech-python",
+      "tech-fastapi",
+      "tech-react",
+      "tech-ts",
+      "tech-sql"
+    ],
     "links": [
-      { "text": "View on GitHub", "url": "https://github.com/qtremors/team-chat-app", "class": "link-primary" }
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/team-chat-app",
+        "class": "link-primary"
+      }
     ]
   },
   {
@@ -199,9 +318,16 @@
       "Full Keyboard & Numpad Support"
     ],
     "installation": "pip install pygame\npython pygame_calculator.py",
-    "badges": ["tech-python", "tech-pygame"],
+    "badges": [
+      "tech-python",
+      "tech-pygame"
+    ],
     "links": [
-      { "text": "View on GitHub", "url": "https://github.com/qtremors/pygame-calculator-app", "class": "link-secondary" }
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/pygame-calculator-app",
+        "class": "link-secondary"
+      }
     ]
   },
   {
@@ -220,9 +346,19 @@
       "Serverless Postgres Database (Neon)"
     ],
     "installation": "npx prisma migrate dev\nnpm run dev",
-    "badges": ["tech-nextjs", "tech-ts", "tech-sql", "tech-tailwind", "tech-react"],
+    "badges": [
+      "tech-nextjs",
+      "tech-ts",
+      "tech-sql",
+      "tech-tailwind",
+      "tech-react"
+    ],
     "links": [
-      { "text": "View on GitHub", "url": "https://github.com/qtremors/earnslate", "class": "link-primary" }
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/earnslate",
+        "class": "link-primary"
+      }
     ]
   },
   {
@@ -237,11 +373,25 @@
       "Multi-layer Parallax Backgrounds",
       "Dynamic Dashboard for Project Links"
     ],
-    "installation": "npm install\nnpm run dev",
-    "badges": ["tech-nextjs", "tech-react", "tech-framermotion", "tech-tsparticles", "tech-css"],
+    "installation": "git clone https://github.com/qtremors/nexus.git\ncd nexus\nnpm install\nnpm run dev",
+    "badges": [
+      "tech-nextjs",
+      "tech-react",
+      "tech-framermotion",
+      "tech-tsparticles",
+      "tech-css"
+    ],
     "links": [
-      { "text": "Website", "url": "https://tremors.vercel.app", "class": "link-primary" },
-      { "text": "View on GitHub", "url": "https://github.com/qtremors/nexus", "class": "link-secondary" }
+      {
+        "text": "Website",
+        "url": "https://tremors.vercel.app",
+        "class": "link-primary"
+      },
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/nexus",
+        "class": "link-secondary"
+      }
     ]
   },
   {
@@ -257,10 +407,23 @@
       "Vanishing Point Perspective Design"
     ],
     "installation": "npm install\nnode build.js",
-    "badges": ["tech-html", "tech-css", "tech-js", "tech-github"],
+    "badges": [
+      "tech-html",
+      "tech-css",
+      "tech-js",
+      "tech-github"
+    ],
     "links": [
-      { "text": "Website", "url": "https://qtremors.github.io/scrap", "class": "link-primary" },
-      { "text": "View on GitHub", "url": "https://github.com/qtremors/scrap", "class": "link-secondary" }
+      {
+        "text": "Website",
+        "url": "https://qtremors.github.io/scrap",
+        "class": "link-primary"
+      },
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/scrap",
+        "class": "link-secondary"
+      }
     ]
   }
 ]

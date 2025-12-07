@@ -1,6 +1,6 @@
 /* ==========================================================================
    static/js/home.js
-   (Logic only for the Main Homepage)
+   (Logic only for the Main Homepage: Typewriter & Portfolio Grid)
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -40,9 +40,12 @@ document.addEventListener('DOMContentLoaded', function () {
   const portfolioGrid = document.getElementById('portfolio-grid');
   const githubCard = document.getElementById('github-card');
   const githubActions = document.getElementById('github-card-actions');
+  
   let allProjects = [];
-  let isExpanded = false;
   const INITIAL_SHOW_COUNT = 5;
+  
+  // 1. Check Session Storage: Did the user previously expand the list?
+  let isExpanded = sessionStorage.getItem('portfolio_expanded') === 'true';
 
   const getBadgeLabel = (badgeClass) => {
     const labels = {
@@ -97,12 +100,28 @@ document.addEventListener('DOMContentLoaded', function () {
     try {
       const response = await fetch('data/projects.json');
       allProjects = await response.json();
-      allProjects.slice(0, INITIAL_SHOW_COUNT).forEach(p => insertBeforeGithub(createProjectCard(p)));
+      
+      // 2. Logic: Show ALL if expanded, otherwise just show INITIAL count
+      const countToShow = isExpanded ? allProjects.length : INITIAL_SHOW_COUNT;
+
+      allProjects.slice(0, countToShow).forEach((p, index) => {
+          // If index > initial count, mark it as 'dynamic' so we can collapse it later
+          const isDynamic = index >= INITIAL_SHOW_COUNT; 
+          insertBeforeGithub(createProjectCard(p, isDynamic));
+      });
+
       if (allProjects.length > INITIAL_SHOW_COUNT) {
         const loadBtn = document.createElement('button');
         loadBtn.className = 'card-btn btn-load';
         loadBtn.id = 'card-toggle-trigger';
-        loadBtn.innerHTML = `<span class="btn-text">Load More Projects</span><span class="btn-icon">↓</span>`;
+        
+        // 3. Logic: Set initial button text based on state
+        if (isExpanded) {
+            loadBtn.innerHTML = `<span class="btn-text">Show Less</span><span class="btn-icon">↑</span>`;
+        } else {
+            loadBtn.innerHTML = `<span class="btn-text">Load More Projects</span><span class="btn-icon">↓</span>`;
+        }
+        
         if (githubActions) githubActions.prepend(loadBtn);
       }
     } catch (error) { console.error('Error loading projects:', error); }
@@ -114,16 +133,21 @@ document.addEventListener('DOMContentLoaded', function () {
       if (btn) {
         const btnText = btn.querySelector('.btn-text');
         const btnIcon = btn.querySelector('.btn-icon');
+        
         if (!isExpanded) {
+          // Expand Action
           allProjects.slice(INITIAL_SHOW_COUNT).forEach(p => insertBeforeGithub(createProjectCard(p, true)));
           btnText.textContent = "Show Less";
           btnIcon.textContent = "↑";
           isExpanded = true;
+          sessionStorage.setItem('portfolio_expanded', 'true'); // Save State
         } else {
+          // Collapse Action
           document.querySelectorAll('.dynamic-project').forEach(card => card.remove());
           btnText.textContent = "Load More Projects";
           btnIcon.textContent = "↓";
           isExpanded = false;
+          sessionStorage.setItem('portfolio_expanded', 'false'); // Save State
           githubCard.scrollIntoView({ behavior: 'smooth', block: 'end' });
         }
       }

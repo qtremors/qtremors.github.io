@@ -6,14 +6,45 @@
     <title>History | Tremors</title>
     <link rel="icon" type="image/png" href="../assets/history.png">
 
-    <link rel="stylesheet" href="../static/css/index-variables.css">
     <link rel="stylesheet" href="../static/css/index-animations.css">
     <link rel="stylesheet" href="../static/css/index-base.css">
     <link rel="stylesheet" href="../static/css/index-navigation.css">
     <link rel="stylesheet" href="../static/css/index-sections.css">
 
-    <link rel="stylesheet" href="../static/css/md3-variables.css" id="md3-vars" disabled>
-    <link rel="stylesheet" href="../static/css/md3-overrides.css" id="md3-overrides" disabled>
+    <link rel="stylesheet" href="../static/themes/default.css" id="theme-default">
+    <link rel="stylesheet" href="../static/themes/md3.css" id="theme-md3" disabled>
+    <link rel="stylesheet" href="../static/themes/oled.css" id="theme-oled" disabled>
+
+    <link rel="stylesheet" href="../static/effects/fog.css" id="effect-fog">
+    <link rel="stylesheet" href="../static/effects/glass.css" id="effect-glass" disabled>
+    <link rel="stylesheet" href="../static/effects/spotlight.css" id="effect-spotlight">
+
+    <script>
+    (function() {
+        try {
+            const savedMode = localStorage.getItem('style_mode') || 'default';
+            
+            // Themes
+            document.getElementById('theme-default').disabled = true;
+            document.getElementById('theme-md3').disabled = true;
+            document.getElementById('theme-oled').disabled = true;
+
+            if (savedMode === 'md3') document.getElementById('theme-md3').disabled = false;
+            else if (savedMode === 'oled') document.getElementById('theme-oled').disabled = false;
+            else document.getElementById('theme-default').disabled = false;
+
+            // Effects
+            const savedEffect = localStorage.getItem('effect_mode') || 'fog';
+            const savedSpotlight = localStorage.getItem('spotlight_mode') || 'on';
+
+            document.getElementById('effect-fog').disabled = (savedEffect !== 'fog');
+            document.getElementById('effect-glass').disabled = (savedEffect !== 'glass');
+            document.getElementById('effect-spotlight').disabled = (savedSpotlight === 'off');
+
+            document.documentElement.setAttribute('data-style-mode', savedMode);
+        } catch (e) {}
+    })();
+    </script>
 
     <style>
         /* --- TIMELINE SPECIFIC STYLES --- */
@@ -88,6 +119,12 @@
         .timeline-item:hover .timeline-content {
             transform: translateX(5px);
             border-color: var(--md-primary);
+        }
+        
+        /* Glass effect support for OLED mode */
+        body[data-style-mode="oled"] .timeline-content {
+            background-color: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(12px);
         }
 
         .version-tag {
@@ -174,6 +211,32 @@
         <nav class="desktop-nav">
             <a href="../index.html" class="nav-item">Back to Home</a>
         </nav>
+
+        <div class="app-bar-actions">
+            <div class="dropdown-container">
+                <button id="dropdown-toggle" class="icon-button" title="More Options">
+                    <img src="../assets/alien.svg" alt="Options">
+                </button>
+                <div class="dropdown-card" id="main-dropdown">
+                    <button class="dropdown-item" onclick="location.href='../tui.html'">
+                        <img src="../assets/alien.svg" class="dropdown-icon" alt="TUI">
+                        <span class="dropdown-title">TUI Version</span>
+                    </button>
+                    <hr class="menu-separator">
+                    <div class="dropdown-section">
+                        <button class="dropdown-item" id="open-settings-btn" title="Open appearance settings">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="dropdown-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                            <span class="dropdown-title">Appearance</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <button id="theme-toggle" class="theme-toggle-button" title="Toggle theme">
+                <img src="../assets/sun.svg" alt="Sun" class="sun" width="25" height="25">
+                <img src="../assets/moon.svg" alt="Moon" class="moon" width="25" height="25">
+            </button>
+        </div>
     </header>
 
     <div class="container">
@@ -190,6 +253,21 @@
         </div>
 
         <div class="timeline">
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <span class="version-tag">v2.1.0</span>
+                    <span class="timeline-date">Dec 07, 2025</span>
+                    <h3>The Theme & Effects Engine</h3>
+                    <ul class="commit-list">
+                        <li><strong>Modular Themes:</strong> Default, MD3, and OLED themes are now independent CSS files.</li>
+                        <li><strong>Effect System:</strong> Implemented toggleable "Fog", "Glass", and "Spotlight" effects.</li>
+                        <li><strong>Settings Modal:</strong> Centralized UI for controlling Appearance, Themes, and Color Modes.</li>
+                        <li><strong>Universal Toast:</strong> Standardized notification system for emails and easter eggs.</li>
+                    </ul>
+                </div>
+            </div>
 
             <div class="timeline-item">
                 <div class="timeline-marker"></div>
@@ -250,7 +328,51 @@
         </div>
     </div>
 
-    <script src="static/js/index.js"></script>
+    <div id="settings-modal" class="modal-backdrop" aria-hidden="true">
+        <div class="modal-card">
+            <header class="modal-header">
+                <h3>Appearance</h3>
+                <button id="close-settings-btn" class="icon-button" aria-label="Close settings">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </header>
+            <div class="modal-body">
+                <div class="setting-group">
+                    <label class="setting-label">Color Mode</label>
+                    <div class="segmented-control">
+                        <button class="segment-btn" data-set-mode="system"><span>System</span></button>
+                        <button class="segment-btn" data-set-mode="light"><span>Light</span></button>
+                        <button class="segment-btn" data-set-mode="dark"><span>Dark</span></button>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <label class="setting-label">Visual Theme</label>
+                    <div class="theme-grid">
+                        <button class="theme-card" data-set-theme="default"><div class="theme-preview default-preview"></div><span>Default</span></button>
+                        <button class="theme-card" data-set-theme="md3"><div class="theme-preview md3-preview"></div><span>MD3</span></button>
+                        <button class="theme-card" data-set-theme="oled"><div class="theme-preview oled-preview"></div><span>OLED</span></button>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <label class="setting-label">Scene Effect</label>
+                    <div class="segmented-control">
+                        <button class="segment-btn" data-set-effect="fog"><span>🌫️ Fog</span></button>
+                        <button class="segment-btn" data-set-effect="glass"><span>🧊 Glass</span></button>
+                        <button class="segment-btn" data-set-effect="none"><span>🚫 None</span></button>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <label class="setting-label">Spotlight Effect</label>
+                    <div class="segmented-control">
+                        <button class="segment-btn" data-set-spotlight="on"><span>On</span></button>
+                        <button class="segment-btn" data-set-spotlight="off"><span>Off</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../static/js/index.js"></script>
 
 </body>
 </html>

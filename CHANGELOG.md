@@ -1,5 +1,37 @@
 # Changelog
 
+## [v2.2.0] - 07-12-2025
+
+### 🚀 **The Theme & Effects Engine**
+
+- **Modular Theme Architecture:** Completely decoupled visual styles from structural CSS.
+    - Created **`static/themes/`** for color palettes (`default.css`, `md3.css`, `oled.css`).
+    - Created **`static/effects/`** for visual layers (`fog.css`, `glass.css`, `spotlight.css`).
+    - This allows mix-and-match capabilities (e.g., *Default Theme* with *Glass Effect*).
+
+- **Settings Modal:** Replaced the simple dropdown swatches with a centralized **Appearance Settings** modal.
+    - **Granular Control:** Users can now independently toggle **Color Mode** (System/Light/Dark), **Visual Theme**, **Scene Effects**, and **Spotlight**.
+    - **Live Preview:** Changes apply instantly without reloading.
+
+### ✨ **New Features**
+
+- **Universal Toast System:** Refactored the email notification toast into a global `window.showToast()` utility, now used by both the Contact section and the Easter Egg ("Python Mode") for a consistent UI.
+    
+- **Persistent Portfolio State:** Implemented `sessionStorage` logic in `home.js`. If a user expands the portfolio ("Load More") and navigates away, the grid remains expanded when they return, preserving their context.
+    
+- **Glassmorphism 2.0:** Upgraded the OLED "Glass" effect to use high-translucency backgrounds (`rgba(18,18,18,0.45)`) with heavy `backdrop-filter: blur(20px)` for a true frosted look.
+
+### 📄 **Data & Content**
+
+- **Installation Data:** Parsed the universal `UREADME.md` to auto-populate the `installation` field in `projects.json` for 10+ projects (GitNexus, Tremors Music, etc.), ensuring the Terminal Widget displays accurate setup commands.
+
+### 🐛 **Bug Fixes & Refactoring**
+
+- **Spotlight Logic:** Extracted spotlight gradients from `index-sections.css` into a toggleable `spotlight.css` file to fix the "always-on" bug in the Skills section.
+- **Project Page Synchronization:** Updated `project.html` to fully support the new Theme Engine, Settings Modal, and Anti-Flash scripts, ensuring a seamless transition from the home page.
+- **Clean Code:** Deleted deprecated files (`index-variables.css`, `md3-variables.css`, `md3-overrides.css`) following the successful migration to the new architecture.
+
+---
 
 ## [v2.1.0] - 06-12-2025
 

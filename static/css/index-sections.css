@@ -2,14 +2,15 @@
    Page Sections (Hero, About, Skills, Portfolio, Contact, Footer)
    ========================================================================== */
 
+/* --- 1. HERO SECTION --- */
 .hero {
     text-align: center;
     padding: 60px 1rem 4rem 1rem;
     min-height: 100vh;
     background-size: 50px 50px;
     background-image:
-        linear-gradient(to right, rgba(128, 128, 128, 0.05) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(128, 128, 128, 0.05) 1px, transparent 1px);
+        linear-gradient(to right, var(--hero-grid-color) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--hero-grid-color) 1px, transparent 1px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -19,69 +20,14 @@
     transition: background-color 0.3s ease;
 }
 
-/* ==========================================================================
-   Universal Fog/Blend Logic
-   ========================================================================== */
-
-/* Ensure all sections can position the fog */
-section {
-    position: relative;
-}
-
-/* The Shared Fog Element */
-section::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 50px;     /* FOG RANGE */
-    z-index: 2;
-    pointer-events: none;
-}
-
-/* Logic: Fade INTO the color of the NEXT section */
-
-/* Group A: These sections sit on top of "Surface Variant" (Grey/Lighter) sections.
-   (Hero -> About) | (Skills -> Portfolio) | (Contact -> Footer) */
-.hero::before,
-#skills::before,
-#contact::before {
-    /* HARDNESS: Use 'transparent' to color. To make it softer, we reduced height above. */
-    background: linear-gradient(to bottom, transparent, var(--md-surface-variant));
-}
-
-/* Group B: These sections sit on top of "Background" (Black/Darker) sections.
-   (About -> Skills) | (Portfolio -> Contact) */
-#about::before,
-#portfolio::before {
-    background: linear-gradient(to bottom, transparent, var(--md-background));
-}
-
-/* 2. The Mouse Spotlight Overlay */
-.hero::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-    background: radial-gradient(800px circle at var(--hero-mouse-x, 50%) var(--hero-mouse-y, 50%),
-            rgba(255, 255, 255, 0.05),
-            transparent 40%);
-    pointer-events: none;
-}
-
-
-/* 4. Content Stacking (Must be above the fade) */
+/* Stacking Context for Hero */
 #home .container {
     position: relative;
     z-index: 3;
     transform: scale(1.05);
 }
 
-
+/* Profile Image & Border Animation */
 .profile-img-wrapper {
     position: relative;
     width: 150px;
@@ -90,8 +36,6 @@ section::before {
     margin-bottom: 1.5rem;
     display: inline-block;
     vertical-align: middle;
-    background-size: cover;
-    background-position: center;
 }
 
 .profile-img-wrapper::before {
@@ -109,7 +53,6 @@ section::before {
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
-    box-sizing: border-box;
     opacity: 0;
     transform: rotate(0deg);
     transition: transform 1s linear, opacity 0.4s ease-in-out;
@@ -136,6 +79,7 @@ section::before {
     border-color: transparent;
 }
 
+/* Hero Text & Buttons */
 .hero h1 {
     font-size: 2.75rem;
     color: var(--md-primary);
@@ -172,7 +116,7 @@ section::before {
     box-shadow: 0 6px 12px var(--md-shadow-color);
 }
 
-/* --- ULTRAWIDE SCALING --- */
+/* Hero Specific Media Queries */
 @media (min-width: 1920px) {
 
     .profile-img-wrapper,
@@ -193,20 +137,16 @@ section::before {
 
 @media (max-width: 768px) {
     .hero {
-        min-height: calc(100svh - 100px);
-        padding-bottom: 2rem;
+        min-height: 100svh;
+        padding-bottom: 160px;
     }
 
     .hero h1 {
         font-size: 2.25rem;
-        min-height: 2.5em;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
     }
 }
 
-/* --- About Section --- */
+/* --- 2. ABOUT SECTION --- */
 #about {
     background-color: var(--md-surface-variant);
 }
@@ -223,7 +163,7 @@ section::before {
     color: var(--md-on-surface-variant);
 }
 
-/* --- Skills Section --- */
+/* --- 3. SKILLS SECTION --- */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -241,88 +181,6 @@ section::before {
     flex-direction: column;
     position: relative;
     overflow: hidden;
-}
-
-/* Spotlight Glow */
-.skill-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-            rgba(255, 255, 255, 0.06),
-            transparent 40%);
-    z-index: 1;
-    opacity: 0;
-    transition: opacity 0.3s;
-    pointer-events: none;
-}
-
-.skill-card:hover::before {
-    opacity: 1;
-}
-
-.skill-card h3 {
-    font-size: 1.25rem;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    position: relative;
-    z-index: 2;
-}
-
-.skill-card ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    position: relative;
-    z-index: 2;
-}
-
-/* --- Skills Section --- */
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-}
-
-.skill-card {
-    background-color: var(--md-surface);
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 4px 6px var(--md-shadow-color);
-    border: 1px solid var(--md-outline);
-    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Spotlight Glow */
-.skill-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-            rgba(255, 255, 255, 0.06),
-            transparent 40%);
-    z-index: 1;
-    opacity: 0;
-    transition: opacity 0.3s;
-    pointer-events: none;
-}
-
-.skill-card:hover::before {
-    opacity: 1;
 }
 
 .skill-card:hover {
@@ -354,7 +212,6 @@ section::before {
     height: 24px;
 }
 
-/* Proficiency Badges */
 .badge-wrapper {
     display: inline-flex;
     flex-direction: column;
@@ -385,7 +242,7 @@ section::before {
     width: calc((100% - 8px) * var(--fill, 0.8));
 }
 
-/* --- Portfolio Section --- */
+/* --- 4. PORTFOLIO SECTION --- */
 #portfolio {
     background-color: var(--md-surface-variant);
 }
@@ -467,7 +324,6 @@ section::before {
 }
 
 .portfolio-links .link-secondary {
-    color: var(--md-primary);
     background-color: var(--md-primary-container);
     color: var(--md-on-primary-container);
 }
@@ -497,18 +353,7 @@ section::before {
     transform: scale(1.05);
 }
 
-.portfolio-image-container {
-    border-bottom: 2px dotted var(--md-outline);
-    height: 200px;
-    overflow: hidden;
-}
-
-.portfolio-image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
+/* GitHub Card Specifics */
 .portfolio-item-more .portfolio-content {
     align-items: center;
     text-align: center;
@@ -520,30 +365,6 @@ section::before {
     color: var(--md-primary);
 }
 
-.portfolio-item-more p {
-    margin-top: 0.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.portfolio-item-more .cta-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.25rem;
-    border-radius: 999px;
-    background-color: var(--md-primary);
-    color: var(--md-on-primary);
-    text-decoration: none;
-    font-weight: 500;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.portfolio-item-more .cta-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px var(--md-shadow-color);
-}
-
-/* --- Dynamic Buttons --- */
 .card-actions {
     display: flex;
     flex-wrap: wrap;
@@ -574,31 +395,24 @@ section::before {
     box-shadow: 0 4px 6px var(--md-shadow-color);
 }
 
-.btn-load:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.1);
-}
-
 .btn-github {
     background-color: var(--md-primary-container);
     color: var(--md-on-primary-container);
 }
 
-.btn-github:hover {
+.card-btn:hover {
     transform: translateY(-2px);
     filter: brightness(1.1);
 }
 
-/* --- WIP Styles --- */
+/* WIP Styles */
 .portfolio-item.is-wip {
     border: 1px solid #ffb700 !important;
     position: relative;
-    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
 }
 
 .portfolio-item.is-wip:hover {
     box-shadow: 0 0 20px rgba(255, 183, 0, 0.4);
-    transform: translateY(-5px);
 }
 
 .wip-badge {
@@ -614,7 +428,6 @@ section::before {
     z-index: 10;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
 }
 
 .portfolio-item.is-wip .img-wrapper::after {
@@ -629,12 +442,10 @@ section::before {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 0 1rem;
     color: red;
     font-weight: 900;
     font-size: 1.4rem;
     text-shadow: 2px 2px 0px #000;
-    letter-spacing: 1px;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.4s ease;
@@ -645,7 +456,7 @@ section::before {
     opacity: 1;
 }
 
-/* --- Contact Section --- */
+/* --- 5. CONTACT SECTION --- */
 .contact-intro {
     color: var(--md-on-surface-variant);
     font-size: 1.1rem;
@@ -656,7 +467,6 @@ section::before {
     text-align: center;
 }
 
-/* Contact Grid */
 .contact-grid {
     display: flex;
     flex-wrap: wrap;
@@ -716,11 +526,9 @@ section::before {
     font-size: 0.9rem;
     color: var(--md-on-surface-variant);
     overflow-wrap: anywhere;
-    word-break: break-all;
-    line-height: 1.3;
 }
 
-/* Toast Notification */
+/* --- 6. TOAST NOTIFICATION --- */
 .toast-notification {
     visibility: hidden;
     min-width: 250px;
@@ -747,77 +555,11 @@ section::before {
     bottom: 50px;
 }
 
-/* ==========================================================================
-   THEME SWITCHER
-   ========================================================================== */
-
-.theme-switcher-row {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Button Container (Reset) */
-.theme-swatch {
-    width: 32px;
-    height: 32px;
-    padding: 0;
-    margin: 0;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    border-radius: 0;
-    box-shadow: none;
-    appearance: none;
-    -webkit-appearance: none;
-}
-
-.theme-swatch:hover {
-    transform: scale(1.15);
-    z-index: 2;
-}
-
-/* --- SVG SHAPE CONTROL --- */
-.swatch-shape {
-    rx: 16px;
-    ry: 16px;
-    transition: rx 0.3s ease, ry 0.3s ease, stroke 0.2s;
-}
-
-/* --- ACTIVE STATES (The Ring) --- */
-
-body[data-style-mode="default"] .swatch-default svg,
-body[data-style-mode="md3"] .swatch-md3 svg,
-body[data-style-mode="oled"] .swatch-oled svg {
-    filter: drop-shadow(0 0 2px var(--md-primary));
-    transform: scale(1.05);
-}
-
-/* --- MD3 MORPH LOGIC --- */
-
-/* When MD3 is active, ONLY the MD3 button morphs to a squircle (rx: 8px) */
-body[data-style-mode="md3"] .swatch-md3 .swatch-shape {
-    rx: 8px !important;
-    /* Squircle Shape */
-    ry: 8px !important;
-}
-
-/* Optional: Fix for OLED stroke visibility */
-.swatch-oled .swatch-shape {
-    stroke: var(--md-outline);
-    stroke-width: 1px;
-    /* Ensure the stroke is inside the shape */
-    vector-effect: non-scaling-stroke;
-}
-
-/* Footer */
+/* --- 7. FOOTER --- */
 footer {
     background-color: var(--md-surface-variant);
     text-align: center;
     padding: 2rem 1rem;
     color: var(--md-on-surface-variant);
-    /* border-top: 1px solid var(--md-outline); */
     border-top: transparent;
 }
