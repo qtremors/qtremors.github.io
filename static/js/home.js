@@ -5,6 +5,44 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
+  /* --- HERO SAFE ZONE (Centers content between Header & Dock) --- */
+  const updateHeroSafeZones = () => {
+    const hero = document.querySelector('.hero');
+    const bottomNav = document.querySelector('.navigation-bar');
+    const topBar = document.querySelector('.top-app-bar');
+
+    if (!hero) return;
+
+    // 1. Calculate Top Padding (Header Height)
+    let topOffset = 100; // Default fallback
+    if (topBar) {
+      topOffset = topBar.offsetHeight; 
+    }
+
+    // 2. Calculate Bottom Padding (Distance from Dock to bottom of screen)
+    let bottomOffset = 60; // Default fallback
+    if (bottomNav) {
+      const navStyle = window.getComputedStyle(bottomNav);
+      // Only account for the dock if it is actually visible
+      if (navStyle.display !== 'none') {
+        const navRect = bottomNav.getBoundingClientRect();
+        // Distance from top of dock to bottom of viewport + 20px buffer
+        bottomOffset = (window.innerHeight - navRect.top) + 20; 
+      }
+    }
+
+    // 3. Apply to CSS Variables
+    hero.style.setProperty('--hero-pad-top', `${topOffset}px`);
+    hero.style.setProperty('--hero-pad-bottom', `${bottomOffset}px`);
+  };
+
+  // Run on load and resize
+  window.addEventListener('resize', updateHeroSafeZones);
+  // Run immediately
+  updateHeroSafeZones(); 
+  // Run again slightly later to ensure fonts/styles have settled
+  setTimeout(updateHeroSafeZones, 100);
+
   /* --- TYPEWRITER --- */
   const typewriterElement = document.getElementById('typewriter-text');
   if (typewriterElement) {
