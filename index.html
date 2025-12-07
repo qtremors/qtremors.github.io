@@ -15,17 +15,81 @@
 
     <link rel="icon" type="image/svg+xml" href="assets/alien.svg">
 
-    <link rel="stylesheet" href="static/css/index-variables.css">
     <link rel="stylesheet" href="static/css/index-animations.css">
     <link rel="stylesheet" href="static/css/index-base.css">
     <link rel="stylesheet" href="static/css/index-navigation.css">
     <link rel="stylesheet" href="static/css/index-sections.css">
 
-    <link rel="stylesheet" href="static/css/md3-variables.css" id="md3-vars" disabled>
-    <link rel="stylesheet" href="static/css/md3-overrides.css" id="md3-overrides" disabled>
+    <link rel="stylesheet" href="static/themes/default.css" id="theme-default">
+    <link rel="stylesheet" href="static/themes/md3.css" id="theme-md3" disabled>
+    <link rel="stylesheet" href="static/themes/oled.css" id="theme-oled" disabled>
+
+    <link rel="preload" href="data/projects.json" as="fetch" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="static/effects/fog.css" id="effect-fog">
+    <link rel="stylesheet" href="static/effects/glass.css" id="effect-glass" disabled>
+    <link rel="stylesheet" href="static/effects/spotlight.css" id="effect-spotlight">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <script>
+    (function() {
+        try {
+            // 1. Get saved preference (default to 'default' if missing)
+            const savedMode = localStorage.getItem('style_mode') || 'default';
+
+            // 2. Define Theme Sheets
+            const themeDefault = document.getElementById('theme-default');
+            const themeMd3     = document.getElementById('theme-md3');
+            const themeOled    = document.getElementById('theme-oled');
+
+            // 3. Define Effect Sheets
+            const effectFog   = document.getElementById('effect-fog');
+            const effectGlass = document.getElementById('effect-glass');
+
+            // 4. Apply THEME Logic
+            // Reset all to disabled first, then enable the correct one
+            themeDefault.disabled = true;
+            themeMd3.disabled     = true;
+            themeOled.disabled    = true;
+
+            if (savedMode === 'md3') {
+                themeMd3.disabled = false;
+            } else if (savedMode === 'oled') {
+                themeOled.disabled = false;
+            } else {
+                themeDefault.disabled = false;
+            }
+
+            // 5. Apply EFFECT Logic
+            // Rule: OLED gets Glass. Everyone else (Default/MD3) gets Fog.
+            if (savedMode === 'oled') {
+                effectFog.disabled   = true;
+                effectGlass.disabled = false;
+            } else {
+                effectFog.disabled   = false;
+                effectGlass.disabled = true;
+            }
+
+            const effectSpotlight = document.getElementById('effect-spotlight');
+            const savedSpotlight = localStorage.getItem('spotlight_mode') || 'on'; // Default On
+
+            if (savedSpotlight === 'off') {
+                effectSpotlight.disabled = true;
+            } else {
+                effectSpotlight.disabled = false;
+            }
+
+            // 6. Set Attribute for JS/CSS selectors
+            document.documentElement.setAttribute('data-style-mode', savedMode);
+
+        } catch (e) {
+            console.error("Theme init error:", e);
+        }
+    })();
+</script>
+
 </head>
 
 <body>
@@ -93,50 +157,10 @@
                     <hr class="menu-separator">
 
                     <div class="dropdown-section">
-                        <!-- <span class="dropdown-label">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="margin-right:4px;"><path d="M12 22C6.49 22 2 17.51 2 12S6.49 2 12 2s10 4.04 10 9c0 3.31-2.69 6-6 6h-1.77c-.28 0-.5.22-.5.5 0 .12.05.23.13.33.41.47.64 1.06.64 1.67 0 1.38-1.12 2.5-2.5 2.5zm0-18c-4.41 0-8 3.59-8 8s3.59 8 8 8c.28 0 .5-.22.5-.5 0-.16-.08-.28-.14-.35-.41-.46-.63-1.05-.63-1.65 0-1.38 1.12-2.5 2.5-2.5H16c2.21 0 4-1.79 4-4 0-3.86-3.59-7-8-7z"/><circle cx="6.5" cy="11.5" r="1.5"/><circle cx="9.5" cy="7.5" r="1.5"/><circle cx="14.5" cy="7.5" r="1.5"/><circle cx="17.5" cy="11.5" r="1.5"/></svg>
-                            Visual Theme
-                        </span> -->
-                        
-                        <div class="theme-switcher-row">
-
-                            <button class="theme-swatch swatch-default" onclick="setGlobalTheme('default')" title="Default (Blue)">
-                                <svg width="32" height="32" viewBox="0 0 32 32">
-                                    <defs>
-                                        <linearGradient id="grad-default" x1="0%" y1="0%" x2="100%" y2="100%">
-                                            <stop offset="50%" style="stop-color:#8ab4f8; stop-opacity:1" />
-                                            <stop offset="50%" style="stop-color:#1a73e8; stop-opacity:1" />
-                                        </linearGradient>
-                                    </defs>
-                                    <rect class="swatch-shape" width="32" height="32" fill="url(#grad-default)" />
-                                </svg>
-                            </button>
-    
-                            <button class="theme-swatch swatch-md3" onclick="setGlobalTheme('md3')" title="Material Design 3">
-                                <svg width="32" height="32" viewBox="0 0 32 32">
-                                    <defs>
-                                        <linearGradient id="grad-md3" x1="0%" y1="0%" x2="100%" y2="100%">
-                                            <stop offset="50%" style="stop-color:#e9b3ff; stop-opacity:1" />
-                                            <stop offset="50%" style="stop-color:#825599; stop-opacity:1" />
-                                        </linearGradient>
-                                    </defs>
-                                    <rect class="swatch-shape" width="32" height="32" fill="url(#grad-md3)" />
-                                </svg>
-                            </button>
-                        
-                            <button class="theme-swatch swatch-oled" onclick="setGlobalTheme('oled')" title="OLED (Pure Black)">
-                                <svg width="32" height="32" viewBox="0 0 32 32">
-                                    <defs>
-                                        <linearGradient id="grad-oled" x1="0%" y1="0%" x2="100%" y2="100%">
-                                            <stop offset="50%" style="stop-color:#ffffff; stop-opacity:1" />
-                                            <stop offset="50%" style="stop-color:#000000; stop-opacity:1" />
-                                        </linearGradient>
-                                    </defs>
-                                    <rect class="swatch-shape" width="32" height="32" fill="url(#grad-oled)" stroke="#5f6368" stroke-width="2" />
-                                </svg>
-                            </button>
-                            
-                        </div>
+                        <button class="dropdown-item" id="open-settings-btn" title="Open appearance settings">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="dropdown-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                            <span class="dropdown-title">Appearance</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -323,7 +347,7 @@
             </div>
         </section>
         
-        <div id="toast" class="toast-notification">Email Copied! 📋</div>
+        <div id="toast" class="toast-notification" aria-live="polite"></div>
         
     </main>
 
@@ -340,6 +364,86 @@
     <script src="static/js/index.js" defer></script>
     <script src="static/js/home.js" defer></script>
     <script src="static/js/extras.js" defer></script>
+
+    <div id="settings-modal" class="modal-backdrop" aria-hidden="true">
+        <div class="modal-card">
+            <header class="modal-header">
+                <h3>Appearance</h3>
+                <button id="close-settings-btn" class="icon-button" aria-label="Close settings">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </header>
+
+            <div class="modal-body">
+                
+                <div class="setting-group">
+                    <label class="setting-label">Color Mode</label>
+                    <div class="segmented-control">
+                        <button class="segment-btn" data-set-mode="system">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                            <span>System</span>
+                        </button>
+                        <button class="segment-btn" data-set-mode="light">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                            <span>Light</span>
+                        </button>
+                        <button class="segment-btn" data-set-mode="dark">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                            <span>Dark</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <label class="setting-label">Visual Theme</label>
+                    <div class="theme-grid">
+                        <button class="theme-card" data-set-theme="default">
+                            <div class="theme-preview default-preview"></div>
+                            <span>Default</span>
+                        </button>
+                        <button class="theme-card" data-set-theme="md3">
+                            <div class="theme-preview md3-preview"></div>
+                            <span>MD3</span>
+                        </button>
+                        <button class="theme-card" data-set-theme="oled">
+                            <div class="theme-preview oled-preview"></div>
+                            <span>OLED</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <label class="setting-label">Scene Effect</label>
+                    <div class="setting-group">
+                        <div class="segmented-control">
+                            <button class="segment-btn" data-set-effect="fog">
+                                <span>🌫️ Fog</span>
+                            </button>
+                            <button class="segment-btn" data-set-effect="glass">
+                                <span>🧊 Glass</span>
+                            </button>
+                            <button class="segment-btn" data-set-effect="none">
+                                <span>🚫 None</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <label class="setting-label">Spotlight Effect</label>
+                    <div class="segmented-control">
+                        <button class="segment-btn" data-set-spotlight="on">
+                            <span>On</span>
+                        </button>
+                        <button class="segment-btn" data-set-spotlight="off">
+                            <span>Off</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>

@@ -5,45 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Working On It</title>
     <link rel="icon" type="image/gif" href="../assets/loading_cat.gif">
+
+    <link rel="stylesheet" href="../static/css/index-base.css">
+    <link rel="stylesheet" href="../static/css/index-navigation.css">
+    
+    <link rel="stylesheet" href="../static/themes/default.css" id="theme-default">
+    <link rel="stylesheet" href="../static/themes/md3.css" id="theme-md3" disabled>
+    <link rel="stylesheet" href="../static/themes/oled.css" id="theme-oled" disabled>
+
+    <link rel="stylesheet" href="../static/effects/fog.css" id="effect-fog">
+    <link rel="stylesheet" href="../static/effects/glass.css" id="effect-glass" disabled>
+    <link rel="stylesheet" href="../static/effects/spotlight.css" id="effect-spotlight">
+
     <style>
         /* ==========================================================================
-           1. Global Styles & Variables
+           404 Specific Styles
+           (Variables are now inherited from the Theme files above)
            ========================================================================== */
-        :root {
-            --md-primary: #1a73e8;
-            --md-on-primary: #ffffff;
-            --md-background: #f8f9fa;
-            --md-surface-variant: #f1f3f4;
-            --md-on-surface: #202124;
-            --md-on-surface-variant: #5f6368;
-            --md-outline: #d1d5db;
-            --md-shadow-color: rgba(32, 33, 36, 0.1);
-        }
-
-        body[data-theme='dark'] {
-            --md-primary: #8ab4f8;
-            --md-on-primary: #202124;
-            --md-background: #131314;
-            --md-surface-variant: #282a2c;
-            --md-on-surface: #e8eaed;
-            --md-on-surface-variant: #9aa0a6;
-            --md-outline: #5f6368;
-            --md-shadow-color: rgba(0, 0, 0, 0.3);
-        }
-
+        
         body {
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--md-background);
-            color: var(--md-on-surface);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            /* Ensure the background transition matches the theme engine */
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* ==========================================================================
-           2. Layout and Card Styles
-           ========================================================================== */
-        .container {
+        .container-404 {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -56,45 +41,30 @@
         .card {
             background-color: var(--md-surface-variant);
             padding: 2.5rem;
-            border-radius: 1rem;
+            border-radius: 16px; /* Matched to Squircle logic */
             border: 1px solid var(--md-outline);
             box-shadow: 0 10px 15px -3px var(--md-shadow-color);
             width: 100%;
             max-width: 32rem;
+            position: relative;
+            overflow: hidden;
         }
 
-        /* ==========================================================================
-           3. Content and Interactive Elements
-           ========================================================================== */
+        /* GIF Styling */
         .construction-gif {
             width: 12rem;
             height: 12rem;
             margin: 0 auto 1.5rem auto;
             display: block;
+            border-radius: 12px;
         }
 
-        /* GIF Toggling Logic */
-        .gif-toggle-checkbox {
-            display: none;
-        }
+        .gif-toggle-checkbox { display: none; }
+        .gif-toggle-label { cursor: pointer; display: block; }
+        .gif-2 { display: none; }
 
-        .gif-toggle-label {
-            cursor: pointer;
-            display: block;
-        }
-
-        .gif-2 {
-            display: none;
-        }
-
-        /* Show gif-2 and hide gif-1 when checkbox is checked */
-        .gif-toggle-checkbox:checked + .gif-toggle-label .gif-1 {
-            display: none;
-        }
-
-        .gif-toggle-checkbox:checked + .gif-toggle-label .gif-2 {
-            display: block;
-        }
+        .gif-toggle-checkbox:checked + .gif-toggle-label .gif-1 { display: none; }
+        .gif-toggle-checkbox:checked + .gif-toggle-label .gif-2 { display: block; }
 
         /* Typography */
         .card-title {
@@ -114,12 +84,11 @@
             color: var(--md-on-surface-variant);
             max-width: 28rem;
             margin: 0 auto;
+            line-height: 1.6;
         }
 
         /* Button Styles */
-        .button-container {
-            margin-top: 2rem;
-        }
+        .button-container { margin-top: 2rem; }
 
         .home-button {
             display: inline-block;
@@ -137,13 +106,59 @@
             transform: translateY(-2px);
             box-shadow: 0 10px 20px -5px var(--md-shadow-color);
         }
-    </style>
-</head>
-<body data-theme="dark">
 
-    <main class="container">
+        /* Settings Trigger (Corner) */
+        .settings-trigger {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: transparent;
+            border: none;
+            color: var(--md-on-surface-variant);
+            cursor: pointer;
+            opacity: 0.5;
+            transition: opacity 0.2s;
+        }
+        .settings-trigger:hover { opacity: 1; }
+
+    </style>
+
+    <script>
+    (function() {
+        try {
+            const savedMode = localStorage.getItem('style_mode') || 'default';
+            
+            // Themes
+            document.getElementById('theme-default').disabled = true;
+            document.getElementById('theme-md3').disabled = true;
+            document.getElementById('theme-oled').disabled = true;
+
+            if (savedMode === 'md3') document.getElementById('theme-md3').disabled = false;
+            else if (savedMode === 'oled') document.getElementById('theme-oled').disabled = false;
+            else document.getElementById('theme-default').disabled = false;
+
+            // Effects
+            const savedEffect = localStorage.getItem('effect_mode') || 'fog';
+            const savedSpotlight = localStorage.getItem('spotlight_mode') || 'on';
+
+            document.getElementById('effect-fog').disabled = (savedEffect !== 'fog');
+            document.getElementById('effect-glass').disabled = (savedEffect !== 'glass');
+            document.getElementById('effect-spotlight').disabled = (savedSpotlight === 'off');
+
+            document.documentElement.setAttribute('data-style-mode', savedMode);
+        } catch (e) {}
+    })();
+    </script>
+</head>
+<body>
+
+    <main class="container-404">
         <div class="card">
-            <!-- Interactive GIF Container -->
+            
+            <button id="open-settings-btn" class="settings-trigger" title="Open appearance settings">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            </button>
+
             <div class="gif-container">
                 <input type="checkbox" id="gif-toggle" class="gif-toggle-checkbox">
                 <label for="gif-toggle" class="gif-toggle-label" title="Click me!">
@@ -152,21 +167,63 @@
                 </label>
             </div>
 
-            <!-- Card Content -->
             <h1 class="card-title">Working On It</h1>
             <p class="card-subtitle">This page is currently under development.</p>
             <p class="card-description">
                 I'm busy working behind the scenes to get this polished up. Stay tuned for updates!
             </p>
 
-            <!-- Action Button -->
             <div class="button-container">
                 <a href="../index.html#portfolio" class="home-button">Go Back</a>
             </div>
         </div>
     </main>
 
-    <script src="static/js/index.js"></script>
+    <div id="settings-modal" class="modal-backdrop" aria-hidden="true">
+        <div class="modal-card">
+            <header class="modal-header">
+                <h3>Appearance</h3>
+                <button id="close-settings-btn" class="icon-button" aria-label="Close settings">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </header>
+            <div class="modal-body">
+                <div class="setting-group">
+                    <label class="setting-label">Color Mode</label>
+                    <div class="segmented-control">
+                        <button class="segment-btn" data-set-mode="system"><span>System</span></button>
+                        <button class="segment-btn" data-set-mode="light"><span>Light</span></button>
+                        <button class="segment-btn" data-set-mode="dark"><span>Dark</span></button>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <label class="setting-label">Visual Theme</label>
+                    <div class="theme-grid">
+                        <button class="theme-card" data-set-theme="default"><div class="theme-preview default-preview"></div><span>Default</span></button>
+                        <button class="theme-card" data-set-theme="md3"><div class="theme-preview md3-preview"></div><span>MD3</span></button>
+                        <button class="theme-card" data-set-theme="oled"><div class="theme-preview oled-preview"></div><span>OLED</span></button>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <label class="setting-label">Scene Effect</label>
+                    <div class="segmented-control">
+                        <button class="segment-btn" data-set-effect="fog"><span>🌫️ Fog</span></button>
+                        <button class="segment-btn" data-set-effect="glass"><span>🧊 Glass</span></button>
+                        <button class="segment-btn" data-set-effect="none"><span>🚫 None</span></button>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <label class="setting-label">Spotlight Effect</label>
+                    <div class="segmented-control">
+                        <button class="segment-btn" data-set-spotlight="on"><span>On</span></button>
+                        <button class="segment-btn" data-set-spotlight="off"><span>Off</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../static/js/index.js"></script>
 
 </body>
 </html>

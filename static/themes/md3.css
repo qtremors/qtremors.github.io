@@ -1,8 +1,9 @@
-/* ==========================================================================
-   MD3 Expressive Theme & Variable Mapping
-   ========================================================================== */
+/* =========================================
+   THEME: MATERIAL DESIGN 3 (Expressive)
+   ========================================= */
+
 :root {
-    /* --- Define MD3 Primitive Colors --- */
+    /* --- MD3 Primitive Colors (Dark) --- */
     --md-sys-color-primary: #e9b3ff;
     --md-sys-color-on-primary: #4f2667;
     --md-sys-color-primary-container: #683d7f;
@@ -16,14 +17,11 @@
     --md-sys-color-surface-variant: #4b4450;
     --md-sys-color-on-surface-variant: #cfc3d2;
     --md-sys-color-outline: #978e9b;
-    --md-sys-color-outline-variant: #4b4450;
-    --md-sys-color-shadow: #000000;
     --md-sys-color-background: #161218;
     --md-sys-color-surface-container: #231e26;
     --md-sys-color-surface-container-low: #1e1a20;
-    --md-sys-color-surface-container-lowest: #100d13;
 
-    /* --- MAP Original Variables to MD3 Colors --- */
+    /* --- MAP to Global Variables --- */
     --md-primary: var(--md-sys-color-primary);
     --md-on-primary: var(--md-sys-color-on-primary);
     --md-primary-container: var(--md-sys-color-primary-container);
@@ -37,22 +35,15 @@
     --md-on-surface-variant: var(--md-sys-color-on-surface-variant);
     --md-outline: var(--md-sys-color-outline);
     --md-shadow-color: rgba(0, 0, 0, 0.5);
-
-    /* Tech Badge MD3 Colors */
-    --tech-react-bg: #475569;
-    --tech-react-fg: #61DAFB;
-    --tech-django-bg: #104F34;
-    --tech-django-fg: #44B78B;
-
-    /* Typography */
+    
     --md-sys-font-family: 'Manrope', sans-serif;
-
-    /* White glow for Dark Mode icons */
     --theme-icon-shadow: #ffffff;
+    --hero-grid-color: rgba(233, 179, 255, 0.08);
+    --spotlight-color: rgba(233, 179, 255, 0.1);
 }
 
 body[data-theme='light'] {
-    /* --- Define Light MD3 Colors --- */
+    /* --- MD3 Primitive Colors (Light) --- */
     --md-sys-color-primary: #825599;
     --md-sys-color-on-primary: #ffffff;
     --md-sys-color-primary-container: #ffd6ff;
@@ -71,7 +62,7 @@ body[data-theme='light'] {
     --md-sys-color-surface-container-low: #fbf2fc;
     --md-sys-color-surface-container-lowest: #ffffff;
 
-    /* --- Re-Map for Light Mode --- */
+    /* --- MAP to Global Variables (Light) --- */
     --md-primary: var(--md-sys-color-primary);
     --md-on-primary: var(--md-sys-color-on-primary);
     --md-primary-container: var(--md-sys-color-primary-container);
@@ -85,11 +76,61 @@ body[data-theme='light'] {
     --md-on-surface-variant: var(--md-sys-color-on-surface-variant);
     --md-outline: var(--md-sys-color-outline);
     --md-shadow-color: rgba(0, 0, 0, 0.2);
-
-    /* Tech Badge Light Colors */
-    --tech-react-bg: #20232A;
-    --tech-django-bg: #092E20;
-
-    /* Dark glow for Light Mode icons */
     --theme-icon-shadow: #202124;
+
+    --hero-grid-color: rgba(130, 85, 153, 0.08);
+    --spotlight-color: rgba(130, 85, 153, 0.20);
+}
+
+/* =========================================
+   MD3 STRUCTURAL OVERRIDES
+   ========================================= */
+
+body {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* --- Shape Engine (Squircles) --- */
+.extended-fab,
+.portfolio-links a,
+.cta-link,
+.skill-card,
+.portfolio-item {
+    border-radius: 16px !important;
+}
+
+.navigation-bar {
+    border-radius: 28px !important;
+}
+
+.navigation-bar .nav-item .icon {
+    border-radius: 16px !important;
+}
+
+.tech-badges span {
+    border-radius: 8px !important;
+}
+
+.desktop-nav .nav-item {
+    border-radius: 12px !important;
+}
+
+/* --- Component Tweaks --- */
+.top-app-bar,
+body:not([data-theme='light']) .top-app-bar {
+    background-color: var(--md-sys-color-surface-container) !important;
+    border-bottom: 1px solid var(--md-sys-color-outline-variant) !important;
+}
+
+/* Mobile Nav Active Colors */
+.navigation-bar .nav-item.active .icon {
+    background-color: var(--md-sys-color-secondary-container) !important;
+    color: var(--md-sys-color-on-secondary-container) !important;
+}
+
+/* --- Neon Gradients --- */
+.top-app-bar .logo::before,
+#dropdown-toggle::before,
+.profile-img-wrapper::before {
+    background: conic-gradient(#ff79c6, #bd93f9, #8be9fd, #50fa7b, #ffb86c, #f1fa8c, #ff79c6) !important;
 }
