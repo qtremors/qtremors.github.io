@@ -321,7 +321,7 @@ body:not([data-theme='light']) .dropdown-item:hover {
     border: 1px solid var(--md-outline);
 }
 
-.default-preview {
+.md-preview {
     background: linear-gradient(135deg, #8ab4f8, #1967d2);
 }
 

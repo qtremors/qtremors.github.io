@@ -22,10 +22,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     const project = allProjects.find(p => p.id === projectId);
 
     if (!project) {
+      const safeProjectId = window.escapeHtml(projectId);
       document.querySelector('.project-container').innerHTML = `
                 <div style="text-align:center; padding: 4rem;">
                     <h1>Project Not Found</h1>
-                    <p>The project ID "${projectId}" does not exist.</p>
+                    <p>The project ID "${safeProjectId}" does not exist.</p>
                     <a href="index.html" class="back-link">Return Home</a>
                 </div>
             `;
@@ -261,32 +262,14 @@ function renderProjectPage(project, allProjects) {
 
   if (project.badges && project.badges.length > 0) {
 
-    // Helper to format badge names
-    const getBadgeLabel = (b) => {
-      const labels = {
-        'tech-python': 'Python', 'tech-django': 'Django', 'tech-ts': 'TypeScript',
-        'tech-html': 'HTML', 'tech-css': 'CSS', 'tech-js': 'JavaScript',
-        'tech-react': 'React', 'tech-fastapi': 'FastAPI', 'tech-flask': 'Flask',
-        'tech-sql': 'SQL', 'tech-tensorflow': 'TensorFlow', 'tech-pillow': 'Pillow',
-        'tech-numpy': 'NumPy', 'tech-plotly': 'Plotly', 'tech-cli': 'CLI',
-        'tech-git': 'Git', 'tech-pygame': 'Pygame', 'tech-nextjs': 'NextJs',
-        'tech-framermotion': 'Framer Motion', 'tech-tsparticles': 'tsParticles',
-        'tech-sqlite': 'SQLite', 'tech-github': 'Github', 'tech-tailwind': 'Tailwind',
-      };
-      return labels[b] || b.replace('tech-', '').charAt(0).toUpperCase() + b.replace('tech-', '').slice(1);
-    };
+    // Use shared getBadgeLabel from utils.js (window.getBadgeLabel)
 
     project.badges.forEach(badge => {
       const span = document.createElement('span');
-      span.className = badge;
-      span.textContent = getBadgeLabel(badge);
+      span.textContent = window.getBadgeLabel(badge);
 
-      // Apply standard badge styling
-      span.style.padding = "5px 12px";
-      span.style.borderRadius = "20px";
-      span.style.fontSize = "0.85rem";
-      span.style.fontWeight = "500";
-      span.style.display = "inline-block";
+      // Apply sidebar badge styling via CSS class
+      span.classList.add('sidebar-badge');
 
       tagsContainer.appendChild(span);
     });
@@ -321,7 +304,7 @@ function renderProjectPage(project, allProjects) {
 
       return `
                 <a href="project.html?id=${proj.id}" class="nav-card ${directionClass}">
-                    <img src="${proj.image}" alt="${proj.title}" class="nav-img">
+                    <img src="${proj.image}" alt="${proj.title} project thumbnail" class="nav-img">
 
                     <div class="nav-info">
                         <div class="nav-top-row">

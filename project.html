@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,15 +17,15 @@
     <link rel="stylesheet" href="static/css/index-navigation.css">
     <link rel="stylesheet" href="static/css/index-sections.css">
 
-    <link rel="stylesheet" href="static/themes/default.css" id="theme-default">
+    <link rel="stylesheet" href="static/themes/md.css" id="theme-md" disabled>
     <link rel="stylesheet" href="static/themes/md3.css" id="theme-md3" disabled>
-    <link rel="stylesheet" href="static/themes/oled.css" id="theme-oled" disabled>
+    <link rel="stylesheet" href="static/themes/oled.css" id="theme-oled">
 
     <link rel="preload" href="data/projects.json" as="fetch" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="static/effects/fog.css" id="effect-fog">
+    <link rel="stylesheet" href="static/effects/fog.css" id="effect-fog" disabled>
     <link rel="stylesheet" href="static/effects/glass.css" id="effect-glass" disabled>
-    <link rel="stylesheet" href="static/effects/spotlight.css" id="effect-spotlight">
+    <link rel="stylesheet" href="static/effects/spotlight.css" id="effect-spotlight" disabled>
 
     <link rel="stylesheet" href="static/css/project.css">
 
@@ -32,66 +33,66 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <script>
-    (function() {
-        try {
-            // 1. Get saved preference (default to 'default' if missing)
-            const savedMode = localStorage.getItem('style_mode') || 'default';
+        (function () {
+            try {
+                // 1. Get saved preference (default to 'default' if missing)
+                const savedMode = localStorage.getItem('style_mode') || 'oled';
 
-            // 2. Define Theme Sheets
-            const themeDefault = document.getElementById('theme-default');
-            const themeMd3     = document.getElementById('theme-md3');
-            const themeOled    = document.getElementById('theme-oled');
+                // 2. Define Theme Sheets
+                const themeMd = document.getElementById('theme-md');
+                const themeMd3 = document.getElementById('theme-md3');
+                const themeOled = document.getElementById('theme-oled');
 
-            // 3. Define Effect Sheets
-            const effectFog   = document.getElementById('effect-fog');
-            const effectGlass = document.getElementById('effect-glass');
-            const effectSpotlight = document.getElementById('effect-spotlight');
+                // 3. Define Effect Sheets
+                const effectFog = document.getElementById('effect-fog');
+                const effectGlass = document.getElementById('effect-glass');
+                const effectSpotlight = document.getElementById('effect-spotlight');
 
-            // 4. Apply THEME Logic
-            themeDefault.disabled = true;
-            themeMd3.disabled     = true;
-            themeOled.disabled    = true;
+                // 4. Apply THEME Logic
+                themeMd.disabled = true;
+                themeMd3.disabled = true;
+                themeOled.disabled = true;
 
-            if (savedMode === 'md3') {
-                themeMd3.disabled = false;
-            } else if (savedMode === 'oled') {
-                themeOled.disabled = false;
-            } else {
-                themeDefault.disabled = false;
+                if (savedMode === 'md') {
+                    themeMd.disabled = false;
+                } else if (savedMode === 'md3') {
+                    themeMd3.disabled = false;
+                } else {
+                    themeOled.disabled = false;
+                }
+
+                // 5. Apply EFFECT Logic (Fog/Glass)
+                // Rule: OLED gets Glass. Everyone else (Default/MD3) gets Fog.
+                const savedEffect = localStorage.getItem('effect_mode') || 'none';
+
+                effectFog.disabled = true;
+                effectGlass.disabled = true;
+
+                // Simple Logic: if savedEffect is valid and not 'none', enable it.
+                // Fallback logic for first load based on theme is handled in index.js, 
+                // but here we just respect the saved preference or default.
+                if (savedEffect === 'glass') {
+                    effectGlass.disabled = false;
+                } else if (savedEffect === 'fog') {
+                    effectFog.disabled = false;
+                }
+                // If 'none', both stay disabled.
+
+                // 6. Apply Spotlight Logic
+                const savedSpotlight = localStorage.getItem('spotlight_mode') || 'off';
+                if (savedSpotlight === 'off') {
+                    effectSpotlight.disabled = true;
+                } else {
+                    effectSpotlight.disabled = false;
+                }
+
+                // 7. Set Attribute for JS/CSS selectors
+                document.documentElement.setAttribute('data-style-mode', savedMode);
+
+            } catch (e) {
+                console.error("Theme init error:", e);
             }
-
-            // 5. Apply EFFECT Logic (Fog/Glass)
-            // Rule: OLED gets Glass. Everyone else (Default/MD3) gets Fog.
-            const savedEffect = localStorage.getItem('effect_mode') || 'fog';
-            
-            effectFog.disabled = true;
-            effectGlass.disabled = true;
-
-            // Simple Logic: if savedEffect is valid and not 'none', enable it.
-            // Fallback logic for first load based on theme is handled in index.js, 
-            // but here we just respect the saved preference or default.
-            if (savedEffect === 'glass') {
-                effectGlass.disabled = false;
-            } else if (savedEffect === 'fog') {
-                effectFog.disabled = false;
-            }
-            // If 'none', both stay disabled.
-
-            // 6. Apply Spotlight Logic
-            const savedSpotlight = localStorage.getItem('spotlight_mode') || 'on';
-            if (savedSpotlight === 'off') {
-                effectSpotlight.disabled = true;
-            } else {
-                effectSpotlight.disabled = false;
-            }
-
-            // 7. Set Attribute for JS/CSS selectors
-            document.documentElement.setAttribute('data-style-mode', savedMode);
-
-        } catch (e) {
-            console.error("Theme init error:", e);
-        }
-    })();
+        })();
     </script>
 </head>
 
@@ -110,28 +111,33 @@
         </nav>
 
         <div class="app-bar-actions">
-            <a href="assets/Aman_Singh.pdf" download="Aman_Singh.pdf" class="icon-button" title="Download Resume" aria-label="Download my resume">
+            <a href="assets/Aman_Singh.pdf" download="Aman_Singh.pdf" class="icon-button" title="Download Resume"
+                aria-label="Download my resume">
                 <img src="assets/cv.svg" alt="CV Icon" width="25" height="25">
             </a>
 
-            <a href="https://tremors.vercel.app" class="icon-button" title="Nexus" aria-label="Go To Nexus" target="_blank" rel="noopener noreferrer">
+            <a href="https://tremors.vercel.app" class="icon-button" title="Nexus" aria-label="Go To Nexus"
+                target="_blank" rel="noopener noreferrer">
                 <img src="assets/blackhole-icon.png" alt="Nexus Icon" width="25" height="25">
             </a>
 
             <div class="dropdown-container">
-                <button id="dropdown-toggle" class="icon-button" title="More Options" aria-label="Toggle more options dropdown">
+                <button id="dropdown-toggle" class="icon-button" title="More Options"
+                    aria-label="Toggle more options dropdown">
                     <img src="assets/alien.svg" alt="More Options Icon">
                 </button>
 
                 <div class="dropdown-card" id="main-dropdown">
-                    <button class="dropdown-item" title="A minimal lightweight TUI version of the main portfolio" onclick="location.href='tui.html'">
+                    <button class="dropdown-item" title="A minimal lightweight TUI version of the main portfolio"
+                        onclick="location.href='tui.html'">
                         <img src="assets/alien.svg" class="dropdown-icon" alt="TUI Icon">
                         <span class="dropdown-title">TUI Version</span>
                     </button>
 
                     <hr class="menu-separator">
-                
-                    <button class="dropdown-item" title="View project evolution timeline" onclick="location.href='system/history.html'">
+
+                    <button class="dropdown-item" title="View project evolution timeline"
+                        onclick="location.href='system/history.html'">
                         <img src="assets/history.png" class="dropdown-icon" alt="History Icon">
                         <span class="dropdown-title">Time Machine</span>
                     </button>
@@ -140,7 +146,14 @@
 
                     <div class="dropdown-section">
                         <button class="dropdown-item" id="open-settings-btn" title="Open appearance settings">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="dropdown-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="dropdown-icon" width="20" height="20"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path
+                                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                                </path>
+                            </svg>
                             <span class="dropdown-title">Appearance</span>
                         </button>
                     </div>
@@ -156,29 +169,48 @@
 
     <nav class="navigation-bar">
         <a href="#project-top" class="nav-item" aria-label="Scroll to Top">
-            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg></span>
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                    fill="currentColor">
+                    <path d="M0 0h24v24H0V0z" fill="none" />
+                    <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" />
+                </svg></span>
             <span class="label">Project</span>
         </a>
 
         <a href="#section-overview" class="nav-item" aria-label="Project Overview">
-            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></span>
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                    fill="currentColor">
+                    <path d="M0 0h24v24H0V0z" fill="none" />
+                    <path
+                        d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+                </svg></span>
             <span class="label">Overview</span>
         </a>
 
         <a href="#section-features" class="nav-item" aria-label="Key Features">
-            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></span>
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                    fill="currentColor">
+                    <path d="M0 0h24v24H0V0z" fill="none" />
+                    <path
+                        d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                </svg></span>
             <span class="label">Features</span>
         </a>
 
         <a href="#section-installation" class="nav-item" aria-label="Installation Guide">
-            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM7.5 17l-1.41-1.41L9.67 12 6.09 8.41 7.5 7l5 5-5 5zm9-1h-6v-2h6v2z"/></svg></span>
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                    fill="currentColor">
+                    <path d="M0 0h24v24H0V0z" fill="none" />
+                    <path
+                        d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM7.5 17l-1.41-1.41L9.67 12 6.09 8.41 7.5 7l5 5-5 5zm9-1h-6v-2h6v2z" />
+                </svg></span>
             <span class="label">Install</span>
         </a>
     </nav>
 
     <main class="project-mode-main" id="project-top">
         <div class="container project-container">
-            
+
             <nav class="project-nav">
                 <a href="index.html#portfolio" class="back-link">
                     &larr; Back to Portfolio
@@ -226,17 +258,26 @@
 
                     <div class="content-section" id="section-installation" style="display: none;">
                         <h3 class="section-title">Installation & Usage</h3>
-                
+
                         <div class="terminal-toolbar" id="os-switcher">
                             <span class="toolbar-label">Terminal Style:</span>
                             <button class="os-btn" data-os="MacOS" title="macOS Style">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.93-.91 1.32.09 2.53.53 3.45 1.34-2.82 1.72-2.36 5.76.54 7.02-.61 1.48-1.46 2.96-2.32 4.3zM13 3.5c.73-.83 1.21-1.96 1.07-3.11-1.05.05-2.31.69-3.06 1.57-.68.79-1.25 2.09-1.09 3.21 1.17.09 2.37-.84 3.08-1.67z"/></svg>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.93-.91 1.32.09 2.53.53 3.45 1.34-2.82 1.72-2.36 5.76.54 7.02-.61 1.48-1.46 2.96-2.32 4.3zM13 3.5c.73-.83 1.21-1.96 1.07-3.11-1.05.05-2.31.69-3.06 1.57-.68.79-1.25 2.09-1.09 3.21 1.17.09 2.37-.84 3.08-1.67z" />
+                                </svg>
                             </button>
                             <button class="os-btn" data-os="Windows" title="Windows Style">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0V3.449zm10.949-1.551L24 0v11.4H10.949V1.898zM0 12.6h9.75v9.451L0 20.55V12.6zm10.949 0H24v11.4l-13.051-1.898V12.6z"/></svg>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M0 3.449L9.75 2.1v9.451H0V3.449zm10.949-1.551L24 0v11.4H10.949V1.898zM0 12.6h9.75v9.451L0 20.55V12.6zm10.949 0H24v11.4l-13.051-1.898V12.6z" />
+                                </svg>
                             </button>
                             <button class="os-btn" data-os="Linux" title="Linux Style">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3.3 14.7c-.4 1.2-1.6 2-2.9 2-1.3 0-2.5-.8-2.9-2-.1-.3-.1-.5-.1-.7 0-1.7 1.3-3 3-3s3 1.3 3 3c0 .2 0 .4-.1.7z"/></svg>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3.3 14.7c-.4 1.2-1.6 2-2.9 2-1.3 0-2.5-.8-2.9-2-.1-.3-.1-.5-.1-.7 0-1.7 1.3-3 3-3s3 1.3 3 3c0 .2 0 .4-.1.7z" />
+                                </svg>
                             </button>
                         </div>
 
@@ -244,11 +285,11 @@
                     </div>
                 </div>
             </div>
-            
+
             <div id="project-footer-nav" class="project-footer-nav"></div>
 
         </div>
-        
+
         <div id="toast" class="toast-notification" aria-live="polite"></div>
 
     </main>
@@ -256,15 +297,17 @@
     <footer>
         <div class="container">
             <p>
-                &copy; 2025 Tremors. All rights reserved. 
-                <span style="opacity: 0.5; margin: 0 8px;">|</span> 
-                <a href="system/history.html" style="color: var(--md-primary); text-decoration: none; font-weight: bold; font-family: monospace; font-size: 0.9em;">v2.0.0</a>
+                &copy; 2025 Tremors. All rights reserved.
+                <span style="opacity: 0.5; margin: 0 8px;">|</span>
+                <a href="system/history.html"
+                    style="color: var(--md-primary); text-decoration: none; font-weight: bold; font-family: monospace; font-size: 0.9em;">v2.0.0</a>
             </p>
         </div>
     </footer>
 
+    <script src="static/js/utils.js" defer></script>
     <script src="static/js/index.js" defer></script>
-    <script src="static/js/extras.js" defer></script> 
+    <script src="static/js/extras.js" defer></script>
     <script src="static/js/project.js" defer></script>
 
     <div id="settings-modal" class="modal-backdrop" aria-hidden="true">
@@ -272,25 +315,48 @@
             <header class="modal-header">
                 <h3>Appearance</h3>
                 <button id="close-settings-btn" class="icon-button" aria-label="Close settings">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
                 </button>
             </header>
 
             <div class="modal-body">
-                
+
                 <div class="setting-group">
                     <label class="setting-label">Color Mode</label>
                     <div class="segmented-control">
                         <button class="segment-btn" data-set-mode="system">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
                             <span>System</span>
                         </button>
                         <button class="segment-btn" data-set-mode="light">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
                             <span>Light</span>
                         </button>
                         <button class="segment-btn" data-set-mode="dark">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
                             <span>Dark</span>
                         </button>
                     </div>
@@ -299,9 +365,9 @@
                 <div class="setting-group">
                     <label class="setting-label">Visual Theme</label>
                     <div class="theme-grid">
-                        <button class="theme-card" data-set-theme="default">
-                            <div class="theme-preview default-preview"></div>
-                            <span>Default</span>
+                        <button class="theme-card" data-set-theme="md">
+                            <div class="theme-preview md-preview"></div>
+                            <span>MD</span>
                         </button>
                         <button class="theme-card" data-set-theme="md3">
                             <div class="theme-preview md3-preview"></div>
@@ -346,4 +412,5 @@
     </div>
 
 </body>
+
 </html>
