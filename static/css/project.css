@@ -174,6 +174,18 @@
     gap: 8px;
 }
 
+/* Sidebar Badge Styling (replaces inline JS styles) */
+.sidebar-badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: inline-block;
+    background-color: var(--md-surface-variant);
+    color: var(--md-on-surface);
+    border: 1px solid var(--md-outline);
+}
+
 /* --- Main Content Area --- */
 .content-section {
     margin-bottom: 3rem;
@@ -320,9 +332,17 @@
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.theme-mac .dot-red {background-color: #ff5f56;}
-.theme-mac .dot-yellow {background-color: #ffbd2e;}
-.theme-mac .dot-green {background-color: #27c93f;}
+.theme-mac .dot-red {
+    background-color: #ff5f56;
+}
+
+.theme-mac .dot-yellow {
+    background-color: #ffbd2e;
+}
+
+.theme-mac .dot-green {
+    background-color: #27c93f;
+}
 
 
 /* --- THEME: Windows --- */
@@ -522,6 +542,7 @@
     line-height: 1.4;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -584,9 +605,9 @@
     }
 
     /* --- FOOTER NAV (MOBILE) --- */
-    /* Keeps the 2-column layout you liked, but with less gap */
-    .project-footer-nav {
-        grid-template-columns: 1fr 1fr !important;
+    /* Keeps the 2-column layout - increased specificity to avoid !important */
+    .project-mode-main .project-footer-nav {
+        grid-template-columns: 1fr 1fr;
         gap: 1rem;
     }
 
@@ -625,4 +646,3 @@
         white-space: normal;
     }
 }
-

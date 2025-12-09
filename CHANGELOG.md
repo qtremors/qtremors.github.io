@@ -1,5 +1,31 @@
 # Changelog
 
+## [v2.2.1] - 09-12-2025
+
+### ♻️ **Code Quality & Refactoring**
+
+- **Shared Utilities Module:** Created `static/js/utils.js` to centralize common functions and eliminate code duplication.
+    - Extracted `getBadgeLabel()` (previously duplicated in `home.js` and `project.js`).
+    - Added `escapeHtml()` utility for XSS protection.
+
+- **Security Hardening:** Added HTML entity escaping for URL parameters in `project.js` error messages to prevent potential XSS attacks.
+
+- **CSS Best Practices:**
+    - Replaced inline JavaScript styles with `.sidebar-badge` CSS class in `project.css`.
+    - Removed `!important` override in mobile footer nav by using proper CSS specificity.
+    - Added standard `line-clamp` property alongside `-webkit-line-clamp` for browser compatibility.
+
+- **Theme Synchronization:** Aligned the inline theme initialization script between `index.html` and `project.html` to respect saved `effect_mode` preferences consistently.
+
+### 🐛 **Bug Fixes**
+
+- Fixed "LIbraries" typo → "Libraries" in the Skills section.
+- Fixed badge proficiency bar mismatches (Numpy/Pandas: 80%, TensorFlow: 50%).
+- Improved alt text for navigation images (`"project thumbnail"` suffix).
+- Restored dotted border on the GitHub card image container.
+
+---
+
 ## [v2.2.0] - 07-12-2025
 
 ### 🚀 **The Theme & Effects Engine**

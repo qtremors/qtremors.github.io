@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // 1. Calculate Top Padding (Header Height)
     let topOffset = 100; // Default fallback
     if (topBar) {
-      topOffset = topBar.offsetHeight; 
+      topOffset = topBar.offsetHeight;
     }
 
     // 2. Calculate Bottom Padding (Distance from Dock to bottom of screen)
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (navStyle.display !== 'none') {
         const navRect = bottomNav.getBoundingClientRect();
         // Distance from top of dock to bottom of viewport + 20px buffer
-        bottomOffset = (window.innerHeight - navRect.top) + 20; 
+        bottomOffset = (window.innerHeight - navRect.top) + 20;
       }
     }
 
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Run on load and resize
   window.addEventListener('resize', updateHeroSafeZones);
   // Run immediately
-  updateHeroSafeZones(); 
+  updateHeroSafeZones();
   // Run again slightly later to ensure fonts/styles have settled
   setTimeout(updateHeroSafeZones, 100);
 
@@ -78,26 +78,14 @@ document.addEventListener('DOMContentLoaded', function () {
   const portfolioGrid = document.getElementById('portfolio-grid');
   const githubCard = document.getElementById('github-card');
   const githubActions = document.getElementById('github-card-actions');
-  
+
   let allProjects = [];
   const INITIAL_SHOW_COUNT = 5;
-  
+
   // 1. Check Session Storage: Did the user previously expand the list?
   let isExpanded = sessionStorage.getItem('portfolio_expanded') === 'true';
 
-  const getBadgeLabel = (badgeClass) => {
-    const labels = {
-      'tech-python': 'Python', 'tech-django': 'Django', 'tech-ts': 'TypeScript',
-      'tech-html': 'HTML', 'tech-css': 'CSS', 'tech-js': 'JavaScript',
-      'tech-react': 'React', 'tech-fastapi': 'FastAPI', 'tech-flask': 'Flask',
-      'tech-sql': 'SQL', 'tech-tensorflow': 'TensorFlow', 'tech-pillow': 'Pillow',
-      'tech-numpy': 'NumPy', 'tech-plotly': 'Plotly', 'tech-cli': 'CLI',
-      'tech-git': 'Git', 'tech-pygame': 'Pygame', 'tech-nextjs': 'NextJs',
-      'tech-framermotion': 'Framer Motion', 'tech-tsparticles': 'tsParticles',
-      'tech-sqlite': 'SQLite', 'tech-github': 'Github', 'tech-tailwind': 'Tailwind',
-    };
-    return labels[badgeClass] || badgeClass.replace('tech-', '');
-  };
+  // Use shared getBadgeLabel from utils.js (window.getBadgeLabel)
 
   const createProjectCard = (project, isDynamic = false) => {
     const dynamicClass = isDynamic ? 'dynamic-project' : '';
@@ -105,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const wipClass = isWip ? 'is-wip' : '';
     const wipBadge = isWip ? '<div class="wip-badge">⚠️ Development</div>' : '';
     const detailUrl = project.id ? `project.html?id=${project.id}` : '#';
-    const badgesHtml = project.badges.map(badge => `<span class="${badge}">${getBadgeLabel(badge)}</span>`).join('');
+    const badgesHtml = project.badges.map(badge => `<span class="${badge}">${window.getBadgeLabel(badge)}</span>`).join('');
     const linksHtml = project.links.map(link => `<a href="${link.url}" target="_blank" class="${link.class}">${link.text} &rarr;</a>`).join('');
 
     return `
@@ -138,28 +126,28 @@ document.addEventListener('DOMContentLoaded', function () {
     try {
       const response = await fetch('data/projects.json');
       allProjects = await response.json();
-      
+
       // 2. Logic: Show ALL if expanded, otherwise just show INITIAL count
       const countToShow = isExpanded ? allProjects.length : INITIAL_SHOW_COUNT;
 
       allProjects.slice(0, countToShow).forEach((p, index) => {
-          // If index > initial count, mark it as 'dynamic' so we can collapse it later
-          const isDynamic = index >= INITIAL_SHOW_COUNT; 
-          insertBeforeGithub(createProjectCard(p, isDynamic));
+        // If index > initial count, mark it as 'dynamic' so we can collapse it later
+        const isDynamic = index >= INITIAL_SHOW_COUNT;
+        insertBeforeGithub(createProjectCard(p, isDynamic));
       });
 
       if (allProjects.length > INITIAL_SHOW_COUNT) {
         const loadBtn = document.createElement('button');
         loadBtn.className = 'card-btn btn-load';
         loadBtn.id = 'card-toggle-trigger';
-        
+
         // 3. Logic: Set initial button text based on state
         if (isExpanded) {
-            loadBtn.innerHTML = `<span class="btn-text">Show Less</span><span class="btn-icon">↑</span>`;
+          loadBtn.innerHTML = `<span class="btn-text">Show Less</span><span class="btn-icon">↑</span>`;
         } else {
-            loadBtn.innerHTML = `<span class="btn-text">Load More Projects</span><span class="btn-icon">↓</span>`;
+          loadBtn.innerHTML = `<span class="btn-text">Load More Projects</span><span class="btn-icon">↓</span>`;
         }
-        
+
         if (githubActions) githubActions.prepend(loadBtn);
       }
     } catch (error) { console.error('Error loading projects:', error); }
@@ -171,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (btn) {
         const btnText = btn.querySelector('.btn-text');
         const btnIcon = btn.querySelector('.btn-icon');
-        
+
         if (!isExpanded) {
           // Expand Action
           allProjects.slice(INITIAL_SHOW_COUNT).forEach(p => insertBeforeGithub(createProjectCard(p, true)));
