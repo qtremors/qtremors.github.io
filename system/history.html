@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,54 +12,58 @@
     <link rel="stylesheet" href="../static/css/index-navigation.css">
     <link rel="stylesheet" href="../static/css/index-sections.css">
 
-    <link rel="stylesheet" href="../static/themes/default.css" id="theme-default">
+    <link rel="stylesheet" href="../static/themes/md.css" id="theme-md" disabled>
     <link rel="stylesheet" href="../static/themes/md3.css" id="theme-md3" disabled>
-    <link rel="stylesheet" href="../static/themes/oled.css" id="theme-oled" disabled>
+    <link rel="stylesheet" href="../static/themes/oled.css" id="theme-oled">
 
-    <link rel="stylesheet" href="../static/effects/fog.css" id="effect-fog">
+    <link rel="stylesheet" href="../static/effects/fog.css" id="effect-fog" disabled>
     <link rel="stylesheet" href="../static/effects/glass.css" id="effect-glass" disabled>
-    <link rel="stylesheet" href="../static/effects/spotlight.css" id="effect-spotlight">
+    <link rel="stylesheet" href="../static/effects/spotlight.css" id="effect-spotlight" disabled>
 
     <script>
-    (function() {
-        try {
-            const savedMode = localStorage.getItem('style_mode') || 'default';
-            
-            // Themes
-            document.getElementById('theme-default').disabled = true;
-            document.getElementById('theme-md3').disabled = true;
-            document.getElementById('theme-oled').disabled = true;
+        (function () {
+            try {
+                const savedMode = localStorage.getItem('style_mode') || 'oled';
 
-            if (savedMode === 'md3') document.getElementById('theme-md3').disabled = false;
-            else if (savedMode === 'oled') document.getElementById('theme-oled').disabled = false;
-            else document.getElementById('theme-default').disabled = false;
+                // Themes
+                document.getElementById('theme-md').disabled = true;
+                document.getElementById('theme-md3').disabled = true;
+                document.getElementById('theme-oled').disabled = true;
 
-            // Effects
-            const savedEffect = localStorage.getItem('effect_mode') || 'fog';
-            const savedSpotlight = localStorage.getItem('spotlight_mode') || 'on';
+                if (savedMode === 'md') document.getElementById('theme-md').disabled = false;
+                else if (savedMode === 'md3') document.getElementById('theme-md3').disabled = false;
+                else document.getElementById('theme-oled').disabled = false;
 
-            document.getElementById('effect-fog').disabled = (savedEffect !== 'fog');
-            document.getElementById('effect-glass').disabled = (savedEffect !== 'glass');
-            document.getElementById('effect-spotlight').disabled = (savedSpotlight === 'off');
+                // Effects
+                const savedEffect = localStorage.getItem('effect_mode') || 'none';
+                const savedSpotlight = localStorage.getItem('spotlight_mode') || 'off';
 
-            document.documentElement.setAttribute('data-style-mode', savedMode);
-        } catch (e) {}
-    })();
+                document.getElementById('effect-fog').disabled = (savedEffect !== 'fog');
+                document.getElementById('effect-glass').disabled = (savedEffect !== 'glass');
+                document.getElementById('effect-spotlight').disabled = (savedSpotlight === 'off');
+
+                document.documentElement.setAttribute('data-style-mode', savedMode);
+            } catch (e) { }
+        })();
     </script>
 
     <style>
         /* --- TIMELINE SPECIFIC STYLES --- */
-        body { padding-top: 80px; }
-        
+        body {
+            padding-top: 80px;
+        }
+
         .timeline-header {
             text-align: center;
             margin-bottom: 4rem;
         }
+
         .timeline-header h1 {
             font-size: 3rem;
             color: var(--md-primary);
             margin-bottom: 0.5rem;
         }
+
         .timeline-header p {
             color: var(--md-on-surface-variant);
         }
@@ -70,7 +75,7 @@
             margin: 0 auto;
             padding: 2rem 0;
         }
-        
+
         .timeline::before {
             content: '';
             position: absolute;
@@ -115,12 +120,12 @@
             padding: 2rem;
             transition: transform 0.2s;
         }
-        
+
         .timeline-item:hover .timeline-content {
             transform: translateX(5px);
             border-color: var(--md-primary);
         }
-        
+
         /* Glass effect support for OLED mode */
         body[data-style-mode="oled"] .timeline-content {
             background-color: rgba(20, 20, 20, 0.6);
@@ -171,17 +176,19 @@
         body[data-style-mode="md3"] .timeline-marker {
             border-radius: 4px;
         }
-        
+
         @media (min-width: 768px) {
-            .timeline::before { left: 50%; }
-            
+            .timeline::before {
+                left: 50%;
+            }
+
             .timeline-item {
                 width: 50%;
                 padding-left: 0;
                 padding-right: 40px;
                 box-sizing: border-box;
             }
-            
+
             .timeline-item:nth-child(even) {
                 margin-left: 50%;
                 padding-left: 40px;
@@ -192,18 +199,29 @@
                 left: 50%;
                 margin-left: -9px;
             }
-            
-            .timeline-item:nth-child(odd) .timeline-content { text-align: right; }
-            .timeline-item:nth-child(even) .timeline-content { text-align: left; }
-            .timeline-item:nth-child(odd) .commit-list li {
-                padding-left: 0; padding-right: 1.5rem;
+
+            .timeline-item:nth-child(odd) .timeline-content {
+                text-align: right;
             }
+
+            .timeline-item:nth-child(even) .timeline-content {
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd) .commit-list li {
+                padding-left: 0;
+                padding-right: 1.5rem;
+            }
+
             .timeline-item:nth-child(odd) .commit-list li::before {
-                left: auto; right: 0; content: '◃';
+                left: auto;
+                right: 0;
+                content: '◃';
             }
         }
     </style>
 </head>
+
 <body>
 
     <header class="top-app-bar">
@@ -225,13 +243,19 @@
                     <hr class="menu-separator">
                     <div class="dropdown-section">
                         <button class="dropdown-item" id="open-settings-btn" title="Open appearance settings">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="dropdown-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="dropdown-icon" width="20" height="20"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path
+                                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                                </path>
+                            </svg>
                             <span class="dropdown-title">Appearance</span>
                         </button>
                     </div>
                 </div>
             </div>
-            
+
             <button id="theme-toggle" class="theme-toggle-button" title="Toggle theme">
                 <img src="../assets/sun.svg" alt="Sun" class="sun" width="25" height="25">
                 <img src="../assets/moon.svg" alt="Moon" class="moon" width="25" height="25">
@@ -245,7 +269,8 @@
             <p>From static HTML (v0) to a Modular Engine (v2)</p>
         </div>
 
-        <div class="video-wrapper" style="max-width: 800px; margin: 0 auto 4rem auto; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px var(--md-shadow-color);">
+        <div class="video-wrapper"
+            style="max-width: 800px; margin: 0 auto 4rem auto; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px var(--md-shadow-color);">
             <video width="100%" height="auto" controls autoplay muted loop playsinline style="display: block;">
                 <source src="../assets/v0.0.0-v2.0.0.mp4" type="video/mp4">
                 Your browser does not support the video tag.
@@ -261,10 +286,14 @@
                     <span class="timeline-date">Dec 07, 2025</span>
                     <h3>The Theme & Effects Engine</h3>
                     <ul class="commit-list">
-                        <li><strong>Modular Themes:</strong> Default, MD3, and OLED themes are now independent CSS files.</li>
-                        <li><strong>Effect System:</strong> Implemented toggleable "Fog", "Glass", and "Spotlight" effects.</li>
-                        <li><strong>Settings Modal:</strong> Centralized UI for controlling Appearance, Themes, and Color Modes.</li>
-                        <li><strong>Universal Toast:</strong> Standardized notification system for emails and easter eggs.</li>
+                        <li><strong>Modular Themes:</strong> Default, MD3, and OLED themes are now independent CSS
+                            files.</li>
+                        <li><strong>Effect System:</strong> Implemented toggleable "Fog", "Glass", and "Spotlight"
+                            effects.</li>
+                        <li><strong>Settings Modal:</strong> Centralized UI for controlling Appearance, Themes, and
+                            Color Modes.</li>
+                        <li><strong>Universal Toast:</strong> Standardized notification system for emails and easter
+                            eggs.</li>
                     </ul>
                 </div>
             </div>
@@ -276,8 +305,10 @@
                     <span class="timeline-date">Dec 06, 2025</span>
                     <h3>The Architecture Overhaul</h3>
                     <ul class="commit-list">
-                        <li><strong>Decoupled JS:</strong> Split monolithic logic into <code>home.js</code>, <code>project.js</code>, and <code>extras.js</code>.</li>
-                        <li><strong>Smart Terminal:</strong> Added interactive OS-aware terminal widget to project pages.</li>
+                        <li><strong>Decoupled JS:</strong> Split monolithic logic into <code>home.js</code>,
+                            <code>project.js</code>, and <code>extras.js</code>.</li>
+                        <li><strong>Smart Terminal:</strong> Added interactive OS-aware terminal widget to project
+                            pages.</li>
                         <li><strong>Universal Fog:</strong> Implemented context-aware background blending system.</li>
                         <li><strong>Performance:</strong> Removed CSS @imports and added scroll debouncing.</li>
                     </ul>
@@ -292,7 +323,8 @@
                     <h3>The Feature Surge</h3>
                     <ul class="commit-list">
                         <li><strong>MD3 Engine:</strong> Built a custom theme engine with SVG morphing animations.</li>
-                        <li><strong>Dynamic Content:</strong> Replaced static HTML with JSON-based "Load More" pagination.</li>
+                        <li><strong>Dynamic Content:</strong> Replaced static HTML with JSON-based "Load More"
+                            pagination.</li>
                         <li><strong>TUI V1:</strong> Launched the first version of the Terminal User Interface.</li>
                     </ul>
                 </div>
@@ -305,7 +337,8 @@
                     <span class="timeline-date">Sep 2025</span>
                     <h3>The Visual Identity</h3>
                     <ul class="commit-list">
-                        <li><strong>Material Design:</strong> Shifted from generic styles to strict Material guidelines.</li>
+                        <li><strong>Material Design:</strong> Shifted from generic styles to strict Material guidelines.
+                        </li>
                         <li><strong>Tech Badges:</strong> Added proficiency bars and shield.io badges.</li>
                         <li><strong>File Split:</strong> First separation of HTML and CSS files.</li>
                     </ul>
@@ -333,7 +366,10 @@
             <header class="modal-header">
                 <h3>Appearance</h3>
                 <button id="close-settings-btn" class="icon-button" aria-label="Close settings">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
                 </button>
             </header>
             <div class="modal-body">
@@ -348,9 +384,15 @@
                 <div class="setting-group">
                     <label class="setting-label">Visual Theme</label>
                     <div class="theme-grid">
-                        <button class="theme-card" data-set-theme="default"><div class="theme-preview default-preview"></div><span>Default</span></button>
-                        <button class="theme-card" data-set-theme="md3"><div class="theme-preview md3-preview"></div><span>MD3</span></button>
-                        <button class="theme-card" data-set-theme="oled"><div class="theme-preview oled-preview"></div><span>OLED</span></button>
+                        <button class="theme-card" data-set-theme="md">
+                            <div class="theme-preview md-preview"></div><span>MD</span>
+                        </button>
+                        <button class="theme-card" data-set-theme="md3">
+                            <div class="theme-preview md3-preview"></div><span>MD3</span>
+                        </button>
+                        <button class="theme-card" data-set-theme="oled">
+                            <div class="theme-preview oled-preview"></div><span>OLED</span>
+                        </button>
                     </div>
                 </div>
                 <div class="setting-group">
@@ -375,4 +417,5 @@
     <script src="../static/js/index.js"></script>
 
 </body>
+
 </html>
