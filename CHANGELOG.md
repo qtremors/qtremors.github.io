@@ -1,5 +1,19 @@
 # Changelog
 
+## [v2.2.2] - 09-12-2025
+
+### 🎨 **Theme System Restructure**
+
+- **Renamed "Default" Theme to "MD" (Material Design):** The original blue-gradient theme is now called "MD" to better reflect its Material Design origins and to align naming with "MD3".
+
+- **OLED is Now the Default Theme:** Fresh visitors will see the clean, distraction-free OLED theme by default, with pure blacks and minimal visual noise.
+
+- **Effects Disabled by Default:** Fog, Glass, and Spotlight effects are now all disabled out of the box. Users can opt-in to these visual enhancements via the Appearance Settings modal.
+
+- **Three Theme Options:** MD (blue gradient), MD3 (purple gradient), and OLED (black/white) are now the official theme lineup.
+
+---
+
 ## [v2.2.1] - 09-12-2025
 
 ### ♻️ **Code Quality & Refactoring**
