@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,21 +9,21 @@
 
     <link rel="stylesheet" href="../static/css/index-base.css">
     <link rel="stylesheet" href="../static/css/index-navigation.css">
-    
-    <link rel="stylesheet" href="../static/themes/default.css" id="theme-default">
-    <link rel="stylesheet" href="../static/themes/md3.css" id="theme-md3" disabled>
-    <link rel="stylesheet" href="../static/themes/oled.css" id="theme-oled" disabled>
 
-    <link rel="stylesheet" href="../static/effects/fog.css" id="effect-fog">
+    <link rel="stylesheet" href="../static/themes/md.css" id="theme-md" disabled>
+    <link rel="stylesheet" href="../static/themes/md3.css" id="theme-md3" disabled>
+    <link rel="stylesheet" href="../static/themes/oled.css" id="theme-oled">
+
+    <link rel="stylesheet" href="../static/effects/fog.css" id="effect-fog" disabled>
     <link rel="stylesheet" href="../static/effects/glass.css" id="effect-glass" disabled>
-    <link rel="stylesheet" href="../static/effects/spotlight.css" id="effect-spotlight">
+    <link rel="stylesheet" href="../static/effects/spotlight.css" id="effect-spotlight" disabled>
 
     <style>
         /* ==========================================================================
            404 Specific Styles
            (Variables are now inherited from the Theme files above)
            ========================================================================== */
-        
+
         body {
             /* Ensure the background transition matches the theme engine */
             transition: background-color 0.3s ease, color 0.3s ease;
@@ -41,7 +42,8 @@
         .card {
             background-color: var(--md-surface-variant);
             padding: 2.5rem;
-            border-radius: 16px; /* Matched to Squircle logic */
+            border-radius: 16px;
+            /* Matched to Squircle logic */
             border: 1px solid var(--md-outline);
             box-shadow: 0 10px 15px -3px var(--md-shadow-color);
             width: 100%;
@@ -59,12 +61,26 @@
             border-radius: 12px;
         }
 
-        .gif-toggle-checkbox { display: none; }
-        .gif-toggle-label { cursor: pointer; display: block; }
-        .gif-2 { display: none; }
+        .gif-toggle-checkbox {
+            display: none;
+        }
 
-        .gif-toggle-checkbox:checked + .gif-toggle-label .gif-1 { display: none; }
-        .gif-toggle-checkbox:checked + .gif-toggle-label .gif-2 { display: block; }
+        .gif-toggle-label {
+            cursor: pointer;
+            display: block;
+        }
+
+        .gif-2 {
+            display: none;
+        }
+
+        .gif-toggle-checkbox:checked+.gif-toggle-label .gif-1 {
+            display: none;
+        }
+
+        .gif-toggle-checkbox:checked+.gif-toggle-label .gif-2 {
+            display: block;
+        }
 
         /* Typography */
         .card-title {
@@ -88,7 +104,9 @@
         }
 
         /* Button Styles */
-        .button-container { margin-top: 2rem; }
+        .button-container {
+            margin-top: 2rem;
+        }
 
         .home-button {
             display: inline-block;
@@ -119,51 +137,60 @@
             opacity: 0.5;
             transition: opacity 0.2s;
         }
-        .settings-trigger:hover { opacity: 1; }
 
+        .settings-trigger:hover {
+            opacity: 1;
+        }
     </style>
 
     <script>
-    (function() {
-        try {
-            const savedMode = localStorage.getItem('style_mode') || 'default';
-            
-            // Themes
-            document.getElementById('theme-default').disabled = true;
-            document.getElementById('theme-md3').disabled = true;
-            document.getElementById('theme-oled').disabled = true;
+        (function () {
+            try {
+                const savedMode = localStorage.getItem('style_mode') || 'oled';
 
-            if (savedMode === 'md3') document.getElementById('theme-md3').disabled = false;
-            else if (savedMode === 'oled') document.getElementById('theme-oled').disabled = false;
-            else document.getElementById('theme-default').disabled = false;
+                // Themes
+                document.getElementById('theme-md').disabled = true;
+                document.getElementById('theme-md3').disabled = true;
+                document.getElementById('theme-oled').disabled = true;
 
-            // Effects
-            const savedEffect = localStorage.getItem('effect_mode') || 'fog';
-            const savedSpotlight = localStorage.getItem('spotlight_mode') || 'on';
+                if (savedMode === 'md') document.getElementById('theme-md').disabled = false;
+                else if (savedMode === 'md3') document.getElementById('theme-md3').disabled = false;
+                else document.getElementById('theme-oled').disabled = false;
 
-            document.getElementById('effect-fog').disabled = (savedEffect !== 'fog');
-            document.getElementById('effect-glass').disabled = (savedEffect !== 'glass');
-            document.getElementById('effect-spotlight').disabled = (savedSpotlight === 'off');
+                // Effects
+                const savedEffect = localStorage.getItem('effect_mode') || 'none';
+                const savedSpotlight = localStorage.getItem('spotlight_mode') || 'off';
 
-            document.documentElement.setAttribute('data-style-mode', savedMode);
-        } catch (e) {}
-    })();
+                document.getElementById('effect-fog').disabled = (savedEffect !== 'fog');
+                document.getElementById('effect-glass').disabled = (savedEffect !== 'glass');
+                document.getElementById('effect-spotlight').disabled = (savedSpotlight === 'off');
+
+                document.documentElement.setAttribute('data-style-mode', savedMode);
+            } catch (e) { }
+        })();
     </script>
 </head>
+
 <body>
 
     <main class="container-404">
         <div class="card">
-            
+
             <button id="open-settings-btn" class="settings-trigger" title="Open appearance settings">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path
+                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                    </path>
+                </svg>
             </button>
 
             <div class="gif-container">
                 <input type="checkbox" id="gif-toggle" class="gif-toggle-checkbox">
                 <label for="gif-toggle" class="gif-toggle-label" title="Click me!">
                     <img src="../assets/404.gif" alt="Work in progress animation" class="construction-gif gif-1">
-                    <img src="../assets/coding.gif" alt="A different work in progress animation" class="construction-gif gif-2">
+                    <img src="../assets/coding.gif" alt="A different work in progress animation"
+                        class="construction-gif gif-2">
                 </label>
             </div>
 
@@ -184,7 +211,11 @@
             <header class="modal-header">
                 <h3>Appearance</h3>
                 <button id="close-settings-btn" class="icon-button" aria-label="Close settings">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
                 </button>
             </header>
             <div class="modal-body">
@@ -199,9 +230,15 @@
                 <div class="setting-group">
                     <label class="setting-label">Visual Theme</label>
                     <div class="theme-grid">
-                        <button class="theme-card" data-set-theme="default"><div class="theme-preview default-preview"></div><span>Default</span></button>
-                        <button class="theme-card" data-set-theme="md3"><div class="theme-preview md3-preview"></div><span>MD3</span></button>
-                        <button class="theme-card" data-set-theme="oled"><div class="theme-preview oled-preview"></div><span>OLED</span></button>
+                        <button class="theme-card" data-set-theme="md">
+                            <div class="theme-preview md-preview"></div><span>MD</span>
+                        </button>
+                        <button class="theme-card" data-set-theme="md3">
+                            <div class="theme-preview md3-preview"></div><span>MD3</span>
+                        </button>
+                        <button class="theme-card" data-set-theme="oled">
+                            <div class="theme-preview oled-preview"></div><span>OLED</span>
+                        </button>
                     </div>
                 </div>
                 <div class="setting-group">
@@ -226,4 +263,5 @@
     <script src="../static/js/index.js"></script>
 
 </body>
+
 </html>

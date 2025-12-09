@@ -21,15 +21,15 @@
     <link rel="stylesheet" href="static/css/index-navigation.css">
     <link rel="stylesheet" href="static/css/index-sections.css">
 
-    <link rel="stylesheet" href="static/themes/default.css" id="theme-default">
+    <link rel="stylesheet" href="static/themes/md.css" id="theme-md" disabled>
     <link rel="stylesheet" href="static/themes/md3.css" id="theme-md3" disabled>
-    <link rel="stylesheet" href="static/themes/oled.css" id="theme-oled" disabled>
+    <link rel="stylesheet" href="static/themes/oled.css" id="theme-oled">
 
     <link rel="preload" href="data/projects.json" as="fetch" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="static/effects/fog.css" id="effect-fog">
+    <link rel="stylesheet" href="static/effects/fog.css" id="effect-fog" disabled>
     <link rel="stylesheet" href="static/effects/glass.css" id="effect-glass" disabled>
-    <link rel="stylesheet" href="static/effects/spotlight.css" id="effect-spotlight">
+    <link rel="stylesheet" href="static/effects/spotlight.css" id="effect-spotlight" disabled>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,10 +38,10 @@
         (function () {
             try {
                 // 1. Get saved preference (default to 'default' if missing)
-                const savedMode = localStorage.getItem('style_mode') || 'default';
+                const savedMode = localStorage.getItem('style_mode') || 'oled';
 
                 // 2. Define Theme Sheets
-                const themeDefault = document.getElementById('theme-default');
+                const themeMd = document.getElementById('theme-md');
                 const themeMd3 = document.getElementById('theme-md3');
                 const themeOled = document.getElementById('theme-oled');
 
@@ -51,20 +51,20 @@
 
                 // 4. Apply THEME Logic
                 // Reset all to disabled first, then enable the correct one
-                themeDefault.disabled = true;
+                themeMd.disabled = true;
                 themeMd3.disabled = true;
                 themeOled.disabled = true;
 
-                if (savedMode === 'md3') {
+                if (savedMode === 'md') {
+                    themeMd.disabled = false;
+                } else if (savedMode === 'md3') {
                     themeMd3.disabled = false;
-                } else if (savedMode === 'oled') {
-                    themeOled.disabled = false;
                 } else {
-                    themeDefault.disabled = false;
+                    themeOled.disabled = false;
                 }
 
                 // 5. Apply EFFECT Logic (Fog/Glass)
-                const savedEffect = localStorage.getItem('effect_mode') || 'fog';
+                const savedEffect = localStorage.getItem('effect_mode') || 'none';
 
                 effectFog.disabled = true;
                 effectGlass.disabled = true;
@@ -79,7 +79,7 @@
 
                 // 6. Apply Spotlight Logic
                 const effectSpotlight = document.getElementById('effect-spotlight');
-                const savedSpotlight = localStorage.getItem('spotlight_mode') || 'on';
+                const savedSpotlight = localStorage.getItem('spotlight_mode') || 'off';
 
                 if (savedSpotlight === 'off') {
                     effectSpotlight.disabled = true;
@@ -582,9 +582,9 @@
                 <div class="setting-group">
                     <label class="setting-label">Visual Theme</label>
                     <div class="theme-grid">
-                        <button class="theme-card" data-set-theme="default">
-                            <div class="theme-preview default-preview"></div>
-                            <span>Default</span>
+                        <button class="theme-card" data-set-theme="md">
+                            <div class="theme-preview md-preview"></div>
+                            <span>MD</span>
                         </button>
                         <button class="theme-card" data-set-theme="md3">
                             <div class="theme-preview md3-preview"></div>

@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
     toastElement.classList.add("show");
 
     toastTimeout = setTimeout(() => {
-        toastElement.classList.remove("show");
+      toastElement.classList.remove("show");
     }, duration);
   };
 
@@ -45,8 +45,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const closeModal = () => {
     if (modal) {
-        modal.classList.remove('open');
-        modal.setAttribute('aria-hidden', 'true');
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
     }
   };
 
@@ -63,21 +63,21 @@ document.addEventListener('DOMContentLoaded', function () {
      ========================================================================== */
 
   const state = {
-    theme: localStorage.getItem('style_mode') || 'default',
-    effect: localStorage.getItem('effect_mode') || 'fog',
+    theme: localStorage.getItem('style_mode') || 'oled',
+    effect: localStorage.getItem('effect_mode') || 'none',
     mode: localStorage.getItem('theme_pref') || 'system',
-    spotlight: localStorage.getItem('spotlight_mode') || 'on'
+    spotlight: localStorage.getItem('spotlight_mode') || 'off'
   };
 
   const sheets = {
     themes: {
-        default: document.getElementById('theme-default'),
-        md3: document.getElementById('theme-md3'),
-        oled: document.getElementById('theme-oled')
+      md: document.getElementById('theme-md'),
+      md3: document.getElementById('theme-md3'),
+      oled: document.getElementById('theme-oled')
     },
     effects: {
-        fog: document.getElementById('effect-fog'),
-        glass: document.getElementById('effect-glass')
+      fog: document.getElementById('effect-fog'),
+      glass: document.getElementById('effect-glass')
     },
     spotlight: document.getElementById('effect-spotlight')
   };
@@ -91,32 +91,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const applyAppearance = () => {
     // A. Themes
-    if (sheets.themes.default) {
-        Object.values(sheets.themes).forEach(t => { if(t) t.disabled = true; });
-        const activeTheme = sheets.themes[state.theme] || sheets.themes.default;
-        if (activeTheme) activeTheme.disabled = false;
-        body.setAttribute('data-style-mode', state.theme);
+    if (sheets.themes.oled) {
+      Object.values(sheets.themes).forEach(t => { if (t) t.disabled = true; });
+      const activeTheme = sheets.themes[state.theme] || sheets.themes.oled;
+      if (activeTheme) activeTheme.disabled = false;
+      body.setAttribute('data-style-mode', state.theme);
     }
 
     // B. Scene Effects
     if (sheets.effects.fog) {
-        Object.values(sheets.effects).forEach(e => { if(e) e.disabled = true; });
-        if (state.effect !== 'none') {
-            const activeEffect = sheets.effects[state.effect] || sheets.effects.fog;
-            if (activeEffect) activeEffect.disabled = false;
-        }
+      Object.values(sheets.effects).forEach(e => { if (e) e.disabled = true; });
+      if (state.effect !== 'none') {
+        const activeEffect = sheets.effects[state.effect] || sheets.effects.fog;
+        if (activeEffect) activeEffect.disabled = false;
+      }
     }
 
     // C. Spotlight Effect
     if (sheets.spotlight) {
-        sheets.spotlight.disabled = (state.spotlight === 'off');
+      sheets.spotlight.disabled = (state.spotlight === 'off');
     }
 
     // D. Color Mode
     let effectiveMode = state.mode;
     if (state.mode === 'system') {
-        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        effectiveMode = systemDark ? 'dark' : 'light';
+      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      effectiveMode = systemDark ? 'dark' : 'light';
     }
     body.setAttribute('data-theme', effectiveMode);
 
@@ -132,10 +132,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const updateActiveButtons = () => {
     const updateGroup = (btns, currentVal, datasetKey) => {
-        btns.forEach(btn => {
-            if (btn.dataset[datasetKey] === currentVal) btn.classList.add('active');
-            else btn.classList.remove('active');
-        });
+      btns.forEach(btn => {
+        if (btn.dataset[datasetKey] === currentVal) btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
     };
     updateGroup(modeBtns, state.mode, 'setMode');
     updateGroup(themeBtns, state.theme, 'setTheme');
@@ -151,16 +151,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Spotlight Listener
   spotlightBtns.forEach(btn => btn.addEventListener('click', () => {
-      state.spotlight = btn.dataset.setSpotlight;
-      applyAppearance();
+    state.spotlight = btn.dataset.setSpotlight;
+    applyAppearance();
   }));
 
   const themeToggleButton = document.getElementById('theme-toggle');
   if (themeToggleButton) {
     themeToggleButton.addEventListener('click', () => {
-        const currentEffective = body.getAttribute('data-theme');
-        state.mode = currentEffective === 'dark' ? 'light' : 'dark';
-        applyAppearance();
+      const currentEffective = body.getAttribute('data-theme');
+      state.mode = currentEffective === 'dark' ? 'light' : 'dark';
+      applyAppearance();
     });
   }
 
