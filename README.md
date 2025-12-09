@@ -47,8 +47,9 @@ This version focuses on a scalable, data-driven user experience with a professio
 #### **UI & Visual Design**
 
 - **Advanced Theme & Effects Engine:**
-    - **Settings Modal:** A centralized UI to toggle Themes (Default/MD3/OLED), Visual Effects (Fog/Glass/None), and Spotlight logic.
-    - **Universal Fog/Glass:** Context-aware backgrounds that either blend sections seamlessly (Fog) or provide high-tech frosted glass borders (Glass).
+    - **Settings Modal:** A centralized UI to toggle Themes (MD/MD3/OLED), Visual Effects (Fog/Glass/None), and Spotlight logic.
+    - **OLED Default:** Clean, distraction-free OLED theme loads by default with no effects enabled.
+    - **Universal Fog/Glass:** Optional context-aware backgrounds that either blend sections seamlessly (Fog) or provide high-tech frosted glass borders (Glass).
     - **Mouse Spotlights:** Radial gradients that track mouse movement on the Hero and Skill cards.
     - **Magnetic Text:** Physics-based hover effects on text elements.
 

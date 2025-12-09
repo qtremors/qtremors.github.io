@@ -1,5 +1,45 @@
 # Changelog
 
+## [v2.2.2] - 09-12-2025
+
+### 🎨 **Theme System Restructure**
+
+- **Renamed "Default" Theme to "MD" (Material Design):** The original blue-gradient theme is now called "MD" to better reflect its Material Design origins and to align naming with "MD3".
+
+- **OLED is Now the Default Theme:** Fresh visitors will see the clean, distraction-free OLED theme by default, with pure blacks and minimal visual noise.
+
+- **Effects Disabled by Default:** Fog, Glass, and Spotlight effects are now all disabled out of the box. Users can opt-in to these visual enhancements via the Appearance Settings modal.
+
+- **Three Theme Options:** MD (blue gradient), MD3 (purple gradient), and OLED (black/white) are now the official theme lineup.
+
+---
+
+## [v2.2.1] - 09-12-2025
+
+### ♻️ **Code Quality & Refactoring**
+
+- **Shared Utilities Module:** Created `static/js/utils.js` to centralize common functions and eliminate code duplication.
+    - Extracted `getBadgeLabel()` (previously duplicated in `home.js` and `project.js`).
+    - Added `escapeHtml()` utility for XSS protection.
+
+- **Security Hardening:** Added HTML entity escaping for URL parameters in `project.js` error messages to prevent potential XSS attacks.
+
+- **CSS Best Practices:**
+    - Replaced inline JavaScript styles with `.sidebar-badge` CSS class in `project.css`.
+    - Removed `!important` override in mobile footer nav by using proper CSS specificity.
+    - Added standard `line-clamp` property alongside `-webkit-line-clamp` for browser compatibility.
+
+- **Theme Synchronization:** Aligned the inline theme initialization script between `index.html` and `project.html` to respect saved `effect_mode` preferences consistently.
+
+### 🐛 **Bug Fixes**
+
+- Fixed "LIbraries" typo → "Libraries" in the Skills section.
+- Fixed badge proficiency bar mismatches (Numpy/Pandas: 80%, TensorFlow: 50%).
+- Improved alt text for navigation images (`"project thumbnail"` suffix).
+- Restored dotted border on the GitHub card image container.
+
+---
+
 ## [v2.2.0] - 07-12-2025
 
 ### 🚀 **The Theme & Effects Engine**
