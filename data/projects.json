@@ -3,15 +3,15 @@
     "id": "quizzer-ai",
     "title": "Quizzer AI",
     "image": "assets/quizzer-preview.png",
-    "description": "An quiz app that dynamically generates quizzes using Gemini API with personalized questions, instant feedback & explanations for mistakes.",
-    "longDescription": "Quizzer AI revolutionizes technical interview prep by ditching static question banks. It uses the Gemini 2.0 Flash Lite engine to generate unique questions on the fly based on user prompts. \n\nBeyond generation, it acts as a tutor: if you get a question wrong, the system analyzes your specific logic error and explains *why* the answer was incorrect, rather than just showing the right option. It features a distraction-free 'Midnight' UI, split-screen code analysis, and persistent history tracking.",
+    "description": "An adaptive learning platform that generates infinite programming quizzes using Google Gemini AI, providing personalized questions, instant feedback, and context-aware explanations for every mistake you make.",
+    "longDescription": "Quizzer AI revolutionizes technical interview prep by ditching static question banks. It uses the Gemini 2.0 Flash Lite engine to generate unique questions on the fly based on user prompts — from Python syntax to System Design architecture.\n\nBeyond generation, it acts as a tutor: if you get a question wrong, the system analyzes your specific logic error and explains *why* the answer was incorrect, rather than just showing the right option. Built with Django 5 and HTMX, it features a distraction-free 'Midnight' UI, split-screen code analysis with Prism.js syntax highlighting, and persistent history tracking across sessions.",
     "features": [
       "AI-Powered Dynamic Question Generation (Gemini)",
       "Context-Aware Explanations for Wrong Answers",
       "Split-Screen Syntax Highlighting (Prism.js)",
       "HTMX-powered SPA feel without page reloads"
     ],
-    "installation": "git clone https://github.com/qtremors/quizzer-ai\npip install -r requirements.txt\npython manage.py migrate\npython manage.py runserver",
+    "installation": "git clone https://github.com/qtremors/quizzer-ai.git\ncd quizzer-ai\nuv sync\ncd qtrmrs\nuv run manage.py migrate\nuv run manage.py runserver",
     "badges": [
       "tech-python",
       "tech-django",
@@ -37,8 +37,8 @@
     "id": "git-nexus",
     "title": "GitNexus",
     "image": "assets/git-nexus-preview.png",
-    "description": "A powerful, self-hosted web application for monitoring repository updates, managing local downloads, and exploring GitHub profiles.",
-    "longDescription": "GitNexus bridges the gap between GitHub and your local machine. It allows you to track specific repositories for updates, visualize commit history, and deeply explore user profiles.\n\nIts standout feature is the Server-Side Downloader, which bypasses browser API limits to download multiple assets or source codes directly to your local file system in a structured format.",
+    "description": "A self-hosted Flask dashboard for tracking GitHub repository updates, bulk-downloading assets to your local machine, and exploring user profiles with contribution graphs and README previews.",
+    "longDescription": "GitNexus bridges the gap between GitHub and your local machine. It allows you to build a personalized 'Watchlist' of repositories to monitor, track release versions with glowing update indicators, and deeply explore user profiles with contribution graphs.\n\nIts standout feature is the Server-Side Downloader, which bypasses browser API limits to download multiple assets or source codes directly to your local file system in a structured format. The app includes three distinct visual themes (Dark Contrast, Dimmed, Deep Blue AMOLED), glassmorphism design, and full import/export functionality for data portability.",
     "features": [
       "Asset Watchtower (Update Detection)",
       "Server-Side Pipeline for Bulk Downloads",
@@ -71,15 +71,15 @@
     "id": "algorithm-visualizer",
     "title": "Algorithm Visualizer",
     "image": "assets/algorithm-preview.png",
-    "description": "A full-stack app that visualizes algorithms in real time. React (TypeScript) on the front, FastAPI on the back \u2014 letting users see each algorithm\u2019s steps as they happen.",
-    "longDescription": "Unlike standard visualizers that pre-calculate steps, AlgoVisualizer runs the actual algorithm on the Python backend and streams the state frame-by-frame to the React frontend via WebSockets.\n\nIt supports Sorting (Bubble, Insertion, Selection) and Pathfinding (Dijkstra, BFS, DFS) with features like wall drawing, VCR-style playback controls, and adjustable execution speed.",
+    "description": "An educational platform that visualizes sorting and pathfinding algorithms in real time, streaming execution states frame-by-frame from a FastAPI backend to a React frontend via WebSockets.",
+    "longDescription": "Unlike standard visualizers that pre-calculate steps, AlgoVisualizer runs the actual algorithm on the Python backend and streams the state frame-by-frame to the React frontend via WebSockets. This allows for true live execution with VCR-style controls (Play, Pause, Step Forward, Step Backward).\n\nIt supports Sorting algorithms (Bubble, Insertion, Selection) with color-coded bars showing comparisons and swaps, and Pathfinding algorithms (Dijkstra, BFS, DFS) with an interactive grid where you can draw walls, move start/end nodes, and watch the algorithm explore. Features include adjustable playback speed (10ms to 1000ms), pseudocode tracking, and an execution log of every operation.",
     "features": [
       "Real-time WebSocket State Streaming",
       "VCR Controls (Play, Pause, Step, Reverse)",
       "Interactive Grid for Pathfinding (Draw Walls)",
       "Metadata-Driven UI Architecture"
     ],
-    "installation": "# Clone and setup\ncd backend && pip install -r requirements.txt\ncd frontend && npm install\n\n# Run\nuvicorn main:app --reload\nnpm run dev",
+    "installation": "git clone https://github.com/qtremors/algorithm-visualizer.git\ncd algorithm-visualizer\n\n# Backend\ncd backend\nuv run uvicorn app.main:app --reload\n\n# Frontend (new terminal)\ncd frontend\nnpm install\nnpm run dev",
     "badges": [
       "tech-react",
       "tech-ts",
@@ -100,18 +100,81 @@
     ]
   },
   {
+    "id": "tremors-music-app",
+    "status": "beta",
+    "title": "Tremors Music (Desktop)",
+    "image": "assets/music-app-preview.png",
+    "description": "A high-performance desktop music player built with Tauri, featuring a Rust shell, Python backend sidecar, and React UI — designed for blazing speed and minimal resource usage.",
+    "longDescription": "Tremors Music Desktop is the native application version of the Tremors Music Player. It uses a hybrid architecture combining Rust (Tauri shell), Python (FastAPI sidecar for heavy lifting), and React (TypeScript frontend).\n\nThe app bundles everything into a single executable installer, with the Python backend compiled via PyInstaller. It handles 10,000+ songs with ease, featuring ~100-200MB RAM usage during normal operation.",
+    "features": [
+      "Native Desktop App (Windows)",
+      "Tauri + Rust Shell for Minimal Footprint",
+      "Python Sidecar for Metadata & Scanning",
+      "Offline-First with SQLite Database"
+    ],
+    "installation": "git clone https://github.com/qtremors/tremors-music-app.git\ncd tremors-music-app\n\n# Backend Setup\ncd backend\nuv sync\ncd ..\n\n# Frontend Setup\ncd frontend\nnpm install\ncd ..\n\n# Run Development Mode\nnpm run tauri:dev",
+    "badges": [
+      "tech-rust",
+      "tech-python",
+      "tech-fastapi",
+      "tech-react",
+      "tech-ts",
+      "tech-tauri"
+    ],
+    "links": [
+      {
+        "text": "Download",
+        "url": "https://github.com/qtremors/tremors-music-app/releases",
+        "class": "link-primary"
+      },
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/tremors-music-app",
+        "class": "link-secondary"
+      }
+    ]
+  },
+  {
+    "id": "arcade-nexus",
+    "title": "Arcade Nexus",
+    "image": "assets/arcade-nexus-preview.png",
+    "description": "A browser-based gaming console experience built with React and FastAPI, featuring a custom Game SDK for game development, cloud-synced save states, achievements tracking, and an immersive console-style UI.",
+    "longDescription": "Arcade Nexus is a web application designed to emulate the feeling of a gaming console directly in your browser. It features a custom boot sequence, dashboard interface, and a dedicated TypeScript Game SDK for developing games that integrate seamlessly with the platform.\n\nThe SDK handles game loops, input management (keyboard/gamepad), and state persistence. Games can leverage cloud-synced save data, a global achievement tracking system, and instant launch from the library. The backend uses FastAPI with SQLite (AioSQLite + SQLAlchemy) for async database operations, JWT authentication, and Pydantic validation. Built-in games include Snake with more in development.",
+    "features": [
+      "Custom Game SDK (TypeScript)",
+      "Cloud-Synced Save States",
+      "Global Achievement Tracking",
+      "Immersive Console-Style UI"
+    ],
+    "installation": "git clone https://github.com/qtremors/arcade-nexus.git\ncd arcade-nexus\n\n# Backend\ncd backend\npython -m venv venv\n# Activate venv (Windows: venv\\Scripts\\activate, Linux: source venv/bin/activate)\npip install -r requirements.txt\nuvicorn app.main:app --reload\n\n# Frontend (new terminal)\ncd frontend\nnpm install\nnpm run dev",
+    "badges": [
+      "tech-react",
+      "tech-ts",
+      "tech-python",
+      "tech-fastapi",
+      "tech-sqlite"
+    ],
+    "links": [
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/arcade-nexus",
+        "class": "link-primary"
+      }
+    ]
+  },
+  {
     "id": "tremors-music",
     "title": "Tremors Music Player",
     "image": "assets/music-preview.png",
-    "description": "A high-performance, local-first desktop music player with a Python backend and a modern React UI \u2014 lightning-fast library scanning, smart metadata, lyrics sync, and a premium Apple-Music-style design.",
-    "longDescription": "Built for audiophiles who prefer local libraries over cloud streaming. Tremors Music combines a Python FastAPI backend for high-speed file system access and metadata parsing with a modern React UI.\n\nIt handles libraries of 5,000+ songs effortlessly using virtualization, fetches synchronized lyrics automatically, and extracts technical audio specs (Bitrate, Sample Rate) in real-time.",
+    "description": "A web-based music player built for audiophiles, featuring a FastAPI backend for metadata parsing and a React UI with virtualization, synchronized lyrics display, and Apple Music-inspired glassmorphism design.",
+    "longDescription": "Built for audiophiles who prefer local libraries over cloud streaming. Tremors Music combines a Python FastAPI backend for high-speed file system access and metadata parsing with a modern React 19 UI using TanStack Query for data fetching.\n\nIt handles libraries of 5,000+ songs effortlessly using react-virtuoso for virtualization, fetches synchronized or plain lyrics automatically, and extracts technical audio specs (Bitrate, Sample Rate, Format) in real-time. The UI features a glassmorphism design with Framer Motion animations, dynamic accent colors based on album art, and a full-screen 'Now Playing' view with large artwork and synced lyrics display.",
     "features": [
       "Virtualization for 5,000+ song libraries",
       "Automatic Lyrics Fetching (Synced & Plain)",
       "Real-time ID3 Tag & Cover Art Extraction",
       "Glassmorphism UI with Dynamic Accent Colors"
     ],
-    "installation": "git clone https://github.com/qtremors/tremors-music.git\ncd tremors-music\n\n# Install Backend\ncd backend\nuv sync\ncd ..\n\n# Install Frontend\ncd frontend\nnpm install\ncd ..\n\n# Run Backend\ncd backend\nuv run uvicorn main:app --reload\n\n# Run Frontend\ncd frontend\nnpm run dev",
+    "installation": "git clone https://github.com/qtremors/tremors-music.git\ncd tremors-music\n\n# Backend\ncd backend\nuv sync\nuv run uvicorn main:app --reload\n\n# Frontend (new terminal)\ncd frontend\nnpm install\nnpm run dev",
     "badges": [
       "tech-python",
       "tech-fastapi",
@@ -133,11 +196,44 @@
     ]
   },
   {
+    "id": "eshopper",
+    "title": "E-commerce Website",
+    "image": "assets/eshopper-preview.jpg",
+    "description": "A full-featured e-commerce platform built with Django, featuring product catalogs, shopping cart, wishlist, coupon system, Razorpay payments, and user authentication with email OTP password resets.",
+    "longDescription": "A full-featured e-commerce platform built on Django that handles the entire user journey: from browsing categorized products with sub-categories, applying discount coupons, and managing wishlists, to a multi-step checkout process integrated with Razorpay payment gateway.\n\nIt includes comprehensive user functionality with registration, login, profile management with picture uploads, order history tracking, and secure password resets via email OTP. The product system supports advanced search and filtering by name and price, product reviews with ratings, and a responsive Bootstrap 5 frontend using the EShopper template.",
+    "features": [
+      "Razorpay Payment Gateway Integration",
+      "Coupon System & Wishlist",
+      "Full User Auth flow with Email OTP",
+      "Product Reviews & Advanced Filtering"
+    ],
+    "installation": "git clone https://github.com/qtremors/eshopper\ncd shopping\npython -m venv venv\n# Activate venv (Windows: venv\\Scripts\\activate, Linux: source venv/bin/activate)\npip install -r requirements.txt\npython manage.py migrate\npython manage.py createsuperuser\npython manage.py runserver",
+    "badges": [
+      "tech-django",
+      "tech-html",
+      "tech-css",
+      "tech-js",
+      "tech-sql"
+    ],
+    "links": [
+      {
+        "text": "Website",
+        "url": "https://tremors.pythonanywhere.com/",
+        "class": "link-primary"
+      },
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/eshopper",
+        "class": "link-secondary"
+      }
+    ]
+  },
+  {
     "id": "plant-disease-detector",
     "title": "Plant Disease Detector",
     "image": "assets/plant-disease-detector-preview.jpg",
-    "description": "A Django and TensorFlow web app that classifies plant diseases from leaf images, allowing users to upload an image and get health predictions.",
-    "longDescription": "A Proof of Concept (PoC) demonstrating the integration of TensorFlow into a Django web app. It uses Transfer Learning on a MobileNetV2 model to classify apple leaves into categories like Apple Scab, Black Rot, and Cedar Apple Rust.\n\nThe app features confidence scoring, interactive probability charts using Plotly.js, and a history database of past scans.",
+    "description": "A Django web app using TensorFlow and MobileNetV2 to classify apple leaf diseases from uploaded images, featuring drag-and-drop analysis, confidence charts, and a scan history database.",
+    "longDescription": "A Proof of Concept (PoC) demonstrating the integration of TensorFlow into a Django 5 web app. It uses Transfer Learning on a pre-trained MobileNetV2 model (ImageNet weights) to classify apple leaves into four categories: Healthy, Apple Scab, Black Rot, and Cedar Apple Rust.\n\nThe app features a drag-and-drop upload interface, real-time confidence scoring with interactive probability charts rendered using Plotly.js, and a persistent SQLite history database of all past scans. The project is managed with uv for fast, reproducible Python environments and includes a training script for model retraining on custom datasets.",
     "features": [
       "MobileNetV2 Transfer Learning Model",
       "Drag-and-Drop Image Analysis",
@@ -166,35 +262,60 @@
     ]
   },
   {
-    "id": "eshopper",
-    "title": "E-commerce Website",
-    "image": "assets/eshopper-preview.jpg",
-    "description": "A fully functional e-commerce site built with Python and Django, using the 'EShopper' template and offering a complete storefront.",
-    "longDescription": "A full-featured e-commerce platform built on Django. It handles the entire user journey: from browsing categorized products and applying coupons to a multi-step checkout process integrated with Razorpay.\n\nIt includes a comprehensive user dashboard for order history, profile management, and password resets via email OTP.",
+    "id": "earnslate",
+    "status": "wip",
+    "title": "Earnslate Finance",
+    "image": "assets/preview.png",
+    "description": "A Progressive Web App for personal finance tracking built with Next.js and the T3 stack, featuring budget management with rollover logic, visual analytics, subscription monitoring, and offline support.",
+    "longDescription": "Earnslate is a Progressive Web App (PWA) built with the T3 stack philosophy (TypeScript, tRPC, Tailwind). It allows users to track income, expenses, and recurring subscriptions with full offline support and installability on any device.\n\nIt features comprehensive data visualization using Recharts to show spending trends over time, a sophisticated budgeting system with rollover logic for unused amounts, and robust authentication via Better Auth. The backend uses a serverless Postgres database (Neon) with Prisma ORM, and the interface is built with Shadcn/UI components for a clean, accessible, and responsive experience.",
     "features": [
-      "Razorpay Payment Gateway Integration",
-      "Coupon System & Wishlist",
-      "Full User Auth flow with Email OTP",
-      "Product Reviews & Advanced Filtering"
+      "Full PWA Support (Offline & Installable)",
+      "Budget Rollover & Tracking",
+      "Visual Analytics with Recharts",
+      "Serverless Postgres Database (Neon)"
     ],
-    "installation": "git clone https://github.com/qtremors/eshopper\ncd shopping\npython -m venv venv\n# Activate venv\npip install -r requirements.txt\npython manage.py migrate\npython manage.py createsuperuser\npython manage.py runserver",
+    "installation": "Currently in development.",
     "badges": [
-      "tech-django",
-      "tech-html",
-      "tech-css",
-      "tech-js",
+      "tech-nextjs",
+      "tech-ts",
+      "tech-sql",
+      "tech-tailwind",
+      "tech-react"
+    ],
+    "links": [
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/earnslate",
+        "class": "link-primary"
+      }
+    ]
+  },
+  {
+    "id": "local-team-chat",
+    "status": "wip",
+    "title": "Local Team Chat",
+    "image": "assets/preview.png",
+    "description": "A self-hosted, privacy-first messaging platform for local LAN networks, featuring real-time DMs and group chats via WebSockets, JWT authentication, and a responsive React interface for desktop and mobile.",
+    "longDescription": "Designed for small offices and teams requiring complete privacy, this app runs entirely on a local host machine with no external dependencies. It utilizes WebSockets for instant real-time messaging and manages state via a unified 'Room' architecture where Direct Messages are simply rooms with two members.\n\nThe backend is built with FastAPI and uses JWT authentication with Pydantic validation for type-safe request handling. The React frontend is responsive, adapting from a dual-pane desktop view to a mobile-app-like interface on smaller screens, with SQLite for persistent message storage.",
+    "features": [
+      "Real-time Messaging via WebSockets",
+      "Unified Room Architecture (Groups & DMs)",
+      "JWT Authentication & Pydantic Validation",
+      "Responsive React Layout (Mobile/Desktop)"
+    ],
+    "installation": "Currently in development.",
+    "badges": [
+      "tech-python",
+      "tech-fastapi",
+      "tech-react",
+      "tech-ts",
       "tech-sql"
     ],
     "links": [
       {
-        "text": "Website",
-        "url": "https://tremors.pythonanywhere.com/",
-        "class": "link-primary"
-      },
-      {
         "text": "View on GitHub",
-        "url": "https://github.com/qtremors/eshopper",
-        "class": "link-secondary"
+        "url": "https://github.com/qtremors/team-chat-app",
+        "class": "link-primary"
       }
     ]
   },
@@ -202,15 +323,15 @@
     "id": "locr",
     "title": "Lines of Code in Repo",
     "image": "assets/locr-preview.png",
-    "description": "A Git-aware CLI that counts lines of code in your repo instantly. No dependencies(just python), no configuration needed.",
-    "longDescription": "Locr is a blazing fast, dependency-free utility designed to count lines of code in Git repositories. Born out of frustration with slow file scanners, it uses a 'Hybrid Eager Pruning' strategy to instantly skip massive junk folders (like node_modules) before even querying Git.\n\nUnlike simple counters, it respects your .gitignore rules perfectly, supports language-specific syntax highlighting in the terminal, and handles graceful interrupts so you can stop a massive scan and still get partial results.",
+    "description": "A blazing-fast, zero-dependency Python CLI that counts lines of code in Git repositories using hybrid eager pruning, respecting .gitignore rules and supporting graceful interrupts for partial results.",
+    "longDescription": "Locr is a blazing fast, dependency-free utility designed to count lines of code in Git repositories. Born out of frustration with slow file scanners, it uses a 'Hybrid Eager Pruning' strategy — instantly skipping massive junk folders (like node_modules, venv, .git) before even querying Git, then using git check-ignore for 100% accuracy on remaining files.\n\nUnlike simple counters, it respects your .gitignore rules perfectly (including complex negations), supports language-specific syntax highlighting in the terminal (Python=Yellow, HTML=Red, TypeScript=Blue), provides comment density statistics, and handles graceful interrupts so you can press Ctrl+C during a massive scan and still get partial results. It can scan the Django repository (3,500+ files, 400K lines) in just 1.1 seconds on a warm cache.",
     "features": [
       "Hybrid Git-Awareness (2-phase scanner)",
       "Eager Pruning for Max Speed",
       "Graceful Interrupts (Ctrl+C shows results)",
       "Smart Colors & Comment Density Stats"
     ],
-    "installation": "# Clone or download this repo, then navigate to it\ngit clone https://github.com/qtremors/locr.git\ncd locr\n\n# Install in editable mode\npip install -e .",
+    "installation": "git clone https://github.com/qtremors/locr.git\ncd locr\npip install -e .",
     "badges": [
       "tech-python",
       "tech-cli",
@@ -228,7 +349,7 @@
     "id": "pc-remote-control",
     "title": "PC Remote Control API",
     "image": "assets/pcrc-preview.png",
-    "description": "A Python + FastAPI tool that lets you control your PC from your phone \u2014 media playback, system power, screenshots, and app launching over a clean local web interface.",
+    "description": "A Python + FastAPI tool that lets you control your PC from your phone — media playback, system power, screenshots, and app launching over a clean local web interface.",
     "longDescription": "This tool turns your smartphone into a remote control for your PC. It runs a lightweight FastAPI server that listens for commands from a mobile-friendly web interface.\n\nYou can control system volume, media playback (Spotify/YouTube), take screenshots that appear on your phone, and perform system power actions like Sleep or Lock.",
     "features": [
       "Media Control (Vol, Play, Pause, Next)",
@@ -236,7 +357,7 @@
       "Instant Screen Mirroring to Phone",
       "Zero-Dependency Frontend"
     ],
-    "installation": "git clone https://github.com/qtremors/pc-rc\ncd pc-rc\nuv venv\n# Activate venv (Windows: .venv\\Scripts\\activate, Linux: source .venv/bin/activate)\nuv pip install -r requirements.txt\n# Create .env with HOST=0.0.0.0 PORT=8000\npython main.py",
+    "installation": "git clone https://github.com/qtremors/pc-rc.git\ncd pc-rc\nuv sync\nuv run main.py",
     "badges": [
       "tech-python",
       "tech-fastapi",
@@ -254,7 +375,7 @@
     "id": "repo-tree",
     "title": "RepoTree Generator",
     "image": "assets/rtree-preview.png",
-    "description": "A Git-aware CLI that generates clean directory trees, filtering files using .gitignore so only real source code shows up \u2014 no build junk, no clutter.",
+    "description": "A Git-aware CLI that generates clean directory trees, filtering files using .gitignore so only real source code shows up — no build junk, no clutter.",
     "longDescription": "RepoTree solves the problem of 'dirty' directory dumps. It automatically parses .gitignore files to hide build artifacts and caches, ensuring your diagram only shows relevant source code.\n\nIt supports multiple visualization modes (ASCII tree, Flat list), depth limiting for high-level overviews, and can output directly to files without ANSI color codes.",
     "features": [
       "Context-Aware .gitignore Parsing",
@@ -262,7 +383,7 @@
       "Multiple Output Modes (Tree, Flat, Raw)",
       "Auto-Colorization for Terminal"
     ],
-    "installation": "# Clone the repository\ngit clone https://github.com/qtremors/file-tree-generator.git\n\n# Navigate to the project folder\ncd file-tree-generator\n\n# Install the CLI in editable mode\npip install -e .",
+    "installation": "git clone https://github.com/qtremors/file-tree-generator.git\ncd file-tree-generator\npip install -e .",
     "badges": [
       "tech-python",
       "tech-cli",
@@ -277,47 +398,18 @@
     ]
   },
   {
-    "id": "local-team-chat",
-    "status": "wip",
-    "title": "Local Team Chat",
-    "image": "assets/preview.png",
-    "description": "A self-hosted, real-time messaging platform for local LAN networks, featuring DMs and Group chats.",
-    "longDescription": "Designed for small offices requiring privacy, this app runs entirely on a local host machine. It utilizes WebSockets for instant messaging and manages state via a unified 'Room' architecture where Direct Messages are simply rooms with two members.\n\nThe frontend is responsive, adapting from a dual-pane desktop view to a mobile-app-like interface on smaller screens.",
-    "features": [
-      "Real-time Messaging via WebSockets",
-      "Unified Room Architecture (Groups & DMs)",
-      "JWT Authentication & Pydantic Validation",
-      "Responsive React Layout (Mobile/Desktop)"
-    ],
-    "installation": "# Backend\ncd backend\nuv venv\n# Activate venv\nuv sync\nuvicorn app.main:app --host 0.0.0.0 --port 8000 --reload\n\n# Frontend\ncd frontend\nnpm install\n# Set VITE_API_HOST in .env.local\nnpm run dev",
-    "badges": [
-      "tech-python",
-      "tech-fastapi",
-      "tech-react",
-      "tech-ts",
-      "tech-sql"
-    ],
-    "links": [
-      {
-        "text": "View on GitHub",
-        "url": "https://github.com/qtremors/team-chat-app",
-        "class": "link-primary"
-      }
-    ]
-  },
-  {
     "id": "pygame-calculator",
-    "title": "Calculator App (PYgame)",
+    "title": "Calculator App (Pygame)",
     "image": "assets/calculator-preview.jpg",
-    "description": "A fully functional calculator implemented as a single Python script using Pygame with a responsive GUI and persistent history.",
-    "longDescription": "A demonstration of building functional GUI applications using game libraries. This calculator features a scrollable history log that persists between sessions, dynamic font scaling for long numbers, and full keyboard support.\n\nIt handles standard arithmetic as well as scientific operations like percentage and sign toggling.",
+    "description": "A desktop calculator built as a single Python script using Pygame, featuring a dark-themed responsive GUI, file-based persistent history, dynamic font scaling, and full keyboard and numpad support.",
+    "longDescription": "A demonstration of building functional GUI applications using game libraries instead of traditional GUI frameworks. This calculator features a scrollable history log that persists between sessions using a local file, dynamic font scaling to prevent text overflow when numbers get too long, and full keyboard support including the numpad.\n\nIt handles standard arithmetic operations (+, -, *, /) as well as percentage calculations and sign toggling (+/-). The UI includes hover effects on buttons for visual feedback, a clean modern dark-themed color palette, and robust error handling for division by zero and invalid inputs.",
     "features": [
       "Persistent History (File-based)",
       "Dynamic Font Scaling",
       "Scrollable History View",
       "Full Keyboard & Numpad Support"
     ],
-    "installation": "pip install pygame\npython pygame_calculator.py",
+    "installation": "git clone https://github.com/qtremors/pygame-calculator-app.git\ncd pygame-calculator-app\nuv venv\n# Activate venv (Windows: .venv\\Scripts\\activate, Linux: source .venv/bin/activate)\nuv pip install pygame\npython calculator.py",
     "badges": [
       "tech-python",
       "tech-pygame"
@@ -331,33 +423,34 @@
     ]
   },
   {
-    "id": "earnslate",
-    "status": "wip",
-    "title": "Earnslate Finance",
-    "image": "assets/preview.png",
-    "related_next": "eshopper",
-    "related_prev": "nexus",
-    "description": "A modern PWA for personal finance tracking with budget management, analytics, and subscription monitoring.",
-    "longDescription": "Earnslate is a Progressive Web App (PWA) built with the T3 stack philosophy. It allows users to track income, expenses, and recurring subscriptions.\n\nIt features comprehensive data visualization using Recharts to show spending trends, a budgeting system with rollover logic, and robust authentication via Better Auth. The interface is built with Shadcn/UI for a clean, accessible experience.",
+    "id": "scrapped-projects",
+    "title": "The Scrapyard",
+    "image": "assets/scrap-preview.png",
+    "description": "A cyberpunk-themed digital archive for abandoned project ideas, featuring CSS 3D parallax scrolling, a terminal-style search interface, live project previews on hover, and automated GitHub Actions deployment.",
+    "longDescription": "A unique conceptual website that serves as a 'Digital Graveyard' — a final resting place for abandoned code and half-baked project ideas. It uses CSS 3D transforms to create a vanishing-point parallax scrolling effect where project cards float like scattered papers in space.\n\nThe site features cyberpunk aesthetics with dark themes, neon accents, and glitch effects, a terminal-style search bar for instant filtering, and live iframe previews that appear when hovering over any card. It's fully automated via GitHub Actions: a Node.js build script scans the projects/ folder and auto-generates the HTML cards during deployment, so adding a new project is as simple as creating a folder and pushing to main.",
     "features": [
-      "Full PWA Support (Offline & Installable)",
-      "Budget Rollover & Tracking",
-      "Visual Analytics with Recharts",
-      "Serverless Postgres Database (Neon)"
+      "3D CSS Parallax Scroll Effect",
+      "Automated Build via GitHub Actions",
+      "Node.js Static Generation Script",
+      "Vanishing Point Perspective Design"
     ],
-    "installation": "npx prisma migrate dev\nnpm run dev",
+    "installation": "npm install\nnode build.js",
     "badges": [
-      "tech-nextjs",
-      "tech-ts",
-      "tech-sql",
-      "tech-tailwind",
-      "tech-react"
+      "tech-html",
+      "tech-css",
+      "tech-js",
+      "tech-github"
     ],
     "links": [
       {
-        "text": "View on GitHub",
-        "url": "https://github.com/qtremors/earnslate",
+        "text": "Website",
+        "url": "https://qtremors.github.io/scrap",
         "class": "link-primary"
+      },
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/scrap",
+        "class": "link-secondary"
       }
     ]
   },
@@ -365,8 +458,8 @@
     "id": "nexus",
     "title": "Nexus",
     "image": "assets/nexus-preview.png",
-    "description": "A creative landing page designed to navigate through my digital universe by deploying a fleet of spaceships from the space station.",
-    "longDescription": "Nexus is a creative portfolio gateway designed to look like a space station interface. It features a multi-layered background with a starfield that reacts to mouse movement, a central black hole video loop, and complex entrance/exit animations for project cards.\n\nBuilt with Next.js and tsParticles, it demonstrates advanced frontend animation techniques and component-scoped styling.",
+    "description": "A space-themed portfolio landing page built with Next.js, featuring an interactive tsParticles starfield, a central black hole video loop, and sequenced Framer Motion animations for spaceship-styled project cards.",
+    "longDescription": "Nexus is a creative portfolio gateway designed to look like a space station command interface. It features a multi-layered background with an interactive starfield (tsParticles) that reacts to mouse movement, a central black hole video loop, a particle absorber that slowly consumes stars, and a distant planet surface image for depth.\n\nBuilt with Next.js App Router and TypeScript, it demonstrates advanced frontend animation techniques including sequenced Framer Motion entrance/exit animations for project cards styled as spaceships, a Voyager-style probe that traverses the screen via CSS offset-path, and component-scoped styling with CSS Modules. The dashboard page uses Drizzle ORM with Postgres for dynamic project data.",
     "features": [
       "Interactive Starfield (tsParticles)",
       "Sequenced Framer Motion Animations",
@@ -390,38 +483,6 @@
       {
         "text": "View on GitHub",
         "url": "https://github.com/qtremors/nexus",
-        "class": "link-secondary"
-      }
-    ]
-  },
-  {
-    "id": "scrapped-projects",
-    "title": "The Scrapyard",
-    "image": "assets/scrap-preview.png",
-    "description": "A 3D scroll-based archive for abandoned project ideas, visualizing them as scattered notes.",
-    "longDescription": "A unique conceptual website that serves as a final resting place for abandoned code. It uses CSS 3D transforms to create a parallax scrolling effect where project cards float like scattered papers.\n\nThe site is automated via GitHub Actions, which scans the repo for project folders and auto-generates the HTML cards during deployment.",
-    "features": [
-      "3D CSS Parallax Scroll Effect",
-      "Automated Build via GitHub Actions",
-      "Node.js Static Generation Script",
-      "Vanishing Point Perspective Design"
-    ],
-    "installation": "npm install\nnode build.js",
-    "badges": [
-      "tech-html",
-      "tech-css",
-      "tech-js",
-      "tech-github"
-    ],
-    "links": [
-      {
-        "text": "Website",
-        "url": "https://qtremors.github.io/scrap",
-        "class": "link-primary"
-      },
-      {
-        "text": "View on GitHub",
-        "url": "https://github.com/qtremors/scrap",
         "class": "link-secondary"
       }
     ]

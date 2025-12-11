@@ -90,17 +90,20 @@ document.addEventListener('DOMContentLoaded', function () {
   const createProjectCard = (project, isDynamic = false) => {
     const dynamicClass = isDynamic ? 'dynamic-project' : '';
     const isWip = project.status === 'wip';
-    const wipClass = isWip ? 'is-wip' : '';
-    const wipBadge = isWip ? '<div class="wip-badge">⚠️ Development</div>' : '';
+    const isBeta = project.status === 'beta';
+    const statusClass = isWip ? 'is-wip' : (isBeta ? 'is-beta' : '');
+    const statusBadge = isWip
+      ? '<div class="wip-badge">⚠️ Development</div>'
+      : (isBeta ? '<div class="beta-badge">🧪 Beta</div>' : '');
     const detailUrl = project.id ? `project.html?id=${project.id}` : '#';
     const badgesHtml = project.badges.map(badge => `<span class="${badge}">${window.getBadgeLabel(badge)}</span>`).join('');
-    const linksHtml = project.links.map(link => `<a href="${link.url}" target="_blank" class="${link.class}">${link.text} &rarr;</a>`).join('');
+    const linksHtml = project.links.map(link => `<a href="${link.url}" target="_blank" rel="noopener noreferrer" class="${link.class}">${link.text} &rarr;</a>`).join('');
 
     return `
-          <article class="portfolio-item fade-in ${dynamicClass} ${wipClass}">
+          <article class="portfolio-item fade-in ${dynamicClass} ${statusClass}">
               <a href="${detailUrl}" class="project-card-link" style="display:block; cursor:pointer;">
                   <div class="img-wrapper" style="position: relative; overflow: hidden;">
-                      ${wipBadge}
+                      ${statusBadge}
                       <img src="${project.image}" alt="${project.title} Preview" loading="lazy" style="width: 100%; display: block;">
                   </div>
               </a>
