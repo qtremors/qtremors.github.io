@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Tremors</title>
+    <meta name="robots" content="noindex, follow">
+    <link rel="icon" type="image/gif" href="assets/loading_cat.gif">
+
+    <link rel="stylesheet" href="static/css/index-base.css">
+    <link rel="stylesheet" href="static/css/index-navigation.css">
+
+    <link rel="stylesheet" href="static/themes/md.css" id="theme-md" disabled>
+    <link rel="stylesheet" href="static/themes/md3.css" id="theme-md3" disabled>
+    <link rel="stylesheet" href="static/themes/oled.css" id="theme-oled">
+
+    <link rel="stylesheet" href="static/effects/fog.css" id="effect-fog" disabled>
+    <link rel="stylesheet" href="static/effects/glass.css" id="effect-glass" disabled>
+    <link rel="stylesheet" href="static/effects/spotlight.css" id="effect-spotlight" disabled>
+
+    <style>
+        body {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container-404 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 1.5rem;
+            box-sizing: border-box;
+        }
+
+        .card {
+            background-color: var(--md-surface-variant);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--md-outline);
+            box-shadow: 0 10px 15px -3px var(--md-shadow-color);
+            width: 100%;
+            max-width: 32rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .error-gif {
+            width: 12rem;
+            height: 12rem;
+            margin: 0 auto 1.5rem auto;
+            display: block;
+            border-radius: 12px;
+        }
+
+        .error-code {
+            font-size: 6rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--md-primary), #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--md-on-surface);
+            margin: 0 0 0.5rem 0;
+        }
+
+        .card-description {
+            color: var(--md-on-surface-variant);
+            max-width: 28rem;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .button-container {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .home-button {
+            display: inline-block;
+            background-color: var(--md-primary);
+            color: var(--md-on-primary);
+            font-weight: bold;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px var(--md-shadow-color);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .home-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px var(--md-shadow-color);
+        }
+
+        .secondary-button {
+            display: inline-block;
+            color: var(--md-on-surface);
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            border: 1px solid var(--md-outline);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .secondary-button:hover {
+            transform: translateY(-2px);
+            border-color: var(--md-primary);
+        }
+
+        .settings-trigger {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: transparent;
+            border: none;
+            color: var(--md-on-surface-variant);
+            cursor: pointer;
+            opacity: 0.5;
+            transition: opacity 0.2s;
+        }
+
+        .settings-trigger:hover {
+            opacity: 1;
+        }
+    </style>
+
+    <script>
+        (function () {
+            try {
+                const savedMode = localStorage.getItem('style_mode') || 'oled';
+
+                document.getElementById('theme-md').disabled = true;
+                document.getElementById('theme-md3').disabled = true;
+                document.getElementById('theme-oled').disabled = true;
+
+                if (savedMode === 'md') document.getElementById('theme-md').disabled = false;
+                else if (savedMode === 'md3') document.getElementById('theme-md3').disabled = false;
+                else document.getElementById('theme-oled').disabled = false;
+
+                const savedEffect = localStorage.getItem('effect_mode') || 'none';
+                const savedSpotlight = localStorage.getItem('spotlight_mode') || 'off';
+
+                document.getElementById('effect-fog').disabled = (savedEffect !== 'fog');
+                document.getElementById('effect-glass').disabled = (savedEffect !== 'glass');
+                document.getElementById('effect-spotlight').disabled = (savedSpotlight === 'off');
+
+                document.documentElement.setAttribute('data-style-mode', savedMode);
+            } catch (e) { }
+        })();
+    </script>
+</head>
+
+<body>
+
+    <main class="container-404">
+        <div class="card">
+
+            <button id="open-settings-btn" class="settings-trigger" title="Open appearance settings">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path
+                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                    </path>
+                </svg>
+            </button>
+
+            <img src="assets/404.gif" alt="404 Error Animation" class="error-gif">
+
+            <div class="error-code">404</div>
+            <h1 class="card-title">Page Not Found</h1>
+            <p class="card-description">
+                The page you're looking for doesn't exist or has been moved. Let's get you back on track.
+            </p>
+
+            <div class="button-container">
+                <a href="index.html" class="home-button">Go Home</a>
+                <a href="tui.html" class="secondary-button">Try TUI</a>
+            </div>
+        </div>
+    </main>
+
+    <div id="settings-modal" class="modal-backdrop" aria-hidden="true">
+        <div class="modal-card">
+            <header class="modal-header">
+                <h3>Appearance</h3>
+                <button id="close-settings-btn" class="icon-button" aria-label="Close settings">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </header>
+            <div class="modal-body">
+                <div class="setting-group">
+                    <label class="setting-label">Color Mode</label>
+                    <div class="segmented-control">
+                        <button class="segment-btn" data-set-mode="system"><span>System</span></button>
+                        <button class="segment-btn" data-set-mode="light"><span>Light</span></button>
+                        <button class="segment-btn" data-set-mode="dark"><span>Dark</span></button>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <label class="setting-label">Visual Theme</label>
+                    <div class="theme-grid">
+                        <button class="theme-card" data-set-theme="md">
+                            <div class="theme-preview md-preview"></div><span>MD</span>
+                        </button>
+                        <button class="theme-card" data-set-theme="md3">
+                            <div class="theme-preview md3-preview"></div><span>MD3</span>
+                        </button>
+                        <button class="theme-card" data-set-theme="oled">
+                            <div class="theme-preview oled-preview"></div><span>OLED</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <label class="setting-label">Scene Effect</label>
+                    <div class="segmented-control">
+                        <button class="segment-btn" data-set-effect="fog"><span>🌫️ Fog</span></button>
+                        <button class="segment-btn" data-set-effect="glass"><span>🧊 Glass</span></button>
+                        <button class="segment-btn" data-set-effect="none"><span>🚫 None</span></button>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <label class="setting-label">Spotlight Effect</label>
+                    <div class="segmented-control">
+                        <button class="segment-btn" data-set-spotlight="on"><span>On</span></button>
+                        <button class="segment-btn" data-set-spotlight="off"><span>Off</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="static/js/index.js"></script>
+
+</body>
+
+</html>

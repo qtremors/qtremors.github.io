@@ -1,5 +1,45 @@
 # Changelog
 
+## [v2.2.3] - 11-12-2025
+
+### ♿ **Accessibility Improvements**
+
+- **Skip-to-Content Link:** Added a keyboard-accessible skip link that appears on Tab focus, allowing users to jump directly to main content.
+
+- **Reduced Motion Support:** Implemented `prefers-reduced-motion` media query to disable all animations and transitions for users who prefer reduced motion.
+
+### 🔍 **SEO Enhancements**
+
+- **Twitter Card Meta Tags:** Added `twitter:card`, `twitter:title`, `twitter:description`, and `twitter:image` tags for better social sharing.
+
+- **Robots & Canonical:** Added `<meta name="robots">` and `<link rel="canonical">` tags for search engine optimization.
+
+- **Sitemap & Robots.txt:** Created `sitemap.xml` (16 pages) and `robots.txt` for search engine crawling.
+
+### 🆕 **New Projects & Content**
+
+- **Tremors Music App (Desktop):** Added new Tauri-based desktop music player project with Beta status badge featuring cyan/purple gradient styling.
+
+- **Arcade Nexus:** Added browser-based gaming console project to the portfolio.
+
+### 🎨 **Visual & UI Updates**
+
+- **Beta Status Styling:** Implemented distinct visual treatment for Beta projects with glowing cyan border, animated badge, and gradient hover overlay.
+
+- **404 Page Redesign:** Created a theme-aware `404.html` that matches the site's aesthetic with settings modal, GIF animation, and theme support.
+
+### 📦 **Project Ranking & Organization**
+
+- **Reordered Projects:** Updated `projects.json` with new priority ranking (Quizzer AI → GitNexus → Algorithm Visualizer → Tremors Music App → Arcade Nexus → ...).
+
+- **TUI Sync:** Updated `tui.html` portfolio section to match the new project order with 5 visible and 11 hidden projects.
+
+### 🔒 **Security**
+
+- **External Links:** Added `rel="noopener noreferrer"` to all dynamically generated external links in `home.js`.
+
+---
+
 ## [v2.2.2] - 09-12-2025
 
 ### 🎨 **Theme System Restructure**
