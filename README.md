@@ -97,10 +97,13 @@ This version is a **creative exploration of what's possible with only HTML and C
 The system includes specialized handling for projects that are currently being built or are temporarily offline:
 
 - **Visual WIP Indicators:** Projects marked as `wip` in the JSON data are automatically rendered with a **"Hazard" theme**—featuring a yellow border and a holographic "Construction Zone" stripe overlay.
+
+- **Beta Status Styling:** Projects marked as `beta` display a **cyan/purple gradient** with a pulsing badge and futuristic hover effects.
     
 - **Custom 404 & System Pages:**
     - **Modern UI:** Redirects to `system/index-404.html`, featuring an interactive toggle between "Cat" and "Coding" animations.
     - **TUI:** Redirects to `system/tui-404.html`, a text-only error page with CRT glitch effects.
+    - **Root 404:** A theme-aware `404.html` that matches the site's aesthetic for GitHub Pages default error handling.
 
 ---
 
@@ -123,6 +126,7 @@ This portfolio has evolved from a simple static page to a complex engineering pr
 ### 📽️ Watch the Evolution
 ## 📺 [History - v0.0.0-v2.0.0](https://qtremors.github.io/system/history.html)
 
+* **v2.2.3 (Accessibility & SEO):** Added skip-to-content link, reduced motion support, Twitter Card meta tags, sitemap.xml, robots.txt, and theme-aware 404.html. Added Tremors Music App (Desktop) and Arcade Nexus projects.
 * **v2.2.0 (The Theme & Effects Engine):** Introduced a modular theme system with independent effects (Fog, Glass, Spotlight) and a centralized Settings Modal.
 * **v2.1.0 (The Time Machine):** Introduced the `system/` directory structure, visual history timelines, and embedded Gource visualization.
 * **v2.0.0 (The Architecture Era):** A complete rewrite of the core logic. Introduced a decoupled JavaScript architecture, a "Smart Terminal" widget, and a context-aware Fog system.
