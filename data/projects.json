@@ -100,41 +100,6 @@
     ]
   },
   {
-    "id": "tremors-music-app",
-    "status": "beta",
-    "title": "Tremors Music (Desktop)",
-    "image": "assets/tremors-music-app-preview.png",
-    "description": "A high-performance desktop music player built with Tauri, featuring a Rust shell, Python backend sidecar, and React UI — designed for blazing speed and minimal resource usage.",
-    "longDescription": "Tremors Music Desktop is the native application version of the Tremors Music Player. It uses a hybrid architecture combining Rust (Tauri shell), Python (FastAPI sidecar for heavy lifting), and React (TypeScript frontend).\n\nThe app bundles everything into a single executable installer, with the Python backend compiled via PyInstaller. It handles 10,000+ songs with ease, featuring ~100-200MB RAM usage during normal operation.",
-    "features": [
-      "Native Desktop App (Windows)",
-      "Tauri + Rust Shell for Minimal Footprint",
-      "Python Sidecar for Metadata & Scanning",
-      "Offline-First with SQLite Database"
-    ],
-    "installation": "git clone https://github.com/qtremors/tremors-music-app.git\ncd tremors-music-app\n\n# Backend Setup\ncd backend\nuv sync\ncd ..\n\n# Frontend Setup\ncd frontend\nnpm install\ncd ..\n\n# Run Development Mode\nnpm run tauri:dev",
-    "badges": [
-      "tech-rust",
-      "tech-python",
-      "tech-fastapi",
-      "tech-react",
-      "tech-ts",
-      "tech-tauri"
-    ],
-    "links": [
-      {
-        "text": "Download",
-        "url": "https://github.com/qtremors/tremors-music-app/releases",
-        "class": "link-primary"
-      },
-      {
-        "text": "View on GitHub",
-        "url": "https://github.com/qtremors/tremors-music-app",
-        "class": "link-secondary"
-      }
-    ]
-  },
-  {
     "id": "arcade-nexus",
     "status": "wip",
     "title": "Arcade Nexus",
@@ -165,28 +130,32 @@
   },
   {
     "id": "tremors-music",
-    "title": "Tremors Music Player",
-    "image": "assets/music-preview.png",
-    "description": "A web-based music player built for audiophiles, featuring a FastAPI backend for metadata parsing and a React UI with virtualization, synchronized lyrics display, and Apple Music-inspired glassmorphism design.",
-    "longDescription": "Built for audiophiles who prefer local libraries over cloud streaming. Tremors Music combines a Python FastAPI backend for high-speed file system access and metadata parsing with a modern React 19 UI using TanStack Query for data fetching.\n\nIt handles libraries of 5,000+ songs effortlessly using react-virtuoso for virtualization, fetches synchronized or plain lyrics automatically, and extracts technical audio specs (Bitrate, Sample Rate, Format) in real-time. The UI features a glassmorphism design with Framer Motion animations, dynamic accent colors based on album art, and a full-screen 'Now Playing' view with large artwork and synced lyrics display.",
+    "title": "Tremors Music",
+    "image": "assets/tremors-music-app-preview.png",
+    "description": "A high-performance, local-first music player with both web and native desktop versions — featuring a Python backend, React UI with glassmorphism design, and optional Tauri shell for minimal resource usage.",
+    "longDescription": "Tremors Music is a unified music player that runs as both a web app and a native desktop application. It combines a Python FastAPI backend for metadata parsing and audio streaming, with a modern React frontend featuring virtualization, synchronized lyrics, and Apple Music-inspired design.\n\nThe desktop version uses Tauri (Rust shell) with the Python backend compiled as a sidecar, achieving ~100-200MB RAM usage — 70% less than the web version. Handles 10,000+ song libraries with ease.",
     "features": [
-      "Virtualization for 5,000+ song libraries",
-      "Automatic Lyrics Fetching (Synced & Plain)",
-      "Real-time ID3 Tag & Cover Art Extraction",
-      "Glassmorphism UI with Dynamic Accent Colors"
+      "Web + Desktop from Single Codebase",
+      "Virtualization for 10,000+ Songs",
+      "Synced Lyrics & ID3 Metadata Extraction",
+      "Tauri Desktop: ~100-200MB RAM Usage",
+      "Glassmorphism UI with Dynamic Accents",
+      "Offline-First with SQLite Database"
     ],
-    "installation": "git clone https://github.com/qtremors/tremors-music.git\ncd tremors-music\n\n# Backend\ncd backend\nuv sync\nuv run uvicorn main:app --reload\n\n# Frontend (new terminal)\ncd frontend\nnpm install\nnpm run dev",
+    "installation": "git clone https://github.com/qtremors/tremors-music.git\ncd tremors-music\n\n# Backend\ncd backend && uv sync && cd ..\n\n# Frontend\ncd frontend && npm install && cd ..\n\n# Run Web Version\ncd backend && uv run uvicorn main:app --reload\ncd frontend && npm run dev\n\n# Run Desktop Version\ncd tauri && npm install && npm run dev",
     "badges": [
+      "tech-rust",
       "tech-python",
       "tech-fastapi",
       "tech-react",
       "tech-ts",
+      "tech-tauri",
       "tech-framermotion"
     ],
     "links": [
       {
-        "text": "Website",
-        "url": "system/index-404.html",
+        "text": "Download",
+        "url": "https://github.com/qtremors/tremors-music/releases",
         "class": "link-primary"
       },
       {
@@ -292,6 +261,35 @@
     ]
   },
   {
+    "id": "local-team-chat",
+    "status": "wip",
+    "title": "Local Team Chat",
+    "image": "assets/preview.png",
+    "description": "A self-hosted, privacy-first messaging platform for local LAN networks, featuring real-time DMs and group chats via WebSockets, JWT authentication, and a responsive React interface for desktop and mobile.",
+    "longDescription": "Designed for small offices and teams requiring complete privacy, this app runs entirely on a local host machine with no external dependencies. It utilizes WebSockets for instant real-time messaging and manages state via a unified 'Room' architecture where Direct Messages are simply rooms with two members.\n\nThe backend is built with FastAPI and uses JWT authentication with Pydantic validation for type-safe request handling. The React frontend is responsive, adapting from a dual-pane desktop view to a mobile-app-like interface on smaller screens, with SQLite for persistent message storage.",
+    "features": [
+      "Real-time Messaging via WebSockets",
+      "Unified Room Architecture (Groups & DMs)",
+      "JWT Authentication & Pydantic Validation",
+      "Responsive React Layout (Mobile/Desktop)"
+    ],
+    "installation": "Currently in development.",
+    "badges": [
+      "tech-python",
+      "tech-fastapi",
+      "tech-react",
+      "tech-ts",
+      "tech-sql"
+    ],
+    "links": [
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/team-chat-app",
+        "class": "link-primary"
+      }
+    ]
+  },
+  {
     "id": "locr",
     "title": "Lines of Code in Repo",
     "image": "assets/locr-preview.png",
@@ -365,35 +363,6 @@
       {
         "text": "View on GitHub",
         "url": "https://github.com/qtremors/rtree",
-        "class": "link-primary"
-      }
-    ]
-  },
-  {
-    "id": "local-team-chat",
-    "status": "wip",
-    "title": "Local Team Chat",
-    "image": "assets/preview.png",
-    "description": "A self-hosted, privacy-first messaging platform for local LAN networks, featuring real-time DMs and group chats via WebSockets, JWT authentication, and a responsive React interface for desktop and mobile.",
-    "longDescription": "Designed for small offices and teams requiring complete privacy, this app runs entirely on a local host machine with no external dependencies. It utilizes WebSockets for instant real-time messaging and manages state via a unified 'Room' architecture where Direct Messages are simply rooms with two members.\n\nThe backend is built with FastAPI and uses JWT authentication with Pydantic validation for type-safe request handling. The React frontend is responsive, adapting from a dual-pane desktop view to a mobile-app-like interface on smaller screens, with SQLite for persistent message storage.",
-    "features": [
-      "Real-time Messaging via WebSockets",
-      "Unified Room Architecture (Groups & DMs)",
-      "JWT Authentication & Pydantic Validation",
-      "Responsive React Layout (Mobile/Desktop)"
-    ],
-    "installation": "Currently in development.",
-    "badges": [
-      "tech-python",
-      "tech-fastapi",
-      "tech-react",
-      "tech-ts",
-      "tech-sql"
-    ],
-    "links": [
-      {
-        "text": "View on GitHub",
-        "url": "https://github.com/qtremors/team-chat-app",
         "class": "link-primary"
       }
     ]
