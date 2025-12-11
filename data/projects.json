@@ -103,7 +103,7 @@
     "id": "tremors-music-app",
     "status": "beta",
     "title": "Tremors Music (Desktop)",
-    "image": "assets/music-app-preview.png",
+    "image": "assets/tremors-music-app-preview.png",
     "description": "A high-performance desktop music player built with Tauri, featuring a Rust shell, Python backend sidecar, and React UI — designed for blazing speed and minimal resource usage.",
     "longDescription": "Tremors Music Desktop is the native application version of the Tremors Music Player. It uses a hybrid architecture combining Rust (Tauri shell), Python (FastAPI sidecar for heavy lifting), and React (TypeScript frontend).\n\nThe app bundles everything into a single executable installer, with the Python backend compiled via PyInstaller. It handles 10,000+ songs with ease, featuring ~100-200MB RAM usage during normal operation.",
     "features": [
@@ -136,6 +136,7 @@
   },
   {
     "id": "arcade-nexus",
+    "status": "wip",
     "title": "Arcade Nexus",
     "image": "assets/arcade-nexus-preview.png",
     "description": "A browser-based gaming console experience built with React and FastAPI, featuring a custom Game SDK for game development, cloud-synced save states, achievements tracking, and an immersive console-style UI.",
@@ -191,39 +192,6 @@
       {
         "text": "View on GitHub",
         "url": "https://github.com/qtremors/tremors-music",
-        "class": "link-secondary"
-      }
-    ]
-  },
-  {
-    "id": "eshopper",
-    "title": "E-commerce Website",
-    "image": "assets/eshopper-preview.jpg",
-    "description": "A full-featured e-commerce platform built with Django, featuring product catalogs, shopping cart, wishlist, coupon system, Razorpay payments, and user authentication with email OTP password resets.",
-    "longDescription": "A full-featured e-commerce platform built on Django that handles the entire user journey: from browsing categorized products with sub-categories, applying discount coupons, and managing wishlists, to a multi-step checkout process integrated with Razorpay payment gateway.\n\nIt includes comprehensive user functionality with registration, login, profile management with picture uploads, order history tracking, and secure password resets via email OTP. The product system supports advanced search and filtering by name and price, product reviews with ratings, and a responsive Bootstrap 5 frontend using the EShopper template.",
-    "features": [
-      "Razorpay Payment Gateway Integration",
-      "Coupon System & Wishlist",
-      "Full User Auth flow with Email OTP",
-      "Product Reviews & Advanced Filtering"
-    ],
-    "installation": "git clone https://github.com/qtremors/eshopper\ncd shopping\npython -m venv venv\n# Activate venv (Windows: venv\\Scripts\\activate, Linux: source venv/bin/activate)\npip install -r requirements.txt\npython manage.py migrate\npython manage.py createsuperuser\npython manage.py runserver",
-    "badges": [
-      "tech-django",
-      "tech-html",
-      "tech-css",
-      "tech-js",
-      "tech-sql"
-    ],
-    "links": [
-      {
-        "text": "Website",
-        "url": "https://tremors.pythonanywhere.com/",
-        "class": "link-primary"
-      },
-      {
-        "text": "View on GitHub",
-        "url": "https://github.com/qtremors/eshopper",
         "class": "link-secondary"
       }
     ]
@@ -291,31 +259,35 @@
     ]
   },
   {
-    "id": "local-team-chat",
-    "status": "wip",
-    "title": "Local Team Chat",
-    "image": "assets/preview.png",
-    "description": "A self-hosted, privacy-first messaging platform for local LAN networks, featuring real-time DMs and group chats via WebSockets, JWT authentication, and a responsive React interface for desktop and mobile.",
-    "longDescription": "Designed for small offices and teams requiring complete privacy, this app runs entirely on a local host machine with no external dependencies. It utilizes WebSockets for instant real-time messaging and manages state via a unified 'Room' architecture where Direct Messages are simply rooms with two members.\n\nThe backend is built with FastAPI and uses JWT authentication with Pydantic validation for type-safe request handling. The React frontend is responsive, adapting from a dual-pane desktop view to a mobile-app-like interface on smaller screens, with SQLite for persistent message storage.",
+    "id": "eshopper",
+    "title": "E-commerce Website",
+    "image": "assets/eshopper-preview.jpg",
+    "description": "A full-featured e-commerce platform built with Django, featuring product catalogs, shopping cart, wishlist, coupon system, Razorpay payments, and user authentication with email OTP password resets.",
+    "longDescription": "A full-featured e-commerce platform built on Django that handles the entire user journey: from browsing categorized products with sub-categories, applying discount coupons, and managing wishlists, to a multi-step checkout process integrated with Razorpay payment gateway.\n\nIt includes comprehensive user functionality with registration, login, profile management with picture uploads, order history tracking, and secure password resets via email OTP. The product system supports advanced search and filtering by name and price, product reviews with ratings, and a responsive Bootstrap 5 frontend using the EShopper template.",
     "features": [
-      "Real-time Messaging via WebSockets",
-      "Unified Room Architecture (Groups & DMs)",
-      "JWT Authentication & Pydantic Validation",
-      "Responsive React Layout (Mobile/Desktop)"
+      "Razorpay Payment Gateway Integration",
+      "Coupon System & Wishlist",
+      "Full User Auth flow with Email OTP",
+      "Product Reviews & Advanced Filtering"
     ],
-    "installation": "Currently in development.",
+    "installation": "git clone https://github.com/qtremors/eshopper\ncd shopping\npython -m venv venv\n# Activate venv (Windows: venv\\Scripts\\activate, Linux: source venv/bin/activate)\npip install -r requirements.txt\npython manage.py migrate\npython manage.py createsuperuser\npython manage.py runserver",
     "badges": [
-      "tech-python",
-      "tech-fastapi",
-      "tech-react",
-      "tech-ts",
+      "tech-django",
+      "tech-html",
+      "tech-css",
+      "tech-js",
       "tech-sql"
     ],
     "links": [
       {
-        "text": "View on GitHub",
-        "url": "https://github.com/qtremors/team-chat-app",
+        "text": "Website",
+        "url": "https://tremors.pythonanywhere.com/",
         "class": "link-primary"
+      },
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/eshopper",
+        "class": "link-secondary"
       }
     ]
   },
@@ -398,6 +370,35 @@
     ]
   },
   {
+    "id": "local-team-chat",
+    "status": "wip",
+    "title": "Local Team Chat",
+    "image": "assets/preview.png",
+    "description": "A self-hosted, privacy-first messaging platform for local LAN networks, featuring real-time DMs and group chats via WebSockets, JWT authentication, and a responsive React interface for desktop and mobile.",
+    "longDescription": "Designed for small offices and teams requiring complete privacy, this app runs entirely on a local host machine with no external dependencies. It utilizes WebSockets for instant real-time messaging and manages state via a unified 'Room' architecture where Direct Messages are simply rooms with two members.\n\nThe backend is built with FastAPI and uses JWT authentication with Pydantic validation for type-safe request handling. The React frontend is responsive, adapting from a dual-pane desktop view to a mobile-app-like interface on smaller screens, with SQLite for persistent message storage.",
+    "features": [
+      "Real-time Messaging via WebSockets",
+      "Unified Room Architecture (Groups & DMs)",
+      "JWT Authentication & Pydantic Validation",
+      "Responsive React Layout (Mobile/Desktop)"
+    ],
+    "installation": "Currently in development.",
+    "badges": [
+      "tech-python",
+      "tech-fastapi",
+      "tech-react",
+      "tech-ts",
+      "tech-sql"
+    ],
+    "links": [
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/team-chat-app",
+        "class": "link-primary"
+      }
+    ]
+  },
+  {
     "id": "pygame-calculator",
     "title": "Calculator App (Pygame)",
     "image": "assets/calculator-preview.jpg",
@@ -425,7 +426,7 @@
   {
     "id": "scrapped-projects",
     "title": "The Scrapyard",
-    "image": "assets/scrap-preview.png",
+    "image": "assets/scrapyard-preview.png",
     "description": "A cyberpunk-themed digital archive for abandoned project ideas, featuring CSS 3D parallax scrolling, a terminal-style search interface, live project previews on hover, and automated GitHub Actions deployment.",
     "longDescription": "A unique conceptual website that serves as a 'Digital Graveyard' — a final resting place for abandoned code and half-baked project ideas. It uses CSS 3D transforms to create a vanishing-point parallax scrolling effect where project cards float like scattered papers in space.\n\nThe site features cyberpunk aesthetics with dark themes, neon accents, and glitch effects, a terminal-style search bar for instant filtering, and live iframe previews that appear when hovering over any card. It's fully automated via GitHub Actions: a Node.js build script scans the projects/ folder and auto-generates the HTML cards during deployment, so adding a new project is as simple as creating a folder and pushing to main.",
     "features": [
