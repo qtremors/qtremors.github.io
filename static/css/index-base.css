@@ -6,7 +6,9 @@ html {
     box-sizing: border-box;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
     box-sizing: inherit;
 }
 
@@ -18,10 +20,13 @@ body {
     -moz-osx-font-smoothing: grayscale;
     transition: background-color 0.3s ease, color 0.3s ease;
     margin: 0;
-    padding-bottom: 90px; /* Mobile Nav Space */
+    padding-bottom: 90px;
+    /* Mobile Nav Space */
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     color: var(--md-on-surface);
     font-weight: 700;
 }
@@ -35,7 +40,8 @@ h2 {
 section {
     scroll-margin-top: 80px;
     padding: 4rem 0;
-    position: relative; /* Context for Fog/Glass effects */
+    position: relative;
+    /* Context for Fog/Glass effects */
 }
 
 /* ==========================================================================
@@ -45,94 +51,273 @@ section {
     width: 100%;
     margin: 0 auto;
     padding: 0 1.5rem;
-    max-width: 1200px; /* Default Laptop */
+    max-width: 1200px;
+    /* Default Laptop */
 }
 
 /* 1440p Screens */
 @media (min-width: 1440px) {
-    .container { max-width: 1400px; }
+    .container {
+        max-width: 1400px;
+    }
 }
 
 /* Ultrawide (1920p+) */
 @media (min-width: 1920px) {
-    html { font-size: 18px; } /* 12.5% Zoom */
-    .container { max-width: 1800px; }
-    h2 { margin-bottom: 4rem; }
+    html {
+        font-size: 18px;
+    }
+
+    /* 12.5% Zoom */
+    .container {
+        max-width: 1800px;
+    }
+
+    h2 {
+        margin-bottom: 4rem;
+    }
 }
 
 /* 4K Screens (2560p+) */
 @media (min-width: 2560px) {
-    html { font-size: 22px; } /* 37.5% Zoom */
-    .container { max-width: 2400px; }
+    html {
+        font-size: 22px;
+    }
+
+    /* 37.5% Zoom */
+    .container {
+        max-width: 2400px;
+    }
 }
 
 /* Desktop Layout Adjustments */
 @media (min-width: 769px) {
-    body { padding-bottom: 0; } /* Remove Mobile Nav Space */
+    body {
+        padding-bottom: 0;
+    }
+
+    /* Remove Mobile Nav Space */
 }
 
 /* ==========================================================================
-   3. UTILITIES: TECH BADGES
+   3. TECH BADGES - Universal Colors (Same across all themes)
    ========================================================================== */
-.tech-react { background-color: #20232A; color: #61DAFB; }
-.tech-ts { background-color: #3178C6; color: white; }
-.tech-python { background-color: #3776AB; color: #FFD43B; }
-.tech-flask { background-color: #444444; color: #FFFFFF; }
-.tech-fastapi { background-color: #009688; color: white; }
-.tech-django { background-color: #092E20; color: #44B78B; }
-.tech-tensorflow { background-color: #FF6F00; color: white; }
-.tech-pillow { background-color: #9B59B6; color: white; }
-.tech-numpy { background-color: #013243; color: white; }
-.tech-plotly { background-color: #3F51B5; color: white; }
-.tech-html { background-color: #E34F26; color: white; }
-.tech-css { background-color: #1572B6; color: white; }
-.tech-js { background-color: #F7DF1E; color: black; }
-.tech-sql { background-color: #00758F; color: white; }
-.tech-sqlite { background-color: #003B57; color: white; }
-.tech-pygame { background-color: #6E9C45; color: white; }
-.tech-nextjs { background-color: #111111; color: #FFFFFF; }
-.tech-framermotion { background-color: #2D1A38; color: #9F40FF; }
-.tech-tsparticles { background-color: #0d1117; color: #38BDF8; }
-.tech-git { background-color: #F05033; color: #FFFFFF; }
-.tech-cli { background-color: #2D2D2D; color: #FFFFFF; }
-.tech-github { background-color: #24292e; color: #ffffff; }
-.tech-tailwind { background-color: #38B2AC; color: #ffffff; }
 
-/* Badge Theme Overrides */
-body:not([data-theme='light']) .tech-react { background-color: #282c34; }
-body:not([data-theme='light']) .tech-django { background-color: #0c4b33; }
-body:not([data-theme='light']) .tech-nextjs { background-color: #222; } 
-body:not([data-theme='light']) .tech-flask { background-color: #555; }
+/* --- Languages --- */
+.tech-python {
+    background-color: #3776AB;
+    color: #FFFFFF;
+}
 
-body[data-theme='light'] .tech-github { background-color: #111111; color: #ffffff; }
-body[data-theme='light'] .tech-tailwind { background-color: #0ea5a4; color: #ffffff; }
-body[data-theme='light'] .tech-nextjs { background-color: #000; }
+.tech-ts {
+    background-color: #3178C6;
+    color: #FFFFFF;
+}
+
+.tech-js {
+    background-color: #F0DB4F;
+    color: #323330;
+}
+
+.tech-html {
+    background-color: #E44D26;
+    color: #FFFFFF;
+}
+
+.tech-css {
+    background-color: #264DE4;
+    color: #FFFFFF;
+}
+
+.tech-rust {
+    background-color: #CE422B;
+    color: #FFFFFF;
+}
+
+.tech-sql {
+    background-color: #336791;
+    color: #FFFFFF;
+}
+
+/* --- Frontend Frameworks --- */
+.tech-react {
+    background-color: #61DAFB;
+    color: #20232A;
+}
+
+.tech-nextjs {
+    background-color: #7C3AED;
+    color: #FFFFFF;
+}
+
+.tech-tailwind {
+    background-color: #06B6D4;
+    color: #FFFFFF;
+}
+
+.tech-framermotion {
+    background-color: #E10098;
+    color: #FFFFFF;
+}
+
+.tech-tsparticles {
+    background-color: #0099FF;
+    color: #FFFFFF;
+}
+
+/* --- Backend Frameworks --- */
+.tech-django {
+    background-color: #092E20;
+    color: #FFFFFF;
+}
+
+.tech-fastapi {
+    background-color: #009688;
+    color: #FFFFFF;
+}
+
+.tech-flask {
+    background-color: #4A90A4;
+    color: #FFFFFF;
+}
+
+/* --- Databases --- */
+.tech-sqlite {
+    background-color: #003B57;
+    color: #FFFFFF;
+}
+
+/* --- AI/ML & Data --- */
+.tech-tensorflow {
+    background-color: #FF6F00;
+    color: #FFFFFF;
+}
+
+.tech-numpy {
+    background-color: #013243;
+    color: #4DABCF;
+}
+
+.tech-pillow {
+    background-color: #8B5CF6;
+    color: #FFFFFF;
+}
+
+.tech-plotly {
+    background-color: #3F4F75;
+    color: #FFFFFF;
+}
+
+/* --- Tools & Platforms --- */
+.tech-git {
+    background-color: #F05033;
+    color: #FFFFFF;
+}
+
+.tech-github {
+    background-color: #6E5494;
+    color: #FFFFFF;
+}
+
+.tech-cli {
+    background-color: #4D4D4D;
+    color: #00FF00;
+}
+
+.tech-pygame {
+    background-color: #3CBC3C;
+    color: #FFFFFF;
+}
+
+.tech-tauri {
+    background-color: #FFC131;
+    color: #181818;
+}
 
 /* ==========================================================================
    4. UTILITIES: NO-SCRIPT FALLBACK
    ========================================================================== */
 .no-js-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.85); z-index: 99999;
-    display: flex; justify-content: center; align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 .no-js-modal {
     background: rgba(30, 31, 33, 0.70);
-    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-    color: #e8eaed; padding: 2rem; border-radius: 16px;
-    text-align: center; max-width: 450px; margin: 0 1rem;
+    color: #e8eaed;
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center;
+    max-width: 450px;
+    margin: 0 1rem;
 }
-.no-js-modal h2 { margin-top: 0; color: #8ab4f8; margin-bottom: 1rem; }
-.no-js-modal p { color: #9aa0a6; line-height: 1.5; margin-bottom: 1rem; }
-.no-js-list { text-align: left; color: #9aa0a6; margin: 0 auto 1.5rem auto; width: fit-content; line-height: 1.6; }
-.no-js-actions { display: flex; justify-content: center; gap: 1rem; }
+
+.no-js-modal h2 {
+    margin-top: 0;
+    color: #8ab4f8;
+    margin-bottom: 1rem;
+}
+
+.no-js-modal p {
+    color: #9aa0a6;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.no-js-list {
+    text-align: left;
+    color: #9aa0a6;
+    margin: 0 auto 1.5rem auto;
+    width: fit-content;
+    line-height: 1.6;
+}
+
+.no-js-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
 .no-js-btn {
-    padding: 0.6rem 1.2rem; border-radius: 20px; text-decoration: none;
-    font-weight: 500; cursor: pointer; transition: filter 0.2s;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: filter 0.2s;
 }
-.btn-yes { background-color: #8ab4f8; color: #202124; border: none; }
-.btn-no { background-color: transparent; border: 1px solid #5f6368; color: #e8eaed; }
-.no-js-btn:hover { filter: brightness(1.1); }
-#no-js-toggle { display: none; }
-#no-js-toggle:checked+.no-js-overlay { display: none; }
+
+.btn-yes {
+    background-color: #8ab4f8;
+    color: #202124;
+    border: none;
+}
+
+.btn-no {
+    background-color: transparent;
+    border: 1px solid #5f6368;
+    color: #e8eaed;
+}
+
+.no-js-btn:hover {
+    filter: brightness(1.1);
+}
+
+#no-js-toggle {
+    display: none;
+}
+
+#no-js-toggle:checked+.no-js-overlay {
+    display: none;
+}

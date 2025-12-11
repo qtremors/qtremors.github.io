@@ -13,7 +13,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
     /* 3. Dynamic Padding (Controlled by JS in home.js) */
     /* Defaults are provided in case JS fails */
     padding-top: var(--hero-pad-top, 100px);
@@ -31,7 +31,7 @@
     overflow: hidden;
     background-color: var(--md-background);
     transition: background-color 0.3s ease;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
 /* Stacking Context for Hero */
@@ -98,7 +98,7 @@
     font-size: 2.75rem;
     color: var(--md-primary);
     margin-bottom: 1rem;
-    min-height: 2em; 
+    min-height: 2em;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -124,7 +124,7 @@
     box-shadow: 0 4px 8px var(--md-shadow-color);
     transition: transform 0.2s, box-shadow 0.2s;
     /* Ensure z-index is high enough if it overlaps anything */
-    position: relative; 
+    position: relative;
     z-index: 10;
 }
 
@@ -153,6 +153,7 @@
 }
 
 @media (max-width: 768px) {
+
     /* JS handles the padding logic now, so we just adjust font sizes */
     .hero h1 {
         font-size: 2.25rem;
@@ -360,7 +361,7 @@
     border-radius: 20px;
     font-weight: 500;
     transition: transform 0.2s ease-in-out;
-    border: 1px solid transparent;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15), 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .tech-badges span:hover {
@@ -467,6 +468,70 @@
 }
 
 .portfolio-item.is-wip:hover .img-wrapper::after {
+    opacity: 1;
+}
+
+/* Beta Styles */
+.portfolio-item.is-beta {
+    border: 1px solid #00D4FF !important;
+    position: relative;
+}
+
+.portfolio-item.is-beta:hover {
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.5);
+}
+
+.beta-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: linear-gradient(135deg, #00D4FF, #7C3AED);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    border-radius: 4px;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 212, 255, 0.5);
+    text-transform: uppercase;
+    animation: betaPulse 2s ease-in-out infinite;
+}
+
+@keyframes betaPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 2px 8px rgba(0, 212, 255, 0.5);
+    }
+
+    50% {
+        box-shadow: 0 2px 16px rgba(0, 212, 255, 0.8);
+    }
+}
+
+.portfolio-item.is-beta .img-wrapper::after {
+    content: "🧪 BETA RELEASE";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.85), rgba(124, 58, 237, 0.85));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    font-weight: 900;
+    font-size: 1.4rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    backdrop-filter: blur(3px);
+}
+
+.portfolio-item.is-beta:hover .img-wrapper::after {
     opacity: 1;
 }
 
