@@ -33,6 +33,8 @@ window.getBadgeLabel = (badgeClass) => {
     'tech-sqlite': 'SQLite',
     'tech-github': 'GitHub',
     'tech-tailwind': 'Tailwind',
+    'tech-rust': 'Rust',
+    'tech-tauri': 'Tauri',
   };
   return labels[badgeClass] || badgeClass.replace('tech-', '').charAt(0).toUpperCase() + badgeClass.replace('tech-', '').slice(1);
 };

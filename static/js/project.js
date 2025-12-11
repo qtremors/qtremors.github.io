@@ -268,8 +268,8 @@ function renderProjectPage(project, allProjects) {
       const span = document.createElement('span');
       span.textContent = window.getBadgeLabel(badge);
 
-      // Apply sidebar badge styling via CSS class
-      span.classList.add('sidebar-badge');
+      // Apply sidebar badge styling and tech color class
+      span.classList.add('sidebar-badge', badge);
 
       tagsContainer.appendChild(span);
     });
