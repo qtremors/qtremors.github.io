@@ -128,11 +128,37 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   };
 
+  // Create skeleton loader card HTML
+  const createSkeletonCard = () => `
+    <article class="portfolio-item skeleton-card">
+      <div class="skeleton skeleton-image"></div>
+      <div class="portfolio-content">
+        <div class="skeleton skeleton-title"></div>
+        <div class="skeleton skeleton-text"></div>
+        <div class="skeleton skeleton-text short"></div>
+        <div class="skeleton-badges">
+          <div class="skeleton skeleton-badge"></div>
+          <div class="skeleton skeleton-badge"></div>
+          <div class="skeleton skeleton-badge"></div>
+        </div>
+      </div>
+    </article>
+  `;
+
   const loadProjects = async () => {
     if (!portfolioGrid) return;
+
+    // Show skeleton loaders while fetching
+    for (let i = 0; i < 3; i++) {
+      insertBeforeGithub(createSkeletonCard());
+    }
+
     try {
       const response = await fetch('data/projects.json');
       allProjects = await response.json();
+
+      // Remove skeleton loaders
+      document.querySelectorAll('.skeleton-card').forEach(el => el.remove());
 
       // 2. Logic: Show ALL if expanded, otherwise just show INITIAL count
       const countToShow = isExpanded ? allProjects.length : INITIAL_SHOW_COUNT;

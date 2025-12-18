@@ -15,11 +15,11 @@
 
 ### Accessibility
 - [x] **Focus Management:** Added modal focus trap, Escape close, focus return
-- [ ] **ARIA Live Regions:** Improve toast announcements
+- [x] **ARIA Live Regions:** Toast has role=status, aria-live=polite, aria-atomic
 
 ### Functionality
 - [ ] **Theme Sync Across Pages:** Fix brief flash on page navigation
-- [ ] **Loading States:** Add skeleton loaders for projects
+- [x] **Loading States:** Added skeleton loaders with shimmer animation
 
 ### UI/UX
 - [ ] **Mobile Navigation Overlap:** Fix on very small screens
