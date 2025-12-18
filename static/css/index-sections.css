@@ -23,10 +23,7 @@
 
     /* 4. Background & Effects */
     text-align: center;
-    background-size: 50px 50px;
-    background-image:
-        linear-gradient(to right, var(--hero-grid-color) 1px, transparent 1px),
-        linear-gradient(to bottom, var(--hero-grid-color) 1px, transparent 1px);
+    /* Pattern background controlled by static/patterns/*.css */
     position: relative;
     overflow: hidden;
     background-color: var(--md-background);
