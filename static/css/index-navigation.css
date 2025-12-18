@@ -333,6 +333,109 @@ body:not([data-theme='light']) .dropdown-item:hover {
     background: linear-gradient(135deg, #ffffff, #000000);
 }
 
+/* Tabs */
+.modal-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--md-outline);
+    background: var(--md-surface-variant);
+}
+
+.modal-tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 1rem;
+    background: transparent;
+    border: none;
+    color: var(--md-on-surface-variant);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.modal-tab:hover {
+    color: var(--md-on-surface);
+}
+
+.modal-tab.active {
+    color: var(--md-primary);
+    border-bottom-color: var(--md-primary);
+}
+
+.modal-tab svg {
+    opacity: 0.7;
+}
+
+.modal-tab.active svg {
+    opacity: 1;
+}
+
+/* Tab Panels */
+.tab-panel {
+    display: none;
+}
+
+.tab-panel.active {
+    display: block;
+}
+
+/* Toggle Switch */
+.toggle-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+}
+
+.toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--md-on-surface);
+}
+
+.toggle-label svg {
+    color: var(--md-on-surface-variant);
+}
+
+.toggle-switch {
+    position: relative;
+    width: 48px;
+    height: 26px;
+    background: var(--md-surface-variant);
+    border: 1px solid var(--md-outline);
+    border-radius: 13px;
+    cursor: pointer;
+    transition: background 0.2s;
+    padding: 0;
+}
+
+.toggle-switch.on {
+    background: var(--md-primary);
+    border-color: var(--md-primary);
+}
+
+.toggle-slider {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--md-on-surface);
+    border-radius: 50%;
+    top: 2px;
+    left: 3px;
+    transition: transform 0.2s;
+}
+
+.toggle-switch.on .toggle-slider {
+    transform: translateX(22px);
+    background: #fff;
+}
+
 /* ==========================================================================
    4. DESKTOP & MOBILE NAVIGATION (Responsive Switcher)
    ========================================================================== */
