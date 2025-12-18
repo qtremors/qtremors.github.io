@@ -62,6 +62,10 @@
     <link rel="stylesheet" href="static/effects/glass.css" id="effect-glass" disabled>
     <link rel="stylesheet" href="static/effects/spotlight.css" id="effect-spotlight" disabled>
 
+    <link rel="stylesheet" href="static/patterns/dots.css" id="pattern-dots" disabled>
+    <link rel="stylesheet" href="static/patterns/grid.css" id="pattern-grid" disabled>
+    <link rel="stylesheet" href="static/patterns/waves.css" id="pattern-waves" disabled>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -128,6 +132,20 @@
                     effectiveColorMode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
                 }
                 document.documentElement.setAttribute('data-theme', effectiveColorMode);
+
+                // 9. Apply Hero Background Pattern
+                const patternDots = document.getElementById('pattern-dots');
+                const patternGrid = document.getElementById('pattern-grid');
+                const patternWaves = document.getElementById('pattern-waves');
+                const savedPattern = localStorage.getItem('pattern_mode') || 'none';
+
+                if (patternDots) patternDots.disabled = true;
+                if (patternGrid) patternGrid.disabled = true;
+                if (patternWaves) patternWaves.disabled = true;
+
+                if (savedPattern === 'dots' && patternDots) patternDots.disabled = false;
+                else if (savedPattern === 'grid' && patternGrid) patternGrid.disabled = false;
+                else if (savedPattern === 'waves' && patternWaves) patternWaves.disabled = false;
 
             } catch (e) {
                 console.error("Theme init error:", e);
@@ -714,6 +732,53 @@
                             </span>
                             <button class="toggle-switch" data-set-spotlight="toggle" aria-label="Toggle spotlight">
                                 <span class="toggle-slider"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <label class="setting-label">Hero Background</label>
+                        <div class="segmented-control">
+                            <button class="segment-btn" data-set-pattern="dots">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <circle cx="4" cy="4" r="2" />
+                                    <circle cx="12" cy="4" r="2" />
+                                    <circle cx="20" cy="4" r="2" />
+                                    <circle cx="4" cy="12" r="2" />
+                                    <circle cx="12" cy="12" r="2" />
+                                    <circle cx="20" cy="12" r="2" />
+                                    <circle cx="4" cy="20" r="2" />
+                                    <circle cx="12" cy="20" r="2" />
+                                    <circle cx="20" cy="20" r="2" />
+                                </svg>
+                                <span>Dots</span>
+                            </button>
+                            <button class="segment-btn" data-set-pattern="grid">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="3" y="3" width="7" height="7" />
+                                    <rect x="14" y="3" width="7" height="7" />
+                                    <rect x="3" y="14" width="7" height="7" />
+                                    <rect x="14" y="14" width="7" height="7" />
+                                </svg>
+                                <span>Grid</span>
+                            </button>
+                            <button class="segment-btn" data-set-pattern="waves">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M2 12c2-2 4-2 6 0s4 2 6 0 4-2 6 0" />
+                                    <path d="M2 6c2-2 4-2 6 0s4 2 6 0 4-2 6 0" />
+                                    <path d="M2 18c2-2 4-2 6 0s4 2 6 0 4-2 6 0" />
+                                </svg>
+                                <span>Waves</span>
+                            </button>
+                            <button class="segment-btn" data-set-pattern="none">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
+                                </svg>
+                                <span>None</span>
                             </button>
                         </div>
                     </div>
