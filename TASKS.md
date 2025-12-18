@@ -27,7 +27,7 @@
 - [x] **Project Card Click Target:** Entire card now clickable (except external links)
 
 ### SEO
-- [ ] **Structured Data:** Add JSON-LD for Person/Portfolio schemas
+- [x] **Structured Data:** Added JSON-LD Person/ProfilePage schemas
 
 ### Performance (Later)
 - [ ] **Large GIF Files:** Optimize or convert to WebP
