@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function () {
      ========================================================================== */
 
   const state = {
-    theme: localStorage.getItem('style_mode') || 'oled',
+    theme: localStorage.getItem('style_mode') || 'md',
     effect: localStorage.getItem('effect_mode') || 'none',
     mode: localStorage.getItem('theme_pref') || 'system',
     spotlight: localStorage.getItem('spotlight_mode') || 'off',

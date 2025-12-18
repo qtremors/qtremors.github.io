@@ -1,5 +1,39 @@
 [
   {
+    "id": "cosmos",
+    "status": "wip",
+    "title": "Cosmos",
+    "image": "assets/preview.png",
+    "description": "A high-performance 3D solar system simulation running in your browser with custom GLSL shaders, realistic orbital mechanics, 6-DOF fly controls, and full gamepad support.",
+    "longDescription": "Cosmos is a modular, scientifically-inspired solar system visualizer built with React and Three.js. It features 9 planets (including Pluto), 4 moons, a 4000-asteroid belt, and custom GLSL shaders for each celestial body — from procedural sun granulation to atmospheric band dynamics on ice giants.\n\nThe control system supports 6 degrees of freedom with keyboard, mouse, and gamepad input. A radar HUD provides directional awareness, and the camera can lock onto any celestial body for orbital viewing. The codebase is fully modular with centralized physics constants in SDK.ts, making it easy to extend with new celestial objects.",
+    "features": [
+      "Custom GLSL Shaders for Each Planet",
+      "6-DOF Fly Controls + Gamepad Support",
+      "Radar HUD with Smart Labels",
+      "Lock-On Orbital Camera System",
+      "4000 Instanced Asteroids"
+    ],
+    "installation": "git clone https://github.com/qtremors/cosmos.git\ncd cosmos/cosmos-app\nnpm install\nnpm run dev",
+    "badges": [
+      "tech-react",
+      "tech-ts",
+      "tech-threejs",
+      "tech-css"
+    ],
+    "links": [
+      {
+        "text": "Website",
+        "url": "system/index-404.html",
+        "class": "link-primary"
+      },
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/cosmos",
+        "class": "link-secondary"
+      }
+    ]
+  },
+  {
     "id": "quizzer-ai",
     "title": "Quizzer AI",
     "image": "assets/quizzer-preview.png",
@@ -101,7 +135,7 @@
   },
   {
     "id": "arcade-nexus",
-    "status": "wip",
+    "status": "beta",
     "title": "Arcade Nexus",
     "image": "assets/arcade-nexus-preview.png",
     "description": "A browser-based gaming console experience built with React and FastAPI, featuring a custom Game SDK for game development, cloud-synced save states, achievements tracking, and an immersive console-style UI.",
@@ -200,30 +234,35 @@
   },
   {
     "id": "earnslate",
-    "status": "wip",
-    "title": "Earnslate Finance",
+    "title": "Earnslate",
     "image": "assets/preview.png",
-    "description": "A Progressive Web App for personal finance tracking built with Next.js and the T3 stack, featuring budget management with rollover logic, visual analytics, subscription monitoring, and offline support.",
-    "longDescription": "Earnslate is a Progressive Web App (PWA) built with the T3 stack philosophy (TypeScript, tRPC, Tailwind). It allows users to track income, expenses, and recurring subscriptions with full offline support and installability on any device.\n\nIt features comprehensive data visualization using Recharts to show spending trends over time, a sophisticated budgeting system with rollover logic for unused amounts, and robust authentication via Better Auth. The backend uses a serverless Postgres database (Neon) with Prisma ORM, and the interface is built with Shadcn/UI components for a clean, accessible, and responsive experience.",
+    "description": "A personal finance manager built with Next.js 15 and Zustand for tracking income, expenses, budgets, and subscriptions — all stored locally in your browser with a premium monochrome interface.",
+    "longDescription": "Earnslate is a privacy-first personal finance app that runs entirely in your browser with no backend required. All data persists in localStorage, meaning no account signup and full offline capability.\n\nFeatures include a real-time dashboard with spending breakdown charts, full transaction CRUD with search/filters/pagination, budget tracking with auto-reset on period expiry, and subscription management with 100+ service templates (Netflix, Spotify, AWS, etc.). The UI is built with CSS Modules (no Tailwind) and custom SVG charts — no external chart libraries. Keyboard shortcuts (Ctrl+N, Ctrl+D/T/B) provide power-user navigation.",
     "features": [
-      "Full PWA Support (Offline & Installable)",
-      "Budget Rollover & Tracking",
-      "Visual Analytics with Recharts",
-      "Serverless Postgres Database (Neon)"
+      "Privacy-First (Local Storage Only)",
+      "100+ Subscription Service Templates",
+      "Budget Tracking with Auto-Reset",
+      "Custom SVG Charts (No Chart Library)",
+      "Keyboard Shortcuts for Power Users",
+      "Dark/Light Theme Toggle"
     ],
-    "installation": "Currently in development.",
+    "installation": "git clone https://github.com/qtremors/earnslate.git\ncd earnslate/earnslate-app\nnpm install\nnpm run dev",
     "badges": [
       "tech-nextjs",
       "tech-ts",
-      "tech-sql",
-      "tech-tailwind",
-      "tech-react"
+      "tech-react",
+      "tech-css"
     ],
     "links": [
       {
+        "text": "Website",
+        "url": "https://earnslate.vercel.app",
+        "class": "link-primary"
+      },
+      {
         "text": "View on GitHub",
         "url": "https://github.com/qtremors/earnslate",
-        "class": "link-primary"
+        "class": "link-secondary"
       }
     ]
   },
