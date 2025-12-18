@@ -89,6 +89,14 @@
                 // 7. Set Attribute for JS/CSS selectors
                 document.documentElement.setAttribute('data-style-mode', savedMode);
 
+                // 8. Apply Color Mode (light/dark/system) - EARLY to prevent flash
+                const savedThemePref = localStorage.getItem('theme_pref') || 'system';
+                let effectiveColorMode = savedThemePref;
+                if (savedThemePref === 'system') {
+                    effectiveColorMode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+                document.documentElement.setAttribute('data-theme', effectiveColorMode);
+
             } catch (e) {
                 console.error("Theme init error:", e);
             }
