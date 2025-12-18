@@ -232,7 +232,11 @@ body:not([data-theme='light']) .dropdown-item:hover {
     padding-bottom: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.75rem;
+}
+
+.setting-group+.setting-group {
+    margin-top: 0.25rem;
 }
 
 .setting-label {
