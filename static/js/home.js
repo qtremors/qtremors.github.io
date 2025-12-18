@@ -121,7 +121,11 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!portfolioGrid) return;
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = htmlString;
-    portfolioGrid.insertBefore(tempDiv.firstElementChild, githubCard);
+    if (githubCard) {
+      portfolioGrid.insertBefore(tempDiv.firstElementChild, githubCard);
+    } else {
+      portfolioGrid.appendChild(tempDiv.firstElementChild);
+    }
   };
 
   const loadProjects = async () => {
