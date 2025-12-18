@@ -18,7 +18,7 @@
 - [x] **ARIA Live Regions:** Toast has role=status, aria-live=polite, aria-atomic
 
 ### Functionality
-- [ ] **Theme Sync Across Pages:** Fix brief flash on page navigation
+- [x] **Theme Sync Across Pages:** Added early data-theme init in head script
 - [x] **Loading States:** Added skeleton loaders with shimmer animation
 
 ### UI/UX
