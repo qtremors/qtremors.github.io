@@ -120,7 +120,8 @@ document.addEventListener('DOMContentLoaded', function () {
     theme: localStorage.getItem('style_mode') || 'oled',
     effect: localStorage.getItem('effect_mode') || 'none',
     mode: localStorage.getItem('theme_pref') || 'system',
-    spotlight: localStorage.getItem('spotlight_mode') || 'off'
+    spotlight: localStorage.getItem('spotlight_mode') || 'off',
+    pattern: localStorage.getItem('pattern_mode') || 'none'
   };
 
   const sheets = {
@@ -133,6 +134,11 @@ document.addEventListener('DOMContentLoaded', function () {
       fog: document.getElementById('effect-fog'),
       glass: document.getElementById('effect-glass')
     },
+    patterns: {
+      dots: document.getElementById('pattern-dots'),
+      grid: document.getElementById('pattern-grid'),
+      waves: document.getElementById('pattern-waves')
+    },
     spotlight: document.getElementById('effect-spotlight')
   };
 
@@ -141,6 +147,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const themeBtns = document.querySelectorAll('[data-set-theme]');
   const effectBtns = document.querySelectorAll('[data-set-effect]');
   const spotlightBtns = document.querySelectorAll('[data-set-spotlight]');
+  const patternBtns = document.querySelectorAll('[data-set-pattern]');
 
 
   const applyAppearance = () => {
@@ -166,7 +173,16 @@ document.addEventListener('DOMContentLoaded', function () {
       sheets.spotlight.disabled = (state.spotlight === 'off');
     }
 
-    // D. Color Mode
+    // D. Hero Background Patterns
+    if (sheets.patterns.dots) {
+      Object.values(sheets.patterns).forEach(p => { if (p) p.disabled = true; });
+      if (state.pattern !== 'none') {
+        const activePattern = sheets.patterns[state.pattern];
+        if (activePattern) activePattern.disabled = false;
+      }
+    }
+
+    // E. Color Mode
     let effectiveMode = state.mode;
     if (state.mode === 'system') {
       const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -181,6 +197,7 @@ document.addEventListener('DOMContentLoaded', function () {
     localStorage.setItem('effect_mode', state.effect);
     localStorage.setItem('theme_pref', state.mode);
     localStorage.setItem('spotlight_mode', state.spotlight);
+    localStorage.setItem('pattern_mode', state.pattern);
   };
 
 
@@ -195,6 +212,7 @@ document.addEventListener('DOMContentLoaded', function () {
     updateGroup(themeBtns, state.theme, 'setTheme');
     updateGroup(effectBtns, state.effect, 'setEffect');
     updateGroup(spotlightBtns, state.spotlight, 'setSpotlight');
+    updateGroup(patternBtns, state.pattern, 'setPattern');
   };
 
 
@@ -202,6 +220,7 @@ document.addEventListener('DOMContentLoaded', function () {
   modeBtns.forEach(btn => btn.addEventListener('click', () => { state.mode = btn.dataset.setMode; applyAppearance(); }));
   themeBtns.forEach(btn => btn.addEventListener('click', () => { state.theme = btn.dataset.setTheme; applyAppearance(); }));
   effectBtns.forEach(btn => btn.addEventListener('click', () => { state.effect = btn.dataset.setEffect; applyAppearance(); }));
+  patternBtns.forEach(btn => btn.addEventListener('click', () => { state.pattern = btn.dataset.setPattern; applyAppearance(); }));
 
   // Spotlight Listener (supports both buttons and toggle switch)
   spotlightBtns.forEach(btn => btn.addEventListener('click', () => {
