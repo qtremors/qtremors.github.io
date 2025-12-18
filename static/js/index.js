@@ -15,7 +15,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Global function to show toast from anywhere (extras.js, project.js, etc.)
   window.showToast = (message, duration = 3000) => {
-    if (!toastElement) return;
+    if (!toastElement) {
+      console.warn('showToast: #toast element not found in DOM');
+      return;
+    }
 
     // Clear existing timeout to handle rapid clicks
     if (toastTimeout) clearTimeout(toastTimeout);

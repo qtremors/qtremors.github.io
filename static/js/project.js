@@ -203,9 +203,20 @@ function renderProjectPage(project, allProjects) {
     switcherBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const selectedOS = btn.dataset.os;
-        currentTheme = selectedOS;
-        localStorage.setItem('terminal-theme', selectedOS); // Persist user choice
-        renderTheme(selectedOS);
+
+        if (selectedOS === 'Auto') {
+          // Clear localStorage and reset to system-detected OS
+          localStorage.removeItem('terminal-theme');
+          currentTheme = getSystemOS();
+          renderTheme(currentTheme);
+          // Mark Auto button as active instead of OS button
+          switcherBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+        } else {
+          currentTheme = selectedOS;
+          localStorage.setItem('terminal-theme', selectedOS); // Persist user choice
+          renderTheme(selectedOS);
+        }
       });
     });
 
