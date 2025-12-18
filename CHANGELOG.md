@@ -1,5 +1,37 @@
 # Changelog
 
+## [v2.3.0] - 18-12-2025
+
+### 🐛 **Bug Fixes**
+
+- **TUI Skills Typo:** Fixed "Nextjs." → "Next.js" in `tui.html`.
+- **404 Script Defer:** Added missing `defer` attribute to prevent race conditions.
+- **Footer Version:** Updated from v2.0.0 → v2.2.3 in `index.html` and `project.html`.
+- **Skills Sync:** Added TypeScript badge (30%) to `index.html`, removed Next.js from TUI for consistency.
+- **Comment Numbering:** Fixed duplicate "6." → "7." in theme init script.
+- **Null Check:** Added safety check for `githubCard` in `home.js` insertBeforeGithub function.
+
+### ✨ **New Features**
+
+- **Terminal Auto-Detect Reset:** Added "Auto" button to terminal OS switcher in project pages. Clears localStorage and resets to system-detected OS theme.
+- **JSON Fetch Error Display:** Portfolio now shows user-friendly error card if `projects.json` fails to load.
+- **Toast Warning:** Added `console.warn` when `#toast` element is missing from DOM.
+
+### ♿ **Accessibility**
+
+- **TUI ARIA Labels:** Added `aria-label` attributes to all TUI navigation links.
+- **Navigation Landmark:** Added `aria-label="Main navigation"` to TUI nav.
+
+### 🔍 **SEO**
+
+- **Dynamic Canonical Tags:** Project pages now generate canonical `<link>` tags dynamically for each project ID.
+
+### 🎨 **UI/UX**
+
+- **Description Clamp:** Added 5-line CSS clamp to portfolio card descriptions for consistent card heights.
+
+---
+
 ## [v2.2.3] - 11-12-2025
 
 ### ♿ **Accessibility Improvements**
