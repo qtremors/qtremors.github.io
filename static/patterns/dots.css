@@ -2,6 +2,6 @@
    Hero Section Background Pattern: Dots
    ========================================================================== */
 .hero {
-    background-image: radial-gradient(circle, var(--md-outline) 1.5px, transparent 1.5px);
-    background-size: 24px 24px;
+    background-image: radial-gradient(circle, var(--hero-grid-color, rgba(128, 128, 128, 0.15)) 1px, transparent 1px);
+    background-size: 20px 20px;
 }

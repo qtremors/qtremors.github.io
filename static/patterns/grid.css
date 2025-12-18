@@ -3,7 +3,7 @@
    ========================================================================== */
 .hero {
     background-image:
-        linear-gradient(var(--md-outline) 1px, transparent 1px),
-        linear-gradient(90deg, var(--md-outline) 1px, transparent 1px);
+        linear-gradient(to right, var(--hero-grid-color, rgba(128, 128, 128, 0.1)) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--hero-grid-color, rgba(128, 128, 128, 0.1)) 1px, transparent 1px);
     background-size: 50px 50px;
 }
