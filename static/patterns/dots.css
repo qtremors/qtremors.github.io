@@ -1,13 +1,7 @@
 /* ==========================================================================
    Hero Section Background Pattern: Dots
    ========================================================================== */
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(circle, var(--md-outline) 1px, transparent 1px);
+.hero {
+    background-image: radial-gradient(circle, var(--md-outline) 1.5px, transparent 1.5px);
     background-size: 24px 24px;
-    opacity: 0.4;
-    pointer-events: none;
-    z-index: 0;
 }
