@@ -37,8 +37,8 @@
 
 ### Missing Error Handling
 
-- [ ] **No Fallback for JSON Fetch Failure:** `home.js` shows console error but provides no user feedback if `projects.json` fails to load
-- [ ] **Missing Toast Element Check:** `showToast` in `index.js` silently fails if `#toast` element doesn't exist - should log a warning
+- [x] **No Fallback for JSON Fetch Failure:** Added user-friendly error card display in `home.js`
+- [x] **Missing Toast Element Check:** Added `console.warn` in `index.js` showToast when element missing
 
 ### Code Inconsistencies
 
@@ -51,7 +51,7 @@
 ## ⚡ Half-Baked Features
 
 - [x] **TUI Theme/Font Not Persisted:** Cannot be fixed without JavaScript - CSS has no access to localStorage or cookies. This is acceptable for the pure CSS showcase.
-- [ ] **Terminal Theme Persistence in project.html:** `project.js` saves terminal theme choice to localStorage (`terminal-theme`) but there's no way to reset to system default
+- [x] **Terminal Theme Persistence in project.html:** Added "Auto" button to reset to system-detected OS theme
 
 ---
 

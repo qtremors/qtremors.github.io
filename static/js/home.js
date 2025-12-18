@@ -157,7 +157,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (githubActions) githubActions.prepend(loadBtn);
       }
-    } catch (error) { console.error('Error loading projects:', error); }
+    } catch (error) {
+      console.error('Error loading projects:', error);
+      // Show user-friendly error message
+      const errorCard = document.createElement('div');
+      errorCard.className = 'portfolio-item';
+      errorCard.innerHTML = `
+        <div class="portfolio-content" style="text-align: center; padding: 2rem;">
+          <h3 style="color: var(--md-error, #f44336);">⚠️ Failed to load projects</h3>
+          <p>Please check your connection and refresh the page.</p>
+        </div>
+      `;
+      if (githubCard) {
+        portfolioGrid.insertBefore(errorCard, githubCard);
+      } else {
+        portfolioGrid.appendChild(errorCard);
+      }
+    }
   };
 
   if (githubActions) {
