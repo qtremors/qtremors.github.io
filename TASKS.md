@@ -76,7 +76,7 @@
 
 - [ ] **Focus Management:** Modal opens don't trap focus or return focus on close
 - [ ] **ARIA Live Regions:** Toast uses `aria-live="polite"` but doesn't announce changes properly
-- [ ] **TUI Missing ARIA Labels:** Navigation items in TUI version lack proper aria-labels
+- [x] **TUI Missing ARIA Labels:** Added aria-labels to TUI navigation links
 
 ### Functionality
 
@@ -88,7 +88,7 @@
 ### SEO
 
 - [ ] **Missing Structured Data:** JSON-LD or Schema.org markup for rich search snippets (Person, Portfolio, Project schemas)
-- [ ] **Project Pages Missing Canonical:** Dynamic `project.html?id=X` pages should have canonical `<link>` tags
+- [x] **Project Pages Missing Canonical:** Added dynamic canonical tags in `project.js`
 
 ---
 

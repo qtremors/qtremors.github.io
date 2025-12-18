@@ -54,6 +54,15 @@ function renderProjectPage(project, allProjects) {
   document.getElementById('p-title').innerText = project.title;
   document.getElementById('p-id-label').innerText = project.id ? project.id.toUpperCase() : "PROJECT DETAILS";
 
+  // --- SEO: Dynamic Canonical Tag ---
+  let canonicalLink = document.querySelector('link[rel="canonical"]');
+  if (!canonicalLink) {
+    canonicalLink = document.createElement('link');
+    canonicalLink.rel = 'canonical';
+    document.head.appendChild(canonicalLink);
+  }
+  canonicalLink.href = `${window.location.origin}/project.html?id=${project.id}`;
+
   // --- Banner Image ---
   const banner = document.getElementById('p-banner');
   if (project.image) {
