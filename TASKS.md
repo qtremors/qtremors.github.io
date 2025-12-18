@@ -23,8 +23,8 @@
 
 ### UI/UX
 - [ ] **Mobile Navigation Overlap:** Fix on very small screens
-- [ ] **Back to Top Button:** Add for long scrolling pages
-- [ ] **Project Card Click Target:** Make entire card clickable
+- [x] **Back to Top Button:** Not needed - navbar always visible
+- [x] **Project Card Click Target:** Entire card now clickable (except external links)
 
 ### SEO
 - [ ] **Structured Data:** Add JSON-LD for Person/Portfolio schemas

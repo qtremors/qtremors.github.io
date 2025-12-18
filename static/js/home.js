@@ -100,8 +100,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const linksHtml = project.links.map(link => `<a href="${link.url}" target="_blank" rel="noopener noreferrer" class="${link.class}">${link.text} &rarr;</a>`).join('');
 
     return `
-          <article class="portfolio-item fade-in ${dynamicClass} ${statusClass}">
-              <a href="${detailUrl}" class="project-card-link" style="display:block; cursor:pointer;">
+          <article class="portfolio-item fade-in ${dynamicClass} ${statusClass}" data-href="${detailUrl}" style="cursor: pointer;">
+              <a href="${detailUrl}" class="project-card-link" style="display:block;">
                   <div class="img-wrapper" style="position: relative; overflow: hidden;">
                       ${statusBadge}
                       <img src="${project.image}" alt="${project.title} Preview" loading="lazy" style="width: 100%; display: block;">
@@ -203,4 +203,17 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
   loadProjects();
+
+  // Make entire portfolio card clickable (except external links)
+  if (portfolioGrid) {
+    portfolioGrid.addEventListener('click', (e) => {
+      // Don't handle if clicking an external link
+      if (e.target.closest('.portfolio-links a')) return;
+
+      const card = e.target.closest('.portfolio-item[data-href]');
+      if (card) {
+        window.location.href = card.dataset.href;
+      }
+    });
+  }
 });
