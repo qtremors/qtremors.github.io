@@ -60,6 +60,25 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // Tab Switching Logic
+  const modalTabs = document.querySelectorAll('.modal-tab');
+  const tabPanels = document.querySelectorAll('.tab-panel');
+
+  modalTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const targetTab = tab.dataset.tab;
+
+      // Update tab buttons
+      modalTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      // Update panels
+      tabPanels.forEach(panel => {
+        panel.classList.toggle('active', panel.id === `panel-${targetTab}`);
+      });
+    });
+  });
+
 
   /* ==========================================================================
      3. THEME & APPEARANCE ENGINE
@@ -152,11 +171,24 @@ document.addEventListener('DOMContentLoaded', function () {
   themeBtns.forEach(btn => btn.addEventListener('click', () => { state.theme = btn.dataset.setTheme; applyAppearance(); }));
   effectBtns.forEach(btn => btn.addEventListener('click', () => { state.effect = btn.dataset.setEffect; applyAppearance(); }));
 
-  // Spotlight Listener
+  // Spotlight Listener (supports both buttons and toggle switch)
   spotlightBtns.forEach(btn => btn.addEventListener('click', () => {
-    state.spotlight = btn.dataset.setSpotlight;
+    const action = btn.dataset.setSpotlight;
+    if (action === 'toggle') {
+      // Toggle switch behavior
+      state.spotlight = state.spotlight === 'on' ? 'off' : 'on';
+      btn.classList.toggle('on', state.spotlight === 'on');
+    } else {
+      state.spotlight = action;
+    }
     applyAppearance();
   }));
+
+  // Initialize toggle switch state on load
+  const spotlightToggle = document.querySelector('.toggle-switch[data-set-spotlight="toggle"]');
+  if (spotlightToggle && state.spotlight === 'on') {
+    spotlightToggle.classList.add('on');
+  }
 
   const themeToggleButton = document.getElementById('theme-toggle');
   if (themeToggleButton) {
