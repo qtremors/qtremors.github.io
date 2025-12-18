@@ -39,10 +39,16 @@ document.addEventListener('DOMContentLoaded', function () {
   const openBtn = document.getElementById('open-settings-btn');
   const closeBtn = document.getElementById('close-settings-btn');
 
+  let lastFocusedElement = null;
+
   if (openBtn) {
     openBtn.addEventListener('click', () => {
+      lastFocusedElement = document.activeElement;
       modal.classList.add('open');
       modal.setAttribute('aria-hidden', 'false');
+      // Focus first focusable element in modal
+      const firstFocusable = modal.querySelector('button, [tabindex]:not([tabindex="-1"])');
+      if (firstFocusable) firstFocusable.focus();
     });
   }
 
@@ -50,6 +56,8 @@ document.addEventListener('DOMContentLoaded', function () {
     if (modal) {
       modal.classList.remove('open');
       modal.setAttribute('aria-hidden', 'true');
+      // Return focus to element that opened the modal
+      if (lastFocusedElement) lastFocusedElement.focus();
     }
   };
 
@@ -57,6 +65,30 @@ document.addEventListener('DOMContentLoaded', function () {
   if (modal) {
     modal.addEventListener('click', (e) => {
       if (e.target === modal) closeModal();
+    });
+
+    // Escape key closes modal
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) {
+        closeModal();
+      }
+    });
+
+    // Focus trap - Tab cycles within modal
+    modal.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab') return;
+
+      const focusables = modal.querySelectorAll('button, [tabindex]:not([tabindex="-1"])');
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     });
   }
 
