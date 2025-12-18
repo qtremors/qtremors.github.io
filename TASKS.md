@@ -14,7 +14,7 @@
 - [ ] **localStorage Key Naming:** Standardize naming convention
 
 ### Accessibility
-- [ ] **Focus Management:** Modal focus trapping and return on close
+- [x] **Focus Management:** Added modal focus trap, Escape close, focus return
 - [ ] **ARIA Live Regions:** Improve toast announcements
 
 ### Functionality
