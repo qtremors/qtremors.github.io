@@ -382,6 +382,7 @@ body:not([data-theme='light']) .dropdown-item:hover {
 
 .tab-panel.active {
     display: block;
+    padding-bottom: 0.5rem;
 }
 
 /* Toggle Switch */
