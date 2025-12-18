@@ -52,9 +52,28 @@
     <link rel="stylesheet" href="static/css/index-navigation.css">
     <link rel="stylesheet" href="static/css/index-sections.css">
 
-    <link rel="stylesheet" href="static/themes/md.css" id="theme-md" disabled>
+    <link rel="stylesheet" href="static/themes/md.css" id="theme-md">
     <link rel="stylesheet" href="static/themes/md3.css" id="theme-md3" disabled>
     <link rel="stylesheet" href="static/themes/oled.css" id="theme-oled" disabled>
+
+    <!-- Theme Init - MUST be immediately after theme links to prevent flash -->
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem('style_mode') || 'md';
+                var md = document.getElementById('theme-md');
+                var md3 = document.getElementById('theme-md3');
+                var oled = document.getElementById('theme-oled');
+                if (md) md.disabled = (saved !== 'md');
+                if (md3) md3.disabled = (saved !== 'md3');
+                if (oled) oled.disabled = (saved !== 'oled');
+                document.documentElement.setAttribute('data-style-mode', saved);
+                var pref = localStorage.getItem('theme_pref') || 'system';
+                var mode = pref === 'system' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : pref;
+                document.documentElement.setAttribute('data-theme', mode);
+            } catch (e) { }
+        })();
+    </script>
 
     <link rel="preload" href="data/projects.json" as="fetch" crossorigin="anonymous">
 
@@ -68,90 +87,6 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <script>
-        (function () {
-            try {
-                // 1. Get saved preference (default to 'default' if missing)
-                const savedMode = localStorage.getItem('style_mode') || 'oled';
-
-                // 2. Define Theme Sheets
-                const themeMd = document.getElementById('theme-md');
-                const themeMd3 = document.getElementById('theme-md3');
-                const themeOled = document.getElementById('theme-oled');
-
-                // 3. Define Effect Sheets
-                const effectFog = document.getElementById('effect-fog');
-                const effectGlass = document.getElementById('effect-glass');
-
-                // 4. Apply THEME Logic
-                // Reset all to disabled first, then enable the correct one
-                themeMd.disabled = true;
-                themeMd3.disabled = true;
-                themeOled.disabled = true;
-
-                if (savedMode === 'md') {
-                    themeMd.disabled = false;
-                } else if (savedMode === 'md3') {
-                    themeMd3.disabled = false;
-                } else {
-                    themeOled.disabled = false;
-                }
-
-                // 5. Apply EFFECT Logic (Fog/Glass)
-                const savedEffect = localStorage.getItem('effect_mode') || 'none';
-
-                effectFog.disabled = true;
-                effectGlass.disabled = true;
-
-                // Enable the saved effect (unless 'none')
-                if (savedEffect === 'glass') {
-                    effectGlass.disabled = false;
-                } else if (savedEffect === 'fog') {
-                    effectFog.disabled = false;
-                }
-                // If 'none', both stay disabled.
-
-                // 6. Apply Spotlight Logic
-                const effectSpotlight = document.getElementById('effect-spotlight');
-                const savedSpotlight = localStorage.getItem('spotlight_mode') || 'off';
-
-                if (savedSpotlight === 'off') {
-                    effectSpotlight.disabled = true;
-                } else {
-                    effectSpotlight.disabled = false;
-                }
-
-                // 7. Set Attribute for JS/CSS selectors
-                document.documentElement.setAttribute('data-style-mode', savedMode);
-
-                // 8. Apply Color Mode (light/dark/system) - EARLY to prevent flash
-                const savedThemePref = localStorage.getItem('theme_pref') || 'system';
-                let effectiveColorMode = savedThemePref;
-                if (savedThemePref === 'system') {
-                    effectiveColorMode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-                }
-                document.documentElement.setAttribute('data-theme', effectiveColorMode);
-
-                // 9. Apply Hero Background Pattern
-                const patternDots = document.getElementById('pattern-dots');
-                const patternGrid = document.getElementById('pattern-grid');
-                const patternWaves = document.getElementById('pattern-waves');
-                const savedPattern = localStorage.getItem('pattern_mode') || 'none';
-
-                if (patternDots) patternDots.disabled = true;
-                if (patternGrid) patternGrid.disabled = true;
-                if (patternWaves) patternWaves.disabled = true;
-
-                if (savedPattern === 'dots' && patternDots) patternDots.disabled = false;
-                else if (savedPattern === 'grid' && patternGrid) patternGrid.disabled = false;
-                else if (savedPattern === 'waves' && patternWaves) patternWaves.disabled = false;
-
-            } catch (e) {
-                console.error("Theme init error:", e);
-            }
-        })();
-    </script>
 
 </head>
 
