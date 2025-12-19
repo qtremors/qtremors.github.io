@@ -7,12 +7,13 @@ document.addEventListener('DOMContentLoaded', function () {
   console.log("Check it out here: https://github.com/qtremors/qtremors.github.io");
 
   /* ==========================================================================
-     MAGNETIC TEXT
+     MAGNETIC TEXT (Scoped to Hero & About sections)
      ========================================================================== */
 
   const magnetParagraphs = document.querySelectorAll('p.magnet-text');
+  const magnetSections = document.querySelectorAll('.hero, #about');
 
-  if (magnetParagraphs.length > 0) {
+  if (magnetParagraphs.length > 0 && magnetSections.length > 0) {
     magnetParagraphs.forEach(paragraph => {
 
       const cleanText = paragraph.textContent.replace(/\s+/g, ' ').trim();
@@ -26,22 +27,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const words = document.querySelectorAll('.magnetic-word');
 
-    document.addEventListener('mousemove', (e) => {
-      words.forEach(word => {
-        const rect = word.getBoundingClientRect();
-        const wordX = rect.left + rect.width / 2;
-        const wordY = rect.top + rect.height / 2;
-        const dist = Math.hypot(e.clientX - wordX, e.clientY - wordY);
+    // Only attach mousemove to the scoped sections, not the entire document
+    magnetSections.forEach(section => {
+      section.addEventListener('mousemove', (e) => {
+        words.forEach(word => {
+          const rect = word.getBoundingClientRect();
+          const wordX = rect.left + rect.width / 2;
+          const wordY = rect.top + rect.height / 2;
+          const dist = Math.hypot(e.clientX - wordX, e.clientY - wordY);
 
-        if (dist < 100) {
-          const force = (100 - dist) / 100;
-          const x = (e.clientX - wordX) * force * -0.3;
-          const y = (e.clientY - wordY) * force * -0.3;
+          if (dist < 100) {
+            const force = (100 - dist) / 100;
+            const x = (e.clientX - wordX) * force * -0.3;
+            const y = (e.clientY - wordY) * force * -0.3;
 
-          word.style.transform = `translate(${x}px, ${y}px)`;
-        } else {
+            word.style.transform = `translate(${x}px, ${y}px)`;
+          } else {
+            word.style.transform = `translate(0px, 0px)`;
+          }
+        });
+      });
+
+      // Reset words when mouse leaves the section
+      section.addEventListener('mouseleave', () => {
+        words.forEach(word => {
           word.style.transform = `translate(0px, 0px)`;
-        }
+        });
       });
     });
   }
@@ -140,10 +151,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Use the Universal Toast
     if (window.showToast) {
-        window.showToast("🐍 Python Mode Activated!");
+      window.showToast("🐍 Python Mode Activated!");
     } else {
-        // Fallback if index.js hasn't loaded (rare)
-        alert("🐍 Python Mode Activated!");
+      // Fallback if index.js hasn't loaded (rare)
+      alert("🐍 Python Mode Activated!");
     }
   };
 
