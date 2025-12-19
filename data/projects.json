@@ -101,7 +101,7 @@
   },
   {
     "id": "arcade-nexus",
-    "status": "wip",
+    "status": "beta",
     "title": "Arcade Nexus",
     "image": "assets/arcade-nexus-preview.png",
     "description": "A browser-based gaming console experience built with React and FastAPI, featuring a custom Game SDK for game development, cloud-synced save states, achievements tracking, and an immersive console-style UI.",
@@ -166,6 +166,74 @@
     ]
   },
   {
+    "id": "earnslate",
+    "title": "Earnslate",
+    "image": "assets/earnslate-preview.png",
+    "description": "A personal finance manager built with Next.js 15 and Zustand for tracking income, expenses, budgets, and subscriptions — all stored locally in your browser with a premium monochrome interface.",
+    "longDescription": "Earnslate is a privacy-first personal finance app that runs entirely in your browser with no backend required. All data persists in localStorage, meaning no account signup and full offline capability.\n\nFeatures include a real-time dashboard with spending breakdown charts, full transaction CRUD with search/filters/pagination, budget tracking with auto-reset on period expiry, and subscription management with 100+ service templates (Netflix, Spotify, AWS, etc.). The UI is built with CSS Modules (no Tailwind) and custom SVG charts — no external chart libraries. Keyboard shortcuts (Ctrl+N, Ctrl+D/T/B) provide power-user navigation.",
+    "features": [
+      "Privacy-First (Local Storage Only)",
+      "100+ Subscription Service Templates",
+      "Budget Tracking with Auto-Reset",
+      "Custom SVG Charts (No Chart Library)",
+      "Keyboard Shortcuts for Power Users",
+      "Dark/Light Theme Toggle"
+    ],
+    "installation": "git clone https://github.com/qtremors/earnslate.git\ncd earnslate/earnslate-app\nnpm install\nnpm run dev",
+    "badges": [
+      "tech-nextjs",
+      "tech-ts",
+      "tech-react",
+      "tech-css"
+    ],
+    "links": [
+      {
+        "text": "Website",
+        "url": "https://earnslate.vercel.app",
+        "class": "link-primary"
+      },
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/earnslate",
+        "class": "link-secondary"
+      }
+    ]
+  },
+  {
+    "id": "cosmos",
+    "status": "wip",
+    "title": "Cosmos",
+    "image": "assets/cosmos-preview.png",
+    "description": "A high-performance 3D solar system simulation running in your browser with custom GLSL shaders, realistic orbital mechanics, 6-DOF fly controls, and full gamepad support.",
+    "longDescription": "Cosmos is a modular, scientifically-inspired solar system visualizer built with React and Three.js. It features 9 planets (including Pluto), 4 moons, a 4000-asteroid belt, and custom GLSL shaders for each celestial body — from procedural sun granulation to atmospheric band dynamics on ice giants.\n\nThe control system supports 6 degrees of freedom with keyboard, mouse, and gamepad input. A radar HUD provides directional awareness, and the camera can lock onto any celestial body for orbital viewing. The codebase is fully modular with centralized physics constants in SDK.ts, making it easy to extend with new celestial objects.",
+    "features": [
+      "Custom GLSL Shaders for Each Planet",
+      "6-DOF Fly Controls + Gamepad Support",
+      "Radar HUD with Smart Labels",
+      "Lock-On Orbital Camera System",
+      "4000 Instanced Asteroids"
+    ],
+    "installation": "git clone https://github.com/qtremors/cosmos.git\ncd cosmos/cosmos-app\nnpm install\nnpm run dev",
+    "badges": [
+      "tech-react",
+      "tech-ts",
+      "tech-threejs",
+      "tech-css"
+    ],
+    "links": [
+      {
+        "text": "Website",
+        "url": "system/index-404.html",
+        "class": "link-primary"
+      },
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/cosmos",
+        "class": "link-secondary"
+      }
+    ]
+  },
+  {
     "id": "plant-disease-detector",
     "title": "Plant Disease Detector",
     "image": "assets/plant-disease-detector-preview.jpg",
@@ -195,35 +263,6 @@
         "text": "View on GitHub",
         "url": "https://github.com/qtremors/plant-disease-detector",
         "class": "link-secondary"
-      }
-    ]
-  },
-  {
-    "id": "earnslate",
-    "status": "wip",
-    "title": "Earnslate Finance",
-    "image": "assets/preview.png",
-    "description": "A Progressive Web App for personal finance tracking built with Next.js and the T3 stack, featuring budget management with rollover logic, visual analytics, subscription monitoring, and offline support.",
-    "longDescription": "Earnslate is a Progressive Web App (PWA) built with the T3 stack philosophy (TypeScript, tRPC, Tailwind). It allows users to track income, expenses, and recurring subscriptions with full offline support and installability on any device.\n\nIt features comprehensive data visualization using Recharts to show spending trends over time, a sophisticated budgeting system with rollover logic for unused amounts, and robust authentication via Better Auth. The backend uses a serverless Postgres database (Neon) with Prisma ORM, and the interface is built with Shadcn/UI components for a clean, accessible, and responsive experience.",
-    "features": [
-      "Full PWA Support (Offline & Installable)",
-      "Budget Rollover & Tracking",
-      "Visual Analytics with Recharts",
-      "Serverless Postgres Database (Neon)"
-    ],
-    "installation": "Currently in development.",
-    "badges": [
-      "tech-nextjs",
-      "tech-ts",
-      "tech-sql",
-      "tech-tailwind",
-      "tech-react"
-    ],
-    "links": [
-      {
-        "text": "View on GitHub",
-        "url": "https://github.com/qtremors/earnslate",
-        "class": "link-primary"
       }
     ]
   },
@@ -261,35 +300,6 @@
     ]
   },
   {
-    "id": "local-team-chat",
-    "status": "wip",
-    "title": "Local Team Chat",
-    "image": "assets/preview.png",
-    "description": "A self-hosted, privacy-first messaging platform for local LAN networks, featuring real-time DMs and group chats via WebSockets, JWT authentication, and a responsive React interface for desktop and mobile.",
-    "longDescription": "Designed for small offices and teams requiring complete privacy, this app runs entirely on a local host machine with no external dependencies. It utilizes WebSockets for instant real-time messaging and manages state via a unified 'Room' architecture where Direct Messages are simply rooms with two members.\n\nThe backend is built with FastAPI and uses JWT authentication with Pydantic validation for type-safe request handling. The React frontend is responsive, adapting from a dual-pane desktop view to a mobile-app-like interface on smaller screens, with SQLite for persistent message storage.",
-    "features": [
-      "Real-time Messaging via WebSockets",
-      "Unified Room Architecture (Groups & DMs)",
-      "JWT Authentication & Pydantic Validation",
-      "Responsive React Layout (Mobile/Desktop)"
-    ],
-    "installation": "Currently in development.",
-    "badges": [
-      "tech-python",
-      "tech-fastapi",
-      "tech-react",
-      "tech-ts",
-      "tech-sql"
-    ],
-    "links": [
-      {
-        "text": "View on GitHub",
-        "url": "https://github.com/qtremors/team-chat-app",
-        "class": "link-primary"
-      }
-    ]
-  },
-  {
     "id": "locr",
     "title": "Lines of Code in Repo",
     "image": "assets/locr-preview.png",
@@ -316,27 +326,30 @@
     ]
   },
   {
-    "id": "pc-remote-control",
-    "title": "PC Remote Control API",
-    "image": "assets/pcrc-preview.png",
-    "description": "A Python + FastAPI tool that lets you control your PC from your phone — media playback, system power, screenshots, and app launching over a clean local web interface.",
-    "longDescription": "This tool turns your smartphone into a remote control for your PC. It runs a lightweight FastAPI server that listens for commands from a mobile-friendly web interface.\n\nYou can control system volume, media playback (Spotify/YouTube), take screenshots that appear on your phone, and perform system power actions like Sleep or Lock.",
+    "id": "gitmig",
+    "status": "wip",
+    "title": "GitMig",
+    "image": "assets/gitmig-preview.png",
+    "description": "A dependency-free Python utility for migrating Git repositories without bloat — copies source files while skipping node_modules, venv, .git, and other heavy directories.",
+    "longDescription": "GitMig is a lightweight, zero-dependency tool designed to backup and migrate Git repositories cleanly. It automatically detects all repos in a directory and copies only essential source files while excluding node_modules (50k+ files), virtual environments, build artifacts, and .git history.\n\nKey features include dry-run preview mode, zip compression, detailed file stats, custom exclusion patterns, and preservation of .env files. Built with pure Python standard library — no pip dependencies required.",
     "features": [
-      "Media Control (Vol, Play, Pause, Next)",
-      "System Power Ops (Lock, Sleep, Shutdown)",
-      "Instant Screen Mirroring to Phone",
-      "Zero-Dependency Frontend"
+      "Auto-Detection of All Git Repositories",
+      "Smart Exclusions (node_modules, venv, .git, dist)",
+      "Dry Run Preview Mode",
+      "Zip Compression Output",
+      "Preserves .env Config Files",
+      "Zero Dependencies (Pure Python)"
     ],
-    "installation": "git clone https://github.com/qtremors/pc-rc.git\ncd pc-rc\nuv sync\nuv run main.py",
+    "installation": "git clone https://github.com/qtremors/gitmig.git\ncd gitmig\npip install -e .",
     "badges": [
       "tech-python",
-      "tech-fastapi",
-      "tech-cli"
+      "tech-cli",
+      "tech-git"
     ],
     "links": [
       {
         "text": "View on GitHub",
-        "url": "https://github.com/qtremors/pc-rc",
+        "url": "https://github.com/qtremors/gitmig",
         "class": "link-primary"
       }
     ]
@@ -368,6 +381,32 @@
     ]
   },
   {
+    "id": "pc-remote-control",
+    "title": "PC Remote Control API",
+    "image": "assets/pcrc-preview.png",
+    "description": "A Python + FastAPI tool that lets you control your PC from your phone — media playback, system power, screenshots, and app launching over a clean local web interface.",
+    "longDescription": "This tool turns your smartphone into a remote control for your PC. It runs a lightweight FastAPI server that listens for commands from a mobile-friendly web interface.\n\nYou can control system volume, media playback (Spotify/YouTube), take screenshots that appear on your phone, and perform system power actions like Sleep or Lock.",
+    "features": [
+      "Media Control (Vol, Play, Pause, Next)",
+      "System Power Ops (Lock, Sleep, Shutdown)",
+      "Instant Screen Mirroring to Phone",
+      "Zero-Dependency Frontend"
+    ],
+    "installation": "git clone https://github.com/qtremors/pc-rc.git\ncd pc-rc\nuv sync\nuv run main.py",
+    "badges": [
+      "tech-python",
+      "tech-fastapi",
+      "tech-cli"
+    ],
+    "links": [
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/pc-rc",
+        "class": "link-primary"
+      }
+    ]
+  },
+  {
     "id": "pygame-calculator",
     "title": "Calculator App (Pygame)",
     "image": "assets/calculator-preview.jpg",
@@ -389,6 +428,35 @@
         "text": "View on GitHub",
         "url": "https://github.com/qtremors/pygame-calculator-app",
         "class": "link-secondary"
+      }
+    ]
+  },
+  {
+    "id": "local-team-chat",
+    "status": "wip",
+    "title": "Local Team Chat",
+    "image": "assets/preview.png",
+    "description": "A self-hosted, privacy-first messaging platform for local LAN networks, featuring real-time DMs and group chats via WebSockets, JWT authentication, and a responsive React interface for desktop and mobile.",
+    "longDescription": "Designed for small offices and teams requiring complete privacy, this app runs entirely on a local host machine with no external dependencies. It utilizes WebSockets for instant real-time messaging and manages state via a unified 'Room' architecture where Direct Messages are simply rooms with two members.\n\nThe backend is built with FastAPI and uses JWT authentication with Pydantic validation for type-safe request handling. The React frontend is responsive, adapting from a dual-pane desktop view to a mobile-app-like interface on smaller screens, with SQLite for persistent message storage.",
+    "features": [
+      "Real-time Messaging via WebSockets",
+      "Unified Room Architecture (Groups & DMs)",
+      "JWT Authentication & Pydantic Validation",
+      "Responsive React Layout (Mobile/Desktop)"
+    ],
+    "installation": "Currently in development.",
+    "badges": [
+      "tech-python",
+      "tech-fastapi",
+      "tech-react",
+      "tech-ts",
+      "tech-sql"
+    ],
+    "links": [
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/team-chat-app",
+        "class": "link-primary"
       }
     ]
   },

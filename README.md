@@ -60,7 +60,7 @@ This version focuses on a scalable, data-driven user experience with a professio
 - **Immersive Navigation:** Navigation bars **auto-hide on scroll** (debounced) and feature active section highlighting using an enhanced `IntersectionObserver`.
 
 #### **⏱️ Time Machine (History)**
-- **Visual Timeline:** A dedicated page (`system/history.html`) visualizing the project's evolution from v0.0.0 to v2.1.0.
+- **Visual Timeline:** A dedicated page (`system/history.html`) visualizing the project's evolution from v0.0.0 to v2.5.0.
 - **Gource Visualization:** Embedded 60fps timelapse video showing the codebase growth and file restructuring over time.
     
 
@@ -124,8 +124,10 @@ The system includes specialized handling for projects that are currently being b
 This portfolio has evolved from a simple static page to a complex engineering project. You can explore the full timeline in the **Time Machine** (accessible via the alien icon 👽 menu).
 
 ### 📽️ Watch the Evolution
-## 📺 [History - v0.0.0-v2.0.0](https://qtremors.github.io/system/history.html)
+## 📺 [History - v0.0.0-v2.5.0](https://qtremors.github.io/system/history.html)
 
+* **v2.5.0 (The Deep Review):** Added GitMig, RepoTree, Earnslate (live), Cosmos projects. Major codebase review with 10+ bug fixes, waves pattern rewrite, DEVELOPMENT.md guidelines, and project reordering.
+* **v2.3.0 (Accessibility & DX):** Added terminal auto-detect reset, JSON error handling, dynamic canonical tags, ARIA labels, and description clamping.
 * **v2.2.3 (Accessibility & SEO):** Added skip-to-content link, reduced motion support, Twitter Card meta tags, sitemap.xml, robots.txt, and theme-aware 404.html. Added Tremors Music App (Desktop) and Arcade Nexus projects.
 * **v2.2.0 (The Theme & Effects Engine):** Introduced a modular theme system with independent effects (Fog, Glass, Spotlight) and a centralized Settings Modal.
 * **v2.1.0 (The Time Machine):** Introduced the `system/` directory structure, visual history timelines, and embedded Gource visualization.
