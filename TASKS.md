@@ -1,7 +1,7 @@
 # Project Tasks & Issues
 
 > **Last Updated:** December 19, 2025  
-> **Portfolio Version:** v2.3.0
+> **Portfolio Version:** v2.5.0
 
 ---
 
