@@ -124,7 +124,7 @@ The system includes specialized handling for projects that are currently being b
 This portfolio has evolved from a simple static page to a complex engineering project. You can explore the full timeline in the **Time Machine** (accessible via the alien icon 👽 menu).
 
 ### 📽️ Watch the Evolution
-## 📺 [History - v0.0.0-v2.0.0](https://qtremors.github.io/system/history.html)
+## 📺 [History - v0.0.0-v2.5.0](https://qtremors.github.io/system/history.html)
 
 * **v2.5.0 (The Deep Review):** Added GitMig, RepoTree, Earnslate (live), Cosmos projects. Major codebase review with 10+ bug fixes, waves pattern rewrite, DEVELOPMENT.md guidelines, and project reordering.
 * **v2.3.0 (Accessibility & DX):** Added terminal auto-detect reset, JSON error handling, dynamic canonical tags, ARIA labels, and description clamping.
