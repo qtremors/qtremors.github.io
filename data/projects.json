@@ -3,7 +3,7 @@
     "id": "cosmos",
     "status": "wip",
     "title": "Cosmos",
-    "image": "assets/preview.png",
+    "image": "assets/cosmos-preview.png",
     "description": "A high-performance 3D solar system simulation running in your browser with custom GLSL shaders, realistic orbital mechanics, 6-DOF fly controls, and full gamepad support.",
     "longDescription": "Cosmos is a modular, scientifically-inspired solar system visualizer built with React and Three.js. It features 9 planets (including Pluto), 4 moons, a 4000-asteroid belt, and custom GLSL shaders for each celestial body — from procedural sun granulation to atmospheric band dynamics on ice giants.\n\nThe control system supports 6 degrees of freedom with keyboard, mouse, and gamepad input. A radar HUD provides directional awareness, and the camera can lock onto any celestial body for orbital viewing. The codebase is fully modular with centralized physics constants in SDK.ts, making it easy to extend with new celestial objects.",
     "features": [
@@ -235,7 +235,7 @@
   {
     "id": "earnslate",
     "title": "Earnslate",
-    "image": "assets/preview.png",
+    "image": "assets/earnslate-preview.png",
     "description": "A personal finance manager built with Next.js 15 and Zustand for tracking income, expenses, budgets, and subscriptions — all stored locally in your browser with a premium monochrome interface.",
     "longDescription": "Earnslate is a privacy-first personal finance app that runs entirely in your browser with no backend required. All data persists in localStorage, meaning no account signup and full offline capability.\n\nFeatures include a real-time dashboard with spending breakdown charts, full transaction CRUD with search/filters/pagination, budget tracking with auto-reset on period expiry, and subscription management with 100+ service templates (Netflix, Spotify, AWS, etc.). The UI is built with CSS Modules (no Tailwind) and custom SVG charts — no external chart libraries. Keyboard shortcuts (Ctrl+N, Ctrl+D/T/B) provide power-user navigation.",
     "features": [
@@ -493,6 +493,35 @@
         "text": "View on GitHub",
         "url": "https://github.com/qtremors/nexus",
         "class": "link-secondary"
+      }
+    ]
+  },
+  {
+    "id": "gitmig",
+    "status": "wip",
+    "title": "GitMig",
+    "image": "assets/gitmig-preview.png",
+    "description": "A dependency-free Python utility for migrating Git repositories without bloat — copies source files while skipping node_modules, venv, .git, and other heavy directories.",
+    "longDescription": "GitMig is a lightweight, zero-dependency tool designed to backup and migrate Git repositories cleanly. It automatically detects all repos in a directory and copies only essential source files while excluding node_modules (50k+ files), virtual environments, build artifacts, and .git history.\n\nKey features include dry-run preview mode, zip compression, detailed file stats, custom exclusion patterns, and preservation of .env files. Built with pure Python standard library — no pip dependencies required.",
+    "features": [
+      "Auto-Detection of All Git Repositories",
+      "Smart Exclusions (node_modules, venv, .git, dist)",
+      "Dry Run Preview Mode",
+      "Zip Compression Output",
+      "Preserves .env Config Files",
+      "Zero Dependencies (Pure Python)"
+    ],
+    "installation": "git clone https://github.com/qtremors/gitmig.git\ncd gitmig\npip install -e .",
+    "badges": [
+      "tech-python",
+      "tech-cli",
+      "tech-git"
+    ],
+    "links": [
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/gitmig",
+        "class": "link-primary"
       }
     ]
   }
