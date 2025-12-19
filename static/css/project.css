@@ -399,6 +399,11 @@
     background: #e95420;
 }
 
+.theme-linux .linux-icon {
+    color: #fff;
+    margin-right: 4px;
+}
+
 
 /* --- Copy Button --- */
 .copy-btn {
