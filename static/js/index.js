@@ -180,6 +180,13 @@ document.addEventListener('DOMContentLoaded', function () {
         const activePattern = sheets.patterns[state.pattern];
         if (activePattern) activePattern.disabled = false;
       }
+      // Force repaint to restart CSS animations
+      const hero = document.querySelector('.hero');
+      if (hero) {
+        hero.style.animation = 'none';
+        hero.offsetHeight; // Trigger reflow
+        hero.style.animation = '';
+      }
     }
 
     // E. Color Mode
