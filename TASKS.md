@@ -1,95 +1,100 @@
 # Project Tasks & Issues
 
-> **Last Updated:** December 18, 2025  
+> **Last Updated:** December 19, 2025  
 > **Portfolio Version:** v2.3.0
 
 ---
 
-## 🔧 Code Quality / Bugs
+## 🔴 Critical Bugs
 
-### Critical
-- [ ] **Theme Flash on Refresh (MD3/OLED):** When page refreshes with MD3 or OLED theme selected, there's a brief flash of the default MD theme before the saved theme applies. Affects both `index.html` and `project.html`. Root cause: The inline script runs after md.css is already loaded and applied.
-- [ ] **404.html Theme Default Inconsistency:** Uses `oled` as default theme while `index.html`/`project.html` use `md`. Update to match.
-- [ ] **404.html Theme Init Code:** Has its own inline theme init script (lines 140-162) that differs from the shared pattern. Should match index/project.
-
-### Medium
-- [ ] **Settings Modal Duplication:** Settings modal HTML is duplicated in `index.html`, `project.html`, and `404.html` with slight variations (404 lacks pattern selector, project lacks tabs). Consider extracting to JS-injected template.
-- [ ] **localStorage Key Inconsistency:** `terminal-theme` uses kebab-case while others use snake_case (`style_mode`, `effect_mode`, etc.).
-
-### Low
-- [ ] **Console Easter Egg Escaping:** ASCII art in `extras.js` uses escaped backslashes that render incorrectly in some consoles.
-- [ ] **Mixed Quote Styles:** JS files mix single and double quotes (minor, low impact).
+### Theme System
+- [ ] **`system/history.html` Theme Inconsistency:** Uses `oled` as default and has hardcoded `oled.css` enabled. Should use `md` as default and all themes `disabled` like `index.html`.
+- [ ] **`system/history.html` Missing Color Mode:** Init script lacks `data-theme` attribute setting (light/dark mode support).
 
 ---
 
-## 🎨 UI/UX
+## 🟠 Code Quality Issues
 
-- [ ] **Mobile Navigation on Small Screens:** Navigation bar may overlap content on very small viewports (<360px).
-- [ ] **TUI ASCII Art Mobile:** Alien ASCII art in `tui.html` breaks on mobile screens (known issue, hard to fix without JS).
+### JavaScript
+- [ ] **Dead Code - Auto Button Handler (`project.js:216-223`):** Code handles `data-os="Auto"` button clicks but this button was removed from `project.html`. Remove dead code.
+- [ ] **localStorage Key Inconsistency:** `terminal-theme` uses kebab-case while others use snake_case (`style_mode`, `effect_mode`, `spotlight_mode`, etc.). Standardize to snake_case.
+- [ ] **Missing Tech Badge Color (`utils.js`):** `tech-threejs` badge used in `projects.json` but not defined in `utils.js` label map. Returns fallback "Threejs" instead of "Three.js".
+
+### CSS
+- [ ] **Typo in Animation Comment (`index-animations.css:78`):** Comment says "potfolio" instead of "portfolio".
+
+### HTML Consistency
+- [ ] **Settings Modal Duplication:** Modal HTML duplicated in `index.html`, `project.html`, `404.html`, `system/history.html` with variations. Consider JS-injected template.
+- [ ] **`tui.html` Duplicate Project Entry (`lines 420-453, 530-550`):** "Earnslate" appears twice - once in visible grid and once in hidden projects as "Earnslate Finance".
 
 ---
 
-## ⚡ Performance
+## 🟡 Data Issues (`projects.json`)
 
-### Large Assets (Consider Optimizing)
-| File | Size | Suggestion |
-|------|------|------------|
-| `404.gif` | 463 KB | Convert to WebP or optimize |
-| `logo.gif` | 488 KB | Convert to WebP or optimize |
-| `coding.gif` | 448 KB | Convert to WebP or optimize |
-| `nexus-preview.png` | 2.78 MB | Compress to <500KB |
-| `music-preview.png` | 1.73 MB | Compress to <500KB |
-| `quizzer-preview.png` | 1.59 MB | Compress to <500KB |
-| `git-nexus-preview.png` | 1.54 MB | Compress to <500KB |
-| `v0.0.0-v2.0.0.mp4` | 4.94 MB | Host externally or lazy-load |
+- [ ] **Missing Badge Definition:** `tech-threejs` used in Cosmos project but color not defined in `index-base.css`.
+- [ ] **Placeholder Images:** Multiple projects use `assets/preview.png` as placeholder (Cosmos, Earnslate, Local Team Chat).
+- [ ] **Broken Live Links:** Some projects link to `system/index-404.html` as placeholder for unreleased features.
 
-### Other
-- [ ] **Throttle Mousemove Events:** Magnetic text effect in `extras.js` runs on every mousemove — consider throttling for performance.
+---
+
+## 🔵 UI/UX Improvements
+
+- [ ] **Mobile Navigation on Very Small Screens:** Navigation bar may overlap content on viewports under 360px.
+- [ ] **TUI ASCII Art Mobile:** Alien ASCII art in `tui.html` breaks on mobile screens.
+- [ ] **Contact Card Click-to-Copy:** Consider adding copy-to-clipboard for email address.
+
+---
+
+## 🟢 Performance & Optimization
+
 - [ ] **Critical CSS:** Consider inlining critical CSS for above-the-fold content to reduce render-blocking.
+- [ ] **Font Loading:** Multiple Google Fonts loaded. Consider `font-display: swap` strategy.
+- [ ] **Image Optimization:** Some project preview images are large. Consider WebP format.
 
 ---
 
-## 📁 Unused Assets (Can Delete)
+## ⚪ Architecture Notes
 
-These files exist in `/assets` but are not referenced anywhere:
-- `MD3.svg`
-- `music-preview.png` (old preview, replaced)
-- `nexus-preview0.png`
-- `python.gif`
-- `qtrmrs-preview.png`
-- `scrap-preview.png`
-- `tremors_fav.png`
-- `tremors_github.jpg`
-- `workingonit.gif`
-
----
-
-## 📝 Documentation / SEO
-
-- [x] **Structured Data:** JSON-LD Person/ProfilePage schemas present in index.html
-- [x] **Meta Tags:** OG tags present on all pages
-- [ ] **system/ Pages:** Files in `/system/` (history.html, index-404.html, tui-404.html, history-tui.html) may need review for consistency.
-
----
-
-## 🗂️ Architecture Notes
-
-### tui.html (Special Case)
-This page is **CSS/HTML only** — no JavaScript at all. Theme/font switching is done purely via CSS `:checked` selectors on hidden radio inputs. Any changes requiring JS should be avoided unless the page is refactored.
-
-### Theme Init Pattern
-Pages should use this inline pattern in `<head>` to prevent theme flash:
+### Theme Init Pattern (Standardized)
+All pages should use this pattern in `<head>`:
 ```html
-<link rel="stylesheet" href="static/themes/md.css" id="theme-md">
+<!-- All theme stylesheets DISABLED by default -->
+<link rel="stylesheet" href="static/themes/md.css" id="theme-md" disabled>
 <link rel="stylesheet" href="static/themes/md3.css" id="theme-md3" disabled>
 <link rel="stylesheet" href="static/themes/oled.css" id="theme-oled" disabled>
+
+<!-- Effects and patterns after themes -->
+<link rel="stylesheet" href="static/effects/fog.css" id="effect-fog" disabled>
+...
+
+<!-- Init script AFTER all stylesheets -->
 <script>
 (function() {
-  try {
-    var saved = localStorage.getItem('style_mode') || 'md';
-    // ... toggle disabled attributes based on saved value
-  } catch(e) {}
+  var theme = localStorage.getItem('style_mode') || 'md';
+  // Enable correct theme...
 })();
 </script>
 ```
-Key: Default theme (`md.css`) is NOT disabled initially.
+**Key:** All themes start `disabled`. Default is `md`.
+
+### Pages Needing Updates
+| Page | Status |
+|------|--------|
+| `index.html` | ✅ Correct |
+| `project.html` | ✅ Correct |
+| `404.html` | ✅ Correct |
+| `system/history.html` | ❌ Uses old pattern |
+| `tui.html` | ➖ CSS-only, no JS |
+
+### tui.html (Special Case)
+This page is **CSS/HTML only** — no JavaScript. Theme/font switching uses pure CSS `:checked` selectors on hidden radio inputs. Any changes requiring JS should be avoided.
+
+---
+
+## ✅ Recently Completed
+
+- [x] Fixed navbar flash prevention (moved init script after all stylesheets)
+- [x] Fixed navbar background using theme colors instead of transparent
+- [x] Fixed 404.html theme default inconsistency (changed from oled to md)
+- [x] Fixed magnetic text effect scope (now only runs in Hero/About sections)
+- [x] All main pages now use standardized flash prevention pattern
