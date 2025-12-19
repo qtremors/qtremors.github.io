@@ -60,7 +60,7 @@ This version focuses on a scalable, data-driven user experience with a professio
 - **Immersive Navigation:** Navigation bars **auto-hide on scroll** (debounced) and feature active section highlighting using an enhanced `IntersectionObserver`.
 
 #### **⏱️ Time Machine (History)**
-- **Visual Timeline:** A dedicated page (`system/history.html`) visualizing the project's evolution from v0.0.0 to v2.1.0.
+- **Visual Timeline:** A dedicated page (`system/history.html`) visualizing the project's evolution from v0.0.0 to v2.5.0.
 - **Gource Visualization:** Embedded 60fps timelapse video showing the codebase growth and file restructuring over time.
     
 
