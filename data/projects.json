@@ -1,39 +1,5 @@
 [
   {
-    "id": "cosmos",
-    "status": "wip",
-    "title": "Cosmos",
-    "image": "assets/cosmos-preview.png",
-    "description": "A high-performance 3D solar system simulation running in your browser with custom GLSL shaders, realistic orbital mechanics, 6-DOF fly controls, and full gamepad support.",
-    "longDescription": "Cosmos is a modular, scientifically-inspired solar system visualizer built with React and Three.js. It features 9 planets (including Pluto), 4 moons, a 4000-asteroid belt, and custom GLSL shaders for each celestial body — from procedural sun granulation to atmospheric band dynamics on ice giants.\n\nThe control system supports 6 degrees of freedom with keyboard, mouse, and gamepad input. A radar HUD provides directional awareness, and the camera can lock onto any celestial body for orbital viewing. The codebase is fully modular with centralized physics constants in SDK.ts, making it easy to extend with new celestial objects.",
-    "features": [
-      "Custom GLSL Shaders for Each Planet",
-      "6-DOF Fly Controls + Gamepad Support",
-      "Radar HUD with Smart Labels",
-      "Lock-On Orbital Camera System",
-      "4000 Instanced Asteroids"
-    ],
-    "installation": "git clone https://github.com/qtremors/cosmos.git\ncd cosmos/cosmos-app\nnpm install\nnpm run dev",
-    "badges": [
-      "tech-react",
-      "tech-ts",
-      "tech-threejs",
-      "tech-css"
-    ],
-    "links": [
-      {
-        "text": "Website",
-        "url": "system/index-404.html",
-        "class": "link-primary"
-      },
-      {
-        "text": "View on GitHub",
-        "url": "https://github.com/qtremors/cosmos",
-        "class": "link-secondary"
-      }
-    ]
-  },
-  {
     "id": "quizzer-ai",
     "title": "Quizzer AI",
     "image": "assets/quizzer-preview.png",
@@ -200,39 +166,6 @@
     ]
   },
   {
-    "id": "plant-disease-detector",
-    "title": "Plant Disease Detector",
-    "image": "assets/plant-disease-detector-preview.jpg",
-    "description": "A Django web app using TensorFlow and MobileNetV2 to classify apple leaf diseases from uploaded images, featuring drag-and-drop analysis, confidence charts, and a scan history database.",
-    "longDescription": "A Proof of Concept (PoC) demonstrating the integration of TensorFlow into a Django 5 web app. It uses Transfer Learning on a pre-trained MobileNetV2 model (ImageNet weights) to classify apple leaves into four categories: Healthy, Apple Scab, Black Rot, and Cedar Apple Rust.\n\nThe app features a drag-and-drop upload interface, real-time confidence scoring with interactive probability charts rendered using Plotly.js, and a persistent SQLite history database of all past scans. The project is managed with uv for fast, reproducible Python environments and includes a training script for model retraining on custom datasets.",
-    "features": [
-      "MobileNetV2 Transfer Learning Model",
-      "Drag-and-Drop Image Analysis",
-      "Interactive Confidence Charts (Plotly)",
-      "SQLite History Tracking"
-    ],
-    "installation": "git clone https://github.com/qtremors/plant-disease-detector.git\ncd plant-disease-detector\nuv sync\nuv run python manage.py migrate\nuv run python manage.py runserver",
-    "badges": [
-      "tech-django",
-      "tech-tensorflow",
-      "tech-pillow",
-      "tech-numpy",
-      "tech-plotly"
-    ],
-    "links": [
-      {
-        "text": "Website",
-        "url": "system/index-404.html",
-        "class": "link-primary"
-      },
-      {
-        "text": "View on GitHub",
-        "url": "https://github.com/qtremors/plant-disease-detector",
-        "class": "link-secondary"
-      }
-    ]
-  },
-  {
     "id": "earnslate",
     "title": "Earnslate",
     "image": "assets/earnslate-preview.png",
@@ -262,6 +195,73 @@
       {
         "text": "View on GitHub",
         "url": "https://github.com/qtremors/earnslate",
+        "class": "link-secondary"
+      }
+    ]
+  },
+  {
+    "id": "cosmos",
+    "status": "wip",
+    "title": "Cosmos",
+    "image": "assets/cosmos-preview.png",
+    "description": "A high-performance 3D solar system simulation running in your browser with custom GLSL shaders, realistic orbital mechanics, 6-DOF fly controls, and full gamepad support.",
+    "longDescription": "Cosmos is a modular, scientifically-inspired solar system visualizer built with React and Three.js. It features 9 planets (including Pluto), 4 moons, a 4000-asteroid belt, and custom GLSL shaders for each celestial body — from procedural sun granulation to atmospheric band dynamics on ice giants.\n\nThe control system supports 6 degrees of freedom with keyboard, mouse, and gamepad input. A radar HUD provides directional awareness, and the camera can lock onto any celestial body for orbital viewing. The codebase is fully modular with centralized physics constants in SDK.ts, making it easy to extend with new celestial objects.",
+    "features": [
+      "Custom GLSL Shaders for Each Planet",
+      "6-DOF Fly Controls + Gamepad Support",
+      "Radar HUD with Smart Labels",
+      "Lock-On Orbital Camera System",
+      "4000 Instanced Asteroids"
+    ],
+    "installation": "git clone https://github.com/qtremors/cosmos.git\ncd cosmos/cosmos-app\nnpm install\nnpm run dev",
+    "badges": [
+      "tech-react",
+      "tech-ts",
+      "tech-threejs",
+      "tech-css"
+    ],
+    "links": [
+      {
+        "text": "Website",
+        "url": "system/index-404.html",
+        "class": "link-primary"
+      },
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/cosmos",
+        "class": "link-secondary"
+      }
+    ]
+  },
+  {
+    "id": "plant-disease-detector",
+    "title": "Plant Disease Detector",
+    "image": "assets/plant-disease-detector-preview.jpg",
+    "description": "A Django web app using TensorFlow and MobileNetV2 to classify apple leaf diseases from uploaded images, featuring drag-and-drop analysis, confidence charts, and a scan history database.",
+    "longDescription": "A Proof of Concept (PoC) demonstrating the integration of TensorFlow into a Django 5 web app. It uses Transfer Learning on a pre-trained MobileNetV2 model (ImageNet weights) to classify apple leaves into four categories: Healthy, Apple Scab, Black Rot, and Cedar Apple Rust.\n\nThe app features a drag-and-drop upload interface, real-time confidence scoring with interactive probability charts rendered using Plotly.js, and a persistent SQLite history database of all past scans. The project is managed with uv for fast, reproducible Python environments and includes a training script for model retraining on custom datasets.",
+    "features": [
+      "MobileNetV2 Transfer Learning Model",
+      "Drag-and-Drop Image Analysis",
+      "Interactive Confidence Charts (Plotly)",
+      "SQLite History Tracking"
+    ],
+    "installation": "git clone https://github.com/qtremors/plant-disease-detector.git\ncd plant-disease-detector\nuv sync\nuv run python manage.py migrate\nuv run python manage.py runserver",
+    "badges": [
+      "tech-django",
+      "tech-tensorflow",
+      "tech-pillow",
+      "tech-numpy",
+      "tech-plotly"
+    ],
+    "links": [
+      {
+        "text": "Website",
+        "url": "system/index-404.html",
+        "class": "link-primary"
+      },
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/plant-disease-detector",
         "class": "link-secondary"
       }
     ]
@@ -300,35 +300,6 @@
     ]
   },
   {
-    "id": "local-team-chat",
-    "status": "wip",
-    "title": "Local Team Chat",
-    "image": "assets/preview.png",
-    "description": "A self-hosted, privacy-first messaging platform for local LAN networks, featuring real-time DMs and group chats via WebSockets, JWT authentication, and a responsive React interface for desktop and mobile.",
-    "longDescription": "Designed for small offices and teams requiring complete privacy, this app runs entirely on a local host machine with no external dependencies. It utilizes WebSockets for instant real-time messaging and manages state via a unified 'Room' architecture where Direct Messages are simply rooms with two members.\n\nThe backend is built with FastAPI and uses JWT authentication with Pydantic validation for type-safe request handling. The React frontend is responsive, adapting from a dual-pane desktop view to a mobile-app-like interface on smaller screens, with SQLite for persistent message storage.",
-    "features": [
-      "Real-time Messaging via WebSockets",
-      "Unified Room Architecture (Groups & DMs)",
-      "JWT Authentication & Pydantic Validation",
-      "Responsive React Layout (Mobile/Desktop)"
-    ],
-    "installation": "Currently in development.",
-    "badges": [
-      "tech-python",
-      "tech-fastapi",
-      "tech-react",
-      "tech-ts",
-      "tech-sql"
-    ],
-    "links": [
-      {
-        "text": "View on GitHub",
-        "url": "https://github.com/qtremors/team-chat-app",
-        "class": "link-primary"
-      }
-    ]
-  },
-  {
     "id": "locr",
     "title": "Lines of Code in Repo",
     "image": "assets/locr-preview.png",
@@ -355,27 +326,30 @@
     ]
   },
   {
-    "id": "pc-remote-control",
-    "title": "PC Remote Control API",
-    "image": "assets/pcrc-preview.png",
-    "description": "A Python + FastAPI tool that lets you control your PC from your phone — media playback, system power, screenshots, and app launching over a clean local web interface.",
-    "longDescription": "This tool turns your smartphone into a remote control for your PC. It runs a lightweight FastAPI server that listens for commands from a mobile-friendly web interface.\n\nYou can control system volume, media playback (Spotify/YouTube), take screenshots that appear on your phone, and perform system power actions like Sleep or Lock.",
+    "id": "gitmig",
+    "status": "wip",
+    "title": "GitMig",
+    "image": "assets/gitmig-preview.png",
+    "description": "A dependency-free Python utility for migrating Git repositories without bloat — copies source files while skipping node_modules, venv, .git, and other heavy directories.",
+    "longDescription": "GitMig is a lightweight, zero-dependency tool designed to backup and migrate Git repositories cleanly. It automatically detects all repos in a directory and copies only essential source files while excluding node_modules (50k+ files), virtual environments, build artifacts, and .git history.\n\nKey features include dry-run preview mode, zip compression, detailed file stats, custom exclusion patterns, and preservation of .env files. Built with pure Python standard library — no pip dependencies required.",
     "features": [
-      "Media Control (Vol, Play, Pause, Next)",
-      "System Power Ops (Lock, Sleep, Shutdown)",
-      "Instant Screen Mirroring to Phone",
-      "Zero-Dependency Frontend"
+      "Auto-Detection of All Git Repositories",
+      "Smart Exclusions (node_modules, venv, .git, dist)",
+      "Dry Run Preview Mode",
+      "Zip Compression Output",
+      "Preserves .env Config Files",
+      "Zero Dependencies (Pure Python)"
     ],
-    "installation": "git clone https://github.com/qtremors/pc-rc.git\ncd pc-rc\nuv sync\nuv run main.py",
+    "installation": "git clone https://github.com/qtremors/gitmig.git\ncd gitmig\npip install -e .",
     "badges": [
       "tech-python",
-      "tech-fastapi",
-      "tech-cli"
+      "tech-cli",
+      "tech-git"
     ],
     "links": [
       {
         "text": "View on GitHub",
-        "url": "https://github.com/qtremors/pc-rc",
+        "url": "https://github.com/qtremors/gitmig",
         "class": "link-primary"
       }
     ]
@@ -407,6 +381,32 @@
     ]
   },
   {
+    "id": "pc-remote-control",
+    "title": "PC Remote Control API",
+    "image": "assets/pcrc-preview.png",
+    "description": "A Python + FastAPI tool that lets you control your PC from your phone — media playback, system power, screenshots, and app launching over a clean local web interface.",
+    "longDescription": "This tool turns your smartphone into a remote control for your PC. It runs a lightweight FastAPI server that listens for commands from a mobile-friendly web interface.\n\nYou can control system volume, media playback (Spotify/YouTube), take screenshots that appear on your phone, and perform system power actions like Sleep or Lock.",
+    "features": [
+      "Media Control (Vol, Play, Pause, Next)",
+      "System Power Ops (Lock, Sleep, Shutdown)",
+      "Instant Screen Mirroring to Phone",
+      "Zero-Dependency Frontend"
+    ],
+    "installation": "git clone https://github.com/qtremors/pc-rc.git\ncd pc-rc\nuv sync\nuv run main.py",
+    "badges": [
+      "tech-python",
+      "tech-fastapi",
+      "tech-cli"
+    ],
+    "links": [
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/pc-rc",
+        "class": "link-primary"
+      }
+    ]
+  },
+  {
     "id": "pygame-calculator",
     "title": "Calculator App (Pygame)",
     "image": "assets/calculator-preview.jpg",
@@ -428,6 +428,35 @@
         "text": "View on GitHub",
         "url": "https://github.com/qtremors/pygame-calculator-app",
         "class": "link-secondary"
+      }
+    ]
+  },
+  {
+    "id": "local-team-chat",
+    "status": "wip",
+    "title": "Local Team Chat",
+    "image": "assets/preview.png",
+    "description": "A self-hosted, privacy-first messaging platform for local LAN networks, featuring real-time DMs and group chats via WebSockets, JWT authentication, and a responsive React interface for desktop and mobile.",
+    "longDescription": "Designed for small offices and teams requiring complete privacy, this app runs entirely on a local host machine with no external dependencies. It utilizes WebSockets for instant real-time messaging and manages state via a unified 'Room' architecture where Direct Messages are simply rooms with two members.\n\nThe backend is built with FastAPI and uses JWT authentication with Pydantic validation for type-safe request handling. The React frontend is responsive, adapting from a dual-pane desktop view to a mobile-app-like interface on smaller screens, with SQLite for persistent message storage.",
+    "features": [
+      "Real-time Messaging via WebSockets",
+      "Unified Room Architecture (Groups & DMs)",
+      "JWT Authentication & Pydantic Validation",
+      "Responsive React Layout (Mobile/Desktop)"
+    ],
+    "installation": "Currently in development.",
+    "badges": [
+      "tech-python",
+      "tech-fastapi",
+      "tech-react",
+      "tech-ts",
+      "tech-sql"
+    ],
+    "links": [
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/team-chat-app",
+        "class": "link-primary"
       }
     ]
   },
@@ -493,35 +522,6 @@
         "text": "View on GitHub",
         "url": "https://github.com/qtremors/nexus",
         "class": "link-secondary"
-      }
-    ]
-  },
-  {
-    "id": "gitmig",
-    "status": "wip",
-    "title": "GitMig",
-    "image": "assets/gitmig-preview.png",
-    "description": "A dependency-free Python utility for migrating Git repositories without bloat — copies source files while skipping node_modules, venv, .git, and other heavy directories.",
-    "longDescription": "GitMig is a lightweight, zero-dependency tool designed to backup and migrate Git repositories cleanly. It automatically detects all repos in a directory and copies only essential source files while excluding node_modules (50k+ files), virtual environments, build artifacts, and .git history.\n\nKey features include dry-run preview mode, zip compression, detailed file stats, custom exclusion patterns, and preservation of .env files. Built with pure Python standard library — no pip dependencies required.",
-    "features": [
-      "Auto-Detection of All Git Repositories",
-      "Smart Exclusions (node_modules, venv, .git, dist)",
-      "Dry Run Preview Mode",
-      "Zip Compression Output",
-      "Preserves .env Config Files",
-      "Zero Dependencies (Pure Python)"
-    ],
-    "installation": "git clone https://github.com/qtremors/gitmig.git\ncd gitmig\npip install -e .",
-    "badges": [
-      "tech-python",
-      "tech-cli",
-      "tech-git"
-    ],
-    "links": [
-      {
-        "text": "View on GitHub",
-        "url": "https://github.com/qtremors/gitmig",
-        "class": "link-primary"
       }
     ]
   }
