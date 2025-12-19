@@ -1,5 +1,71 @@
 # Changelog
 
+## [v2.5.0] - 19-12-2025
+
+### 🆕 **New Projects & Content**
+
+- **GitMig:** Added Git migration utility for clean repo backups (Python CLI).
+- **Earnslate:** Updated with live URL (earnslate.vercel.app) and full project details.
+- **Cosmos:** Added 3D solar system simulation project (WIP).
+
+### 📦 **Project Ranking & Organization**
+
+- **Major Reorder:** Updated `projects.json` with new priority ranking (Quizzer AI → GitNexus → Algorithm Visualizer → Arcade Nexus → Tremors Music → Earnslate → Cosmos → ...).
+- **TUI Sync:** Updated `tui.html` portfolio section to match the new project order with 5 visible and 12 hidden projects.
+
+### 🐛 **Bug Fixes**
+
+- **Theme Flash Prevention:** Fixed FOUC (flash of unstyled content) issues across all pages.
+- **Waves Pattern:** Rewrote animated gradient waves to use background layers instead of pseudo-elements (prevents conflict with fog/spotlight effects).
+- **Pattern Animation Refresh:** Added repaint trigger for instant CSS animation apply on pattern switch.
+- **Mobile Navigation:** Added media query for screens under 360px to prevent navigation overlap.
+- **Linux Terminal Icon:** Added Tux penguin icon to terminal style switcher button.
+- **localStorage Keys:** Standardized `terminal-theme` to `terminal_theme` (snake_case).
+- **Dead Code Removal:** Removed unused Auto button handler from `project.js`.
+- **History Page Init:** Fixed theme initialization in `system/history.html` to match standardized pattern.
+- **Three.js Badge:** Added missing `tech-threejs` label mapping to `utils.js`.
+- **CSS Typo:** Fixed "potfolio" → "portfolio" in animation comment.
+- **Duplicate Entry:** Removed duplicate Earnslate entry from `tui.html`.
+
+### 📝 **Documentation**
+
+- **DEVELOPMENT.md:** Created development guidelines for theme system, adding projects/badges, and consistency rules.
+- **TASKS.md:** Updated with all review findings and marked as complete.
+
+---
+
+## [v2.3.0] - 18-12-2025
+
+### 🐛 **Bug Fixes**
+
+- **TUI Skills Typo:** Fixed "Nextjs." → "Next.js" in `tui.html`.
+- **404 Script Defer:** Added missing `defer` attribute to prevent race conditions.
+- **Footer Version:** Updated from v2.0.0 → v2.2.3 in `index.html` and `project.html`.
+- **Skills Sync:** Added TypeScript badge (30%) to `index.html`, removed Next.js from TUI for consistency.
+- **Comment Numbering:** Fixed duplicate "6." → "7." in theme init script.
+- **Null Check:** Added safety check for `githubCard` in `home.js` insertBeforeGithub function.
+
+### ✨ **New Features**
+
+- **Terminal Auto-Detect Reset:** Added "Auto" button to terminal OS switcher in project pages. Clears localStorage and resets to system-detected OS theme.
+- **JSON Fetch Error Display:** Portfolio now shows user-friendly error card if `projects.json` fails to load.
+- **Toast Warning:** Added `console.warn` when `#toast` element is missing from DOM.
+
+### ♿ **Accessibility**
+
+- **TUI ARIA Labels:** Added `aria-label` attributes to all TUI navigation links.
+- **Navigation Landmark:** Added `aria-label="Main navigation"` to TUI nav.
+
+### 🔍 **SEO**
+
+- **Dynamic Canonical Tags:** Project pages now generate canonical `<link>` tags dynamically for each project ID.
+
+### 🎨 **UI/UX**
+
+- **Description Clamp:** Added 5-line CSS clamp to portfolio card descriptions for consistent card heights.
+
+---
+
 ## [v2.2.3] - 11-12-2025
 
 ### ♿ **Accessibility Improvements**
