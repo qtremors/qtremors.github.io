@@ -54,6 +54,15 @@ function renderProjectPage(project, allProjects) {
   document.getElementById('p-title').innerText = project.title;
   document.getElementById('p-id-label').innerText = project.id ? project.id.toUpperCase() : "PROJECT DETAILS";
 
+  // --- SEO: Dynamic Canonical Tag ---
+  let canonicalLink = document.querySelector('link[rel="canonical"]');
+  if (!canonicalLink) {
+    canonicalLink = document.createElement('link');
+    canonicalLink.rel = 'canonical';
+    document.head.appendChild(canonicalLink);
+  }
+  canonicalLink.href = `${window.location.origin}/project.html?id=${project.id}`;
+
   // --- Banner Image ---
   const banner = document.getElementById('p-banner');
   if (project.image) {
@@ -128,7 +137,7 @@ function renderProjectPage(project, allProjects) {
     };
 
     // Prefer saved theme, fallback to System OS
-    let currentTheme = localStorage.getItem('terminal-theme') || getSystemOS();
+    let currentTheme = localStorage.getItem('terminal_theme') || getSystemOS();
 
     const renderTheme = (osName) => {
       // Update Buttons State
@@ -204,7 +213,7 @@ function renderProjectPage(project, allProjects) {
       btn.addEventListener('click', () => {
         const selectedOS = btn.dataset.os;
         currentTheme = selectedOS;
-        localStorage.setItem('terminal-theme', selectedOS); // Persist user choice
+        localStorage.setItem('terminal_theme', selectedOS);
         renderTheme(selectedOS);
       });
     });

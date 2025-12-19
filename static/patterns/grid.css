@@ -1,0 +1,9 @@
+/* ==========================================================================
+   Hero Section Background Pattern: Grid (50px)
+   ========================================================================== */
+.hero {
+    background-image:
+        linear-gradient(to right, var(--hero-grid-color, rgba(128, 128, 128, 0.1)) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--hero-grid-color, rgba(128, 128, 128, 0.1)) 1px, transparent 1px);
+    background-size: 50px 50px;
+}

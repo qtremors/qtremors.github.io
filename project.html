@@ -19,7 +19,7 @@
 
     <link rel="stylesheet" href="static/themes/md.css" id="theme-md" disabled>
     <link rel="stylesheet" href="static/themes/md3.css" id="theme-md3" disabled>
-    <link rel="stylesheet" href="static/themes/oled.css" id="theme-oled">
+    <link rel="stylesheet" href="static/themes/oled.css" id="theme-oled" disabled>
 
     <link rel="preload" href="data/projects.json" as="fetch" crossorigin="anonymous">
 
@@ -27,73 +27,59 @@
     <link rel="stylesheet" href="static/effects/glass.css" id="effect-glass" disabled>
     <link rel="stylesheet" href="static/effects/spotlight.css" id="effect-spotlight" disabled>
 
+    <link rel="stylesheet" href="static/patterns/dots.css" id="pattern-dots" disabled>
+    <link rel="stylesheet" href="static/patterns/grid.css" id="pattern-grid" disabled>
+    <link rel="stylesheet" href="static/patterns/waves.css" id="pattern-waves" disabled>
+
     <link rel="stylesheet" href="static/css/project.css">
+
+    <!-- Appearance Init - MUST be after ALL theme/effect/pattern links to prevent flash on refresh -->
+    <script>
+        (function () {
+            try {
+                // 1. Visual Theme (md, md3, oled)
+                var theme = localStorage.getItem('style_mode') || 'md';
+                var themes = ['md', 'md3', 'oled'];
+                themes.forEach(function (t) {
+                    var el = document.getElementById('theme-' + t);
+                    if (el) el.disabled = (t !== theme);
+                });
+                document.documentElement.setAttribute('data-style-mode', theme);
+
+                // 2. Color Mode (system, light, dark)
+                var pref = localStorage.getItem('theme_pref') || 'system';
+                var mode = pref === 'system'
+                    ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+                    : pref;
+                document.documentElement.setAttribute('data-theme', mode);
+
+                // 3. Scene Effect (fog, glass, none)
+                var effect = localStorage.getItem('effect_mode') || 'none';
+                var effects = ['fog', 'glass'];
+                effects.forEach(function (e) {
+                    var el = document.getElementById('effect-' + e);
+                    if (el) el.disabled = (e !== effect);
+                });
+
+                // 4. Spotlight Effect (on, off)
+                var spotlight = localStorage.getItem('spotlight_mode') || 'off';
+                var spotlightEl = document.getElementById('effect-spotlight');
+                if (spotlightEl) spotlightEl.disabled = (spotlight !== 'on');
+
+                // 5. Hero Pattern (dots, grid, waves, none)
+                var pattern = localStorage.getItem('pattern_mode') || 'none';
+                var patterns = ['dots', 'grid', 'waves'];
+                patterns.forEach(function (p) {
+                    var el = document.getElementById('pattern-' + p);
+                    if (el) el.disabled = (p !== pattern);
+                });
+            } catch (e) { }
+        })();
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <script>
-        (function () {
-            try {
-                // 1. Get saved preference (default to 'default' if missing)
-                const savedMode = localStorage.getItem('style_mode') || 'oled';
-
-                // 2. Define Theme Sheets
-                const themeMd = document.getElementById('theme-md');
-                const themeMd3 = document.getElementById('theme-md3');
-                const themeOled = document.getElementById('theme-oled');
-
-                // 3. Define Effect Sheets
-                const effectFog = document.getElementById('effect-fog');
-                const effectGlass = document.getElementById('effect-glass');
-                const effectSpotlight = document.getElementById('effect-spotlight');
-
-                // 4. Apply THEME Logic
-                themeMd.disabled = true;
-                themeMd3.disabled = true;
-                themeOled.disabled = true;
-
-                if (savedMode === 'md') {
-                    themeMd.disabled = false;
-                } else if (savedMode === 'md3') {
-                    themeMd3.disabled = false;
-                } else {
-                    themeOled.disabled = false;
-                }
-
-                // 5. Apply EFFECT Logic (Fog/Glass)
-                // Rule: OLED gets Glass. Everyone else (Default/MD3) gets Fog.
-                const savedEffect = localStorage.getItem('effect_mode') || 'none';
-
-                effectFog.disabled = true;
-                effectGlass.disabled = true;
-
-                // Simple Logic: if savedEffect is valid and not 'none', enable it.
-                // Fallback logic for first load based on theme is handled in index.js, 
-                // but here we just respect the saved preference or default.
-                if (savedEffect === 'glass') {
-                    effectGlass.disabled = false;
-                } else if (savedEffect === 'fog') {
-                    effectFog.disabled = false;
-                }
-                // If 'none', both stay disabled.
-
-                // 6. Apply Spotlight Logic
-                const savedSpotlight = localStorage.getItem('spotlight_mode') || 'off';
-                if (savedSpotlight === 'off') {
-                    effectSpotlight.disabled = true;
-                } else {
-                    effectSpotlight.disabled = false;
-                }
-
-                // 7. Set Attribute for JS/CSS selectors
-                document.documentElement.setAttribute('data-style-mode', savedMode);
-
-            } catch (e) {
-                console.error("Theme init error:", e);
-            }
-        })();
-    </script>
 </head>
 
 <body>
@@ -276,7 +262,7 @@
                             <button class="os-btn" data-os="Linux" title="Linux Style">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                                     <path
-                                        d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3.3 14.7c-.4 1.2-1.6 2-2.9 2-1.3 0-2.5-.8-2.9-2-.1-.3-.1-.5-.1-.7 0-1.7 1.3-3 3-3s3 1.3 3 3c0 .2 0 .4-.1.7z" />
+                                        d="M12.503 2c-1.907 0-3.428 2.291-3.428 4.706 0 1.097.299 2.151.827 3.023-.969.653-1.902 1.6-2.402 2.771-.562 1.318-.476 2.933.623 4.163 1.146-.623 2.417-.919 3.697-.919 1.321 0 2.631.312 3.811.975.588-.587.964-1.316 1.105-2.085.181-.992-.019-2.047-.662-2.955a3.916 3.916 0 0 0-.555-.63c.504-.861.803-1.899.803-2.978 0-2.786-1.704-4.784-3.819-4.071zm-2.003 4.353a.875.875 0 1 1 0 1.75.875.875 0 0 1 0-1.75zm3.5 0a.875.875 0 1 1 0 1.75.875.875 0 0 1 0-1.75zm-1.75 2.397c1.05 0 1.75.7 1.75 1.4s-.7 1.05-1.75 1.05-1.75-.35-1.75-1.05.7-1.4 1.75-1.4zM7.372 17.469c-.742.499-1.324 1.147-1.674 1.872-.293.607-.41 1.245-.324 1.869.411.138.845.243 1.296.306.132-.668.459-1.31.969-1.866-.107-.724-.148-1.468-.1-2.181h-.167zm9.173 0c.064.753.021 1.529-.133 2.287.475.533.785 1.147.917 1.787.437-.065.857-.168 1.257-.303.074-.604-.051-1.221-.341-1.813-.347-.708-.92-1.347-1.648-1.84l-.052-.118z" />
                                 </svg>
                             </button>
                         </div>
@@ -300,7 +286,7 @@
                 &copy; 2025 Tremors. All rights reserved.
                 <span style="opacity: 0.5; margin: 0 8px;">|</span>
                 <a href="system/history.html"
-                    style="color: var(--md-primary); text-decoration: none; font-weight: bold; font-family: monospace; font-size: 0.9em;">v2.0.0</a>
+                    style="color: var(--md-primary); text-decoration: none; font-weight: bold; font-family: monospace; font-size: 0.9em;">v2.5.0</a>
             </p>
         </div>
     </footer>
@@ -323,87 +309,179 @@
                 </button>
             </header>
 
+            <!-- Tabs Navigation -->
+            <div class="modal-tabs">
+                <button class="modal-tab active" data-tab="themes">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 2a10 10 0 0 1 0 20"></path>
+                    </svg>
+                    <span>Themes</span>
+                </button>
+                <button class="modal-tab" data-tab="effects">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                        </polygon>
+                    </svg>
+                    <span>Effects</span>
+                </button>
+            </div>
+
             <div class="modal-body">
+                <!-- Themes Tab Panel -->
+                <div class="tab-panel active" id="panel-themes">
+                    <div class="setting-group">
+                        <label class="setting-label">Color Mode</label>
+                        <div class="segmented-control">
+                            <button class="segment-btn" data-set-mode="system">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                                </svg>
+                                <span>System</span>
+                            </button>
+                            <button class="segment-btn" data-set-mode="light">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="5"></circle>
+                                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                                </svg>
+                                <span>Light</span>
+                            </button>
+                            <button class="segment-btn" data-set-mode="dark">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                                </svg>
+                                <span>Dark</span>
+                            </button>
+                        </div>
+                    </div>
 
-                <div class="setting-group">
-                    <label class="setting-label">Color Mode</label>
-                    <div class="segmented-control">
-                        <button class="segment-btn" data-set-mode="system">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                                <line x1="8" y1="21" x2="16" y2="21"></line>
-                                <line x1="12" y1="17" x2="12" y2="21"></line>
-                            </svg>
-                            <span>System</span>
-                        </button>
-                        <button class="segment-btn" data-set-mode="light">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <circle cx="12" cy="12" r="5"></circle>
-                                <line x1="12" y1="1" x2="12" y2="3"></line>
-                                <line x1="12" y1="21" x2="12" y2="23"></line>
-                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                                <line x1="1" y1="12" x2="3" y2="12"></line>
-                                <line x1="21" y1="12" x2="23" y2="12"></line>
-                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                            </svg>
-                            <span>Light</span>
-                        </button>
-                        <button class="segment-btn" data-set-mode="dark">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                            </svg>
-                            <span>Dark</span>
-                        </button>
+                    <div class="setting-group">
+                        <label class="setting-label">Visual Theme</label>
+                        <div class="theme-grid">
+                            <button class="theme-card" data-set-theme="md">
+                                <div class="theme-preview md-preview"></div>
+                                <span>MD</span>
+                            </button>
+                            <button class="theme-card" data-set-theme="md3">
+                                <div class="theme-preview md3-preview"></div>
+                                <span>MD3</span>
+                            </button>
+                            <button class="theme-card" data-set-theme="oled">
+                                <div class="theme-preview oled-preview"></div>
+                                <span>OLED</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <div class="setting-group">
-                    <label class="setting-label">Visual Theme</label>
-                    <div class="theme-grid">
-                        <button class="theme-card" data-set-theme="md">
-                            <div class="theme-preview md-preview"></div>
-                            <span>MD</span>
-                        </button>
-                        <button class="theme-card" data-set-theme="md3">
-                            <div class="theme-preview md3-preview"></div>
-                            <span>MD3</span>
-                        </button>
-                        <button class="theme-card" data-set-theme="oled">
-                            <div class="theme-preview oled-preview"></div>
-                            <span>OLED</span>
-                        </button>
+                <!-- Effects Tab Panel -->
+                <div class="tab-panel" id="panel-effects">
+                    <div class="setting-group">
+                        <label class="setting-label">Scene Effect</label>
+                        <div class="segmented-control">
+                            <button class="segment-btn" data-set-effect="fog">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M3 8h18M3 12h18M3 16h12"></path>
+                                </svg>
+                                <span>Fog</span>
+                            </button>
+                            <button class="segment-btn" data-set-effect="glass">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="3" y1="9" x2="21" y2="9"></line>
+                                </svg>
+                                <span>Glass</span>
+                            </button>
+                            <button class="segment-btn" data-set-effect="none">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
+                                </svg>
+                                <span>None</span>
+                            </button>
+                        </div>
                     </div>
-                </div>
 
-                <div class="setting-group">
-                    <label class="setting-label">Scene Effect</label>
-                    <div class="segmented-control">
-                        <button class="segment-btn" data-set-effect="fog">
-                            <span>🌫️ Fog</span>
-                        </button>
-                        <button class="segment-btn" data-set-effect="glass">
-                            <span>🧊 Glass</span>
-                        </button>
-                        <button class="segment-btn" data-set-effect="none">
-                            <span>🚫 None</span>
-                        </button>
+                    <div class="setting-group">
+                        <label class="setting-label">Spotlight Effect</label>
+                        <div class="toggle-row">
+                            <span class="toggle-label">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                    <path
+                                        d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42">
+                                    </path>
+                                </svg>
+                                Cursor spotlight (Hero & Skills)
+                            </span>
+                            <button class="toggle-switch" data-set-spotlight="toggle" aria-label="Toggle spotlight">
+                                <span class="toggle-slider"></span>
+                            </button>
+                        </div>
                     </div>
-                </div>
 
-                <div class="setting-group">
-                    <label class="setting-label">Spotlight Effect</label>
-                    <div class="segmented-control">
-                        <button class="segment-btn" data-set-spotlight="on">
-                            <span>On</span>
-                        </button>
-                        <button class="segment-btn" data-set-spotlight="off">
-                            <span>Off</span>
-                        </button>
+                    <div class="setting-group">
+                        <label class="setting-label">Hero Background</label>
+                        <div class="segmented-control">
+                            <button class="segment-btn" data-set-pattern="dots">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <circle cx="4" cy="4" r="2" />
+                                    <circle cx="12" cy="4" r="2" />
+                                    <circle cx="20" cy="4" r="2" />
+                                    <circle cx="4" cy="12" r="2" />
+                                    <circle cx="12" cy="12" r="2" />
+                                    <circle cx="20" cy="12" r="2" />
+                                    <circle cx="4" cy="20" r="2" />
+                                    <circle cx="12" cy="20" r="2" />
+                                    <circle cx="20" cy="20" r="2" />
+                                </svg>
+                                <span>Dots</span>
+                            </button>
+                            <button class="segment-btn" data-set-pattern="grid">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="3" y="3" width="7" height="7" />
+                                    <rect x="14" y="3" width="7" height="7" />
+                                    <rect x="3" y="14" width="7" height="7" />
+                                    <rect x="14" y="14" width="7" height="7" />
+                                </svg>
+                                <span>Grid</span>
+                            </button>
+                            <button class="segment-btn" data-set-pattern="waves">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M2 12c2-2 4-2 6 0s4 2 6 0 4-2 6 0" />
+                                    <path d="M2 6c2-2 4-2 6 0s4 2 6 0 4-2 6 0" />
+                                    <path d="M2 18c2-2 4-2 6 0s4 2 6 0 4-2 6 0" />
+                                </svg>
+                                <span>Waves</span>
+                            </button>
+                            <button class="segment-btn" data-set-pattern="none">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
+                                </svg>
+                                <span>None</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
 

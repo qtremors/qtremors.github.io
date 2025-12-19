@@ -15,7 +15,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Global function to show toast from anywhere (extras.js, project.js, etc.)
   window.showToast = (message, duration = 3000) => {
-    if (!toastElement) return;
+    if (!toastElement) {
+      console.warn('showToast: #toast element not found in DOM');
+      return;
+    }
 
     // Clear existing timeout to handle rapid clicks
     if (toastTimeout) clearTimeout(toastTimeout);
@@ -36,10 +39,16 @@ document.addEventListener('DOMContentLoaded', function () {
   const openBtn = document.getElementById('open-settings-btn');
   const closeBtn = document.getElementById('close-settings-btn');
 
+  let lastFocusedElement = null;
+
   if (openBtn) {
     openBtn.addEventListener('click', () => {
+      lastFocusedElement = document.activeElement;
       modal.classList.add('open');
       modal.setAttribute('aria-hidden', 'false');
+      // Focus first focusable element in modal
+      const firstFocusable = modal.querySelector('button, [tabindex]:not([tabindex="-1"])');
+      if (firstFocusable) firstFocusable.focus();
     });
   }
 
@@ -47,6 +56,8 @@ document.addEventListener('DOMContentLoaded', function () {
     if (modal) {
       modal.classList.remove('open');
       modal.setAttribute('aria-hidden', 'true');
+      // Return focus to element that opened the modal
+      if (lastFocusedElement) lastFocusedElement.focus();
     }
   };
 
@@ -55,7 +66,50 @@ document.addEventListener('DOMContentLoaded', function () {
     modal.addEventListener('click', (e) => {
       if (e.target === modal) closeModal();
     });
+
+    // Escape key closes modal
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) {
+        closeModal();
+      }
+    });
+
+    // Focus trap - Tab cycles within modal
+    modal.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab') return;
+
+      const focusables = modal.querySelectorAll('button, [tabindex]:not([tabindex="-1"])');
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
   }
+
+  // Tab Switching Logic
+  const modalTabs = document.querySelectorAll('.modal-tab');
+  const tabPanels = document.querySelectorAll('.tab-panel');
+
+  modalTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const targetTab = tab.dataset.tab;
+
+      // Update tab buttons
+      modalTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      // Update panels
+      tabPanels.forEach(panel => {
+        panel.classList.toggle('active', panel.id === `panel-${targetTab}`);
+      });
+    });
+  });
 
 
   /* ==========================================================================
@@ -63,10 +117,11 @@ document.addEventListener('DOMContentLoaded', function () {
      ========================================================================== */
 
   const state = {
-    theme: localStorage.getItem('style_mode') || 'oled',
+    theme: localStorage.getItem('style_mode') || 'md',
     effect: localStorage.getItem('effect_mode') || 'none',
     mode: localStorage.getItem('theme_pref') || 'system',
-    spotlight: localStorage.getItem('spotlight_mode') || 'off'
+    spotlight: localStorage.getItem('spotlight_mode') || 'off',
+    pattern: localStorage.getItem('pattern_mode') || 'none'
   };
 
   const sheets = {
@@ -79,6 +134,11 @@ document.addEventListener('DOMContentLoaded', function () {
       fog: document.getElementById('effect-fog'),
       glass: document.getElementById('effect-glass')
     },
+    patterns: {
+      dots: document.getElementById('pattern-dots'),
+      grid: document.getElementById('pattern-grid'),
+      waves: document.getElementById('pattern-waves')
+    },
     spotlight: document.getElementById('effect-spotlight')
   };
 
@@ -87,6 +147,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const themeBtns = document.querySelectorAll('[data-set-theme]');
   const effectBtns = document.querySelectorAll('[data-set-effect]');
   const spotlightBtns = document.querySelectorAll('[data-set-spotlight]');
+  const patternBtns = document.querySelectorAll('[data-set-pattern]');
 
 
   const applyAppearance = () => {
@@ -112,7 +173,23 @@ document.addEventListener('DOMContentLoaded', function () {
       sheets.spotlight.disabled = (state.spotlight === 'off');
     }
 
-    // D. Color Mode
+    // D. Hero Background Patterns
+    if (sheets.patterns.dots) {
+      Object.values(sheets.patterns).forEach(p => { if (p) p.disabled = true; });
+      if (state.pattern !== 'none') {
+        const activePattern = sheets.patterns[state.pattern];
+        if (activePattern) activePattern.disabled = false;
+      }
+      // Force repaint to restart CSS animations
+      const hero = document.querySelector('.hero');
+      if (hero) {
+        hero.style.animation = 'none';
+        hero.offsetHeight; // Trigger reflow
+        hero.style.animation = '';
+      }
+    }
+
+    // E. Color Mode
     let effectiveMode = state.mode;
     if (state.mode === 'system') {
       const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -127,6 +204,7 @@ document.addEventListener('DOMContentLoaded', function () {
     localStorage.setItem('effect_mode', state.effect);
     localStorage.setItem('theme_pref', state.mode);
     localStorage.setItem('spotlight_mode', state.spotlight);
+    localStorage.setItem('pattern_mode', state.pattern);
   };
 
 
@@ -141,6 +219,7 @@ document.addEventListener('DOMContentLoaded', function () {
     updateGroup(themeBtns, state.theme, 'setTheme');
     updateGroup(effectBtns, state.effect, 'setEffect');
     updateGroup(spotlightBtns, state.spotlight, 'setSpotlight');
+    updateGroup(patternBtns, state.pattern, 'setPattern');
   };
 
 
@@ -148,12 +227,26 @@ document.addEventListener('DOMContentLoaded', function () {
   modeBtns.forEach(btn => btn.addEventListener('click', () => { state.mode = btn.dataset.setMode; applyAppearance(); }));
   themeBtns.forEach(btn => btn.addEventListener('click', () => { state.theme = btn.dataset.setTheme; applyAppearance(); }));
   effectBtns.forEach(btn => btn.addEventListener('click', () => { state.effect = btn.dataset.setEffect; applyAppearance(); }));
+  patternBtns.forEach(btn => btn.addEventListener('click', () => { state.pattern = btn.dataset.setPattern; applyAppearance(); }));
 
-  // Spotlight Listener
+  // Spotlight Listener (supports both buttons and toggle switch)
   spotlightBtns.forEach(btn => btn.addEventListener('click', () => {
-    state.spotlight = btn.dataset.setSpotlight;
+    const action = btn.dataset.setSpotlight;
+    if (action === 'toggle') {
+      // Toggle switch behavior
+      state.spotlight = state.spotlight === 'on' ? 'off' : 'on';
+      btn.classList.toggle('on', state.spotlight === 'on');
+    } else {
+      state.spotlight = action;
+    }
     applyAppearance();
   }));
+
+  // Initialize toggle switch state on load
+  const spotlightToggle = document.querySelector('.toggle-switch[data-set-spotlight="toggle"]');
+  if (spotlightToggle && state.spotlight === 'on') {
+    spotlightToggle.classList.add('on');
+  }
 
   const themeToggleButton = document.getElementById('theme-toggle');
   if (themeToggleButton) {

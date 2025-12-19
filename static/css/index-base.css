@@ -165,6 +165,11 @@ section {
     color: #FFFFFF;
 }
 
+.tech-threejs {
+    background-color: #049EF4;
+    color: #000000;
+}
+
 /* --- Backend Frameworks --- */
 .tech-django {
     background-color: #092E20;

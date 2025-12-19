@@ -100,8 +100,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const linksHtml = project.links.map(link => `<a href="${link.url}" target="_blank" rel="noopener noreferrer" class="${link.class}">${link.text} &rarr;</a>`).join('');
 
     return `
-          <article class="portfolio-item fade-in ${dynamicClass} ${statusClass}">
-              <a href="${detailUrl}" class="project-card-link" style="display:block; cursor:pointer;">
+          <article class="portfolio-item fade-in ${dynamicClass} ${statusClass}" data-href="${detailUrl}" style="cursor: pointer;">
+              <a href="${detailUrl}" class="project-card-link" style="display:block;">
                   <div class="img-wrapper" style="position: relative; overflow: hidden;">
                       ${statusBadge}
                       <img src="${project.image}" alt="${project.title} Preview" loading="lazy" style="width: 100%; display: block;">
@@ -121,14 +121,44 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!portfolioGrid) return;
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = htmlString;
-    portfolioGrid.insertBefore(tempDiv.firstElementChild, githubCard);
+    if (githubCard) {
+      portfolioGrid.insertBefore(tempDiv.firstElementChild, githubCard);
+    } else {
+      portfolioGrid.appendChild(tempDiv.firstElementChild);
+    }
   };
+
+  // Create skeleton loader card HTML
+  const createSkeletonCard = () => `
+    <article class="portfolio-item skeleton-card">
+      <div class="skeleton skeleton-image"></div>
+      <div class="portfolio-content">
+        <div class="skeleton skeleton-title"></div>
+        <div class="skeleton skeleton-text"></div>
+        <div class="skeleton skeleton-text short"></div>
+        <div class="skeleton-badges">
+          <div class="skeleton skeleton-badge"></div>
+          <div class="skeleton skeleton-badge"></div>
+          <div class="skeleton skeleton-badge"></div>
+        </div>
+      </div>
+    </article>
+  `;
 
   const loadProjects = async () => {
     if (!portfolioGrid) return;
+
+    // Show skeleton loaders while fetching
+    for (let i = 0; i < 3; i++) {
+      insertBeforeGithub(createSkeletonCard());
+    }
+
     try {
       const response = await fetch('data/projects.json');
       allProjects = await response.json();
+
+      // Remove skeleton loaders
+      document.querySelectorAll('.skeleton-card').forEach(el => el.remove());
 
       // 2. Logic: Show ALL if expanded, otherwise just show INITIAL count
       const countToShow = isExpanded ? allProjects.length : INITIAL_SHOW_COUNT;
@@ -153,7 +183,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (githubActions) githubActions.prepend(loadBtn);
       }
-    } catch (error) { console.error('Error loading projects:', error); }
+    } catch (error) {
+      console.error('Error loading projects:', error);
+      // Show user-friendly error message
+      const errorCard = document.createElement('div');
+      errorCard.className = 'portfolio-item';
+      errorCard.innerHTML = `
+        <div class="portfolio-content" style="text-align: center; padding: 2rem;">
+          <h3 style="color: var(--md-error, #f44336);">⚠️ Failed to load projects</h3>
+          <p>Please check your connection and refresh the page.</p>
+        </div>
+      `;
+      if (githubCard) {
+        portfolioGrid.insertBefore(errorCard, githubCard);
+      } else {
+        portfolioGrid.appendChild(errorCard);
+      }
+    }
   };
 
   if (githubActions) {
@@ -183,4 +229,17 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
   loadProjects();
+
+  // Make entire portfolio card clickable (except external links)
+  if (portfolioGrid) {
+    portfolioGrid.addEventListener('click', (e) => {
+      // Don't handle if clicking an external link
+      if (e.target.closest('.portfolio-links a')) return;
+
+      const card = e.target.closest('.portfolio-item[data-href]');
+      if (card) {
+        window.location.href = card.dataset.href;
+      }
+    });
+  }
 });
