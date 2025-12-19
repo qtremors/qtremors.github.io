@@ -75,7 +75,7 @@
     }
 }
 
-/* Jiggle animation for the potfolio titles */
+/* Jiggle animation for the portfolio titles */
 @keyframes jigglet {
     0% {
         transform: translateY(-2px) rotate(-1deg);

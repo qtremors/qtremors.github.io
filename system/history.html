@@ -14,35 +14,44 @@
 
     <link rel="stylesheet" href="../static/themes/md.css" id="theme-md" disabled>
     <link rel="stylesheet" href="../static/themes/md3.css" id="theme-md3" disabled>
-    <link rel="stylesheet" href="../static/themes/oled.css" id="theme-oled">
+    <link rel="stylesheet" href="../static/themes/oled.css" id="theme-oled" disabled>
 
     <link rel="stylesheet" href="../static/effects/fog.css" id="effect-fog" disabled>
     <link rel="stylesheet" href="../static/effects/glass.css" id="effect-glass" disabled>
     <link rel="stylesheet" href="../static/effects/spotlight.css" id="effect-spotlight" disabled>
 
+    <!-- Appearance Init - MUST be after ALL theme/effect links to prevent flash on refresh -->
     <script>
         (function () {
             try {
-                const savedMode = localStorage.getItem('style_mode') || 'oled';
+                // 1. Visual Theme (md, md3, oled)
+                var theme = localStorage.getItem('style_mode') || 'md';
+                var themes = ['md', 'md3', 'oled'];
+                themes.forEach(function (t) {
+                    var el = document.getElementById('theme-' + t);
+                    if (el) el.disabled = (t !== theme);
+                });
+                document.documentElement.setAttribute('data-style-mode', theme);
 
-                // Themes
-                document.getElementById('theme-md').disabled = true;
-                document.getElementById('theme-md3').disabled = true;
-                document.getElementById('theme-oled').disabled = true;
+                // 2. Color Mode (system, light, dark)
+                var pref = localStorage.getItem('theme_pref') || 'system';
+                var mode = pref === 'system'
+                    ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+                    : pref;
+                document.documentElement.setAttribute('data-theme', mode);
 
-                if (savedMode === 'md') document.getElementById('theme-md').disabled = false;
-                else if (savedMode === 'md3') document.getElementById('theme-md3').disabled = false;
-                else document.getElementById('theme-oled').disabled = false;
+                // 3. Scene Effect (fog, glass, none)
+                var effect = localStorage.getItem('effect_mode') || 'none';
+                var effects = ['fog', 'glass'];
+                effects.forEach(function (e) {
+                    var el = document.getElementById('effect-' + e);
+                    if (el) el.disabled = (e !== effect);
+                });
 
-                // Effects
-                const savedEffect = localStorage.getItem('effect_mode') || 'none';
-                const savedSpotlight = localStorage.getItem('spotlight_mode') || 'off';
-
-                document.getElementById('effect-fog').disabled = (savedEffect !== 'fog');
-                document.getElementById('effect-glass').disabled = (savedEffect !== 'glass');
-                document.getElementById('effect-spotlight').disabled = (savedSpotlight === 'off');
-
-                document.documentElement.setAttribute('data-style-mode', savedMode);
+                // 4. Spotlight Effect (on, off)
+                var spotlight = localStorage.getItem('spotlight_mode') || 'off';
+                var spotlightEl = document.getElementById('effect-spotlight');
+                if (spotlightEl) spotlightEl.disabled = (spotlight !== 'on');
             } catch (e) { }
         })();
     </script>
@@ -306,7 +315,8 @@
                     <h3>The Architecture Overhaul</h3>
                     <ul class="commit-list">
                         <li><strong>Decoupled JS:</strong> Split monolithic logic into <code>home.js</code>,
-                            <code>project.js</code>, and <code>extras.js</code>.</li>
+                            <code>project.js</code>, and <code>extras.js</code>.
+                        </li>
                         <li><strong>Smart Terminal:</strong> Added interactive OS-aware terminal widget to project
                             pages.</li>
                         <li><strong>Universal Fog:</strong> Implemented context-aware background blending system.</li>

@@ -137,7 +137,7 @@ function renderProjectPage(project, allProjects) {
     };
 
     // Prefer saved theme, fallback to System OS
-    let currentTheme = localStorage.getItem('terminal-theme') || getSystemOS();
+    let currentTheme = localStorage.getItem('terminal_theme') || getSystemOS();
 
     const renderTheme = (osName) => {
       // Update Buttons State
@@ -212,20 +212,9 @@ function renderProjectPage(project, allProjects) {
     switcherBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const selectedOS = btn.dataset.os;
-
-        if (selectedOS === 'Auto') {
-          // Clear localStorage and reset to system-detected OS
-          localStorage.removeItem('terminal-theme');
-          currentTheme = getSystemOS();
-          renderTheme(currentTheme);
-          // Mark Auto button as active instead of OS button
-          switcherBtns.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-        } else {
-          currentTheme = selectedOS;
-          localStorage.setItem('terminal-theme', selectedOS); // Persist user choice
-          renderTheme(selectedOS);
-        }
+        currentTheme = selectedOS;
+        localStorage.setItem('terminal_theme', selectedOS);
+        renderTheme(selectedOS);
       });
     });
 
