@@ -1,13 +1,13 @@
 # Project Tasks & Issues
 
-> **Last Updated:** December 19, 2025  
-> **Portfolio Version:** v2.5.0
+> **Last Updated:** December 22, 2025  
+> **Portfolio Version:** v2.5.1
 
 ---
 
 ## ✅ No Open Tasks
 
-All tasks completed for v2.5.0 release.
+All tasks completed for v2.5.1 release.
 
 ---
 
