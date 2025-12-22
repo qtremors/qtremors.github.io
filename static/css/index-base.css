@@ -192,6 +192,11 @@ section {
     color: #FFFFFF;
 }
 
+.tech-prisma {
+    background-color: #2D3748;
+    color: #FFFFFF;
+}
+
 /* --- AI/ML & Data --- */
 .tech-tensorflow {
     background-color: #FF6F00;
