@@ -57,7 +57,7 @@
     "links": [
       {
         "text": "Live Demo",
-        "url": "https://qtremors.github.io/repo-nav",
+        "url": "https://qtremors.github.io/scrap/projects/demo-git-nexus/",
         "class": "link-primary"
       },
       {
@@ -493,24 +493,28 @@
     ]
   },
   {
-    "id": "nexus",
-    "title": "Nexus",
-    "image": "assets/nexus-preview.png",
-    "description": "A space-themed portfolio landing page built with Next.js, featuring an interactive tsParticles starfield, a central black hole video loop, and sequenced Framer Motion animations for spaceship-styled project cards.",
-    "longDescription": "Nexus is a creative portfolio gateway designed to look like a space station command interface. It features a multi-layered background with an interactive starfield (tsParticles) that reacts to mouse movement, a central black hole video loop, a particle absorber that slowly consumes stars, and a distant planet surface image for depth.\n\nBuilt with Next.js App Router and TypeScript, it demonstrates advanced frontend animation techniques including sequenced Framer Motion entrance/exit animations for project cards styled as spaceships, a Voyager-style probe that traverses the screen via CSS offset-path, and component-scoped styling with CSS Modules. The dashboard page uses Drizzle ORM with Postgres for dynamic project data.",
+    "id": "tremors",
+    "title": "Tremors",
+    "image": "assets/tremors-preview.png",
+    "description": "A multi-mode portfolio website with 5 distinct viewing modes, GitHub integration, AI-generated newspaper content, and secret admin controls — built with Next.js 16, React 19, TypeScript, Tailwind CSS 4, and Prisma.",
+    "longDescription": "Tremors Portfolio is a personal portfolio website with multiple innovative viewing modes: Default (modern card-based layout), Terminal (interactive CLI with 30+ commands), Paper (document/resume-style with sidebar TOC), Newspaper (editorial magazine-style with AI-generated content), and Nexus (interactive space environment with animated elements).\n\nKey features include GitHub API integration that fetches repositories, user profile, and activity with database caching for fast loading. The AI Newspaper mode uses Google Gemini to generate hilarious tabloid-style headlines and articles with an archive system. A secret admin system accessible via the terminal enables inline project controls, drag-and-drop reordering, visibility toggles, and content regeneration. Security features include HMAC-signed session tokens, PBKDF2 password hashing, rate limiting, and CSRF protection.",
     "features": [
-      "Interactive Starfield (tsParticles)",
-      "Sequenced Framer Motion Animations",
-      "Multi-layer Parallax Backgrounds",
-      "Dynamic Dashboard for Project Links"
+      "5 Viewing Modes (Default, Terminal, Paper, Newspaper, Nexus)",
+      "GitHub API Integration with Database Caching",
+      "AI Newspaper Generation (Google Gemini)",
+      "Secret Admin Mode with Inline Controls",
+      "30+ Terminal Commands with Theme Switching",
+      "Secure Auth (HMAC, PBKDF2, Rate Limiting)"
     ],
-    "installation": "git clone https://github.com/qtremors/nexus.git\ncd nexus\nnpm install\nnpm run dev",
+    "installation": "git clone https://github.com/qtremors/tremors.git\ncd tremors/app\nnpm install\ncp .env.example .env.local\n# Edit .env.local with your values\nnpx prisma generate\nnpx prisma db push\nnpm run dev",
     "badges": [
       "tech-nextjs",
       "tech-react",
+      "tech-ts",
+      "tech-tailwind",
+      "tech-prisma",
       "tech-framermotion",
-      "tech-tsparticles",
-      "tech-css"
+      "tech-tsparticles"
     ],
     "links": [
       {
@@ -520,7 +524,7 @@
       },
       {
         "text": "View on GitHub",
-        "url": "https://github.com/qtremors/nexus",
+        "url": "https://github.com/qtremors/tremors",
         "class": "link-secondary"
       }
     ]

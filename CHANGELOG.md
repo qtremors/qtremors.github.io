@@ -1,5 +1,20 @@
 # Changelog
 
+## [v2.5.1] - 22-12-2025
+
+### 🔄 **Project Updates**
+
+- **Tremors Portfolio:** Replaced "Nexus" project with the new integrated "Tremors Portfolio" — a multi-mode portfolio website with 5 viewing modes (Default, Terminal, Paper, Newspaper, Nexus), GitHub API integration, AI newspaper generation, and secret admin controls.
+- **New Tech Badge:** Added `tech-prisma` badge (CSS color + JS label mapping) for Prisma ORM.
+
+### 📦 **Data Synchronization**
+
+- **Sitemap Cleanup:** Removed invalid `tremors-music-app` URL, added missing `cosmos` and `gitmig` projects, updated all dates to 2025-12-22.
+- **TUI Sync:** Updated `tui.html` to replace "Nexus" with "Tremors Portfolio" including new tech badges (TypeScript, Tailwind, Prisma).
+- **GitNexus Demo Link:** Updated live demo URL in TUI to point to correct scrap projects demo.
+
+---
+
 ## [v2.5.0] - 19-12-2025
 
 ### 🆕 **New Projects & Content**

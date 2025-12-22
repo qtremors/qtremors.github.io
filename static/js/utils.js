@@ -36,6 +36,7 @@ window.getBadgeLabel = (badgeClass) => {
     'tech-rust': 'Rust',
     'tech-tauri': 'Tauri',
     'tech-threejs': 'Three.js',
+    'tech-prisma': 'Prisma',
   };
   return labels[badgeClass] || badgeClass.replace('tech-', '').charAt(0).toUpperCase() + badgeClass.replace('tech-', '').slice(1);
 };
