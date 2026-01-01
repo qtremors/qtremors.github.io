@@ -3,7 +3,7 @@
    (Radial gradient tracking mouse)
    ========================================= */
 
-/* 1. Hero Spotlight */
+/* Hero Spotlight */
 .hero::after {
     content: '';
     position: absolute;
@@ -18,7 +18,7 @@
     pointer-events: none;
 }
 
-/* 2. Skill Card Spotlight */
+/* Skill Card Spotlight */
 .skill-card::before {
     content: '';
     position: absolute;

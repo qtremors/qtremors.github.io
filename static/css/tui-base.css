@@ -355,8 +355,13 @@ header {
 /* Button Swapping Logic */
 
 /* By default, hide the 'Hide' button, show the 'Show' button */
-.btn-hide {display: none;}
-.btn-show {display: inline-flex;}
+.btn-hide {
+    display: none;
+}
+
+.btn-show {
+    display: inline-flex;
+}
 
 /* When target is active, Hide the 'Show' button */
 #hidden-projects:target~.portfolio-item .btn-show {

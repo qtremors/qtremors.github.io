@@ -1,20 +1,6 @@
 # Project Tasks & Issues
 
-> **Last Updated:** December 22, 2025  
-> **Portfolio Version:** v2.5.1
+> **Last Updated:** 2026-01-01
+> **Portfolio Version:** v2.5.2
 
 ---
-
-## ✅ No Open Tasks
-
-All tasks completed for v2.5.1 release.
-
----
-
-## 📖 Development Guide
-
-See `DEVELOPMENT.md` for:
-- Theme system pattern
-- Adding new projects
-- Adding new tech badges
-- Page consistency rules
