@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. GLOBAL RESET & TYPOGRAPHY
+   GLOBAL RESET & TYPOGRAPHY
    ========================================================================== */
 html {
     scroll-behavior: smooth;
@@ -21,7 +21,6 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
     margin: 0;
     padding-bottom: 90px;
-    /* Mobile Nav Space */
 }
 
 h1,
@@ -45,14 +44,13 @@ section {
 }
 
 /* ==========================================================================
-   2. RESPONSIVE CONTAINER & SCALING
+   RESPONSIVE CONTAINER & SCALING
    ========================================================================== */
 .container {
     width: 100%;
     margin: 0 auto;
     padding: 0 1.5rem;
     max-width: 1200px;
-    /* Default Laptop */
 }
 
 /* 1440p Screens */
@@ -95,12 +93,10 @@ section {
     body {
         padding-bottom: 0;
     }
-
-    /* Remove Mobile Nav Space */
 }
 
 /* ==========================================================================
-   3. TECH BADGES - Universal Colors (Same across all themes)
+   TECH BADGES - Universal Colors
    ========================================================================== */
 
 /* --- Languages --- */
@@ -245,7 +241,7 @@ section {
 }
 
 /* ==========================================================================
-   4. UTILITIES: NO-SCRIPT FALLBACK
+   UTILITIES: NO-SCRIPT FALLBACK
    ========================================================================== */
 .no-js-overlay {
     position: fixed;

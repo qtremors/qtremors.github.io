@@ -1,24 +1,20 @@
 document.addEventListener('DOMContentLoaded', async () => {
 
-  // Parse URL Parameters to get Project ID
   const params = new URLSearchParams(window.location.search);
   const projectId = params.get('id');
 
 
-  // If no ID is in the URL, redirect back to home
   if (!projectId) {
     window.location.href = 'index.html';
     return;
   }
 
-  // Fetch Project Data from JSON
+  /* --- FETCH PROJECT DATA --- */
   try {
     const response = await fetch('data/projects.json');
     if (!response.ok) throw new Error('Failed to load project data');
 
     const allProjects = await response.json();
-
-    // Find the specific project matching the ID
     const project = allProjects.find(p => p.id === projectId);
 
     if (!project) {
@@ -33,7 +29,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       return;
     }
 
-    // Render the Page (Pass allProjects for navigation logic)
     renderProjectPage(project, allProjects);
 
   } catch (error) {
@@ -49,12 +44,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 function renderProjectPage(project, allProjects) {
-  // --- Page Metadata ---
+  /* --- PAGE METADATA --- */
   document.title = `${project.title} | Tremors`;
   document.getElementById('p-title').innerText = project.title;
   document.getElementById('p-id-label').innerText = project.id ? project.id.toUpperCase() : "PROJECT DETAILS";
 
-  // --- SEO: Dynamic Canonical Tag ---
+  /* --- SEO --- */
   let canonicalLink = document.querySelector('link[rel="canonical"]');
   if (!canonicalLink) {
     canonicalLink = document.createElement('link');
@@ -63,31 +58,27 @@ function renderProjectPage(project, allProjects) {
   }
   canonicalLink.href = `${window.location.origin}/project.html?id=${project.id}`;
 
-  // --- Banner Image ---
+  /* --- BANNER IMAGE --- */
   const banner = document.getElementById('p-banner');
   if (project.image) {
     banner.src = project.image;
     banner.alt = `${project.title} Banner`;
 
-    // Error Handler: If image is 404/broken, hide the container
     banner.onerror = function () {
       document.querySelector('.project-banner-wrapper').style.display = 'none';
     };
   } else {
-    // Hide the banner container if no image exists in JSON
     document.querySelector('.project-banner-wrapper').style.display = 'none';
   }
 
-  // --- Description ---
-  // Prefer longDescription if available, fallback to standard description
+  /* --- DESCRIPTION --- */
   const descEl = document.getElementById('p-description');
   descEl.textContent = project.longDescription || project.description;
 
-  // --- Features List ---
+  /* --- FEATURES LIST --- */
   const featuresList = document.getElementById('p-features');
   const featuresSection = document.getElementById('section-features');
 
-  // Clear previous content
   featuresList.innerHTML = '';
 
   if (project.features && project.features.length > 0) {
@@ -101,7 +92,7 @@ function renderProjectPage(project, allProjects) {
     featuresSection.style.display = 'none';
   }
 
-  // --- Installation / Usage Code Block ---
+  /* --- INSTALLATION / USAGE --- */
   const installSection = document.getElementById('section-installation');
   const wrapper = document.querySelector('.code-block-wrapper');
   const switcherBtns = document.querySelectorAll('.os-btn');
@@ -109,26 +100,23 @@ function renderProjectPage(project, allProjects) {
   if (project.installation) {
     installSection.style.display = 'block';
 
-    // Initial Content Render (The code itself doesn't change between themes)
-    // We render the structure once, then update the header dynamically
     wrapper.innerHTML = `
             <div class="code-block-header" id="terminal-header">
                 </div>
             <div class="code-block" id="p-installation"></div>
         `;
 
-    // Inject Syntax Highlighted Code
     const installBlock = document.getElementById('p-installation');
     const lines = project.installation.split('\n');
     installBlock.innerHTML = lines.map(line => {
+      const safeLine = window.escapeHtml(line);
       const trimmed = line.trim();
-      if (trimmed.startsWith('#')) return `<span class="cmd-line cmd-comment">${line}</span>`;
+      if (trimmed.startsWith('#')) return `<span class="cmd-line cmd-comment">${safeLine}</span>`;
       if (trimmed === '') return `<span class="cmd-line"></span>`;
-      return `<span class="cmd-line cmd-command">${line}</span>`;
+      return `<span class="cmd-line cmd-command">${safeLine}</span>`;
     }).join('');
 
 
-    // Theme Logic
     const getSystemOS = () => {
       const userAgent = window.navigator.userAgent;
       if (userAgent.includes("Win")) return "Windows";
@@ -136,17 +124,14 @@ function renderProjectPage(project, allProjects) {
       return "MacOS";
     };
 
-    // Prefer saved theme, fallback to System OS
     let currentTheme = localStorage.getItem('terminal_theme') || getSystemOS();
 
     const renderTheme = (osName) => {
-      // Update Buttons State
       switcherBtns.forEach(btn => {
         if (btn.dataset.os === osName) btn.classList.add('active');
         else btn.classList.remove('active');
       });
 
-      // Define HTML & Class based on OS
       let controlsHTML = '';
       let themeClass = '';
 
@@ -176,10 +161,8 @@ function renderProjectPage(project, allProjects) {
                     </div>`;
       }
 
-      // Apply Class to Wrapper
       wrapper.className = 'code-block-wrapper ' + themeClass;
 
-      // Inject Header Content (Controls + Copy Button)
       const header = document.getElementById('terminal-header');
       header.innerHTML = `
                 ${controlsHTML}
@@ -205,10 +188,8 @@ function renderProjectPage(project, allProjects) {
       });
     };
 
-    // Initialize
     renderTheme(currentTheme);
 
-    // Add Click Listeners to Switcher
     switcherBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const selectedOS = btn.dataset.os;
@@ -222,9 +203,9 @@ function renderProjectPage(project, allProjects) {
     installSection.style.display = 'none';
   }
 
-  // --- Dynamic Links Sidebar ---
+  /* --- DYNAMIC LINKS SIDEBAR --- */
   const linksContainer = document.getElementById('p-links');
-  linksContainer.innerHTML = ''; // Clear existing
+  linksContainer.innerHTML = '';
 
   if (project.links && project.links.length > 0) {
     project.links.forEach(link => {
@@ -234,10 +215,8 @@ function renderProjectPage(project, allProjects) {
       a.target = '_blank';
       a.rel = 'noopener noreferrer';
 
-      // Logic: Check if it's a GitHub link to swap the icon
       const isGithub = link.text.toLowerCase().includes('github') || link.url.includes('github.com');
 
-      // SVG Icons
       const githubIcon = `
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.197-6.091 8.197-11.387C24 5.373 12 0 12 0Z"/>
@@ -252,11 +231,10 @@ function renderProjectPage(project, allProjects) {
 
       const iconSvg = isGithub ? githubIcon : webIcon;
 
-      // Build the HTML structure (Icon + Text on left, Arrow on right)
       a.innerHTML = `
                 <div class="btn-left-group">
                     ${iconSvg}
-                    <span>${link.text}</span>
+                    <span>${window.escapeHtml(link.text)}</span>
                 </div>
                 <span class="btn-arrow">↗</span>
             `;
@@ -265,32 +243,25 @@ function renderProjectPage(project, allProjects) {
     });
   }
 
-  // --- Technologies Badges ---
+  /* --- TECHNOLOGIES BADGES --- */
   const tagsContainer = document.getElementById('p-tags');
-  tagsContainer.innerHTML = ''; // Clear existing
+  tagsContainer.innerHTML = '';
 
   if (project.badges && project.badges.length > 0) {
-
-    // Use shared getBadgeLabel from utils.js (window.getBadgeLabel)
-
     project.badges.forEach(badge => {
       const span = document.createElement('span');
       span.textContent = window.getBadgeLabel(badge);
-
-      // Apply sidebar badge styling and tech color class
       span.classList.add('sidebar-badge', badge);
-
       tagsContainer.appendChild(span);
     });
   }
 
-  // --- Footer Navigation (Previous & Next) ---
+  /* --- FOOTER NAVIGATION --- */
   if (allProjects && allProjects.length > 0) {
     const footerNav = document.getElementById('project-footer-nav');
     const currentIndex = allProjects.findIndex(p => p.id === project.id);
     const total = allProjects.length;
 
-    // Determine Previous & Next Projects (Looping)
     let prevProject = project.related_prev
       ? allProjects.find(p => p.id === project.related_prev)
       : allProjects[(currentIndex - 1 + total) % total];
@@ -299,14 +270,11 @@ function renderProjectPage(project, allProjects) {
       ? allProjects.find(p => p.id === project.related_next)
       : allProjects[(currentIndex + 1) % total];
 
-    // Helper to generate the HTML for footer card
     const createNavCard = (proj, directionClass) => {
-      // Truncate description to ~80 characters
       const shortDesc = proj.description.length > 80
         ? proj.description.substring(0, 80) + '...'
         : proj.description;
 
-      // Generate first 3 badges (safely handles missing badges)
       const badgeHtml = (proj.badges || []).slice(0, 3).map(b => {
         return `<span class="mini-badge ${b}"></span>`;
       }).join('');
@@ -320,14 +288,13 @@ function renderProjectPage(project, allProjects) {
                             <div class="nav-badges">${badgeHtml}</div>
                         </div>
 
-                        <h3 class="nav-title">${proj.title}</h3>
-                        <p class="nav-desc">${shortDesc}</p>
+                        <h3 class="nav-title">${window.escapeHtml(proj.title)}</h3>
+                        <p class="nav-desc">${window.escapeHtml(shortDesc)}</p>
                     </div>
                 </a>
             `;
     };
 
-    // Inject HTML
     if (footerNav) {
       footerNav.innerHTML = `
                 ${createNavCard(prevProject, 'prev-card')}

@@ -582,7 +582,7 @@
         width: 100%;
     }
 
-    /* 2. Banner: Controlled Height */
+    /* Banner: Controlled Height */
     .project-banner-wrapper {
         order: 1;
         width: 100%;
@@ -593,7 +593,7 @@
         max-height: 250px;
     }
 
-    /* 3. Sidebar: Fix "Offscreen" Issue */
+    /* Sidebar: Fix "Offscreen" Issue */
     .sidebar-card {
         order: 2;
         width: 100%;
@@ -602,7 +602,7 @@
         margin: 0;
     }
 
-    /* 4. Bottom Content */
+    /* Bottom Content */
     .project-bottom-row {
         order: 3;
     }
