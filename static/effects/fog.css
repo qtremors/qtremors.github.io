@@ -3,12 +3,12 @@
    (Soft blends between sections)
    ========================================= */
 
-/* 1. Context for positioning */
+/* Context for positioning */
 section {
     position: relative;
 }
 
-/* 2. The Shared Fog Element */
+/* The Shared Fog Element */
 section::before,
 .hero::before {
     content: '';
@@ -17,24 +17,20 @@ section::before,
     left: 0;
     width: 100%;
     height: 50px;
-    /* FOG RANGE */
     z-index: 2;
     pointer-events: none;
 }
 
-/* 3. Logic: Fade INTO the color of the NEXT section */
+/* Logic: Fade INTO the color of the NEXT section */
 
-/* Group A: These sit on top of "Surface Variant" (Grey) sections.
-   (Hero -> About) | (Skills -> Portfolio) | (Contact -> Footer) */
+/* Group A: Hero -> About | Skills -> Portfolio | Contact -> Footer */
 .hero::before,
 #skills::before,
 #contact::before {
-    /* Uses 'transparent' to color */
     background: linear-gradient(to bottom, transparent, var(--md-surface-variant));
 }
 
-/* Group B: These sit on top of "Background" (Black) sections.
-   (About -> Skills) | (Portfolio -> Contact) */
+/* Group B: About -> Skills | Portfolio -> Contact */
 #about::before,
 #portfolio::before {
     background: linear-gradient(to bottom, transparent, var(--md-background));
