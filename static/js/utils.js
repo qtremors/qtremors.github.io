@@ -3,11 +3,7 @@
    (Shared Utilities - Badge Labels, HTML Escaping, etc.)
    ========================================================================== */
 
-/**
- * Returns a human-readable label for a tech badge class name.
- * @param {string} badgeClass - The badge class (e.g., 'tech-python')
- * @returns {string} - Human-readable label (e.g., 'Python')
- */
+// Returns a human-readable label for a tech badge class name.
 window.getBadgeLabel = (badgeClass) => {
   const labels = {
     'tech-python': 'Python',
@@ -41,11 +37,7 @@ window.getBadgeLabel = (badgeClass) => {
   return labels[badgeClass] || badgeClass.replace('tech-', '').charAt(0).toUpperCase() + badgeClass.replace('tech-', '').slice(1);
 };
 
-/**
- * Escapes HTML entities to prevent XSS attacks.
- * @param {string} str - The string to escape
- * @returns {string} - Escaped string safe for HTML insertion
- */
+// Escapes HTML entities to prevent XSS attacks.
 window.escapeHtml = (str) => {
   const escapeMap = {
     '&': '&amp;',

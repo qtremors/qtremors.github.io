@@ -10,13 +10,13 @@
     --md-on-primary-container: #ffffff;
     --md-secondary: #a0a0a0;
     --md-on-secondary: #000000;
-    
+
     --md-background: #000000;
     --md-surface: #000000;
     --md-surface-variant: #121212;
     --md-on-surface: #ffffff;
     --md-on-surface-variant: #b0b0b0;
-    
+
     --md-outline: #333333;
     --md-shadow-color: rgba(255, 255, 255, 0.1);
     --theme-icon-shadow: #ffffff;
@@ -32,13 +32,13 @@ body[data-theme='light'] {
     --md-on-primary-container: #000000;
     --md-secondary: #5f6368;
     --md-on-secondary: #ffffff;
-    
+
     --md-background: #ffffff;
     --md-surface: #ffffff;
     --md-surface-variant: #f4f4f4;
     --md-on-surface: #000000;
     --md-on-surface-variant: #444444;
-    
+
     --md-outline: #000000;
     --md-shadow-color: rgba(0, 0, 0, 0.15);
     --theme-icon-shadow: #000000;
