@@ -13,34 +13,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (!hero) return;
 
-    // 1. Calculate Top Padding (Header Height)
     let topOffset = 100; // Default fallback
     if (topBar) {
       topOffset = topBar.offsetHeight;
     }
 
-    // 2. Calculate Bottom Padding (Distance from Dock to bottom of screen)
     let bottomOffset = 60; // Default fallback
     if (bottomNav) {
       const navStyle = window.getComputedStyle(bottomNav);
-      // Only account for the dock if it is actually visible
       if (navStyle.display !== 'none') {
         const navRect = bottomNav.getBoundingClientRect();
-        // Distance from top of dock to bottom of viewport + 20px buffer
         bottomOffset = (window.innerHeight - navRect.top) + 20;
       }
     }
 
-    // 3. Apply to CSS Variables
     hero.style.setProperty('--hero-pad-top', `${topOffset}px`);
     hero.style.setProperty('--hero-pad-bottom', `${bottomOffset}px`);
   };
 
-  // Run on load and resize
   window.addEventListener('resize', updateHeroSafeZones);
-  // Run immediately
   updateHeroSafeZones();
-  // Run again slightly later to ensure fonts/styles have settled
   setTimeout(updateHeroSafeZones, 100);
 
   /* --- TYPEWRITER --- */
@@ -82,10 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
   let allProjects = [];
   const INITIAL_SHOW_COUNT = 5;
 
-  // 1. Check Session Storage: Did the user previously expand the list?
   let isExpanded = sessionStorage.getItem('portfolio_expanded') === 'true';
-
-  // Use shared getBadgeLabel from utils.js (window.getBadgeLabel)
 
   const createProjectCard = (project, isDynamic = false) => {
     const dynamicClass = isDynamic ? 'dynamic-project' : '';
@@ -97,19 +86,19 @@ document.addEventListener('DOMContentLoaded', function () {
       : (isBeta ? '<div class="beta-badge">🧪 Beta</div>' : '');
     const detailUrl = project.id ? `project.html?id=${project.id}` : '#';
     const badgesHtml = project.badges.map(badge => `<span class="${badge}">${window.getBadgeLabel(badge)}</span>`).join('');
-    const linksHtml = project.links.map(link => `<a href="${link.url}" target="_blank" rel="noopener noreferrer" class="${link.class}">${link.text} &rarr;</a>`).join('');
+    const linksHtml = project.links.map(link => `<a href="${link.url}" target="_blank" rel="noopener noreferrer" class="${link.class}">${window.escapeHtml(link.text)} &rarr;</a>`).join('');
 
     return `
           <article class="portfolio-item fade-in ${dynamicClass} ${statusClass}" data-href="${detailUrl}" style="cursor: pointer;">
               <a href="${detailUrl}" class="project-card-link" style="display:block;">
                   <div class="img-wrapper" style="position: relative; overflow: hidden;">
                       ${statusBadge}
-                      <img src="${project.image}" alt="${project.title} Preview" loading="lazy" style="width: 100%; display: block;">
+                      <img src="${project.image}" alt="${window.escapeHtml(project.title)} Preview" loading="lazy" style="width: 100%; display: block;">
                   </div>
               </a>
               <div class="portfolio-content">
-                  <h3><a href="${detailUrl}" style="text-decoration:none; color:inherit;">${project.title}</a></h3>
-                  <p>${project.description}</p>
+                  <h3><a href="${detailUrl}" style="text-decoration:none; color:inherit;">${window.escapeHtml(project.title)}</a></h3>
+                  <p>${window.escapeHtml(project.description)}</p>
                   <div class="tech-badges">${badgesHtml}</div>
                   <div class="portfolio-links">${linksHtml}</div>
               </div>
@@ -128,7 +117,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   };
 
-  // Create skeleton loader card HTML
   const createSkeletonCard = () => `
     <article class="portfolio-item skeleton-card">
       <div class="skeleton skeleton-image"></div>
@@ -148,7 +136,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const loadProjects = async () => {
     if (!portfolioGrid) return;
 
-    // Show skeleton loaders while fetching
     for (let i = 0; i < 3; i++) {
       insertBeforeGithub(createSkeletonCard());
     }
@@ -157,14 +144,11 @@ document.addEventListener('DOMContentLoaded', function () {
       const response = await fetch('data/projects.json');
       allProjects = await response.json();
 
-      // Remove skeleton loaders
       document.querySelectorAll('.skeleton-card').forEach(el => el.remove());
 
-      // 2. Logic: Show ALL if expanded, otherwise just show INITIAL count
       const countToShow = isExpanded ? allProjects.length : INITIAL_SHOW_COUNT;
 
       allProjects.slice(0, countToShow).forEach((p, index) => {
-        // If index > initial count, mark it as 'dynamic' so we can collapse it later
         const isDynamic = index >= INITIAL_SHOW_COUNT;
         insertBeforeGithub(createProjectCard(p, isDynamic));
       });
@@ -174,7 +158,6 @@ document.addEventListener('DOMContentLoaded', function () {
         loadBtn.className = 'card-btn btn-load';
         loadBtn.id = 'card-toggle-trigger';
 
-        // 3. Logic: Set initial button text based on state
         if (isExpanded) {
           loadBtn.innerHTML = `<span class="btn-text">Show Less</span><span class="btn-icon">↑</span>`;
         } else {
@@ -185,7 +168,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     } catch (error) {
       console.error('Error loading projects:', error);
-      // Show user-friendly error message
       const errorCard = document.createElement('div');
       errorCard.className = 'portfolio-item';
       errorCard.innerHTML = `
@@ -210,19 +192,17 @@ document.addEventListener('DOMContentLoaded', function () {
         const btnIcon = btn.querySelector('.btn-icon');
 
         if (!isExpanded) {
-          // Expand Action
           allProjects.slice(INITIAL_SHOW_COUNT).forEach(p => insertBeforeGithub(createProjectCard(p, true)));
           btnText.textContent = "Show Less";
           btnIcon.textContent = "↑";
           isExpanded = true;
-          sessionStorage.setItem('portfolio_expanded', 'true'); // Save State
+          sessionStorage.setItem('portfolio_expanded', 'true');
         } else {
-          // Collapse Action
           document.querySelectorAll('.dynamic-project').forEach(card => card.remove());
           btnText.textContent = "Load More Projects";
           btnIcon.textContent = "↓";
           isExpanded = false;
-          sessionStorage.setItem('portfolio_expanded', 'false'); // Save State
+          sessionStorage.setItem('portfolio_expanded', 'false');
           githubCard.scrollIntoView({ behavior: 'smooth', block: 'end' });
         }
       }
@@ -230,10 +210,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   loadProjects();
 
-  // Make entire portfolio card clickable (except external links)
   if (portfolioGrid) {
     portfolioGrid.addEventListener('click', (e) => {
-      // Don't handle if clicking an external link
       if (e.target.closest('.portfolio-links a')) return;
 
       const card = e.target.closest('.portfolio-item[data-href]');

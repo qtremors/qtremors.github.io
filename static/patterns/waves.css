@@ -1,7 +1,5 @@
 /* ==========================================================================
    Hero Section Background Pattern: Waves
-   Animated gradient waves using background layers (no pseudo-elements)
-   to avoid conflicts with fog (::before) and spotlight (::after) effects
    ========================================================================== */
 
 .hero {
