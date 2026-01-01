@@ -2,9 +2,9 @@
    Page Sections (Hero, About, Skills, Portfolio, Contact, Footer)
    ========================================================================== */
 
-/* --- 1. HERO SECTION --- */
+/* --- HERO SECTION --- */
 .hero {
-    /* 1. Occupy full viewport height (dvh handles mobile browser bars better) */
+    /* Occupy full viewport height */
     min-height: 100vh;
     min-height: 100dvh;
     width: 100%;
@@ -14,16 +14,14 @@
     justify-content: center;
     align-items: center;
 
-    /* 3. Dynamic Padding (Controlled by JS in home.js) */
-    /* Defaults are provided in case JS fails */
+    /* Dynamic Padding */
     padding-top: var(--hero-pad-top, 100px);
     padding-bottom: var(--hero-pad-bottom, 80px);
     padding-left: 1rem;
     padding-right: 1rem;
 
-    /* 4. Background & Effects */
+    /* Background & Effects */
     text-align: center;
-    /* Pattern background controlled by static/patterns/*.css */
     position: relative;
     overflow: hidden;
     background-color: var(--md-background);
@@ -120,7 +118,6 @@
     text-decoration: none;
     box-shadow: 0 4px 8px var(--md-shadow-color);
     transition: transform 0.2s, box-shadow 0.2s;
-    /* Ensure z-index is high enough if it overlaps anything */
     position: relative;
     z-index: 10;
 }
@@ -150,15 +147,13 @@
 }
 
 @media (max-width: 768px) {
-
-    /* JS handles the padding logic now, so we just adjust font sizes */
     .hero h1 {
         font-size: 2.25rem;
         min-height: 4em;
     }
 }
 
-/* --- 2. ABOUT SECTION --- */
+/* --- ABOUT SECTION --- */
 #about {
     background-color: var(--md-surface-variant);
 }
@@ -175,7 +170,7 @@
     color: var(--md-on-surface-variant);
 }
 
-/* --- 3. SKILLS SECTION --- */
+/* --- SKILLS SECTION --- */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -254,7 +249,7 @@
     width: calc((100% - 8px) * var(--fill, 0.8));
 }
 
-/* --- 4. PORTFOLIO SECTION --- */
+/* --- PORTFOLIO SECTION --- */
 #portfolio {
     background-color: var(--md-surface-variant);
 }
@@ -590,7 +585,7 @@
     opacity: 1;
 }
 
-/* --- 5. CONTACT SECTION --- */
+/* --- CONTACT SECTION --- */
 .contact-intro {
     color: var(--md-on-surface-variant);
     font-size: 1.1rem;
@@ -662,7 +657,7 @@
     overflow-wrap: anywhere;
 }
 
-/* --- 6. TOAST NOTIFICATION --- */
+/* --- TOAST NOTIFICATION --- */
 .toast-notification {
     visibility: hidden;
     min-width: 200px;
@@ -689,7 +684,7 @@
     bottom: 50px;
 }
 
-/* --- 7. FOOTER --- */
+/* --- FOOTER --- */
 footer {
     background-color: var(--md-surface-variant);
     text-align: center;

@@ -17,7 +17,7 @@
     --md-on-surface-variant: #9aa0a6;
     --md-outline: #5f6368;
     --md-shadow-color: rgba(0, 0, 0, 0.3);
-    
+
     /* White glow for Dark Mode icons */
     --theme-icon-shadow: #202124;
 
@@ -40,7 +40,7 @@ body[data-theme='light'] {
     --md-on-surface-variant: #5f6368;
     --md-outline: #d1d5db;
     --md-shadow-color: rgba(32, 33, 6, 0.1);
-    
+
     /* Dark glow for Light Mode icons */
     --theme-icon-shadow: #000000;
 

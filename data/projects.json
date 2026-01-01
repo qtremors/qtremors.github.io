@@ -4,7 +4,7 @@
     "title": "Quizzer AI",
     "image": "assets/quizzer-preview.png",
     "description": "An adaptive learning platform that generates infinite programming quizzes using Google Gemini AI, providing personalized questions, instant feedback, and context-aware explanations for every mistake you make.",
-    "longDescription": "Quizzer AI revolutionizes technical interview prep by ditching static question banks. It uses the Gemini 2.0 Flash Lite engine to generate unique questions on the fly based on user prompts — from Python syntax to System Design architecture.\n\nBeyond generation, it acts as a tutor: if you get a question wrong, the system analyzes your specific logic error and explains *why* the answer was incorrect, rather than just showing the right option. Built with Django 5 and HTMX, it features a distraction-free 'Midnight' UI, split-screen code analysis with Prism.js syntax highlighting, and persistent history tracking across sessions.",
+    "longDescription": "Quizzer AI revolutionizes technical interview prep by ditching static question banks. It uses the Gemini Flash Lite engine to generate unique questions on the fly based on user prompts from Python syntax to System Design architecture.\n\nBeyond generation, it acts as a tutor: if you get a question wrong, the system analyzes your specific logic error and explains *why* the answer was incorrect, rather than just showing the right option. Built with Django 5 and HTMX, it features a distraction-free 'Midnight' UI, split-screen code analysis with Prism.js syntax highlighting, and persistent history tracking across sessions.",
     "features": [
       "AI-Powered Dynamic Question Generation (Gemini)",
       "Context-Aware Explanations for Wrong Answers",
@@ -57,7 +57,7 @@
     "links": [
       {
         "text": "Live Demo",
-        "url": "https://qtremors.github.io/scrap/projects/demo-git-nexus/",
+        "url": "https://qtremors.github.io/scrap/projects/demo/demo-git-nexus/",
         "class": "link-primary"
       },
       {
@@ -132,8 +132,8 @@
     "id": "tremors-music",
     "title": "Tremors Music",
     "image": "assets/tremors-music-app-preview.png",
-    "description": "A high-performance, local-first music player with both web and native desktop versions — featuring a Python backend, React UI with glassmorphism design, and optional Tauri shell for minimal resource usage.",
-    "longDescription": "Tremors Music is a unified music player that runs as both a web app and a native desktop application. It combines a Python FastAPI backend for metadata parsing and audio streaming, with a modern React frontend featuring virtualization, synchronized lyrics, and Apple Music-inspired design.\n\nThe desktop version uses Tauri (Rust shell) with the Python backend compiled as a sidecar, achieving ~100-200MB RAM usage — 70% less than the web version. Handles 10,000+ song libraries with ease.",
+    "description": "A high-performance, local-first music player with both web and native desktop versions featuring a Python backend, React UI with glassmorphism design, and optional Tauri shell for minimal resource usage.",
+    "longDescription": "Tremors Music is a unified music player that runs as both a web app and a native desktop application. It combines a Python FastAPI backend for metadata parsing and audio streaming, with a modern React frontend featuring virtualization, synchronized lyrics, and Apple Music-inspired design.\n\nThe desktop version uses Tauri (Rust shell) with the Python backend compiled as a sidecar, achieving ~100-200MB RAM usage 70% less than the web version. Handles 10,000+ song libraries with ease.",
     "features": [
       "Web + Desktop from Single Codebase",
       "Virtualization for 10,000+ Songs",
@@ -169,8 +169,8 @@
     "id": "earnslate",
     "title": "Earnslate",
     "image": "assets/earnslate-preview.png",
-    "description": "A personal finance manager built with Next.js 15 and Zustand for tracking income, expenses, budgets, and subscriptions — all stored locally in your browser with a premium monochrome interface.",
-    "longDescription": "Earnslate is a privacy-first personal finance app that runs entirely in your browser with no backend required. All data persists in localStorage, meaning no account signup and full offline capability.\n\nFeatures include a real-time dashboard with spending breakdown charts, full transaction CRUD with search/filters/pagination, budget tracking with auto-reset on period expiry, and subscription management with 100+ service templates (Netflix, Spotify, AWS, etc.). The UI is built with CSS Modules (no Tailwind) and custom SVG charts — no external chart libraries. Keyboard shortcuts (Ctrl+N, Ctrl+D/T/B) provide power-user navigation.",
+    "description": "A personal finance manager built with Next.js 15 and Zustand for tracking income, expenses, budgets, and subscriptions all stored locally in your browser with a premium monochrome interface.",
+    "longDescription": "Earnslate is a privacy-first personal finance app that runs entirely in your browser with no backend required. All data persists in localStorage, meaning no account signup and full offline capability.\n\nFeatures include a real-time dashboard with spending breakdown charts, full transaction CRUD with search/filters/pagination, budget tracking with auto-reset on period expiry, and subscription management with 100+ service templates (Netflix, Spotify, AWS, etc.). The UI is built with CSS Modules (no Tailwind) and custom SVG charts no external chart libraries. Keyboard shortcuts (Ctrl+N, Ctrl+D/T/B) provide power-user navigation.",
     "features": [
       "Privacy-First (Local Storage Only)",
       "100+ Subscription Service Templates",
@@ -201,11 +201,11 @@
   },
   {
     "id": "cosmos",
-    "status": "wip",
+    "status": "beta",
     "title": "Cosmos",
     "image": "assets/cosmos-preview.png",
     "description": "A high-performance 3D solar system simulation running in your browser with custom GLSL shaders, realistic orbital mechanics, 6-DOF fly controls, and full gamepad support.",
-    "longDescription": "Cosmos is a modular, scientifically-inspired solar system visualizer built with React and Three.js. It features 9 planets (including Pluto), 4 moons, a 4000-asteroid belt, and custom GLSL shaders for each celestial body — from procedural sun granulation to atmospheric band dynamics on ice giants.\n\nThe control system supports 6 degrees of freedom with keyboard, mouse, and gamepad input. A radar HUD provides directional awareness, and the camera can lock onto any celestial body for orbital viewing. The codebase is fully modular with centralized physics constants in SDK.ts, making it easy to extend with new celestial objects.",
+    "longDescription": "Cosmos is a modular, scientifically-inspired solar system visualizer built with React and Three.js. It features 9 planets (including Pluto), 4 moons, a 4000-asteroid belt, and custom GLSL shaders for each celestial body from procedural sun granulation to atmospheric band dynamics on ice giants.\n\nThe control system supports 6 degrees of freedom with keyboard, mouse, and gamepad input. A radar HUD provides directional awareness, and the camera can lock onto any celestial body for orbital viewing. The codebase is fully modular with centralized physics constants in SDK.ts, making it easy to extend with new celestial objects.",
     "features": [
       "Custom GLSL Shaders for Each Planet",
       "6-DOF Fly Controls + Gamepad Support",
@@ -304,7 +304,7 @@
     "title": "Lines of Code in Repo",
     "image": "assets/locr-preview.png",
     "description": "A blazing-fast, zero-dependency Python CLI that counts lines of code in Git repositories using hybrid eager pruning, respecting .gitignore rules and supporting graceful interrupts for partial results.",
-    "longDescription": "Locr is a blazing fast, dependency-free utility designed to count lines of code in Git repositories. Born out of frustration with slow file scanners, it uses a 'Hybrid Eager Pruning' strategy — instantly skipping massive junk folders (like node_modules, venv, .git) before even querying Git, then using git check-ignore for 100% accuracy on remaining files.\n\nUnlike simple counters, it respects your .gitignore rules perfectly (including complex negations), supports language-specific syntax highlighting in the terminal (Python=Yellow, HTML=Red, TypeScript=Blue), provides comment density statistics, and handles graceful interrupts so you can press Ctrl+C during a massive scan and still get partial results. It can scan the Django repository (3,500+ files, 400K lines) in just 1.1 seconds on a warm cache.",
+    "longDescription": "Locr is a blazing fast, dependency-free utility designed to count lines of code in Git repositories. Born out of frustration with slow file scanners, it uses a 'Hybrid Eager Pruning' strategy instantly skipping massive junk folders (like node_modules, venv, .git) before even querying Git, then using git check-ignore for 100% accuracy on remaining files.\n\nUnlike simple counters, it respects your .gitignore rules perfectly (including complex negations), supports language-specific syntax highlighting in the terminal (Python=Yellow, HTML=Red, TypeScript=Blue), provides comment density statistics, and handles graceful interrupts so you can press Ctrl+C during a massive scan and still get partial results. It can scan the Django repository (3,500+ files, 400K lines) in just 1.1 seconds on a warm cache.",
     "features": [
       "Hybrid Git-Awareness (2-phase scanner)",
       "Eager Pruning for Max Speed",
@@ -330,8 +330,8 @@
     "status": "wip",
     "title": "GitMig",
     "image": "assets/gitmig-preview.png",
-    "description": "A dependency-free Python utility for migrating Git repositories without bloat — copies source files while skipping node_modules, venv, .git, and other heavy directories.",
-    "longDescription": "GitMig is a lightweight, zero-dependency tool designed to backup and migrate Git repositories cleanly. It automatically detects all repos in a directory and copies only essential source files while excluding node_modules (50k+ files), virtual environments, build artifacts, and .git history.\n\nKey features include dry-run preview mode, zip compression, detailed file stats, custom exclusion patterns, and preservation of .env files. Built with pure Python standard library — no pip dependencies required.",
+    "description": "A dependency-free Python utility for migrating Git repositories without bloat copies source files while skipping node_modules, venv, .git, and other heavy directories.",
+    "longDescription": "GitMig is a lightweight, zero-dependency tool designed to backup and migrate Git repositories cleanly. It automatically detects all repos in a directory and copies only essential source files while excluding node_modules (50k+ files), virtual environments, build artifacts, and .git history.\n\nKey features include dry-run preview mode, zip compression, detailed file stats, custom exclusion patterns, and preservation of .env files. Built with pure Python standard library no pip dependencies required.",
     "features": [
       "Auto-Detection of All Git Repositories",
       "Smart Exclusions (node_modules, venv, .git, dist)",
@@ -358,7 +358,7 @@
     "id": "repo-tree",
     "title": "RepoTree Generator",
     "image": "assets/rtree-preview.png",
-    "description": "A Git-aware CLI that generates clean directory trees, filtering files using .gitignore so only real source code shows up — no build junk, no clutter.",
+    "description": "A Git-aware CLI that generates clean directory trees, filtering files using .gitignore so only real source code shows up no build junk, no clutter.",
     "longDescription": "RepoTree solves the problem of 'dirty' directory dumps. It automatically parses .gitignore files to hide build artifacts and caches, ensuring your diagram only shows relevant source code.\n\nIt supports multiple visualization modes (ASCII tree, Flat list), depth limiting for high-level overviews, and can output directly to files without ANSI color codes.",
     "features": [
       "Context-Aware .gitignore Parsing",
@@ -384,7 +384,7 @@
     "id": "pc-remote-control",
     "title": "PC Remote Control API",
     "image": "assets/pcrc-preview.png",
-    "description": "A Python + FastAPI tool that lets you control your PC from your phone — media playback, system power, screenshots, and app launching over a clean local web interface.",
+    "description": "A Python + FastAPI tool that lets you control your PC from your phone media playback, system power, screenshots, and app launching over a clean local web interface.",
     "longDescription": "This tool turns your smartphone into a remote control for your PC. It runs a lightweight FastAPI server that listens for commands from a mobile-friendly web interface.\n\nYou can control system volume, media playback (Spotify/YouTube), take screenshots that appear on your phone, and perform system power actions like Sleep or Lock.",
     "features": [
       "Media Control (Vol, Play, Pause, Next)",
@@ -465,7 +465,7 @@
     "title": "The Scrapyard",
     "image": "assets/scrapyard-preview.png",
     "description": "A cyberpunk-themed digital archive for abandoned project ideas, featuring CSS 3D parallax scrolling, a terminal-style search interface, live project previews on hover, and automated GitHub Actions deployment.",
-    "longDescription": "A unique conceptual website that serves as a 'Digital Graveyard' — a final resting place for abandoned code and half-baked project ideas. It uses CSS 3D transforms to create a vanishing-point parallax scrolling effect where project cards float like scattered papers in space.\n\nThe site features cyberpunk aesthetics with dark themes, neon accents, and glitch effects, a terminal-style search bar for instant filtering, and live iframe previews that appear when hovering over any card. It's fully automated via GitHub Actions: a Node.js build script scans the projects/ folder and auto-generates the HTML cards during deployment, so adding a new project is as simple as creating a folder and pushing to main.",
+    "longDescription": "A unique conceptual website that serves as a 'Digital Graveyard' a final resting place for abandoned code and half-baked project ideas. It uses CSS 3D transforms to create a vanishing-point parallax scrolling effect where project cards float like scattered papers in space.\n\nThe site features cyberpunk aesthetics with dark themes, neon accents, and glitch effects, a terminal-style search bar for instant filtering, and live iframe previews that appear when hovering over any card. It's fully automated via GitHub Actions: a Node.js build script scans the projects/ folder and auto-generates the HTML cards during deployment, so adding a new project is as simple as creating a folder and pushing to main.",
     "features": [
       "3D CSS Parallax Scroll Effect",
       "Automated Build via GitHub Actions",
@@ -496,7 +496,7 @@
     "id": "tremors",
     "title": "Tremors",
     "image": "assets/tremors-preview.png",
-    "description": "A multi-mode portfolio website with 5 distinct viewing modes, GitHub integration, AI-generated newspaper content, and secret admin controls — built with Next.js 16, React 19, TypeScript, Tailwind CSS 4, and Prisma.",
+    "description": "A multi-mode portfolio website with 5 distinct viewing modes, GitHub integration, AI-generated newspaper content, and secret admin controls built with Next.js 16, React 19, TypeScript, Tailwind CSS 4, and Prisma.",
     "longDescription": "Tremors Portfolio is a personal portfolio website with multiple innovative viewing modes: Default (modern card-based layout), Terminal (interactive CLI with 30+ commands), Paper (document/resume-style with sidebar TOC), Newspaper (editorial magazine-style with AI-generated content), and Nexus (interactive space environment with animated elements).\n\nKey features include GitHub API integration that fetches repositories, user profile, and activity with database caching for fast loading. The AI Newspaper mode uses Google Gemini to generate hilarious tabloid-style headlines and articles with an archive system. A secret admin system accessible via the terminal enables inline project controls, drag-and-drop reordering, visibility toggles, and content regeneration. Security features include HMAC-signed session tokens, PBKDF2 password hashing, rate limiting, and CSRF protection.",
     "features": [
       "5 Viewing Modes (Default, Terminal, Paper, Newspaper, Nexus)",

@@ -1,25 +1,17 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-  /* ==========================================================================
-     CONSOLE WELCOME
-     ========================================================================== */
+  /* --- CONSOLE WELCOME --- */
   console.log("%c Hello there! Looking for the source code?", "font-weight: bold; font-size: 20px; color: #8ab4f8;");
   console.log("Check it out here: https://github.com/qtremors/qtremors.github.io");
 
-  /* ==========================================================================
-     MAGNETIC TEXT (Scoped to Hero & About sections)
-     ========================================================================== */
-
+  /* --- MAGNETIC TEXT --- */
   const magnetParagraphs = document.querySelectorAll('p.magnet-text');
   const magnetSections = document.querySelectorAll('.hero, #about');
 
   if (magnetParagraphs.length > 0 && magnetSections.length > 0) {
     magnetParagraphs.forEach(paragraph => {
-
       const cleanText = paragraph.textContent.replace(/\s+/g, ' ').trim();
-
       const textArray = cleanText.split(' ');
-
       paragraph.innerHTML = textArray
         .map(word => `<span class="magnetic-word">${word}</span>`)
         .join(' ');
@@ -27,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const words = document.querySelectorAll('.magnetic-word');
 
-    // Only attach mousemove to the scoped sections, not the entire document
     magnetSections.forEach(section => {
       section.addEventListener('mousemove', (e) => {
         words.forEach(word => {
@@ -48,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       });
 
-      // Reset words when mouse leaves the section
       section.addEventListener('mouseleave', () => {
         words.forEach(word => {
           word.style.transform = `translate(0px, 0px)`;
@@ -57,11 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /* ==========================================================================
-     SPOTLIGHT EFFECTS
-     ========================================================================== */
-
-  // Skill Cards Spotlight
+  /* --- SPOTLIGHT EFFECTS --- */
   const skillCards = document.querySelectorAll('.skill-card');
   skillCards.forEach(card => {
     card.addEventListener('mousemove', (e) => {
@@ -73,8 +59,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-
-  // Hero Section Spotlight
   const heroSection = document.querySelector('.hero');
   if (heroSection) {
     heroSection.addEventListener('mousemove', (e) => {
@@ -82,16 +66,12 @@ document.addEventListener('DOMContentLoaded', function () {
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
 
-      // Update CSS variables for the hero only
       heroSection.style.setProperty('--hero-mouse-x', `${x}px`);
       heroSection.style.setProperty('--hero-mouse-y', `${y}px`);
     });
   }
 
-
-  /* ==========================================================================
-     SCROLL OBSERVER (ANIMATIONS)
-     ========================================================================== */
+  /* --- SCROLL OBSERVER --- */
   const observerOptions = { root: null, threshold: 0.15 };
 
   const scrollObserver = new IntersectionObserver((entries, observer) => {
@@ -109,12 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
     scrollObserver.observe(el);
   });
 
-
-  /* ==========================================================================
-   Developer Console & Easter Eggs
-   ========================================================================== */
-
-
+  /* --- DEVELOPER CONSOLE & EASTER EGGS --- */
   const easterEggTriggers = ['python', 'tremors'];
   let inputSequence = '';
 
@@ -144,19 +119,14 @@ document.addEventListener('DOMContentLoaded', function () {
         `;
 
     console.log(`%c${asciiArt}`, "color: #8ab4f8; font-family: monospace; font-weight: bold;");
-
     console.log('%c>>> import tremors', 'color: #50fa7b; font-family: monospace; font-size: 14px; font-weight: bold;');
     console.log('%c>>> tremors.hire()', 'color: #50fa7b; font-family: monospace; font-size: 14px; font-weight: bold;');
     console.log('%c"You won\'t regret it! plzzzzzz 🥺"', 'color: #f1fa8c; font-family: monospace; font-size: 14px;');
 
-    // Use the Universal Toast
     if (window.showToast) {
       window.showToast("🐍 Python Mode Activated!");
     } else {
-      // Fallback if index.js hasn't loaded (rare)
       alert("🐍 Python Mode Activated!");
     }
   };
-
-  /* ========================================================================== */
 });

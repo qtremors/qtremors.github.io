@@ -7,20 +7,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const body = document.body;
 
-  /* ==========================================================================
-     1. UNIVERSAL TOAST SYSTEM
-     ========================================================================== */
+  /* --- UNIVERSAL TOAST SYSTEM --- */
   const toastElement = document.getElementById('toast');
   let toastTimeout;
 
-  // Global function to show toast from anywhere (extras.js, project.js, etc.)
   window.showToast = (message, duration = 3000) => {
     if (!toastElement) {
       console.warn('showToast: #toast element not found in DOM');
       return;
     }
 
-    // Clear existing timeout to handle rapid clicks
     if (toastTimeout) clearTimeout(toastTimeout);
 
     toastElement.textContent = message;
@@ -32,9 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 
 
-  /* ==========================================================================
-     2. SETTINGS MODAL LOGIC
-     ========================================================================== */
+  /* --- SETTINGS MODAL LOGIC --- */
   const modal = document.getElementById('settings-modal');
   const openBtn = document.getElementById('open-settings-btn');
   const closeBtn = document.getElementById('close-settings-btn');
@@ -46,7 +40,6 @@ document.addEventListener('DOMContentLoaded', function () {
       lastFocusedElement = document.activeElement;
       modal.classList.add('open');
       modal.setAttribute('aria-hidden', 'false');
-      // Focus first focusable element in modal
       const firstFocusable = modal.querySelector('button, [tabindex]:not([tabindex="-1"])');
       if (firstFocusable) firstFocusable.focus();
     });
@@ -56,7 +49,6 @@ document.addEventListener('DOMContentLoaded', function () {
     if (modal) {
       modal.classList.remove('open');
       modal.setAttribute('aria-hidden', 'true');
-      // Return focus to element that opened the modal
       if (lastFocusedElement) lastFocusedElement.focus();
     }
   };
@@ -67,14 +59,12 @@ document.addEventListener('DOMContentLoaded', function () {
       if (e.target === modal) closeModal();
     });
 
-    // Escape key closes modal
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && modal.classList.contains('open')) {
         closeModal();
       }
     });
 
-    // Focus trap - Tab cycles within modal
     modal.addEventListener('keydown', (e) => {
       if (e.key !== 'Tab') return;
 
@@ -92,7 +82,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Tab Switching Logic
   const modalTabs = document.querySelectorAll('.modal-tab');
   const tabPanels = document.querySelectorAll('.tab-panel');
 
@@ -100,11 +89,9 @@ document.addEventListener('DOMContentLoaded', function () {
     tab.addEventListener('click', () => {
       const targetTab = tab.dataset.tab;
 
-      // Update tab buttons
       modalTabs.forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
 
-      // Update panels
       tabPanels.forEach(panel => {
         panel.classList.toggle('active', panel.id === `panel-${targetTab}`);
       });
@@ -112,10 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 
-  /* ==========================================================================
-     3. THEME & APPEARANCE ENGINE
-     ========================================================================== */
-
+  /* --- THEME & APPEARANCE ENGINE --- */
   const state = {
     theme: localStorage.getItem('style_mode') || 'md',
     effect: localStorage.getItem('effect_mode') || 'none',
@@ -142,7 +126,6 @@ document.addEventListener('DOMContentLoaded', function () {
     spotlight: document.getElementById('effect-spotlight')
   };
 
-  // Buttons
   const modeBtns = document.querySelectorAll('[data-set-mode]');
   const themeBtns = document.querySelectorAll('[data-set-theme]');
   const effectBtns = document.querySelectorAll('[data-set-effect]');
@@ -151,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   const applyAppearance = () => {
-    // A. Themes
+    // Themes
     if (sheets.themes.oled) {
       Object.values(sheets.themes).forEach(t => { if (t) t.disabled = true; });
       const activeTheme = sheets.themes[state.theme] || sheets.themes.oled;
@@ -159,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function () {
       body.setAttribute('data-style-mode', state.theme);
     }
 
-    // B. Scene Effects
+    // Effects
     if (sheets.effects.fog) {
       Object.values(sheets.effects).forEach(e => { if (e) e.disabled = true; });
       if (state.effect !== 'none') {
@@ -168,28 +151,28 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    // C. Spotlight Effect
+    // Spotlight
     if (sheets.spotlight) {
       sheets.spotlight.disabled = (state.spotlight === 'off');
     }
 
-    // D. Hero Background Patterns
+    // Patterns
     if (sheets.patterns.dots) {
       Object.values(sheets.patterns).forEach(p => { if (p) p.disabled = true; });
       if (state.pattern !== 'none') {
         const activePattern = sheets.patterns[state.pattern];
         if (activePattern) activePattern.disabled = false;
       }
-      // Force repaint to restart CSS animations
+      // Force repaint
       const hero = document.querySelector('.hero');
       if (hero) {
         hero.style.animation = 'none';
-        hero.offsetHeight; // Trigger reflow
+        hero.offsetHeight;
         hero.style.animation = '';
       }
     }
 
-    // E. Color Mode
+    // Color Mode
     let effectiveMode = state.mode;
     if (state.mode === 'system') {
       const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -229,11 +212,9 @@ document.addEventListener('DOMContentLoaded', function () {
   effectBtns.forEach(btn => btn.addEventListener('click', () => { state.effect = btn.dataset.setEffect; applyAppearance(); }));
   patternBtns.forEach(btn => btn.addEventListener('click', () => { state.pattern = btn.dataset.setPattern; applyAppearance(); }));
 
-  // Spotlight Listener (supports both buttons and toggle switch)
   spotlightBtns.forEach(btn => btn.addEventListener('click', () => {
     const action = btn.dataset.setSpotlight;
     if (action === 'toggle') {
-      // Toggle switch behavior
       state.spotlight = state.spotlight === 'on' ? 'off' : 'on';
       btn.classList.toggle('on', state.spotlight === 'on');
     } else {
@@ -242,7 +223,6 @@ document.addEventListener('DOMContentLoaded', function () {
     applyAppearance();
   }));
 
-  // Initialize toggle switch state on load
   const spotlightToggle = document.querySelector('.toggle-switch[data-set-spotlight="toggle"]');
   if (spotlightToggle && state.spotlight === 'on') {
     spotlightToggle.classList.add('on');
@@ -257,7 +237,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Init
   applyAppearance();
 
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
@@ -265,9 +244,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 
-  /* ==========================================================================
-     4. NAVIGATION LOGIC
-     ========================================================================== */
+  /* --- NAVIGATION LOGIC --- */
   const allNavLinks = document.querySelectorAll('.nav-item');
   const mobileNavBar = document.querySelector('.navigation-bar');
   const topAppBar = document.querySelector('.top-app-bar');
@@ -318,9 +295,7 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', debounce(handleNavVisibility, 15));
 
 
-  /* ==========================================================================
-     5. EMAIL CLIPBOARD (Uses Universal Toast)
-     ========================================================================== */
+  /* --- EMAIL CLIPBOARD --- */
   const emailBtn = document.getElementById('email-btn');
   if (emailBtn) {
     emailBtn.addEventListener('click', (e) => {
