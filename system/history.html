@@ -326,34 +326,34 @@
 
                 // Restore playback state safely
                 const restorePlayback = () => {
-                   video.currentTime = currentTime;
-                   if (!isPaused) {
-                       const playPromise = video.play();
-                       if (playPromise !== undefined) {
-                           playPromise.catch(error => {
-                               console.log("Playback prevented:", error);
-                           });
-                       }
-                   }
+                    video.currentTime = currentTime;
+                    if (!isPaused) {
+                        const playPromise = video.play();
+                        if (playPromise !== undefined) {
+                            playPromise.catch(error => {
+                                console.log("Playback prevented:", error);
+                            });
+                        }
+                    }
                 };
 
                 // Remove any previous listeners to prevent stacking
                 video.onloadedmetadata = null;
-                
+
                 // Force load and wait for metadata
                 video.load();
-                
+
                 // Check if readyState is already enough (rare with load() but possible)
                 if (video.readyState >= 1) {
                     restorePlayback();
                 } else {
                     // Wait for metadata
-                    video.onloadedmetadata = function() {
+                    video.onloadedmetadata = function () {
                         restorePlayback();
                         // Clean up
                         video.onloadedmetadata = null;
                     };
-                    
+
                     // Fallback timeout just in case
                     setTimeout(() => {
                         if (video.currentTime < 0.1) restorePlayback();
@@ -407,6 +407,7 @@
                         <li><strong>Accessibility:</strong> Added skip-links, ARIA labels, and reduced motion support.
                         </li>
                         <li><strong>SEO:</strong> Dynamic canonical tags and Twitter Card metadata.</li>
+                        </li>
                     </ul>
                 </div>
             </div>
