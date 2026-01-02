@@ -585,6 +585,73 @@
     opacity: 1;
 }
 
+/* Archive Styles */
+.portfolio-item.is-archive {
+    border: 1px solid #8B7355 !important;
+    position: relative;
+    filter: saturate(0.7);
+    transition: filter 0.4s ease, transform 0.3s, box-shadow 0.3s;
+}
+
+.portfolio-item.is-archive:hover {
+    box-shadow: 0 0 20px rgba(139, 115, 85, 0.5);
+    filter: saturate(1);
+}
+
+.archive-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: linear-gradient(135deg, #8B7355, #5C4033);
+    color: #F5E6D3;
+    font-weight: 700;
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    border-radius: 4px;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(92, 64, 51, 0.6);
+    text-transform: uppercase;
+    animation: archiveShimmer 3s ease-in-out infinite;
+}
+
+@keyframes archiveShimmer {
+
+    0%,
+    100% {
+        box-shadow: 0 2px 8px rgba(92, 64, 51, 0.6);
+    }
+
+    50% {
+        box-shadow: 0 2px 12px rgba(139, 115, 85, 0.8);
+    }
+}
+
+.portfolio-item.is-archive .img-wrapper::after {
+    content: "📜 ARCHIVED PROJECT";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(139, 115, 85, 0.9), rgba(92, 64, 51, 0.9));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #F5E6D3;
+    font-weight: 900;
+    font-size: 1.4rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    backdrop-filter: blur(3px) sepia(0.3);
+}
+
+.portfolio-item.is-archive:hover .img-wrapper::after {
+    opacity: 1;
+}
+
 /* --- CONTACT SECTION --- */
 .contact-intro {
     color: var(--md-on-surface-variant);

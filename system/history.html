@@ -279,14 +279,137 @@
         </div>
 
         <div class="video-wrapper"
-            style="max-width: 800px; margin: 0 auto 4rem auto; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px var(--md-shadow-color);">
-            <video width="100%" height="auto" controls autoplay muted loop playsinline style="display: block;">
-                <source src="../assets/v0.0.0-v2.0.0.mp4" type="video/mp4">
+            style="max-width: 800px; margin: 0 auto 1rem auto; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px var(--md-shadow-color);">
+            <video id="history-video" width="100%" height="auto" controls autoplay muted loop playsinline
+                style="display: block;" poster="../assets/logo.gif">
+                <source src="../assets/v0.0.0-v2.6.0.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
 
+        <div class="timeline-controls"
+            style="display: flex; justify-content: center; align-items: center; margin-bottom: 4rem; gap: 1rem;">
+            <button id="quality-toggle-btn" class="icon-button"
+                style="border-radius: 8px; padding: 10px 20px; width: auto; font-family: monospace; font-size: 0.9rem; background-color: var(--md-surface-variant); color: var(--md-on-surface); border: 1px solid var(--md-outline); cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.2s ease;">
+                <span class="icon">⚙️</span> <span id="quality-label">Switch to HQ (1080p)</span>
+            </button>
+        </div>
+
+        <script>
+            // Video Quality Toggle Logic
+            const video = document.getElementById('history-video');
+            const toggleBtn = document.getElementById('quality-toggle-btn');
+            const qualityLabel = document.getElementById('quality-label');
+            let isHQ = false;
+
+            toggleBtn.addEventListener('click', () => {
+                const currentTime = video.currentTime;
+                const isPaused = video.paused;
+
+                // Add simple click effect
+                toggleBtn.style.transform = "scale(0.95)";
+                setTimeout(() => toggleBtn.style.transform = "scale(1)", 100);
+
+                if (!isHQ) {
+                    // Switch to HQ
+                    video.src = "../assets/v0.0.0-v2.6.0-hq.mp4"; // Lazy load happens here
+                    qualityLabel.textContent = "Switch to Optimized (720p)";
+                    toggleBtn.style.borderColor = "var(--md-primary)";
+                    isHQ = true;
+                } else {
+                    // Switch to Optimized
+                    video.src = "../assets/v0.0.0-v2.6.0.mp4";
+                    qualityLabel.textContent = "Switch to HQ (1080p)";
+                    toggleBtn.style.borderColor = "var(--md-outline)";
+                    isHQ = false;
+                }
+
+                // Restore playback state safely
+                const restorePlayback = () => {
+                   video.currentTime = currentTime;
+                   if (!isPaused) {
+                       const playPromise = video.play();
+                       if (playPromise !== undefined) {
+                           playPromise.catch(error => {
+                               console.log("Playback prevented:", error);
+                           });
+                       }
+                   }
+                };
+
+                // Remove any previous listeners to prevent stacking
+                video.onloadedmetadata = null;
+                
+                // Force load and wait for metadata
+                video.load();
+                
+                // Check if readyState is already enough (rare with load() but possible)
+                if (video.readyState >= 1) {
+                    restorePlayback();
+                } else {
+                    // Wait for metadata
+                    video.onloadedmetadata = function() {
+                        restorePlayback();
+                        // Clean up
+                        video.onloadedmetadata = null;
+                    };
+                    
+                    // Fallback timeout just in case
+                    setTimeout(() => {
+                        if (video.currentTime < 0.1) restorePlayback();
+                    }, 800);
+                }
+            });
+        </script>
+
         <div class="timeline">
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <span class="version-tag">v2.6.0</span>
+                    <span class="timeline-date">Jan 02, 2026</span>
+                    <h3>Navigation & Status</h3>
+                    <ul class="commit-list">
+                        <li><strong>Status Indicators:</strong> Added dynamic WIP/Beta/Archive banners to project
+                            details.</li>
+                        <li><strong>Recommended Engine:</strong> Smart project recommendations with circular CLI loop.
+                        </li>
+                        <li><strong>Nav Refinement:</strong> Directional arrows and improved mobile typography.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <span class="version-tag">v2.5.0 - v2.5.2</span>
+                    <span class="timeline-date">Dec 2025 - Jan 2026</span>
+                    <h3>Integration & Refinement</h3>
+                    <ul class="commit-list">
+                        <li><strong>Portfolio Core:</strong> Replaced Nexus with the integrated Tremors Portfolio.</li>
+                        <li><strong>Code Hygiene:</strong> Standardized codebase, removed dead code, and fixed FOUC.
+                        </li>
+                        <li><strong>New Content:</strong> Added GitMig, RepoTree, Earnslate, Cosmos, and new tech
+                            badges.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <span class="version-tag">v2.2.0 - v2.3.0</span>
+                    <span class="timeline-date">Dec 2025</span>
+                    <h3>Accessibility & Themes</h3>
+                    <ul class="commit-list">
+                        <li><strong>Themes Engine:</strong> Modular system with Fog, Glass, and Spotlight effects.</li>
+                        <li><strong>Accessibility:</strong> Added skip-links, ARIA labels, and reduced motion support.
+                        </li>
+                        <li><strong>SEO:</strong> Dynamic canonical tags and Twitter Card metadata.</li>
+                    </ul>
+                </div>
+            </div>
 
             <div class="timeline-item">
                 <div class="timeline-marker"></div>
@@ -371,55 +494,210 @@
         </div>
     </div>
 
+    <footer
+        style="text-align: center; padding: 2rem; color: var(--md-on-surface-variant); font-size: 0.9em; margin-top: 4rem;">
+        <div class="container">
+            <p>
+                &copy; 2026 Tremors. All rights reserved.
+                <span style="opacity: 0.5; margin: 0 8px;">|</span>
+                <a href="../index.html"
+                    style="color: var(--md-primary); text-decoration: none; font-weight: bold;">Home</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification with ARIA Live for accessibility -->
+    <div id="toast" class="toast-notification" role="status" aria-live="polite" aria-atomic="true"></div>
+
     <div id="settings-modal" class="modal-backdrop" aria-hidden="true">
         <div class="modal-card">
             <header class="modal-header">
                 <h3>Appearance</h3>
                 <button id="close-settings-btn" class="icon-button" aria-label="Close settings">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <line x1="18" y1="6" x2="6" y2="18"></line>
                         <line x1="6" y1="6" x2="18" y2="18"></line>
                     </svg>
                 </button>
             </header>
+
+            <!-- Tabs Navigation -->
+            <div class="modal-tabs">
+                <button class="modal-tab active" data-tab="themes">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 2a10 10 0 0 1 0 20"></path>
+                    </svg>
+                    <span>Themes</span>
+                </button>
+                <button class="modal-tab" data-tab="effects">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                        </polygon>
+                    </svg>
+                    <span>Effects</span>
+                </button>
+            </div>
+
             <div class="modal-body">
-                <div class="setting-group">
-                    <label class="setting-label">Color Mode</label>
-                    <div class="segmented-control">
-                        <button class="segment-btn" data-set-mode="system"><span>System</span></button>
-                        <button class="segment-btn" data-set-mode="light"><span>Light</span></button>
-                        <button class="segment-btn" data-set-mode="dark"><span>Dark</span></button>
+                <!-- Themes Tab Panel -->
+                <div class="tab-panel active" id="panel-themes">
+                    <div class="setting-group">
+                        <label class="setting-label">Color Mode</label>
+                        <div class="segmented-control">
+                            <button class="segment-btn" data-set-mode="system">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                                </svg>
+                                <span>System</span>
+                            </button>
+                            <button class="segment-btn" data-set-mode="light">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="5"></circle>
+                                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                                </svg>
+                                <span>Light</span>
+                            </button>
+                            <button class="segment-btn" data-set-mode="dark">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                                </svg>
+                                <span>Dark</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <label class="setting-label">Visual Theme</label>
+                        <div class="theme-grid">
+                            <button class="theme-card" data-set-theme="md">
+                                <div class="theme-preview md-preview"></div>
+                                <span>MD</span>
+                            </button>
+                            <button class="theme-card" data-set-theme="md3">
+                                <div class="theme-preview md3-preview"></div>
+                                <span>MD3</span>
+                            </button>
+                            <button class="theme-card" data-set-theme="oled">
+                                <div class="theme-preview oled-preview"></div>
+                                <span>OLED</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="setting-group">
-                    <label class="setting-label">Visual Theme</label>
-                    <div class="theme-grid">
-                        <button class="theme-card" data-set-theme="md">
-                            <div class="theme-preview md-preview"></div><span>MD</span>
-                        </button>
-                        <button class="theme-card" data-set-theme="md3">
-                            <div class="theme-preview md3-preview"></div><span>MD3</span>
-                        </button>
-                        <button class="theme-card" data-set-theme="oled">
-                            <div class="theme-preview oled-preview"></div><span>OLED</span>
-                        </button>
+
+                <!-- Effects Tab Panel -->
+                <div class="tab-panel" id="panel-effects">
+                    <div class="setting-group">
+                        <label class="setting-label">Scene Effect</label>
+                        <div class="segmented-control">
+                            <button class="segment-btn" data-set-effect="fog">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M3 8h18M3 12h18M3 16h12"></path>
+                                </svg>
+                                <span>Fog</span>
+                            </button>
+                            <button class="segment-btn" data-set-effect="glass">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="3" y1="9" x2="21" y2="9"></line>
+                                </svg>
+                                <span>Glass</span>
+                            </button>
+                            <button class="segment-btn" data-set-effect="none">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
+                                </svg>
+                                <span>None</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <label class="setting-label">Spotlight Effect</label>
+                        <div class="toggle-row">
+                            <span class="toggle-label">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                    <path
+                                        d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42">
+                                    </path>
+                                </svg>
+                                Cursor spotlight (Hero & Skills)
+                            </span>
+                            <button class="toggle-switch" data-set-spotlight="toggle" aria-label="Toggle spotlight">
+                                <span class="toggle-slider"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <label class="setting-label">Hero Background</label>
+                        <div class="segmented-control">
+                            <button class="segment-btn" data-set-pattern="dots">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <circle cx="4" cy="4" r="2" />
+                                    <circle cx="12" cy="4" r="2" />
+                                    <circle cx="20" cy="4" r="2" />
+                                    <circle cx="4" cy="12" r="2" />
+                                    <circle cx="12" cy="12" r="2" />
+                                    <circle cx="20" cy="12" r="2" />
+                                    <circle cx="4" cy="20" r="2" />
+                                    <circle cx="12" cy="20" r="2" />
+                                    <circle cx="20" cy="20" r="2" />
+                                </svg>
+                                <span>Dots</span>
+                            </button>
+                            <button class="segment-btn" data-set-pattern="grid">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="3" y="3" width="7" height="7" />
+                                    <rect x="14" y="3" width="7" height="7" />
+                                    <rect x="3" y="14" width="7" height="7" />
+                                    <rect x="14" y="14" width="7" height="7" />
+                                </svg>
+                                <span>Grid</span>
+                            </button>
+                            <button class="segment-btn" data-set-pattern="waves">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M2 12c2-2 4-2 6 0s4 2 6 0 4-2 6 0" />
+                                    <path d="M2 6c2-2 4-2 6 0s4 2 6 0 4-2 6 0" />
+                                    <path d="M2 18c2-2 4-2 6 0s4 2 6 0 4-2 6 0" />
+                                </svg>
+                                <span>Waves</span>
+                            </button>
+                            <button class="segment-btn" data-set-pattern="none">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
+                                </svg>
+                                <span>None</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="setting-group">
-                    <label class="setting-label">Scene Effect</label>
-                    <div class="segmented-control">
-                        <button class="segment-btn" data-set-effect="fog"><span>🌫️ Fog</span></button>
-                        <button class="segment-btn" data-set-effect="glass"><span>🧊 Glass</span></button>
-                        <button class="segment-btn" data-set-effect="none"><span>🚫 None</span></button>
-                    </div>
-                </div>
-                <div class="setting-group">
-                    <label class="setting-label">Spotlight Effect</label>
-                    <div class="segmented-control">
-                        <button class="segment-btn" data-set-spotlight="on"><span>On</span></button>
-                        <button class="segment-btn" data-set-spotlight="off"><span>Off</span></button>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>

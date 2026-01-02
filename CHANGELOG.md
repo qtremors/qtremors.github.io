@@ -1,5 +1,34 @@
 # Changelog
 
+## [v2.6.0] - 02-01-2026
+
+### 🚦 **Project Status Indicators**
+
+- **Dynamic Banners:** Added visual status indicators for projects marked as `wip` (Warning), `beta` (Info), `archive` (Error), and `featured` (Success) in `projects.json`.
+- **Automatic Styling:** Banners are auto-generated above the description with corresponding emojis (⚠️, 🧪, 📦, ⭐) and color schemes.
+
+### 🧭 **Navigation & Discovery**
+
+- **Recommended Projects:** Implemented a new "Recommended" section above the footer navigation.
+    - **Smart Recommendations:** Can display single or multiple related projects defined via a `recommended` array in JSON.
+    - **Unified Styling:** Cards match the standard navigation design but feature a highlighted primary border and glow effect.
+    - **Circular CLI Loop:** Configured `locr` ↔ `gitmig` ↔ `repo-tree` to recommend each other.
+    - **Legacy Redirection:** `eshopper` (Archived) now recommends `amanzon` (Modern).
+
+- **Navigation Refinements:**
+    - **Directional Arrows:** Added visual `←` and `→` arrows to navigation cards, removing text labels for a cleaner look.
+    - **Improved Mobile Layout:** "Next" card now uses a symmetrical right-aligned layout (Image Right) while maintaining left-aligned text for readability.
+    - **Text Fix:** Removed JavaScript description truncation to ensure text fills the card properly on mobile, eliminating "middle start" visual gaps.
+
+### 🎞️ **History Timeline**
+
+-   **High Quality Toggle:** Added a "Switch to HQ" feature on history pages.
+    -   **Modern UI:** Interactive JS toggle to swap between 720p (Optimized) and 1080p (Original) renders on demand.
+    -   **TUI:** CSS-only radio switch to toggle players without JavaScript.
+    -   **Lazy Loading:** HQ video is set to `preload="none"` to save bandwidth until explicitly requested.
+
+---
+
 ## [v2.5.2] - 01-01-2026
 
 ### 🧹 **Code Hygiene & Cleanup**
