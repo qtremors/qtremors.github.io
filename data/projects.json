@@ -2,7 +2,7 @@
   {
     "id": "quizzer-ai",
     "title": "Quizzer AI",
-    "image": "assets/quizzer-preview.png",
+    "image": "assets/qtrmrs-preview1.png",
     "description": "An adaptive learning platform that generates infinite programming quizzes using Google Gemini AI, providing personalized questions, instant feedback, and context-aware explanations for every mistake you make.",
     "longDescription": "Quizzer AI revolutionizes technical interview prep by ditching static question banks. It uses the Gemini Flash Lite engine to generate unique questions on the fly based on user prompts from Python syntax to System Design architecture.\n\nBeyond generation, it acts as a tutor: if you get a question wrong, the system analyzes your specific logic error and explains *why* the answer was incorrect, rather than just showing the right option. Built with Django 5 and HTMX, it features a distraction-free 'Midnight' UI, split-screen code analysis with Prism.js syntax highlighting, and persistent history tracking across sessions.",
     "features": [
@@ -11,7 +11,7 @@
       "Split-Screen Syntax Highlighting (Prism.js)",
       "HTMX-powered SPA feel without page reloads"
     ],
-    "installation": "git clone https://github.com/qtremors/quizzer-ai.git\ncd quizzer-ai\nuv sync\ncd qtrmrs\nuv run manage.py migrate\nuv run manage.py runserver",
+    "installation": "# Clone repository\ngit clone https://github.com/qtremors/quizzer-ai.git\ncd quizzer-ai\n\n# Install dependencies\nuv sync\ncd qtrmrs\n\n# Run migrations and start server\nuv run manage.py migrate\nuv run manage.py runserver",
     "badges": [
       "tech-python",
       "tech-django",
@@ -23,12 +23,44 @@
     "links": [
       {
         "text": "Website",
-        "url": "https://quizzer-ai-dc4m.onrender.com/",
+        "url": "https://qtrmrs.onrender.com/",
         "class": "link-primary"
       },
       {
         "text": "View on GitHub",
         "url": "https://github.com/qtremors/quizzer-ai",
+        "class": "link-secondary"
+      }
+    ]
+  },
+  {
+    "id": "algorithm-visualizer",
+    "title": "Algorithm Visualizer",
+    "image": "assets/algorithm-preview.png",
+    "description": "An educational platform that visualizes sorting and pathfinding algorithms in real time, streaming execution states frame-by-frame from a FastAPI backend to a React frontend via WebSockets.",
+    "longDescription": "Unlike standard visualizers that pre-calculate steps, AlgoVisualizer runs the actual algorithm on the Python backend and streams the state frame-by-frame to the React frontend via WebSockets. This allows for true live execution with VCR-style controls (Play, Pause, Step Forward, Step Backward).\n\nIt supports Sorting algorithms (Bubble, Insertion, Selection) with color-coded bars showing comparisons and swaps, and Pathfinding algorithms (Dijkstra, BFS, DFS) with an interactive grid where you can draw walls, move start/end nodes, and watch the algorithm explore. Features include adjustable playback speed (10ms to 1000ms), pseudocode tracking, and an execution log of every operation.",
+    "features": [
+      "Real-time WebSocket State Streaming",
+      "VCR Controls (Play, Pause, Step, Reverse)",
+      "Interactive Grid for Pathfinding (Draw Walls)",
+      "Metadata-Driven UI Architecture"
+    ],
+    "installation": "# Clone repository\ngit clone https://github.com/qtremors/algorithm-visualizer.git\ncd algorithm-visualizer\n\n# Start Backend (FastAPI)\ncd backend\nuv run uvicorn app.main:app --reload\n\n# Start Frontend (React)\n# Open a new terminal\ncd frontend\nnpm install\nnpm run dev",
+    "badges": [
+      "tech-react",
+      "tech-ts",
+      "tech-python",
+      "tech-fastapi"
+    ],
+    "links": [
+      {
+        "text": "Website",
+        "url": "https://tremors-algoviz.netlify.app",
+        "class": "link-primary"
+      },
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/algorithm-visualizer",
         "class": "link-secondary"
       }
     ]
@@ -45,7 +77,7 @@
       "Deep User Profiling & Contribution Graphs",
       "Multiple Theme Engine (Dark/Dimmed/AMOLED)"
     ],
-    "installation": "git clone https://github.com/qtremors/git-nexus.git\ncd git-nexus\nuv sync\nuv run app.py",
+    "installation": "# Clone repository\ngit clone https://github.com/qtremors/git-nexus.git\ncd git-nexus\n\n# Install dependencies\nuv sync\n\n# Run application\nuv run app.py",
     "badges": [
       "tech-python",
       "tech-flask",
@@ -68,38 +100,6 @@
     ]
   },
   {
-    "id": "algorithm-visualizer",
-    "title": "Algorithm Visualizer",
-    "image": "assets/algorithm-preview.png",
-    "description": "An educational platform that visualizes sorting and pathfinding algorithms in real time, streaming execution states frame-by-frame from a FastAPI backend to a React frontend via WebSockets.",
-    "longDescription": "Unlike standard visualizers that pre-calculate steps, AlgoVisualizer runs the actual algorithm on the Python backend and streams the state frame-by-frame to the React frontend via WebSockets. This allows for true live execution with VCR-style controls (Play, Pause, Step Forward, Step Backward).\n\nIt supports Sorting algorithms (Bubble, Insertion, Selection) with color-coded bars showing comparisons and swaps, and Pathfinding algorithms (Dijkstra, BFS, DFS) with an interactive grid where you can draw walls, move start/end nodes, and watch the algorithm explore. Features include adjustable playback speed (10ms to 1000ms), pseudocode tracking, and an execution log of every operation.",
-    "features": [
-      "Real-time WebSocket State Streaming",
-      "VCR Controls (Play, Pause, Step, Reverse)",
-      "Interactive Grid for Pathfinding (Draw Walls)",
-      "Metadata-Driven UI Architecture"
-    ],
-    "installation": "git clone https://github.com/qtremors/algorithm-visualizer.git\ncd algorithm-visualizer\n\n# Backend\ncd backend\nuv run uvicorn app.main:app --reload\n\n# Frontend (new terminal)\ncd frontend\nnpm install\nnpm run dev",
-    "badges": [
-      "tech-react",
-      "tech-ts",
-      "tech-python",
-      "tech-fastapi"
-    ],
-    "links": [
-      {
-        "text": "Website",
-        "url": "https://tremors-algoviz.netlify.app",
-        "class": "link-primary"
-      },
-      {
-        "text": "View on GitHub",
-        "url": "https://github.com/qtremors/algorithm-visualizer",
-        "class": "link-secondary"
-      }
-    ]
-  },
-  {
     "id": "arcade-nexus",
     "status": "beta",
     "title": "Arcade Nexus",
@@ -112,7 +112,7 @@
       "Global Achievement Tracking",
       "Immersive Console-Style UI"
     ],
-    "installation": "git clone https://github.com/qtremors/arcade-nexus.git\ncd arcade-nexus\n\n# Backend\ncd backend\npython -m venv venv\n# Activate venv (Windows: venv\\Scripts\\activate, Linux: source venv/bin/activate)\npip install -r requirements.txt\nuvicorn app.main:app --reload\n\n# Frontend (new terminal)\ncd frontend\nnpm install\nnpm run dev",
+    "installation": "# Clone repository\ngit clone https://github.com/qtremors/arcade-nexus.git\ncd arcade-nexus\n\n# Setup Backend (FastAPI)\ncd backend\npython -m venv venv\n# Activate venv (Windows: venv\\Scripts\\activate, Linux: source venv/bin/activate)\npip install -r requirements.txt\nuvicorn app.main:app --reload\n\n# Setup Frontend (React)\n# Open a new terminal\ncd frontend\nnpm install\nnpm run dev",
     "badges": [
       "tech-react",
       "tech-ts",
@@ -142,7 +142,7 @@
       "Glassmorphism UI with Dynamic Accents",
       "Offline-First with SQLite Database"
     ],
-    "installation": "git clone https://github.com/qtremors/tremors-music.git\ncd tremors-music\n\n# Backend\ncd backend && uv sync && cd ..\n\n# Frontend\ncd frontend && npm install && cd ..\n\n# Run Web Version\ncd backend && uv run uvicorn main:app --reload\ncd frontend && npm run dev\n\n# Run Desktop Version\ncd tauri && npm install && npm run dev",
+    "installation": "# Clone repository\ngit clone https://github.com/qtremors/tremors-music.git\ncd tremors-music\n\n# Install Dependencies\ncd backend && uv sync && cd ..\ncd frontend && npm install && cd ..\n\n# Run Web Version\n# Terminal 1: Backend\ncd backend && uv run uvicorn main:app --reload\n# Terminal 2: Frontend\ncd frontend && npm run dev\n\n# Run Desktop Version (Tauri)\ncd tauri && npm install && npm run dev",
     "badges": [
       "tech-rust",
       "tech-python",
@@ -179,7 +179,7 @@
       "Keyboard Shortcuts for Power Users",
       "Dark/Light Theme Toggle"
     ],
-    "installation": "git clone https://github.com/qtremors/earnslate.git\ncd earnslate/earnslate-app\nnpm install\nnpm run dev",
+    "installation": "# Clone repository\ngit clone https://github.com/qtremors/earnslate.git\ncd earnslate/earnslate-app\n\n# Install dependencies and run\nnpm install\nnpm run dev",
     "badges": [
       "tech-nextjs",
       "tech-ts",
@@ -213,7 +213,7 @@
       "Lock-On Orbital Camera System",
       "4000 Instanced Asteroids"
     ],
-    "installation": "git clone https://github.com/qtremors/cosmos.git\ncd cosmos/cosmos-app\nnpm install\nnpm run dev",
+    "installation": "# Clone repository\ngit clone https://github.com/qtremors/cosmos.git\ncd cosmos/cosmos-app\n\n# Install dependencies and run\nnpm install\nnpm run dev",
     "badges": [
       "tech-react",
       "tech-ts",
@@ -234,6 +234,42 @@
     ]
   },
   {
+    "id": "amanzon",
+    "title": "Amanzon E-commerce Platform",
+    "image": "assets/amanzon-preview.png",
+    "description": "A minimalist e-commerce platform built with Django 5, featuring product catalogs, shopping cart, wishlist, coupon system, Razorpay payments, and user authentication with email verification and OTP password resets.",
+    "longDescription": "A clean, minimalist e-commerce platform built on Django 5 that prioritizes user experience and performance. Features include categorized products with search and filtering, shopping cart with quantity management, wishlist functionality, and a discount coupon system with usage tracking.\n\nThe checkout flow integrates with Razorpay payment gateway with signature verification. User functionality includes registration with email verification, secure login, profile management with picture uploads, complete order history with cancellation support, and OTP-based password resets. Built with Bootstrap 5 for a responsive, modern interface.",
+    "features": [
+      "Razorpay Payment Gateway Integration",
+      "Coupon System with Usage Tracking",
+      "Email Verification & OTP Password Reset",
+      "Product Reviews & Ratings",
+      "Advanced Search & Filtering",
+      "Wishlist & Shopping Cart"
+    ],
+    "installation": "# Clone repository\ngit clone https://github.com/qtremors/amanzon\ncd amanzon/app\n\n# Setup with uv (recommended)\nuv sync\ncp .env.example .env\n# Edit .env with your credentials\n\n# Initialize Database\nuv run python manage.py migrate\nuv run python manage.py createsuperuser\n\n# Run Server\nuv run python manage.py runserver",
+    "badges": [
+      "tech-django",
+      "tech-python",
+      "tech-html",
+      "tech-css",
+      "tech-js",
+      "tech-bootstrap"
+    ],
+    "links": [
+      {
+        "text": "Website",
+        "url": "https://amanzon.onrender.com",
+        "class": "link-primary"
+      },
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/amanzon",
+        "class": "link-secondary"
+      }
+    ]
+  },
+  {
     "id": "plant-disease-detector",
     "title": "Plant Disease Detector",
     "image": "assets/plant-disease-detector-preview.jpg",
@@ -245,7 +281,7 @@
       "Interactive Confidence Charts (Plotly)",
       "SQLite History Tracking"
     ],
-    "installation": "git clone https://github.com/qtremors/plant-disease-detector.git\ncd plant-disease-detector\nuv sync\nuv run python manage.py migrate\nuv run python manage.py runserver",
+    "installation": "# Clone repository\ngit clone https://github.com/qtremors/plant-disease-detector.git\ncd plant-disease-detector\n\n# Install dependencies (using uv)\nuv sync\n\n# Run migrations and start server\nuv run python manage.py migrate\nuv run python manage.py runserver",
     "badges": [
       "tech-django",
       "tech-tensorflow",
@@ -267,39 +303,6 @@
     ]
   },
   {
-    "id": "eshopper",
-    "title": "E-commerce Website",
-    "image": "assets/eshopper-preview.jpg",
-    "description": "A full-featured e-commerce platform built with Django, featuring product catalogs, shopping cart, wishlist, coupon system, Razorpay payments, and user authentication with email OTP password resets.",
-    "longDescription": "A full-featured e-commerce platform built on Django that handles the entire user journey: from browsing categorized products with sub-categories, applying discount coupons, and managing wishlists, to a multi-step checkout process integrated with Razorpay payment gateway.\n\nIt includes comprehensive user functionality with registration, login, profile management with picture uploads, order history tracking, and secure password resets via email OTP. The product system supports advanced search and filtering by name and price, product reviews with ratings, and a responsive Bootstrap 5 frontend using the EShopper template.",
-    "features": [
-      "Razorpay Payment Gateway Integration",
-      "Coupon System & Wishlist",
-      "Full User Auth flow with Email OTP",
-      "Product Reviews & Advanced Filtering"
-    ],
-    "installation": "git clone https://github.com/qtremors/eshopper\ncd shopping\npython -m venv venv\n# Activate venv (Windows: venv\\Scripts\\activate, Linux: source venv/bin/activate)\npip install -r requirements.txt\npython manage.py migrate\npython manage.py createsuperuser\npython manage.py runserver",
-    "badges": [
-      "tech-django",
-      "tech-html",
-      "tech-css",
-      "tech-js",
-      "tech-sql"
-    ],
-    "links": [
-      {
-        "text": "Website",
-        "url": "https://tremors.pythonanywhere.com/",
-        "class": "link-primary"
-      },
-      {
-        "text": "View on GitHub",
-        "url": "https://github.com/qtremors/eshopper",
-        "class": "link-secondary"
-      }
-    ]
-  },
-  {
     "id": "locr",
     "title": "Lines of Code in Repo",
     "image": "assets/locr-preview.png",
@@ -311,7 +314,10 @@
       "Graceful Interrupts (Ctrl+C shows results)",
       "Smart Colors & Comment Density Stats"
     ],
-    "installation": "git clone https://github.com/qtremors/locr.git\ncd locr\npip install -e .",
+    "installation": "# Clone repository\ngit clone https://github.com/qtremors/locr.git\ncd locr\n\n# Install as editable package\npip install -e .",
+    "recommended": [
+      "repo-tree"
+    ],
     "badges": [
       "tech-python",
       "tech-cli",
@@ -340,7 +346,7 @@
       "Preserves .env Config Files",
       "Zero Dependencies (Pure Python)"
     ],
-    "installation": "git clone https://github.com/qtremors/gitmig.git\ncd gitmig\npip install -e .",
+    "installation": "# Clone repository\ngit clone https://github.com/qtremors/gitmig.git\ncd gitmig\n\n# Install as editable package\npip install -e .",
     "badges": [
       "tech-python",
       "tech-cli",
@@ -366,7 +372,10 @@
       "Multiple Output Modes (Tree, Flat, Raw)",
       "Auto-Colorization for Terminal"
     ],
-    "installation": "git clone https://github.com/qtremors/file-tree-generator.git\ncd file-tree-generator\npip install -e .",
+    "installation": "# Clone repository\ngit clone https://github.com/qtremors/file-tree-generator.git\ncd file-tree-generator\n\n# Install as editable package\npip install -e .",
+    "recommended": [
+      "locr"
+    ],
     "badges": [
       "tech-python",
       "tech-cli",
@@ -392,7 +401,7 @@
       "Instant Screen Mirroring to Phone",
       "Zero-Dependency Frontend"
     ],
-    "installation": "git clone https://github.com/qtremors/pc-rc.git\ncd pc-rc\nuv sync\nuv run main.py",
+    "installation": "# Clone repository\ngit clone https://github.com/qtremors/pc-rc.git\ncd pc-rc\n\n# Install dependencies and run\nuv sync\nuv run main.py",
     "badges": [
       "tech-python",
       "tech-fastapi",
@@ -403,6 +412,41 @@
         "text": "View on GitHub",
         "url": "https://github.com/qtremors/pc-rc",
         "class": "link-primary"
+      }
+    ]
+  },
+  {
+    "id": "eshopper",
+    "status": "archive",
+    "title": "E-commerce Website",
+    "image": "assets/eshopper-preview.jpg",
+    "description": "A full-featured e-commerce platform built with Django, featuring product catalogs, shopping cart, wishlist, coupon system, Razorpay payments, and user authentication with email OTP password resets.",
+    "longDescription": "A full-featured e-commerce platform built on Django that handles the entire user journey: from browsing categorized products with sub-categories, applying discount coupons, and managing wishlists, to a multi-step checkout process integrated with Razorpay payment gateway.\n\nIt includes comprehensive user functionality with registration, login, profile management with picture uploads, order history tracking, and secure password resets via email OTP. The product system supports advanced search and filtering by name and price, product reviews with ratings, and a responsive Bootstrap 5 frontend using the EShopper template.",
+    "features": [
+      "Razorpay Payment Gateway Integration",
+      "Coupon System & Wishlist",
+      "Full User Auth flow with Email OTP",
+      "Product Reviews & Advanced Filtering"
+    ],
+    "installation": "# Clone repository\ngit clone https://github.com/qtremors/eshopper\ncd shopping\n\n# Setup Python Environment\npython -m venv venv\n# Activate venv (Windows: venv\\Scripts\\activate, Linux: source venv/bin/activate)\npip install -r requirements.txt\n\n# Initialize Database\npython manage.py migrate\npython manage.py createsuperuser\n\n# Run Server\npython manage.py runserver",
+    "recommended": "amanzon",
+    "badges": [
+      "tech-django",
+      "tech-html",
+      "tech-css",
+      "tech-js",
+      "tech-sql"
+    ],
+    "links": [
+      {
+        "text": "Website",
+        "url": "https://tremors.pythonanywhere.com/",
+        "class": "link-primary"
+      },
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/eshopper",
+        "class": "link-secondary"
       }
     ]
   },
@@ -418,7 +462,7 @@
       "Scrollable History View",
       "Full Keyboard & Numpad Support"
     ],
-    "installation": "git clone https://github.com/qtremors/pygame-calculator-app.git\ncd pygame-calculator-app\nuv venv\n# Activate venv (Windows: .venv\\Scripts\\activate, Linux: source .venv/bin/activate)\nuv pip install pygame\npython calculator.py",
+    "installation": "# Clone repository\ngit clone https://github.com/qtremors/pygame-calculator-app.git\ncd pygame-calculator-app\n\n# Setup environment\nuv venv\n# Activate venv (Windows: .venv\\Scripts\\activate, Linux: source .venv/bin/activate)\n\n# Install and run\nuv pip install pygame\npython calculator.py",
     "badges": [
       "tech-python",
       "tech-pygame"
@@ -472,7 +516,7 @@
       "Node.js Static Generation Script",
       "Vanishing Point Perspective Design"
     ],
-    "installation": "npm install\nnode build.js",
+    "installation": "# Install dependencies\nnpm install\n\n# Build project cards\nnode build.js",
     "badges": [
       "tech-html",
       "tech-css",
@@ -488,43 +532,6 @@
       {
         "text": "View on GitHub",
         "url": "https://github.com/qtremors/scrap",
-        "class": "link-secondary"
-      }
-    ]
-  },
-  {
-    "id": "tremors",
-    "title": "Tremors",
-    "image": "assets/tremors-preview.png",
-    "description": "A multi-mode portfolio website with 5 distinct viewing modes, GitHub integration, AI-generated newspaper content, and secret admin controls built with Next.js 16, React 19, TypeScript, Tailwind CSS 4, and Prisma.",
-    "longDescription": "Tremors Portfolio is a personal portfolio website with multiple innovative viewing modes: Default (modern card-based layout), Terminal (interactive CLI with 30+ commands), Paper (document/resume-style with sidebar TOC), Newspaper (editorial magazine-style with AI-generated content), and Nexus (interactive space environment with animated elements).\n\nKey features include GitHub API integration that fetches repositories, user profile, and activity with database caching for fast loading. The AI Newspaper mode uses Google Gemini to generate hilarious tabloid-style headlines and articles with an archive system. A secret admin system accessible via the terminal enables inline project controls, drag-and-drop reordering, visibility toggles, and content regeneration. Security features include HMAC-signed session tokens, PBKDF2 password hashing, rate limiting, and CSRF protection.",
-    "features": [
-      "5 Viewing Modes (Default, Terminal, Paper, Newspaper, Nexus)",
-      "GitHub API Integration with Database Caching",
-      "AI Newspaper Generation (Google Gemini)",
-      "Secret Admin Mode with Inline Controls",
-      "30+ Terminal Commands with Theme Switching",
-      "Secure Auth (HMAC, PBKDF2, Rate Limiting)"
-    ],
-    "installation": "git clone https://github.com/qtremors/tremors.git\ncd tremors/app\nnpm install\ncp .env.example .env.local\n# Edit .env.local with your values\nnpx prisma generate\nnpx prisma db push\nnpm run dev",
-    "badges": [
-      "tech-nextjs",
-      "tech-react",
-      "tech-ts",
-      "tech-tailwind",
-      "tech-prisma",
-      "tech-framermotion",
-      "tech-tsparticles"
-    ],
-    "links": [
-      {
-        "text": "Website",
-        "url": "https://tremors.vercel.app",
-        "class": "link-primary"
-      },
-      {
-        "text": "View on GitHub",
-        "url": "https://github.com/qtremors/tremors",
         "class": "link-secondary"
       }
     ]

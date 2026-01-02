@@ -38,6 +38,7 @@
 
     --md-sys-font-family: 'Manrope', sans-serif;
     --theme-icon-shadow: #ffffff;
+    --md-primary-rgb: 233, 179, 255;
     --hero-grid-color: rgba(233, 179, 255, 0.08);
     --spotlight-color: rgba(233, 179, 255, 0.1);
 }
@@ -77,6 +78,7 @@ body[data-theme='light'] {
     --md-outline: var(--md-sys-color-outline);
     --md-shadow-color: rgba(0, 0, 0, 0.2);
     --theme-icon-shadow: #202124;
+    --md-primary-rgb: 130, 85, 153;
 
     --hero-grid-color: rgba(130, 85, 153, 0.08);
     --spotlight-color: rgba(130, 85, 153, 0.20);

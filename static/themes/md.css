@@ -20,6 +20,7 @@
 
     /* White glow for Dark Mode icons */
     --theme-icon-shadow: #202124;
+    --md-primary-rgb: 138, 180, 248;
 
     --hero-grid-color: rgba(128, 128, 128, 0.05);
     --spotlight-color: rgba(255, 255, 255, 0.05);
@@ -43,6 +44,7 @@ body[data-theme='light'] {
 
     /* Dark glow for Light Mode icons */
     --theme-icon-shadow: #000000;
+    --md-primary-rgb: 26, 115, 232;
 
     --hero-grid-color: rgba(0, 0, 0, 0.06);
     --spotlight-color: rgba(0, 0, 0, 0.15);
