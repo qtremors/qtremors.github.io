@@ -60,8 +60,8 @@ This version focuses on a scalable, data-driven user experience with a professio
 - **Immersive Navigation:** Navigation bars **auto-hide on scroll** (debounced) and feature active section highlighting using an enhanced `IntersectionObserver`.
 
 #### **⏱️ Time Machine (History)**
-- **Visual Timeline:** A dedicated page (`system/history.html`) visualizing the project's evolution from v0.0.0 to v2.5.1.
-- **Gource Visualization:** Embedded 60fps timelapse video showing the codebase growth and file restructuring over time.
+- **Visual Timeline:** A dedicated page (`system/history.html`) visualizing the project's evolution from v0.0.0 to v2.6.0.
+- **Gource Visualization:** Embedded 30fps timelapse video showing the codebase growth and file restructuring over time.
     
 
 ---
@@ -121,11 +121,13 @@ The system includes specialized handling for projects that are currently being b
 
 ## 📈 Evolution of the Project
 
-This portfolio has evolved from a simple static page to a complex engineering project. You can explore the full timeline in the **Time Machine** (accessible via the alien icon 👽 menu).
+This portfolio has evolved from a simple static page to a complex engineering project. You can explore the full timeline in the **Time Machine** (accessible via the alien icon 👾 menu).
 
 ### 📽️ Watch the Evolution
-## 📺 [History - v0.0.0-v2.5.1](https://qtremors.github.io/system/history.html)
+## 📺 [History - v0.0.0-v2.6.0](https://qtremors.github.io/system/history.html)
 
+* **v2.6.0 (Navigation & Status):** Enhanced project detail pages with distinct Project Status banners (WIP/Beta/Archive) and a smart Recommended Projects engine. Refined footer navigation with directional arrows and improved mobile typography.
+* **v2.5.2 (Code Hygiene):** Massive cleanup of the static asset codebase, standardizing comments and removing dead code. 
 * **v2.5.1 (Tremors Portfolio Integration):** Replaced Nexus project with the new integrated Tremors Portfolio website. Added Prisma badge, synced sitemap and TUI.
 * **v2.5.0 (The Deep Review):** Added GitMig, RepoTree, Earnslate (live), Cosmos projects. Major codebase review with 10+ bug fixes, waves pattern rewrite, DEVELOPMENT.md guidelines, and project reordering.
 * **v2.3.0 (Accessibility & DX):** Added terminal auto-detect reset, JSON error handling, dynamic canonical tags, ARIA labels, and description clamping.

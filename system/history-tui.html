@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,7 @@
     <link rel="stylesheet" href="../static/css/tui-animations.css">
     <link rel="stylesheet" href="../static/css/tui-base.css">
     <link rel="stylesheet" href="../static/css/tui-themes.css">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
@@ -24,13 +25,33 @@
             font-size: 0.9rem;
         }
 
-        .git-hash { color: var(--purple); }
-        .git-tag  { color: var(--yellow); font-weight: bold; }
-        .git-date { color: var(--muted); font-style: italic; }
-        .git-head { color: var(--primary); font-weight: bold; }
-        .git-msg  { color: var(--foreground); }
-        .git-tree { color: var(--border); }
-        
+        .git-hash {
+            color: var(--purple);
+        }
+
+        .git-tag {
+            color: var(--yellow);
+            font-weight: bold;
+        }
+
+        .git-date {
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        .git-head {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .git-msg {
+            color: var(--foreground);
+        }
+
+        .git-tree {
+            color: var(--border);
+        }
+
         .commit-block {
             margin-bottom: 0.5rem;
         }
@@ -64,10 +85,46 @@
         }
 
         @media (max-width: 600px) {
-            .git-log-container { font-size: 0.75rem; }
+            .git-log-container {
+                font-size: 0.75rem;
+            }
+        }
+
+        /* --- Quality Toggle Logic --- */
+        .quality-radio {
+            display: none;
+        }
+
+        .tui-media-player {
+            display: none;
+        }
+
+        /* Default hidden */
+
+        #quality-optimized:checked~.player-optimized {
+            display: block;
+        }
+
+        #quality-hq:checked~.player-hq {
+            display: block;
+        }
+
+        .quality-switch {
+            float: right;
+        }
+
+        .switch-link {
+            cursor: pointer;
+            color: var(--cyan);
+            text-decoration: underline;
+        }
+
+        .switch-link:hover {
+            color: var(--yellow);
         }
     </style>
 </head>
+
 <body>
 
     <input type="radio" name="theme-switcher" id="theme-dracula" class="theme-radio" checked>
@@ -80,12 +137,13 @@
     <div class="container">
         <header>
             <div>
-                <span class="prompt">user@tui</span>:<span class="path">~/tremors</span>$ git log --graph --oneline --decorate
+                <span class="prompt">user@tui</span>:<span class="path">~/tremors</span>$ git log --graph --oneline
+                --decorate
             </div>
-            
+
             <nav class="tui-nav">
                 <a href="../tui.html">./home</a>
-                
+
                 <details class="dropdown-container">
                     <summary>./theme</summary>
                     <div class="dropdown-options">
@@ -98,46 +156,111 @@
         </header>
 
         <main>
-            
+
             <section class="tui-panel">
                 <div class="tui-panel-header">
                     HISTORY.log
                 </div>
                 <div class="tui-panel-body">
 
-                    <div class="tui-media-player">
+                    <!-- CSS-only Toggle Logic -->
+                    <input type="radio" name="video-quality" id="quality-optimized" class="quality-radio" checked>
+                    <input type="radio" name="video-quality" id="quality-hq" class="quality-radio">
+
+                    <div class="tui-media-player player-optimized">
                         <div class="media-header">
-                            [▶] playing: evolution_timelapse.mp4
+                            [▶] playing: evolution_720p.mp4 (Optimized)
+                            <div class="quality-switch">
+                                Switch to: <label for="quality-hq" class="switch-link">[ HQ 1080p ]</label>
+                            </div>
                         </div>
-                        <video controls autoplay muted loop playsinline>
-                            <source src="../assets/v0.0.0-v2.0.0.mp4" type="video/mp4">
+                        <video controls autoplay muted loop playsinline poster="../assets/logo.gif">
+                            <source src="../assets/v0.0.0-v2.6.0.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+
+                    <div class="tui-media-player player-hq">
+                        <div class="media-header">
+                            [▶] playing: evolution_1080p.mp4 (Original)
+                            <div class="quality-switch">
+                                Switch to: <label for="quality-optimized" class="switch-link">[ Optimized ]</label>
+                            </div>
+                        </div>
+                        <!-- preload="none" ensures this heavy file isn't touched until user plays it -->
+                        <video controls muted loop playsinline preload="none" poster="../assets/logo.gif">
+                            <source src="../assets/v0.0.0-v2.6.0-hq.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
 
                     <div class="git-log-container">
-<span class="git-tree">*</span> <span class="git-hash">a1b2c3d</span> <span class="git-head">(HEAD -> main, tag: v2.0.0)</span> <span class="git-msg">Architecture Overhaul & Visual Redesign</span>
-<span class="git-tree">|</span> <span class="git-date">   Date:   Dec 06 2025</span>
-<span class="git-tree">|</span>    <span class="git-msg">• Decoupled JS: Split monolithic index.js into home/project/extras</span>
-<span class="git-tree">|</span>    <span class="git-msg">• Smart Terminal: Added interactive OS-aware widget</span>
-<span class="git-tree">|</span>    <span class="git-msg">• Universal Fog: Implemented context-aware background blending</span>
-<span class="git-tree">|</span>    <span class="git-msg">• Performance: Removed CSS @imports, added scroll debounce</span>
-<span class="git-tree">|</span>
-<span class="git-tree">*</span> <span class="git-hash">f4e5d6c</span> <span class="git-tag">(tag: v1.9.0)</span> <span class="git-msg">The Feature Surge</span>
-<span class="git-tree">|</span> <span class="git-date">   Date:   Nov 15 2025</span>
-<span class="git-tree">|</span>    <span class="git-msg">• MD3 Engine: Custom theme engine with SVG morphing</span>
-<span class="git-tree">|</span>    <span class="git-msg">• Dynamic Content: Replaced static HTML with JSON loader</span>
-<span class="git-tree">|</span>    <span class="git-msg">• TUI V1: Initial release of Terminal UI</span>
-<span class="git-tree">|</span>
-<span class="git-tree">*</span> <span class="git-hash">9a8b7c6</span> <span class="git-tag">(tag: v1.0.0)</span> <span class="git-msg">The Visual Identity</span>
-<span class="git-tree">|</span> <span class="git-date">   Date:   Sep 01 2025</span>
-<span class="git-tree">|</span>    <span class="git-msg">• Material Design: Shifted to strict Material guidelines</span>
-<span class="git-tree">|</span>    <span class="git-msg">• Tech Badges: Added proficiency bars and shield.io badges</span>
-<span class="git-tree">|</span>    <span class="git-msg">• File Split: First separation of HTML and CSS</span>
-<span class="git-tree">|</span>
-<span class="git-tree">*</span> <span class="git-hash">1x2y3z0</span> <span class="git-tag">(tag: v0.0.0)</span> <span class="git-msg">Initial Commit</span>
-<span class="git-tree">|</span> <span class="git-date">   Date:   Jul 02 2025</span>
-<span class="git-tree">|</span>    <span class="git-msg">• Hello World: Static HTML/CSS personal website</span>
+                        <span class="git-tree">*</span> <span class="git-hash">8f7e6d5</span> <span
+                            class="git-head">(HEAD -> main, tag: v2.6.0)</span> <span class="git-msg">Navigation &
+                            Status</span>
+                        <span class="git-tree">|</span> <span class="git-date"> Date: Jan 02 2026</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Status Indicators: Dynamic WIP/Beta
+                            flags</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Recommended Engine: Smart project
+                            linking</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Nav Refinement: Arrows & typography
+                            fixes</span>
+                        <span class="git-tree">|</span>
+                        <span class="git-tree">*</span> <span class="git-hash">7c6b5a4</span> <span
+                            class="git-tag">(tag: v2.5.x)</span> <span class="git-msg">Integration & Refinement</span>
+                        <span class="git-tree">|</span> <span class="git-date"> Date: Jan 01 2026</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Portfolio: Replaced Nexus & Synced
+                            Data</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Projects: GitMig, RepoTree, Earnslate,
+                            Cosmos</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Clean: Code hygiene & FOUC fixes</span>
+                        <span class="git-tree">|</span>
+                        <span class="git-tree">|</span>
+                        <span class="git-tree">*</span> <span class="git-hash">2b1a0f9</span> <span
+                            class="git-tag">(tag: v2.2.0)</span> <span class="git-msg">Accessibility & Themes</span>
+                        <span class="git-tree">|</span> <span class="git-date"> Date: Dec 07 2025</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Themes: Fog, Glass, Spotlight
+                            effects</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• A11y: ARIA labels & reduced
+                            motion</span>
+                        <span class="git-tree">|</span>
+                        <span class="git-tree">*</span> <span class="git-hash">a1b2c3d</span> <span
+                            class="git-tag">(tag: v2.0.0)</span> <span class="git-msg">Architecture Overhaul</span>
+                        <span class="git-tree">|</span> <span class="git-date"> Date: Dec 06 2025</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Decoupled JS: Split monolithic index.js
+                            into home/project/extras</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Smart Terminal: Added interactive
+                            OS-aware widget</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Universal Fog: Implemented context-aware
+                            background blending</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Performance: Removed CSS @imports, added
+                            scroll debounce</span>
+                        <span class="git-tree">|</span>
+                        <span class="git-tree">*</span> <span class="git-hash">f4e5d6c</span> <span
+                            class="git-tag">(tag: v1.9.0)</span> <span class="git-msg">The Feature Surge</span>
+                        <span class="git-tree">|</span> <span class="git-date"> Date: Nov 15 2025</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• MD3 Engine: Custom theme engine with SVG
+                            morphing</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Dynamic Content: Replaced static HTML
+                            with JSON loader</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• TUI V1: Initial release of Terminal
+                            UI</span>
+                        <span class="git-tree">|</span>
+                        <span class="git-tree">*</span> <span class="git-hash">9a8b7c6</span> <span
+                            class="git-tag">(tag: v1.0.0)</span> <span class="git-msg">The Visual Identity</span>
+                        <span class="git-tree">|</span> <span class="git-date"> Date: Sep 01 2025</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Material Design: Shifted to strict
+                            Material guidelines</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Tech Badges: Added proficiency bars and
+                            shield.io badges</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• File Split: First separation of HTML and
+                            CSS</span>
+                        <span class="git-tree">|</span>
+                        <span class="git-tree">*</span> <span class="git-hash">1x2y3z0</span> <span
+                            class="git-tag">(tag: v0.0.0)</span> <span class="git-msg">Initial Commit</span>
+                        <span class="git-tree">|</span> <span class="git-date"> Date: Jul 02 2025</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Hello World: Static HTML/CSS personal
+                            website</span>
                     </div>
 
                 </div>
@@ -153,4 +276,5 @@
     </div>
 
 </body>
+
 </html>
