@@ -20,6 +20,7 @@
     --md-outline: #333333;
     --md-shadow-color: rgba(255, 255, 255, 0.1);
     --theme-icon-shadow: #ffffff;
+    --md-primary-rgb: 255, 255, 255;
     --hero-grid-color: rgba(255, 255, 255, 0.15);
     --spotlight-color: rgba(255, 255, 255, 0.12);
 }
@@ -42,6 +43,7 @@ body[data-theme='light'] {
     --md-outline: #000000;
     --md-shadow-color: rgba(0, 0, 0, 0.15);
     --theme-icon-shadow: #000000;
+    --md-primary-rgb: 0, 0, 0;
     --hero-grid-color: rgba(0, 0, 0, 0.1);
     --spotlight-color: rgba(0, 0, 0, 0.18);
 }
