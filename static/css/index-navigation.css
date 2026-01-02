@@ -437,7 +437,7 @@ body:not([data-theme='light']) .dropdown-item:hover {
 
 .toggle-switch.on .toggle-slider {
     transform: translateX(22px);
-    background: #fff;
+    background: var(--md-on-primary);
 }
 
 /* ==========================================================================
