@@ -1,5 +1,18 @@
 # Changelog
 
+
+## [v2.6.5] - 02-01-2026
+
+### 🎨 **UI Refinements & Theme Compatibility**
+
+- **Theme Initialization:** Fixed initialization logic in `history.html`, `404.html`, `system/index-404.html`, and `project.html` to consistently apply themes by targeting `document.body`.
+- **Simplified Settings Modal:** Unified settings modal to a single-view layout (no tabs) across all pages for better usability.
+- **Context-Aware Settings:** Removed irrelevant "Spotlight" and "Hero" settings from secondary pages (`history`, `404`, `project`) while retaining them on `index.html`.
+- **Glass Effect Fix:** Resolved Light Mode visibility issues where the glass effect background was too dark; now uses a proper semi-transparent light surface.
+- **Contrast Fixes:** Updated "Spotlight Effect" toggle switch to use theme-aware variables (`var(--md-on-primary)`), fixing visibility in Dark/MD3 modes.
+- **Code Cleanup:** Removed duplicated HTML content blocks and stray closing tags across multiple files.
+
+
 ## [v2.6.0] - 02-01-2026
 
 ### 🚦 **Project Status Indicators**
