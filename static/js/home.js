@@ -80,10 +80,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const dynamicClass = isDynamic ? 'dynamic-project' : '';
     const isWip = project.status === 'wip';
     const isBeta = project.status === 'beta';
-    const statusClass = isWip ? 'is-wip' : (isBeta ? 'is-beta' : '');
+    const isArchive = project.status === 'archive';
+    const statusClass = isWip ? 'is-wip' : (isBeta ? 'is-beta' : (isArchive ? 'is-archive' : ''));
     const statusBadge = isWip
       ? '<div class="wip-badge">⚠️ Development</div>'
-      : (isBeta ? '<div class="beta-badge">🧪 Beta</div>' : '');
+      : (isBeta ? '<div class="beta-badge">🧪 Beta</div>' : (isArchive ? '<div class="archive-badge">📦 Archived</div>' : ''));
     const detailUrl = project.id ? `project.html?id=${project.id}` : '#';
     const badgesHtml = project.badges.map(badge => `<span class="${badge}">${window.getBadgeLabel(badge)}</span>`).join('');
     const linksHtml = project.links.map(link => `<a href="${link.url}" target="_blank" rel="noopener noreferrer" class="${link.class}">${window.escapeHtml(link.text)} &rarr;</a>`).join('');

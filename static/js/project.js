@@ -75,6 +75,50 @@ function renderProjectPage(project, allProjects) {
   const descEl = document.getElementById('p-description');
   descEl.textContent = project.longDescription || project.description;
 
+  /* --- STATUS BANNER --- */
+  // Remove any existing banners first (in case of re-renders)
+  const existingBanner = document.querySelector('.project-status-banner');
+  if (existingBanner) existingBanner.remove();
+
+  if (project.status && ['wip', 'beta', 'archive'].includes(project.status)) {
+    const overviewSection = document.getElementById('section-overview');
+
+    const statusConfig = {
+      'wip': {
+        class: 'status-wip',
+        icon: '⚠️',
+        title: 'Work In Progress',
+        message: 'This project is currently under active development. Features may be incomplete or unstable.'
+      },
+      'beta': {
+        class: 'status-beta',
+        icon: '🧪',
+        title: 'Beta Release',
+        message: 'This project is in beta. Report bugs if you find any.'
+      },
+      'archive': {
+        class: 'status-archive',
+        icon: '📦',
+        title: 'Archived Project',
+        message: 'This project is no longer maintained. It is read-only and may have security vulnerabilities.'
+      }
+    };
+
+    const config = statusConfig[project.status];
+    if (config && overviewSection && descEl) {
+      const banner = document.createElement('div');
+      banner.className = `project-status-banner ${config.class}`;
+      banner.innerHTML = `
+        <div class="banner-icon">${config.icon}</div>
+        <div class="banner-content">
+            <strong>${config.title}</strong>
+            ${config.message}
+        </div>
+      `;
+      overviewSection.insertBefore(banner, descEl);
+    }
+  }
+
   /* --- FEATURES LIST --- */
   const featuresList = document.getElementById('p-features');
   const featuresSection = document.getElementById('section-features');
@@ -262,44 +306,89 @@ function renderProjectPage(project, allProjects) {
     const currentIndex = allProjects.findIndex(p => p.id === project.id);
     const total = allProjects.length;
 
-    let prevProject = project.related_prev
-      ? allProjects.find(p => p.id === project.related_prev)
-      : allProjects[(currentIndex - 1 + total) % total];
+    // Strict Loop Navigation (Prev/Next based on index)
+    let prevProject = allProjects[(currentIndex - 1 + total) % total];
+    let nextProject = allProjects[(currentIndex + 1) % total];
 
-    let nextProject = project.related_next
-      ? allProjects.find(p => p.id === project.related_next)
-      : allProjects[(currentIndex + 1) % total];
-
-    const createNavCard = (proj, directionClass) => {
-      const shortDesc = proj.description.length > 80
-        ? proj.description.substring(0, 80) + '...'
-        : proj.description;
-
+    // Helper to create card HTML
+    const createNavCard = (proj, directionClass, isRecommended = false) => {
       const badgeHtml = (proj.badges || []).slice(0, 3).map(b => {
         return `<span class="mini-badge ${b}"></span>`;
       }).join('');
 
+      const cardClass = isRecommended ? 'nav-card recommended-item' : `nav-card ${directionClass}`;
+
+      const leftArrow = (directionClass === 'prev-card' && !isRecommended) ? '<span class="nav-arrow">&larr;</span>' : '';
+      const rightArrow = (directionClass === 'next-card' && !isRecommended) ? '<span class="nav-arrow">&rarr;</span>' : '';
+
       return `
-                <a href="project.html?id=${proj.id}" class="nav-card ${directionClass}">
+                <a href="project.html?id=${proj.id}" class="${cardClass}">
                     <img src="${proj.image}" alt="${proj.title} project thumbnail" class="nav-img">
 
                     <div class="nav-info">
                         <div class="nav-top-row">
+                            ${leftArrow}
                             <div class="nav-badges">${badgeHtml}</div>
+                            ${rightArrow}
                         </div>
 
                         <h3 class="nav-title">${window.escapeHtml(proj.title)}</h3>
-                        <p class="nav-desc">${window.escapeHtml(shortDesc)}</p>
+                        <p class="nav-desc">${window.escapeHtml(proj.description)}</p>
                     </div>
                 </a>
             `;
     };
 
+    // Prepare Standard Nav HTML
+    const navHTML = `
+        ${createNavCard(prevProject, 'prev-card')}
+        ${createNavCard(nextProject, 'next-card')}
+    `;
+
+    // Handle Recommended Project (Optional)
+    let recommendedHTML = '';
+    if (project.recommended) {
+      // Normalize to array (support both single string and array of strings)
+      const recIds = Array.isArray(project.recommended) ? project.recommended : [project.recommended];
+
+      // Filter out invalid IDs
+      const recProjects = recIds
+        .map(id => allProjects.find(p => p.id === id))
+        .filter(p => p !== undefined);
+
+      if (recProjects.length > 0) {
+        const cardsHTML = recProjects.map(p => createNavCard(p, '', true)).join('');
+
+        recommendedHTML = `
+             <div class="recommended-container">
+                 <div class="recommended-label">
+                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                     <span>Recommended</span>
+                 </div>
+                 <div class="recommended-grid">
+                    ${cardsHTML}
+                 </div>
+             </div>
+        `;
+      }
+    }
+
+    // Inject into DOM
     if (footerNav) {
-      footerNav.innerHTML = `
-                ${createNavCard(prevProject, 'prev-card')}
-                ${createNavCard(nextProject, 'next-card')}
-            `;
+      // Clear existing content (needed if re-rendering)
+      footerNav.innerHTML = navHTML;
+
+      // If there is a recommended project, we insert it BEFORE the footer nav grid
+      // We need to check if we already inserted a recommended container to avoid dupes on re-render
+      const existingRec = document.querySelector('.recommended-container');
+      if (existingRec) existingRec.remove();
+
+      if (recommendedHTML) {
+        const container = document.createElement('div');
+        container.innerHTML = recommendedHTML;
+        // Insert before the footer nav
+        footerNav.parentNode.insertBefore(container.firstElementChild, footerNav);
+      }
     }
   }
 }

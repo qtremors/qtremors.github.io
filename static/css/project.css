@@ -550,9 +550,15 @@
     overflow: hidden;
 }
 
+.nav-arrow {
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--md-primary);
+    font-weight: 300;
+}
+
 .nav-badges {
     display: flex;
-    margin-left: auto;
     gap: 6px;
 }
 
@@ -652,6 +658,8 @@
 
     .nav-info {
         width: 100%;
+        min-width: 0;
+        /* Fix flexbox overflow */
     }
 
     .nav-top-row {
@@ -667,4 +675,145 @@
         font-size: 1rem;
         white-space: normal;
     }
+}
+
+/* =========================================
+   PROJECT STATUS BANNERS
+   ========================================= */
+
+.project-status-banner {
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    border: 1px solid transparent;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.banner-icon {
+    font-size: 1.25rem;
+    line-height: 1;
+    margin-top: 2px;
+}
+
+.banner-content strong {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    font-size: 1rem;
+}
+
+/* --- Status Variants --- */
+
+/* WIP: Warning/Yellow */
+.status-wip {
+    background-color: rgba(255, 193, 7, 0.1);
+    border-color: rgba(255, 193, 7, 0.3);
+    color: #ffb300;
+}
+
+.status-wip .banner-content {
+    color: var(--md-on-surface);
+}
+
+.status-wip .banner-content strong {
+    color: #ffb300;
+}
+
+/* BETA: Info/Blue */
+.status-beta {
+    background-color: rgba(66, 165, 245, 0.1);
+    border-color: rgba(66, 165, 245, 0.3);
+    color: #42a5f5;
+}
+
+.status-beta .banner-content {
+    color: var(--md-on-surface);
+}
+
+.status-beta .banner-content strong {
+    color: #42a5f5;
+}
+
+/* ARCHIVE: Error/Red or Muted/Grey */
+.status-archive {
+    background-color: rgba(244, 67, 54, 0.08);
+    border-color: rgba(244, 67, 54, 0.25);
+    color: #ef5350;
+}
+
+.status-archive .banner-content {
+    color: var(--md-on-surface-variant);
+}
+
+.status-archive .banner-content strong {
+    color: #ef5350;
+}
+
+/* =========================================
+   RECOMMENDED PROJECT SECTION
+   ========================================= */
+
+.recommended-container {
+    margin-top: 5rem;
+    margin-bottom: -3rem;
+    /* Pull footer nav up slightly or adjust spacing */
+}
+
+.recommended-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--md-primary);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--md-outline);
+    opacity: 0.9;
+}
+
+/* Container for the cards themselves */
+.recommended-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Ensure nav cards in the grid stretch to full height and have highlight */
+.recommended-grid .nav-card {
+    height: 100%;
+    border: 1px solid var(--md-primary);
+    /* RESTORED: Highlight border */
+    position: relative;
+    overflow: hidden;
+}
+
+.recommended-grid .nav-card::before {
+    content: "";
+    /* Glow effect */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent, rgba(var(--md-primary-rgb), 0.05));
+    pointer-events: none;
+}
+
+/* Responsive adjustment for recommended grid */
+@media (max-width: 800px) {
+    .recommended-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* On very small screens, ensure the recommended nav cards behave like mobile nav cards */
+@media (max-width: 600px) {
+    /* No overrides needed - let it inherit standard .nav-card row styles */
 }
