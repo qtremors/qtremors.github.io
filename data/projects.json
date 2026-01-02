@@ -223,7 +223,7 @@
     "links": [
       {
         "text": "Website",
-        "url": "system/index-404.html",
+        "url": "https://cosmox.vercel.app/",
         "class": "link-primary"
       },
       {
