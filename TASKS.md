@@ -1,6 +1,7 @@
-# Project Tasks & Issues
+# Tremors Tasks
 
-> **Last Updated:** 2026-01-02
-> **Portfolio Version:** v2.6.0
+> **Project:** Tremors  
+> **Version:** 2.6.5
+> **Last Updated:** 02-01-2026
 
 ---
