@@ -1,5 +1,37 @@
-# Changelog
+# Tremors Changelogs
 
+> **Project:** Tremors  
+> **Version:** 2.7.0
+> **Last Updated:** 14-01-2026
+
+---
+
+## [v2.7.0] - 14-01-2026
+
+### 📝 **Documentation Overhaul**
+
+- **README Reformat:** Complete restructure using modern portfolio template format:
+    - Added centered header with logo, title link, and tech badges (HTML5, CSS3, JavaScript, License).
+    - Added GitHub-style NOTE callout for personal portfolio tag.
+    - Converted features to scannable feature table with emoji icons.
+    - Added condensed Quick Start section with clear commands.
+    - Added Tech Stack table replacing inline technology list.
+    - Added formatted Project Structure code block.
+    - Split Modern UI and Terminal TUI into dedicated feature sections.
+    - Added Evolution table summarizing version highlights.
+    - Added Documentation links table.
+    - Added centered footer with attribution.
+
+- **DEVELOPMENT.md Created:** Technical reference documentation:
+    - Architecture Overview with Static-First diagram.
+    - Complete Project Structure breakdown.
+    - File Conventions tables for HTML, CSS, and JS modules.
+    - Theme System documentation (OLED/MD/MD3, effects, localStorage keys).
+    - Data Schema with `projects.json` format and status values.
+    - Code Style standards and Performance Targets.
+    - Browser Compatibility matrix.
+
+---
 
 ## [v2.6.5] - 02-01-2026
 
