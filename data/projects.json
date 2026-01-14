@@ -201,7 +201,6 @@
   },
   {
     "id": "cosmos",
-    "status": "beta",
     "title": "Cosmos",
     "image": "assets/cosmos-preview.png",
     "description": "A high-performance 3D solar system simulation running in your browser with custom GLSL shaders, realistic orbital mechanics, 6-DOF fly controls, and full gamepad support.",
