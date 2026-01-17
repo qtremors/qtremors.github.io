@@ -1,8 +1,25 @@
 # Tremors Changelogs
 
 > **Project:** Tremors  
-> **Version:** 2.7.0
-> **Last Updated:** 14-01-2026
+> **Version:** 2.8.0
+> **Last Updated:** 17-01-2026
+
+---
+
+## [v2.8.0] - 17-01-2026
+
+### 🛠️ **Unified Tooling (gtrmrs)**
+
+-   **New unified CLI Utility:** Unified `repo-tree`, `locr`, and `gitmig` into a single, cohesive CLI tool named `gtrmrs`.
+-   **Simplified Installation:** Users can now install one tool to get directory visualization, LOC counting, and git migration features.
+-   **Documentation Update:** Expanded project description to clearly explain the unification.
+
+### 🎨 **TUI Portfolio Enhancements**
+
+-   **Status Badges (Corner Tags):** Added graphical status indicators (BETA, ARCHIVED, DEVELOPMENT) to portfolio items.
+    -   **Design:** Styled as bottom-right corner tags with dotter borders, matching the tech stack badge aesthetic.
+    -   **Visibility:** Subtle content highlight tells the status at a glance without clutter.
+-   **Ranking Update:** Updated `tui.html` project order to prioritize `gtrmrs` and other active projects.
 
 ---
 
