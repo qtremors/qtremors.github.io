@@ -302,21 +302,18 @@
     ]
   },
   {
-    "id": "locr",
-    "title": "Lines of Code in Repo",
-    "image": "assets/locr-preview.png",
-    "description": "A blazing-fast, zero-dependency Python CLI that counts lines of code in Git repositories using hybrid eager pruning, respecting .gitignore rules and supporting graceful interrupts for partial results.",
-    "longDescription": "Locr is a blazing fast, dependency-free utility designed to count lines of code in Git repositories. Born out of frustration with slow file scanners, it uses a 'Hybrid Eager Pruning' strategy instantly skipping massive junk folders (like node_modules, venv, .git) before even querying Git, then using git check-ignore for 100% accuracy on remaining files.\n\nUnlike simple counters, it respects your .gitignore rules perfectly (including complex negations), supports language-specific syntax highlighting in the terminal (Python=Yellow, HTML=Red, TypeScript=Blue), provides comment density statistics, and handles graceful interrupts so you can press Ctrl+C during a massive scan and still get partial results. It can scan the Django repository (3,500+ files, 400K lines) in just 1.1 seconds on a warm cache.",
+    "id": "gtrmrs",
+    "title": "gtrmrs",
+    "image": "assets/gtrmrs-preview.png",
+    "description": "A unified suite of dependency-free, Git-aware CLI tools for developers that combines directory tree visualization, lines of code counting, and clean repository migration into a single powerful utility.",
+    "longDescription": "gtrmrs is a unified CLI toolkit that combines three previously separate utilities into a single, cohesive application. It integrates 'RepoTree' for visualizing directory structures as ASCII trees, 'Locr' for counting lines of code with gitignore awareness, and 'GitMig' for managing partial repository migrations using sparse-checkout. This unification simplifies installation and provides a central entry point for these common development tasks.",
     "features": [
-      "Hybrid Git-Awareness (2-phase scanner)",
-      "Eager Pruning for Max Speed",
-      "Graceful Interrupts (Ctrl+C shows results)",
-      "Smart Colors & Comment Density Stats"
+      "Unified Tool Suite (rtree, locr, gitmig)",
+      "Zero Dependencies (Standard Library Only)",
+      "Git-Aware & Eager Pruning",
+      "Cross-Platform (Windows/Linux/Mac)"
     ],
-    "installation": "# Clone repository\ngit clone https://github.com/qtremors/locr.git\ncd locr\n\n# Install as editable package\npip install -e .",
-    "recommended": [
-      "repo-tree"
-    ],
+    "installation": "# Clone and install\ngit clone https://github.com/qtremors/gtrmrs.git\ncd gtrmrs\npip install -e .\n\n# Usage\nrtree\nlocr\ngitmig ./backup --dry-run",
     "badges": [
       "tech-python",
       "tech-cli",
@@ -325,65 +322,7 @@
     "links": [
       {
         "text": "View on GitHub",
-        "url": "https://github.com/qtremors/locr",
-        "class": "link-primary"
-      }
-    ]
-  },
-  {
-    "id": "gitmig",
-    "status": "wip",
-    "title": "GitMig",
-    "image": "assets/gitmig-preview.png",
-    "description": "A dependency-free Python utility for migrating Git repositories without bloat copies source files while skipping node_modules, venv, .git, and other heavy directories.",
-    "longDescription": "GitMig is a lightweight, zero-dependency tool designed to backup and migrate Git repositories cleanly. It automatically detects all repos in a directory and copies only essential source files while excluding node_modules (50k+ files), virtual environments, build artifacts, and .git history.\n\nKey features include dry-run preview mode, zip compression, detailed file stats, custom exclusion patterns, and preservation of .env files. Built with pure Python standard library no pip dependencies required.",
-    "features": [
-      "Auto-Detection of All Git Repositories",
-      "Smart Exclusions (node_modules, venv, .git, dist)",
-      "Dry Run Preview Mode",
-      "Zip Compression Output",
-      "Preserves .env Config Files",
-      "Zero Dependencies (Pure Python)"
-    ],
-    "installation": "# Clone repository\ngit clone https://github.com/qtremors/gitmig.git\ncd gitmig\n\n# Install as editable package\npip install -e .",
-    "badges": [
-      "tech-python",
-      "tech-cli",
-      "tech-git"
-    ],
-    "links": [
-      {
-        "text": "View on GitHub",
-        "url": "https://github.com/qtremors/gitmig",
-        "class": "link-primary"
-      }
-    ]
-  },
-  {
-    "id": "repo-tree",
-    "title": "RepoTree Generator",
-    "image": "assets/rtree-preview.png",
-    "description": "A Git-aware CLI that generates clean directory trees, filtering files using .gitignore so only real source code shows up no build junk, no clutter.",
-    "longDescription": "RepoTree solves the problem of 'dirty' directory dumps. It automatically parses .gitignore files to hide build artifacts and caches, ensuring your diagram only shows relevant source code.\n\nIt supports multiple visualization modes (ASCII tree, Flat list), depth limiting for high-level overviews, and can output directly to files without ANSI color codes.",
-    "features": [
-      "Context-Aware .gitignore Parsing",
-      "Depth Limiting for Large Monorepos",
-      "Multiple Output Modes (Tree, Flat, Raw)",
-      "Auto-Colorization for Terminal"
-    ],
-    "installation": "# Clone repository\ngit clone https://github.com/qtremors/file-tree-generator.git\ncd file-tree-generator\n\n# Install as editable package\npip install -e .",
-    "recommended": [
-      "locr"
-    ],
-    "badges": [
-      "tech-python",
-      "tech-cli",
-      "tech-git"
-    ],
-    "links": [
-      {
-        "text": "View on GitHub",
-        "url": "https://github.com/qtremors/rtree",
+        "url": "https://github.com/qtremors/gtrmrs",
         "class": "link-primary"
       }
     ]
@@ -411,6 +350,31 @@
         "text": "View on GitHub",
         "url": "https://github.com/qtremors/pc-rc",
         "class": "link-primary"
+      }
+    ]
+  },
+  {
+    "id": "pygame-calculator",
+    "title": "Calculator App (Pygame)",
+    "image": "assets/calculator-preview.jpg",
+    "description": "A desktop calculator built as a single Python script using Pygame, featuring a dark-themed responsive GUI, file-based persistent history, dynamic font scaling, and full keyboard and numpad support.",
+    "longDescription": "A demonstration of building functional GUI applications using game libraries instead of traditional GUI frameworks. This calculator features a scrollable history log that persists between sessions using a local file, dynamic font scaling to prevent text overflow when numbers get too long, and full keyboard support including the numpad.\n\nIt handles standard arithmetic operations (+, -, *, /) as well as percentage calculations and sign toggling (+/-). The UI includes hover effects on buttons for visual feedback, a clean modern dark-themed color palette, and robust error handling for division by zero and invalid inputs.",
+    "features": [
+      "Persistent History (File-based)",
+      "Dynamic Font Scaling",
+      "Scrollable History View",
+      "Full Keyboard & Numpad Support"
+    ],
+    "installation": "# Clone repository\ngit clone https://github.com/qtremors/pygame-calculator-app.git\ncd pygame-calculator-app\n\n# Setup environment\nuv venv\n# Activate venv (Windows: .venv\\Scripts\\activate, Linux: source .venv/bin/activate)\n\n# Install and run\nuv pip install pygame\npython calculator.py",
+    "badges": [
+      "tech-python",
+      "tech-pygame"
+    ],
+    "links": [
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/pygame-calculator-app",
+        "class": "link-secondary"
       }
     ]
   },
@@ -445,31 +409,6 @@
       {
         "text": "View on GitHub",
         "url": "https://github.com/qtremors/eshopper",
-        "class": "link-secondary"
-      }
-    ]
-  },
-  {
-    "id": "pygame-calculator",
-    "title": "Calculator App (Pygame)",
-    "image": "assets/calculator-preview.jpg",
-    "description": "A desktop calculator built as a single Python script using Pygame, featuring a dark-themed responsive GUI, file-based persistent history, dynamic font scaling, and full keyboard and numpad support.",
-    "longDescription": "A demonstration of building functional GUI applications using game libraries instead of traditional GUI frameworks. This calculator features a scrollable history log that persists between sessions using a local file, dynamic font scaling to prevent text overflow when numbers get too long, and full keyboard support including the numpad.\n\nIt handles standard arithmetic operations (+, -, *, /) as well as percentage calculations and sign toggling (+/-). The UI includes hover effects on buttons for visual feedback, a clean modern dark-themed color palette, and robust error handling for division by zero and invalid inputs.",
-    "features": [
-      "Persistent History (File-based)",
-      "Dynamic Font Scaling",
-      "Scrollable History View",
-      "Full Keyboard & Numpad Support"
-    ],
-    "installation": "# Clone repository\ngit clone https://github.com/qtremors/pygame-calculator-app.git\ncd pygame-calculator-app\n\n# Setup environment\nuv venv\n# Activate venv (Windows: .venv\\Scripts\\activate, Linux: source .venv/bin/activate)\n\n# Install and run\nuv pip install pygame\npython calculator.py",
-    "badges": [
-      "tech-python",
-      "tech-pygame"
-    ],
-    "links": [
-      {
-        "text": "View on GitHub",
-        "url": "https://github.com/qtremors/pygame-calculator-app",
         "class": "link-secondary"
       }
     ]
