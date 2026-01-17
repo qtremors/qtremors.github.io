@@ -437,3 +437,59 @@ footer {
         /* Tiny font for ASCII art on phones */
     }
 }
+
+/* --- Status Badges (Corner Tag) --- */
+fieldset[class*="status-"] {
+    position: relative;
+    /* dashed border managed by base .portfolio-item rule */
+}
+
+/* Corner Tag Style */
+.status-tag {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    border: 2px dotted currentColor;
+    padding: 0.25rem 0.5rem;
+    /* Match .portfolio-command padding */
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 1em;
+    /* Match base font size */
+    text-transform: uppercase;
+    background-color: var(--panel-bg);
+    z-index: 5;
+    line-height: inherit;
+    /* Reset line-height */
+}
+
+/* WIP / Development */
+.status-wip {
+    box-shadow: inset 0 0 20px -5px rgba(241, 250, 140, 0.1);
+}
+
+.status-tag.status-wip {
+    color: var(--yellow);
+    box-shadow: none;
+}
+
+/* Beta */
+.status-beta {
+    box-shadow: inset 0 0 20px -5px rgba(80, 250, 123, 0.1);
+}
+
+.status-tag.status-beta {
+    color: var(--green);
+    box-shadow: none;
+}
+
+/* Archive */
+.status-archive {
+    opacity: 0.8;
+}
+
+.status-tag.status-archive {
+    color: var(--muted);
+    border-color: var(--muted);
+    box-shadow: none;
+}
