@@ -94,13 +94,13 @@ function renderProjectPage(project, allProjects) {
         class: 'status-beta',
         icon: '🧪',
         title: 'Beta Release',
-        message: 'This project is in beta. Report bugs if you find any.'
+        message: 'This project is in BETA, some things might be incomplete and might not work properly.'
       },
       'archive': {
         class: 'status-archive',
         icon: '📦',
         title: 'Archived Project',
-        message: 'This project is no longer maintained. It is read-only and may have security vulnerabilities.'
+        message: 'This project is no longer maintained and is read-only.'
       }
     };
 
