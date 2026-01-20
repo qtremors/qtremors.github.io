@@ -9,7 +9,8 @@
       "AI-Powered Dynamic Question Generation (Gemini)",
       "Context-Aware Explanations for Wrong Answers",
       "Split-Screen Syntax Highlighting (Prism.js)",
-      "HTMX-powered SPA feel without page reloads"
+      "HTMX-powered SPA feel without page reloads",
+      "Gamification & XP System"
     ],
     "installation": "# Clone repository\ngit clone https://github.com/qtremors/quizzer-ai.git\ncd quizzer-ai\n\n# Install dependencies\nuv sync\ncd qtrmrs\n\n# Run migrations and start server\nuv run manage.py migrate\nuv run manage.py runserver",
     "badges": [
@@ -43,9 +44,10 @@
       "Real-time WebSocket State Streaming",
       "VCR Controls (Play, Pause, Step, Reverse)",
       "Interactive Grid for Pathfinding (Draw Walls)",
-      "Metadata-Driven UI Architecture"
+      "Metadata-Driven UI Architecture",
+      "Pseudocode Tracking"
     ],
-    "installation": "# Clone repository\ngit clone https://github.com/qtremors/algorithm-visualizer.git\ncd algorithm-visualizer\n\n# Start Backend (FastAPI)\ncd backend\nuv run uvicorn app.main:app --reload\n\n# Start Frontend (React)\n# Open a new terminal\ncd frontend\nnpm install\nnpm run dev",
+    "installation": "# Clone repository\ngit clone https://github.com/qtremors/algorithm-visualizer.git\ncd algorithm-visualizer\n\n# Install dependencies & start backend (FastAPI)\ncd backend && uv sync\nuv run uvicorn app.main:app --reload\n\n# Install dependencies & Start Frontend (React)\ncd frontend && npm install\nnpm run dev",
     "badges": [
       "tech-react",
       "tech-ts",
@@ -69,21 +71,22 @@
     "id": "git-nexus",
     "title": "GitNexus",
     "image": "assets/git-nexus-preview.png",
-    "description": "A self-hosted Flask dashboard for tracking GitHub repository updates, bulk-downloading assets to your local machine, and exploring user profiles with contribution graphs and README previews.",
-    "longDescription": "GitNexus bridges the gap between GitHub and your local machine. It allows you to build a personalized 'Watchlist' of repositories to monitor, track release versions with glowing update indicators, and deeply explore user profiles with contribution graphs.\n\nIts standout feature is the Server-Side Downloader, which bypasses browser API limits to download multiple assets or source codes directly to your local file system in a structured format. The app includes three distinct visual themes (Dark Contrast, Dimmed, Deep Blue AMOLED), glassmorphism design, and full import/export functionality for data portability.",
+    "description": "A powerful, self-hosted dashboard that bridges the gap between the cloud and your local machine. Discover users, track releases, and time-travel through commit history.",
+    "longDescription": "GitNexus is a powerful, self-hosted dashboard that bridges the gap between the cloud and your local machine. It allows you to discover users, track releases, and time-travel through commit history in a unified workspace.\n\nKey features include the 'Discovery Engine' for deep profile analysis, 'Asset Watchtower' for monitoring tool updates, and the new 'Repo Replay' for spinning up isolated dev servers from historical commits. Built with a local-first philosophy, all data stays on your machine using SQLite.",
     "features": [
+      "Discovery Engine (User Profiling)",
+      "Detailed Contribution Graphs",
       "Asset Watchtower (Update Detection)",
-      "Server-Side Pipeline for Bulk Downloads",
-      "Deep User Profiling & Contribution Graphs",
-      "Multiple Theme Engine (Dark/Dimmed/AMOLED)"
+      "Repo Replay (Time Travel & Debugging)",
+      "Local-First Privacy (No Telemetry)"
     ],
-    "installation": "# Clone repository\ngit clone https://github.com/qtremors/git-nexus.git\ncd git-nexus\n\n# Install dependencies\nuv sync\n\n# Run application\nuv run app.py",
+    "installation": "# Clone repository\ngit clone https://github.com/qtremors/git-nexus.git\ncd git-nexus\n\n# Install dependencies & start backend (FastAPI)\ncd backend && uv sync\nuv run uvicorn app.main:app --reload\n\n# Install dependencies & Start Frontend (React)\ncd frontend && npm install\nnpm run dev",
     "badges": [
       "tech-python",
-      "tech-flask",
-      "tech-js",
-      "tech-html",
-      "tech-css",
+      "tech-fastapi",
+      "tech-react",
+      "tech-ts",
+      "tech-tailwind",
       "tech-sqlite"
     ],
     "links": [
@@ -108,11 +111,11 @@
     "longDescription": "Arcade Nexus is a web application designed to emulate the feeling of a gaming console directly in your browser. It features a custom boot sequence, dashboard interface, and a dedicated TypeScript Game SDK for developing games that integrate seamlessly with the platform.\n\nThe SDK handles game loops, input management (keyboard/gamepad), and state persistence. Games can leverage cloud-synced save data, a global achievement tracking system, and instant launch from the library. The backend uses FastAPI with SQLite (AioSQLite + SQLAlchemy) for async database operations, JWT authentication, and Pydantic validation. Built-in games include Snake with more in development.",
     "features": [
       "Custom Game SDK (TypeScript)",
-      "Cloud-Synced Save States",
+      "Local Save States",
       "Global Achievement Tracking",
       "Immersive Console-Style UI"
     ],
-    "installation": "# Clone repository\ngit clone https://github.com/qtremors/arcade-nexus.git\ncd arcade-nexus\n\n# Setup Backend (FastAPI)\ncd backend\npython -m venv venv\n# Activate venv (Windows: venv\\Scripts\\activate, Linux: source venv/bin/activate)\npip install -r requirements.txt\nuvicorn app.main:app --reload\n\n# Setup Frontend (React)\n# Open a new terminal\ncd frontend\nnpm install\nnpm run dev",
+    "installation": "# Clone repository\ngit clone https://github.com/qtremors/arcade-nexus.git\ncd arcade-nexus\n\n# Install dependencies & start backend (FastAPI)\ncd backend && uv sync\nuv run uvicorn app.main:app --reload\n\n# Install dependencies & Start Frontend (React)\ncd frontend && npm install\nnpm run dev",
     "badges": [
       "tech-react",
       "tech-ts",
@@ -169,7 +172,7 @@
     "id": "earnslate",
     "title": "Earnslate",
     "image": "assets/earnslate-preview.png",
-    "description": "A personal finance manager built with Next.js 15 and Zustand for tracking income, expenses, budgets, and subscriptions all stored locally in your browser with a premium monochrome interface.",
+    "description": "A personal finance manager built with Next.js 16 and Zustand for tracking income, expenses, budgets, and subscriptions all stored locally in your browser with a premium monochrome interface.",
     "longDescription": "Earnslate is a privacy-first personal finance app that runs entirely in your browser with no backend required. All data persists in localStorage, meaning no account signup and full offline capability.\n\nFeatures include a real-time dashboard with spending breakdown charts, full transaction CRUD with search/filters/pagination, budget tracking with auto-reset on period expiry, and subscription management with 100+ service templates (Netflix, Spotify, AWS, etc.). The UI is built with CSS Modules (no Tailwind) and custom SVG charts no external chart libraries. Keyboard shortcuts (Ctrl+N, Ctrl+D/T/B) provide power-user navigation.",
     "features": [
       "Privacy-First (Local Storage Only)",
@@ -204,13 +207,14 @@
     "title": "Cosmos",
     "image": "assets/cosmos-preview.png",
     "description": "A high-performance 3D solar system simulation running in your browser with custom GLSL shaders, realistic orbital mechanics, 6-DOF fly controls, and full gamepad support.",
-    "longDescription": "Cosmos is a modular, scientifically-inspired solar system visualizer built with React and Three.js. It features 9 planets (including Pluto), 4 moons, a 4000-asteroid belt, and custom GLSL shaders for each celestial body from procedural sun granulation to atmospheric band dynamics on ice giants.\n\nThe control system supports 6 degrees of freedom with keyboard, mouse, and gamepad input. A radar HUD provides directional awareness, and the camera can lock onto any celestial body for orbital viewing. The codebase is fully modular with centralized physics constants in SDK.ts, making it easy to extend with new celestial objects.",
+    "longDescription": "Cosmos is a modular, scientifically-inspired solar system visualizer built with React and Three.js. It features 9 planets (including Pluto), 4 moons, a 2000-asteroid belt, and custom GLSL shaders for each celestial body from procedural sun granulation to atmospheric band dynamics on ice giants.\n\nThe control system supports 6 degrees of freedom with keyboard, mouse, and gamepad input. A radar HUD provides directional awareness, and the camera can lock onto any celestial body for orbital viewing. The codebase is fully modular with centralized physics constants in SDK.ts, making it easy to extend with new celestial objects.",
     "features": [
       "Custom GLSL Shaders for Each Planet",
       "6-DOF Fly Controls + Gamepad Support",
       "Radar HUD with Smart Labels",
       "Lock-On Orbital Camera System",
-      "4000 Instanced Asteroids"
+      "2000 Instanced Asteroids",
+      "Quantumania Realm"
     ],
     "installation": "# Clone repository\ngit clone https://github.com/qtremors/cosmos.git\ncd cosmos/cosmos-app\n\n# Install dependencies and run\nnpm install\nnpm run dev",
     "badges": [
@@ -244,7 +248,8 @@
       "Email Verification & OTP Password Reset",
       "Product Reviews & Ratings",
       "Advanced Search & Filtering",
-      "Wishlist & Shopping Cart"
+      "Wishlist & Shopping Cart",
+      "Order History & Tracking"
     ],
     "installation": "# Clone repository\ngit clone https://github.com/qtremors/amanzon\ncd amanzon/app\n\n# Setup with uv (recommended)\nuv sync\ncp .env.example .env\n# Edit .env with your credentials\n\n# Initialize Database\nuv run python manage.py migrate\nuv run python manage.py createsuperuser\n\n# Run Server\nuv run python manage.py runserver",
     "badges": [
@@ -336,8 +341,9 @@
     "features": [
       "Media Control (Vol, Play, Pause, Next)",
       "System Power Ops (Lock, Sleep, Shutdown)",
-      "Instant Screen Mirroring to Phone",
-      "Zero-Dependency Frontend"
+      "Remote Screenshots",
+      "Zero-Dependency Frontend",
+      "Browser Launcher"
     ],
     "installation": "# Clone repository\ngit clone https://github.com/qtremors/pc-rc.git\ncd pc-rc\n\n# Install dependencies and run\nuv sync\nuv run main.py",
     "badges": [
@@ -363,7 +369,9 @@
       "Persistent History (File-based)",
       "Dynamic Font Scaling",
       "Scrollable History View",
-      "Full Keyboard & Numpad Support"
+      "Full Keyboard & Numpad Support",
+      "Animated UI",
+      "Safe Math Parsing"
     ],
     "installation": "# Clone repository\ngit clone https://github.com/qtremors/pygame-calculator-app.git\ncd pygame-calculator-app\n\n# Setup environment\nuv venv\n# Activate venv (Windows: .venv\\Scripts\\activate, Linux: source .venv/bin/activate)\n\n# Install and run\nuv pip install pygame\npython calculator.py",
     "badges": [
@@ -436,8 +444,8 @@
     ],
     "links": [
       {
-        "text": "View on GitHub",
-        "url": "https://github.com/qtremors/team-chat-app",
+        "text": "In Dveleopment",
+        "url": "https://github.com/qtremors",
         "class": "link-primary"
       }
     ]
@@ -449,10 +457,10 @@
     "description": "A cyberpunk-themed digital archive for abandoned project ideas, featuring CSS 3D parallax scrolling, a terminal-style search interface, live project previews on hover, and automated GitHub Actions deployment.",
     "longDescription": "A unique conceptual website that serves as a 'Digital Graveyard' a final resting place for abandoned code and half-baked project ideas. It uses CSS 3D transforms to create a vanishing-point parallax scrolling effect where project cards float like scattered papers in space.\n\nThe site features cyberpunk aesthetics with dark themes, neon accents, and glitch effects, a terminal-style search bar for instant filtering, and live iframe previews that appear when hovering over any card. It's fully automated via GitHub Actions: a Node.js build script scans the projects/ folder and auto-generates the HTML cards during deployment, so adding a new project is as simple as creating a folder and pushing to main.",
     "features": [
-      "3D CSS Parallax Scroll Effect",
+      "Digital Matrix Rain",
+      "Live Previews",
       "Automated Build via GitHub Actions",
-      "Node.js Static Generation Script",
-      "Vanishing Point Perspective Design"
+      "Node.js Static Generation Script"
     ],
     "installation": "# Install dependencies\nnpm install\n\n# Build project cards\nnode build.js",
     "badges": [
