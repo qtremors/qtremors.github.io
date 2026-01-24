@@ -1,10 +1,29 @@
 # Tremors Changelogs
 
 > **Project:** Tremors  
-> **Version:** 2.8.0
-> **Last Updated:** 17-01-2026
+> **Version:** 2.8.1
+> **Last Updated:** 24-01-2026
 
 ---
+
+## [v2.8.1] - 24-01-2026
+
+### 📝 **Content & Persona Refresh**
+
+-   **Portfolio Bio:** Refined Hero intro and "About Me" sections (Index & TUI) to focus on professional philosophy and full-stack specialization, prioritizing narrative over chronological details.
+-   **Typewriter Roles:** Updated `home.js` roles to a cohesive "Identity -> Role -> Action" sequence (e.g., "Building Scalable Apps", "Crafting Developer Tools").
+-   **TUI Corrections:** Fixed outdated tech stack for GitNexus (Flask → FastAPI) and corrected minor typos.
+
+### ⚙️ **Process Updates**
+
+-   **Installation Guides:** Updated `projects.json` to explicitly show concurrent terminal commands for split-stack projects and corrected Quizzer AI path.
+-   **SEO & Metadata:** Synced `sitemap.xml` dates and meta descriptions with the new content.
+
+### 🐛 **Bug Fixes**
+
+-   **Project Navigation:** Implemented Scroll Spy in `project.js` for accurate section highlighting and fixed Logo link to return to Portfolio Home.
+-   **TUI Synchronization:** Synced skills list in `tui.html` to exactly match the categorized skills in `index.html`.
+-   **Typo Fixes:** Corrected grammar in Beta status messages ("features may be incomplete").
 
 ## [v2.8.0] - 17-01-2026
 
