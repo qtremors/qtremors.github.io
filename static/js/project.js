@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     renderProjectPage(project, allProjects);
+    initProjectScrollSpy();
 
   } catch (error) {
     console.error("Error loading project:", error);
@@ -42,6 +43,37 @@ document.addEventListener('DOMContentLoaded', async () => {
         `;
   }
 });
+
+function initProjectScrollSpy() {
+  const navItems = document.querySelectorAll('.desktop-nav .nav-item, .navigation-bar .nav-item');
+  const sections = [
+    document.getElementById('section-intro'),
+    document.getElementById('section-overview'),
+    document.getElementById('section-features'),
+    document.getElementById('section-installation')
+  ];
+
+  const observerOptions = {
+    root: null,
+    rootMargin: '-20% 0px -60% 0px',
+    threshold: 0
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navItems.forEach(item => item.classList.remove('active'));
+        const id = entry.target.id;
+        const matchingNavs = document.querySelectorAll(`a[href="#${id}"]`);
+        matchingNavs.forEach(nav => nav.classList.add('active'));
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach(section => {
+    if (section) observer.observe(section);
+  });
+}
 
 function renderProjectPage(project, allProjects) {
   /* --- PAGE METADATA --- */
@@ -94,7 +126,7 @@ function renderProjectPage(project, allProjects) {
         class: 'status-beta',
         icon: '🧪',
         title: 'Beta Release',
-        message: 'This project is in BETA, some things might be incomplete and might not work properly.'
+        message: 'This project is in Beta. Some features may be incomplete or unstable.'
       },
       'archive': {
         class: 'status-archive',

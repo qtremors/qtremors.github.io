@@ -40,12 +40,11 @@ document.addEventListener('DOMContentLoaded', function () {
   if (typewriterElement) {
     const roles = [
       "Aman Singh",
-      "A Python Developer",
-      "An Open Source Enthusiast",
-      "Designing UI/UX",
-      "Architecting Systems",
-      "Full-Stack Explorer",
-      "an AI Integrator",
+      "Python Developer",
+      "Full-Stack Engineer",
+      "Building Scalable Apps",
+      "Crafting Developer Tools",
+      "Integrating AI Models",
     ];
     let roleIndex = 0;
     let charIndex = 0;
