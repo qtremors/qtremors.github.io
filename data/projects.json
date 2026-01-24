@@ -12,7 +12,7 @@
       "HTMX-powered SPA feel without page reloads",
       "Gamification & XP System"
     ],
-    "installation": "# Clone repository\ngit clone https://github.com/qtremors/quizzer-ai.git\ncd quizzer-ai\n\n# Install dependencies\nuv sync\ncd qtrmrs\n\n# Run migrations and start server\nuv run manage.py migrate\nuv run manage.py runserver",
+    "installation": "# Clone repository\ngit clone https://github.com/qtremors/quizzer-ai.git\ncd quizzer-ai\n\n# Enter project folder and install dependencies\ncd qtrmrs\nuv sync\n\n# Run migrations and start server\nuv run manage.py migrate\nuv run manage.py runserver",
     "badges": [
       "tech-python",
       "tech-django",
@@ -47,7 +47,7 @@
       "Metadata-Driven UI Architecture",
       "Pseudocode Tracking"
     ],
-    "installation": "# Clone repository\ngit clone https://github.com/qtremors/algorithm-visualizer.git\ncd algorithm-visualizer\n\n# Install dependencies & start backend (FastAPI)\ncd backend && uv sync\nuv run uvicorn app.main:app --reload\n\n# Install dependencies & Start Frontend (React)\ncd frontend && npm install\nnpm run dev",
+    "installation": "# Clone repository\ngit clone https://github.com/qtremors/algorithm-visualizer.git\ncd algorithm-visualizer\n\n# Install dependencies\ncd backend && uv sync && cd ..\ncd frontend && npm install && cd ..\n\n# Terminal 1: Backend\ncd backend && uv run uvicorn app.main:app --reload\n\n# Terminal 2: Frontend\ncd frontend && npm run dev",
     "badges": [
       "tech-react",
       "tech-ts",
@@ -80,7 +80,7 @@
       "Repo Replay (Time Travel & Debugging)",
       "Local-First Privacy (No Telemetry)"
     ],
-    "installation": "# Clone repository\ngit clone https://github.com/qtremors/git-nexus.git\ncd git-nexus\n\n# Install dependencies & start backend (FastAPI)\ncd backend && uv sync\nuv run uvicorn app.main:app --reload\n\n# Install dependencies & Start Frontend (React)\ncd frontend && npm install\nnpm run dev",
+    "installation": "# Clone repository\ngit clone https://github.com/qtremors/git-nexus.git\ncd git-nexus\n\n# Install dependencies\ncd backend && uv sync && cd ..\ncd frontend && npm install && cd ..\n\n# Terminal 1: Backend\ncd backend && uv run uvicorn app.main:app --reload\n\n# Terminal 2: Frontend\ncd frontend && npm run dev",
     "badges": [
       "tech-python",
       "tech-fastapi",
@@ -115,7 +115,7 @@
       "Global Achievement Tracking",
       "Immersive Console-Style UI"
     ],
-    "installation": "# Clone repository\ngit clone https://github.com/qtremors/arcade-nexus.git\ncd arcade-nexus\n\n# Install dependencies & start backend (FastAPI)\ncd backend && uv sync\nuv run uvicorn app.main:app --reload\n\n# Install dependencies & Start Frontend (React)\ncd frontend && npm install\nnpm run dev",
+    "installation": "# Clone repository\ngit clone https://github.com/qtremors/arcade-nexus.git\ncd arcade-nexus\n\n# Install dependencies\ncd backend && uv sync && cd ..\ncd frontend && npm install && cd ..\n\n# Terminal 1: Backend\ncd backend && uv run uvicorn app.main:app --reload\n\n# Terminal 2: Frontend\ncd frontend && npm run dev",
     "badges": [
       "tech-react",
       "tech-ts",
