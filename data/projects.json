@@ -203,6 +203,43 @@
     ]
   },
   {
+    "id": "amanzon",
+    "title": "E-commerce Platform",
+    "image": "assets/amanzon-preview.png",
+    "description": "A minimalist e-commerce platform built with Django 5, featuring product catalogs, shopping cart, wishlist, coupon system, Razorpay payments, and user authentication with email verification and OTP password resets.",
+    "longDescription": "A clean, minimalist e-commerce platform built on Django 5 that prioritizes user experience and performance. Features include categorized products with search and filtering, shopping cart with quantity management, wishlist functionality, and a discount coupon system with usage tracking.\n\nThe checkout flow integrates with Razorpay payment gateway with signature verification. User functionality includes registration with email verification, secure login, profile management with picture uploads, complete order history with cancellation support, and OTP-based password resets. Built with Bootstrap 5 for a responsive, modern interface.",
+    "features": [
+      "Razorpay Payment Gateway Integration",
+      "Coupon System with Usage Tracking",
+      "Email Verification & OTP Password Reset",
+      "Product Reviews & Ratings",
+      "Advanced Search & Filtering",
+      "Wishlist & Shopping Cart",
+      "Order History & Tracking"
+    ],
+    "installation": "# Clone repository\ngit clone https://github.com/qtremors/amanzon\ncd amanzon/app\n\n# Setup with uv (recommended)\nuv sync\ncp .env.example .env\n# Edit .env with your credentials\n\n# Initialize Database\nuv run python manage.py migrate\nuv run python manage.py createsuperuser\n\n# Run Server\nuv run python manage.py runserver",
+    "badges": [
+      "tech-django",
+      "tech-python",
+      "tech-html",
+      "tech-css",
+      "tech-js",
+      "tech-bootstrap"
+    ],
+    "links": [
+      {
+        "text": "Website",
+        "url": "https://amanzon.onrender.com",
+        "class": "link-primary"
+      },
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/amanzon",
+        "class": "link-secondary"
+      }
+    ]
+  },
+  {
     "id": "cosmos",
     "title": "Cosmos",
     "image": "assets/cosmos-preview.png",
@@ -237,39 +274,54 @@
     ]
   },
   {
-    "id": "amanzon",
-    "title": "Amanzon E-commerce Platform",
-    "image": "assets/amanzon-preview.png",
-    "description": "A minimalist e-commerce platform built with Django 5, featuring product catalogs, shopping cart, wishlist, coupon system, Razorpay payments, and user authentication with email verification and OTP password resets.",
-    "longDescription": "A clean, minimalist e-commerce platform built on Django 5 that prioritizes user experience and performance. Features include categorized products with search and filtering, shopping cart with quantity management, wishlist functionality, and a discount coupon system with usage tracking.\n\nThe checkout flow integrates with Razorpay payment gateway with signature verification. User functionality includes registration with email verification, secure login, profile management with picture uploads, complete order history with cancellation support, and OTP-based password resets. Built with Bootstrap 5 for a responsive, modern interface.",
+    "id": "socnet",
+    "status": "wip",
+    "title": "Social Network Platform",
+    "image": "assets/socnet-preview.jpeg",
+    "description": "A modern social networking platform featuring public feeds, direct & group messaging, community spaces with channels, and a unified dual-mode navigation — built with React 19, Zustand, and Tailwind CSS v4.",
+    "longDescription": "SocNet combines public broadcast feeds with server-based community channels into a single unified interface. Users can compose posts, interact through likes, reposts, and replies, send direct or group messages, discover and join communities, explore trending topics, and manage their profiles and settings.\n\nThe frontend is built with React 19 and TypeScript, using Vite as the build tool. State management is handled by Zustand, and the UI is styled with Tailwind CSS v4 and Lucide React icons. The app features a dual-mode navigation sidebar that contextually switches between global navigation and community channel views based on the active route. Backend integration is planned for a future release.",
     "features": [
-      "Razorpay Payment Gateway Integration",
-      "Coupon System with Usage Tracking",
-      "Email Verification & OTP Password Reset",
-      "Product Reviews & Ratings",
-      "Advanced Search & Filtering",
-      "Wishlist & Shopping Cart",
-      "Order History & Tracking"
+      "Public Feed with Compose, Likes, Reposts & Replies",
+      "Direct & Group Messaging",
+      "Community Spaces with Text & Voice Channels",
+      "Explore, Notifications & User Profiles"
     ],
-    "installation": "# Clone repository\ngit clone https://github.com/qtremors/amanzon\ncd amanzon/app\n\n# Setup with uv (recommended)\nuv sync\ncp .env.example .env\n# Edit .env with your credentials\n\n# Initialize Database\nuv run python manage.py migrate\nuv run python manage.py createsuperuser\n\n# Run Server\nuv run python manage.py runserver",
+    "installation": "Currently in development.",
     "badges": [
-      "tech-django",
-      "tech-python",
-      "tech-html",
-      "tech-css",
-      "tech-js",
-      "tech-bootstrap"
+      "tech-react",
+      "tech-ts"
     ],
     "links": [
       {
-        "text": "Website",
-        "url": "https://amanzon.onrender.com",
+        "text": "In Development",
+        "url": "https://github.com/qtremors/social-network",
         "class": "link-primary"
-      },
+      }
+    ]
+  },
+  {
+    "id": "gtrmrs",
+    "title": "gtrmrs",
+    "image": "assets/gtrmrs-preview.png",
+    "description": "A unified suite of dependency-free, Git-aware CLI tools for developers that combines directory tree visualization, lines of code counting, and clean repository migration into a single powerful utility.",
+    "longDescription": "gtrmrs is a unified CLI toolkit that combines three previously separate utilities into a single, cohesive application. It integrates 'RepoTree' for visualizing directory structures as ASCII trees, 'Locr' for counting lines of code with gitignore awareness, and 'GitMig' for managing partial repository migrations using sparse-checkout. This unification simplifies installation and provides a central entry point for these common development tasks.",
+    "features": [
+      "Unified Tool Suite (rtree, locr, gitmig)",
+      "Zero Dependencies (Standard Library Only)",
+      "Git-Aware & Eager Pruning",
+      "Cross-Platform (Windows/Linux/Mac)"
+    ],
+    "installation": "# Clone and install\ngit clone https://github.com/qtremors/gtrmrs.git\ncd gtrmrs\npip install -e .\n\n# Usage\nrtree\nlocr\ngitmig ./backup --dry-run",
+    "badges": [
+      "tech-python",
+      "tech-cli",
+      "tech-git"
+    ],
+    "links": [
       {
         "text": "View on GitHub",
-        "url": "https://github.com/qtremors/amanzon",
-        "class": "link-secondary"
+        "url": "https://github.com/qtremors/gtrmrs",
+        "class": "link-primary"
       }
     ]
   },
@@ -307,32 +359,6 @@
     ]
   },
   {
-    "id": "gtrmrs",
-    "title": "gtrmrs",
-    "image": "assets/gtrmrs-preview.png",
-    "description": "A unified suite of dependency-free, Git-aware CLI tools for developers that combines directory tree visualization, lines of code counting, and clean repository migration into a single powerful utility.",
-    "longDescription": "gtrmrs is a unified CLI toolkit that combines three previously separate utilities into a single, cohesive application. It integrates 'RepoTree' for visualizing directory structures as ASCII trees, 'Locr' for counting lines of code with gitignore awareness, and 'GitMig' for managing partial repository migrations using sparse-checkout. This unification simplifies installation and provides a central entry point for these common development tasks.",
-    "features": [
-      "Unified Tool Suite (rtree, locr, gitmig)",
-      "Zero Dependencies (Standard Library Only)",
-      "Git-Aware & Eager Pruning",
-      "Cross-Platform (Windows/Linux/Mac)"
-    ],
-    "installation": "# Clone and install\ngit clone https://github.com/qtremors/gtrmrs.git\ncd gtrmrs\npip install -e .\n\n# Usage\nrtree\nlocr\ngitmig ./backup --dry-run",
-    "badges": [
-      "tech-python",
-      "tech-cli",
-      "tech-git"
-    ],
-    "links": [
-      {
-        "text": "View on GitHub",
-        "url": "https://github.com/qtremors/gtrmrs",
-        "class": "link-primary"
-      }
-    ]
-  },
-  {
     "id": "pc-remote-control",
     "title": "PC Remote Control API",
     "image": "assets/pcrc-preview.png",
@@ -356,33 +382,6 @@
         "text": "View on GitHub",
         "url": "https://github.com/qtremors/pc-rc",
         "class": "link-primary"
-      }
-    ]
-  },
-  {
-    "id": "pygame-calculator",
-    "title": "Calculator App (Pygame)",
-    "image": "assets/calculator-preview.jpg",
-    "description": "A desktop calculator built as a single Python script using Pygame, featuring a dark-themed responsive GUI, file-based persistent history, dynamic font scaling, and full keyboard and numpad support.",
-    "longDescription": "A demonstration of building functional GUI applications using game libraries instead of traditional GUI frameworks. This calculator features a scrollable history log that persists between sessions using a local file, dynamic font scaling to prevent text overflow when numbers get too long, and full keyboard support including the numpad.\n\nIt handles standard arithmetic operations (+, -, *, /) as well as percentage calculations and sign toggling (+/-). The UI includes hover effects on buttons for visual feedback, a clean modern dark-themed color palette, and robust error handling for division by zero and invalid inputs.",
-    "features": [
-      "Persistent History (File-based)",
-      "Dynamic Font Scaling",
-      "Scrollable History View",
-      "Full Keyboard & Numpad Support",
-      "Animated UI",
-      "Safe Math Parsing"
-    ],
-    "installation": "# Clone repository\ngit clone https://github.com/qtremors/pygame-calculator-app.git\ncd pygame-calculator-app\n\n# Setup environment\nuv venv\n# Activate venv (Windows: .venv\\Scripts\\activate, Linux: source .venv/bin/activate)\n\n# Install and run\nuv pip install pygame\npython calculator.py",
-    "badges": [
-      "tech-python",
-      "tech-pygame"
-    ],
-    "links": [
-      {
-        "text": "View on GitHub",
-        "url": "https://github.com/qtremors/pygame-calculator-app",
-        "class": "link-secondary"
       }
     ]
   },
@@ -418,35 +417,6 @@
         "text": "View on GitHub",
         "url": "https://github.com/qtremors/eshopper",
         "class": "link-secondary"
-      }
-    ]
-  },
-  {
-    "id": "local-team-chat",
-    "status": "wip",
-    "title": "Local Team Chat",
-    "image": "assets/preview.png",
-    "description": "A self-hosted, privacy-first messaging platform for local LAN networks, featuring real-time DMs and group chats via WebSockets, JWT authentication, and a responsive React interface for desktop and mobile.",
-    "longDescription": "Designed for small offices and teams requiring complete privacy, this app runs entirely on a local host machine with no external dependencies. It utilizes WebSockets for instant real-time messaging and manages state via a unified 'Room' architecture where Direct Messages are simply rooms with two members.\n\nThe backend is built with FastAPI and uses JWT authentication with Pydantic validation for type-safe request handling. The React frontend is responsive, adapting from a dual-pane desktop view to a mobile-app-like interface on smaller screens, with SQLite for persistent message storage.",
-    "features": [
-      "Real-time Messaging via WebSockets",
-      "Unified Room Architecture (Groups & DMs)",
-      "JWT Authentication & Pydantic Validation",
-      "Responsive React Layout (Mobile/Desktop)"
-    ],
-    "installation": "Currently in development.",
-    "badges": [
-      "tech-python",
-      "tech-fastapi",
-      "tech-react",
-      "tech-ts",
-      "tech-sql"
-    ],
-    "links": [
-      {
-        "text": "In Development",
-        "url": "https://github.com/qtremors",
-        "class": "link-primary"
       }
     ]
   },
