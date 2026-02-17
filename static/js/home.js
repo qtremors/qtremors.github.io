@@ -161,7 +161,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (isExpanded) {
           loadBtn.innerHTML = `<span class="btn-text">Show Less</span><span class="btn-icon">↑</span>`;
         } else {
-          loadBtn.innerHTML = `<span class="btn-text">Load More Projects</span><span class="btn-icon">↓</span>`;
+          const remainingCount = allProjects.length - INITIAL_SHOW_COUNT;
+          loadBtn.innerHTML = `<span class="btn-text">Load More Projects (${remainingCount})</span><span class="btn-icon">↓</span>`;
         }
 
         if (githubActions) githubActions.prepend(loadBtn);
@@ -199,7 +200,8 @@ document.addEventListener('DOMContentLoaded', function () {
           sessionStorage.setItem('portfolio_expanded', 'true');
         } else {
           document.querySelectorAll('.dynamic-project').forEach(card => card.remove());
-          btnText.textContent = "Load More Projects";
+          const remainingCount = allProjects.length - INITIAL_SHOW_COUNT;
+          btnText.textContent = `Load More Projects (${remainingCount})`;
           btnIcon.textContent = "↓";
           isExpanded = false;
           sessionStorage.setItem('portfolio_expanded', 'false');
