@@ -300,6 +300,73 @@
     ]
   },
   {
+    "id": "material-design",
+    "title": "Material Design",
+    "image": "assets/material-design-preview.png",
+    "description": "A framework-free implementation of Google's Material Design 3 and Material You, featuring a zero-dependency theme engine.",
+    "longDescription": "A pure HTML, CSS, and JS implementation of the Material Design 3 specification. It includes a robust theme engine that supports Material You dynamic color calculations, state layers, and ripple effects without any external libraries.\n\nThe project provides a comprehensive component library (Buttons, Cards, Navigation, etc.) and a interactive playground for testing design tokens and accessibility contrast ratios.",
+    "features": [
+      "Zero Dependencies (Pure HTML/CSS/JS)",
+      "Material You Dynamic Theme Engine",
+      "Interactive Ripple & State Effects",
+      "MD3 Component Library Implementation",
+      "Responsive Navigation Systems",
+      "Design Token Playground"
+    ],
+    "installation": "# Clone repository\ngit clone https://github.com/qtremors/material-design.git\ncd material-design\n\n# Open index.html in any browser\n# Or use a simple dev server\nnpx serve",
+    "badges": [
+      "tech-html",
+      "tech-css",
+      "tech-js"
+    ],
+    "links": [
+      {
+        "text": "Website",
+        "url": "https://qtremors.github.io/material-design",
+        "class": "link-primary"
+      },
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/material-design",
+        "class": "link-secondary"
+      }
+    ]
+  },
+  {
+    "id": "recontext",
+    "title": "ReConText",
+    "image": "assets/recontext-preview.png",
+    "description": "A premium, dark-themed knowledge base for modern developers, optimized for MDX content and fast technical documentation.",
+    "longDescription": "ReConText is a high-performance knowledge management system designed for developers. It features the 'Cosmic Night' theme, providing a distraction-free environment for reading and writing technical documentation.\n\nBuilt with Next.js and MDX, it supports live code previews, smart fuzzy search, and a modular architecture for easy content scaling. The UI emphasizes typography and layout to ensure complex information is easily digestible.",
+    "features": [
+      "Cosmic Night Premium Dark Theme",
+      "Full MDX Support for Technical Content",
+      "Smart Fuzzy Search & Navigation",
+      "Responsive Layout with Sticky Navigation",
+      "SEO Optimized Static Generation",
+      "Clean, Typography-Focused Design"
+    ],
+    "installation": "# Clone repository\ngit clone https://github.com/qtremors/recontext.git\ncd recontext\n\n# Install dependencies\nnpm install\n\n# Run in development mode\nnpm run dev",
+    "badges": [
+      "tech-nextjs",
+      "tech-react",
+      "tech-ts",
+      "tech-tailwind"
+    ],
+    "links": [
+      {
+        "text": "Website",
+        "url": "https://re-context.vercel.app",
+        "class": "link-primary"
+      },
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/recontext",
+        "class": "link-primary"
+      }
+    ]
+  },
+  {
     "id": "gtrmrs",
     "title": "gtrmrs",
     "image": "assets/gtrmrs-preview.png",
@@ -416,6 +483,43 @@
       {
         "text": "View on GitHub",
         "url": "https://github.com/qtremors/eshopper",
+        "class": "link-secondary"
+      }
+    ]
+  },
+  {
+    "id": "tremors",
+    "title": "Tremors",
+    "image": "assets/tremors-preview.png",
+    "description": "A multi-mode portfolio website with 5 distinct viewing modes, GitHub integration, AI-generated newspaper content, and secret admin controls built with Next.js 16, React 19, TypeScript, Tailwind CSS 4, and Prisma.",
+    "longDescription": "Tremors Portfolio is a personal portfolio website with multiple innovative viewing modes: Default (modern card-based layout), Terminal (interactive CLI with 30+ commands), Paper (document/resume-style with sidebar TOC), Newspaper (editorial magazine-style with AI-generated content), and Nexus (interactive space environment with animated elements).\n\nKey features include GitHub API integration that fetches repositories, user profile, and activity with database caching for fast loading. The AI Newspaper mode uses Google Gemini to generate hilarious tabloid-style headlines and articles with an archive system. A secret admin system accessible via the terminal enables inline project controls, drag-and-drop reordering, visibility toggles, and content regeneration. Security features include HMAC-signed session tokens, PBKDF2 password hashing, rate limiting, and CSRF protection.",
+    "features": [
+      "5 Viewing Modes (Default, Terminal, Paper, Newspaper, Nexus)",
+      "GitHub API Integration with Database Caching",
+      "AI Newspaper Generation (Google Gemini)",
+      "Secret Admin Mode with Inline Controls",
+      "30+ Terminal Commands with Theme Switching",
+      "Secure Auth (HMAC, PBKDF2, Rate Limiting)"
+    ],
+    "installation": "# Clone repository\ngit clone https://github.com/qtremors/tremors.git\ncd tremors/app\n\n# Setup Environment\nnpm install\ncp .env.example .env.local\n# Edit .env.local with your values\n\n# Initialize Database\nnpx prisma generate\nnpx prisma db push\n\n# Run Development Server\nnpm run dev",
+    "badges": [
+      "tech-nextjs",
+      "tech-react",
+      "tech-ts",
+      "tech-tailwind",
+      "tech-prisma",
+      "tech-framermotion",
+      "tech-tsparticles"
+    ],
+    "links": [
+      {
+        "text": "Website",
+        "url": "https://tremors.vercel.app",
+        "class": "link-primary"
+      },
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/tremors",
         "class": "link-secondary"
       }
     ]
