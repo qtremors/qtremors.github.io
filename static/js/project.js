@@ -260,6 +260,11 @@ function renderProjectPage(project, allProjects) {
             newCopyBtn.style.color = '';
             newCopyBtn.style.borderColor = '';
           }, 2000);
+        }).catch(err => {
+          console.error('Failed to copy command: ', err);
+          if (window.showToast) {
+            window.showToast("Failed to copy command. Please select manually.", 3000);
+          }
         });
       });
     };

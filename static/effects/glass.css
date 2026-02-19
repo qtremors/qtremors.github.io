@@ -49,6 +49,7 @@ body[data-theme='light'] .navigation-bar,
 body[data-theme='light'] .card,
 body[data-theme='light'] .modal-card,
 body[data-theme='light'] .timeline-content,
+body[data-theme='light'] .sidebar-card,
 body[data-theme='light'] .dropdown-card {
     background-color: rgba(255, 255, 255, 0.6) !important;
     border: 1px solid rgba(0, 0, 0, 0.08) !important;

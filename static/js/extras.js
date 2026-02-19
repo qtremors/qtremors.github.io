@@ -18,33 +18,34 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     const words = document.querySelectorAll('.magnetic-word');
+    if (words.length > 0) {
+      magnetSections.forEach(section => {
+        section.addEventListener('mousemove', (e) => {
+          words.forEach(word => {
+            const rect = word.getBoundingClientRect();
+            const wordX = rect.left + rect.width / 2;
+            const wordY = rect.top + rect.height / 2;
+            const dist = Math.hypot(e.clientX - wordX, e.clientY - wordY);
 
-    magnetSections.forEach(section => {
-      section.addEventListener('mousemove', (e) => {
-        words.forEach(word => {
-          const rect = word.getBoundingClientRect();
-          const wordX = rect.left + rect.width / 2;
-          const wordY = rect.top + rect.height / 2;
-          const dist = Math.hypot(e.clientX - wordX, e.clientY - wordY);
+            if (dist < 100) {
+              const force = (100 - dist) / 100;
+              const x = (e.clientX - wordX) * force * -0.3;
+              const y = (e.clientY - wordY) * force * -0.3;
 
-          if (dist < 100) {
-            const force = (100 - dist) / 100;
-            const x = (e.clientX - wordX) * force * -0.3;
-            const y = (e.clientY - wordY) * force * -0.3;
+              word.style.transform = `translate(${x}px, ${y}px)`;
+            } else {
+              word.style.transform = `translate(0px, 0px)`;
+            }
+          });
+        });
 
-            word.style.transform = `translate(${x}px, ${y}px)`;
-          } else {
+        section.addEventListener('mouseleave', () => {
+          words.forEach(word => {
             word.style.transform = `translate(0px, 0px)`;
-          }
+          });
         });
       });
-
-      section.addEventListener('mouseleave', () => {
-        words.forEach(word => {
-          word.style.transform = `translate(0px, 0px)`;
-        });
-      });
-    });
+    }
   }
 
   /* --- SPOTLIGHT EFFECTS --- */
