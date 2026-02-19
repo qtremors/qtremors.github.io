@@ -80,14 +80,14 @@
                     var el = document.getElementById('theme-' + t);
                     if (el) el.disabled = (t !== theme);
                 });
-                document.documentElement.setAttribute('data-style-mode', theme);
-
-                // 2. Color Mode (system, light, dark)
-                var pref = localStorage.getItem('theme_pref') || 'system';
-                var mode = pref === 'system'
-                    ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
-                    : pref;
-                document.documentElement.setAttribute('data-theme', mode);
+                document.body.setAttribute('data-style-mode', theme);
+ 
+                 // 2. Color Mode (system, light, dark)
+                 var pref = localStorage.getItem('theme_pref') || 'system';
+                 var mode = pref === 'system'
+                     ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+                     : pref;
+                 document.body.setAttribute('data-theme', mode);
 
                 // 3. Scene Effect (fog, glass, none)
                 var effect = localStorage.getItem('effect_mode') || 'none';
@@ -592,9 +592,8 @@
             </div>
         </section>
 
-        <div id="toast" class="toast-notification" aria-live="polite"></div>
-
-    </main>
+ 
+     </main>
 
     <footer>
         <div class="container">
@@ -602,7 +601,7 @@
                 &copy; 2026 Tremors. All rights reserved.
                 <span style="opacity: 0.5; margin: 0 8px;">|</span>
                 <a href="system/history.html"
-                    style="color: var(--md-primary); text-decoration: none; font-weight: bold; font-family: monospace; font-size: 0.9em;">v2.8.1</a>
+                    style="color: var(--md-primary); text-decoration: none; font-weight: bold; font-family: monospace; font-size: 0.9em;">v2.8.2</a>
             </p>
         </div>
     </footer>

@@ -85,8 +85,14 @@ document.addEventListener('DOMContentLoaded', function () {
       ? '<div class="wip-badge">⚠️ Development</div>'
       : (isBeta ? '<div class="beta-badge">🧪 Beta</div>' : (isArchive ? '<div class="archive-badge">📦 Archived</div>' : ''));
     const detailUrl = project.id ? `project.html?id=${project.id}` : '#';
-    const badgesHtml = project.badges.map(badge => `<span class="${badge}">${window.getBadgeLabel(badge)}</span>`).join('');
-    const linksHtml = project.links.map(link => `<a href="${link.url}" target="_blank" rel="noopener noreferrer" class="${link.class}">${window.escapeHtml(link.text)} &rarr;</a>`).join('');
+    const badgesHtml = project.badges.map(badge => {
+      const label = (typeof window.getBadgeLabel === 'function') ? window.getBadgeLabel(badge) : badge;
+      return `<span class="${badge}">${label}</span>`;
+    }).join('');
+    const linksHtml = project.links.map(link => {
+      const text = (typeof window.escapeHtml === 'function') ? window.escapeHtml(link.text) : link.text;
+      return `<a href="${link.url}" target="_blank" rel="noopener noreferrer" class="${link.class}">${text} &rarr;</a>`;
+    }).join('');
 
     return `
           <article class="portfolio-item fade-in ${dynamicClass} ${statusClass}" data-href="${detailUrl}" style="cursor: pointer;">

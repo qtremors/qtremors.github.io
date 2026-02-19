@@ -2,7 +2,7 @@
 
 > Architecture and implementation details for Tremors Portfolio.
 
-**Version:** 2.8.0 | **Last Updated:** 2026-01-25
+**Version:** 2.8.2 | **Last Updated:** 2026-02-19
 
 ---
 

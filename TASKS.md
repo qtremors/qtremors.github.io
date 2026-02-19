@@ -1,21 +1,21 @@
 # Tremors Tasks
 
 > **Project:** Tremors  
-> **Version:** 2.8.1
-> **Last Updated:** 18-02-2026
+> **Version:** 2.8.2
+> **Last Updated:** 19-02-2026
 
 ---
 
 ## 🔴 Bugs & Logical Errors
 
-- [ ] **Duplicate `#toast` element in `index.html`:** Two `<div id="toast">` elements exist (line 595 and line 616). Only one should exist — IDs must be unique. The first one (inside `<main>`) is unreachable because `getElementById` returns the first match, but the second one (outside `<main>`) has ARIA attributes. Remove the duplicate.
-- [ ] **Version mismatch in `project.html` footer:** Footer shows `v2.7.0` (line 275) while `index.html` shows `v2.8.1` and `CHANGELOG.md` is at `v2.8.1`. Must be synced.
-- [ ] **TUI canonical URL points to `index.html`:** `tui.html` line 8 has `<link rel="canonical" href="https://qtremors.github.io/index.html">`. A canonical tag declaring a *different page* as canonical tells search engines to ignore `tui.html` entirely and index `index.html` instead. If TUI should be independently indexed, this should point to `tui.html` itself.
-- [ ] **`project.html` appearance init script does not restore spotlight or pattern settings:** The inline `<script>` in `project.html` (lines 43-71) only restores theme, color mode, and scene effect — but does not restore spotlight or hero pattern state, unlike `index.html` (lines 73-114). While these features aren't visually present on the project page, the CSS files for spotlight/patterns are still linked, creating a flash inconsistency.
-- [ ] **`home.js` uses `window.escapeHtml` and `window.getBadgeLabel` before they may be loaded:** `home.js` is loaded with `defer` alongside `utils.js`, but the execution order of deferred scripts is based on document order. Since `utils.js` is listed before `home.js`, this *should* work — but there's no explicit guard or import. If script order ever changes (e.g., moving to ES modules), this breaks silently.
-- [ ] **`extras.js` runs on `project.html` but targets elements that don't exist:** `extras.js` is loaded on both `index.html` and `project.html`. On `project.html`, it searches for `.magnet-text` paragraphs and `.hero` sections — which don't exist. The code handles this gracefully (returns early), but it splits words into `<span>` elements unnecessarily, parsing text from elements not on the page.
-- [ ] **`project.js` clipboard copy has no error handler chain:** In `project.js` line 252-264, the copy button's `navigator.clipboard.writeText()` catch block is empty — on failure, the button shows "Copied!" but nothing was actually copied. There's no `.catch()` at all. Compare with `index.js` email copy (lines 304-308) which falls back to `mailto:`.
-- [ ] **`index.html` appearance init sets attribute on `document.documentElement` but `applyAppearance()` in `index.js` sets it on `document.body`:** The inline script (line 83) sets `document.documentElement.setAttribute('data-style-mode', theme)` and `data-theme`, but `applyAppearance()` in `index.js` (line 142, 181) sets them on `body`. This means both `<html>` and `<body>` get the attribute — CSS selectors must target the right one.
+- [x] **Duplicate `#toast` element in `index.html`:** Fixed by removing the redundant element inside `<main>`.
+- [x] **Version mismatch in `project.html` footer:** Updated to `v2.8.1`.
+- [x] **TUI canonical URL points to `index.html`:** Corrected to point to `tui.html`.
+- [x] **`project.html` appearance init script does not restore spotlight or pattern settings:** Intentionally omitted as these sections are only on `index.html`. Redundant CSS links and draft logic have been removed from `project.html`.
+- [x] **`home.js` uses `window.escapeHtml` and `window.getBadgeLabel` before they may be loaded:** Added safety guards to check function existence before call.
+- [x] **`extras.js` runs on `project.html` but targets elements that don't exist:** Added null/length checks for magnet elements.
+- [x] **`project.js` clipboard copy has no error handler chain:** Added `.catch()` block with error logging and user toast.
+- [x] **`index.html` appearance init sets attribute on `document.documentElement` but `applyAppearance()` in `index.js` sets it on `document.body`:** Synced target to `document.body` in the init script.
 
 ---
 

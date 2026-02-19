@@ -1,10 +1,21 @@
 # Tremors Changelogs
 
 > **Project:** Tremors  
-> **Version:** 2.8.1
-> **Last Updated:** 24-01-2026
+> **Version:** 2.8.2
+> **Last Updated:** 19-02-2026
 
 ---
+
+## [v2.8.2] - 19-02-2026
+
+### 🛠️ **Bug Fixes**
+
+-   **Color Contrast:** Fixed accessibility issue where sidebar cards in `project.html` (Links/Technologies) remained dark in Light Mode when the Glass effect was active.
+-   **HTML Stability:** Removed duplicate `#toast` ID in `index.html` and synced theme initialization to target `document.body` for consistency.
+-   **Navigation & SEO:** Fixed `tui.html` canonical URL to correctly point to itself and updated `project.html` footer version.
+-   **Initialization Logic:** Cleaned up redundant spotlight and pattern logic/links in `project.html` to optimize secondary page loading.
+-   **Defensive JS:** Added safety guards to `home.js` and `extras.js` to prevent silent failures on pages where specific DOM elements (magnet text, hero sections) are missing.
+-   **Security & UX:** Implemented error handling for the "Copy Command" feature in `project.js` to provide user feedback if clipboard operations fail.
 
 ## [v2.8.1] - 24-01-2026
 
