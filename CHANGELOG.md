@@ -1,10 +1,19 @@
 # Tremors Changelogs
 
 > **Project:** Tremors  
-> **Version:** 2.8.2
+> **Version:** 2.8.3
 > **Last Updated:** 19-02-2026
 
 ---
+
+## [v2.8.3] - 19-02-2026
+
+### 📝 **Documentation & Architecture Sync**
+
+-   **Technical Reference:** Comprehensive audit and update of `DEVELOPMENT.md` to accurately reflect the v2.8.x architecture.
+-   **Schema Alignment:** Synced `projects.json` documentation with the actual production schema (Links, Badges, Installation strings).
+-   **State Management:** Corrected `localStorage` keys and default settings in technical docs to match the actual implementation.
+-   **File Architecture:** Updated project structure maps to include missing modules (`utils.js`, `index.js`) and correct CSS/Effect paths.
 
 ## [v2.8.2] - 19-02-2026
 

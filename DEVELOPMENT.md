@@ -2,7 +2,7 @@
 
 > Architecture and implementation details for Tremors Portfolio.
 
-**Version:** 2.8.2 | **Last Updated:** 2026-02-19
+**Version:** 2.8.3 | **Last Updated:** 2026-02-19
 
 ---
 
@@ -78,16 +78,22 @@ qtremors.github.io/
 │
 ├── static/
 │   ├── css/
-│   │   ├── base.css          # Reset, variables, typography
-│   │   ├── sections.css      # Hero, skills, projects, footer
-│   │   ├── animations.css    # Keyframes, transitions
-│   │   ├── effects.css       # Fog, Glass, Spotlight
-│   │   └── themes/           # MD, MD3, OLED theme overrides
+│   │   ├── index-animations.css    # Keyframes, transitions
+│   │   ├── index-base.css          # Reset, variables, typography
+│   │   ├── index-navigation.css    # Header, footer, nav
+│   │   ├── index-sections.css      # Content sections
+│   │   └── project.css             # project.html specific styles
 │   │
-│   └── js/
-│       ├── home.js           # index.html logic (Load More, themes)
-│       ├── project.js        # project.html logic (deep linking)
-│       └── extras.js         # Shared utilities (terminal widget)
+│   ├── js/
+│   │   ├── utils.js                # Shared utilities (Badges, Escaping)
+│   │   ├── index.js                # Shared engine (Theming, Toast, Nav)
+│   │   ├── home.js                 # index.html logic (Typewriter, Projects)
+│   │   ├── project.js              # project.html logic (Clipboard, OS)
+│   │   └── extras.js               # Visual effects (Magnetic text)
+│   │
+│   ├── themes/                     # MD, MD3, OLED theme overrides
+│   ├── effects/                    # Fog, Glass, Spotlight
+│   └── patterns/                   # Dots, Grid, Waves
 │
 ├── system/
 │   ├── history.html          # Time Machine (Modern UI)
@@ -120,18 +126,20 @@ qtremors.github.io/
 
 | File | Scope | Dependencies |
 |------|-------|--------------|
-| `base.css` | Reset, variables, typography | None |
-| `sections.css` | Layout components | `base.css` |
-| `animations.css` | Keyframes, transitions | `base.css` |
-| `effects.css` | Fog, Glass, Spotlight | `base.css` |
+| `index-base.css` | Reset, variables, typography | None |
+| `index-sections.css`| Layout & components | `index-base.css` |
+| `index-animations.css`| Keyframes & transitions | `index-base.css` |
+| `project.css` | Project-page specific | `index-base.css` |
 
 ### JavaScript Modules
 
-| Module | Page | Exports |
-|--------|------|---------|
-| `home.js` | `index.html` | Theme engine, Load More, Effects |
-| `project.js` | `project.html` | Deep linking, OS detection |
-| `extras.js` | Shared | Terminal widget, utilities |
+| Module | Purpose | Scope |
+|--------|---------|-------|
+| `utils.js` | Shared utility functions | Global |
+| `index.js` | Theme engine & navigation | Global |
+| `home.js` | Typewriter & Portfolio loading| `index.html` |
+| `project.js` | Clipboard & OS detection | `project.html` |
+| `extras.js` | Magnetic text effects | Shared |
 
 ---
 
@@ -141,9 +149,9 @@ qtremors.github.io/
 
 | Theme | Mode | Description |
 |-------|------|-------------|
-| **OLED** | Dark | Default. Pure black background, minimal distractions. |
-| **MD** | Light/Dark | Material Design with shadows and elevation. |
-| **MD3** | Light/Dark | Material Design 3 with rounded shapes and morphing animations. |
+| **MD** | Light/Dark | **Default.** Material Design with shadows and elevation. |
+| **MD3** | Light/Dark | Material Design 3 with expressive shapes and morphing animations. |
+| **OLED** | Light/Dark | Pure Black (Dark) and Pure White (Light/Paper) theme. |
 
 ### Visual Effects
 
@@ -152,17 +160,20 @@ qtremors.github.io/
 | **None** | Clean, distraction-free | ⚡ Fastest |
 | **Fog** | Context-aware gradient backgrounds | 🔶 Moderate |
 | **Glass** | Frosted glass borders (backdrop-filter) | 🔶 Moderate |
-| **Spotlight** | Mouse-tracking radial gradients | ⚫ GPU-intensive |
+| **Spotlight**| Mouse-tracking radial gradients | ⚫ GPU-intensive |
+| **Patterns** | Hero background overlays (dots/grid/waves) | ⚡ Fast |
 
 ### localStorage Keys
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| `theme` | `string` | `"oled"` | Current theme (oled/md/md3) |
-| `darkMode` | `boolean` | `true` | Light/dark mode toggle |
-| `effect` | `string` | `"none"` | Active effect (none/fog/glass) |
-| `spotlight` | `boolean` | `false` | Mouse spotlight enabled |
-| `projectsShown` | `number` | `6` | "Load More" pagination state |
+| `style_mode` | `string` | `"md"` | Current theme (md/md3/oled) |
+| `theme_pref` | `string` | `"system"` | Color mode (system/light/dark) |
+| `effect_mode` | `string` | `"none"` | Active scene effect (none/fog/glass) |
+| `spotlight_mode`| `string` | `"off"` | Mouse spotlight toggle (on/off) |
+| `pattern_mode` | `string` | `"none"` | Active hero pattern background |
+| `portfolio_expanded`| `boolean`| `false` | "Load More" pagination state |
+| `terminal_theme`| `string` | `"mac"` | OS switch state (mac/win/linux) |
 
 ---
 
@@ -171,37 +182,43 @@ qtremors.github.io/
 ### projects.json
 
 ```json
-{
-  "projects": [
-    {
-      "id": "unique-slug",
-      "title": "Project Name",
-      "description": "Short description for cards",
-      "longDescription": "Detailed description for project page",
-      "image": "assets/project-image.png",
-      "url": "https://live-demo.com",
-      "github": "https://github.com/user/repo",
-      "tech": ["HTML", "CSS", "JavaScript"],
-      "features": ["Feature 1", "Feature 2"],
-      "status": "live",
-      "install": {
-        "windows": "winget install app",
-        "mac": "brew install app",
-        "linux": "apt install app"
+[
+  {
+    "id": "unique-slug",
+    "title": "Project Name",
+    "image": "assets/project-preview.png",
+    "description": "Short description for cards (grid view)",
+    "longDescription": "Detailed narrative for project page",
+    "features": [
+      "Feature 1 Description",
+      "Feature 2 Description"
+    ],
+    "installation": "# Step-by-step CLI commands\ngit clone ...\nnpm install",
+    "recommended": "related-project-slug",
+    "status": "beta",
+    "badges": [
+      "tech-python",
+      "tech-react"
+    ],
+    "links": [
+      {
+        "text": "Website",
+        "url": "https://example.com",
+        "class": "link-primary"
       }
-    }
-  ]
-}
+    ]
+  }
+]
 ```
 
 ### Project Status Values
 
-| Status | Visual Treatment | Use Case |
-|--------|------------------|----------|
-| `live` | Default styling | Production-ready projects |
-| `wip` | Yellow "Construction Zone" stripes | Under active development |
-| `beta` | Cyan/purple gradient + pulsing badge | Feature-complete but testing |
-| `archive` | Muted styling | Deprecated or unmaintained |
+| Status | Treatment | Badge / Effect |
+|--------|-----------|----------------|
+| `live` (none) | Clean | Default card styling |
+| `wip` | Warning | Yellow stripes, "Under Construction" badge |
+| `beta` | Info | Pulsing cyan badge, gradient highlights |
+| `archive` | Muted | Grayscale card, "Legacy" notice |
 
 ---
 

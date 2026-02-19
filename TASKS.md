@@ -1,7 +1,7 @@
 # Tremors Tasks
 
 > **Project:** Tremors  
-> **Version:** 2.8.2
+> **Version:** 2.8.3
 > **Last Updated:** 19-02-2026
 
 ---
@@ -21,17 +21,13 @@
 
 ## 🟡 Inconsistencies & Mismatches
 
-- [ ] **TASKS.md version says `2.8.0` but `CHANGELOG.md` and `index.html` footer say `2.8.1`:** Version in TASKS.md header is out of date.
-- [ ] **DEVELOPMENT.md version says `2.8.0` (line 5):** Should be `2.8.1` to match the latest changelog entry.
-- [ ] **DEVELOPMENT.md documents wrong localStorage keys:** The localStorage keys table (lines 159-165) lists `theme`, `darkMode`, `effect`, `spotlight`, `projectsShown` — but the actual code uses `style_mode`, `theme_pref`, `effect_mode`, `spotlight_mode`, `pattern_mode`, `portfolio_expanded`, `terminal_theme`. Every single key name is wrong.
-- [ ] **DEVELOPMENT.md documents wrong default theme:** States OLED is the default theme (line 144), but code defaults to `md` (`localStorage.getItem('style_mode') || 'md'` in every init script).
-- [ ] **DEVELOPMENT.md shows wrong `projects.json` schema:** The documented schema (lines 173-194) uses fields `url`, `github`, `tech`, `install` (with OS-specific sub-keys), and `status: "live"`. The actual schema uses `links[]`, `badges[]`, `installation` (single string), `recommended`, and status values `wip`/`beta`/`archive` (no `live`).
-- [ ] **DEVELOPMENT.md project structure shows filenames that don't exist:** Lists `base.css`, `sections.css`, `animations.css`, `effects.css` — actual files are `index-base.css`, `index-sections.css`, `index-animations.css`. Effects and themes are in separate directories, not under `css/`.
-- [ ] **DEVELOPMENT.md describes `extras.js` as "Terminal widget, utilities":** `extras.js` handles magnetic text, spotlight effects, scroll observer, and easter eggs — not the terminal widget (which is in `project.js`).
-- [ ] **DEVELOPMENT.md describes `home.js` as "Theme engine, Load More, Effects":** Theme engine is in `index.js`, not `home.js`. `home.js` handles typewriter and portfolio loading.
-- [ ] **DEVELOPMENT.md `404.html` listed as "❌ Minimal" JS:** `404.html` actually loads `index.js` with `defer`, which includes the full theme engine, settings modal, and navigation logic.
-- [ ] **README.md version table stops at `v2.6.0`:** Missing entries for `v2.6.5`, `v2.7.0`, `v2.8.0`, `v2.8.1`.
-- [ ] **CHANGELOG.md header says `Last Updated: 24-01-2026` but latest entry is `v2.8.1 - 24-01-2026`:** This is technically correct, but the DEVELOPMENT.md says `Last Updated: 2026-01-25`. The dates use inconsistent formats (`DD-MM-YYYY` vs `YYYY-MM-DD`).
+- [x] **DEVELOPMENT.md documents wrong localStorage keys:** Synced with actual code in v2.8.3.
+- [x] **DEVELOPMENT.md documents wrong default theme:** Corrected to MD as default in v2.8.3.
+- [x] **DEVELOPMENT.md shows wrong `projects.json` schema:** Updated to match current production schema in v2.8.3.
+- [x] **DEVELOPMENT.md project structure shows filenames that don't exist:** Updated tree to match `index-*.css` and `utils.js`/`index.js` architecture.
+- [x] **DEVELOPMENT.md describes `extras.js` as "Terminal widget, utilities":** Corrected to describe magnetic effects; terminal logic identified in `project.js`.
+- [x] **DEVELOPMENT.md describes `home.js` as "Theme engine, Load More, Effects":** Corrected; theme engine is in `index.js`.
+- [x] **DEVELOPMENT.md `404.html` listed as "❌ Minimal" JS:** Updated to reflect use of `index.js`.
 
 ---
 
