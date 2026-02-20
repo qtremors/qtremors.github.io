@@ -1,12 +1,22 @@
 # Tremors Changelogs
 
 > **Project:** Tremors  
-> **Version:** 2.8.3
-> **Last Updated:** 19-02-2026
+> **Version:** 2.8.4
+> **Last Updated:** 20-02-2026
 
 ---
 
-## [v2.8.3] - 19-02-2026
+## [v2.8.4] - 20-02-2026
+
+### 🚀 **SEO & Social Optimization**
+
+-   **Sitemap Synchronization:** Fully synced `sitemap.xml` with `projects.json`. Removed phantom project IDs (`pygame-calculator`, `local-team-chat`) and added missing active projects (`socnet`, `material-design`, `recontext`).
+-   **Lastmod Update:** Updated all `<lastmod>` entries in `sitemap.xml` to `2026-01-24` to reflect the latest state.
+-   **Dynamic OG Tags:** Implemented dynamic Open Graph meta tags in `project.html`. Project pages now correctly display project-specific titles, descriptions, and preview images when shared on social platforms.
+-   **DOM Targeting:** Added unique IDs to OG meta tags for reliable JavaScript-based updates.
+
+---
+
 
 ### 📝 **Documentation & Architecture Sync**
 

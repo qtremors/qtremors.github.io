@@ -89,6 +89,18 @@ function renderProjectPage(project, allProjects) {
     document.head.appendChild(canonicalLink);
   }
   canonicalLink.href = `${window.location.origin}/project.html?id=${project.id}`;
+  
+  /* --- DYNAMIC OG TAGS --- */
+  const ogTitle = document.getElementById('og-title');
+  const ogDesc = document.getElementById('og-description');
+  const ogImg = document.getElementById('og-image');
+  
+  if (ogTitle) ogTitle.content = `${project.title} | Tremors`;
+  if (ogDesc) ogDesc.content = project.description;
+  if (ogImg && project.image) {
+      // Ensure absolute URL for social crawlers
+      ogImg.content = `${window.location.origin}/${project.image}`;
+  }
 
   /* --- BANNER IMAGE --- */
   const banner = document.getElementById('p-banner');
