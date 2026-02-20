@@ -33,10 +33,10 @@
 
 ## 🟠 Sitemap & SEO Issues
 
-- [ ] **Sitemap contains phantom project IDs not in `projects.json`:** `pygame-calculator` (line 88) and `local-team-chat` (line 94) are referenced in `sitemap.xml` but do not exist in `projects.json`. These URLs will produce a "Project Not Found" page — bad for SEO.
-- [ ] **Sitemap missing projects that exist in `projects.json`:** `socnet` (Social Network Platform), `material-design`, and `recontext` are in `projects.json` but not in `sitemap.xml`.
-- [ ] **Sitemap `<lastmod>` dates are stale:** Most entries show `2026-01-02`, which predates the `v2.8.0` and `v2.8.1` releases. The `gtrmrs` entry is at `2026-01-17` which is correct for v2.8.0 but the root URL was updated 2026-01-24.
-- [ ] **`project.html` OG image is generic:** `<meta property="og:image" content="assets/index.png">` (line 10) — when shared, every project page shows the same homepage screenshot instead of the project-specific image. The `project.js` sets the canonical URL dynamically but doesn't update OG tags.
+- [x] **Sitemap contains phantom project IDs not in `projects.json`:** `pygame-calculator` (line 88) and `local-team-chat` (line 94) are referenced in `sitemap.xml` but do not exist in `projects.json`. These URLs will produce a "Project Not Found" page — bad for SEO.
+- [x] **Sitemap missing projects that exist in `projects.json`:** `socnet` (Social Network Platform), `material-design`, and `recontext` are in `projects.json` but not in `sitemap.xml`.
+- [x] **Sitemap `<lastmod>` dates are stale:** Most entries show `2026-01-02`, which predates the `v2.8.0` and `v2.8.1` releases. The `gtrmrs` entry is at `2026-01-17` which is correct for v2.8.0 but the root URL was updated 2026-01-24.
+- [x] **`project.html` OG image is generic:** `<meta property="og:image" content="assets/index.png">` (line 10) — when shared, every project page shows the same homepage screenshot instead of the project-specific image. The `project.js` sets the canonical URL dynamically but doesn't update OG tags.
 
 ---
 

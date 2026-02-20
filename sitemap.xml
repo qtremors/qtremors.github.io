@@ -14,97 +14,103 @@
     </url>
     <url>
         <loc>https://qtremors.github.io/project.html?id=quizzer-ai</loc>
-        <lastmod>2026-01-02</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://qtremors.github.io/project.html?id=git-nexus</loc>
-        <lastmod>2026-01-02</lastmod>
+        <lastmod>2026-01-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://qtremors.github.io/project.html?id=algorithm-visualizer</loc>
-        <lastmod>2026-01-02</lastmod>
+        <lastmod>2026-01-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://qtremors.github.io/project.html?id=git-nexus</loc>
+        <lastmod>2026-01-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://qtremors.github.io/project.html?id=arcade-nexus</loc>
-        <lastmod>2026-01-02</lastmod>
+        <lastmod>2026-01-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://qtremors.github.io/project.html?id=tremors-music</loc>
-        <lastmod>2026-01-02</lastmod>
+        <lastmod>2026-01-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://qtremors.github.io/project.html?id=earnslate</loc>
-        <lastmod>2026-01-02</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://qtremors.github.io/project.html?id=cosmos</loc>
-        <lastmod>2026-01-02</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://qtremors.github.io/project.html?id=plant-disease-detector</loc>
-        <lastmod>2026-01-02</lastmod>
+        <lastmod>2026-01-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://qtremors.github.io/project.html?id=amanzon</loc>
-        <lastmod>2026-01-02</lastmod>
+        <lastmod>2026-01-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://qtremors.github.io/project.html?id=eshopper</loc>
-        <lastmod>2026-01-02</lastmod>
+        <loc>https://qtremors.github.io/project.html?id=cosmos</loc>
+        <lastmod>2026-01-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://qtremors.github.io/project.html?id=socnet</loc>
+        <lastmod>2026-01-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://qtremors.github.io/project.html?id=material-design</loc>
+        <lastmod>2026-01-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://qtremors.github.io/project.html?id=recontext</loc>
+        <lastmod>2026-01-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://qtremors.github.io/project.html?id=gtrmrs</loc>
-        <lastmod>2026-01-17</lastmod>
+        <lastmod>2026-01-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://qtremors.github.io/project.html?id=plant-disease-detector</loc>
+        <lastmod>2026-01-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://qtremors.github.io/project.html?id=pc-remote-control</loc>
-        <lastmod>2026-01-02</lastmod>
+        <lastmod>2026-01-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://qtremors.github.io/project.html?id=pygame-calculator</loc>
-        <lastmod>2026-01-02</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://qtremors.github.io/project.html?id=local-team-chat</loc>
-        <lastmod>2026-01-02</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://qtremors.github.io/project.html?id=scrapped-projects</loc>
-        <lastmod>2026-01-02</lastmod>
+        <loc>https://qtremors.github.io/project.html?id=eshopper</loc>
+        <lastmod>2026-01-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://qtremors.github.io/project.html?id=tremors</loc>
-        <lastmod>2026-01-02</lastmod>
+        <lastmod>2026-01-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://qtremors.github.io/project.html?id=scrapped-projects</loc>
+        <lastmod>2026-01-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
