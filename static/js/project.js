@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const project = allProjects.find(p => p.id === projectId);
 
     if (!project) {
-      const safeProjectId = window.escapeHtml(projectId);
+      const safeProjectId = (window.Tremors && window.Tremors.utils && window.Tremors.utils.escapeHtml) ? window.Tremors.utils.escapeHtml(projectId) : projectId;
       document.querySelector('.project-container').innerHTML = `
                 <div style="text-align:center; padding: 4rem;">
                     <h1>Project Not Found</h1>
@@ -197,7 +197,7 @@ function renderProjectPage(project, allProjects) {
     const installBlock = document.getElementById('p-installation');
     const lines = project.installation.split('\n');
     installBlock.innerHTML = lines.map(line => {
-      const safeLine = window.escapeHtml(line);
+      const safeLine = (window.Tremors && window.Tremors.utils && window.Tremors.utils.escapeHtml) ? window.Tremors.utils.escapeHtml(line) : line;
       const trimmed = line.trim();
       if (trimmed.startsWith('#')) return `<span class="cmd-line cmd-comment">${safeLine}</span>`;
       if (trimmed === '') return `<span class="cmd-line"></span>`;
@@ -274,8 +274,8 @@ function renderProjectPage(project, allProjects) {
           }, 2000);
         }).catch(err => {
           console.error('Failed to copy command: ', err);
-          if (window.showToast) {
-            window.showToast("Failed to copy command. Please select manually.", 3000);
+          if (window.Tremors && window.Tremors.utils && window.Tremors.utils.showToast) {
+            window.Tremors.utils.showToast("Failed to copy command. Please select manually.", 3000);
           }
         });
       });
@@ -327,7 +327,7 @@ function renderProjectPage(project, allProjects) {
       a.innerHTML = `
                 <div class="btn-left-group">
                     ${iconSvg}
-                    <span>${window.escapeHtml(link.text)}</span>
+                    <span>${(window.Tremors && window.Tremors.utils && window.Tremors.utils.escapeHtml) ? window.Tremors.utils.escapeHtml(link.text) : link.text}</span>
                 </div>
                 <span class="btn-arrow">↗</span>
             `;
@@ -343,7 +343,7 @@ function renderProjectPage(project, allProjects) {
   if (project.badges && project.badges.length > 0) {
     project.badges.forEach(badge => {
       const span = document.createElement('span');
-      span.textContent = window.getBadgeLabel(badge);
+      span.textContent = (window.Tremors && window.Tremors.utils && window.Tremors.utils.getBadgeLabel) ? window.Tremors.utils.getBadgeLabel(badge) : badge;
       span.classList.add('sidebar-badge', badge);
       tagsContainer.appendChild(span);
     });
@@ -381,8 +381,8 @@ function renderProjectPage(project, allProjects) {
                             ${rightArrow}
                         </div>
 
-                        <h3 class="nav-title">${window.escapeHtml(proj.title)}</h3>
-                        <p class="nav-desc">${window.escapeHtml(proj.description)}</p>
+                        <h3 class="nav-title">${(window.Tremors && window.Tremors.utils && window.Tremors.utils.escapeHtml) ? window.Tremors.utils.escapeHtml(proj.title) : proj.title}</h3>
+                        <p class="nav-desc">${(window.Tremors && window.Tremors.utils && window.Tremors.utils.escapeHtml) ? window.Tremors.utils.escapeHtml(proj.description) : proj.description}</p>
                     </div>
                 </a>
             `;

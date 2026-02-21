@@ -1,8 +1,8 @@
 # Tremors Tasks
 
 > **Project:** Tremors  
-> **Version:** 2.8.3
-> **Last Updated:** 19-02-2026
+> **Version:** 2.8.5
+> **Last Updated:** 21-02-2026
 
 ---
 
@@ -42,13 +42,13 @@
 
 ## 🔵 Code Quality & Maintainability
 
-- [ ] **Massive HTML duplication — settings modal markup copied across 3 files:** The Appearance settings modal HTML (~80 lines) is copy-pasted identically in `index.html` (lines 618-784), `project.html` (lines 285-384), and `404.html` (lines 200-301). `project.html` has a reduced version (no spotlight/pattern), making the copies diverge. Any future settings change requires editing 3+ files.
-- [ ] **Massive HTML duplication — header/nav markup copied across files:** The `<header class="top-app-bar">` and dropdown menu markup is copy-pasted in `index.html` (lines 146-213) and `project.html` (lines 73-139). The dropdown items are identical.
-- [ ] **Inline `<script>` theme init is copy-pasted across 4 files:** The theme initialization IIFE is duplicated in `index.html` (lines 73-114), `project.html` (lines 43-71), `404.html` (lines 143-171), and likely the system pages. Each has a slightly different subset of features, making them drift over time.
-- [ ] **`createProjectCard()` in `home.js` builds complex HTML via template literals:** The function (lines 78-107) constructs card HTML by string interpolation. While `escapeHtml()` is used for user data, this pattern is fragile — adding a new field requires careful escaping. Consider using `document.createElement()` or a templating approach.
-- [ ] **Global functions on `window` object:** `utils.js` attaches `getBadgeLabel` and `escapeHtml` to `window`. `index.js` attaches `showToast` to `window`. This pollutes the global namespace. ES modules would be cleaner but would require a build step (which is intentionally avoided).
-- [ ] **`debounce` function in `index.js` is not reused:** A `debounce` utility is defined inline in `index.js` (lines 288-294) but could be in `utils.js` for reuse, especially since `extras.js` mousemove handlers could benefit from it.
-- [ ] **Inline `onclick` handlers in dropdown items:** `index.html` lines 178, 186 use `onclick="location.href='...'"` instead of proper event listeners. Same pattern in `project.html`. This mixes HTML and JS behavior.
+- [x] **Massive HTML duplication — settings modal markup copied across 3 files:** The Appearance settings modal HTML (~80 lines) is copy-pasted identically in `index.html` (lines 618-784), `project.html` (lines 285-384), and `404.html` (lines 200-301). `project.html` has a reduced version (no spotlight/pattern), making the copies diverge. Any future settings change requires editing 3+ files.
+- [x] **Massive HTML duplication — header/nav markup copied across files:** The `<header class="top-app-bar">` and dropdown menu markup is copy-pasted in `index.html` (lines 146-213) and `project.html` (lines 73-139). The dropdown items are identical.
+- [x] **Inline `<script>` theme init is copy-pasted across 4 files:** The theme initialization IIFE is duplicated in `index.html` (lines 73-114), `project.html` (lines 43-71), `404.html` (lines 143-171), and likely the system pages. Each has a slightly different subset of features, making them drift over time.
+- [x] **`createProjectCard()` in `home.js` builds complex HTML via template literals:** The function (lines 78-107) constructs card HTML by string interpolation. While `escapeHtml()` is used for user data, this pattern is fragile — adding a new field requires careful escaping. Consider using `document.createElement()` or a templating approach.
+- [x] **Global functions on `window` object:** `utils.js` attaches `getBadgeLabel` and `escapeHtml` to `window`. `index.js` attaches `showToast` to `window`. This pollutes the global namespace. ES modules would be cleaner but would require a build step (which is intentionally avoided).
+- [x] **`debounce` function in `index.js` is not reused:** A `debounce` utility is defined inline in `index.js` (lines 288-294) but could be in `utils.js` for reuse, especially since `extras.js` mousemove handlers could benefit from it.
+- [x] **Inline `onclick` handlers in dropdown items:** `index.html` lines 178, 186 use `onclick="location.href='...'"` instead of proper event listeners. Same pattern in `project.html`. This mixes HTML and JS behavior.
 
 ---
 
