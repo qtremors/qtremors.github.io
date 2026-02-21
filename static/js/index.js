@@ -270,12 +270,20 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', window.Tremors.utils.debounce(handleNavVisibility, 15));
 
 
-  /* --- EMAIL CLIPBOARD --- */
+  /* --- EMAIL LOGIC --- */
   const emailBtn = document.getElementById('email-btn');
+  
+  // Obfuscated email to prevent simple scraping
+  const getEmail = () => atob("c2luZ2hhbWFua3VtYXIyMDdAZ21haWwuY29t");
+
   if (emailBtn) {
+    const emailTextNode = document.getElementById('email-text');
+    if (emailTextNode) {
+       emailTextNode.textContent = getEmail();
+    }
     emailBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      const email = "singhamankumar207@gmail.com";
+      const email = getEmail();
       navigator.clipboard.writeText(email).then(() => {
         if (window.Tremors && window.Tremors.utils && window.Tremors.utils.showToast) {
           window.Tremors.utils.showToast("Email Copied! 📋");

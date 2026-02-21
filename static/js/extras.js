@@ -18,26 +18,29 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     const words = document.querySelectorAll('.magnetic-word');
-    if (words.length > 0) {
-      magnetSections.forEach(section => {
-        section.addEventListener('mousemove', (e) => {
-          words.forEach(word => {
-            const rect = word.getBoundingClientRect();
-            const wordX = rect.left + rect.width / 2;
-            const wordY = rect.top + rect.height / 2;
-            const dist = Math.hypot(e.clientX - wordX, e.clientY - wordY);
+      if (words.length > 0) {
+        magnetSections.forEach(section => {
+          const handleMagnetMouseMove = (e) => {
+            words.forEach(word => {
+              const rect = word.getBoundingClientRect();
+              const wordX = rect.left + rect.width / 2;
+              const wordY = rect.top + rect.height / 2;
+              const dist = Math.hypot(e.clientX - wordX, e.clientY - wordY);
+  
+              if (dist < 100) {
+                const force = (100 - dist) / 100;
+                const x = (e.clientX - wordX) * force * -0.3;
+                const y = (e.clientY - wordY) * force * -0.3;
+  
+                word.style.transform = `translate(${x}px, ${y}px)`;
+              } else {
+                word.style.transform = `translate(0px, 0px)`;
+              }
+            });
+          };
 
-            if (dist < 100) {
-              const force = (100 - dist) / 100;
-              const x = (e.clientX - wordX) * force * -0.3;
-              const y = (e.clientY - wordY) * force * -0.3;
-
-              word.style.transform = `translate(${x}px, ${y}px)`;
-            } else {
-              word.style.transform = `translate(0px, 0px)`;
-            }
-          });
-        });
+          const isDebounceAvailable = window.Tremors && window.Tremors.utils && typeof window.Tremors.utils.debounce === 'function';
+          section.addEventListener('mousemove', isDebounceAvailable ? window.Tremors.utils.debounce(handleMagnetMouseMove, 10) : handleMagnetMouseMove);
 
         section.addEventListener('mouseleave', () => {
           words.forEach(word => {

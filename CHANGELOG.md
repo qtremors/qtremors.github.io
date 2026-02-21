@@ -1,8 +1,19 @@
 # Tremors Changelogs
 
 > **Project:** Tremors  
-> **Version:** 2.8.5
+> **Version:** 2.8.6
 > **Last Updated:** 21-02-2026
+
+---
+
+## [v2.8.6] - 21-02-2026
+
+### 🛡️ **Security & Performance Improvements**
+
+- **Improved Performance:** Restructured reusable `debounce` logic globally and specifically applied it to CPU-hot mousemove events within `extras.js` to eliminate frame dropping during magnetic text interaction.
+- **XSS Prevention:** Sanitized project image URLs within `project.js` by casting all injection flows through `encodeURI()`.
+- **Anti-Scraping Obfuscation:** Replaced hardcoded email instances in `index.html` and `index.js` with an encoded script-driven implementation to limit crawler indexing. Retained standard mailto fallback in TUI.
+- **Better LCP:** Removed negligent `loading="lazy"` attributes from above-the-fold hero assets (e.g. `aman.png`) to directly improve First Contentful Paint.
 
 ---
 
@@ -13,7 +24,6 @@
 - **HTML Deduplication:** Replaced massively duplicated HTML strings across `index.html`, `project.html`, and `404.html` with centralized JavaScript injection using a new `components.js` file for standardizing the Settings Modal and Header Nav markup.
 - **Theme Initialization Optimization:** Extracted inline scripts scattered across multiple pages into a reusable, cached `theme-init.js` module. The script logic safely verifies feature toggles, avoiding initialization errors on smaller pages.
 - **Global Namespace Safety:** Purged sprawling properties from the `window` object by encapsulating common tools (`getBadgeLabel`, `escapeHtml`, `debounce`, `showToast`) inside a consolidated `window.Tremors.utils` namespace.
-- **Improved Performance:** Restructured reusable `debounce` logic globally and specifically applied it to CPU-hot mousemove events within `extras.js` to eliminate frame dropping.
 - **Safer DOM Interactions:** Eliminated insecure template string interpolation (`innerHTML`) from the `createProjectCard` flow in `home.js`. Switched structure strictly to standard memory-allocated `HTMLElement` node builders (`document.createElement`).
 - **Clean Event Attachments:** Scrubbed all inline `onclick=...` overrides from `<button>` and `<a>` elements, swapping to standard `.addEventListener()` methods mapped internally within modules.
 
