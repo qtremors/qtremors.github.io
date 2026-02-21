@@ -1,3 +1,9 @@
+const escapeHtmlSafe = (str) => {
+  return (window.Tremors && window.Tremors.utils && window.Tremors.utils.escapeHtml)
+    ? window.Tremors.utils.escapeHtml(str)
+    : str;
+};
+
 document.addEventListener('DOMContentLoaded', async () => {
 
   const params = new URLSearchParams(window.location.search);
@@ -18,7 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const project = allProjects.find(p => p.id === projectId);
 
     if (!project) {
-      const safeProjectId = (window.Tremors && window.Tremors.utils && window.Tremors.utils.escapeHtml) ? window.Tremors.utils.escapeHtml(projectId) : projectId;
+      const safeProjectId = escapeHtmlSafe(projectId);
       document.querySelector('.project-container').innerHTML = `
                 <div style="text-align:center; padding: 4rem;">
                     <h1>Project Not Found</h1>
@@ -105,7 +111,7 @@ function renderProjectPage(project, allProjects) {
   const banner = document.getElementById('p-banner');
   if (project.image) {
     banner.src = encodeURI(project.image);
-    banner.alt = `${(window.Tremors && window.Tremors.utils && window.Tremors.utils.escapeHtml) ? window.Tremors.utils.escapeHtml(project.title) : project.title} Banner`;
+    banner.alt = `${escapeHtmlSafe(project.title)} Banner`;
 
     banner.onerror = function () {
       document.querySelector('.project-banner-wrapper').style.display = 'none';
@@ -196,7 +202,7 @@ function renderProjectPage(project, allProjects) {
     const installBlock = document.getElementById('p-installation');
     const lines = project.installation.split('\n');
     installBlock.innerHTML = lines.map(line => {
-      const safeLine = (window.Tremors && window.Tremors.utils && window.Tremors.utils.escapeHtml) ? window.Tremors.utils.escapeHtml(line) : line;
+      const safeLine = escapeHtmlSafe(line);
       const trimmed = line.trim();
       if (trimmed.startsWith('#')) return `<span class="cmd-line cmd-comment">${safeLine}</span>`;
       if (trimmed === '') return `<span class="cmd-line"></span>`;
@@ -326,7 +332,7 @@ function renderProjectPage(project, allProjects) {
       a.innerHTML = `
                 <div class="btn-left-group">
                     ${iconSvg}
-                    <span>${(window.Tremors && window.Tremors.utils && window.Tremors.utils.escapeHtml) ? window.Tremors.utils.escapeHtml(link.text) : link.text}</span>
+                    <span>${escapeHtmlSafe(link.text)}</span>
                 </div>
                 <span class="btn-arrow">↗</span>
             `;
@@ -371,7 +377,7 @@ function renderProjectPage(project, allProjects) {
 
       return `
                 <a href="project.html?id=${encodeURIComponent(proj.id)}" class="${cardClass}">
-                    <img src="${encodeURI(proj.image)}" alt="${(window.Tremors && window.Tremors.utils && window.Tremors.utils.escapeHtml) ? window.Tremors.utils.escapeHtml(proj.title) : proj.title} project thumbnail" class="nav-img">
+                    <img src="${encodeURI(proj.image)}" alt="${escapeHtmlSafe(proj.title)} project thumbnail" class="nav-img">
 
                     <div class="nav-info">
                         <div class="nav-top-row">
@@ -380,8 +386,8 @@ function renderProjectPage(project, allProjects) {
                             ${rightArrow}
                         </div>
 
-                        <h3 class="nav-title">${(window.Tremors && window.Tremors.utils && window.Tremors.utils.escapeHtml) ? window.Tremors.utils.escapeHtml(proj.title) : proj.title}</h3>
-                        <p class="nav-desc">${(window.Tremors && window.Tremors.utils && window.Tremors.utils.escapeHtml) ? window.Tremors.utils.escapeHtml(proj.description) : proj.description}</p>
+                        <h3 class="nav-title">${escapeHtmlSafe(proj.title)}</h3>
+                        <p class="nav-desc">${escapeHtmlSafe(proj.description)}</p>
                     </div>
                 </a>
             `;

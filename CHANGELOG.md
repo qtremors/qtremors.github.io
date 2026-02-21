@@ -1,8 +1,23 @@
 # Tremors Changelogs
 
 > **Project:** Tremors  
-> **Version:** 2.8.7
+> **Version:** 2.9.0
 > **Last Updated:** 21-02-2026
+
+---
+
+## [v2.9.0] - 21-02-2026
+
+### 🛠️ **PR Feedback & Bug Fixes**
+
+- **Javascript Hygiene:** Refactored inline safe-cast HTML parsing in `project.js` into an `escapeHtmlSafe` helper. Fixed an invalid `a.className="undefined"` injection during dynamic project link generation in `home.js`. Safely wrapped the document resize listener initialization.
+- **Dependency Guarding:** Added safe lookup (`typeof window.Tremors.utils`) to prevent `debounce` reference errors for edge cases, and injected missing `utils.js` imports across auxiliary templates (`404.html`, `history.html`).
+- **DOM & Schema Continuity:** 
+  - Standardized all `sitemap.xml` timestamps into standard ISO `YYYY-MM-DD` notation.
+  - Inserted missing version segment boundaries inside the historical changelog cascade.
+  - Aligned development docs to strictly define `terminal_theme` mappings for MacOS/Windows/Linux instead of shorthand code names. 
+  - Substituted the 1x1 base64 GIF fallback directly against `img.src` missing links to stop cascading undefined requests.
+  - Rebound `theme-init.js` targeting to safely fetch `document.documentElement` if the `body` is blocked during `<head>` parsing.
 
 ---
 
@@ -50,7 +65,8 @@
 -   **DOM Targeting:** Added unique IDs to OG meta tags for reliable JavaScript-based updates.
 
 ---
-
+    
+## [v2.8.3] - 19-02-2026
 
 ### 📝 **Documentation & Architecture Sync**
 
