@@ -267,7 +267,8 @@ document.addEventListener('DOMContentLoaded', function () {
     lastScrollY = currentScrollY;
   };
 
-  window.addEventListener('scroll', window.Tremors.utils.debounce(handleNavVisibility, 15));
+  const debounceFn = window.Tremors && window.Tremors.utils && window.Tremors.utils.debounce ? window.Tremors.utils.debounce : (fn) => fn;
+  window.addEventListener('scroll', debounceFn(handleNavVisibility, 15));
 
 
   /* --- EMAIL LOGIC --- */

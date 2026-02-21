@@ -1,5 +1,6 @@
 (function () {
     try {
+        var target = document.body || document.documentElement;
         // 1. Visual Theme (md, md3, oled)
         var theme = localStorage.getItem('style_mode') || 'md';
         var themes = ['md', 'md3', 'oled'];
@@ -7,14 +8,14 @@
             var el = document.getElementById('theme-' + t);
             if (el) el.disabled = (t !== theme);
         });
-        document.body.setAttribute('data-style-mode', theme);
+        target.setAttribute('data-style-mode', theme);
 
         // 2. Color Mode (system, light, dark)
         var pref = localStorage.getItem('theme_pref') || 'system';
         var mode = pref === 'system'
             ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
             : pref;
-        document.body.setAttribute('data-theme', mode);
+        target.setAttribute('data-theme', mode);
 
         // 3. Scene Effect (fog, glass, none)
         var effect = localStorage.getItem('effect_mode') || 'none';
@@ -36,5 +37,7 @@
             var el = document.getElementById('pattern-' + p);
             if (el) el.disabled = (p !== pattern);
         });
-    } catch (e) { }
+    } catch (e) {
+        console.warn('Theme init failed:', e);
+    }
 })();
