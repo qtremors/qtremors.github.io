@@ -1,7 +1,7 @@
 # Tremors Tasks
 
 > **Project:** Tremors  
-> **Version:** 2.8.5
+> **Version:** 2.8.6
 > **Last Updated:** 21-02-2026
 
 ---
@@ -54,19 +54,17 @@
 
 ## 🟣 Performance & Resource Issues
 
-- [ ] **`extras.js` magnetic text iterates ALL words on EVERY mousemove:** The mousemove handler (lines 23-39) calculates distance for every `.magnetic-word` span on every mouse move event. With 3 paragraphs of text, that's ~100+ distance calculations per frame. No `requestAnimationFrame` throttling is applied.
-- [ ] **Profile image `aman.png` is `loading="lazy"` in the hero section:** Line 267 in `index.html` lazy-loads the hero profile image. Since the hero is always above the fold, this delays the LCP (Largest Contentful Paint). Should use `loading="eager"` or remove the attribute.
-- [ ] **`logo.gif` at 500KB loaded on every page:** The animated logo GIF (`assets/logo.gif`, 500KB) is loaded in the header of `index.html` and `project.html`. This significantly impacts FCP on slower connections. Consider converting to WebP or using a static SVG with CSS animation.
-- [ ] **Large video files in `assets/`:** `v0.0.0-v2.6.0-hq.mp4` is 30MB and `v0.0.0-v2.6.0.mp4` is 7.6MB. These are served from the same GitHub Pages domain. While they're only loaded on history pages, they inflate the repo size.
-- [ ] **No font `display` property on Google Fonts link in TUI:** `tui.html` line 20 loads Fira Code and Roboto Mono. The `&display=swap` parameter is correctly set — no issue here, just verified.
+- [x] **`extras.js` magnetic text iterates ALL words on EVERY mousemove:** The mousemove handler (lines 23-39) calculates distance for every `.magnetic-word` span on every mouse move event. With 3 paragraphs of text, that's ~100+ distance calculations per frame. No `requestAnimationFrame` throttling is applied.
+- [x] **Profile image `aman.png` is `loading="lazy"` in the hero section:** Line 267 in `index.html` lazy-loads the hero profile image. Since the hero is always above the fold, this delays the LCP (Largest Contentful Paint). Should use `loading="eager"` or remove the attribute.
+- [x] **No font `display` property on Google Fonts link in TUI:** `tui.html` line 20 loads Fira Code and Roboto Mono. The `&display=swap` parameter is correctly set — no issue here, just verified.
 
 ---
 
 ## 🟤 Security Considerations
 
-- [ ] **`project.js` renders `project.image` directly into `<img src>` without validation:** Line 96 uses `banner.src = project.image`, and line 358 uses the image path in `createNavCard()` template strings. While `projects.json` is first-party data, if the JSON were ever compromised or loaded from a user-controlled source, this could be exploited. The `escapeHtml()` function is used for text but not for `src` attributes.
-- [ ] **Email address hardcoded and exposed in `index.js`:** Line 303 hardcodes `singhamankumar207@gmail.com`. This is also in the HTML. While intentional for a portfolio, it could be obfuscated to reduce automated scraping.
-- [ ] **`navigator.clipboard.writeText` silently fails in non-HTTPS contexts:** The clipboard API requires a secure context. On `localhost` or `file://`, the catch block in `index.js` (line 306) falls back to `mailto:`, but `project.js` copy (line 253) has no catch at all for the command copy feature.
+- [x] **`project.js` renders `project.image` directly into `<img src>` without validation:** Line 96 uses `banner.src = project.image`, and line 358 uses the image path in `createNavCard()` template strings. While `projects.json` is first-party data, if the JSON were ever compromised or loaded from a user-controlled source, this could be exploited. The `escapeHtml()` function is used for text but not for `src` attributes.
+- [x] **Email address hardcoded and exposed in `index.js`:** Line 303 hardcodes `singhamankumar207@gmail.com`. This is also in the HTML. While intentional for a portfolio, it could be obfuscated to reduce automated scraping.
+- [x] **`navigator.clipboard.writeText` silently fails in non-HTTPS contexts:** The clipboard API requires a secure context. On `localhost` or `file://`, the catch block in `index.js` (line 306) falls back to `mailto:`, but `project.js` copy (line 253) has no catch at all for the command copy feature.
 
 ---
 

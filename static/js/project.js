@@ -102,11 +102,10 @@ function renderProjectPage(project, allProjects) {
       ogImg.content = `${window.location.origin}/${project.image}`;
   }
 
-  /* --- BANNER IMAGE --- */
   const banner = document.getElementById('p-banner');
   if (project.image) {
-    banner.src = project.image;
-    banner.alt = `${project.title} Banner`;
+    banner.src = encodeURI(project.image);
+    banner.alt = `${(window.Tremors && window.Tremors.utils && window.Tremors.utils.escapeHtml) ? window.Tremors.utils.escapeHtml(project.title) : project.title} Banner`;
 
     banner.onerror = function () {
       document.querySelector('.project-banner-wrapper').style.display = 'none';
@@ -371,8 +370,8 @@ function renderProjectPage(project, allProjects) {
       const rightArrow = (directionClass === 'next-card' && !isRecommended) ? '<span class="nav-arrow">&rarr;</span>' : '';
 
       return `
-                <a href="project.html?id=${proj.id}" class="${cardClass}">
-                    <img src="${proj.image}" alt="${proj.title} project thumbnail" class="nav-img">
+                <a href="project.html?id=${encodeURIComponent(proj.id)}" class="${cardClass}">
+                    <img src="${encodeURI(proj.image)}" alt="${(window.Tremors && window.Tremors.utils && window.Tremors.utils.escapeHtml) ? window.Tremors.utils.escapeHtml(proj.title) : proj.title} project thumbnail" class="nav-img">
 
                     <div class="nav-info">
                         <div class="nav-top-row">
