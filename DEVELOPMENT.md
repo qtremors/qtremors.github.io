@@ -2,7 +2,7 @@
 
 > Architecture and implementation details for Tremors Portfolio.
 
-**Version:** 2.8.7 | **Last Updated:** 21-02-2026
+**Version:** 2.9.0 | **Last Updated:** 21-02-2026
 
 ---
 
@@ -180,7 +180,7 @@ The application uses `localStorage` to persist user preferences across sessions.
 | `spotlight_mode`| `string` | `"off"` | Mouse spotlight toggle (on/off) |
 | `pattern_mode` | `string` | `"none"` | Active hero pattern background |
 | `portfolio_expanded`| `boolean`| `false` | Tracks if the user expanded the "Load More" project grid |
-| `terminal_theme`| `string` | `"mac"` | Smart Terminal widget OS mock (mac/win/linux) |
+| `terminal_theme`| `string` | `"MacOS"` | Smart Terminal widget OS mock (MacOS/Windows/Linux) |
 
 ---
 
@@ -200,7 +200,7 @@ Because `tui.html` enforces a strict zero-JavaScript rule, this markup duplicati
 | Metric | Target | Focus Area |
 |--------|--------|------------|
 | **LCP** | < 2.5s | Hero images use `loading="eager"` while others use `lazy`. |
-| **FID** | < 100ms | Heavy mousemove calculations are wrapped in globally debounced functions. |
+| **FID** | < 100ms | Heavy mousemove calculations are scheduled via `requestAnimationFrame` to avoid frame drops. |
 | **Security**| High | All DOM string injections use `encodeURI()` or secure `document.createElement()`. |
 
 ---

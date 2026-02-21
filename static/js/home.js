@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const img = document.createElement('img');
-    img.src = project.image || '';
+    img.src = project.image ? project.image : 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
     img.setAttribute('loading', 'lazy');
     img.alt = `${project.title} Preview`;
     img.style.width = '100%';
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function () {
             a.href = l.url;
             a.target = '_blank';
             a.rel = 'noopener noreferrer';
-            a.className = l.class;
+            a.className = l.class || '';
             // Use unicode arrow
             a.textContent = `${l.text} \u2192`; 
             linksContainer.appendChild(a);
