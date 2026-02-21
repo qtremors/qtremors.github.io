@@ -18,33 +18,45 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     const words = document.querySelectorAll('.magnetic-word');
+      if (words.length > 0) {
+        magnetSections.forEach(section => {
+          const handleMagnetMouseMove = (e) => {
+            words.forEach(word => {
+              const rect = word.getBoundingClientRect();
+              const wordX = rect.left + rect.width / 2;
+              const wordY = rect.top + rect.height / 2;
+              const dist = Math.hypot(e.clientX - wordX, e.clientY - wordY);
+  
+              if (dist < 100) {
+                const force = (100 - dist) / 100;
+                const x = (e.clientX - wordX) * force * -0.3;
+                const y = (e.clientY - wordY) * force * -0.3;
+  
+                word.style.transform = `translate(${x}px, ${y}px)`;
+              } else {
+                word.style.transform = `translate(0px, 0px)`;
+              }
+            });
+          };
 
-    magnetSections.forEach(section => {
-      section.addEventListener('mousemove', (e) => {
-        words.forEach(word => {
-          const rect = word.getBoundingClientRect();
-          const wordX = rect.left + rect.width / 2;
-          const wordY = rect.top + rect.height / 2;
-          const dist = Math.hypot(e.clientX - wordX, e.clientY - wordY);
+          let isTicking = false;
+          section.addEventListener('mousemove', (e) => {
+            if (!isTicking) {
+              window.requestAnimationFrame(() => {
+                handleMagnetMouseMove(e);
+                isTicking = false;
+              });
+              isTicking = true;
+            }
+          });
 
-          if (dist < 100) {
-            const force = (100 - dist) / 100;
-            const x = (e.clientX - wordX) * force * -0.3;
-            const y = (e.clientY - wordY) * force * -0.3;
-
-            word.style.transform = `translate(${x}px, ${y}px)`;
-          } else {
+        section.addEventListener('mouseleave', () => {
+          words.forEach(word => {
             word.style.transform = `translate(0px, 0px)`;
-          }
+          });
         });
       });
-
-      section.addEventListener('mouseleave', () => {
-        words.forEach(word => {
-          word.style.transform = `translate(0px, 0px)`;
-        });
-      });
-    });
+    }
   }
 
   /* --- SPOTLIGHT EFFECTS --- */
@@ -60,14 +72,25 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   const heroSection = document.querySelector('.hero');
-  if (heroSection) {
-    heroSection.addEventListener('mousemove', (e) => {
+  const handleHeroMouseMove = (e) => {
       const rect = heroSection.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
 
       heroSection.style.setProperty('--hero-mouse-x', `${x}px`);
       heroSection.style.setProperty('--hero-mouse-y', `${y}px`);
+  };
+
+  if (heroSection) {
+    let heroTicking = false;
+    heroSection.addEventListener('mousemove', (e) => {
+      if (!heroTicking) {
+        window.requestAnimationFrame(() => {
+          handleHeroMouseMove(e);
+          heroTicking = false;
+        });
+        heroTicking = true;
+      }
     });
   }
 
@@ -123,8 +146,8 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('%c>>> tremors.hire()', 'color: #50fa7b; font-family: monospace; font-size: 14px; font-weight: bold;');
     console.log('%c"You won\'t regret it! plzzzzzz 🥺"', 'color: #f1fa8c; font-family: monospace; font-size: 14px;');
 
-    if (window.showToast) {
-      window.showToast("🐍 Python Mode Activated!");
+    if (window.Tremors && window.Tremors.utils && window.Tremors.utils.showToast) {
+      window.Tremors.utils.showToast("🐍 Python Mode Activated!");
     } else {
       alert("🐍 Python Mode Activated!");
     }

@@ -1,10 +1,74 @@
 # Tremors Changelogs
 
 > **Project:** Tremors  
-> **Version:** 2.8.1
-> **Last Updated:** 24-01-2026
+> **Version:** 2.8.7
+> **Last Updated:** 21-02-2026
 
 ---
+
+## [v2.8.7] - 21-02-2026
+
+### 📚 **Documentation & Refinement**
+
+- **Documentation Overhaul:** Completely rewrote `DEVELOPMENT.md` to accurately reflect the current `v2.8.7` architecture, detailing the dual-theme systems (JS for Modern UI, Pure CSS for Terminal TUI), centralized javascript injection patterns, and `localStorage` schemas.
+- **License Cleanup:** Removed deprecated `LICENSE.md` references from `README.md` following the file's deletion.
+- **Data Standardization:** Converted all `<lastmod>` timestamps in `sitemap.xml` to `DD-MM-YYYY` format for parity with the Changelog structure.
+- **DOM & Schema Anomalies:** 
+  - Restored a missing closing `</div>` tag that was malforming the "E-commerce Website" item within `tui.html`.
+  - Scrubbed the trailing 404 "Website" routing link for the local-only Plant Disease Detector model across both `projects.json` and the `tui.html` command output.
+
+---
+
+## [v2.8.6] - 21-02-2026
+
+### 🛡️ **Security & Performance Improvements**
+
+- **Improved Performance:** Restructured reusable `debounce` logic globally and specifically applied it to CPU-hot mousemove events within `extras.js` to eliminate frame dropping during magnetic text interaction.
+- **XSS Prevention:** Sanitized project image URLs within `project.js` by casting all injection flows through `encodeURI()`.
+- **Anti-Scraping Obfuscation:** Replaced hardcoded email instances in `index.html` and `index.js` with an encoded script-driven implementation to limit crawler indexing. Retained standard mailto fallback in TUI.
+- **Better LCP:** Removed negligent `loading="lazy"` attributes from above-the-fold hero assets (e.g. `aman.png`) to directly improve First Contentful Paint.
+
+---
+
+## [v2.8.5] - 21-02-2026
+
+### 🛠️ **Code Quality & Maintainability**
+
+- **HTML Deduplication:** Replaced massively duplicated HTML strings across `index.html`, `project.html`, and `404.html` with centralized JavaScript injection using a new `components.js` file for standardizing the Settings Modal and Header Nav markup.
+- **Theme Initialization Optimization:** Extracted inline scripts scattered across multiple pages into a reusable, cached `theme-init.js` module. The script logic safely verifies feature toggles, avoiding initialization errors on smaller pages.
+- **Global Namespace Safety:** Purged sprawling properties from the `window` object by encapsulating common tools (`getBadgeLabel`, `escapeHtml`, `debounce`, `showToast`) inside a consolidated `window.Tremors.utils` namespace.
+- **Safer DOM Interactions:** Eliminated insecure template string interpolation (`innerHTML`) from the `createProjectCard` flow in `home.js`. Switched structure strictly to standard memory-allocated `HTMLElement` node builders (`document.createElement`).
+- **Clean Event Attachments:** Scrubbed all inline `onclick=...` overrides from `<button>` and `<a>` elements, swapping to standard `.addEventListener()` methods mapped internally within modules.
+
+## [v2.8.4] - 20-02-2026
+
+### 🚀 **SEO & Social Optimization**
+
+-   **Sitemap Synchronization:** Fully synced `sitemap.xml` with `projects.json`. Removed phantom project IDs (`pygame-calculator`, `local-team-chat`) and added missing active projects (`socnet`, `material-design`, `recontext`).
+-   **Lastmod Update:** Updated all `<lastmod>` entries in `sitemap.xml` to `2026-01-24` to reflect the latest state.
+-   **Dynamic OG Tags:** Implemented dynamic Open Graph meta tags in `project.html`. Project pages now correctly display project-specific titles, descriptions, and preview images when shared on social platforms.
+-   **DOM Targeting:** Added unique IDs to OG meta tags for reliable JavaScript-based updates.
+
+---
+
+
+### 📝 **Documentation & Architecture Sync**
+
+-   **Technical Reference:** Comprehensive audit and update of `DEVELOPMENT.md` to accurately reflect the v2.8.x architecture.
+-   **Schema Alignment:** Synced `projects.json` documentation with the actual production schema (Links, Badges, Installation strings).
+-   **State Management:** Corrected `localStorage` keys and default settings in technical docs to match the actual implementation.
+-   **File Architecture:** Updated project structure maps to include missing modules (`utils.js`, `index.js`) and correct CSS/Effect paths.
+
+## [v2.8.2] - 19-02-2026
+
+### 🛠️ **Bug Fixes**
+
+-   **Color Contrast:** Fixed accessibility issue where sidebar cards in `project.html` (Links/Technologies) remained dark in Light Mode when the Glass effect was active.
+-   **HTML Stability:** Removed duplicate `#toast` ID in `index.html` and synced theme initialization to target `document.body` for consistency.
+-   **Navigation & SEO:** Fixed `tui.html` canonical URL to correctly point to itself and updated `project.html` footer version.
+-   **Initialization Logic:** Cleaned up redundant spotlight and pattern logic/links in `project.html` to optimize secondary page loading.
+-   **Defensive JS:** Added safety guards to `home.js` and `extras.js` to prevent silent failures on pages where specific DOM elements (magnet text, hero sections) are missing.
+-   **Security & UX:** Implemented error handling for the "Copy Command" feature in `project.js` to provide user feedback if clipboard operations fail.
 
 ## [v2.8.1] - 24-01-2026
 

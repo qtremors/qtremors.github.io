@@ -2,7 +2,7 @@
 
 > Architecture and implementation details for Tremors Portfolio.
 
-**Version:** 2.8.0 | **Last Updated:** 2026-01-25
+**Version:** 2.8.7 | **Last Updated:** 21-02-2026
 
 ---
 
@@ -11,11 +11,11 @@
 - [Architecture Overview](#architecture-overview)
 - [Project Structure](#project-structure)
 - [File Conventions](#file-conventions)
-- [Theme System](#theme-system)
+- [Theme Systems](#theme-systems)
 - [Data Schema](#data-schema)
-- [Code Style](#code-style)
+- [Storage Keys](#storage-keys)
+- [Anomalies & Specifics](#anomalies--specifics)
 - [Performance Targets](#performance-targets)
-- [Browser Compatibility](#browser-compatibility)
 
 ---
 
@@ -43,7 +43,7 @@ Tremors Portfolio follows a **Static-First, Progressive Enhancement** architectu
 ```
 
 The project is organized with:
-- **Modern UI (`index.html`)**: Progressive enhancement with ES6 modules for data fetching and theming.
+- **Modern UI (`index.html`)**: Progressive enhancement with ES6 modules for data fetching, namespaced utilities (`Tremors.utils`), and dynamic component injection.
 - **Terminal TUI (`tui.html`)**: Zero JavaScript—pure HTML/CSS interactivity using radio inputs and CSS pseudo-classes.
 - **Data**: Server-less data model using JSON files and localStorage for persistence.
 
@@ -52,10 +52,10 @@ The project is organized with:
 | Decision | Rationale |
 |----------|-----------|
 | **No Build Step** | Direct browser loading—no bundlers, transpilers, or complex toolchains. |
-| **Modular CSS** | Split into `base`, `sections`, `animations` to avoid `@import` waterfalls. |
-| **ES6 Modules** | Native browser module support with context-aware loading per page. |
+| **Namespace Safety** | Shared utilities are strictly scoped under `window.Tremors.utils` to prevent global pollution. |
+| **Modular JavaScript** | Dynamic UI parts (modals, navbars) are injected via `components.js`. Theming is handled early via `theme-init.js` to prevent FOUC. |
 | **CSS-Only TUI** | Creative exploration of pure CSS interactivity; zero JS dependencies. |
-| **localStorage** | Client-side persistence for theme, effects, and "Load More" state. |
+| **localStorage** | Client-side persistence for theme, effects, and state. |
 
 ---
 
@@ -69,36 +69,38 @@ qtremors.github.io/
 ├── 404.html                  # Theme-aware root error page
 │
 ├── assets/                   # Images & screenshots
-│   ├── index.png             # Modern UI screenshot
-│   ├── tui.png               # Terminal TUI screenshot
-│   └── alien.svg             # Logo
-│
 ├── data/
 │   └── projects.json         # Portfolio project data
 │
 ├── static/
 │   ├── css/
-│   │   ├── base.css          # Reset, variables, typography
-│   │   ├── sections.css      # Hero, skills, projects, footer
-│   │   ├── animations.css    # Keyframes, transitions
-│   │   ├── effects.css       # Fog, Glass, Spotlight
-│   │   └── themes/           # MD, MD3, OLED theme overrides
+│   │   ├── index-animations.css    # Keyframes, transitions
+│   │   ├── index-base.css          # Reset, variables, typography
+│   │   ├── index-navigation.css    # Header, footer, nav
+│   │   ├── index-sections.css      # Content sections
+│   │   ├── project.css             # project.html specific styles
+│   │   ├── tui-themes.css          # Terminal TUI pure CSS themes
+│   │   └── tui-styles.css          # Terminal TUI base layout
 │   │
-│   └── js/
-│       ├── home.js           # index.html logic (Load More, themes)
-│       ├── project.js        # project.html logic (deep linking)
-│       └── extras.js         # Shared utilities (terminal widget)
+│   ├── js/
+│   │   ├── theme-init.js           # Early theme/feature initialization
+│   │   ├── components.js           # Dynamically injects Navigation and Modals
+│   │   ├── utils.js                # Shared tools (window.Tremors.utils)
+│   │   ├── index.js                # Core app engine (Theming, Toast)
+│   │   ├── home.js                 # index.html logic (Typewriter, Projects)
+│   │   ├── project.js              # project.html logic (Details, Scrollspy)
+│   │   └── extras.js               # Visual effects (Magnetic text, Observers)
+│   │
+│   ├── themes/                     # MD, MD3, OLED theme CSS variables
+│   ├── effects/                    # Fog, Glass, Spotlight CSS
+│   └── patterns/                   # Dots, Grid, Waves background CSS
 │
 ├── system/
 │   ├── history.html          # Time Machine (Modern UI)
-│   ├── history-tui.html      # Git Log (Terminal TUI)
 │   ├── index-404.html        # Modern UI 404
 │   └── tui-404.html          # Terminal TUI 404
 │
-├── robots.txt                # Search engine directives
-├── sitemap.xml               # SEO sitemap
 ├── CHANGELOG.md              # Version history
-├── LICENSE.md                # License terms
 ├── DEVELOPMENT.md            # This file
 └── README.md                 # User-facing documentation
 ```
@@ -109,60 +111,31 @@ qtremors.github.io/
 
 ### HTML Files
 
-| File | Purpose | JavaScript |
-|------|---------|------------|
-| `index.html` | Modern UI landing | ✅ ES6 Modules |
-| `project.html` | Project detail view | ✅ ES6 Modules |
-| `tui.html` | Terminal TUI | ❌ None |
-| `404.html` | Root error page | ❌ Minimal |
-
-### CSS Architecture
-
-| File | Scope | Dependencies |
-|------|-------|--------------|
-| `base.css` | Reset, variables, typography | None |
-| `sections.css` | Layout components | `base.css` |
-| `animations.css` | Keyframes, transitions | `base.css` |
-| `effects.css` | Fog, Glass, Spotlight | `base.css` |
-
-### JavaScript Modules
-
-| Module | Page | Exports |
-|--------|------|---------|
-| `home.js` | `index.html` | Theme engine, Load More, Effects |
-| `project.js` | `project.html` | Deep linking, OS detection |
-| `extras.js` | Shared | Terminal widget, utilities |
+| File | Purpose | JavaScript Usage |
+|------|---------|------------------|
+| `index.html` | Modern UI landing | ✅ Full ES6 Modules |
+| `project.html` | Project detail view | ✅ Full ES6 Modules |
+| `tui.html` | Terminal TUI | ❌ Zero JS (Pure HTML/CSS) |
+| `404.html` | Root error page | ✅ Minimal (for theme init only) |
 
 ---
 
-## Theme System
+## Theme Systems
 
-### Available Themes
+### 🌇 Modern UI Theme System (JavaScript)
+The Modern UI uses JavaScript (`theme-init.js` and `index.js`) to read `localStorage` and toggle CSS files dynamically.
+- **Themes**: MD (Default Material), MD3 (Material 3), OLED (Pure Black).
+- **Effects**: Fog, Glass, Spotlight, Patterns.
 
-| Theme | Mode | Description |
-|-------|------|-------------|
-| **OLED** | Dark | Default. Pure black background, minimal distractions. |
-| **MD** | Light/Dark | Material Design with shadows and elevation. |
-| **MD3** | Light/Dark | Material Design 3 with rounded shapes and morphing animations. |
+### 👾 Terminal TUI Theme System (Pure CSS)
+The Terminal TUI (`tui.html`) does **not** use JavaScript for its theme engine. 
+It relies entirely on HTML `<input type="radio">` elements hidden at the top of the DOM. 
+When a user clicks a theme `<label>`, the corresponding radio input becomes `:checked`. Using CSS general sibling combinators (`~`), the `tui-themes.css` file dynamically applies the theme variables to the `.tui-container`.
 
-### Visual Effects
-
-| Effect | Description | Performance Impact |
-|--------|-------------|-------------------|
-| **None** | Clean, distraction-free | ⚡ Fastest |
-| **Fog** | Context-aware gradient backgrounds | 🔶 Moderate |
-| **Glass** | Frosted glass borders (backdrop-filter) | 🔶 Moderate |
-| **Spotlight** | Mouse-tracking radial gradients | ⚫ GPU-intensive |
-
-### localStorage Keys
-
-| Key | Type | Default | Description |
-|-----|------|---------|-------------|
-| `theme` | `string` | `"oled"` | Current theme (oled/md/md3) |
-| `darkMode` | `boolean` | `true` | Light/dark mode toggle |
-| `effect` | `string` | `"none"` | Active effect (none/fog/glass) |
-| `spotlight` | `boolean` | `false` | Mouse spotlight enabled |
-| `projectsShown` | `number` | `6` | "Load More" pagination state |
+Available TUI Themes:
+- **Dracula** (Default)
+- **Catppuccin** (Macchiato variant)
+- **Tokyo Night**
 
 ---
 
@@ -171,69 +144,64 @@ qtremors.github.io/
 ### projects.json
 
 ```json
-{
-  "projects": [
-    {
-      "id": "unique-slug",
-      "title": "Project Name",
-      "description": "Short description for cards",
-      "longDescription": "Detailed description for project page",
-      "image": "assets/project-image.png",
-      "url": "https://live-demo.com",
-      "github": "https://github.com/user/repo",
-      "tech": ["HTML", "CSS", "JavaScript"],
-      "features": ["Feature 1", "Feature 2"],
-      "status": "live",
-      "install": {
-        "windows": "winget install app",
-        "mac": "brew install app",
-        "linux": "apt install app"
+[
+  {
+    "id": "unique-slug",
+    "title": "Project Name",
+    "image": "assets/project-preview.png",
+    "description": "Short description for cards",
+    "longDescription": "Detailed narrative for project page",
+    "features": ["Feature 1", "Feature 2"],
+    "installation": "# Step-by-step CLI commands",
+    "status": "beta",
+    "badges": ["tech-python", "tech-react"],
+    "links": [
+      {
+        "text": "Website",
+        "url": "https://example.com",
+        "class": "link-primary"
       }
-    }
-  ]
-}
+    ]
+  }
+]
 ```
-
-### Project Status Values
-
-| Status | Visual Treatment | Use Case |
-|--------|------------------|----------|
-| `live` | Default styling | Production-ready projects |
-| `wip` | Yellow "Construction Zone" stripes | Under active development |
-| `beta` | Cyan/purple gradient + pulsing badge | Feature-complete but testing |
-| `archive` | Muted styling | Deprecated or unmaintained |
 
 ---
 
-## Code Style
+## Storage Keys
 
-| Language | Standard | Notes |
-|----------|----------|-------|
-| **HTML** | Semantic HTML5 | ARIA labels, skip links |
-| **CSS** | BEM-like naming | `section__element--modifier` |
-| **JavaScript** | ES6+ | `const` default, no `var` |
+The application uses `localStorage` to persist user preferences across sessions. 
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| `style_mode` | `string` | `"md"` | Current theme (md/md3/oled) |
+| `theme_pref` | `string` | `"system"` | Color mode preference (system/light/dark) |
+| `effect_mode` | `string` | `"none"` | Active scene effect (none/fog/glass) |
+| `spotlight_mode`| `string` | `"off"` | Mouse spotlight toggle (on/off) |
+| `pattern_mode` | `string` | `"none"` | Active hero pattern background |
+| `portfolio_expanded`| `boolean`| `false` | Tracks if the user expanded the "Load More" project grid |
+| `terminal_theme`| `string` | `"mac"` | Smart Terminal widget OS mock (mac/win/linux) |
+
+---
+
+## Anomalies & Specifics
+
+### `tui.html` `#home` Markup Duplication
+The `tui.html` document intentionally contains two complete copies of the `#home` section markup (the ASCII art logo and intro text).
+1. **Splash Screen**: Used specifically for the initial CSS-based boot animation.
+2. **Main Content**: The actual persistent element once the animation finishes. 
+
+Because `tui.html` enforces a strict zero-JavaScript rule, this markup duplication is required to achieve the seamless transition between the keyframe boot animation and the interactive terminal layout without relying on DOM manipulation.
 
 ---
 
 ## Performance Targets
 
-| Metric | Target | Tool |
-|--------|--------|------|
-| **LCP** | < 2.5s | Lighthouse |
-| **FID** | < 100ms | Lighthouse |
-| **CLS** | < 0.1 | Lighthouse |
-| **Accessibility** | > 90 | Lighthouse |
-
----
-
-## Browser Compatibility
-
-| Feature | Chrome | Firefox | Safari | Edge |
-|---------|--------|---------|--------|------|
-| ES6 Modules | ✅ | ✅ | ✅ | ✅ |
-| CSS `:has()` | ✅ | ✅ | ✅ | ✅ |
-| `backdrop-filter` | ✅ | ✅ | ✅ | ✅ |
-| CSS Radio Hacks | ✅ | ✅ | ✅ | ✅ |
+| Metric | Target | Focus Area |
+|--------|--------|------------|
+| **LCP** | < 2.5s | Hero images use `loading="eager"` while others use `lazy`. |
+| **FID** | < 100ms | Heavy mousemove calculations are wrapped in globally debounced functions. |
+| **Security**| High | All DOM string injections use `encodeURI()` or secure `document.createElement()`. |
 
 ---
 

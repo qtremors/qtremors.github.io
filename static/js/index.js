@@ -8,24 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const body = document.body;
 
   /* --- UNIVERSAL TOAST SYSTEM --- */
-  const toastElement = document.getElementById('toast');
-  let toastTimeout;
-
-  window.showToast = (message, duration = 3000) => {
-    if (!toastElement) {
-      console.warn('showToast: #toast element not found in DOM');
-      return;
-    }
-
-    if (toastTimeout) clearTimeout(toastTimeout);
-
-    toastElement.textContent = message;
-    toastElement.classList.add("show");
-
-    toastTimeout = setTimeout(() => {
-      toastElement.classList.remove("show");
-    }, duration);
-  };
 
 
   /* --- SETTINGS MODAL LOGIC --- */
@@ -285,24 +267,27 @@ document.addEventListener('DOMContentLoaded', function () {
     lastScrollY = currentScrollY;
   };
 
-  const debounce = (func, wait) => {
-    let timeout;
-    return function (...args) {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => func.apply(this, args), wait);
-    };
-  };
-  window.addEventListener('scroll', debounce(handleNavVisibility, 15));
+  window.addEventListener('scroll', window.Tremors.utils.debounce(handleNavVisibility, 15));
 
 
-  /* --- EMAIL CLIPBOARD --- */
+  /* --- EMAIL LOGIC --- */
   const emailBtn = document.getElementById('email-btn');
+  
+  // Obfuscated email to prevent simple scraping
+  const getEmail = () => atob("c2luZ2hhbWFua3VtYXIyMDdAZ21haWwuY29t");
+
   if (emailBtn) {
+    const emailTextNode = document.getElementById('email-text');
+    if (emailTextNode) {
+       emailTextNode.textContent = getEmail();
+    }
     emailBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      const email = "singhamankumar207@gmail.com";
+      const email = getEmail();
       navigator.clipboard.writeText(email).then(() => {
-        window.showToast("Email Copied! 📋");
+        if (window.Tremors && window.Tremors.utils && window.Tremors.utils.showToast) {
+          window.Tremors.utils.showToast("Email Copied! 📋");
+        }
       }).catch(() => {
         window.location.href = `mailto:${email}`;
       });

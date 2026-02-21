@@ -76,44 +76,121 @@ document.addEventListener('DOMContentLoaded', function () {
   let isExpanded = sessionStorage.getItem('portfolio_expanded') === 'true';
 
   const createProjectCard = (project, isDynamic = false) => {
-    const dynamicClass = isDynamic ? 'dynamic-project' : '';
     const isWip = project.status === 'wip';
     const isBeta = project.status === 'beta';
     const isArchive = project.status === 'archive';
-    const statusClass = isWip ? 'is-wip' : (isBeta ? 'is-beta' : (isArchive ? 'is-archive' : ''));
-    const statusBadge = isWip
-      ? '<div class="wip-badge">⚠️ Development</div>'
-      : (isBeta ? '<div class="beta-badge">🧪 Beta</div>' : (isArchive ? '<div class="archive-badge">📦 Archived</div>' : ''));
+    
+    const article = document.createElement('article');
+    article.className = 'portfolio-item fade-in';
+    if (isDynamic) article.classList.add('dynamic-project');
+    if (isWip) article.classList.add('is-wip');
+    if (isBeta) article.classList.add('is-beta');
+    if (isArchive) article.classList.add('is-archive');
+    
     const detailUrl = project.id ? `project.html?id=${project.id}` : '#';
-    const badgesHtml = project.badges.map(badge => `<span class="${badge}">${window.getBadgeLabel(badge)}</span>`).join('');
-    const linksHtml = project.links.map(link => `<a href="${link.url}" target="_blank" rel="noopener noreferrer" class="${link.class}">${window.escapeHtml(link.text)} &rarr;</a>`).join('');
+    article.dataset.href = detailUrl;
+    article.style.cursor = 'pointer';
 
-    return `
-          <article class="portfolio-item fade-in ${dynamicClass} ${statusClass}" data-href="${detailUrl}" style="cursor: pointer;">
-              <a href="${detailUrl}" class="project-card-link" style="display:block;">
-                  <div class="img-wrapper" style="position: relative; overflow: hidden;">
-                      ${statusBadge}
-                      <img src="${project.image}" alt="${window.escapeHtml(project.title)} Preview" loading="lazy" style="width: 100%; display: block;">
-                  </div>
-              </a>
-              <div class="portfolio-content">
-                  <h3><a href="${detailUrl}" style="text-decoration:none; color:inherit;">${window.escapeHtml(project.title)}</a></h3>
-                  <p>${window.escapeHtml(project.description)}</p>
-                  <div class="tech-badges">${badgesHtml}</div>
-                  <div class="portfolio-links">${linksHtml}</div>
-              </div>
-          </article>
-        `;
+    const link = document.createElement('a');
+    link.href = detailUrl;
+    link.className = 'project-card-link';
+    link.style.display = 'block';
+
+    const imgWrapper = document.createElement('div');
+    imgWrapper.className = 'img-wrapper';
+    imgWrapper.style.position = 'relative';
+    imgWrapper.style.overflow = 'hidden';
+
+    if (isWip) {
+        const badge = document.createElement('div');
+        badge.className = 'wip-badge';
+        badge.textContent = '⚠️ Development';
+        imgWrapper.appendChild(badge);
+    } else if (isBeta) {
+        const badge = document.createElement('div');
+        badge.className = 'beta-badge';
+        badge.textContent = '🧪 Beta';
+        imgWrapper.appendChild(badge);
+    } else if (isArchive) {
+        const badge = document.createElement('div');
+        badge.className = 'archive-badge';
+        badge.textContent = '📦 Archived';
+        imgWrapper.appendChild(badge);
+    }
+
+    const img = document.createElement('img');
+    img.src = project.image || '';
+    img.setAttribute('loading', 'lazy');
+    img.alt = `${project.title} Preview`;
+    img.style.width = '100%';
+    img.style.display = 'block';
+    
+    imgWrapper.appendChild(img);
+    link.appendChild(imgWrapper);
+    article.appendChild(link);
+
+    const content = document.createElement('div');
+    content.className = 'portfolio-content';
+
+    const h3 = document.createElement('h3');
+    const h3Link = document.createElement('a');
+    h3Link.href = detailUrl;
+    h3Link.style.textDecoration = 'none';
+    h3Link.style.color = 'inherit';
+    h3Link.textContent = project.title;
+    h3.appendChild(h3Link);
+
+    const desc = document.createElement('p');
+    desc.textContent = project.description || '';
+
+    const badgesContainer = document.createElement('div');
+    badgesContainer.className = 'tech-badges';
+    if (project.badges) {
+        project.badges.forEach(badge => {
+            const span = document.createElement('span');
+            span.className = badge;
+            span.textContent = (window.Tremors && window.Tremors.utils && typeof window.Tremors.utils.getBadgeLabel === 'function') ? window.Tremors.utils.getBadgeLabel(badge) : badge;
+            badgesContainer.appendChild(span);
+        });
+    }
+
+    const linksContainer = document.createElement('div');
+    linksContainer.className = 'portfolio-links';
+    if (project.links) {
+        project.links.forEach(l => {
+            const a = document.createElement('a');
+            a.href = l.url;
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+            a.className = l.class;
+            // Use unicode arrow
+            a.textContent = `${l.text} \u2192`; 
+            linksContainer.appendChild(a);
+        });
+    }
+
+    content.appendChild(h3);
+    content.appendChild(desc);
+    content.appendChild(badgesContainer);
+    content.appendChild(linksContainer);
+
+    article.appendChild(content);
+
+    return article;
   };
 
-  const insertBeforeGithub = (htmlString) => {
+  const insertBeforeGithub = (elementOrString) => {
     if (!portfolioGrid) return;
-    const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = htmlString;
+    let nodeToInsert = elementOrString;
+    if (typeof elementOrString === 'string') {
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = elementOrString;
+      nodeToInsert = tempDiv.firstElementChild;
+    }
     if (githubCard) {
-      portfolioGrid.insertBefore(tempDiv.firstElementChild, githubCard);
+      portfolioGrid.insertBefore(nodeToInsert, githubCard);
     } else {
-      portfolioGrid.appendChild(tempDiv.firstElementChild);
+      portfolioGrid.appendChild(nodeToInsert);
     }
   };
 
