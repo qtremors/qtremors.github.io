@@ -1,10 +1,21 @@
 # Tremors Changelogs
 
 > **Project:** Tremors  
-> **Version:** 2.8.4
-> **Last Updated:** 20-02-2026
+> **Version:** 2.8.5
+> **Last Updated:** 21-02-2026
 
 ---
+
+## [v2.8.5] - 21-02-2026
+
+### 🛠️ **Code Quality & Maintainability**
+
+- **HTML Deduplication:** Replaced massively duplicated HTML strings across `index.html`, `project.html`, and `404.html` with centralized JavaScript injection using a new `components.js` file for standardizing the Settings Modal and Header Nav markup.
+- **Theme Initialization Optimization:** Extracted inline scripts scattered across multiple pages into a reusable, cached `theme-init.js` module. The script logic safely verifies feature toggles, avoiding initialization errors on smaller pages.
+- **Global Namespace Safety:** Purged sprawling properties from the `window` object by encapsulating common tools (`getBadgeLabel`, `escapeHtml`, `debounce`, `showToast`) inside a consolidated `window.Tremors.utils` namespace.
+- **Improved Performance:** Restructured reusable `debounce` logic globally and specifically applied it to CPU-hot mousemove events within `extras.js` to eliminate frame dropping.
+- **Safer DOM Interactions:** Eliminated insecure template string interpolation (`innerHTML`) from the `createProjectCard` flow in `home.js`. Switched structure strictly to standard memory-allocated `HTMLElement` node builders (`document.createElement`).
+- **Clean Event Attachments:** Scrubbed all inline `onclick=...` overrides from `<button>` and `<a>` elements, swapping to standard `.addEventListener()` methods mapped internally within modules.
 
 ## [v2.8.4] - 20-02-2026
 

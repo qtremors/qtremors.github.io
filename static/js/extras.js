@@ -61,15 +61,18 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   const heroSection = document.querySelector('.hero');
-  if (heroSection) {
-    heroSection.addEventListener('mousemove', (e) => {
+  const handleHeroMouseMove = (e) => {
       const rect = heroSection.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
 
       heroSection.style.setProperty('--hero-mouse-x', `${x}px`);
       heroSection.style.setProperty('--hero-mouse-y', `${y}px`);
-    });
+  };
+
+  if (heroSection) {
+    const isDebounceAvailable = window.Tremors && window.Tremors.utils && typeof window.Tremors.utils.debounce === 'function';
+    heroSection.addEventListener('mousemove', isDebounceAvailable ? window.Tremors.utils.debounce(handleHeroMouseMove, 5) : handleHeroMouseMove);
   }
 
   /* --- SCROLL OBSERVER --- */
@@ -124,8 +127,8 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('%c>>> tremors.hire()', 'color: #50fa7b; font-family: monospace; font-size: 14px; font-weight: bold;');
     console.log('%c"You won\'t regret it! plzzzzzz 🥺"', 'color: #f1fa8c; font-family: monospace; font-size: 14px;');
 
-    if (window.showToast) {
-      window.showToast("🐍 Python Mode Activated!");
+    if (window.Tremors && window.Tremors.utils && window.Tremors.utils.showToast) {
+      window.Tremors.utils.showToast("🐍 Python Mode Activated!");
     } else {
       alert("🐍 Python Mode Activated!");
     }
