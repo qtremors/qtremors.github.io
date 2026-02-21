@@ -39,8 +39,16 @@ document.addEventListener('DOMContentLoaded', function () {
             });
           };
 
-          const isDebounceAvailable = window.Tremors && window.Tremors.utils && typeof window.Tremors.utils.debounce === 'function';
-          section.addEventListener('mousemove', isDebounceAvailable ? window.Tremors.utils.debounce(handleMagnetMouseMove, 10) : handleMagnetMouseMove);
+          let isTicking = false;
+          section.addEventListener('mousemove', (e) => {
+            if (!isTicking) {
+              window.requestAnimationFrame(() => {
+                handleMagnetMouseMove(e);
+                isTicking = false;
+              });
+              isTicking = true;
+            }
+          });
 
         section.addEventListener('mouseleave', () => {
           words.forEach(word => {
@@ -74,8 +82,16 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 
   if (heroSection) {
-    const isDebounceAvailable = window.Tremors && window.Tremors.utils && typeof window.Tremors.utils.debounce === 'function';
-    heroSection.addEventListener('mousemove', isDebounceAvailable ? window.Tremors.utils.debounce(handleHeroMouseMove, 5) : handleHeroMouseMove);
+    let heroTicking = false;
+    heroSection.addEventListener('mousemove', (e) => {
+      if (!heroTicking) {
+        window.requestAnimationFrame(() => {
+          handleHeroMouseMove(e);
+          heroTicking = false;
+        });
+        heroTicking = true;
+      }
+    });
   }
 
   /* --- SCROLL OBSERVER --- */

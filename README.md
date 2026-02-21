@@ -12,7 +12,6 @@
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML5">
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white" alt="CSS3">
   <img src="https://img.shields.io/badge/JavaScript-ES6-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript">
-  <img src="https://img.shields.io/badge/License-TSL-red" alt="License">
 </p>
 
 > [!NOTE]
@@ -159,17 +158,10 @@ This portfolio has evolved from a static page to a complex engineering project. 
 |----------|-------------|
 | [DEVELOPMENT.md](DEVELOPMENT.md) | Architecture and technical reference |
 | [CHANGELOG.md](CHANGELOG.md) | Full version history and release notes |
-| [LICENSE.md](LICENSE.md) | License terms and attribution |
 
 ---
 
-## 📄 License
 
-**Tremors Source License v2.0** – Strict personal use license. Allows viewing and personal reference only. No forking, redistribution, or commercial use allowed.
-
-See [LICENSE.md](LICENSE.md) for full terms.
-
----
 
 <p align="center">
   Made with ❤️ by <a href="https://github.com/qtremors">Tremors</a>

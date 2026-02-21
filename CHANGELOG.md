@@ -1,8 +1,21 @@
 # Tremors Changelogs
 
 > **Project:** Tremors  
-> **Version:** 2.8.6
+> **Version:** 2.8.7
 > **Last Updated:** 21-02-2026
+
+---
+
+## [v2.8.7] - 21-02-2026
+
+### 📚 **Documentation & Refinement**
+
+- **Documentation Overhaul:** Completely rewrote `DEVELOPMENT.md` to accurately reflect the current `v2.8.7` architecture, detailing the dual-theme systems (JS for Modern UI, Pure CSS for Terminal TUI), centralized javascript injection patterns, and `localStorage` schemas.
+- **License Cleanup:** Removed deprecated `LICENSE.md` references from `README.md` following the file's deletion.
+- **Data Standardization:** Converted all `<lastmod>` timestamps in `sitemap.xml` to `DD-MM-YYYY` format for parity with the Changelog structure.
+- **DOM & Schema Anomalies:** 
+  - Restored a missing closing `</div>` tag that was malforming the "E-commerce Website" item within `tui.html`.
+  - Scrubbed the trailing 404 "Website" routing link for the local-only Plant Disease Detector model across both `projects.json` and the `tui.html` command output.
 
 ---
 

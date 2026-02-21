@@ -1,7 +1,7 @@
 # Tremors Tasks
 
 > **Project:** Tremors  
-> **Version:** 2.8.6
+> **Version:** 2.8.7
 > **Last Updated:** 21-02-2026
 
 ---
@@ -70,16 +70,16 @@
 
 ## 📄 Documentation Gaps
 
-- [ ] **No `LICENSE.md` file exists in the repository:** `README.md` references `LICENSE.md` in the documentation table (line 162) and license section (line 170), but no such file exists in the project root.
-- [ ] **`DEVELOPMENT.md` is severely outdated:** Nearly every technical detail (file paths, localStorage keys, default theme, data schema, module descriptions) is wrong. This document needs a complete rewrite to match the current codebase.
-- [ ] **No documentation for the TUI theme system:** TUI uses a completely different theme mechanism (CSS radio inputs + `tui-themes.css`) that is not documented anywhere.
-- [ ] **`CHANGELOG.md` date format is inconsistent:** The header uses `DD-MM-YYYY` format (`24-01-2026`) while `sitemap.xml` uses `YYYY-MM-DD` and `DEVELOPMENT.md` uses `YYYY-MM-DD`. Pick one and be consistent.
+- [x] **No `LICENSE.md` file exists in the repository:** `README.md` references `LICENSE.md` in the documentation table (line 162) and license section (line 170), but no such file exists in the project root.
+- [x] **`DEVELOPMENT.md` is severely outdated:** Nearly every technical detail (file paths, localStorage keys, default theme, data schema, module descriptions) is wrong. This document needs a complete rewrite to match the current codebase.
+- [x] **No documentation for the TUI theme system:** TUI uses a completely different theme mechanism (CSS radio inputs + `tui-themes.css`) that is not documented anywhere.
+- [x] **`CHANGELOG.md` date format is inconsistent:** The header uses `DD-MM-YYYY` format (`24-01-2026`) while `sitemap.xml` uses `YYYY-MM-DD` and `DEVELOPMENT.md` uses `YYYY-MM-DD`. Pick one and be consistent.
 
 ---
 
 ## ⚫ Anomalies & General Observations
 
-- [ ] **`tui.html` has two complete copies of the home section:** The splash screen (lines 26-65) and the main content (lines 73-848) both contain the full `#home` section with identical ASCII art. The splash screen version is presumably for the boot animation, but the full content is duplicated.
-- [ ] **`E-commerce Website` (eshopper) in TUI has a malformed closing `</fieldset>`:** Line 707 has `</fieldset>` closing tag but the opening `<div class="portfolio-content">` was never closed with `</div>` first. The inner `</div>` on line 706 matches `run-live-container`, leaving the outer `portfolio-content` div unclosed.
-- [ ] **Plant Disease Detector links to `system/tui-404.html` as "run-live" in TUI:** In `tui.html` line 644, the Plant Disease Detector's live link points to `system/tui-404.html`. While this is technically intentional (no live demo available), it's misleading — the user clicks "run-live" and gets a 404. A "no live demo" message would be clearer.
-- [ ] **Plant Disease Detector links to `system/index-404.html` as "Website" in JSON:** In `projects.json` line 418, the "Website" link URL is `system/index-404.html` — a relative link to a 404 page. Same intent as TUI but confusing for users clicking through from the modern UI.
+- [x] **`tui.html` has two complete copies of the home section:** The splash screen (lines 26-65) and the main content (lines 73-848) both contain the full `#home` section with identical ASCII art. The splash screen version is presumably for the boot animation, but the full content is duplicated.
+- [x] **`E-commerce Website` (eshopper) in TUI has a malformed closing `</fieldset>`:** Line 707 has `</fieldset>` closing tag but the opening `<div class="portfolio-content">` was never closed with `</div>` first. The inner `</div>` on line 706 matches `run-live-container`, leaving the outer `portfolio-content` div unclosed.
+- [x] **Plant Disease Detector links to `system/tui-404.html` as "run-live" in TUI:** In `tui.html` line 644, the Plant Disease Detector's live link points to `system/tui-404.html`. While this is technically intentional (no live demo available), it's misleading — the user clicks "run-live" and gets a 404. A "no live demo" message would be clearer.
+- [x] **Plant Disease Detector links to `system/index-404.html` as "Website" in JSON:** In `projects.json` line 418, the "Website" link URL is `system/index-404.html` — a relative link to a 404 page. Same intent as TUI but confusing for users clicking through from the modern UI.
