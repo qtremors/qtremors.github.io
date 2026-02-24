@@ -169,6 +169,70 @@
     ]
   },
   {
+    "id": "cosmos",
+    "title": "Cosmos",
+    "image": "assets/cosmos-preview.png",
+    "description": "A high-performance 3D solar system simulation running in your browser with custom GLSL shaders, realistic orbital mechanics, 6-DOF fly controls, and full gamepad support.",
+    "longDescription": "Cosmos is a modular, scientifically-inspired solar system visualizer built with React and Three.js. It features 9 planets (including Pluto), 4 moons, a 2000-asteroid belt, and custom GLSL shaders for each celestial body from procedural sun granulation to atmospheric band dynamics on ice giants.\n\nThe control system supports 6 degrees of freedom with keyboard, mouse, and gamepad input. A radar HUD provides directional awareness, and the camera can lock onto any celestial body for orbital viewing. The codebase is fully modular with centralized physics constants in SDK.ts, making it easy to extend with new celestial objects.",
+    "features": [
+      "Custom GLSL Shaders for Each Planet",
+      "6-DOF Fly Controls + Gamepad Support",
+      "Radar HUD with Smart Labels",
+      "Lock-On Orbital Camera System",
+      "2000 Instanced Asteroids",
+      "Quantumania Realm"
+    ],
+    "installation": "# Clone repository\ngit clone https://github.com/qtremors/cosmos.git\ncd cosmos/cosmos-app\n\n# Install dependencies and run\nnpm install\nnpm run dev",
+    "badges": [
+      "tech-react",
+      "tech-ts",
+      "tech-threejs",
+      "tech-css"
+    ],
+    "links": [
+      {
+        "text": "Website",
+        "url": "https://cosmox.vercel.app/",
+        "class": "link-primary"
+      },
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/cosmos",
+        "class": "link-secondary"
+      }
+    ]
+  },
+  {
+    "id": "localghost",
+    "title": "Localghost",
+    "image": "assets/localghost-preview.png",
+    "description": "A hauntingly efficient pentesting & benchmarking toolkit for local running servers, featuring port scanning, security audits, and load testing.",
+    "longDescription": "Localghost is a personal project built to automate local environment security checks and performance benchmarking in a single, lightweight tool. It allows you to possess and analyze local running servers with features like SSL/TLS analysis, CORS audits, and XSS scanning.\n\nBuilt with FastAPI and a Material Design 3 frontend, it provides a weighted security score (A+ through F) and maintains a persistent scan history in SQLite. It's designed for scanning servers you own on localhost or private IPs to ensure security compliance before deployment.",
+    "features": [
+      "Port Scanning & Service ID",
+      "Comprehensive Security Header Audit",
+      "SSL/TLS & CORS Analysis",
+      "Load Testing with Latency Percentiles",
+      "DDoS Resilience & Rate Limit Detection",
+      "Reflected XSS Scanning"
+    ],
+    "installation": "# Clone and navigate\ngit clone https://github.com/qtremors/localghost.git\ncd localghost/localghost\n\n# Install dependencies\nuv sync\n\n# Run the project\nuv run python -m backend.main",
+    "badges": [
+      "tech-python",
+      "tech-fastapi",
+      "tech-sqlite",
+      "tech-html",
+      "tech-css"
+    ],
+    "links": [
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/localghost",
+        "class": "link-primary"
+      }
+    ]
+  },
+  {
     "id": "earnslate",
     "title": "Earnslate",
     "image": "assets/earnslate-preview.png",
@@ -199,6 +263,35 @@
         "text": "View on GitHub",
         "url": "https://github.com/qtremors/earnslate",
         "class": "link-secondary"
+      }
+    ]
+  },
+  {
+    "id": "xcrape",
+    "title": "xcrape",
+    "image": "assets/xcrape-preview.png",
+    "description": "A smart local web scraper with a Material Design 3 terminal UI, designed for comprehensive page analysis and dynamic content extraction using Playwright.",
+    "longDescription": "xcrape is a lightweight, locally-hosted tool for dynamic web scraping. It uses Playwright to handle JavaScript-heavy sites and SPAs, capturing screenshots and extracting structured data like JSON-LD, OpenGraph, and social links.\n\nFeaturing a unique Material Design 3 Terminal-themed UI, it provides per-section copy buttons, CSV/JSON export, and bulk image downloading. The backend is powered by FastAPI and aiosqlite, ensuring an efficient async architecture for concurrent processing of local web projects.",
+    "features": [
+      "Dynamic Scraping with Playwright",
+      "Automated Screenshot Capture",
+      "Technology & Social Link Detection",
+      "Structured Data Extraction (JSON-LD, OG)",
+      "Async Architecture with SQLite Persistence",
+      "Export to CSV/JSON"
+    ],
+    "installation": "# Clone and navigate\ngit clone https://github.com/qtremors/xcrape.git\ncd xcrape/xcrape\n\n# Install dependencies\nuv sync\n\n# Install Playwright browsers\nuv run playwright install chromium\n\n# Run the project\nuv run uvicorn app.main:app --reload",
+    "badges": [
+      "tech-python",
+      "tech-fastapi",
+      "tech-playwright",
+      "tech-sqlite"
+    ],
+    "links": [
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/xcrape",
+        "class": "link-primary"
       }
     ]
   },
@@ -235,40 +328,6 @@
       {
         "text": "View on GitHub",
         "url": "https://github.com/qtremors/amanzon",
-        "class": "link-secondary"
-      }
-    ]
-  },
-  {
-    "id": "cosmos",
-    "title": "Cosmos",
-    "image": "assets/cosmos-preview.png",
-    "description": "A high-performance 3D solar system simulation running in your browser with custom GLSL shaders, realistic orbital mechanics, 6-DOF fly controls, and full gamepad support.",
-    "longDescription": "Cosmos is a modular, scientifically-inspired solar system visualizer built with React and Three.js. It features 9 planets (including Pluto), 4 moons, a 2000-asteroid belt, and custom GLSL shaders for each celestial body from procedural sun granulation to atmospheric band dynamics on ice giants.\n\nThe control system supports 6 degrees of freedom with keyboard, mouse, and gamepad input. A radar HUD provides directional awareness, and the camera can lock onto any celestial body for orbital viewing. The codebase is fully modular with centralized physics constants in SDK.ts, making it easy to extend with new celestial objects.",
-    "features": [
-      "Custom GLSL Shaders for Each Planet",
-      "6-DOF Fly Controls + Gamepad Support",
-      "Radar HUD with Smart Labels",
-      "Lock-On Orbital Camera System",
-      "2000 Instanced Asteroids",
-      "Quantumania Realm"
-    ],
-    "installation": "# Clone repository\ngit clone https://github.com/qtremors/cosmos.git\ncd cosmos/cosmos-app\n\n# Install dependencies and run\nnpm install\nnpm run dev",
-    "badges": [
-      "tech-react",
-      "tech-ts",
-      "tech-threejs",
-      "tech-css"
-    ],
-    "links": [
-      {
-        "text": "Website",
-        "url": "https://cosmox.vercel.app/",
-        "class": "link-primary"
-      },
-      {
-        "text": "View on GitHub",
-        "url": "https://github.com/qtremors/cosmos",
         "class": "link-secondary"
       }
     ]
@@ -363,6 +422,34 @@
         "text": "View on GitHub",
         "url": "https://github.com/qtremors/recontext",
         "class": "link-secondary"
+      }
+    ]
+  },
+  {
+    "id": "diff",
+    "title": "Side-by-Side Diff Viewer",
+    "image": "assets/diff-preview.png",
+    "description": "A high-performance, GitHub-style diff viewer for text and files featuring precise character-level highlighting and perfectly synchronized scrolling.",
+    "longDescription": "Side-by-Side Diff Viewer is a premium web-based comparison tool built with Next.js 16 and React 19. It leverages the jsdiff library to provide precise intra-line highlighting for character-level changes, mimicking the classic GitHub Desktop experience.\n\nThe application features synchronized scrolling, full file upload support via drag-and-drop, and a clean, high-contrast dark theme. It serves as a study in high-performance diffing algorithms and modern UI patterns for developer tools.",
+    "features": [
+      "Character-level Diff Highlighting",
+      "Side-by-Side Aligned Comparison",
+      "Perfectly Synchronized Scrolling",
+      "Direct File Upload & Drag-and-Drop",
+      "GitHub-inspired Dark Theme"
+    ],
+    "installation": "# Clone and navigate\ngit clone https://github.com/qtremors/diff.git\ncd diff/web\n\n# Install dependencies\nnpm install\n\n# Run the project\nnpm run dev",
+    "badges": [
+      "tech-nextjs",
+      "tech-react",
+      "tech-ts",
+      "tech-tailwind"
+    ],
+    "links": [
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/diff",
+        "class": "link-primary"
       }
     ]
   },

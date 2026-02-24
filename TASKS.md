@@ -1,8 +1,8 @@
 # Tremors Tasks
 
 > **Project:** Tremors  
-> **Version:** 2.9.0
-> **Last Updated:** 21-02-2026
+> **Version:** 2.9.2
+> **Last Updated:** 24-02-2026
 
 ---
 

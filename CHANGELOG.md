@@ -1,8 +1,26 @@
 # Tremors Changelogs
 
 > **Project:** Tremors  
-> **Version:** 2.9.0
-> **Last Updated:** 21-02-2026
+> **Version:** 2.9.2
+> **Last Updated:** 24-02-2026
+
+---
+
+## [v2.9.2] - 24-02-2026
+
+### 🆕 **New Projects & Data Updates**
+
+- **New Projects Added:** Added three new projects to `projects.json` — **Localghost** (pentesting & benchmarking toolkit), **xcrape** (smart web scraper with MD3 terminal UI), and **Side-by-Side Diff Viewer** (GitHub-style diff viewer).
+- **Ranking Reorder:** Updated project ranking order in `projects.json` to reflect current priority.
+
+---
+
+## [v2.9.1] - 24-02-2026
+
+### 📋 **Codebase Audit & Task Discovery**
+
+- **Comprehensive Review:** Performed a full codebase audit across JS modules, CSS themes, HTML templates, and data files to identify outstanding issues.
+- **TASKS.md Updated:** Documented 9 findings spanning Security, Maintainability, Performance, SEO, Accessibility, Data Integrity, and Code Quality — covering `project.js`, `theme-init.js`, `history.html`, `project.html`, `home.js`, `index.js`, and `projects.json`.
 
 ---
 
