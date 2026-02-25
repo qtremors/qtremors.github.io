@@ -5,7 +5,7 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  const body = document.body;
+  const root = document.documentElement;
 
   /* --- UNIVERSAL TOAST SYSTEM --- */
 
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
       Object.values(sheets.themes).forEach(t => { if (t) t.disabled = true; });
       const activeTheme = sheets.themes[state.theme] || sheets.themes.oled;
       if (activeTheme) activeTheme.disabled = false;
-      body.setAttribute('data-style-mode', state.theme);
+      root.setAttribute('data-style-mode', state.theme);
     }
 
     // Effects
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       effectiveMode = systemDark ? 'dark' : 'light';
     }
-    body.setAttribute('data-theme', effectiveMode);
+    root.setAttribute('data-theme', effectiveMode);
 
     updateActiveButtons();
 
@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const themeToggleButton = document.getElementById('theme-toggle');
   if (themeToggleButton) {
     themeToggleButton.addEventListener('click', () => {
-      const currentEffective = body.getAttribute('data-theme');
+      const currentEffective = root.getAttribute('data-theme');
       state.mode = currentEffective === 'dark' ? 'light' : 'dark';
       applyAppearance();
     });
@@ -273,14 +273,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* --- EMAIL LOGIC --- */
   const emailBtn = document.getElementById('email-btn');
-  
+
   // Obfuscated email to prevent simple scraping
   const getEmail = () => atob("c2luZ2hhbWFua3VtYXIyMDdAZ21haWwuY29t");
 
   if (emailBtn) {
     const emailTextNode = document.getElementById('email-text');
     if (emailTextNode) {
-       emailTextNode.textContent = getEmail();
+      emailTextNode.textContent = getEmail();
     }
     emailBtn.addEventListener('click', (e) => {
       e.preventDefault();

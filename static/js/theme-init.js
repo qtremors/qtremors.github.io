@@ -1,6 +1,6 @@
 (function () {
     try {
-        var target = document.body || document.documentElement;
+        var target = document.documentElement;
         // 1. Visual Theme (md, md3, oled)
         var theme = localStorage.getItem('style_mode') || 'md';
         var themes = ['md', 'md3', 'oled'];

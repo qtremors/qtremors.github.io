@@ -16,7 +16,7 @@ section::before,
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 50px;
+    height: 100px;
     z-index: 2;
     pointer-events: none;
 }
@@ -27,11 +27,19 @@ section::before,
 .hero::before,
 #skills::before,
 #contact::before {
-    background: linear-gradient(to bottom, transparent, var(--md-surface-variant));
+    background: linear-gradient(to bottom,
+            transparent 0%,
+            color-mix(in srgb, var(--md-surface-variant) 20%, transparent) 40%,
+            color-mix(in srgb, var(--md-surface-variant) 60%, transparent) 70%,
+            var(--md-surface-variant) 100%);
 }
 
 /* Group B: About -> Skills | Portfolio -> Contact */
 #about::before,
 #portfolio::before {
-    background: linear-gradient(to bottom, transparent, var(--md-background));
+    background: linear-gradient(to bottom,
+            transparent 0%,
+            color-mix(in srgb, var(--md-background) 20%, transparent) 40%,
+            color-mix(in srgb, var(--md-background) 60%, transparent) 70%,
+            var(--md-background) 100%);
 }

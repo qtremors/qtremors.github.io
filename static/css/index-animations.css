@@ -147,11 +147,11 @@
 }
 
 /* --- Theme Toggle --- */
-body:not([data-theme='light']) .theme-toggle-button .sun {
+html:not([data-theme='light']) .theme-toggle-button .sun {
     display: none;
 }
 
-body[data-theme='light'] .theme-toggle-button .moon {
+html[data-theme='light'] .theme-toggle-button .moon {
     display: none;
 }
 
@@ -174,7 +174,7 @@ body[data-theme='light'] .theme-toggle-button .moon {
 }
 
 /* Dark mode override */
-body[data-theme="dark"] .portfolio-item h3 {
+html[data-theme="dark"] .portfolio-item h3 {
     color: #ffffff;
 }
 

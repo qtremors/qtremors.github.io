@@ -43,7 +43,7 @@
         </a>
 
         <nav class="desktop-nav">
-            <a href="#section-intro" class="nav-item">Project</a>
+            <a href="#section-summary" class="nav-item">Summary</a>
             <a href="#section-overview" class="nav-item">Overview</a>
             <a href="#section-features" class="nav-item">Features</a>
             <a href="#section-installation" class="nav-item">Installation</a>
@@ -84,6 +84,14 @@
                     <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" />
                 </svg></span>
             <span class="label">Project</span>
+        </a>
+
+        <a href="#section-summary" class="nav-item" aria-label="Project Summary">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                    fill="currentColor">
+                    <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+                </svg></span>
+            <span class="label">Summary</span>
         </a>
 
         <a href="#section-overview" class="nav-item" aria-label="Project Overview">
@@ -133,6 +141,17 @@
                 </div>
             </header>
 
+            <noscript>
+                <div style="text-align:center; padding: 4rem;">
+                    <h2>JavaScript Required</h2>
+                    <p>This page requires JavaScript to load project details. Please enable JavaScript in your browser
+                        settings.</p>
+                    <a href="index.html"
+                        style="color: var(--md-primary, #1a73e8); text-decoration: none; font-weight: bold;">← Return
+                        Home</a>
+                </div>
+            </noscript>
+
             <div class="project-layout-wrapper">
                 <div class="project-top-row" id="section-intro">
                     <div class="project-banner-wrapper">
@@ -141,20 +160,21 @@
 
                     <div class="sidebar-card">
                         <div class="sidebar-section">
-                            <h4 class="sidebar-label">Links</h4>
                             <div id="p-links" class="links-list"></div>
                         </div>
+                    </div>
 
-                        <div class="sidebar-separator"></div>
-
-                        <div class="sidebar-section">
-                            <h4 class="sidebar-label">Technologies</h4>
-                            <div class="tech-tags" id="p-tags"></div>
-                        </div>
+                    <div class="tech-strip">
+                        <div class="tech-tags" id="p-tags"></div>
                     </div>
                 </div>
 
                 <div class="project-bottom-row">
+                    <div class="content-section" id="section-summary">
+                        <h3 class="section-title">Summary</h3>
+                        <div class="text-body" id="p-summary"></div>
+                    </div>
+
                     <div class="content-section" id="section-overview">
                         <h3 class="section-title">Overview</h3>
                         <div class="text-body" id="p-description"></div>
@@ -209,7 +229,7 @@
                 &copy; 2026 Tremors. All rights reserved.
                 <span style="opacity: 0.5; margin: 0 8px;">|</span>
                 <a href="system/history.html"
-                    style="color: var(--md-primary); text-decoration: none; font-weight: bold; font-family: monospace; font-size: 0.9em;">v2.9.0</a>
+                    style="color: var(--md-primary); text-decoration: none; font-weight: bold; font-family: monospace; font-size: 0.9em;">v3.0.0</a>
             </p>
         </div>
     </footer>

@@ -12,6 +12,7 @@
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML5">
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white" alt="CSS3">
   <img src="https://img.shields.io/badge/JavaScript-ES6-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript">
+  <img src="https://img.shields.io/badge/License-TSL-red" alt="License">
 </p>
 
 > [!NOTE]
@@ -73,7 +74,8 @@ qtremors.github.io/
 │   └── js/                   # ES6 modules
 ├── system/                   # History & 404 pages
 ├── CHANGELOG.md              # Version history
-├── LICENSE.md                # License terms
+├── DEVELOPMENT.md            # Developer documentation
+├── LICENSE.md                # License terms (TSL)
 └── README.md
 ```
 
@@ -137,10 +139,15 @@ qtremors.github.io/
 
 This portfolio has evolved from a static page to a complex engineering project. Explore the full timeline via the **Time Machine** (👾 alien icon menu).
 
-### 📺 [Watch the Evolution → History v0.0.0-v2.6.0](https://qtremors.github.io/system/history.html)
+### 📺 [Watch the Evolution → History v0.0.0-v3.0.0](https://qtremors.github.io/system/history.html)
 
 | Version | Highlights |
 |---------|------------|
+| **v3.0.0** | Hero waves redesign, XSS-safe DOM rendering, full content rewrite for all 20 projects, badge audit, cross-file sync |
+| **v2.9.x** | Added Localghost, Xcrape, Diff Viewer; full codebase audit; dependency guards |
+| **v2.8.x** | HTML deduplication via `components.js`, namespace safety, DEVELOPMENT.md rewrite, dynamic OG tags, Scroll Spy |
+| **v2.7.0** | README reformat, DEVELOPMENT.md technical reference |
+| **v2.6.5** | Theme initialization fixes, unified settings modal, Glass effect light mode fix |
 | **v2.6.0** | Project Status banners, Recommended Projects engine, improved mobile UX |
 | **v2.5.0** | Deep codebase review, waves pattern rewrite, DEVELOPMENT.md |
 | **v2.2.0** | Theme & Effects Engine with Settings Modal |
@@ -156,12 +163,22 @@ This portfolio has evolved from a static page to a complex engineering project. 
 
 | Document | Description |
 |----------|-------------|
-| [DEVELOPMENT.md](DEVELOPMENT.md) | Architecture and technical reference |
-| [CHANGELOG.md](CHANGELOG.md) | Full version history and release notes |
+| [DEVELOPMENT.md](DEVELOPMENT.md) | Architecture, naming conventions, and technical reference |
+| [CHANGELOG.md](CHANGELOG.md) | Version history and release notes |
+| [TASKS.md](TASKS.md) | Planned features and known issues |
+| [LICENSE.md](LICENSE.md) | License terms and attribution |
 
 ---
 
+## 📄 License
 
+**Tremors Source License (TSL)** — Source-available license allowing viewing, forking, and derivative works with **mandatory attribution**. Commercial use requires written permission.
+
+Web Version: [github.com/qtremors/license](https://github.com/qtremors/license)
+
+See [LICENSE.md](LICENSE.md) for full terms.
+
+---
 
 <p align="center">
   Made with ❤️ by <a href="https://github.com/qtremors">Tremors</a>

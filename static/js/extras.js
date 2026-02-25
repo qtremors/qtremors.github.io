@@ -18,37 +18,37 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     const words = document.querySelectorAll('.magnetic-word');
-      if (words.length > 0) {
-        magnetSections.forEach(section => {
-          const handleMagnetMouseMove = (e) => {
-            words.forEach(word => {
-              const rect = word.getBoundingClientRect();
-              const wordX = rect.left + rect.width / 2;
-              const wordY = rect.top + rect.height / 2;
-              const dist = Math.hypot(e.clientX - wordX, e.clientY - wordY);
-  
-              if (dist < 100) {
-                const force = (100 - dist) / 100;
-                const x = (e.clientX - wordX) * force * -0.3;
-                const y = (e.clientY - wordY) * force * -0.3;
-  
-                word.style.transform = `translate(${x}px, ${y}px)`;
-              } else {
-                word.style.transform = `translate(0px, 0px)`;
-              }
-            });
-          };
+    if (words.length > 0) {
+      magnetSections.forEach(section => {
+        const handleMagnetMouseMove = (e) => {
+          words.forEach(word => {
+            const rect = word.getBoundingClientRect();
+            const wordX = rect.left + rect.width / 2;
+            const wordY = rect.top + rect.height / 2;
+            const dist = Math.hypot(e.clientX - wordX, e.clientY - wordY);
 
-          let isTicking = false;
-          section.addEventListener('mousemove', (e) => {
-            if (!isTicking) {
-              window.requestAnimationFrame(() => {
-                handleMagnetMouseMove(e);
-                isTicking = false;
-              });
-              isTicking = true;
+            if (dist < 100) {
+              const force = (100 - dist) / 100;
+              const x = (e.clientX - wordX) * force * -0.3;
+              const y = (e.clientY - wordY) * force * -0.3;
+
+              word.style.transform = `translate(${x}px, ${y}px)`;
+            } else {
+              word.style.transform = `translate(0px, 0px)`;
             }
           });
+        };
+
+        let isTicking = false;
+        section.addEventListener('mousemove', (e) => {
+          if (!isTicking) {
+            window.requestAnimationFrame(() => {
+              handleMagnetMouseMove(e);
+              isTicking = false;
+            });
+            isTicking = true;
+          }
+        });
 
         section.addEventListener('mouseleave', () => {
           words.forEach(word => {
@@ -71,14 +71,25 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  const heroSection = document.querySelector('.hero');
-  const handleHeroMouseMove = (e) => {
-      const rect = heroSection.getBoundingClientRect();
+  const portfolioCards = document.querySelectorAll('.portfolio-item');
+  portfolioCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    });
+  });
 
-      heroSection.style.setProperty('--hero-mouse-x', `${x}px`);
-      heroSection.style.setProperty('--hero-mouse-y', `${y}px`);
+  const heroSection = document.querySelector('.hero');
+  const handleHeroMouseMove = (e) => {
+    const rect = heroSection.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    heroSection.style.setProperty('--hero-mouse-x', `${x}px`);
+    heroSection.style.setProperty('--hero-mouse-y', `${y}px`);
   };
 
   if (heroSection) {
@@ -147,9 +158,9 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('%c"You won\'t regret it! plzzzzzz 🥺"', 'color: #f1fa8c; font-family: monospace; font-size: 14px;');
 
     if (window.Tremors && window.Tremors.utils && window.Tremors.utils.showToast) {
-      window.Tremors.utils.showToast("🐍 Python Mode Activated!");
+      window.Tremors.utils.showToast("🐍 Easter Egg Found!");
     } else {
-      alert("🐍 Python Mode Activated!");
+      alert("🐍 Easter Egg Found!");
     }
   };
 });

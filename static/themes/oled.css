@@ -26,7 +26,7 @@
 }
 
 /* --- Light Mode (Paper - Pure White) --- */
-body[data-theme='light'] {
+html[data-theme='light'] {
     --md-primary: #000000;
     --md-on-primary: #ffffff;
     --md-primary-container: #e0e0e0;

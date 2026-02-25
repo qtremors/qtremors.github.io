@@ -38,3 +38,25 @@
 .skill-card:hover::before {
     opacity: 1;
 }
+
+/* Portfolio Card Spotlight */
+.portfolio-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            var(--spotlight-color),
+            transparent 40%);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+.portfolio-item:hover::before {
+    opacity: 1;
+}

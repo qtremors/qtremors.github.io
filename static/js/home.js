@@ -49,7 +49,11 @@ document.addEventListener('DOMContentLoaded', function () {
     let roleIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
+    let isVisible = true;
+    let typeTimer = null;
+
     const type = () => {
+      if (!isVisible) return;
       const currentRole = roles[roleIndex];
       let typeSpeed = isDeleting ? 20 : 40;
       if (!isDeleting) {
@@ -60,8 +64,20 @@ document.addEventListener('DOMContentLoaded', function () {
         else { isDeleting = false; roleIndex = (roleIndex + 1) % roles.length; typeSpeed = 500; }
       }
       typewriterElement.textContent = currentRole.substring(0, charIndex);
-      setTimeout(type, typeSpeed);
+      typeTimer = setTimeout(type, typeSpeed);
     };
+
+    const homeSection = document.getElementById('home');
+    if (homeSection && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          isVisible = entry.isIntersecting;
+          if (isVisible && !typeTimer) type();
+        });
+      }, { threshold: 0 });
+      observer.observe(homeSection);
+    }
+
     type();
   }
 
@@ -79,14 +95,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const isWip = project.status === 'wip';
     const isBeta = project.status === 'beta';
     const isArchive = project.status === 'archive';
-    
+
     const article = document.createElement('article');
     article.className = 'portfolio-item fade-in';
     if (isDynamic) article.classList.add('dynamic-project');
     if (isWip) article.classList.add('is-wip');
     if (isBeta) article.classList.add('is-beta');
     if (isArchive) article.classList.add('is-archive');
-    
+
     const detailUrl = project.id ? `project.html?id=${project.id}` : '#';
     article.dataset.href = detailUrl;
     article.style.cursor = 'pointer';
@@ -102,20 +118,20 @@ document.addEventListener('DOMContentLoaded', function () {
     imgWrapper.style.overflow = 'hidden';
 
     if (isWip) {
-        const badge = document.createElement('div');
-        badge.className = 'wip-badge';
-        badge.textContent = '⚠️ Development';
-        imgWrapper.appendChild(badge);
+      const badge = document.createElement('div');
+      badge.className = 'wip-badge';
+      badge.textContent = '⚠️ Development';
+      imgWrapper.appendChild(badge);
     } else if (isBeta) {
-        const badge = document.createElement('div');
-        badge.className = 'beta-badge';
-        badge.textContent = '🧪 Beta';
-        imgWrapper.appendChild(badge);
+      const badge = document.createElement('div');
+      badge.className = 'beta-badge';
+      badge.textContent = '🧪 Beta';
+      imgWrapper.appendChild(badge);
     } else if (isArchive) {
-        const badge = document.createElement('div');
-        badge.className = 'archive-badge';
-        badge.textContent = '📦 Archived';
-        imgWrapper.appendChild(badge);
+      const badge = document.createElement('div');
+      badge.className = 'archive-badge';
+      badge.textContent = '📦 Archived';
+      imgWrapper.appendChild(badge);
     }
 
     const img = document.createElement('img');
@@ -124,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function () {
     img.alt = `${project.title} Preview`;
     img.style.width = '100%';
     img.style.display = 'block';
-    
+
     imgWrapper.appendChild(img);
     link.appendChild(imgWrapper);
     article.appendChild(link);
@@ -146,27 +162,27 @@ document.addEventListener('DOMContentLoaded', function () {
     const badgesContainer = document.createElement('div');
     badgesContainer.className = 'tech-badges';
     if (project.badges) {
-        project.badges.forEach(badge => {
-            const span = document.createElement('span');
-            span.className = badge;
-            span.textContent = (window.Tremors && window.Tremors.utils && typeof window.Tremors.utils.getBadgeLabel === 'function') ? window.Tremors.utils.getBadgeLabel(badge) : badge;
-            badgesContainer.appendChild(span);
-        });
+      project.badges.forEach(badge => {
+        const span = document.createElement('span');
+        span.className = badge;
+        span.textContent = (window.Tremors && window.Tremors.utils && typeof window.Tremors.utils.getBadgeLabel === 'function') ? window.Tremors.utils.getBadgeLabel(badge) : badge;
+        badgesContainer.appendChild(span);
+      });
     }
 
     const linksContainer = document.createElement('div');
     linksContainer.className = 'portfolio-links';
     if (project.links) {
-        project.links.forEach(l => {
-            const a = document.createElement('a');
-            a.href = l.url;
-            a.target = '_blank';
-            a.rel = 'noopener noreferrer';
-            a.className = l.class || '';
-            // Use unicode arrow
-            a.textContent = `${l.text} \u2192`; 
-            linksContainer.appendChild(a);
-        });
+      project.links.forEach(l => {
+        const a = document.createElement('a');
+        a.href = l.url;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.className = l.class || '';
+        // Use unicode arrow
+        a.textContent = `${l.text} \u2192`;
+        linksContainer.appendChild(a);
+      });
     }
 
     content.appendChild(h3);

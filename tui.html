@@ -226,12 +226,15 @@
                     <fieldset class="portfolio-item">
                         <legend>Quizzer AI</legend>
                         <div class="portfolio-content">
-                            <p>A quiz app that dynamically generates quizzes using Gemini API with personalized
-                                questions, instant feedback & explanations for mistakes.</p>
+                            <p>An AI-powered adaptive learning platform that generates unlimited, tailored
+                                programming quizzes using Google Gemini. Features a 3-step generative pipeline,
+                                context-aware explanations, and a gamified progression system built on a
+                                Service-Oriented Django architecture.</p>
                             <div class="tech-badges">
                                 <span>Python</span>
                                 <span>Django</span>
-                                <span>TypeScript</span>
+                                <span>Gemini API</span>
+                                <span>HTMX</span>
                                 <span>HTML</span>
                                 <span>CSS</span>
                                 <span>JavaScript</span>
@@ -251,8 +254,8 @@
                                 </label>
                                 <div class="portfolio-output">
                                     <div class="live-link-output">
-                                        server running on <a href="https://qtrmrs.onrender.com/" target="_blank"
-                                            rel="noopener noreferrer">https://qtrmrs.onrender.com/</a>
+                                        server running on <a href="https://qtrmrs.onrender.com" target="_blank"
+                                            rel="noopener noreferrer">https://qtrmrs.onrender.com</a>
                                     </div>
                                 </div>
                             </div>
@@ -262,14 +265,15 @@
                     <fieldset class="portfolio-item">
                         <legend>Algorithm Visualizer</legend>
                         <div class="portfolio-content">
-                            <p>A full-stack app that visualizes algorithms in real time. React (TypeScript) on the
-                                front, FastAPI on the back — letting users see each algorithm's steps as they happen.
-                            </p>
+                            <p>An interactive educational platform that executes sorting and pathfinding algorithms
+                                on a Python FastAPI backend and streams execution states in real-time to a React
+                                frontend via WebSockets.</p>
                             <div class="tech-badges">
                                 <span>React</span>
                                 <span>TypeScript</span>
                                 <span>Python</span>
                                 <span>FastAPI</span>
+                                <span>Tailwind</span>
                             </div>
                             <div class="portfolio-links">
                                 <a href="https://github.com/qtremors/algorithm-visualizer" target="_blank"
@@ -297,8 +301,10 @@
                     <fieldset class="portfolio-item">
                         <legend>GitNexus</legend>
                         <div class="portfolio-content">
-                            <p>A powerful, self-hosted web application for monitoring repository updates, managing local
-                                downloads, and exploring GitHub profiles.</p>
+                            <p>A self-hosted GitHub companion dashboard for developers. Browse user profiles and
+                                bulk-download repositories, track release assets across watched repos, and
+                                time-travel through commit history with isolated dev servers powered by Git
+                                worktrees.</p>
                             <div class="tech-badges">
                                 <span>Python</span>
                                 <span>FastAPI</span>
@@ -323,7 +329,7 @@
                                 <div class="portfolio-output">
                                     <div class="live-link-output">
                                         server running on <a
-                                            href="https://qtremors.github.io/scrap/projects/demo/demo-git-nexus/"
+                                            href="https://qtremors.github.io/scrap/projects/demo/demo-git-nexus"
                                             target="_blank"
                                             rel="noopener noreferrer">https://qtremors.github.io/scrap/projects/demo/demo-git-nexus</a>
                                     </div>
@@ -335,14 +341,17 @@
                     <fieldset class="portfolio-item status-beta">
                         <legend>Arcade Nexus</legend>
                         <div class="portfolio-content">
-                            <p>A browser-based gaming console experience with a custom Game SDK, cloud-synced save
-                                states, achievements tracking, and an immersive console-style UI.</p>
+                            <p>A browser-based gaming console built with React and FastAPI, featuring an
+                                offline-first SQLite backend, a typed TypeScript Game SDK for 2D and 3D game
+                                development, local profiles, save states, achievements, and gamepad support.</p>
                             <div class="tech-badges">
                                 <span>React</span>
                                 <span>TypeScript</span>
                                 <span>Python</span>
                                 <span>FastAPI</span>
                                 <span>SQLite</span>
+                                <span>Three.js</span>
+                                <span>Framer Motion</span>
                             </div>
                             <div class="portfolio-links">
                                 <a href="https://github.com/qtremors/arcade-nexus" target="_blank"
@@ -358,18 +367,19 @@
                     <fieldset class="portfolio-item">
                         <legend>Tremors Music</legend>
                         <div class="portfolio-content">
-                            <p>A high-performance, local-first music player with both web and native desktop versions —
-                                featuring a Python backend, React UI with glassmorphism design, and optional Tauri shell
-                                for minimal resource usage.</p>
+                            <p>A local-first music player available as both a web application and a native Tauri
+                                desktop app. Features a Python FastAPI backend for metadata extraction and audio
+                                streaming, a React frontend with virtualized lists, and an Apple Music-inspired
+                                UI.</p>
 
                             <div class="tech-badges">
-                                <span>Rust</span>
                                 <span>Python</span>
                                 <span>FastAPI</span>
                                 <span>React</span>
                                 <span>TypeScript</span>
                                 <span>Tauri</span>
                                 <span>Framer Motion</span>
+                                <span>SQLite</span>
                             </div>
 
                             <div class="portfolio-links">
@@ -402,12 +412,71 @@
                     <div id="hidden-projects" class="hidden-group">
 
                         <fieldset class="portfolio-item">
+                            <legend>Cosmos</legend>
+                            <div class="portfolio-content">
+                                <p>A browser-based 3D space exploration simulator built with Three.js and React.
+                                    Features a Solar System with 2K NASA textures, a secondary Quantumania
+                                    dimension with 38 lazy-loaded 3D models, custom GLSL shaders, and 6-DOF flight
+                                    controls with gamepad support.</p>
+                                <div class="tech-badges">
+                                    <span>React</span>
+                                    <span>TypeScript</span>
+                                    <span>Three.js</span>
+                                    <span>CSS</span>
+                                </div>
+                                <div class="portfolio-links">
+                                    <a href="https://github.com/qtremors/cosmos" target="_blank"
+                                        rel="noopener noreferrer" class="portfolio-command">
+                                        <span class="prompt">$</span>
+                                        <span class="command-text">git show HEAD</span>
+                                    </a>
+                                </div>
+                                <div class="run-live-container">
+                                    <input type="checkbox" id="run-live-toggle-cosmos" class="hidden-toggle">
+                                    <label for="run-live-toggle-cosmos" class="portfolio-command">
+                                        <span class="prompt">$</span>
+                                        <span class="command-text">./run-live</span>
+                                    </label>
+                                    <div class="portfolio-output">
+                                        <div class="live-link-output">
+                                            server running on <a href="https://cosmox.vercel.app" target="_blank"
+                                                rel="noopener noreferrer">https://cosmox.vercel.app</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="portfolio-item">
+                            <legend>LocalGhost</legend>
+                            <div class="portfolio-content">
+                                <p>A local-first security auditing and benchmarking toolkit for development servers.
+                                    Runs 11 asynchronous scanners covering port discovery, security headers, SSL/TLS
+                                    analysis, CORS auditing, load testing, and DDoS resilience — with weighted
+                                    scoring and report exports.</p>
+                                <div class="tech-badges">
+                                    <span>Python</span>
+                                    <span>FastAPI</span>
+                                    <span>SQLite</span>
+                                    <span>HTML</span>
+                                    <span>CSS</span>
+                                </div>
+                                <div class="portfolio-links">
+                                    <a href="https://github.com/qtremors/localghost" target="_blank"
+                                        rel="noopener noreferrer" class="portfolio-command">
+                                        <span class="prompt">$</span>
+                                        <span class="command-text">git show HEAD</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="portfolio-item">
                             <legend>Earnslate</legend>
                             <div class="portfolio-content">
-                                <p>A privacy-first personal finance manager for tracking income, expenses, budgets, and
-                                    subscriptions — all stored locally in your browser with a premium monochrome
-                                    interface.
-                                </p>
+                                <p>A client-side finance tracking platform built with Next.js and TypeScript. Manage
+                                    transactions, set budgets with auto-reset, and track subscriptions with treemap
+                                    visualizations — all persisted locally via browser storage.</p>
                                 <div class="tech-badges">
                                     <span>Next.js</span>
                                     <span>TypeScript</span>
@@ -438,10 +507,12 @@
                         </fieldset>
 
                         <fieldset class="portfolio-item">
-                            <legend>xcrape</legend>
+                            <legend>Xcrape</legend>
                             <div class="portfolio-content">
-                                <p>A smart local web scraper with a Material Design 3 terminal UI, designed for
-                                    comprehensive page analysis and dynamic content extraction using Playwright.</p>
+                                <p>An asynchronous Python web scraper powered by Playwright and BeautifulSoup4.
+                                    Extracts structured data, detects 15+ technologies, captures screenshots, and
+                                    archives results to SQLite — all through a Material Design 3 terminal-themed
+                                    UI.</p>
                                 <div class="tech-badges">
                                     <span>Python</span>
                                     <span>FastAPI</span>
@@ -459,11 +530,11 @@
                         </fieldset>
 
                         <fieldset class="portfolio-item">
-                            <legend>E-commerce Platform</legend>
+                            <legend>Amanzon E-Commerce</legend>
                             <div class="portfolio-content">
-                                <p>A minimalist e-commerce platform built with Django 5, featuring product catalogs,
-                                    shopping cart, wishlist, coupon system, Razorpay payments, and user authentication
-                                    with email verification and OTP password resets.</p>
+                                <p>A full-stack e-commerce platform built with Django and PostgreSQL (Supabase).
+                                    Handles product catalogs, Razorpay payments, order lifecycle management, discount
+                                    coupons, user reviews, and email-verified authentication.</p>
                                 <div class="tech-badges">
                                     <span>Django</span>
                                     <span>Python</span>
@@ -471,6 +542,7 @@
                                     <span>CSS</span>
                                     <span>JavaScript</span>
                                     <span>Bootstrap</span>
+                                    <span>SQL</span>
                                 </div>
                                 <div class="portfolio-links">
                                     <a href="https://github.com/qtremors/amanzon" target="_blank"
@@ -493,71 +565,18 @@
                                     </div>
                                 </div>
                             </div>
-                        </fieldset>                        
-
-                        <fieldset class="portfolio-item">
-                            <legend>Cosmos</legend>
-                            <div class="portfolio-content">
-                                <p>A high-performance 3D solar system simulation with custom GLSL shaders, 6-DOF fly
-                                    controls, and full gamepad support running directly in your browser.</p>
-                                <div class="tech-badges">
-                                    <span>React</span>
-                                    <span>TypeScript</span>
-                                    <span>Three.js</span>
-                                    <span>CSS</span>
-                                </div>
-                                <div class="portfolio-links">
-                                    <a href="https://github.com/qtremors/cosmos" target="_blank"
-                                        rel="noopener noreferrer" class="portfolio-command">
-                                        <span class="prompt">$</span>
-                                        <span class="command-text">git show HEAD</span>
-                                    </a>
-                                </div>
-                                <div class="run-live-container">
-                                    <input type="checkbox" id="run-live-toggle-cosmos" class="hidden-toggle">
-                                    <label for="run-live-toggle-cosmos" class="portfolio-command">
-                                        <span class="prompt">$</span>
-                                        <span class="command-text">./run-live</span>
-                                    </label>
-                                    <div class="portfolio-output">
-                                        <div class="live-link-output">
-                                            server running on <a href="https://cosmox.vercel.app/" target="_blank"
-                                                rel="noopener noreferrer">https://cosmox.vercel.app/</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-
-                        <fieldset class="portfolio-item">
-                            <legend>Localghost</legend>
-                            <div class="portfolio-content">
-                                <p>A hauntingly efficient pentesting & benchmarking toolkit for local running servers,
-                                    featuring port scanning, security audits, and load testing.</p>
-                                <div class="tech-badges">
-                                    <span>Python</span>
-                                    <span>FastAPI</span>
-                                    <span>SQLite</span>
-                                    <span>HTML</span>
-                                    <span>CSS</span>
-                                </div>
-                                <div class="portfolio-links">
-                                    <a href="https://github.com/qtremors/localghost" target="_blank"
-                                        rel="noopener noreferrer" class="portfolio-command">
-                                        <span class="prompt">$</span>
-                                        <span class="command-text">git show HEAD</span>
-                                    </a>
-                                </div>
-                            </div>
                         </fieldset>
 
                         <fieldset class="portfolio-item status-wip">
                             <legend>Social Network Platform</legend>
                             <div class="portfolio-content">
-                                <p>A modern social networking platform with public feeds, messaging, and community spaces.</p>
+                                <p>A frontend prototype of a social networking platform built with React,
+                                    Tailwind CSS, and Zustand. Features public feeds, direct messaging, community
+                                    channels, user profiles, and a dual-mode navigation sidebar.</p>
                                 <div class="tech-badges">
                                     <span>React</span>
                                     <span>TypeScript</span>
+                                    <span>Tailwind</span>
                                 </div>
                                 <div class="portfolio-links">
                                     <a href="https://github.com/qtremors/social-network" target="_blank"
@@ -573,7 +592,9 @@
                         <fieldset class="portfolio-item">
                             <legend>Material Design</legend>
                             <div class="portfolio-content">
-                                <p>A framework-free implementation of Google's Material Design 3 and Material You, featuring a zero-dependency theme engine.</p>
+                                <p>A zero-dependency implementation of Material Design 3, Material You, and Material
+                                    3 Expressive specifications in pure HTML, CSS custom properties, and vanilla
+                                    JavaScript.</p>
                                 <div class="tech-badges">
                                     <span>HTML</span>
                                     <span>CSS</span>
@@ -594,7 +615,8 @@
                                     </label>
                                     <div class="portfolio-output">
                                         <div class="live-link-output">
-                                            server running on <a href="https://qtremors.github.io/material-design" target="_blank"
+                                            server running on <a href="https://qtremors.github.io/material-design"
+                                                target="_blank"
                                                 rel="noopener noreferrer">https://qtremors.github.io/material-design</a>
                                         </div>
                                     </div>
@@ -605,12 +627,15 @@
                         <fieldset class="portfolio-item">
                             <legend>ReConText</legend>
                             <div class="portfolio-content">
-                                <p>A premium, dark-themed knowledge base for modern developers, optimized for MDX content and fast technical documentation.</p>
+                                <p>A statically generated knowledge base for developer cheat sheets and research
+                                    notes. Built with Next.js and MDX, featuring auto-inferred metadata, interactive
+                                    React components within markdown, and a dark "Cosmic Night" theme.</p>
                                 <div class="tech-badges">
                                     <span>Next.js</span>
                                     <span>React</span>
                                     <span>TypeScript</span>
                                     <span>Tailwind</span>
+                                    <span>Framer Motion</span>
                                 </div>
                                 <div class="portfolio-links">
                                     <a href="https://github.com/qtremors/recontext" target="_blank"
@@ -636,10 +661,11 @@
                         </fieldset>
 
                         <fieldset class="portfolio-item">
-                            <legend>Side-by-Side Diff Viewer</legend>
+                            <legend>Diff Viewer</legend>
                             <div class="portfolio-content">
-                                <p>A high-performance, GitHub-style diff viewer for text and files featuring precise
-                                    character-level highlighting and perfectly synchronized scrolling.</p>
+                                <p>A GitHub-style side-by-side diff viewer built with Next.js. Compares text and
+                                    files with character-level intra-line highlighting, synchronized dual-panel
+                                    scrolling, and drag-and-drop file upload support.</p>
                                 <div class="tech-badges">
                                     <span>Next.js</span>
                                     <span>React</span>
@@ -647,7 +673,7 @@
                                     <span>Tailwind</span>
                                 </div>
                                 <div class="portfolio-links">
-                                    <a href="https://github.com/qtremors/diff" target="_blank"
+                                    <a href="https://github.com/qtremors/diffs" target="_blank"
                                         rel="noopener noreferrer" class="portfolio-command">
                                         <span class="prompt">$</span>
                                         <span class="command-text">git show HEAD</span>
@@ -657,11 +683,11 @@
                         </fieldset>
 
                         <fieldset class="portfolio-item">
-                            <legend>gtrmrs</legend>
+                            <legend>GTRMRS</legend>
                             <div class="portfolio-content">
-                                <p>A unified suite of dependency-free, Git-aware CLI tools for developers that combines
-                                    directory tree visualization, lines of code counting, and clean repository migration
-                                    into a single powerful utility.</p>
+                                <p>A unified suite of dependency-free, Git-aware Python CLI tools. Includes rtree
+                                    (directory tree visualization), locr (lines-of-code counting with language
+                                    breakdown), and gitmig (clean repository migration).</p>
                                 <div class="tech-badges">
                                     <span>Python</span>
                                     <span>CLI</span>
@@ -680,14 +706,17 @@
                         <fieldset class="portfolio-item">
                             <legend>Plant Disease Detector</legend>
                             <div class="portfolio-content">
-                                <p>A Django and TensorFlow web app that classifies plant diseases from leaf images,
-                                    allowing users to upload an image and get health predictions.</p>
+                                <p>A Django web application that uses TensorFlow and a fine-tuned MobileNetV2 model
+                                    to classify apple leaf diseases from uploaded images. Renders prediction
+                                    confidence via Plotly.js charts and persists scan history in SQLite.</p>
                                 <div class="tech-badges">
+                                    <span>Python</span>
                                     <span>Django</span>
                                     <span>TensorFlow</span>
                                     <span>Pillow</span>
                                     <span>NumPy</span>
                                     <span>Plotly</span>
+                                    <span>SQLite</span>
                                 </div>
                                 <div class="portfolio-links">
                                     <a href="https://github.com/qtremors/plant-disease-detector" target="_blank"
@@ -713,14 +742,18 @@
                         </fieldset>
 
                         <fieldset class="portfolio-item">
-                            <legend>PC Remote Control API</legend>
+                            <legend>PC Remote Control</legend>
                             <div class="portfolio-content">
-                                <p>A Python + FastAPI tool that lets you control your PC from your phone — media
-                                    playback, system power, screenshots, and app launching over a clean local web
-                                    interface.</p>
+                                <p>A Python FastAPI server that turns any mobile browser into a remote control for a
+                                    desktop workstation. Supports media playback, volume control, system power
+                                    operations, remote screenshots, and browser launching — all over the local
+                                    network.</p>
                                 <div class="tech-badges">
                                     <span>Python</span>
                                     <span>FastAPI</span>
+                                    <span>HTML</span>
+                                    <span>CSS</span>
+                                    <span>JavaScript</span>
                                     <span>CLI</span>
                                 </div>
                                 <div class="portfolio-links">
@@ -736,8 +769,9 @@
                         <fieldset class="portfolio-item status-archive">
                             <legend>E-commerce Website</legend>
                             <div class="portfolio-content">
-                                <p>A fully functional e-commerce site built with Python and Django, using the 'EShopper'
-                                    template and offering a complete storefront.</p>
+                                <p>An archived Django e-commerce platform with hierarchical product catalogs,
+                                    Razorpay payment integration, wishlist management, OTP email verification, and
+                                    Bootstrap-based server-side rendering.</p>
                                 <div class="tech-badges">
                                     <span>Django</span>
                                     <span>HTML</span>
@@ -760,9 +794,9 @@
                                     </label>
                                     <div class="portfolio-output">
                                         <div class="live-link-output">
-                                            server running on <a href="https://tremors.pythonanywhere.com/"
+                                            server running on <a href="https://tremors.pythonanywhere.com"
                                                 target="_blank"
-                                                rel="noopener noreferrer">https://tremors.pythonanywhere.com/</a>
+                                                rel="noopener noreferrer">https://tremors.pythonanywhere.com</a>
                                         </div>
                                     </div>
                                     <span class="status-tag status-archive">ARCHIVED</span>
@@ -771,11 +805,12 @@
                         </fieldset>
 
                         <fieldset class="portfolio-item">
-                            <legend>Tremors Portfolio</legend>
+                            <legend>Tremors</legend>
                             <div class="portfolio-content">
-                                <p>A multi-mode portfolio website with 5 viewing modes (Default, Terminal, Paper,
-                                    Newspaper, Nexus), GitHub integration, AI-generated newspaper content, and secret
-                                    admin controls.</p>
+                                <p>A multi-mode personal portfolio website built with Next.js. Features 5 distinct
+                                    viewing modes (Cards, Terminal, AI Newspaper, Resume, Nexus Space), GitHub
+                                    integration, AI-generated content via Google Gemini, and a fully functional
+                                    interactive CLI.</p>
                                 <div class="tech-badges">
                                     <span>Next.js</span>
                                     <span>React</span>
@@ -784,6 +819,7 @@
                                     <span>Prisma</span>
                                     <span>Framer Motion</span>
                                     <span>tsParticles</span>
+                                    <span>Gemini API</span>
                                 </div>
                                 <div class="portfolio-links">
                                     <a href="https://github.com/qtremors/tremors" target="_blank"
@@ -811,8 +847,10 @@
                         <fieldset class="portfolio-item">
                             <legend>The Scrapyard</legend>
                             <div class="portfolio-content">
-                                <p>A 3D scroll-based archive for abandoned project ideas, visualizing them as scattered
-                                    notes.</p>
+                                <p>A cyberpunk-themed digital archive for abandoned and unfinished web projects.
+                                    Built with a custom Node.js static site generator that scans project directories
+                                    and compiles HTML pages with live preview iframes and canvas-based digital
+                                    rain.</p>
                                 <div class="tech-badges">
                                     <span>HTML</span>
                                     <span>CSS</span>

@@ -142,7 +142,7 @@
         }
 
         /* MD3 Morphing for dots */
-        body[data-style-mode="md3"] .timeline-marker {
+        html[data-style-mode="md3"] .timeline-marker {
             border-radius: 4px;
         }
 
@@ -227,98 +227,125 @@
     <div class="container">
         <div class="timeline-header">
             <h1>Architecture Evolution</h1>
-            <p>From static HTML (v0) to a Modular Engine (v2)</p>
+            <p>From static HTML (v0) to the Modular Engine (v3)</p>
         </div>
 
         <div class="video-wrapper"
             style="max-width: 800px; margin: 0 auto 1rem auto; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px var(--md-shadow-color);">
             <video id="history-video" width="100%" height="auto" controls autoplay muted loop playsinline
                 style="display: block;" poster="../assets/logo.gif">
-                <source src="../assets/v0.0.0-v2.6.0.mp4" type="video/mp4">
+                <source src="../assets/v0.0.0-v3.0.0.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
 
-        <div class="timeline-controls"
-            style="display: flex; justify-content: center; align-items: center; margin-bottom: 4rem; gap: 1rem;">
-            <button id="quality-toggle-btn" class="icon-button"
-                style="border-radius: 8px; padding: 10px 20px; width: auto; font-family: monospace; font-size: 0.9rem; background-color: var(--md-surface-variant); color: var(--md-on-surface); border: 1px solid var(--md-outline); cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.2s ease;">
-                <span class="icon">⚙️</span> <span id="quality-label">Switch to HQ (1080p)</span>
-            </button>
-        </div>
-
-        <script>
-            // Video Quality Toggle Logic
-            const video = document.getElementById('history-video');
-            const toggleBtn = document.getElementById('quality-toggle-btn');
-            const qualityLabel = document.getElementById('quality-label');
-            let isHQ = false;
-
-            toggleBtn.addEventListener('click', () => {
-                const currentTime = video.currentTime;
-                const isPaused = video.paused;
-                let restored = false;
-
-                // Add simple click effect
-                toggleBtn.style.transform = "scale(0.95)";
-                setTimeout(() => toggleBtn.style.transform = "scale(1)", 100);
-
-                if (!isHQ) {
-                    // Switch to HQ
-                    video.src = "../assets/v0.0.0-v2.6.0-hq.mp4"; // Lazy load happens here
-                    qualityLabel.textContent = "Switch to Optimized (720p)";
-                    toggleBtn.style.borderColor = "var(--md-primary)";
-                    isHQ = true;
-                } else {
-                    // Switch to Optimized
-                    video.src = "../assets/v0.0.0-v2.6.0.mp4";
-                    qualityLabel.textContent = "Switch to HQ (1080p)";
-                    toggleBtn.style.borderColor = "var(--md-outline)";
-                    isHQ = false;
-                }
-
-                // Restore playback state safely
-                const restorePlayback = () => {
-                    if (restored) return;
-                    restored = true;
-
-                    video.currentTime = currentTime;
-                    if (!isPaused) {
-                        const playPromise = video.play();
-                        if (playPromise !== undefined) {
-                            playPromise.catch(error => {
-                                console.log("Playback prevented:", error);
-                            });
-                        }
-                    }
-                };
-
-                // Remove any previous listeners to prevent stacking
-                video.onloadedmetadata = null;
-
-                // Force load and wait for metadata
-                video.load();
-
-                // Check if readyState is already enough (rare with load() but possible)
-                if (video.readyState >= 1) {
-                    restorePlayback();
-                } else {
-                    // Wait for metadata
-                    video.onloadedmetadata = function () {
-                        restorePlayback();
-                        // Clean up
-                        video.onloadedmetadata = null;
-                    };
-
-                    // Fallback timeout just in case
-                    setTimeout(() => {
-                        if (!restored) restorePlayback();
-                    }, 800);
-                }
-            });
-        </script>
 
         <div class="timeline">
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content card">
+                    <span class="version-tag">v3.0.0</span>
+                    <span class="timeline-date">Feb 24, 2026</span>
+                    <h3>The Great Refinement</h3>
+                    <ul class="commit-list">
+                        <li><strong>Hero Waves:</strong> Multi-layered organic CSS wave effect with light mode
+                            contrast.</li>
+                        <li><strong>XSS Prevention:</strong> Deterministic HTML-escaping and safe DOM rendering.</li>
+                        <li><strong>Content Expansion:</strong> Rewrote descriptions and features for all 20
+                            projects.</li>
+                        <li><strong>Badge Audit:</strong> Full badge sync from project docs with new unified
+                            badge.</li>
+                        <li><strong>Cross-File Sync:</strong> Aligned TUI project names, order, and titles with
+                            JSON.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content card">
+                    <span class="version-tag">v2.9.0 - v2.9.2</span>
+                    <span class="timeline-date">Feb 21 - 24, 2026</span>
+                    <h3>New Projects & Audit</h3>
+                    <ul class="commit-list">
+                        <li><strong>New Projects:</strong> Added Localghost, Xcrape, and Diff Viewer to the
+                            portfolio.</li>
+                        <li><strong>Codebase Audit:</strong> Full review across JS, CSS, HTML, and data files.</li>
+                        <li><strong>Bug Fixes:</strong> Refactored HTML parsing, fixed dependency guards, and
+                            standardized schemas.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content card">
+                    <span class="version-tag">v2.8.5 - v2.8.7</span>
+                    <span class="timeline-date">Feb 21, 2026</span>
+                    <h3>Security & Code Quality</h3>
+                    <ul class="commit-list">
+                        <li><strong>HTML Deduplication:</strong> Centralized nav and modal markup via
+                            <code>components.js</code>.</li>
+                        <li><strong>Namespace Safety:</strong> Encapsulated utilities under
+                            <code>window.Tremors.utils</code>.</li>
+                        <li><strong>Documentation:</strong> Complete rewrite of DEVELOPMENT.md for v2.8.7
+                            architecture.</li>
+                        <li><strong>Security:</strong> XSS-safe image URLs, anti-scraping email obfuscation, and
+                            debounced events.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content card">
+                    <span class="version-tag">v2.8.0 - v2.8.4</span>
+                    <span class="timeline-date">Jan 17 - Feb 20, 2026</span>
+                    <h3>SEO, Navigation & Content</h3>
+                    <ul class="commit-list">
+                        <li><strong>Dynamic OG Tags:</strong> Project-specific social previews for shared links.</li>
+                        <li><strong>Sitemap Sync:</strong> Cleaned phantom project IDs and added missing entries.</li>
+                        <li><strong>Persona Refresh:</strong> Refined hero bio, typewriter roles, and About Me
+                            sections.</li>
+                        <li><strong>TUI Status Badges:</strong> Corner tags for Beta, Archived, and Development
+                            states.</li>
+                        <li><strong>Scroll Spy:</strong> Accurate section highlighting in project navigation.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content card">
+                    <span class="version-tag">v2.7.0</span>
+                    <span class="timeline-date">Jan 14, 2026</span>
+                    <h3>Documentation Overhaul</h3>
+                    <ul class="commit-list">
+                        <li><strong>README Reformat:</strong> Modern portfolio template with badges, feature tables,
+                            and tech stack.</li>
+                        <li><strong>DEVELOPMENT.md:</strong> Full technical reference with architecture diagrams and
+                            code standards.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content card">
+                    <span class="version-tag">v2.6.5</span>
+                    <span class="timeline-date">Jan 02, 2026</span>
+                    <h3>Theme & Effect Fixes</h3>
+                    <ul class="commit-list">
+                        <li><strong>Theme Init:</strong> Fixed initialization across history, 404, and project
+                            pages.</li>
+                        <li><strong>Settings Modal:</strong> Unified to single-view layout with context-aware
+                            options.</li>
+                        <li><strong>Glass Effect:</strong> Fixed light mode visibility with proper semi-transparent
+                            surface.</li>
+                    </ul>
+                </div>
+            </div>
 
             <div class="timeline-item">
                 <div class="timeline-marker"></div>
@@ -469,9 +496,9 @@
     <!-- Settings Modal injected dynamically by components.js -->
 
     <script>window.TREMORS_BASE_PATH = "../";</script>
-    <script src="../static/js/components.js"></script>
-    <script src="../static/js/utils.js"></script>
-    <script src="../static/js/index.js"></script>
+    <script src="../static/js/utils.js" defer></script>
+    <script src="../static/js/components.js" defer></script>
+    <script src="../static/js/index.js" defer></script>
 
 </body>
 

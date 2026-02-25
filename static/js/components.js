@@ -1,9 +1,9 @@
 window.Tremors = window.Tremors || {};
 window.Tremors.components = {
-    injectDropdownMenu: function(basePath = '') {
+    injectDropdownMenu: function (basePath = '') {
         const container = document.querySelector('.dropdown-container');
         if (!container || document.getElementById('main-dropdown')) return;
-        
+
         const html = `
             <div class="dropdown-card" id="main-dropdown">
                 <button class="dropdown-item" id="btn-nav-tui" title="A minimal lightweight TUI version of this page">
@@ -44,7 +44,7 @@ window.Tremors.components = {
                 location.href = basePath + 'tui.html';
             });
         }
-        
+
         const historyBtn = document.getElementById('btn-nav-history');
         if (historyBtn) {
             historyBtn.addEventListener('click', () => {
@@ -53,11 +53,11 @@ window.Tremors.components = {
         }
     },
 
-    injectSettingsModal: function() {
+    injectSettingsModal: function () {
         if (document.getElementById('settings-modal')) return;
         // Only inject if there's a button to open it (to avoid injecting in TUI pages, etc.)
         if (!document.getElementById('open-settings-btn')) return;
-        
+
         const html = `
     <div id="settings-modal" class="modal-backdrop" aria-hidden="true">
         <div class="modal-card">
@@ -168,7 +168,7 @@ window.Tremors.components = {
                                     d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42">
                                 </path>
                             </svg>
-                            Cursor spotlight (Hero & Skills)
+                            Cursor spotlight (Hero, Skills & Portfolio)
                         </span>
                         <button class="toggle-switch" data-set-spotlight="toggle" aria-label="Toggle spotlight">
                             <span class="toggle-slider"></span>
@@ -228,7 +228,7 @@ window.Tremors.components = {
     </div>
         `;
         document.body.insertAdjacentHTML('beforeend', html);
-        
+
         // Hide spotlight/pattern on non-index pages
         if (location.pathname.indexOf('index.html') === -1 && location.pathname !== '/' && !location.pathname.endsWith('/qtremors.github.io/')) {
             const spotlightGrp = document.getElementById('spotlight-setting-group');
@@ -239,7 +239,7 @@ window.Tremors.components = {
     }
 };
 
-(function() {
+(function () {
     const basePath = window.TREMORS_BASE_PATH || '';
     if (window.TREMORS_INJECT_DROPDOWN !== false) {
         window.Tremors.components.injectDropdownMenu(basePath);

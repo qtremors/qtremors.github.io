@@ -27,7 +27,7 @@
 }
 
 /* --- Light Mode Overrides --- */
-body[data-theme='light'] {
+html[data-theme='light'] {
     --md-primary: #1a73e8;
     --md-on-primary: #ffffff;
     --md-primary-container: #d9e6ff;
@@ -46,6 +46,6 @@ body[data-theme='light'] {
     --theme-icon-shadow: #000000;
     --md-primary-rgb: 26, 115, 232;
 
-    --hero-grid-color: rgba(0, 0, 0, 0.06);
+    --hero-grid-color: rgba(0, 0, 0, 0.08);
     --spotlight-color: rgba(0, 0, 0, 0.15);
 }

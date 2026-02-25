@@ -1,56 +1,139 @@
 /* ==========================================================================
    Hero Section Background Pattern: Waves
+   A multi-layered, organically curved wave animation using CSS gradients.
+   Uses radial + linear layers to simulate undulating wave shapes.
    ========================================================================== */
 
 .hero {
-    /* Animated wave gradients as background layers */
+    --wave-color-1: rgba(138, 180, 248, 0.07);
+    --wave-color-2: rgba(138, 180, 248, 0.05);
+    --wave-color-3: rgba(138, 180, 248, 0.03);
+
     background-image:
-        linear-gradient(135deg,
+        /* Wave layer 1 — large, slow undulation */
+        radial-gradient(ellipse 120% 80% at 20% 100%,
+            var(--wave-color-1) 0%,
+            transparent 50%),
+        radial-gradient(ellipse 120% 70% at 80% 100%,
+            var(--wave-color-2) 0%,
+            transparent 50%),
+
+        /* Wave layer 2 — mid band */
+        radial-gradient(ellipse 100% 60% at 60% 90%,
+            var(--wave-color-2) 0%,
+            transparent 45%),
+        radial-gradient(ellipse 100% 50% at 30% 85%,
+            var(--wave-color-3) 0%,
+            transparent 45%),
+
+        /* Wave layer 3 — flowing diagonal ribbon */
+        linear-gradient(160deg,
             transparent 0%,
-            var(--wave-color-1, rgba(138, 180, 248, 0.08)) 15%,
+            var(--wave-color-1) 20%,
+            transparent 35%,
+            var(--wave-color-2) 55%,
+            transparent 70%,
+            var(--wave-color-3) 85%,
+            transparent 100%),
+
+        /* Wave layer 4 — counter-flowing ribbon */
+        linear-gradient(200deg,
+            transparent 0%,
+            var(--wave-color-3) 15%,
             transparent 30%,
-            var(--wave-color-2, rgba(138, 180, 248, 0.05)) 45%,
-            transparent 60%,
-            var(--wave-color-1, rgba(138, 180, 248, 0.08)) 75%,
-            transparent 90%),
-        linear-gradient(225deg,
-            transparent 0%,
-            var(--wave-color-2, rgba(138, 180, 248, 0.05)) 20%,
-            transparent 40%,
-            var(--wave-color-1, rgba(138, 180, 248, 0.08)) 60%,
-            transparent 80%);
-    background-size: 400% 400%, 400% 400%;
-    animation: wave-flow 15s ease-in-out infinite;
+            var(--wave-color-1) 50%,
+            transparent 65%,
+            var(--wave-color-2) 80%,
+            transparent 95%);
+
+    background-size:
+        200% 200%, 200% 200%,
+        180% 180%, 180% 180%,
+        300% 300%, 300% 300%;
+
+    animation: wave-flow 20s ease-in-out infinite;
 }
 
 @keyframes wave-flow {
     0% {
-        background-position: 0% 50%, 100% 50%;
+        background-position:
+            0% 100%, 100% 100%,
+            50% 80%, 20% 90%,
+            0% 50%, 100% 50%;
     }
 
-    50% {
-        background-position: 100% 50%, 0% 50%;
+    33% {
+        background-position:
+            30% 95%, 70% 105%,
+            70% 85%, 40% 75%,
+            50% 60%, 60% 40%;
+    }
+
+    66% {
+        background-position:
+            70% 100%, 30% 95%,
+            40% 90%, 60% 80%,
+            100% 50%, 20% 55%;
     }
 
     100% {
-        background-position: 0% 50%, 100% 50%;
+        background-position:
+            0% 100%, 100% 100%,
+            50% 80%, 20% 90%,
+            0% 50%, 100% 50%;
     }
 }
 
-/* Theme-specific wave colors */
+/* ==========================================================================
+   Theme-Specific Wave Colors (Dark Mode)
+   ========================================================================== */
+
+/* Default / MD (Blue) — Dark */
 [data-style-mode="md"] .hero {
-    --wave-color-1: rgba(138, 180, 248, 0.1);
+    --wave-color-1: rgba(138, 180, 248, 0.09);
     --wave-color-2: rgba(25, 103, 210, 0.06);
+    --wave-color-3: rgba(138, 180, 248, 0.04);
 }
 
+/* MD3 (Purple/Expressive) — Dark */
 [data-style-mode="md3"] .hero {
-    --wave-color-1: rgba(233, 179, 255, 0.1);
+    --wave-color-1: rgba(233, 179, 255, 0.09);
     --wave-color-2: rgba(124, 58, 237, 0.06);
+    --wave-color-3: rgba(233, 179, 255, 0.04);
 }
 
+/* OLED (Monochrome) — Dark */
 [data-style-mode="oled"] .hero {
-    --wave-color-1: rgba(255, 255, 255, 0.04);
-    --wave-color-2: rgba(255, 255, 255, 0.02);
+    --wave-color-1: rgba(255, 255, 255, 0.05);
+    --wave-color-2: rgba(255, 255, 255, 0.03);
+    --wave-color-3: rgba(255, 255, 255, 0.02);
+}
+
+/* ==========================================================================
+   Theme-Specific Wave Colors (Light Mode)
+   Uses the theme's primary color with enough opacity to be visible
+   against the light background, while staying balanced.
+   ========================================================================== */
+
+/* Default / MD (Blue) — Light */
+html[data-theme='light'][data-style-mode="md"] .hero {
+    --wave-color-1: rgba(26, 115, 232, 0.10);
+    --wave-color-2: rgba(25, 103, 210, 0.07);
+    --wave-color-3: rgba(26, 115, 232, 0.04);
+}
+
+/* MD3 (Purple/Expressive) — Light */
+html[data-theme='light'][data-style-mode="md3"] .hero {
+    --wave-color-1: rgba(130, 85, 153, 0.10);
+    --wave-color-2: rgba(104, 61, 127, 0.07);
+    --wave-color-3: rgba(130, 85, 153, 0.04);
+}
+
+/* OLED (Monochrome) — Light */
+html[data-theme='light'][data-style-mode="oled"] .hero {
+    --wave-color-1: rgba(0, 0, 0, 0.08);
+    --wave-color-2: rgba(0, 0, 0, 0.05);
+    --wave-color-3: rgba(0, 0, 0, 0.03);
 }
 
 /* Respect reduced motion preference */

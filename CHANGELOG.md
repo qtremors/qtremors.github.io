@@ -1,8 +1,75 @@
 # Tremors Changelogs
 
 > **Project:** Tremors  
-> **Version:** 2.9.2
-> **Last Updated:** 24-02-2026
+> **Version:** 3.0.0
+> **Last Updated:** 25-02-2026
+
+---
+
+## [v3.0.0] - 25-02-2026
+
+### 🎨 **UI Refinements & Theme Compatibility**
+
+- **Hero Waves Redesign:** Replaced faint linear-gradient stripes with a multi-layered, organic CSS wave effect using radial and linear gradients (`waves.css`), with dedicated light mode colors across all themes.
+- **Project Summary Section:** Added a dedicated "Summary" section to `project.html` with Scroll Spy integration.
+- **Badge Color Audit:** Revised 11 badge colors for better visual distinction — lightened 6 OLED-unsafe dark badges, moved 4 out of the overcrowded blue hue range, and resolved the purple cluster collision.
+
+### 🛡️ **Security & Code Quality**
+
+- **XSS Prevention:** Replaced the unsafe identity-return fallback in `escapeHtmlSafe` (`project.js`) with a built-in deterministic HTML-escaping routine. Converted error state rendering from `innerHTML` to `document.createElement()` + `.textContent`.
+
+### 🔧 **Maintainability**
+
+- **Theme Attribute Targeting:** Unified `theme-init.js` and `index.js` to target `document.documentElement` (`<html>`) instead of `document.body`. Updated all `body[data-*]` CSS selectors to `html[...]` across theme and effect files.
+
+### ⚡ **Performance**
+
+- **Script Loading:** Reordered `history.html` script tags to canonical pattern and added `defer` attribute.
+- **Typewriter Optimization:** Added `IntersectionObserver` to `home.js` typewriter — pauses automatically when scrolled out of view.
+
+### ♿ **Accessibility & SEO**
+
+- **`<noscript>` Fallback:** Added a JavaScript-required message to `project.html` for users with JS disabled.
+
+### 🆕 **New Badges**
+
+- Added `tech-playwright` (green), `tech-gemini` (blue), `tech-htmx` (rose), and `tech-html-css-js` (unified gradient) CSS styling and JS label mappings.
+
+### 🐛 **Bug Fixes**
+
+- **Data Corrections:** Fixed broken uvicorn entrypoints, clone URLs, and project paths in `projects.json`. Corrected Diff Viewer sitemap ID. Fixed Arcade Nexus description from "cloud-synced" to "local" save states.
+- **UI Fixes:** Changed easter egg toast from "Python Mode Activated" to "Easter Egg Found". Removed trailing slashes from all live link URLs.
+
+### 🔄 **Cross-File Synchronization**
+
+- **TUI Full Sync:** Synchronized all 20 project descriptions, tech badge lists, titles, and ordering in `tui.html` to match `projects.json` — correcting names, casing, adding missing badges, and removing incorrect ones.
+- **History Pages:** Added 6 new timeline entries (v2.6.5 through v3.0.0) to both `history.html` and `history-tui.html`. Updated HEAD tag and subtitle. Removed video quality toggle — consolidated to single `v0.0.0-v3.0.0.mp4` file.
+- **README Evolution:** Added 5 missing version rows to the Evolution table.
+
+### 📊 **Badge Audit (from Project Docs)**
+
+- Audited all 20 projects against their source documentation. Corrected mismatched badges (e.g., replaced incorrect `tech-ts` with `tech-gemini` on Quizzer AI), added missing badges across 8 projects, and applied the new unified `tech-html-css-js` badge to 6 projects.
+
+### 📝 **Content Expansion & Refinement**
+
+- **Project Descriptions:** Rewrote `description` and `longDescription` fields for all 20 projects in `projects.json`, incorporating technical context from each project's documentation.
+- **Features:** Refined and expanded the `features` arrays across all projects with specific, verifiable details.
+
+### 🖥️ **Project Page Redesign**
+
+- **Banner Layout:** Replaced fixed `max-height` banner with `aspect-ratio: 2/1` to prevent image zoom/crop. Sidebar stretches to match banner height.
+- **Sidebar Restructure:** Removed "LINKS" heading and tech badges from sidebar. Added **Clone** (copies `git clone` command) and **Share** (copies page URL) action buttons with toast feedback.
+- **Tech Badges Strip:** Moved technology badges from sidebar to a full-width horizontal strip below the banner. Centered on mobile with badges-above-sidebar ordering.
+- **Context-Aware Icons:** Each sidebar link now gets a distinct icon based on content — GitHub logo, download arrow, play triangle (demo), globe (website), copy (clone), share nodes.
+- **Fog Effect:** Improved section fog from 50px to 100px with multi-stop `color-mix()` gradients for softer transitions.
+- **Portfolio Spotlight:** Extended the cursor spotlight effect to portfolio cards with matching CSS and JS.
+- **1440p Container:** Reduced container `max-width` from `1400px` to `1200px` at the 1440p breakpoint for better spacing on high-DPI displays.
+
+### 📚 **Documentation & Licensing**
+
+- **LICENSE.md:** Created Tremors Source License (TSL) with quick-reference table and full legal terms.
+- **DEVELOPMENT.md:** Added Naming Conventions, Security Practices, Badge Color Guidelines, Intended Changes, Project Auditing & Quality Standards, Contributing sections, and content writing guidelines for `projects.json` entries.
+- **README:** Added TSL license badge and section, expanded Documentation table with `TASKS.md` and `LICENSE.md`.
 
 ---
 

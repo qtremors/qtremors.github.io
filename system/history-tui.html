@@ -89,39 +89,6 @@
                 font-size: 0.75rem;
             }
         }
-
-        /* --- Quality Toggle Logic --- */
-        .quality-radio {
-            display: none;
-        }
-
-        .tui-media-player {
-            display: none;
-        }
-
-        /* Default hidden */
-
-        #quality-optimized:checked~.player-optimized {
-            display: block;
-        }
-
-        #quality-hq:checked~.player-hq {
-            display: block;
-        }
-
-        .quality-switch {
-            float: right;
-        }
-
-        .switch-link {
-            cursor: pointer;
-            color: var(--cyan);
-            text-decoration: underline;
-        }
-
-        .switch-link:hover {
-            color: var(--yellow);
-        }
     </style>
 </head>
 
@@ -163,40 +130,93 @@
                 </div>
                 <div class="tui-panel-body">
 
-                    <!-- CSS-only Toggle Logic -->
-                    <input type="radio" name="video-quality" id="quality-optimized" class="quality-radio" checked>
-                    <input type="radio" name="video-quality" id="quality-hq" class="quality-radio">
-
-                    <div class="tui-media-player player-optimized">
+                    <div class="tui-media-player" style="display: block;">
                         <div class="media-header">
-                            [▶] playing: evolution_720p.mp4 (Optimized)
-                            <div class="quality-switch">
-                                Switch to: <label for="quality-hq" class="switch-link">[ HQ 1080p ]</label>
-                            </div>
+                            [▶] playing: v0.0.0-v3.0.0.mp4
                         </div>
                         <video controls autoplay muted loop playsinline poster="../assets/logo.gif">
-                            <source src="../assets/v0.0.0-v2.6.0.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-
-                    <div class="tui-media-player player-hq">
-                        <div class="media-header">
-                            [▶] playing: evolution_1080p.mp4 (Original)
-                            <div class="quality-switch">
-                                Switch to: <label for="quality-optimized" class="switch-link">[ Optimized ]</label>
-                            </div>
-                        </div>
-                        <!-- preload="none" ensures this heavy file isn't touched until user plays it -->
-                        <video controls muted loop playsinline preload="none" poster="../assets/logo.gif">
-                            <source src="../assets/v0.0.0-v2.6.0-hq.mp4" type="video/mp4">
+                            <source src="../assets/v0.0.0-v3.0.0.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
 
                     <div class="git-log-container">
+                        <span class="git-tree">*</span> <span class="git-hash">d3c2b1a</span> <span
+                            class="git-head">(HEAD -> main, tag: v3.0.0)</span> <span class="git-msg">The Great
+                            Refinement</span>
+                        <span class="git-tree">|</span> <span class="git-date"> Date: Feb 24 2026</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Hero Waves: Multi-layered organic
+                            CSS wave effect</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• XSS Prevention: Deterministic
+                            HTML-escaping</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Content: Rewrote all 20 project
+                            descriptions</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Badge Audit: Full sync from project
+                            docs</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Cross-File Sync: TUI names, order
+                            & titles</span>
+                        <span class="git-tree">|</span>
+                        <span class="git-tree">*</span> <span class="git-hash">c2b1a0f</span> <span
+                            class="git-tag">(tag: v2.9.x)</span> <span class="git-msg">New Projects &
+                            Audit</span>
+                        <span class="git-tree">|</span> <span class="git-date"> Date: Feb 21-24 2026</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• New: Localghost, Xcrape, Diff
+                            Viewer added</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Audit: Full codebase review across
+                            all files</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Fixes: HTML parsing, dependency
+                            guards, schemas</span>
+                        <span class="git-tree">|</span>
+                        <span class="git-tree">*</span> <span class="git-hash">b1a0f9e</span> <span
+                            class="git-tag">(tag: v2.8.5-7)</span> <span class="git-msg">Security & Code
+                            Quality</span>
+                        <span class="git-tree">|</span> <span class="git-date"> Date: Feb 21 2026</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Dedup: Centralized nav/modal via
+                            components.js</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Namespace: Utils under
+                            window.Tremors.utils</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Docs: DEVELOPMENT.md rewrite for
+                            v2.8.7</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Security: XSS-safe URLs, email
+                            obfuscation</span>
+                        <span class="git-tree">|</span>
+                        <span class="git-tree">*</span> <span class="git-hash">a0f9e8d</span> <span
+                            class="git-tag">(tag: v2.8.x)</span> <span class="git-msg">SEO, Navigation &
+                            Content</span>
+                        <span class="git-tree">|</span> <span class="git-date"> Date: Jan 17 - Feb 20 2026</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• OG Tags: Dynamic social previews
+                            per project</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Sitemap: Cleaned phantom IDs,
+                            added missing</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Persona: Refined hero bio &
+                            typewriter roles</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• TUI: Status badges (Beta/Archive/Dev
+                            tags)</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Scroll Spy: Section highlighting in
+                            project nav</span>
+                        <span class="git-tree">|</span>
+                        <span class="git-tree">*</span> <span class="git-hash">9e8d7c6</span> <span
+                            class="git-tag">(tag: v2.7.0)</span> <span class="git-msg">Documentation
+                            Overhaul</span>
+                        <span class="git-tree">|</span> <span class="git-date"> Date: Jan 14 2026</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• README: Modern template with badges
+                            & tables</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• DEVELOPMENT.md: Architecture
+                            diagrams & standards</span>
+                        <span class="git-tree">|</span>
+                        <span class="git-tree">*</span> <span class="git-hash">9d8c7b6</span> <span
+                            class="git-tag">(tag: v2.6.5)</span> <span class="git-msg">Theme & Effect
+                            Fixes</span>
+                        <span class="git-tree">|</span> <span class="git-date"> Date: Jan 02 2026</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Theme Init: Fixed across history,
+                            404, project</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Settings: Unified single-view with
+                            context-aware opts</span>
+                        <span class="git-tree">|</span> <span class="git-msg">• Glass: Fixed light mode
+                            semi-transparent surface</span>
+                        <span class="git-tree">|</span>
                         <span class="git-tree">*</span> <span class="git-hash">8f7e6d5</span> <span
-                            class="git-head">(HEAD -> main, tag: v2.6.0)</span> <span class="git-msg">Navigation &
+                            class="git-tag">(tag: v2.6.0)</span> <span class="git-msg">Navigation &
                             Status</span>
                         <span class="git-tree">|</span> <span class="git-date"> Date: Jan 02 2026</span>
                         <span class="git-tree">|</span> <span class="git-msg">• Status Indicators: Dynamic WIP/Beta
@@ -228,7 +248,7 @@
                             motion</span>
                         <span class="git-tree">|</span>
                         <span class="git-tree">*</span> <span class="git-hash">b76596d</span> <span
-                            class="git-head">(HEAD -> main, tag: v2.5.0)</span> <span class="git-msg">The Deep
+                            class="git-tag">(tag: v2.5.0)</span> <span class="git-msg">The Deep
                             Review</span>
                         <span class="git-tree">|</span> <span class="git-date"> Date: Dec 19 2025</span>
                         <span class="git-tree">|</span> <span class="git-msg">• New Projects: GitMig, RepoTree,

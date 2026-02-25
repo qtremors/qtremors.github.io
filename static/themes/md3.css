@@ -43,7 +43,7 @@
     --spotlight-color: rgba(233, 179, 255, 0.1);
 }
 
-body[data-theme='light'] {
+html[data-theme='light'] {
     /* --- MD3 Primitive Colors (Light) --- */
     --md-sys-color-primary: #825599;
     --md-sys-color-on-primary: #ffffff;
@@ -80,7 +80,7 @@ body[data-theme='light'] {
     --theme-icon-shadow: #202124;
     --md-primary-rgb: 130, 85, 153;
 
-    --hero-grid-color: rgba(130, 85, 153, 0.08);
+    --hero-grid-color: rgba(130, 85, 153, 0.10);
     --spotlight-color: rgba(130, 85, 153, 0.20);
 }
 
@@ -119,7 +119,7 @@ body {
 
 /* --- Component Tweaks --- */
 .top-app-bar,
-body:not([data-theme='light']) .top-app-bar {
+html:not([data-theme='light']) .top-app-bar {
     background-color: var(--md-sys-color-surface-container) !important;
     border-bottom: 1px solid var(--md-sys-color-outline-variant) !important;
 }

@@ -11,6 +11,7 @@ window.Tremors.utils = {
       'tech-python': 'Python',
       'tech-django': 'Django',
       'tech-ts': 'TypeScript',
+      'tech-html-css-js': 'HTML-CSS-JS',
       'tech-html': 'HTML',
       'tech-css': 'CSS',
       'tech-js': 'JavaScript',
@@ -36,6 +37,9 @@ window.Tremors.utils = {
       'tech-threejs': 'Three.js',
       'tech-prisma': 'Prisma',
       'tech-bootstrap': 'Bootstrap',
+      'tech-playwright': 'Playwright',
+      'tech-gemini': 'Gemini API',
+      'tech-htmx': 'HTMX',
     };
     return labels[badgeClass] || badgeClass.replace('tech-', '').charAt(0).toUpperCase() + badgeClass.replace('tech-', '').slice(1);
   },
