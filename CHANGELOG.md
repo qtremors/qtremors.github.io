@@ -8,18 +8,27 @@
 
 ## [v3.0.1] - 02-03-2026
 
-### 📑 **Content & Persona**
-- **Bio & Resume:** Refined bio and tagline to lead with Python full-stack identity. Added recruiter-optimized `resume.md` in the root.
-- **TUI Sync:** Updated `tui.html` content (Intro, About, Skills, and Project Descriptions) to strictly mirror `index.html` and `projects.json`.
+### New Features
 
-### 🎨 **UI & Visuals**
-- **Icons:** Replaced emoji status indicators (WIP, Beta, Archive) with Material SVG icons.
-- **Contrast:** Improved visibility for dark badges (Next.js, Cursor, SQL) with lighter backgrounds and theme-aware proficiency bars.
-- **Skills:** Cleaned up redundant badges (JS) and categorized AI/Data tools. Added Next.js, Cursor, and SQLAlchemy.
+- Added recruiter-optimized resume document
+- Reorganized skills section with new categories: Frameworks & Libraries, Databases & ORM, AI & Data Science, and DevOps & Tooling
 
-### ⚡ **Performance & Logic**
-- **Optimization:** Removed dead Google Fonts preconnects; added `img.shields.io` preconnect; added `defer` to 404 scripts.
-- **Typewriter:** Fixed scroll-resume logic using `IntersectionObserver` to properly clear/restart on visibility changes.
+### UI & Visuals
+
+- Replaced emoji indicators with SVG icons throughout the interface
+- Enhanced badge contrast and styling for improved visibility
+- Updated portfolio badge appearance
+
+### Bug Fixes & Performance
+
+- Fixed typewriter animation scroll behavior
+- Optimized asset loading and preconnect handling for faster performance
+
+### Content Updates
+
+- Updated personal branding from "Python Developer" to "Full-Stack Developer"
+- Expanded and restructured about section
+- Reorganized and expanded skill highlights
 
 ---
 

@@ -21,12 +21,11 @@ Graduated: September 2025
 
 ## Technical Skills
 
-- **Languages:** Python, TypeScript, SQL, HTML, CSS
-- **Backend:** Django, FastAPI, SQLAlchemy
-- **Frontend:** React, Next.js, Tailwind CSS
-- **Databases:** PostgreSQL, SQLite, Prisma
-- **DevOps & Tools:** Git / GitHub, Docker, Linux, VS Code
-- **AI & Data:** Gemini API, TensorFlow, Scikit-learn, NumPy, Pandas
+- **Languages:** HTML, CSS, Typescript, Python
+- **Frameworks:** FastAPI, Django, Next.js
+- **Databases:** SQLite, PostgreSQL
+- **DevOps & Tools:** Git & GitHub, Cursor, Docker
+- **Data & AI/ML:** NumPy, Pandas, Gemini API, TensorFlow
 
 ---
 
@@ -35,8 +34,8 @@ Graduated: September 2025
 **Full-Stack Django Intern** — Maxgen Technologies Pvt. Ltd., Ahmedabad
 *March 2025 – September 2025*
 
-- Independently identified architectural and code-quality issues in an existing Django e-commerce platform and led a full rebuild to improve maintainability and long-term scalability.
-- Built core platform features including user authentication, wishlist, cart, order management, and Razorpay payment integration.
+- Extended and customized a Django-based e-commerce platform, implementing user authentication, wishlists, cart, order management, and Razorpay payment integration.
+- After the internship independently identified architectural and code-quality issues that led to a full rebuild to improve maintainability and long-term scalability.
 
 ---
 
@@ -73,3 +72,11 @@ Graduated: September 2025
 - Reduced memory footprint by ~70% by compiling the FastAPI backend as a Tauri sidecar process (~100–200 MB) versus an equivalent Electron or browser-tab approach (~700–900 MB).
 - Designed a premium Material Design 3 UI with physics-based album art animations and a custom audio visualiser.
 - **Stack:** Python, FastAPI, React, TypeScript, Tauri (Rust), SQLite
+
+---
+
+**CLI Utility Suite** - [GitHub](https://github.com/qtremors/cli-utility-suite) *(2025)*
+
+- Engineered a Python-based CLI toolkit for directory visualization, code metrics, and repository migration that runs with zero external dependencies and works out-of-the-box across environments.
+- Built entirely on the Python Standard Library to maximize portability, reliability, and ease of distribution.
+- **Stack:** Python (Standard Libraries only)
