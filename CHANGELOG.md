@@ -1,8 +1,34 @@
 # Tremors Changelogs
 
 > **Project:** Tremors  
-> **Version:** 3.0.0
-> **Last Updated:** 25-02-2026
+> **Version:** 3.0.1
+> **Last Updated:** 02-03-2026
+
+---
+
+## [v3.0.1] - 02-03-2026
+
+### New Features
+
+- Added recruiter-optimized resume document
+- Reorganized skills section with new categories: Frameworks & Libraries, Databases & ORM, AI & Data Science, and DevOps & Tooling
+
+### UI & Visuals
+
+- Replaced emoji indicators with SVG icons throughout the interface
+- Enhanced badge contrast and styling for improved visibility
+- Updated portfolio badge appearance
+
+### Bug Fixes & Performance
+
+- Fixed typewriter animation scroll behavior
+- Optimized asset loading and preconnect handling for faster performance
+
+### Content Updates
+
+- Updated personal branding from "Python Developer" to "Full-Stack Developer"
+- Expanded and restructured about section
+- Reorganized and expanded skill highlights
 
 ---
 
