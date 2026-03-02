@@ -1,8 +1,25 @@
 # Tremors Changelogs
 
 > **Project:** Tremors  
-> **Version:** 3.0.0
-> **Last Updated:** 25-02-2026
+> **Version:** 3.0.1
+> **Last Updated:** 02-03-2026
+
+---
+
+## [v3.0.1] - 02-03-2026
+
+### 📑 **Content & Persona**
+- **Bio & Resume:** Refined bio and tagline to lead with Python full-stack identity. Added recruiter-optimized `resume.md` in the root.
+- **TUI Sync:** Updated `tui.html` content (Intro, About, Skills, and Project Descriptions) to strictly mirror `index.html` and `projects.json`.
+
+### 🎨 **UI & Visuals**
+- **Icons:** Replaced emoji status indicators (WIP, Beta, Archive) with Material SVG icons.
+- **Contrast:** Improved visibility for dark badges (Next.js, Cursor, SQL) with lighter backgrounds and theme-aware proficiency bars.
+- **Skills:** Cleaned up redundant badges (JS) and categorized AI/Data tools. Added Next.js, Cursor, and SQLAlchemy.
+
+### ⚡ **Performance & Logic**
+- **Optimization:** Removed dead Google Fonts preconnects; added `img.shields.io` preconnect; added `defer` to 404 scripts.
+- **Typewriter:** Fixed scroll-resume logic using `IntersectionObserver` to properly clear/restart on visibility changes.
 
 ---
 

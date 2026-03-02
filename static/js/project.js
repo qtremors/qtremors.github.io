@@ -156,19 +156,19 @@ function renderProjectPage(project, allProjects) {
     const statusConfig = {
       'wip': {
         class: 'status-wip',
-        icon: '⚠️',
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>',
         title: 'Work In Progress',
         message: 'This project is currently under active development. Features may be incomplete or unstable.'
       },
       'beta': {
         class: 'status-beta',
-        icon: '🧪',
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19.8 18.4L14 10.67V6.5l1.35-1.69c.26-.33.03-.81-.39-.81H9.04c-.42 0-.65.48-.39.81L10 6.5v4.17L4.2 18.4c-.49.66-.02 1.6.8 1.6h14c.82 0 1.29-.94.8-1.6z"/></svg>',
         title: 'Beta Release',
         message: 'This project is in Beta. Some features may be incomplete or unstable.'
       },
       'archive': {
         class: 'status-archive',
-        icon: '📦',
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.54 5.23l-1.39-1.68C18.88 3.21 18.47 3 18 3H6c-.47 0-.88.21-1.16.55L3.46 5.23C3.17 5.57 3 6.02 3 6.5V19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6.5c0-.48-.17-.93-.46-1.27zM12 17.5L6.5 12H10v-2h4v2h3.5L12 17.5zM5.12 5l.81-1h12l.94 1H5.12z"/></svg>',
         title: 'Archived Project',
         message: 'This project is no longer maintained and is read-only.'
       }
@@ -389,7 +389,7 @@ function renderProjectPage(project, allProjects) {
         </svg>
         <span>Clone</span>
       </div>
-      <span class="btn-arrow">📋</span>
+      <span class="btn-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span>
     `;
     cloneBtn.addEventListener('click', () => {
       navigator.clipboard.writeText(cloneUrl).then(() => {
@@ -415,7 +415,7 @@ function renderProjectPage(project, allProjects) {
       </svg>
       <span>Share</span>
     </div>
-    <span class="btn-arrow">🔗</span>
+    <span class="btn-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></span>
   `;
   shareBtn.addEventListener('click', () => {
     navigator.clipboard.writeText(window.location.href).then(() => {
