@@ -75,7 +75,7 @@ Graduated: September 2025
 
 ---
 
-**CLI Utility Suite** - [GitHub](https://github.com/qtremors/cli-utility-suite) *(2025)*
+**CLI Utility Suite** - [GitHub](https://github.com/qtremors/gtrmrs) *(2025)*
 
 - Engineered a Python-based CLI toolkit for directory visualization, code metrics, and repository migration that runs with zero external dependencies and works out-of-the-box across environments.
 - Built entirely on the Python Standard Library to maximize portability, reliability, and ease of distribution.
