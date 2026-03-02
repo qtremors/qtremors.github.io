@@ -170,6 +170,47 @@
     color: var(--md-on-surface-variant);
 }
 
+.about-lead {
+    font-size: 1.15rem !important;
+}
+
+.about-lead strong {
+    color: var(--md-primary);
+    font-weight: 700;
+}
+
+.about-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 2rem;
+}
+
+.highlight-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.45rem 1rem;
+    border-radius: 999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    background-color: var(--md-surface-variant);
+    color: var(--md-on-surface-variant);
+    border: 1px solid var(--md-outline-variant);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: default;
+}
+
+.highlight-chip svg {
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.highlight-chip:hover svg {
+    transform: scale(1.15) rotate(-5deg);
+}
+
 /* --- SKILLS SECTION --- */
 .skills-grid {
     display: grid;
@@ -493,10 +534,13 @@
     z-index: 10;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .portfolio-item.is-wip .img-wrapper::after {
-    content: "CURRENTLY IN DEVELOPMENT";
+    content: "⚠️ CURRENTLY IN DEVELOPMENT";
     position: absolute;
     top: 0;
     left: 0;
@@ -545,6 +589,9 @@
     box-shadow: 0 2px 8px rgba(0, 212, 255, 0.5);
     text-transform: uppercase;
     animation: betaPulse 2s ease-in-out infinite;
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 @keyframes betaPulse {
@@ -612,6 +659,9 @@
     box-shadow: 0 2px 8px rgba(92, 64, 51, 0.6);
     text-transform: uppercase;
     animation: archiveShimmer 3s ease-in-out infinite;
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 @keyframes archiveShimmer {
@@ -627,7 +677,7 @@
 }
 
 .portfolio-item.is-archive .img-wrapper::after {
-    content: "📜 ARCHIVED PROJECT";
+    content: "📦 ARCHIVED PROJECT";
     position: absolute;
     top: 0;
     left: 0;

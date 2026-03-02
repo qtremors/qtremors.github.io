@@ -39,12 +39,11 @@ document.addEventListener('DOMContentLoaded', function () {
   const typewriterElement = document.getElementById('typewriter-text');
   if (typewriterElement) {
     const roles = [
-      "Aman Singh",
-      "Python Developer",
-      "Full-Stack Engineer",
-      "Building Scalable Apps",
-      "Crafting Developer Tools",
-      "Integrating AI Models",
+      "a Full-Stack Developer",
+      "a Python Architect",
+      "a UI/UX Enthusiast",
+      "an AI Integrator",
+      "a Developer Tool Builder",
     ];
     let roleIndex = 0;
     let charIndex = 0;
@@ -53,7 +52,10 @@ document.addEventListener('DOMContentLoaded', function () {
     let typeTimer = null;
 
     const type = () => {
-      if (!isVisible) return;
+      if (!isVisible) {
+        typeTimer = null;
+        return;
+      }
       const currentRole = roles[roleIndex];
       let typeSpeed = isDeleting ? 20 : 40;
       if (!isDeleting) {
@@ -72,13 +74,17 @@ document.addEventListener('DOMContentLoaded', function () {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           isVisible = entry.isIntersecting;
+          if (!isVisible && typeTimer) {
+            clearTimeout(typeTimer);
+            typeTimer = null;
+          }
           if (isVisible && !typeTimer) type();
         });
-      }, { threshold: 0 });
+      }, { threshold: 0.1 });
       observer.observe(homeSection);
+    } else {
+      type(); // Fallback
     }
-
-    type();
   }
 
   /* --- PORTFOLIO LOADING --- */
@@ -120,17 +126,32 @@ document.addEventListener('DOMContentLoaded', function () {
     if (isWip) {
       const badge = document.createElement('div');
       badge.className = 'wip-badge';
-      badge.textContent = '⚠️ Development';
+      badge.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M1 21h22L12 2zm12-3h-2v-2h2zm0-4h-2v-4h2z"/>
+        </svg>
+        <span>Development</span>
+      `;
       imgWrapper.appendChild(badge);
     } else if (isBeta) {
       const badge = document.createElement('div');
       badge.className = 'beta-badge';
-      badge.textContent = '🧪 Beta';
+      badge.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M11 11.33L6 18h12l-5-6.67V6h-2v5.33zM15.96 4h-7.92L9 5.28V11l-5 6.67c-.75.98-.05 2.33 1.2 2.33h13.6c1.25 0 1.95-1.35 1.2-2.33L15 11V5.28L15.96 4z"/>
+        </svg>
+        <span>Beta</span>
+      `;
       imgWrapper.appendChild(badge);
     } else if (isArchive) {
       const badge = document.createElement('div');
       badge.className = 'archive-badge';
-      badge.textContent = '📦 Archived';
+      badge.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.54 5.23l-1.39-1.68C18.88 3.21 18.47 3 18 3H6c-.47 0-.88.21-1.16.55L3.47 5.23C3.17 5.57 3 6.02 3 6.5V19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6.5c0-.48-.17-.93-.46-1.27zM6.24 5h11.52l.83 1H5.41l.83-1zM5 19V8h14v11H5zm3-5h2l2 2 2-2h2v-2H8v2z"/>
+        </svg>
+        <span>Archived</span>
+      `;
       imgWrapper.appendChild(badge);
     }
 
