@@ -1,6 +1,6 @@
 # Aman Kumar Singh
 
-+91-9316592465 | amankrs207@gmail.com | Ahmedabad, Gujarat
++91-0000000000 | xxxxxxxxxx@xmail.com | Ahmedabad, Gujarat
 [LinkedIn](https://www.linkedin.com/in/aman-singh-0a1938301) | [GitHub](https://github.com/qtremors) | [Portfolio](https://qtremors.github.io)
 
 ---
