@@ -1,8 +1,31 @@
 # Tremors Changelogs
 
 > **Project:** Tremors  
-> **Version:** 3.0.1
-> **Last Updated:** 02-03-2026
+> **Version:** 3.0.2
+> **Last Updated:** 05-04-2026
+
+---
+
+## [v3.0.2] - 05-04-2026
+
+### ✨ **New Features**
+
+- **Experience Timeline:** Designed and implemented a dynamic new "Experience" section tracing professional milestones (Pre-Sales Engineer, Independent Software Developer). The timeline features expressive glowing nodes, responsive opposing-side layout tracking, and semantic HTML article structures.
+
+### 🎨 **UI & Visual Consistency**
+
+- **Card Standardization:** Normalized `.timeline-content` (Experience section) and `.contact-card` styling to fully align structurally with Skills and Portfolio cards (unified 1rem border-radius, background surface variants, borders, and shadows).
+- **Glass Effect Fix:** Resolved a bug where the Dark Mode glass blur effect explicitly ignored Experience section backgrounds.
+- **Appearance Settings:** Updated spotlight helper text in modal to accurately read "Hero & All Cards".
+- **Head Tags:** Updated `<title>` and OpenGraph/Twitter meta tags to reflect the unified "Pre-Sales Engineer" identity.
+- **Spotlight Fixes:** Resolved an issue where the radial mouse spotlight was not clipped correctly by adding `overflow: hidden` and `position: relative` to card host selectors.
+- **Contrast & Styling:** Improved color contrast for `.timeline-date` and `.emp-badge` using theme-aware tokens and added light-theme overrides for status badges.
+- **Linting:** Fixed a declaration-empty-line-before stylelint error in the experience timeline wave mask.
+
+### 📝 **Content Verification**
+
+- **About Highlights:** Refined highlight chips in the About section (Full stack Dev, System Design, UI/UX, AI Native, Pre-Sales, VoIP Solutions) and synced all chips with proper high-quality Material SVG UI icons.
+- **Typewriter Flow:** Polished interactive Typewriter roles string sequence to explicitly reflect the current focus (Systems Architecture, Pre-Sales Engineering, VoIP & Network Specialist).
 
 ---
 

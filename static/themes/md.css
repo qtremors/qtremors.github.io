@@ -19,7 +19,7 @@
     --md-shadow-color: rgba(0, 0, 0, 0.3);
 
     /* White glow for Dark Mode icons */
-    --theme-icon-shadow: #202124;
+    --theme-icon-shadow: #ffffff;
     --md-primary-rgb: 138, 180, 248;
 
     --hero-grid-color: rgba(128, 128, 128, 0.05);
