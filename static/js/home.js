@@ -40,10 +40,11 @@ document.addEventListener('DOMContentLoaded', function () {
   if (typewriterElement) {
     const roles = [
       "a Full-Stack Developer",
-      "a Python Architect",
       "a UI/UX Enthusiast",
+      "a Systems Architect",
       "an AI Integrator",
-      "a Developer Tool Builder",
+      "a Pre-Sales Engineer",
+      "a VoIP & Network Specialist"
     ];
     let roleIndex = 0;
     let charIndex = 0;

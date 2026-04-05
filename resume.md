@@ -7,7 +7,55 @@
 
 ## Summary
 
-Full-stack developer comfortable in Python, specialising in clean backend architectures, polished user interfaces, and AI-integrated applications. Experienced with Django, FastAPI, and React, with a strong focus on modularity, maintainability, and developer experience.
+Systems-focused Full-Stack Developer currently operating as a Pre-Sales Engineer in the VoIP and telecommunications space. Combines a deep technical foundation in Python (Django, FastAPI), local-first architectures, and systems networking to architect scalable Asterisk/VICIdial solutions, bridge complex CRM integrations, and deliver high-impact technical demonstrations.
+
+---
+
+## Technical Skills
+
+- **VoIP & Networking:** Asterisk, VICIdial, SIP, RTP, IAX, Wireshark, WebSockets
+- **Languages:** Python, TypeScript, HTML, CSS, Bash
+- **Frameworks:** FastAPI, Django, Next.js, React, HTMX, Alpine.js
+- **Databases & Storage:** PostgreSQL, SQLite, Prisma ORM, Supabase
+- **DevOps & Tools:** Linux, Git Worktrees, Docker, Tauri, Playwright
+- **Data & AI/ML:** Gemini API, TensorFlow, NumPy, Pandas
+
+---
+
+## Experience
+
+**Pre-Sales Engineer (VoIP / Dialer / Asterisk)** — *Ahmedabad, Gujarat*
+*April 2026 – Present*
+- Architect and propose custom VoIP and Asterisk-based dialer solutions mapped directly to enterprise client requirements.
+- Deliver extensive live product demonstrations, detailing complex call routing, IVR workflows, queue management, and custom API/CRM integrations.
+- Draft comprehensive solution documentation, network architecture diagrams, and test environments to align sales deliverables with core engineering teams.
+- Troubleshoot call flow anomalies, analyzing SIP and RTP protocols using network diagnostic tools like Wireshark.
+
+**Independent Software Developer**
+*March 2025 – March 2026*
+- Architected and shipped 20+ production-grade web applications, CLI tools, and native utilities leveraging Python, FastAPI, Django, and React.
+- Engineered complex networking and security utilities, including concurrent async port scanners, SSL/TLS analyzers, and WebSocket-driven streaming architectures.
+- Optimized system memory footprints and application latency by building local-first platforms backed by async SQLite, Tauri sidecar processes, and decoupled state management.
+
+---
+
+## Selected Projects
+
+**LocalGhost** — Security Auditing & Benchmarking Toolkit | [GitHub](https://github.com/qtremors/localghost)
+- Engineered a Python-based security auditing CLI utilizing FastAPI, executing 11 concurrent asynchronous scanners covering port discovery across 35+ services, SSL/TLS analysis, and CORS auditing.
+- Implemented configurable load testing with percentile latency metrics (p50/p95/p99) and DDoS resilience testing, outputting results to a Material Design 3 dashboard.
+
+**Algorithm Visualizer** — Real-Time WebSocket Platform | [GitHub](https://github.com/qtremors/algorithm-visualizer) | [Website](https://tremors-algoviz.netlify.app)
+- Designed a decoupled architecture utilizing an asynchronous FastAPI backend to stream algorithm execution states step-by-step over persistent WebSockets to a React/TypeScript frontend.
+- Built a custom playback engine (play, pause, variable speed) with synchronized pseudocode highlighting for Sorting and Pathfinding (Dijkstra, BFS, DFS) algorithms.
+
+**GitNexus** — Self-Hosted Developer Dashboard | [GitHub](https://github.com/qtremors/git-nexus)
+- Built a Repo Replay module utilizing Git worktrees to securely clone and browse complete repository commit histories in isolation.
+- Developed a decoupled React SPA and async FastAPI architecture that spawns scoped environment variables and isolated HTTP dev servers per commit state.
+
+**Quizzer AI** — AI-Powered Adaptive Learning Platform | [GitHub](https://github.com/qtremors/quizzer-ai) | [Website](https://qtrmrs.onrender.com)
+- Architected a 3-step AI pipeline using the Google Gemini API, handling natural language intent parsing, structured question generation with strict JSON schema enforcement, and context-aware explanations.
+- Designed a Service-Oriented Django backend with HTMX and Alpine.js, delivering a seamless SPA-like interface with server-rendered HTML and a fully decoupled gamification layer.
 
 ---
 
@@ -15,68 +63,4 @@ Full-stack developer comfortable in Python, specialising in clean backend archit
 
 **L.J. Institute of Engineering and Technology, Ahmedabad**
 B.Tech in Computer Science Engineering
-Graduated: September 2025
-
----
-
-## Technical Skills
-
-- **Languages:** HTML, CSS, Typescript, Python
-- **Frameworks:** FastAPI, Django, Next.js
-- **Databases:** SQLite, PostgreSQL
-- **DevOps & Tools:** Git & GitHub, Cursor, Docker
-- **Data & AI/ML:** NumPy, Pandas, Gemini API, TensorFlow
-
----
-
-## Experience
-
-**Full-Stack Django Intern** — Maxgen Technologies Pvt. Ltd., Ahmedabad
-*March 2025 – September 2025*
-
-- Extended and customized a Django-based e-commerce platform, implementing user authentication, wishlists, cart, order management, and Razorpay payment integration.
-- After the internship independently identified architectural and code-quality issues that led to a full rebuild to improve maintainability and long-term scalability.
-
----
-
-## Projects
-
-**Quizzer AI** — AI-Powered Adaptive Learning Platform | [GitHub](https://github.com/qtremors/quizzer-ai) | [Website](https://qtrmrs.onrender.com) *(2025)*
-
-- Architected a 3-step AI pipeline using the Google Gemini API: natural language intent parsing, structured question generation with strict JSON schema enforcement, and context-aware, mistake-specific explanations.
-- Engineered a gamification layer — XP progression, levelling, daily streaks, and 9 unlockable achievements — backed by a service-oriented Django architecture that keeps game logic fully decoupled from quiz logic.
-- Eliminated frontend build tooling entirely by using HTMX + Alpine.js, delivering a full SPA-like experience with server-rendered HTML and zero JavaScript bundles.
-- **Stack:** Python, Django, Gemini API, HTMX, Alpine.js, HTML, CSS
-
----
-
-**Algorithm Visualizer** — Real-Time Algorithm Streaming Platform | [GitHub](https://github.com/qtremors/algorithm-visualizer) | [Website](https://tremors-algoviz.netlify.app) *(2025)*
-
-- Designed a decoupled architecture with an async FastAPI backend that streams algorithm execution states step-by-step over WebSockets and a React (TypeScript) frontend that consumes and renders them in real time.
-- Built a VCR-style playback engine (play, pause, step-through, variable speed) with synchronised pseudocode highlighting across Bubble, Insertion, Selection sort and Dijkstra, BFS, DFS pathfinding.
-- **Stack:** Python, FastAPI, React, TypeScript, WebSockets, HTML, CSS
-
----
-
-**GitNexus** — Self-Hosted GitHub Companion Dashboard | [GitHub](https://github.com/qtremors/git-nexus) | [Demo](https://qtremors.github.io/scrap/projects/demo/demo-git-nexus) *(2025)*
-
-- Built a Repo Replay module using Git worktrees to browse any commit's full codebase in isolation — spawning scoped environment variables and an isolated HTTP dev server per commit state.
-- Implemented Fernet symmetric encryption to securely persist GitHub API tokens locally, with a decoupled React SPA + async FastAPI backend and zero cloud dependency.
-- **Stack:** Python, FastAPI, React, TypeScript, SQLite, Fernet Encryption
-
----
-
-**Tremors Music** — Local-First Music Player (Web & Desktop) | [GitHub](https://github.com/qtremors/tremors-music) | [Download](https://github.com/qtremors/tremors-music/releases) *(2025)*
-
-- Shipped a high-performance music player — deployable as both a web app and a native desktop application via Tauri — with virtualised list rendering that handles libraries of 10,000+ songs without degradation.
-- Reduced memory footprint by ~70% by compiling the FastAPI backend as a Tauri sidecar process (~100–200 MB) versus an equivalent Electron or browser-tab approach (~700–900 MB).
-- Designed a premium Material Design 3 UI with physics-based album art animations and a custom audio visualiser.
-- **Stack:** Python, FastAPI, React, TypeScript, Tauri (Rust), SQLite
-
----
-
-**CLI Utility Suite** - [GitHub](https://github.com/qtremors/gtrmrs) *(2025)*
-
-- Engineered a Python-based CLI toolkit for directory visualization, code metrics, and repository migration that runs with zero external dependencies and works out-of-the-box across environments.
-- Built entirely on the Python Standard Library to maximize portability, reliability, and ease of distribution.
-- **Stack:** Python (Standard Libraries only)
+*Graduated: September 2025*
