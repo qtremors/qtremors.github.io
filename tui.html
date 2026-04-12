@@ -134,7 +134,7 @@
                     </div>
                     <div class="hero-text">
                         <h1>Hi, I'm Tremors</h1>
-                        <p>Systems-focused Full-Stack Developer bridging scalable architectures, local-first tooling, and enterprise networking.</p>
+                        <p>Software Engineer building AI-powered applications, local-first tools, and developer utilities.</p>
                         <a href="#portfolio" class="cta-button">cat ./portfolio.log</a>
                     </div>
                 </div>
@@ -145,9 +145,9 @@
                     whoami
                 </div>
                 <div class="tui-panel-body about-text">
-                    <p>I'm a full-stack developer most comfortable in <strong>Python</strong>, building backends that are actually engineered rather than just thrown together. I gravitate towards <strong>service-oriented, modular architectures</strong> where every piece has a clear boundary, a clear job, and is engineered for high-performance network environments.</p>
-                    <p>On the frontend, I care deeply about <strong>UI/UX</strong>. Clean layouts, crisp interactions, and thoughtful design systems aren't an afterthought, they are central to my build process. I've implemented Material Design 3 from scratch, built physics-based graph visualisers, and designed console-like UIs that feel genuinely premium.</p>
-                    <p>I also write developer tools: CLI utilities, local-first apps, and systems-level scripts that make working with software feel less annoying. If something bothers me about my workflow, I build a fix for it.</p>
+                    <p>I'm a Software Engineer building AI-powered applications, local-first tools, and developer utilities mostly in <strong>Python</strong> and <strong>TypeScript</strong>. On the backend, I rely on <strong>Django</strong> and <strong>FastAPI</strong>, leaning into service-oriented architectures where each component has a clear boundary and can be maintained independently.</p>
+                    <p>On the frontend, I care intensely about UI quality. Clean layouts and thoughtful design systems aren't an afterthought; they are central to my build process. It's not just about making things work, but making them feel considered and genuinely premium.</p>
+                    <p>I also build developer tools CLI utilities, local-first apps, and systems-level scripts. Whether it's a complex platform or a utility to fix a workflow annoyance, the common thread across all my work is building things that are elegantly engineered and actually useful.</p>
                 </div>
             </section>
 
@@ -172,7 +172,7 @@
                         <div class="portfolio-content">
                             <p><strong>[March 2025 – March 2026]</strong> | <em>Independent</em> | In-House</p>
                             <ul>
-                                <li>Engineered 20+ applications including async Python CLI suites and local-first platforms.</li>
+                                <li>Engineered 15+ applications including async Python CLI suites and local-first platforms.</li>
                                 <li>Designed decoupled architecture patterns maximizing state management efficiency.</li>
                                 <li>Optimized system latency via WebSocket streaming and native Tauri sub-processes.</li>
                             </ul>
@@ -197,16 +197,7 @@
                             <li>SQL</li>
                         </ul>
                     </div>
-                    <div class="skill-category">
-                        <h3>VoIP & Networking 🌐</h3>
-                        <ul>
-                            <li>Asterisk</li>
-                            <li>VICIdial</li>
-                            <li>Wireshark</li>
-                            <li>WebSockets</li>
-                            <li>SIP / RTP</li>
-                        </ul>
-                    </div>
+
                     <div class="skill-category">
                         <h3>Frameworks & Libraries 📦</h3>
                         <ul>
@@ -259,6 +250,7 @@
                 <!-- PROJECTS START -->
 
                 <div class="tui-panel-body portfolio-grid">
+
                     <fieldset class="portfolio-item">
                         <legend>Quizzer AI</legend>
                         <div class="portfolio-content">
@@ -373,6 +365,42 @@
                     </fieldset>
 
                     <fieldset class="portfolio-item status-beta">
+                        <legend>Arcile</legend>
+                        <div class="portfolio-content">
+                            <p>An advanced, smooth Android file manager built natively with Kotlin and Material Design 3. Features multi-volume OTG support, dynamic wallpaper colors, breadcrumb navigation, and a robust Trash subsystem backed by a scalable MVVM architecture.</p>
+                            <div class="tech-badges">
+                                <span>Kotlin</span>
+                                <span>Android</span>
+                                <span>Jetpack Compose</span>
+                                <span>Material 3</span>
+                                <span>MVVM</span>
+                                <span>Hilt</span>
+                            </div>
+                            <div class="portfolio-links">
+                                <a href="https://github.com/qtremors/arcile" target="_blank"
+                                    rel="noopener noreferrer" class="portfolio-command">
+                                    <span class="prompt">$</span>
+                                    <span class="command-text">git show HEAD</span>
+                                </a>
+                            </div>
+                            <div class="run-live-container">
+                                <input type="checkbox" id="run-live-toggle-arcile" class="hidden-toggle">
+                                <label for="run-live-toggle-arcile" class="portfolio-command">
+                                    <span class="prompt">$</span>
+                                    <span class="command-text">./run-live</span>
+                                </label>
+                                <div class="portfolio-output">
+                                    <div class="live-link-output">
+                                        server running on <a href="https://qtremors.github.io/arcile/" target="_blank"
+                                            rel="noopener noreferrer">https://qtremors.github.io/arcile/</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="status-tag status-beta">BETA</span>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="portfolio-item status-beta">
                         <legend>Arcade Nexus</legend>
                         <div class="portfolio-content">
                             <p>A browser-based gaming console built with React and FastAPI, featuring an
@@ -398,52 +426,76 @@
                         </div>
                     </fieldset>
 
-                    <fieldset class="portfolio-item">
-                        <legend>Tremors Music</legend>
-                        <div class="portfolio-content">
-                            <p>A local-first music player available as both a web application and a native Tauri
-                                desktop app. Features a Python FastAPI backend for metadata extraction and audio
-                                streaming, a React frontend with virtualized lists, and an Apple Music-inspired
-                                UI.</p>
-
-                            <div class="tech-badges">
-                                <span>Python</span>
-                                <span>FastAPI</span>
-                                <span>React</span>
-                                <span>TypeScript</span>
-                                <span>Tauri</span>
-                                <span>Framer Motion</span>
-                                <span>SQLite</span>
-                            </div>
-
-                            <div class="portfolio-links">
-                                <a href="https://github.com/qtremors/tremors-music" target="_blank"
-                                    rel="noopener noreferrer" class="portfolio-command">
-                                    <span class="prompt">$</span>
-                                    <span class="command-text">git show HEAD</span>
-                                </a>
-                            </div>
-
-                            <div class="run-live-container">
-                                <input type="checkbox" id="run-live-toggle-tremors-music" class="hidden-toggle">
-                                <label for="run-live-toggle-tremors-music" class="portfolio-command">
-                                    <span class="prompt">$</span>
-                                    <span class="command-text">./run-live</span>
-                                </label>
-                                <div class="portfolio-output">
-                                    <div class="live-link-output">
-                                        Download latest build at <a
-                                            href="https://github.com/qtremors/tremors-music/releases" target="_blank"
-                                            rel="noopener noreferrer">github.com/qtremors/tremors-music/releases</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </fieldset>
-
 
                     <!-- HIDDEN PROJECTS START -->
                     <div id="hidden-projects" class="hidden-group">
+
+                        <fieldset class="portfolio-item">
+                            <legend>Tremors Music</legend>
+                            <div class="portfolio-content">
+                                <p>A local-first music player available as both a web application and a native Tauri
+                                    desktop app. Features a Python FastAPI backend for metadata extraction and audio
+                                    streaming, a React frontend with virtualized lists, and an Apple Music-inspired
+                                    UI.</p>
+
+                                <div class="tech-badges">
+                                    <span>Python</span>
+                                    <span>FastAPI</span>
+                                    <span>React</span>
+                                    <span>TypeScript</span>
+                                    <span>Tauri</span>
+                                    <span>Framer Motion</span>
+                                    <span>SQLite</span>
+                                </div>
+
+                                <div class="portfolio-links">
+                                    <a href="https://github.com/qtremors/tremors-music" target="_blank"
+                                        rel="noopener noreferrer" class="portfolio-command">
+                                        <span class="prompt">$</span>
+                                        <span class="command-text">git show HEAD</span>
+                                    </a>
+                                </div>
+
+                                <div class="run-live-container">
+                                    <input type="checkbox" id="run-live-toggle-tremors-music" class="hidden-toggle">
+                                    <label for="run-live-toggle-tremors-music" class="portfolio-command">
+                                        <span class="prompt">$</span>
+                                        <span class="command-text">./run-live</span>
+                                    </label>
+                                    <div class="portfolio-output">
+                                        <div class="live-link-output">
+                                            Download latest build at <a
+                                                href="https://github.com/qtremors/tremors-music/releases" target="_blank"
+                                                rel="noopener noreferrer">github.com/qtremors/tremors-music/releases</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="portfolio-item">
+                            <legend>LocalGhost</legend>
+                            <div class="portfolio-content">
+                                <p>A local-first security auditing and benchmarking toolkit for development servers.
+                                    Runs 11 asynchronous scanners covering port discovery, security headers, SSL/TLS
+                                    analysis, CORS auditing, load testing, and DDoS resilience with weighted
+                                    scoring and report exports.</p>
+                                <div class="tech-badges">
+                                    <span>Python</span>
+                                    <span>FastAPI</span>
+                                    <span>SQLite</span>
+                                    <span>HTML</span>
+                                    <span>CSS</span>
+                                </div>
+                                <div class="portfolio-links">
+                                    <a href="https://github.com/qtremors/localghost" target="_blank"
+                                        rel="noopener noreferrer" class="portfolio-command">
+                                        <span class="prompt">$</span>
+                                        <span class="command-text">git show HEAD</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </fieldset>
 
                         <fieldset class="portfolio-item">
                             <legend>Cosmos</legend>
@@ -482,21 +534,20 @@
                         </fieldset>
 
                         <fieldset class="portfolio-item">
-                            <legend>LocalGhost</legend>
+                            <legend>Xcrape</legend>
                             <div class="portfolio-content">
-                                <p>A local-first security auditing and benchmarking toolkit for development servers.
-                                    Runs 11 asynchronous scanners covering port discovery, security headers, SSL/TLS
-                                    analysis, CORS auditing, load testing, and DDoS resilience with weighted
-                                    scoring and report exports.</p>
+                                <p>An asynchronous Python web scraper powered by Playwright and BeautifulSoup4.
+                                    Extracts structured data, detects 15+ technologies, captures screenshots, and
+                                    archives results to SQLite all through a Material Design 3 terminal-themed
+                                    UI.</p>
                                 <div class="tech-badges">
                                     <span>Python</span>
                                     <span>FastAPI</span>
+                                    <span>Playwright</span>
                                     <span>SQLite</span>
-                                    <span>HTML</span>
-                                    <span>CSS</span>
                                 </div>
                                 <div class="portfolio-links">
-                                    <a href="https://github.com/qtremors/localghost" target="_blank"
+                                    <a href="https://github.com/qtremors/xcrape" target="_blank"
                                         rel="noopener noreferrer" class="portfolio-command">
                                         <span class="prompt">$</span>
                                         <span class="command-text">git show HEAD</span>
@@ -536,29 +587,6 @@
                                                 rel="noopener noreferrer">https://earnslate.vercel.app</a>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </fieldset>
-
-                        <fieldset class="portfolio-item">
-                            <legend>Xcrape</legend>
-                            <div class="portfolio-content">
-                                <p>An asynchronous Python web scraper powered by Playwright and BeautifulSoup4.
-                                    Extracts structured data, detects 15+ technologies, captures screenshots, and
-                                    archives results to SQLite all through a Material Design 3 terminal-themed
-                                    UI.</p>
-                                <div class="tech-badges">
-                                    <span>Python</span>
-                                    <span>FastAPI</span>
-                                    <span>Playwright</span>
-                                    <span>SQLite</span>
-                                </div>
-                                <div class="portfolio-links">
-                                    <a href="https://github.com/qtremors/xcrape" target="_blank"
-                                        rel="noopener noreferrer" class="portfolio-command">
-                                        <span class="prompt">$</span>
-                                        <span class="command-text">git show HEAD</span>
-                                    </a>
                                 </div>
                             </div>
                         </fieldset>
@@ -794,43 +822,6 @@
                                         <span class="prompt">$</span>
                                         <span class="command-text">git show HEAD</span>
                                     </a>
-                                </div>
-                            </div>
-                        </fieldset>
-
-                        <fieldset class="portfolio-item status-archive">
-                            <legend>E-commerce Website</legend>
-                            <div class="portfolio-content">
-                                <p>An archived Django e-commerce platform with hierarchical product catalogs,
-                                    Razorpay payment integration, wishlist management, OTP email verification, and
-                                    Bootstrap-based server-side rendering.</p>
-                                <div class="tech-badges">
-                                    <span>Django</span>
-                                    <span>HTML/CSS/JS</span>
-                                    <span>Bootstrap</span>
-                                    <span>SQL</span>
-                                </div>
-                                <div class="portfolio-links">
-                                    <a href="https://github.com/qtremors/eshopper" target="_blank"
-                                        rel="noopener noreferrer" class="portfolio-command">
-                                        <span class="prompt">$</span>
-                                        <span class="command-text">git show HEAD</span>
-                                    </a>
-                                </div>
-                                <div class="run-live-container">
-                                    <input type="checkbox" id="run-live-toggle-eshopper" class="hidden-toggle">
-                                    <label for="run-live-toggle-eshopper" class="portfolio-command">
-                                        <span class="prompt">$</span>
-                                        <span class="command-text">./run-live</span>
-                                    </label>
-                                    <div class="portfolio-output">
-                                        <div class="live-link-output">
-                                            server running on <a href="https://tremors.pythonanywhere.com"
-                                                target="_blank"
-                                                rel="noopener noreferrer">https://tremors.pythonanywhere.com</a>
-                                        </div>
-                                    </div>
-                                    <span class="status-tag status-archive">ARCHIVED</span>
                                 </div>
                             </div>
                         </fieldset>

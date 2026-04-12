@@ -40,6 +40,12 @@ window.Tremors.utils = {
       'tech-playwright': 'Playwright',
       'tech-gemini': 'Gemini API',
       'tech-htmx': 'HTMX',
+      'tech-kotlin': 'Kotlin',
+      'tech-android': 'Android',
+      'tech-jetpack-compose': 'Jetpack Compose',
+      'tech-material3': 'Material 3',
+      'tech-mvvm': 'MVVM',
+      'tech-hilt': 'Hilt',
     };
     return labels[badgeClass] || badgeClass.replace('tech-', '').charAt(0).toUpperCase() + badgeClass.replace('tech-', '').slice(1);
   },

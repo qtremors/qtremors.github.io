@@ -39,12 +39,11 @@ document.addEventListener('DOMContentLoaded', function () {
   const typewriterElement = document.getElementById('typewriter-text');
   if (typewriterElement) {
     const roles = [
-      "a Full-Stack Developer",
-      "a UI/UX Enthusiast",
+      "a Software Engineer",
+      "an AI / ML Integrator",
       "a Systems Architect",
-      "an AI Integrator",
-      "a Pre-Sales Engineer",
-      "a VoIP & Network Specialist"
+      "a UI/UX Enthusiast",
+      "a Tooling Developer"
     ];
     let roleIndex = 0;
     let charIndex = 0;
