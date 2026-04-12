@@ -106,6 +106,43 @@
     ]
   },
   {
+    "id": "arcile",
+    "status": "beta",
+    "title": "Arcile",
+    "image": "assets/arcile-preview.png",
+    "description": "An advanced, smooth Android file manager built natively with Kotlin and Material Design 3. Features multi-volume OTG support, dynamic wallpaper colors, breadcrumb navigation, and a robust Trash subsystem backed by a scalable MVVM architecture.",
+    "longDescription": "Arcile is an advanced Android file manager designed from the ground up for speed, fluidity, and deep system integration. It treats the local filesystem not just as a directory tree, but as an interactive dashboard—featuring full multi-volume support across Internal Storage, SD Cards, and USB OTG devices. The core file operations engine handles batch moving, copying, and renaming with intelligent conflict resolution, while a sophisticated Trash Subsystem enables safe deletion with exact metadata-aware restoration.\n\nArchitecturally, Arcile is constructed natively using Kotlin and Jetpack Compose. It leverages a rigorous MVVM pattern with Hilt for dependency injection, keeping business logic entirely decoupled from the UI. The application utilizes Kotlin Coroutines and StateFlow to maintain seamless frame rates even when parsing massive directories, caching folder metadata and file counts asynchronously. Visually, it implements a flawless Material Design 3 experience, responding dynamically to system wallpaper colors while offering adaptive grid sizing and persistent unified browser controls.",
+    "features": [
+      "Multi-Volume Support (Internal, SD Card, USB OTG)",
+      "Material You Theming with Dynamic Colors",
+      "Unified Browser Controls & Breadcrumb Navigation",
+      "Trash Subsystem with Metadata-Aware Restoration",
+      "Instant Folder Metadata & Batch Operations",
+      "Native Kotlin + Jetpack Compose + MVVM"
+    ],
+    "installation": "# Clone the repository\ngit clone https://github.com/qtremors/arcile.git\n\n# Open in Android Studio\n# File → Open → select the arcile-app directory\n\n# Or build from the command line:\ncd arcile/arcile-app\n./gradlew assembleDebug",
+    "badges": [
+      "tech-kotlin",
+      "tech-android",
+      "tech-jetpack-compose",
+      "tech-material3",
+      "tech-mvvm",
+      "tech-hilt"
+    ],
+    "links": [
+      {
+        "text": "Website",
+        "url": "https://qtremors.github.io/arcile/",
+        "class": "link-primary"
+      },
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/arcile",
+        "class": "link-secondary"
+      }
+    ]
+  },
+  {
     "id": "arcade-nexus",
     "status": "beta",
     "title": "Arcade Nexus",
@@ -171,6 +208,35 @@
       {
         "text": "View on GitHub",
         "url": "https://github.com/qtremors/tremors-music",
+        "class": "link-secondary"
+      }
+    ]
+  },
+  {
+    "id": "xcrape",
+    "title": "Xcrape",
+    "image": "assets/xcrape-preview.png",
+    "description": "An asynchronous Python web scraper powered by Playwright and BeautifulSoup4. Extracts structured data, detects 15+ technologies, captures screenshots, and archives results to SQLite all through a Material Design 3 terminal-themed UI.",
+    "longDescription": "Xcrape is a locally-hosted web scraping tool built with FastAPI that uses headless Chromium via Playwright for JavaScript-rendered page extraction. It parses pages using BeautifulSoup4 to extract meta tags, headings, links, tables, images, JSON-LD, OpenGraph metadata, and social media profiles. A technology detection module fingerprints 15+ frameworks and CMS platforms.\n\nEach scrape job captures a JPEG screenshot and archives all extracted data to a local SQLite database via aiosqlite. Users can filter historical jobs, trigger one-click re-scrapes, download scraped images individually or as bulk ZIP archives, and export results in CSV or JSON formats. The interface uses a terminal-themed Material Design 3 aesthetic with JetBrains Mono typography.",
+    "features": [
+      "Playwright Engine with BeautifulSoup4 Parsing",
+      "Material Design 3 Terminal UI with JetBrains Mono",
+      "Technology Detection for 15+ Frameworks & CMS",
+      "Structured Data Extraction (JSON-LD, OpenGraph, Meta)",
+      "JPEG Screenshot Capture & Bulk Image Downloads",
+      "SQLite Archival with CSV/JSON Report Export"
+    ],
+    "installation": "# Clone and navigate\ngit clone https://github.com/qtremors/xcrape.git\ncd xcrape/xcrape\n\n# Install dependencies\nuv sync\n\n# Install Playwright browsers\nuv run playwright install chromium\n\n# Run the project\nuv run uvicorn app.main:app --reload",
+    "badges": [
+      "tech-python",
+      "tech-fastapi",
+      "tech-playwright",
+      "tech-sqlite"
+    ],
+    "links": [
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/xcrape",
         "class": "link-secondary"
       }
     ]
@@ -268,35 +334,6 @@
       {
         "text": "View on GitHub",
         "url": "https://github.com/qtremors/earnslate",
-        "class": "link-secondary"
-      }
-    ]
-  },
-  {
-    "id": "xcrape",
-    "title": "Xcrape",
-    "image": "assets/xcrape-preview.png",
-    "description": "An asynchronous Python web scraper powered by Playwright and BeautifulSoup4. Extracts structured data, detects 15+ technologies, captures screenshots, and archives results to SQLite all through a Material Design 3 terminal-themed UI.",
-    "longDescription": "Xcrape is a locally-hosted web scraping tool built with FastAPI that uses headless Chromium via Playwright for JavaScript-rendered page extraction. It parses pages using BeautifulSoup4 to extract meta tags, headings, links, tables, images, JSON-LD, OpenGraph metadata, and social media profiles. A technology detection module fingerprints 15+ frameworks and CMS platforms.\n\nEach scrape job captures a JPEG screenshot and archives all extracted data to a local SQLite database via aiosqlite. Users can filter historical jobs, trigger one-click re-scrapes, download scraped images individually or as bulk ZIP archives, and export results in CSV or JSON formats. The interface uses a terminal-themed Material Design 3 aesthetic with JetBrains Mono typography.",
-    "features": [
-      "Playwright Engine with BeautifulSoup4 Parsing",
-      "Material Design 3 Terminal UI with JetBrains Mono",
-      "Technology Detection for 15+ Frameworks & CMS",
-      "Structured Data Extraction (JSON-LD, OpenGraph, Meta)",
-      "JPEG Screenshot Capture & Bulk Image Downloads",
-      "SQLite Archival with CSV/JSON Report Export"
-    ],
-    "installation": "# Clone and navigate\ngit clone https://github.com/qtremors/xcrape.git\ncd xcrape/xcrape\n\n# Install dependencies\nuv sync\n\n# Install Playwright browsers\nuv run playwright install chromium\n\n# Run the project\nuv run uvicorn app.main:app --reload",
-    "badges": [
-      "tech-python",
-      "tech-fastapi",
-      "tech-playwright",
-      "tech-sqlite"
-    ],
-    "links": [
-      {
-        "text": "View on GitHub",
-        "url": "https://github.com/qtremors/xcrape",
         "class": "link-secondary"
       }
     ]
@@ -550,42 +587,6 @@
       {
         "text": "View on GitHub",
         "url": "https://github.com/qtremors/pc-rc",
-        "class": "link-secondary"
-      }
-    ]
-  },
-  {
-    "id": "eshopper",
-    "status": "archive",
-    "title": "E-commerce Website",
-    "image": "assets/eshopper-preview.jpg",
-    "description": "An archived Django e-commerce platform with hierarchical product catalogs, Razorpay payment integration, wishlist management, OTP email verification, and Bootstrap-based server-side rendering.",
-    "longDescription": "EShopper is a monolithic Django e-commerce application that manages the full purchasing lifecycle through server-side rendering. It routes users from categorized product catalogs through a discount coupon system to a multi-stage checkout flow integrated with the Razorpay API.\n\nThe platform uses Django's session management for transient shopping carts and persistent wishlists. Account registration and password recovery are secured behind email-delivered OTP verification. The frontend is built with Django templates and Bootstrap for server-side rendered product listings, 5-star reviews, and multi-parameter search results. This project has been superseded by Amanzon.",
-    "features": [
-      "Hierarchical Product Catalog with Category Navigation",
-      "Razorpay API Payment Integration",
-      "Email OTP Account Verification",
-      "Discount Coupon Validation System",
-      "Advanced Search & Price Filtering",
-      "Persistent Wishlist & Session-Based Cart"
-    ],
-    "installation": "# Clone repository\ngit clone https://github.com/qtremors/eshopper\ncd shopping\n\n# Setup Python Environment\npython -m venv venv\n# Activate venv (Windows: venv\\Scripts\\activate, Linux: source venv/bin/activate)\npip install -r requirements.txt\n\n# Initialize Database\npython manage.py migrate\npython manage.py createsuperuser\n\n# Run Server\npython manage.py runserver",
-    "recommended": "amanzon",
-    "badges": [
-      "tech-django",
-      "tech-html-css-js",
-      "tech-bootstrap",
-      "tech-sql"
-    ],
-    "links": [
-      {
-        "text": "Website",
-        "url": "https://tremors.pythonanywhere.com",
-        "class": "link-primary"
-      },
-      {
-        "text": "View on GitHub",
-        "url": "https://github.com/qtremors/eshopper",
         "class": "link-secondary"
       }
     ]

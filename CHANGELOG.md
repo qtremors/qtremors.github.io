@@ -1,8 +1,42 @@
 # Tremors Changelogs
 
 > **Project:** Tremors  
-> **Version:** 3.0.0
-> **Last Updated:** 25-02-2026
+> **Version:** 3.0.1
+> **Last Updated:** 12-04-2026
+
+---
+
+## [v3.0.1] - 12-04-2026
+
+### ✨ **New Features**
+
+- **New Android App (Arcile):** Added "Arcile" to the portfolio, an advanced Android file manager built from scratch with Kotlin, Jetpack Compose, and Hilt featuring deep system integration, multi-volume support, and robust asynchronous caching.
+- **Experience Timeline:** Designed and implemented a dynamic new "Experience" section tracing professional milestones (Pre-Sales Engineer, Independent Software Engineer). The timeline features expressive glowing nodes, responsive opposing-side layout tracking, and semantic HTML article structures.
+- **Skills Reorganization:** Reorganized skills section with new categories: Frameworks & Libraries, Databases & ORM, AI & Data Science, and DevOps & Tooling.
+
+### 🎨 **UI & Visual Consistency**
+
+- **Card Standardization:** Normalized `.timeline-content` (Experience section) and `.contact-card` styling to fully align structurally with Skills and Portfolio cards (unified 1rem border-radius, background surface variants, borders, and shadows).
+- **Glass Effect Fix:** Resolved a bug where the Dark Mode glass blur effect explicitly ignored Experience section backgrounds.
+- **Appearance Settings:** Updated spotlight helper text in modal to accurately read "Hero & All Cards".
+- **Head Tags:** Updated `<title>` and OpenGraph/Twitter meta tags to reflect the Software Engineer identity.
+- **Spotlight Fixes:** Resolved an issue where the radial mouse spotlight was not clipped correctly by adding `overflow: hidden` and `position: relative` to card host selectors.
+- **Contrast & Styling:** Improved color contrast for `.timeline-date` and `.emp-badge` using theme-aware tokens and added light-theme overrides for status badges.
+- **Icons & Badges:** Replaced emoji indicators with SVG icons throughout the interface, enhanced badge contrast and styling for improved visibility, and updated portfolio badge appearance.
+- **Linting:** Fixed a declaration-empty-line-before stylelint error in the experience timeline wave mask.
+
+### 📝 **Content Verification & Updates**
+
+- **Personal Branding:** Updated personal branding from "Python Developer" to "Software Engineer".
+- **About Section:** Expanded and restructured about section.
+- **About Highlights:** Refined highlight chips in the About section and synced all chips with proper high-quality Material SVG UI icons.
+- **Typewriter Flow:** Polished interactive Typewriter roles string sequence.
+- **Skill Highlights:** Reorganized and expanded skill highlights.
+
+### 🐛 **Bug Fixes & Performance**
+
+- **Typewriter Animation:** Fixed typewriter animation scroll behavior.
+- **Optimization:** Optimized asset loading and preconnect handling for faster performance.
 
 ---
 
