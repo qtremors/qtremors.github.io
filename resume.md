@@ -7,18 +7,18 @@
 
 ## Summary
 
-Systems-focused Full-Stack Developer currently operating as a Pre-Sales Engineer in the VoIP and telecommunications space. Combines a deep technical foundation in Python (Django, FastAPI), local-first architectures, and systems networking to architect scalable Asterisk/VICIdial solutions, bridge complex CRM integrations, and deliver high-impact technical demonstrations.
+Software Engineer building AI-powered applications, local-first tools, and developer utilities mostly in Python and TypeScript. On the backend, relies on Django and FastAPI for service-oriented architectures, while maintaining an intense focus on UI quality and meticulous engineering on the frontend. A track record of shipping 15+ complex systems across native Android architecture, real-time WebSockets, and AI integrations.
 
 ---
 
 ## Technical Skills
 
-- **VoIP & Networking:** Asterisk, VICIdial, SIP, RTP, IAX, Wireshark, WebSockets
-- **Languages:** Python, TypeScript, HTML, CSS, Bash
-- **Frameworks:** FastAPI, Django, Next.js, React, HTMX, Alpine.js
+- **Languages:** Python, TypeScript, Kotlin, HTML, CSS, Bash
+- **Frameworks:** FastAPI, Django, Next.js, React, Jetpack Compose, HTMX
 - **Databases & Storage:** PostgreSQL, SQLite, Prisma ORM, Supabase
 - **DevOps & Tools:** Linux, Git Worktrees, Docker, Tauri, Playwright
-- **Data & AI/ML:** Gemini API, TensorFlow, NumPy, Pandas
+- **Data & AI/ML:** Gemini API, TensorFlow, NumPy, Pandas, Matplotlib
+- **Protocols & Systems:** WebSockets, Wireshark, REST APIs
 
 ---
 
@@ -33,7 +33,7 @@ Systems-focused Full-Stack Developer currently operating as a Pre-Sales Engineer
 
 **Independent Software Developer**
 *March 2025 – March 2026*
-- Architected and shipped 20+ production-grade web applications, CLI tools, and native utilities leveraging Python, FastAPI, Django, and React.
+- Architected and shipped 15+ production-grade web applications, Android applications, CLI tools, and native utilities leveraging Python, TypeScript, and Kotlin.
 - Engineered complex networking and security utilities, including concurrent async port scanners, SSL/TLS analyzers, and WebSocket-driven streaming architectures.
 - Optimized system memory footprints and application latency by building local-first platforms backed by async SQLite, Tauri sidecar processes, and decoupled state management.
 
@@ -41,21 +41,17 @@ Systems-focused Full-Stack Developer currently operating as a Pre-Sales Engineer
 
 ## Selected Projects
 
-**LocalGhost** — Security Auditing & Benchmarking Toolkit | [GitHub](https://github.com/qtremors/localghost)
-- Engineered a Python-based security auditing CLI utilizing FastAPI, executing 11 concurrent asynchronous scanners covering port discovery across 35+ services, SSL/TLS analysis, and CORS auditing.
-- Implemented configurable load testing with percentile latency metrics (p50/p95/p99) and DDoS resilience testing, outputting results to a Material Design 3 dashboard.
+**Quizzer AI** — AI-Powered Adaptive Learning Platform | [GitHub](https://github.com/qtremors/quizzer-ai) | [Website](https://qtrmrs.onrender.com)
+- Architected a 3-step AI pipeline using the Google Gemini API, handling natural language intent parsing, structured question generation with strict JSON schema enforcement, and context-aware explanations.
+- Designed a Service-Oriented Django backend with HTMX and Alpine.js, delivering a seamless SPA-like interface with server-rendered HTML and a fully decoupled gamification layer.
 
 **Algorithm Visualizer** — Real-Time WebSocket Platform | [GitHub](https://github.com/qtremors/algorithm-visualizer) | [Website](https://tremors-algoviz.netlify.app)
 - Designed a decoupled architecture utilizing an asynchronous FastAPI backend to stream algorithm execution states step-by-step over persistent WebSockets to a React/TypeScript frontend.
 - Built a custom playback engine (play, pause, variable speed) with synchronized pseudocode highlighting for Sorting and Pathfinding (Dijkstra, BFS, DFS) algorithms.
 
-**GitNexus** — Self-Hosted Developer Dashboard | [GitHub](https://github.com/qtremors/git-nexus)
-- Built a Repo Replay module utilizing Git worktrees to securely clone and browse complete repository commit histories in isolation.
-- Developed a decoupled React SPA and async FastAPI architecture that spawns scoped environment variables and isolated HTTP dev servers per commit state.
-
-**Quizzer AI** — AI-Powered Adaptive Learning Platform | [GitHub](https://github.com/qtremors/quizzer-ai) | [Website](https://qtrmrs.onrender.com)
-- Architected a 3-step AI pipeline using the Google Gemini API, handling natural language intent parsing, structured question generation with strict JSON schema enforcement, and context-aware explanations.
-- Designed a Service-Oriented Django backend with HTMX and Alpine.js, delivering a seamless SPA-like interface with server-rendered HTML and a fully decoupled gamification layer.
+**Arcile** — Advanced Android File Manager | [GitHub](https://github.com/qtremors/arcile) | [Website](https://qtremors.github.io/arcile/)
+- Architected a native Kotlin file manager built with Jetpack Compose Material 3, treating the filesystem as an interactive dashboard with full multi-volume (Internal, SD, OTG) support.
+- Utilized a rigorous MVVM pattern with Hilt DI, leveraging Kotlin Coroutines and StateFlow for seamless 60fps scrolling and asynchronous metadata caching over massive directories.
 
 ---
 

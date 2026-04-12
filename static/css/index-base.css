@@ -141,6 +141,11 @@ section {
     color: #FFFFFF;
 }
 
+.tech-kotlin {
+    background-color: #7F52FF;
+    color: #FFFFFF;
+}
+
 /* --- Frontend Frameworks --- */
 .tech-react {
     background-color: #61DAFB;
@@ -170,6 +175,16 @@ section {
 .tech-threejs {
     background-color: #049EF4;
     color: #000000;
+}
+
+.tech-jetpack-compose {
+    background-color: #4285F4;
+    color: #FFFFFF;
+}
+
+.tech-material3 {
+    background-color: #6750A4;
+    color: #FFFFFF;
 }
 
 /* --- Backend Frameworks --- */
@@ -263,6 +278,21 @@ section {
 
 .tech-htmx {
     background-color: #E85D75;
+    color: #FFFFFF;
+}
+
+.tech-android {
+    background-color: #3DDC84;
+    color: #000000;
+}
+
+.tech-mvvm {
+    background-color: #607D8B;
+    color: #FFFFFF;
+}
+
+.tech-hilt {
+    background-color: #D81B60;
     color: #FFFFFF;
 }
 
