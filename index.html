@@ -5,28 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Tremors | Python Developer</title>
+    <title>Tremors | Software Engineer</title>
     <meta name="description"
-        content="Portfolio of Aman Singh (Tremors) - Python Full-Stack Developer specializing in scalable web apps and developer tooling.">
+        content="Aman Singh (Tremors): Software Engineer focused on building clean, useful, and maintainable software.">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://qtremors.github.io/">
-    <meta property="og:title" content="Aman Singh - Full Stack Developer">
+    <meta property="og:title" content="Aman Singh | Software Engineer">
     <meta property="og:description"
-        content="Python-focused full-stack developer specializing in scalable web apps and developer tooling.">
+        content="Software Engineer focused on building clean, useful, and maintainable software.">
     <meta property="og:image" content="assets/index.png">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Aman Singh - Full Stack Developer">
+    <meta name="twitter:title" content="Aman Singh | Software Engineer">
     <meta name="twitter:description"
-        content="Python-focused full-stack developer specializing in scalable web apps and developer tooling.">
+        content="Software Engineer focused on building clean, useful, and maintainable software.">
     <meta name="twitter:image" content="https://qtremors.github.io/assets/index.png">
 
     <meta name="robots" content="index, follow">
     <meta name="author" content="Aman Singh">
     <link rel="canonical" href="https://qtremors.github.io/">
 
-    <!-- JSON-LD Structured Data for SEO -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -35,11 +34,11 @@
             "@type": "Person",
             "name": "Aman Singh",
             "alternateName": "Tremors",
-            "description": "Python Full-Stack Developer building AI-powered platforms and developer tooling",
+            "description": "Software Engineer focused on building clean, useful, and maintainable software.",
             "url": "https://qtremors.github.io/",
             "image": "https://qtremors.github.io/assets/index.png",
-            "jobTitle": "Full Stack Developer",
-            "knowsAbout": ["Python", "JavaScript", "Machine Learning", "Web Development", "Flask", "FastAPI"],
+            "jobTitle": "Software Engineer",
+            "knowsAbout": ["Software Engineering", "Full-Stack Development", "System Design", "Product Engineering", "User Interfaces"],
             "sameAs": [
                 "https://github.com/qtremors",
                 "https://www.linkedin.com/in/aman-singh-0a1938301"
@@ -69,11 +68,9 @@
     <link rel="stylesheet" href="static/patterns/grid.css" id="pattern-grid" disabled>
     <link rel="stylesheet" href="static/patterns/waves.css" id="pattern-waves" disabled>
 
-    <!-- Appearance Init - MUST be after ALL theme/effect/pattern links to prevent flash on refresh -->
     <script src="static/js/theme-init.js"></script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://img.shields.io">
 
 </head>
 
@@ -110,6 +107,7 @@
         <nav class="desktop-nav">
             <a href="#home" class="nav-item active">Home</a>
             <a href="#about" class="nav-item">About</a>
+            <a href="#experience" class="nav-item">Experience</a>
             <a href="#skills" class="nav-item">Skills</a>
             <a href="#portfolio" class="nav-item">Work</a>
             <a href="#contact" class="nav-item">Contact</a>
@@ -132,8 +130,7 @@
                     <img src="assets/alien.svg" alt="More Options Icon">
                 </button>
 
-                <!-- Dropdown injected dynamically by components.js -->
-            </div>
+                </div>
 
             <button id="theme-toggle" class="theme-toggle-button" title="Toggle theme" aria-label="Toggle color theme">
                 <img src="assets/sun.svg" alt="Sun Icon for light mode" class="sun" width="25" height="25">
@@ -159,6 +156,15 @@
                         d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
                 </svg></span>
             <span class="label">About</span>
+        </a>
+        <a href="#experience" class="nav-item" aria-label="Go to Experience section">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                    fill="currentColor">
+                    <path d="M0 0h24v24H0V0z" fill="none" />
+                    <path
+                        d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z" />
+                </svg></span>
+            <span class="label">Experience</span>
         </a>
         <a href="#skills" class="nav-item" aria-label="Go to Skills section">
             <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
@@ -196,8 +202,7 @@
                     <img src="assets/aman.png" alt="Profile Photo of Aman" loading="eager">
                 </div>
                 <h1>Hi, I'm <span id="typewriter-text"></span><span class="cursor"></span></h1>
-                <p class="magnet-text">Python-focused full-stack developer specializing in scalable web applications and
-                    developer tooling.</p>
+                <p class="magnet-text">Software Engineer focused on building clean, useful, and maintainable software.</p>
                 <a href="#portfolio" class="extended-fab">View My Work</a>
             </div>
         </section>
@@ -207,18 +212,66 @@
                 <h2>About Me</h2>
                 <div class="about-content">
                     <div class="about-text">
-                        <p class="magnet-text">I'm a Computer Science graduate and Python developer specializing in
-                            full-stack web development. I architect robust systems using Django and FastAPI while
-                            crafting interactive frontends with React. I am deeply focused on writing clean,
-                            maintainable code that delivers great user experiences.</p>
-                        <p class="magnet-text">I also love building developer tools that solve specific problems. From
-                            custom CLI utilities to system automation scripts, I enjoy exploring the intersection of
-                            software and the operating system. My goal is to build efficient, lightweight tools that
-                            improve daily workflows.</p>
-                        <p class="magnet-text">Currently, I'm exploring how to integrate AI/ML into practical,
-                            production-ready applications. I'm looking for a developer role where I can apply my skills
-                            in Python and modern web technologies to build reliable and practical software.</p>
+                        <p class="magnet-text about-lead">I'm a Software Engineer who likes building software that feels simple on the surface, but has real depth when people need more from it.</p>
+                        <p class="magnet-text">I care a lot about UI/UX, especially interfaces that feel clean, expressive, and easy to move through without getting in the way.</p>
+                        <p class="magnet-text">I prefer software that is fast, lightweight, and practical, backed by modular code and architecture that stays maintainable as it grows.</p>
                     </div>
+                    <div class="about-highlights">
+                        <div class="highlight-chip">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+                            Software Engineer
+                        </div>
+                        <div class="highlight-chip">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 11V3h-7v3H9V3H2v8h7V8h2v10h4v3h7v-8h-7v3h-2V8h2v3z"/></svg>
+                            Clean Structure
+                        </div>
+                        <div class="highlight-chip">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5 11 5.67 11 6.5 10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5 16 5.67 16 6.5 15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9 19 9.67 19 10.5s-.67 1.5-1.5 1.5z"/></svg>
+                            UI / UX
+                        </div>
+                        <div class="highlight-chip">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z"/></svg>
+                            Lightweight
+                        </div>
+                        <div class="highlight-chip">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
+                            Modular Code
+                        </div>
+                        <div class="highlight-chip">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 9h-4c0 1.66-1.34 3-3 3s-3-1.34-3-3H5V5h14v7z"/></svg>
+                            Product Thinking
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <div class="container">
+                <h2>Experience</h2>
+                <div class="timeline">
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-meta">
+                            <div class="timeline-date-row">
+                                <span class="timeline-date">March 2025 – Present</span>
+                                <span class="emp-badge badge-independent">Independent</span>
+                            </div>
+                            <h3>Software Engineer</h3>
+                            <div class="timeline-location">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 0 24 24" width="16px" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> 
+                                In-House (Self-Directed)
+                            </div>
+                        </div>
+                        <div class="timeline-content">
+                            <ul>
+                                <li>Build practical software with clean structure and maintainable foundations.</li>
+                                <li>Turn product ideas and workflow problems into usable, reliable interfaces.</li>
+                                <li>Improve systems through thoughtful design, iteration, and attention to detail.</li>
+                            </ul>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -227,205 +280,172 @@
             <div class="container">
                 <h2>My Skills</h2>
                 <div class="skills-grid">
+
                     <div class="skill-card">
-                        <h3>Frontend & UI/UX 💻</h3>
+                        <h3><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg> Languages</h3>
                         <ul>
                             <li>
-                                <div class="badge-wrapper" style="--fill:0.9; --bar-color:#E34F26;"
-                                    title="Proficiency: 90%"><img
+                                <div class="badge-wrapper" style="--fill:1; --bar-color:#E34F26;"><img
                                         src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white"
                                         alt="HTML5 Badge"></div>
                             </li>
                             <li>
-                                <div class="badge-wrapper" style="--fill:0.7; --bar-color:#1572B6;"
-                                    title="Proficiency: 70%"><img
+                                <div class="badge-wrapper" style="--fill:1; --bar-color:#1572B6;"><img
                                         src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white"
                                         alt="CSS3 Badge"></div>
                             </li>
-                            <!-- <li>
-                                <div class="badge-wrapper" style="--fill:0.4; --bar-color:#06B6D4;"
-                                    title="Proficiency: 40%"><img
-                                        src="https://img.shields.io/badge/Tailwind-06B6D4?style=flat&logo=tailwindcss&logoColor=white"
-                                        alt="Tailwind Badge"></div>
-                            </li> -->
                             <li>
-                                <div class="badge-wrapper" style="--fill:0.5; --bar-color:#F7DF1E;"
-                                    title="Proficiency: 50%"><img
-                                        src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black"
-                                        alt="JavaScript Badge"></div>
-                            </li>
-                            <li>
-                                <div class="badge-wrapper" style="--fill:0.4; --bar-color:#3178C6;"
-                                    title="Proficiency: 40%"><img
-                                        src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white"
-                                        alt="TypeScript Badge"></div>
-                            </li>
-                            <li>
-                                <div class="badge-wrapper" style="--fill:0.3; --bar-color:#61DAFB;"
-                                    title="Proficiency: 30%"><img
-                                        src="https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB"
-                                        alt="React Badge"></div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="skill-card">
-                        <h3>Backend & Databases ⚙️</h3>
-                        <ul>
-                            <li>
-                                <div class="badge-wrapper" style="--fill:0.8; --bar-color:#3776AB;"
-                                    title="Proficiency: 80%"><img
+                                <div class="badge-wrapper" style="--fill:1; --bar-color:#3776AB;"><img
                                         src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white"
                                         alt="Python Badge"></div>
                             </li>
                             <li>
-                                <div class="badge-wrapper" style="--fill:0.7; --bar-color:#092E20;"
-                                    title="Proficiency: 70%"><img
-                                        src="https://img.shields.io/badge/Django-092E20?style=flat&logo=django&logoColor=white"
-                                        alt="Django Badge"></div>
+                                <div class="badge-wrapper" style="--fill:1; --bar-color:#3178C6;"><img
+                                        src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white"
+                                        alt="TypeScript Badge"></div>
                             </li>
                             <li>
-                                <div class="badge-wrapper" style="--fill:0.6; --bar-color:#009688;"
-                                    title="Proficiency: 60%"><img
+                                <div class="badge-wrapper" style="--fill:1; --bar-color:var(--md-on-surface);"><img
+                                        src="https://img.shields.io/badge/SQL-003B57?style=flat&logo=postgresql&logoColor=white"
+                                        alt="SQL Badge"></div>
+                            </li>
+                            <li>
+                                <div class="badge-wrapper" style="--fill:1; --bar-color:#7F52FF;"><img
+                                        src="https://img.shields.io/badge/Kotlin-7F52FF?style=flat&logo=kotlin&logoColor=white"
+                                        alt="Kotlin Badge"></div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-card">
+                        <h3><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 18.54l-7.37-5.73L3 14.07l9 7 9-7-1.63-1.27-7.38 5.74zm.01-2.69l7.37-5.73L21 8.93l-9-7-9 7 1.63 1.27 7.37 5.72z"/></svg> Frameworks &amp; Libraries</h3>
+                        <ul>
+                            <li>
+                                <div class="badge-wrapper" style="--fill:1; --bar-color:#009688;"><img
                                         src="https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white"
                                         alt="FastAPI Badge"></div>
                             </li>
                             <li>
-                                <div class="badge-wrapper" style="--fill:0.5; --bar-color:#003B57;"
-                                    title="Proficiency: 50%"><img
-                                        src="https://img.shields.io/badge/SQLite-003B57?style=flat&logo=sqlite&logoColor=white"
-                                        alt="SQLite Badge"></div>
+                                <div class="badge-wrapper" style="--fill:1; --bar-color:var(--md-on-surface);"><img
+                                        src="https://img.shields.io/badge/Django-092E20?style=flat&logo=django&logoColor=white"
+                                        alt="Django Badge"></div>
                             </li>
                             <li>
-                                <div class="badge-wrapper" style="--fill:0.4; --bar-color:#2D3748;"
-                                    title="Proficiency: 40%"><img
+                                <div class="badge-wrapper" style="--fill:1; --bar-color:#61DAFB;"><img
+                                        src="https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB"
+                                        alt="React Badge"></div>
+                            </li>
+                            <li>
+                                <div class="badge-wrapper" style="--fill:1; --bar-color:var(--md-on-surface);"><img
+                                        src="https://img.shields.io/badge/Next.js-222222?style=flat&logo=nextdotjs&logoColor=white"
+                                        alt="Next.js Badge"></div>
+                            </li>
+                            <li>
+                                <div class="badge-wrapper" style="--fill:1; --bar-color:#4285F4;"><img
+                                        src="https://img.shields.io/badge/Jetpack%20Compose-4285F4?style=flat&logo=android&logoColor=white"
+                                        alt="Jetpack Compose Badge"></div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-card">
+                        <h3><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M2 20h20v-4H2v4zm2-3h2v2H4v-2zM2 4v4h20V4H2zm4 3H4V5h2v2zm-4 7h20v-4H2v4zm2-3h2v2H4v-2z"/></svg> Databases &amp; ORM</h3>
+                        <ul>
+                            <li>
+                                <div class="badge-wrapper" style="--fill:1; --bar-color:#092E20;"><img
+                                        src="https://img.shields.io/badge/Django%20ORM-092E20?style=flat&logo=django&logoColor=white"
+                                        alt="Django ORM Badge"></div>
+                            </li>
+                            <li>
+                                <div class="badge-wrapper" style="--fill:1; --bar-color:#A63A3A;"><img
+                                        src="https://img.shields.io/badge/SQLAlchemy-A63A3A?style=flat&logo=python&logoColor=white"
+                                        alt="SQLAlchemy Badge"></div>
+                            </li>
+                            <li>
+                                <div class="badge-wrapper" style="--fill:1; --bar-color:var(--md-on-surface);"><img
                                         src="https://img.shields.io/badge/Prisma-2D3748?style=flat&logo=prisma&logoColor=white"
                                         alt="Prisma Badge"></div>
                             </li>
                             <li>
-                                <div class="badge-wrapper" style="--fill:0.4; --bar-color:#336791;"
-                                    title="Proficiency: 40%"><img
+                                <div class="badge-wrapper" style="--fill:1; --bar-color:var(--md-on-surface);"><img
+                                        src="https://img.shields.io/badge/SQLite-003B57?style=flat&logo=sqlite&logoColor=white"
+                                        alt="SQLite Badge"></div>
+                            </li>
+                            <li>
+                                <div class="badge-wrapper" style="--fill:1; --bar-color:#336791;"><img
                                         src="https://img.shields.io/badge/PostgreSQL-336791?style=flat&logo=postgresql&logoColor=white"
                                         alt="PostgreSQL Badge"></div>
                             </li>
                         </ul>
                     </div>
+
                     <div class="skill-card">
-                        <h3>Data Analysis 📊</h3>
+                        <h3><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z"/></svg> AI &amp; Data Science</h3>
                         <ul>
                             <li>
-                                <div class="badge-wrapper" style="--fill:0.7; --bar-color:#013243;"
-                                    title="Proficiency: 70%"><img
+                                <div class="badge-wrapper" style="--fill:1; --bar-color:#013243;"><img
                                         src="https://img.shields.io/badge/NumPy-013243?style=flat&logo=numpy&logoColor=white"
                                         alt="NumPy Badge"></div>
                             </li>
                             <li>
-                                <div class="badge-wrapper" style="--fill:0.7; --bar-color:#150458;"
-                                    title="Proficiency: 70%"><img
+                                <div class="badge-wrapper" style="--fill:1; --bar-color:#150458;"><img
                                         src="https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white"
                                         alt="Pandas Badge"></div>
                             </li>
                             <li>
-                                <div class="badge-wrapper" style="--fill:0.5; --bar-color:#11557C;"
-                                    title="Proficiency: 50%"><img
-                                        src="https://img.shields.io/badge/Matplotlib-11557C?style=flat&logo=matplotlib&logoColor=white"
+                                <div class="badge-wrapper" style="--fill:1; --bar-color:#11557C;"><img
+                                        src="https://img.shields.io/badge/Matplotlib-11557C?style=flat&logo=python&logoColor=white"
                                         alt="Matplotlib Badge"></div>
                             </li>
-                            <!-- <li>
-                                <div class="badge-wrapper" style="--fill:0.5; --bar-color:#3F4F75;"
-                                    title="Proficiency: 50%"><img
-                                        src="https://img.shields.io/badge/Plotly-3F4F75?style=flat&logo=plotly&logoColor=white"
-                                        alt="Plotly Badge"></div>
-                            </li> -->
                             <li>
-                                <div class="badge-wrapper" style="--fill:0.3; --bar-color:#43B02A;"
-                                    title="Proficiency: 30%"><img
-                                        src="https://img.shields.io/badge/BeautifulSoup-43B02A?style=flat&logo=python&logoColor=white"
-                                        alt="BeautifulSoup Badge"></div>
-                            </li>
-                            <li>
-                                <div class="badge-wrapper" style="--fill:0.3; --bar-color:#FF4B4B;"
-                                    title="Proficiency: 30%"><img
-                                        src="https://img.shields.io/badge/Streamlit-FF4B4B?style=flat&logo=streamlit&logoColor=white"
-                                        alt="Streamlit Badge"></div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="skill-card">
-                        <h3>AI / ML 🧠</h3>
-                        <ul>
-                            <li>
-                                <div class="badge-wrapper" style="--fill:0.5; --bar-color:#FF6F00;"
-                                    title="Proficiency: 50%"><img
-                                        src="https://img.shields.io/badge/TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white"
-                                        alt="TensorFlow Badge"></div>
-                            </li>
-                            <li>
-                                <div class="badge-wrapper" style="--fill:0.5; --bar-color:#F7931E;"
-                                    title="Proficiency: 50%"><img
-                                        src="https://img.shields.io/badge/scikit--learn-F7931E?style=flat&logo=scikitlearn&logoColor=white"
-                                        alt="scikit-learn Badge"></div>
-                            </li>
-                            <li>
-                                <div class="badge-wrapper" style="--fill:0.4; --bar-color:#5C3EE8;"
-                                    title="Proficiency: 40%"><img
-                                        src="https://img.shields.io/badge/OpenCV-5C3EE8?style=flat&logo=opencv&logoColor=white"
-                                        alt="OpenCV Badge"></div>
-                            </li>
-                            <li>
-                                <div class="badge-wrapper" style="--fill:0.7; --bar-color:#8E75B2;"
-                                    title="Proficiency: 70%"><img
+                                <div class="badge-wrapper" style="--fill:1; --bar-color:#8E75B2;"><img
                                         src="https://img.shields.io/badge/Gemini%20API-8E75B2?style=flat&logo=googlegemini&logoColor=white"
                                         alt="Gemini API Badge"></div>
                             </li>
+                            <li>
+                                <div class="badge-wrapper" style="--fill:1; --bar-color:#FF6F00;"><img
+                                        src="https://img.shields.io/badge/TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white"
+                                        alt="TensorFlow Badge"></div>
+                            </li>
                         </ul>
                     </div>
+
                     <div class="skill-card">
-                        <h3>Platforms & Tools 🛠️</h3>
+                        <h3><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg> DevOps &amp; Tooling</h3>
                         <ul>
                             <li>
-                                <div class="badge-wrapper" style="--fill:0.7; --bar-color:#F05032;"
-                                    title="Proficiency: 70%"><img
+                                <div class="badge-wrapper" style="--fill:1; --bar-color:#F05032;"><img
                                         src="https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white"
                                         alt="Git Badge"></div>
                             </li>
-                            <!-- <li>
-                                <div class="badge-wrapper" style="--fill:0.8; --bar-color:#181717;"
-                                    title="Proficiency: 80%"><img
-                                        src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white"
-                                        alt="GitHub Badge"></div>
-                            </li> -->
                             <li>
-                                <div class="badge-wrapper" style="--fill:0.9; --bar-color:#007ACC;"
-                                    title="Proficiency: 90%"><img
-                                        src="https://img.shields.io/badge/VS%20Code-007ACC?style=flat&logo=visualstudiocode&logoColor=white"
-                                        alt="VS Code Badge"></div>
-                            </li>
-                            <li>
-                                <div class="badge-wrapper" style="--fill:0.7; --bar-color:#F37626;"
-                                    title="Proficiency: 70%"><img
-                                        src="https://img.shields.io/badge/Jupyter-F37626?style=flat&logo=jupyter&logoColor=white"
-                                        alt="Jupyter Badge"></div>
-                            </li>
-                            <li>
-                                <div class="badge-wrapper" style="--fill:0.4; --bar-color:#2496ED;"
-                                    title="Proficiency: 40%"><img
+                                <div class="badge-wrapper" style="--fill:1; --bar-color:#2496ED;"><img
                                         src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white"
                                         alt="Docker Badge"></div>
                             </li>
                             <li>
-                                <div class="badge-wrapper" style="--fill:0.5; --bar-color:#FCC624;"
-                                    title="Proficiency: 50%"><img
+                                <div class="badge-wrapper" style="--fill:1; --bar-color:#F37626;"><img
+                                        src="https://img.shields.io/badge/Jupyter-F37626?style=flat&logo=jupyter&logoColor=white"
+                                        alt="Jupyter Badge"></div>
+                            </li>
+                            <li>
+                                <div class="badge-wrapper" style="--fill:1; --bar-color:var(--md-on-surface);"><img
+                                        src="https://img.shields.io/badge/Zed-222222?style=flat&logo=zedindustries&logoColor=white"
+                                        alt="Zed Badge"></div>
+                            </li>
+                            <li>
+                                <div class="badge-wrapper" style="--fill:1; --bar-color:var(--md-on-surface);"><img
+                                        src="https://img.shields.io/badge/Cursor-222222?style=flat&logo=cursor&logoColor=white"
+                                        alt="Cursor Badge"></div>
+                            </li>
+                            <li>
+                                <div class="badge-wrapper" style="--fill:1; --bar-color:#FCC624;"><img
                                         src="https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black"
                                         alt="Linux Badge"></div>
                             </li>
-                            <li>
-                                <div class="badge-wrapper" style="--fill:0.9; --bar-color:#0078D6;"
-                                    title="Proficiency: 90%"><img
-                                        src="https://img.shields.io/badge/Windows-0078D6?style=flat&logo=windows&logoColor=white"
-                                        alt="Windows Badge"></div>
-                            </li>
                         </ul>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -463,16 +483,6 @@
                     you have a question or just want to say hi.</p>
 
                 <div class="contact-grid">
-                    <!-- <a href="https://discord.com/" target="_blank" rel="noopener noreferrer" class="contact-card discord">
-                        <div class="icon-box">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.086 2.157 2.419 0 1.334-.956 2.419-2.157 2.419zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.086 2.157 2.419 0 1.334-.946 2.419-2.157 2.419z"/></svg>
-                        </div>
-                        <div class="info">
-                            <h3>Discord</h3>
-                            <p>tremors#0000</p>
-                        </div>
-                    </a> -->
-
                     <a href="#" id="email-btn" class="contact-card email">
                         <div class="icon-box">
                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
@@ -542,12 +552,8 @@
     <script src="static/js/home.js" defer></script>
     <script src="static/js/extras.js" defer></script>
 
-    <!-- Toast Notification with ARIA Live for accessibility -->
     <div id="toast" class="toast-notification" role="status" aria-live="polite" aria-atomic="true"></div>
 
-    <!-- Settings Modal injected dynamically by components.js -->
-
-
-</body>
+    </body>
 
 </html>

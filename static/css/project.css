@@ -237,6 +237,53 @@
     white-space: pre-line;
 }
 
+/* --- Architecture Grid --- */
+.arch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.arch-card {
+    background-color: var(--md-surface-variant);
+    border: 1px solid var(--md-outline);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.arch-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px var(--md-shadow-color);
+    border-color: var(--md-primary);
+}
+
+.arch-card h4 {
+    margin: 0 0 1rem 0;
+    color: var(--md-primary);
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.arch-card ul {
+    padding-left: 1.25rem;
+    margin: 0;
+}
+
+.arch-card li {
+    margin-bottom: 0.75rem;
+    color: var(--md-on-surface);
+}
+
+#p-arch-scalability {
+    color: var(--md-on-surface-variant);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
 /* --- Feature List --- */
 .features-list {
     display: grid;

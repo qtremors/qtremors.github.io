@@ -29,8 +29,7 @@
     <link rel="stylesheet" href="static/css/project.css">
 
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 
 </head>
 
@@ -45,6 +44,7 @@
         <nav class="desktop-nav">
             <a href="#section-summary" class="nav-item">Summary</a>
             <a href="#section-overview" class="nav-item">Overview</a>
+            <a href="#section-architecture" class="nav-item" id="nav-architecture" style="display: none;">Architecture</a>
             <a href="#section-features" class="nav-item">Features</a>
             <a href="#section-installation" class="nav-item">Installation</a>
         </nav>
@@ -102,6 +102,14 @@
                         d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
                 </svg></span>
             <span class="label">Overview</span>
+        </a>
+
+        <a href="#section-architecture" class="nav-item" id="nav-architecture-mobile" style="display: none;" aria-label="System Architecture">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                    fill="currentColor">
+                    <path d="M4 15h2v3h12v-3h2v3c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2v-3zm6-4V7h4v4h3l-5 5-5-5h3zm6-1h2V5c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2v4h2V5h12v4z"/>
+                </svg></span>
+            <span class="label">Arch</span>
         </a>
 
         <a href="#section-features" class="nav-item" aria-label="Key Features">
@@ -178,6 +186,22 @@
                     <div class="content-section" id="section-overview">
                         <h3 class="section-title">Overview</h3>
                         <div class="text-body" id="p-description"></div>
+                    </div>
+
+                    <div class="content-section" id="section-architecture" style="display: none;">
+                        <h3 class="section-title">System Architecture</h3>
+                        <div class="text-body" id="p-arch-description" style="margin-bottom: 1.5rem;"></div>
+                        
+                        <div class="arch-grid">
+                            <div class="arch-card">
+                                <h4>Architectural Decisions</h4>
+                                <ul id="p-arch-decisions"></ul>
+                            </div>
+                            <div class="arch-card">
+                                <h4>Scalability & Resilience</h4>
+                                <div id="p-arch-scalability"></div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="content-section" id="section-features">

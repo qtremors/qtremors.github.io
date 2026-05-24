@@ -1,8 +1,36 @@
 # Tremors Changelogs
 
 > **Project:** Tremors  
-> **Version:** 3.0.0
-> **Last Updated:** 25-02-2026
+> **Version:** 3.0.1
+> **Last Updated:** 12-04-2026
+
+---
+
+## [v3.0.1] - 24-05-2026
+
+### ✨ **New Features**
+
+- **New Android App (Arcile):** Added "Arcile" to the portfolio, an advanced Android file manager built from scratch with Kotlin, Jetpack Compose, and Hilt featuring deep system integration, multi-volume support, and robust asynchronous caching.
+- **Experience Timeline:** Designed and implemented a dynamic new "Experience" section tracing professional milestones featuring custom CSS vertical lines, glowing node indicators, hover expansion effects, responsive opposing-side header layout, and semantic HTML structure.
+- **System Architecture Details:** Integrated a dedicated "System Architecture" section in project detailed views showing design decisions and scalability details. Added corresponding `architecture` objects for key projects in `projects.json` and interactive UI components in `project.html` and `project.js` with Scroll Spy support.
+
+### 🎨 **UI & Visual Consistency**
+
+- **Card Standardization:** Normalized `.timeline-content` (Experience section) and `.contact-card` styling to fully align structurally with Skills and Portfolio cards (unified 1rem border-radius, background surface variants, borders, and shadows).
+- **Glass Effect Fix:** Resolved a bug where the Dark Mode glass blur effect explicitly ignored Experience section backgrounds.
+- **Appearance Settings:** Updated spotlight helper text in modal to accurately read "Hero & All Cards".
+- **Head Tags:** Updated `<title>` and OpenGraph/Twitter meta tags to reflect the Software Engineer identity.
+- **Spotlight Fixes:** Resolved an issue where the radial mouse spotlight was not clipped correctly by adding `overflow: hidden` and `position: relative` to card host selectors.
+- **Contrast & Styling:** Improved color contrast for `.timeline-date` and `.emp-badge` using theme-aware tokens and added light-theme overrides for status badges.
+- **Icons & Badges:** Replaced emoji indicators with SVG icons throughout the interface, enhanced badge contrast and styling for improved visibility, and updated portfolio badge appearance.
+- **SVG Icons Upgrade:** Replaced emoji indicators on status badges (WIP, Beta, Archived) and clone/share action buttons with high-quality SVG icons.
+- **Linting:** Fixed a declaration-empty-line-before stylelint error in the experience timeline wave mask.
+
+### 🐛 **Bug Fixes & Performance**
+
+- **Typewriter Animation:** Fixed typewriter animation scroll behavior.
+- **Optimization:** Optimized asset loading and preconnect handling for faster performance.
+- **Font Preconnection:** Cleaned up redundant Google Fonts preconnect tags in `project.html`.
 
 ---
 

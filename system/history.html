@@ -27,30 +27,30 @@
             padding-top: 80px;
         }
 
-        .timeline-header {
+        .history-track-header {
             text-align: center;
             margin-bottom: 4rem;
         }
 
-        .timeline-header h1 {
+        .history-track-header h1 {
             font-size: 3rem;
             color: var(--md-primary);
             margin-bottom: 0.5rem;
         }
 
-        .timeline-header p {
+        .history-track-header p {
             color: var(--md-on-surface-variant);
         }
 
         /* The Line */
-        .timeline {
+        .history-track {
             position: relative;
             max-width: 800px;
             margin: 0 auto;
             padding: 2rem 0;
         }
 
-        .timeline::before {
+        .history-track::before {
             content: '';
             position: absolute;
             top: 0;
@@ -61,14 +61,14 @@
         }
 
         /* The Cards */
-        .timeline-item {
+        .history-track-item {
             position: relative;
             margin-bottom: 3rem;
             padding-left: 60px;
         }
 
         /* The Dot */
-        .timeline-marker {
+        .history-track-marker {
             position: absolute;
             left: 11px;
             top: 2rem;
@@ -81,13 +81,13 @@
             transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        .timeline-item:hover .timeline-marker {
+        .history-track-item:hover .history-track-marker {
             transform: scale(1.2);
             box-shadow: 0 0 15px var(--md-primary);
         }
 
         /* Content Box */
-        .timeline-content {
+        .history-track-content {
             background-color: var(--md-surface-variant);
             border: 1px solid var(--md-outline);
             border-radius: 16px;
@@ -96,7 +96,7 @@
         }
 
 
-        .timeline-item:hover .timeline-content {
+        .history-track-item:hover .history-track-content {
             transform: translateX(5px);
             border-color: var(--md-primary) !important;
         }
@@ -112,7 +112,7 @@
             margin-bottom: 0.5rem;
         }
 
-        .timeline-date {
+        .history-track-date {
             display: block;
             font-size: 0.85rem;
             color: var(--md-on-surface-variant);
@@ -142,56 +142,56 @@
         }
 
         /* MD3 Morphing for dots */
-        html[data-style-mode="md3"] .timeline-marker {
+        html[data-style-mode="md3"] .history-track-marker {
             border-radius: 4px;
         }
 
         @media (min-width: 768px) {
-            .timeline::before {
+            .history-track::before {
                 left: 50%;
             }
 
-            .timeline-item {
+            .history-track-item {
                 width: 50%;
                 padding-left: 0;
                 padding-right: 40px;
                 box-sizing: border-box;
             }
 
-            .timeline-item:nth-child(even) {
+            .history-track-item:nth-child(even) {
                 margin-left: 50%;
                 padding-left: 40px;
                 padding-right: 0;
             }
 
-            .timeline-item:nth-child(odd) .timeline-marker {
+            .history-track-item:nth-child(odd) .history-track-marker {
                 left: 100%;
                 margin-left: -10px;
             }
 
-            .timeline-item:nth-child(even) .timeline-marker {
+            .history-track-item:nth-child(even) .history-track-marker {
                 left: 0;
                 margin-left: -10px;
             }
 
-            .timeline-marker {
+            .history-track-marker {
                 top: 2.3rem;
             }
 
-            .timeline-item:nth-child(odd) .timeline-content {
+            .history-track-item:nth-child(odd) .history-track-content {
                 text-align: right;
             }
 
-            .timeline-item:nth-child(even) .timeline-content {
+            .history-track-item:nth-child(even) .history-track-content {
                 text-align: left;
             }
 
-            .timeline-item:nth-child(odd) .commit-list li {
+            .history-track-item:nth-child(odd) .commit-list li {
                 padding-left: 0;
                 padding-right: 1.5rem;
             }
 
-            .timeline-item:nth-child(odd) .commit-list li::before {
+            .history-track-item:nth-child(odd) .commit-list li::before {
                 left: auto;
                 right: 0;
                 content: '◃';
@@ -225,7 +225,7 @@
     </header>
 
     <div class="container">
-        <div class="timeline-header">
+        <div class="history-track-header">
             <h1>Architecture Evolution</h1>
             <p>From static HTML (v0) to the Modular Engine (v3)</p>
         </div>
@@ -240,13 +240,13 @@
         </div>
 
 
-        <div class="timeline">
+        <div class="history-track">
 
-            <div class="timeline-item">
-                <div class="timeline-marker"></div>
-                <div class="timeline-content card">
+            <div class="history-track-item">
+                <div class="history-track-marker"></div>
+                <div class="history-track-content card">
                     <span class="version-tag">v3.0.0</span>
-                    <span class="timeline-date">Feb 24, 2026</span>
+                    <span class="history-track-date">Feb 24, 2026</span>
                     <h3>The Great Refinement</h3>
                     <ul class="commit-list">
                         <li><strong>Hero Waves:</strong> Multi-layered organic CSS wave effect with light mode
@@ -262,11 +262,11 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
-                <div class="timeline-marker"></div>
-                <div class="timeline-content card">
+            <div class="history-track-item">
+                <div class="history-track-marker"></div>
+                <div class="history-track-content card">
                     <span class="version-tag">v2.9.0 - v2.9.2</span>
-                    <span class="timeline-date">Feb 21 - 24, 2026</span>
+                    <span class="history-track-date">Feb 21 - 24, 2026</span>
                     <h3>New Projects & Audit</h3>
                     <ul class="commit-list">
                         <li><strong>New Projects:</strong> Added Localghost, Xcrape, and Diff Viewer to the
@@ -278,11 +278,11 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
-                <div class="timeline-marker"></div>
-                <div class="timeline-content card">
+            <div class="history-track-item">
+                <div class="history-track-marker"></div>
+                <div class="history-track-content card">
                     <span class="version-tag">v2.8.5 - v2.8.7</span>
-                    <span class="timeline-date">Feb 21, 2026</span>
+                    <span class="history-track-date">Feb 21, 2026</span>
                     <h3>Security & Code Quality</h3>
                     <ul class="commit-list">
                         <li><strong>HTML Deduplication:</strong> Centralized nav and modal markup via
@@ -297,11 +297,11 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
-                <div class="timeline-marker"></div>
-                <div class="timeline-content card">
+            <div class="history-track-item">
+                <div class="history-track-marker"></div>
+                <div class="history-track-content card">
                     <span class="version-tag">v2.8.0 - v2.8.4</span>
-                    <span class="timeline-date">Jan 17 - Feb 20, 2026</span>
+                    <span class="history-track-date">Jan 17 - Feb 20, 2026</span>
                     <h3>SEO, Navigation & Content</h3>
                     <ul class="commit-list">
                         <li><strong>Dynamic OG Tags:</strong> Project-specific social previews for shared links.</li>
@@ -315,11 +315,11 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
-                <div class="timeline-marker"></div>
-                <div class="timeline-content card">
+            <div class="history-track-item">
+                <div class="history-track-marker"></div>
+                <div class="history-track-content card">
                     <span class="version-tag">v2.7.0</span>
-                    <span class="timeline-date">Jan 14, 2026</span>
+                    <span class="history-track-date">Jan 14, 2026</span>
                     <h3>Documentation Overhaul</h3>
                     <ul class="commit-list">
                         <li><strong>README Reformat:</strong> Modern portfolio template with badges, feature tables,
@@ -330,11 +330,11 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
-                <div class="timeline-marker"></div>
-                <div class="timeline-content card">
+            <div class="history-track-item">
+                <div class="history-track-marker"></div>
+                <div class="history-track-content card">
                     <span class="version-tag">v2.6.5</span>
-                    <span class="timeline-date">Jan 02, 2026</span>
+                    <span class="history-track-date">Jan 02, 2026</span>
                     <h3>Theme & Effect Fixes</h3>
                     <ul class="commit-list">
                         <li><strong>Theme Init:</strong> Fixed initialization across history, 404, and project
@@ -347,11 +347,11 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
-                <div class="timeline-marker"></div>
-                <div class="timeline-content card">
+            <div class="history-track-item">
+                <div class="history-track-marker"></div>
+                <div class="history-track-content card">
                     <span class="version-tag">v2.6.0</span>
-                    <span class="timeline-date">Jan 02, 2026</span>
+                    <span class="history-track-date">Jan 02, 2026</span>
                     <h3>Navigation & Status</h3>
                     <ul class="commit-list">
                         <li><strong>Status Indicators:</strong> Added dynamic WIP/Beta/Archive banners to project
@@ -363,11 +363,11 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
-                <div class="timeline-marker"></div>
-                <div class="timeline-content card">
+            <div class="history-track-item">
+                <div class="history-track-marker"></div>
+                <div class="history-track-content card">
                     <span class="version-tag">v2.5.0 - v2.5.2</span>
-                    <span class="timeline-date">Dec 2025 - Jan 2026</span>
+                    <span class="history-track-date">Dec 2025 - Jan 2026</span>
                     <h3>Integration & Refinement</h3>
                     <ul class="commit-list">
                         <li><strong>Portfolio Core:</strong> Replaced Nexus with the integrated Tremors Portfolio.</li>
@@ -379,27 +379,26 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
-                <div class="timeline-marker"></div>
-                <div class="timeline-content card">
+            <div class="history-track-item">
+                <div class="history-track-marker"></div>
+                <div class="history-track-content card">
                     <span class="version-tag">v2.2.0 - v2.3.0</span>
-                    <span class="timeline-date">Dec 2025</span>
+                    <span class="history-track-date">Dec 2025</span>
                     <h3>Accessibility & Themes</h3>
                     <ul class="commit-list">
                         <li><strong>Themes Engine:</strong> Modular system with Fog, Glass, and Spotlight effects.</li>
                         <li><strong>Accessibility:</strong> Added skip-links, ARIA labels, and reduced motion support.
                         </li>
                         <li><strong>SEO:</strong> Dynamic canonical tags and Twitter Card metadata.</li>
-                        </li>
                     </ul>
                 </div>
             </div>
 
-            <div class="timeline-item">
-                <div class="timeline-marker"></div>
-                <div class="timeline-content card">
+            <div class="history-track-item">
+                <div class="history-track-marker"></div>
+                <div class="history-track-content card">
                     <span class="version-tag">v2.1.0</span>
-                    <span class="timeline-date">Dec 07, 2025</span>
+                    <span class="history-track-date">Dec 07, 2025</span>
                     <h3>The Theme & Effects Engine</h3>
                     <ul class="commit-list">
                         <li><strong>Modular Themes:</strong> Default, MD3, and OLED themes are now independent CSS
@@ -414,11 +413,11 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
-                <div class="timeline-marker"></div>
-                <div class="timeline-content card">
+            <div class="history-track-item">
+                <div class="history-track-marker"></div>
+                <div class="history-track-content card">
                     <span class="version-tag">v2.0.0</span>
-                    <span class="timeline-date">Dec 06, 2025</span>
+                    <span class="history-track-date">Dec 06, 2025</span>
                     <h3>The Architecture Overhaul</h3>
                     <ul class="commit-list">
                         <li><strong>Decoupled JS:</strong> Split monolithic logic into <code>home.js</code>,
@@ -432,11 +431,11 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
-                <div class="timeline-marker"></div>
-                <div class="timeline-content card">
+            <div class="history-track-item">
+                <div class="history-track-marker"></div>
+                <div class="history-track-content card">
                     <span class="version-tag">v1.5.0 - v1.9.0</span>
-                    <span class="timeline-date">Nov 2025</span>
+                    <span class="history-track-date">Nov 2025</span>
                     <h3>The Feature Surge</h3>
                     <ul class="commit-list">
                         <li><strong>MD3 Engine:</strong> Built a custom theme engine with SVG morphing animations.</li>
@@ -447,11 +446,11 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
-                <div class="timeline-marker"></div>
-                <div class="timeline-content card">
+            <div class="history-track-item">
+                <div class="history-track-marker"></div>
+                <div class="history-track-content card">
                     <span class="version-tag">v1.0.0 - v1.4.0</span>
-                    <span class="timeline-date">Sep 2025</span>
+                    <span class="history-track-date">Sep 2025</span>
                     <h3>The Visual Identity</h3>
                     <ul class="commit-list">
                         <li><strong>Material Design:</strong> Shifted from generic styles to strict Material guidelines.
@@ -462,11 +461,11 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
-                <div class="timeline-marker"></div>
-                <div class="timeline-content card">
+            <div class="history-track-item">
+                <div class="history-track-marker"></div>
+                <div class="history-track-content card">
                     <span class="version-tag">v0.0.0</span>
-                    <span class="timeline-date">July 02, 2025</span>
+                    <span class="history-track-date">July 02, 2025</span>
                     <h3>Hello World</h3>
                     <ul class="commit-list">
                         <li>Initial release of the personal portfolio.</li>

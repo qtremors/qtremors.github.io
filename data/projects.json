@@ -32,21 +32,32 @@
         "url": "https://github.com/qtremors/quizzer-ai",
         "class": "link-secondary"
       }
-    ]
+    ],
+    "architecture": {
+      "description": "The system follows a Service-Oriented Architecture (SOA) where the AI orchestration logic is strictly decoupled from the web delivery layer. This ensures that the generative pipeline can be scaled or swapped (e.g., from Gemini to a self-hosted LLM) without affecting the core gamification or user management services.",
+      "decisions": [
+        "Service Isolation Layer: Decouples AI prompt engineering and Gemini client execution inside apps/ai_agent/services.py, isolating generative logic from the web delivery layer.",
+        "HTMX-First Interactivity: Utilizes HTMX and Alpine.js for page updates and interactive quiz gameplay, achieving SPA-like responsiveness without frontend build tools or framework overhead.",
+        "Structured JSON Prompt Enforcement: Implements structured prompts with strict schema validation to ensure generated quiz questions, options, and explanations parse cleanly in a single pass.",
+        "Custom Auth & Profile Binding: Implements a custom Django user model using email as the primary identifier, bound 1:1 with user profiles for streaks, XP, leveling, and badges.",
+        "Dynamic Database Model Sync: Features custom manage.py commands (check_ai_config, sync_models, set_active_models) to fetch models from the Google Generative AI API and manage active defaults via database configurations."
+      ],
+      "scalability": "Designed for horizontal scaling via stateless web workers. The AI pipeline uses asynchronous processing to prevent request-response blocking during long-running LLM calls."
+    }
   },
   {
     "id": "algorithm-visualizer",
     "title": "Algorithm Visualizer",
     "image": "assets/algorithm-preview.png",
-    "description": "An interactive educational platform that executes sorting and pathfinding algorithms on a Python FastAPI backend and streams execution states in real-time to a React frontend via WebSockets.",
-    "longDescription": "AlgoVisualizer runs algorithm code on an asynchronous Python backend using generator-based execution, streaming each step to the React frontend over persistent WebSocket connections. This approach avoids pre-calculated browser-side animations and enables true real-time visualization with accurate state representation.\n\nThe platform supports Bubble Sort, Insertion Sort, and Selection Sort alongside Dijkstra, BFS, and DFS pathfinding algorithms. Pathfinding operates in a dual-mode hybrid view, allowing users to toggle between 2D grid layouts and physics-based node-link graph layouts with semantic zoom. A VCR-style playback engine provides play, pause, step-through, and adjustable speed controls (10ms to 500ms), with synchronized pseudocode line highlighting and an auto-scrolling execution log.",
+    "description": "A real-time algorithm education platform that runs sorting and pathfinding algorithms on a FastAPI backend, then streams each execution step to a React visual workspace over WebSockets.",
+    "longDescription": "AlgoVisualizer is a full-stack visualization platform built with React 19, TypeScript, Vite, TailwindCSS, Python, and FastAPI. Algorithms are implemented from scratch on the backend as generator-driven classes, yielding structured execution steps that are streamed to the frontend through a persistent WebSocket connection instead of relying on pre-baked browser animations.\n\nThe platform supports Bubble Sort, Insertion Sort, and Selection Sort alongside Dijkstra, BFS, and DFS pathfinding algorithms. Pathfinding can be explored through editable 2D grids or weighted node-link graphs, with tools for drawing walls, moving start/end nodes, adding graph nodes, connecting weighted edges, deleting elements, generating random mazes, and adjusting graph zoom. The playback layer includes play, pause, step forward/back, reset, variable speed controls, estimated remaining time, synchronized pseudocode highlighting, algorithm complexity modals, and a scrolling execution log.",
     "features": [
-      "Real-Time WebSocket Algorithm Streaming",
-      "Sorting & Pathfinding with Interactive Grids and Graphs",
-      "Dual-Mode View: 2D Grid and Physics-Based Node-Link Graph",
-      "VCR-Style Playback with Keyboard Shortcuts",
-      "Synchronized Pseudocode Highlighting & Execution Log",
-      "Dynamic Maze Generation & Custom Dataset Input"
+      "Real-Time FastAPI WebSocket Step Streaming",
+      "Bubble Sort, Selection Sort, Insertion Sort, BFS, DFS, and Dijkstra",
+      "Editable Grid Pathfinding with Walls, Start/End Nodes, and Random Mazes",
+      "Weighted Graph Builder with Node, Edge, Delete, Start, and End Tools",
+      "Playback Controls with Step Navigation, Speed Tuning, and Keyboard Shortcuts",
+      "Pseudocode Highlighting, Complexity Modals, and Execution Logs"
     ],
     "installation": "# Clone repository\ngit clone https://github.com/qtremors/algorithm-visualizer.git\ncd algorithm-visualizer\n\n# Install dependencies\ncd backend && uv sync && cd ..\ncd frontend && npm install && cd ..\n\n# Terminal 1: Backend\ncd backend && uv run uvicorn app.main:api --reload\n\n# Terminal 2: Frontend\ncd frontend && npm run dev",
     "badges": [
@@ -67,14 +78,23 @@
         "url": "https://github.com/qtremors/algorithm-visualizer",
         "class": "link-secondary"
       }
-    ]
+    ],
+    "architecture": {
+      "description": "A client-server architecture where the FastAPI backend owns algorithm execution and the React frontend focuses on interactive input, playback state, and visualization rendering.",
+      "decisions": [
+        "Generator-Based Execution: Backend algorithms yield one structured step at a time, keeping algorithm logic inspectable while enabling live visualization.",
+        "Persistent WebSockets: Selected over REST polling so sorting, grid pathfinding, and graph pathfinding can stream compare, swap, visit, update, and path-found events in order.",
+        "Metadata-Driven UI: Each backend algorithm exposes pseudocode, complexity, descriptions, input type, and visualizer metadata so the frontend can render the right controls and educational context dynamically."
+      ],
+      "scalability": "The backend uses FastAPI's asynchronous WebSocket handling while recent frontend and backend optimizations reduce unnecessary copying and re-rendering during large step sequences."
+    }
   },
   {
     "id": "git-nexus",
     "title": "GitNexus",
     "image": "assets/git-nexus-preview.png",
-    "description": "A self-hosted GitHub companion dashboard for developers. Browse user profiles and bulk-download repositories, track release assets across watched repos, and time-travel through commit history with isolated dev servers powered by Git worktrees.",
-    "longDescription": "GitNexus is a local-first developer tool built with a decoupled React SPA frontend and an async Python FastAPI backend, backed by SQLite with Fernet symmetric encryption for securely persisting GitHub API tokens and scoped environment variables on the local machine.\n\nThe Repo Replay module clones repositories, syncs their full commit history, and uses Git worktrees to browse the codebase at any point in time. Scoped environment variables (global, project, or commit-level) can be attached before spawning isolated HTTP dev servers for any commit. The Discovery Engine fetches GitHub user profiles, renders contribution graphs, and supports multi-repo bulk downloads. The Asset Watchtower monitors tracked repositories for new releases and enables direct asset downloads.",
+    "description": "A local-first infrastructure companion for version control. Browse user profiles, track release assets, and time-travel through commit history with isolated dev environments powered by Git worktrees.",
+    "longDescription": "GitNexus is a privacy-centric developer tool built with a decoupled management UI and an asynchronous backend service, using SQLite with Fernet symmetric encryption for securely persisting API tokens and sensitive environment variables locally.\n\nThe Repo Replay module clones repositories, syncs their full commit history, and uses Git worktrees to browse the codebase at any point in time. Scoped environment variables (global, project, or commit-level) can be attached before spawning isolated HTTP dev servers for any commit. The Discovery Engine fetches GitHub user profiles, renders contribution graphs, and supports multi-repo bulk downloads. The Asset Watchtower monitors tracked repositories for new releases and enables direct asset downloads.",
     "features": [
       "Repo Replay: Browse Commit History via Git Worktrees",
       "Isolated HTTP Dev Servers per Commit State",
@@ -95,7 +115,7 @@
     "links": [
       {
         "text": "Live Demo",
-        "url": "https://qtremors.github.io/scrap/projects/demo/demo-git-nexus",
+        "url": "https://qtremors.github.io/scrap/demo/git-nexus",
         "class": "link-primary"
       },
       {
@@ -103,22 +123,79 @@
         "url": "https://github.com/qtremors/git-nexus",
         "class": "link-secondary"
       }
-    ]
+    ],
+    "architecture": {
+      "description": "A local-first, privacy-centric architecture that treats the user's machine as the primary compute node. It leverages a sidecar-style relationship between a secure Python backend and a web-based management UI.",
+      "decisions": [
+        "Decoupled Client-Server Architecture: Connects a React 19 + Vite single page application with an asynchronous FastAPI backend via a typed REST API.",
+        "Git Worktree Manager: Utilizes zero-copy Git worktrees to allow developers to browse and run multiple code states simultaneously without disk duplication.",
+        "Fernet Symmetric Encryption: Protects local configuration settings, personal access tokens (PATs), and scoped environment variables (global, project, commit-level) at rest.",
+        "Asynchronous SQLite: Uses SQLAlchemy Async ORM and aiosqlite for zero-configuration, concurrent database persistence on the local filesystem.",
+        "Safe Path Traversal Guards: Implements structural blocklists and is_safe_path() checks to protect the local environment from directory traversal or system commands execution."
+      ],
+      "scalability": "Scalability is handled via local process isolation; each 'Dev Server' spawned for a commit runs as an independent process, ensuring system stability even if a project crashes."
+    }
+  },
+  {
+    "id": "arcile",
+    "status": "beta",
+    "title": "Arcile",
+    "image": "assets/arcile-preview.png",
+    "description": "A private Android file manager built with Kotlin, Jetpack Compose, and Material 3 Expressive, featuring multi-volume browsing, local-only storage analytics, Trash recovery, archives, and foreground file operations.",
+    "longDescription": "Arcile is a source-available Android file manager built for Android 11+ with Kotlin 2.2, Jetpack Compose, Material 3 Expressive, Hilt, StateFlow, typed Navigation Compose routes, and DataStore-backed preferences. It does not request the INTERNET permission, so browsing, indexing, thumbnails, archive handling, preferences, and file operations remain local to the device.\n\nThe app supports internal storage, SD-style volumes, and USB OTG-style temporary volumes with user-controlled classification. Its file-management surface includes a Home dashboard, volume-aware storage summaries, category shortcuts, recent files, quick access pins, advanced search filters, list/grid presentation controls, selection properties, safe open/share handoffs, and a storage dashboard with a Filelight-inspired radial Usage Map. Mutations run through foreground operation plumbing for copy, move, archive, extract, fake-file generation, Trash, and delete flows, with progress events, cancellation, conflict resolution, mutation recovery, and a lightweight operation journal. Arcile also includes a metadata-backed Trash system, conservative Storage Cleaner, ZIP/7z archive create/browse/extract workflows, custom Coil thumbnail fetchers for APK/audio/PDF/video content, onboarding for All Files Access, and extensive JVM/Robolectric plus instrumented test coverage.",
+    "features": [
+      "Multi-Volume Browser for Internal, SD-Style, and USB OTG Storage",
+      "Home Dashboard, Recent Files, Quick Access, and Category Browsing",
+      "Storage Dashboard with Trash Visibility and Radial Usage Map",
+      "Foreground Copy, Move, Archive, Extract, Trash, Delete, and Fake-File Operations",
+      "Smart Paste Conflict Resolution and Metadata-Backed Trash Restoration",
+      "ZIP/7z Archive Workflows, Storage Cleaner, and Custom Media Thumbnails"
+    ],
+    "installation": "# Clone the repository\ngit clone https://github.com/qtremors/arcile.git\n\n# Open in Android Studio\n# File → Open → select the arcile-app directory\n\n# Or build from the command line:\ncd arcile/arcile-app\n./gradlew assembleDebug",
+    "badges": [
+      "tech-kotlin",
+      "tech-android",
+      "tech-jetpack-compose",
+      "tech-material3",
+      "tech-mvvm",
+      "tech-hilt"
+    ],
+    "links": [
+      {
+        "text": "Website",
+        "url": "https://qtremors.github.io/arcile/",
+        "class": "link-primary"
+      },
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/arcile",
+        "class": "link-secondary"
+      }
+    ],
+    "architecture": {
+      "description": "A single-module native Android app with package-level boundaries, MVVM ViewModels, repository/data-source separation, Hilt dependency injection, and StateFlow-backed Compose UI.",
+      "decisions": [
+        "Offline-First Privacy: The Android manifest omits INTERNET permission, keeping file browsing, indexing, thumbnails, archive handling, and preferences on-device.",
+        "Repository Facade: LocalFileRepository coordinates volume discovery, MediaStore queries, filesystem mutations, folder stats, Trash, archives, and mutation finalization behind domain contracts.",
+        "Foreground Operation Pipeline: Long-running file mutations are routed through a coordinator/service pair with progress events, cancellation, conflict preflight, and journal-backed recovery."
+      ],
+      "scalability": "Arcile is structured for modular growth, with feature-scoped ViewModels, typed routes, reusable delegates, injected dispatchers, and focused data managers for Trash, archives, storage usage, thumbnails, and operations. The architecture is prepared for a multi-module split so browser, storage, archive, cleaner, and shared core layers can evolve independently."
+    }
   },
   {
     "id": "arcade-nexus",
     "status": "beta",
     "title": "Arcade Nexus",
     "image": "assets/arcade-nexus-preview.png",
-    "description": "A browser-based gaming console built with React and FastAPI, featuring an offline-first SQLite backend, a typed TypeScript Game SDK for 2D and 3D game development, local profiles, save states, achievements, and gamepad support.",
-    "longDescription": "Arcade Nexus is a web application designed to replicate a console-like gaming experience in the desktop browser. It uses a decoupled architecture with a React frontend managed by Zustand and a Python FastAPI backend backed by async SQLite via SQLAlchemy.\n\nThe platform operates entirely offline with local profiles for multi-user access. A typed TypeScript Game SDK provides a unified interface for building 2D Canvas and 3D Three.js games, handling game loops, keyboard and gamepad input, and state persistence. Games support multiple save slots, playtime and high score tracking, and a global achievement system. The interface uses a premium console aesthetic with charcoal and zinc tones, immersive boot sequences, and fullscreen gameplay.",
+    "description": "A local arcade console for the browser with React, FastAPI, async SQLite persistence, local profiles, achievements, save slots, and a custom TypeScript Game SDK for Canvas and Three.js games.",
+    "longDescription": "Arcade Nexus is a full-stack, offline-capable arcade console built with React 19, TypeScript, Vite, TailwindCSS, Zustand, Framer Motion, FastAPI, SQLAlchemy 2, async SQLite, and Pydantic. The frontend provides a premium console-style interface with profile selection, a dashboard, store, library, achievements, settings, fullscreen gameplay, and a session-aware boot sequence.\n\nThe platform includes a typed Game SDK that separates game code from the console shell. Games implement a consistent lifecycle for initialization, frame updates, rendering, pause/resume, game over handling, score reporting, and optional save/load state. The current catalog includes Neon Snake and Raptor Run, with Stellar Flight represented as a Three.js flight simulation entry. Backend APIs manage local profiles, game metadata, user libraries, play statistics, detailed session history, high scores, achievements, and up to five save slots per game.",
     "features": [
-      "Typed TypeScript Game SDK (2D Canvas & 3D Three.js)",
-      "Offline-First FastAPI + Async SQLite Architecture",
-      "Local Save States & Global Achievement System",
-      "Local Profiles with Statistics Dashboard",
-      "Premium Console UI with Gamepad Support",
-      "Zustand State Management & Pydantic Validation"
+      "React 19 Premium Console UI with Boot, Dashboard, Store, Library, and Profile Flows",
+      "Typed TypeScript Game SDK for Canvas 2D and Three.js Game Instances",
+      "FastAPI REST Backend with SQLAlchemy 2, Pydantic, and Async SQLite",
+      "Local Profiles, Game Library, High Scores, Playtime, and Session History",
+      "Achievement Unlocks and Five Save Slots per Game",
+      "Keyboard/Gamepad Input, Fullscreen Play, and Offline Local Assets"
     ],
     "installation": "# Clone repository\ngit clone https://github.com/qtremors/arcade-nexus.git\ncd arcade-nexus\n\n# Install dependencies\ncd backend && uv sync && cd ..\ncd frontend && npm install && cd ..\n\n# Terminal 1: Backend\ncd backend && uv run uvicorn app.main:app --reload\n\n# Terminal 2: Frontend\ncd frontend && npm run dev",
     "badges": [
@@ -136,7 +213,16 @@
         "url": "https://github.com/qtremors/arcade-nexus",
         "class": "link-secondary"
       }
-    ]
+    ],
+    "architecture": {
+      "description": "A local client-server arcade shell where the React frontend hosts the console UI and game runtime while the FastAPI backend persists profiles, game catalog data, stats, saves, and achievements in SQLite.",
+      "decisions": [
+        "Game SDK Pattern: Games implement shared lifecycle interfaces so the platform can run Canvas 2D and Three.js games through one engine, input layer, and fullscreen player.",
+        "Async SQLite Backend: Selected for a local-first arcade experience that persists progress without requiring a separate database server or cloud account.",
+        "Smart Game Sync: Seed data updates game metadata and achievements while preserving user progress, saves, stats, and unlocked achievements."
+      ],
+      "scalability": "The modular frontend separates pages, stores, SDK primitives, and game implementations, while backend routers isolate profiles, games, library, stats, saves, and achievements for straightforward expansion with new games or persistence features."
+    }
   },
   {
     "id": "tremors-music",
@@ -173,7 +259,57 @@
         "url": "https://github.com/qtremors/tremors-music",
         "class": "link-secondary"
       }
-    ]
+    ],
+    "architecture": {
+      "description": "A native desktop app packaged via Tauri, using a Python FastAPI sidecar backend to scan media files, manage SQLite persistence, and stream audio ranges, while a React frontend handles UI rendering and queue playback.",
+      "decisions": [
+        "Python Sidecar Pattern: Offloads metadata scanning (via Mutagen) and range-based audio streaming to an independent local Python service, reducing memory usage by ~70% compared to standard browser execution.",
+        "Virtualized List Rendering: Implements windowed list rendering for handling large libraries (10,000+ songs) smoothly without DOM bottlenecking.",
+        "Local SQLite Database: Synchronizes scanned track data and playlists locally using SQLModel, avoiding external database dependencies or cloud calls.",
+        "Sync-LRC Lyrics Renderer: Parses and renders embedded or external LRC files completely offline, synchronizing visual cues with audio playback time updates."
+      ],
+      "scalability": "Decoupling player UI from the filesystem scanner via HTTP endpoints ensures the UI remains responsive during background scans, allowing horizontal expansion to other desktop platforms."
+    }
+  },
+  {
+    "id": "xcrape",
+    "title": "Xcrape",
+    "image": "assets/xcrape-preview.png",
+    "description": "An asynchronous Python web scraper powered by Playwright and BeautifulSoup4. Extracts structured data, detects 20+ technologies, captures screenshots, and archives results to SQLite all through a Material Design 3 terminal-themed UI.",
+    "longDescription": "Xcrape is a locally-hosted web scraping tool built with FastAPI that uses headless Chromium via Playwright for JavaScript-rendered page extraction. It parses pages using BeautifulSoup4 to extract meta tags, headings, links, tables, images, JSON-LD, OpenGraph metadata, and social media profiles. A technology detection module fingerprints 20+ frameworks and CMS platforms.\n\nEach scrape job captures a JPEG screenshot and archives all extracted data to a local SQLite database via aiosqlite. Users can filter historical jobs, trigger one-click re-scrapes, download scraped images individually or as bulk ZIP archives, and export results in CSV or JSON formats. The interface uses a terminal-themed Material Design 3 aesthetic with JetBrains Mono typography.",
+    "features": [
+      "Playwright Engine with BeautifulSoup4 Parsing",
+      "Material Design 3 Terminal UI with JetBrains Mono",
+      "Technology Detection for 20+ Frameworks & CMS",
+      "Structured Data Extraction (JSON-LD, OpenGraph, Meta)",
+      "JPEG Screenshot Capture & Bulk Image Downloads",
+      "SQLite Archival with CSV/JSON Report Export"
+    ],
+    "installation": "# Clone and navigate\ngit clone https://github.com/qtremors/xcrape.git\ncd xcrape/xcrape\n\n# Install dependencies\nuv sync\n\n# Install Playwright browsers\nuv run playwright install chromium\n\n# Run the project\nuv run uvicorn app.main:app --reload",
+    "badges": [
+      "tech-python",
+      "tech-fastapi",
+      "tech-playwright",
+      "tech-sqlite"
+    ],
+    "links": [
+      {
+        "text": "View on GitHub",
+        "url": "https://github.com/qtremors/xcrape",
+        "class": "link-secondary"
+      }
+    ],
+    "architecture": {
+      "description": "A modern monolithic scraping service featuring a FastAPI backend orchestration layer that spawns threaded workers for Playwright browser automation and SQLite persistence, coupled with a Jinja2-templated Material Design 3 frontend.",
+      "decisions": [
+        "Threaded Playwright Workers: Executes scraping tasks in isolated background threads to prevent conflicts with the asyncio event loop in Windows environments.",
+        "Two-Stage Extraction Pipeline: Combines Playwright (Chromium) for JavaScript execution and rendering, with BeautifulSoup4 for fast, reliable HTML tag parsing.",
+        "Non-Blocking SQLite Storage: Persists scraping jobs, technology signatures, and metadata asynchronously using aiosqlite to avoid blocking the main server threads.",
+        "Inline Base64 Screenshots: Encodes captured JPEG screenshots directly into the SQLite database to eliminate the complexity of external file server hosting.",
+        "Jinja2 & Material Design 3 UI: Serves dynamic components directly from the server using Jinja2 templates and vanilla CSS/JS, keeping the visual presentation aligned with Material Design 3 standards."
+      ],
+      "scalability": "By running scrapers on background threads and interacting asynchronously with SQLite, the system handles concurrent scrape tasks without blocking the user dashboard query interface."
+    }
   },
   {
     "id": "cosmos",
@@ -183,11 +319,13 @@
     "longDescription": "Cosmos is a WebGL-based 3D universe exploration engine built with Three.js, React, and TypeScript. It features a multi-system architecture with a Solar System and a secondary Quantumania realm, navigated through 6-DOF flight controls with progressive boost mechanics and full gamepad support.\n\nThe Solar System contains 9 planets with 2K NASA textures, 4 moons, 2,000 instanced asteroid meshes, and a GLSL raymarched black hole. A radar minimap enables teleportation to the Quantumania dimension, which contains 38 lazy-loaded GLB models including floating mountains, structures, and the Arishem celestial entity with interior multi-point lighting. Custom GLSL shaders handle sun granulation, Earth day/night cycles, and atmospheric glow effects. A centralized physics SDK manages orbital mechanics with Kepler-based calculations.",
     "features": [
       "Multi-System Architecture (Solar System + Quantumania)",
-      "6-DOF Flight Controls with Keyboard & Gamepad Support",
+      "6-DOF Flight Controls with Keyboard, Mouse, and Gamepad Support",
       "2,000 Instanced Asteroids & 2K NASA Planet Textures",
-      "Custom GLSL Shaders (Sun, Earth Cycle, Raymarched Black Hole)",
+      "Custom GLSL Shaders (Sun Granulation, Earth Cycle, Raymarched Black Hole)",
       "38 Lazy-Loaded GLB Models in Quantumania",
-      "Radar Minimap with Entity Tracking & Teleportation"
+      "Arishem (The Architect) Titan-Scale Celestial Entity with Interior Details",
+      "Radar Minimap with Entity Tracking & Teleportation",
+      "Cosmic Easter Eggs (The Kyln Nova Corps Prison, Explorer-1, Alien X)"
     ],
     "installation": "# Clone repository\ngit clone https://github.com/qtremors/cosmos.git\ncd cosmos/cosmos-app\n\n# Install dependencies and run\nnpm install\nnpm run dev",
     "badges": [
@@ -207,7 +345,17 @@
         "url": "https://github.com/qtremors/cosmos",
         "class": "link-secondary"
       }
-    ]
+    ],
+    "architecture": {
+      "description": "A Component-Based 3D Architecture where the React UI controls the simulation overlay, the Three.js Scene manages WebGL rendering layers, and the Core SDK executes underlying physics, input handling, and orbital calculations.",
+      "decisions": [
+        "Centralized SDK: All physics constants, Kepler-based calculations, and interpolation helpers are consolidated in a single module to enforce consistency and decoupling.",
+        "Three.js Layers (0, 1, 2): Segmented rendering and lighting contexts (Solar vs. Quantumania vs. Shared objects) to maintain high performance and avoid light bleeding.",
+        "Asynchronous Lazy Loading: The 38+ GLB models (~53MB) for Quantumania are only fetched when the camera approaches or teleports to the system.",
+        "External GLSL Shaders: Modularized all inline custom WebGL shaders (accretion disk, planet atmospheres, day/night cycles) into external .glsl files for cleaner codebase structure."
+      ],
+      "scalability": "Expanding the simulation to support new celestial bodies or extra star systems requires registering configuration in the SDK and loading them under the SystemManager singleton, without changing core scene rendering loops."
+    }
   },
   {
     "id": "localghost",
@@ -236,7 +384,18 @@
         "url": "https://github.com/qtremors/localghost",
         "class": "link-secondary"
       }
-    ]
+    ],
+    "architecture": {
+      "description": "A multi-threaded scanning engine designed for high-concurrency auditing. The architecture prioritizes speed and non-blocking execution to provide instant feedback on complex security postures.",
+      "decisions": [
+        "Asynchronous Execution: Executes all 11 scanner modules concurrently using Python's asyncio.gather, reducing total test times by 80%.",
+        "Routers-Services-Scanners Layers: Decouples REST route definitions, scan orchestration services, and individual scanner modules for easier unit testing.",
+        "Vanilla Frontend with ES Modules: Employs a zero-build client interface structured with ES Modules, eliminating webpack/vite compilation complexity.",
+        "Weighted Scoring (0–100): Implements a CVSS-inspired heuristic scoring algorithm with categories weighted by security impact to yield letter grades (A+ through F).",
+        "SQLite via aiosqlite: Persists scan reports on the local filesystem using async SQLite connections to maintain history without backend database servers."
+      ],
+      "scalability": "The scanning engine is horizontally scalable; multiple scanning nodes can be deployed to audit large internal networks simultaneously, with centralized reporting via a shared SQLite/PostgreSQL instance."
+    }
   },
   {
     "id": "earnslate",
@@ -252,7 +411,7 @@
       "Transaction Ledger with Multi-Variable Filtering",
       "Subscription Treemaps & CSV/JSON Data Export"
     ],
-    "installation": "# Clone repository\ngit clone https://github.com/qtremors/earnslate.git\ncd earnslate/earnslate-app\n\n# Install dependencies and run\nnpm install\nnpm run dev",
+    "installation": "# Clone repository\ngit clone https://github.com/qtremors/earnslate.git\ncd earnslate/earnslate-web\n\n# Install dependencies and run\nnpm install\nnpm run dev",
     "badges": [
       "tech-nextjs",
       "tech-ts",
@@ -270,36 +429,17 @@
         "url": "https://github.com/qtremors/earnslate",
         "class": "link-secondary"
       }
-    ]
-  },
-  {
-    "id": "xcrape",
-    "title": "Xcrape",
-    "image": "assets/xcrape-preview.png",
-    "description": "An asynchronous Python web scraper powered by Playwright and BeautifulSoup4. Extracts structured data, detects 15+ technologies, captures screenshots, and archives results to SQLite all through a Material Design 3 terminal-themed UI.",
-    "longDescription": "Xcrape is a locally-hosted web scraping tool built with FastAPI that uses headless Chromium via Playwright for JavaScript-rendered page extraction. It parses pages using BeautifulSoup4 to extract meta tags, headings, links, tables, images, JSON-LD, OpenGraph metadata, and social media profiles. A technology detection module fingerprints 15+ frameworks and CMS platforms.\n\nEach scrape job captures a JPEG screenshot and archives all extracted data to a local SQLite database via aiosqlite. Users can filter historical jobs, trigger one-click re-scrapes, download scraped images individually or as bulk ZIP archives, and export results in CSV or JSON formats. The interface uses a terminal-themed Material Design 3 aesthetic with JetBrains Mono typography.",
-    "features": [
-      "Playwright Engine with BeautifulSoup4 Parsing",
-      "Material Design 3 Terminal UI with JetBrains Mono",
-      "Technology Detection for 15+ Frameworks & CMS",
-      "Structured Data Extraction (JSON-LD, OpenGraph, Meta)",
-      "JPEG Screenshot Capture & Bulk Image Downloads",
-      "SQLite Archival with CSV/JSON Report Export"
     ],
-    "installation": "# Clone and navigate\ngit clone https://github.com/qtremors/xcrape.git\ncd xcrape/xcrape\n\n# Install dependencies\nuv sync\n\n# Install Playwright browsers\nuv run playwright install chromium\n\n# Run the project\nuv run uvicorn app.main:app --reload",
-    "badges": [
-      "tech-python",
-      "tech-fastapi",
-      "tech-playwright",
-      "tech-sqlite"
-    ],
-    "links": [
-      {
-        "text": "View on GitHub",
-        "url": "https://github.com/qtremors/xcrape",
-        "class": "link-secondary"
-      }
-    ]
+    "architecture": {
+      "description": "A client-side Single Page Application (SPA) architecture built with Next.js App Router and TypeScript, featuring complete local-first persistence via Zustand state synchronization with browser storage.",
+      "decisions": [
+        "Zustand State Store: Utilized for lightweight, client-side global state management, integrating persistence middleware to synchronize states seamlessly with browser storage.",
+        "Zero-Backend Local-First Design: Keeps financial transactions, budget details, and subscription trackers entirely in the user's browser, prioritizing complete privacy and offline usability.",
+        "CSS Modules: Standardized component styling using isolated CSS Modules mapped to central HSL design tokens, avoiding styling side-effects or heavy framework overhead.",
+        "On-Demand Iconify Fetching: Integrates Lucide React and Iconify dynamically, enabling the lookup and rendering of 100+ custom brand subscription templates without inflating the initial bundle size."
+      ],
+      "scalability": "Built with a modular folder layout dividing features into store domains and custom React hooks, allowing new financial visualizations (e.g., CSV imports/exports or Android companion interfaces) to be easily integrated."
+    }
   },
   {
     "id": "amanzon",
@@ -334,7 +474,16 @@
         "url": "https://github.com/qtremors/amanzon",
         "class": "link-secondary"
       }
-    ]
+    ],
+    "architecture": {
+      "description": "A full-stack monolithic architecture built with Django, designed for ACID-compliant transactional integrity. The system leverages a robust relational schema to manage complex order lifecycles and payment states.",
+      "decisions": [
+        "PostgreSQL (Supabase): Chosen for reliable relational data management and advanced querying capabilities required for product filtering and analytics.",
+        "Razorpay Webhook Integration: Implemented an idempotent processing layer to handle payment confirmations and prevent duplicate order fulfillment.",
+        "Django Signals: Utilized for decoupled post-save actions like automated email notifications and inventory adjustments."
+      ],
+      "scalability": "Scalability is achieved through database indexing and session-based caching. The system is prepared for migration to a microservices architecture by maintaining strict service boundaries within the Django app structure."
+    }
   },
   {
     "id": "socnet",
@@ -394,7 +543,18 @@
         "url": "https://github.com/qtremors/material-design",
         "class": "link-secondary"
       }
-    ]
+    ],
+    "architecture": {
+      "description": "A static build-free component workbench implementing the Google Material Design 3, Material You, and Material 3 Expressive specifications. It relies on standard browser APIs, vanilla JavaScript, and native CSS custom properties.",
+      "decisions": [
+        "Zero-Dependency Pipeline: Avoids compilers, bundlers, and package dependencies entirely, running directly on raw browser technologies for optimal loading speeds.",
+        "CSS Variables Token System: Declares 300+ design tokens inside variables.css (colors, type, elevations) to control dynamic theming and color seeds.",
+        "Global Event Delegation: Attaches click listeners at the document level in interactions.js to capture and orchestrate clicks based on custom data-action attributes.",
+        "HTML Seed Attribute: Applies theme attributes (data-theme, data-seed) directly to the html node, letting CSS variables adapt colors in real-time.",
+        "Custom Ripple Animation: Standardizes component focus-states by calculating click offsets and rendering ink ripples dynamically via JavaScript."
+      ],
+      "scalability": "New components or widgets are easily integrated by linking their modular CSS, writing standard semantic HTML, and registering them under the navigation.js collection without compilation."
+    }
   },
   {
     "id": "recontext",
@@ -433,19 +593,19 @@
   },
   {
     "id": "diffs",
-    "title": "Diff Viewer",
+    "title": "Diffs",
     "image": "assets/diff-preview.png",
-    "description": "A GitHub-style side-by-side diff viewer built with Next.js. Compares text and files with character-level intra-line highlighting, synchronized dual-panel scrolling, and drag-and-drop file upload support.",
-    "longDescription": "Diff Viewer is a browser-based text comparison tool built on Next.js and React. It uses the jsdiff library (Myers' diff algorithm) to perform character-level intra-line diffing, highlighting exact insertions and deletions within modified lines rather than marking entire lines as changed.\n\nThe interface presents original and modified content in side-by-side panels with synchronized scrolling. Users can paste raw text directly or drag and drop files for comparison. The UI uses a high-contrast dark theme inspired by GitHub Desktop.",
+    "description": "A local-first browser-based text and image comparison platform built with Next.js and React. Features character-level text diffing, pixel-level image comparisons with overlay slider, zoom and pan controls, and IndexedDB local persistence.",
+    "longDescription": "Diffs is a local-first comparison workbench built on Next.js and React that executes all diff calculations directly inside the user's browser, ensuring sensitive code and assets never leave the machine. The platform features a plugin-style comparison engine that routes files by format, supporting both text and image comparison.\n\nFor text, it implements character-level intra-line highlighting using jsdiff and synchronized side-by-side scrolling. For images, it offers four comparison modes (side-by-side, overlay slider, pixel-level difference detection via pixelmatch, and raw metadata comparison) with mouse-scroll zooming (1x–8x) and drag-to-pan. Uploaded files are persisted locally using IndexedDB to survive page reloads. The interface uses a clean monochrome design with colors reserved strictly for highlighting differences.",
     "features": [
-      "Character-Level Intra-Line Diff Highlighting",
-      "Synchronized Dual-Panel Scrolling",
-      "Drag-and-Drop File Upload & Raw Text Pasting",
-      "GitHub Desktop-Inspired Dark Theme",
-      "jsdiff Engine (Myers' Diff Algorithm)",
-      "Next.js App Router with React"
+      "Character-Level Text Diffing & Synchronized Scrolling",
+      "Image Comparison (Side-by-Side, Overlay Slider, and Pixel Diff)",
+      "IndexedDB Local Browser Persistence for Uploaded Files",
+      "Scroll-to-Zoom (1x-8x) & Drag-to-Pan on Image Views",
+      "Multi-File Comparison with Dynamic Original Selection",
+      "Monochrome UI with High-Contrast Diff Accents"
     ],
-    "installation": "# Clone and navigate\ngit clone https://github.com/qtremors/diff.git\ncd diff/web\n\n# Install dependencies\nnpm install\n\n# Run the project\nnpm run dev",
+    "installation": "# Clone and navigate\ngit clone https://github.com/qtremors/diffs.git\ncd diffs/diffs\n\n# Install dependencies\nnpm install\n\n# Run the project\nnpm run dev",
     "badges": [
       "tech-nextjs",
       "tech-react",
@@ -463,7 +623,17 @@
         "url": "https://github.com/qtremors/diffs",
         "class": "link-secondary"
       }
-    ]
+    ],
+    "architecture": {
+      "description": "A client-side modular comparison workbench built using Next.js App Router and TypeScript. The architecture decouples the state manager hook from the pluggable comparison engine, which routes files based on MIME types.",
+      "decisions": [
+        "Client-Side Execution: All text and image comparison calculations run entirely in the browser to ensure absolute privacy and security of files.",
+        "Pluggable Diff Engine: Comparison algorithms (jsdiff for text, pixelmatch for images) are dispatched dynamically by file format for modular scaling.",
+        "IndexedDB Local Storage: Uses browser-side storage to persist uploads across page reloads without requiring an external database or backend server.",
+        "Scroll-to-Zoom & Pan Hooks: Leverages custom event hooks to control zooming (1x-8x) and panning on image elements within the comparison viewport."
+      ],
+      "scalability": "Adding new file comparison types (e.g., CSV, JSON, or PDF) only requires registering a new file parser and renderer under the comparison engine, leaving core app layout and state hooks unchanged."
+    }
   },
   {
     "id": "gtrmrs",
@@ -491,7 +661,17 @@
         "url": "https://github.com/qtremors/gtrmrs",
         "class": "link-secondary"
       }
-    ]
+    ],
+    "architecture": {
+      "description": "A unified CLI toolchain built entirely on the Python 3.8+ Standard Library, combining three Git-aware utilities using shared core configurations for color styling, exclusion patterns, and scanning logic.",
+      "decisions": [
+        "Zero-Dependency Footprint: Relies exclusively on standard library modules (like argparse, subprocess, os, fnmatch) to ensure instant, lightweight installation on any platform.",
+        "2-Phase Hybrid Scanning: Uses Phase 1 Eager Pruning to skip heavy folders (node_modules, venv, .git) before walking them, combined with Phase 2 Git precision (git check-ignore) for 100% accurate scans.",
+        "Subcommand Router Pattern: Implements an argparse subparsers mapping to route commands (rtree, locr, gitmig) to their respective core engines dynamically.",
+        "Git-Aware Utility Core: Centralizes repository status checks and ignore evaluations in a single shared git_utils library for all subcommands."
+      ],
+      "scalability": "New command-line utilities can be added by dropping a package directory into gtrmrs/ containing an engine and argument parser, then registering the subparser in cli.py, without modifying existing tools."
+    }
   },
   {
     "id": "plant-disease-detector",
@@ -555,42 +735,6 @@
     ]
   },
   {
-    "id": "eshopper",
-    "status": "archive",
-    "title": "E-commerce Website",
-    "image": "assets/eshopper-preview.jpg",
-    "description": "An archived Django e-commerce platform with hierarchical product catalogs, Razorpay payment integration, wishlist management, OTP email verification, and Bootstrap-based server-side rendering.",
-    "longDescription": "EShopper is a monolithic Django e-commerce application that manages the full purchasing lifecycle through server-side rendering. It routes users from categorized product catalogs through a discount coupon system to a multi-stage checkout flow integrated with the Razorpay API.\n\nThe platform uses Django's session management for transient shopping carts and persistent wishlists. Account registration and password recovery are secured behind email-delivered OTP verification. The frontend is built with Django templates and Bootstrap for server-side rendered product listings, 5-star reviews, and multi-parameter search results. This project has been superseded by Amanzon.",
-    "features": [
-      "Hierarchical Product Catalog with Category Navigation",
-      "Razorpay API Payment Integration",
-      "Email OTP Account Verification",
-      "Discount Coupon Validation System",
-      "Advanced Search & Price Filtering",
-      "Persistent Wishlist & Session-Based Cart"
-    ],
-    "installation": "# Clone repository\ngit clone https://github.com/qtremors/eshopper\ncd shopping\n\n# Setup Python Environment\npython -m venv venv\n# Activate venv (Windows: venv\\Scripts\\activate, Linux: source venv/bin/activate)\npip install -r requirements.txt\n\n# Initialize Database\npython manage.py migrate\npython manage.py createsuperuser\n\n# Run Server\npython manage.py runserver",
-    "recommended": "amanzon",
-    "badges": [
-      "tech-django",
-      "tech-html-css-js",
-      "tech-bootstrap",
-      "tech-sql"
-    ],
-    "links": [
-      {
-        "text": "Website",
-        "url": "https://tremors.pythonanywhere.com",
-        "class": "link-primary"
-      },
-      {
-        "text": "View on GitHub",
-        "url": "https://github.com/qtremors/eshopper",
-        "class": "link-secondary"
-      }
-    ]
-  },
-  {
     "id": "tremors",
     "title": "Tremors",
     "image": "assets/tremors-preview.png",
@@ -625,7 +769,18 @@
         "url": "https://github.com/qtremors/tremors",
         "class": "link-secondary"
       }
-    ]
+    ],
+    "architecture": {
+      "description": "A full-stack web portfolio built with Next.js App Router, using React Server Components for fast data fetching and Client Components for dynamic 3D elements and interactive terminal CLI utilities, with Prisma ORM connecting to a PostgreSQL instance.",
+      "decisions": [
+        "React Server Components (RSC): Uses RSCs to query repository statistics and cached GitHub activity directly on the server, eliminating frontend API fetch cycles.",
+        "Decoupled Skye Agent: Runs a Google Gemini Flash agent in background API routes to parse real GitHub commit activity logs and author news articles with 4 selectable personalities.",
+        "Prisma Database Indexes: Defines database indices on Repo (featured, hidden) and Newspaper/Activity (date) fields within PostgreSQL (Neon) to speed up filtering and content queries.",
+        "Custom HMAC-Signed Admin Auth: Implements secure admin cookie verification using PBKDF2 and HMAC-SHA256, protecting CMS route handlers from CSRF and cross-origin traversal attacks.",
+        "Edge-Runtime Rate Limiting: Employs Next.js Edge Middleware to intercept incoming requests and apply rate limits on authentication and AI generation endpoints before triggering backend code."
+      ],
+      "scalability": "Stateless Next.js deployment models allow scaling the web application horizontally, while rate limits and database index tuning maintain high efficiency even during sudden traffic spikes."
+    }
   },
   {
     "id": "scrapped-projects",
@@ -657,6 +812,17 @@
         "url": "https://github.com/qtremors/scrap",
         "class": "link-secondary"
       }
-    ]
+    ],
+    "architecture": {
+      "description": "A static build-time compiled archive utilizing a custom Node.js static site generator to index local category paths and output a highly optimized, responsive single-page web environment containing interactive previews.",
+      "decisions": [
+        "Vanilla JS & Zero Dependencies: Avoids bundlers, frameworks, and build transpilers to ensure long-term archival stability and resistance to framework deprecation.",
+        "Scattered to Grid Toggle: Implements a responsive layout that displays items in a scattered, chaotic theme by default, then contextually switches to a structured grid layout upon search interaction.",
+        "Debounced Background Previews: Restricts iframe instantiation for card previews with a 1-second debounce, preventing excessive browser resource utilization and network latency during mouse movement.",
+        "Throttled Canvas Frame-Rate: Caps the HTML5 Canvas matrix digital rain animation to a maximum of 30 frames per second, significantly reducing GPU utilization and power consumption.",
+        "Local metadata.json Catalogs: Aggregates subfolder discovery and custom file configuration (meta.json) into a centralized, queryable static index, speeding up site generation and browser searches."
+      ],
+      "scalability": "Expanding the directory only requires adding standard HTML folders to categories; the Node.js compiler recursively indexes them without additional configuration, enabling static hosting directly on GitHub Pages."
+    }
   }
 ]

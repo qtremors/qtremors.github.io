@@ -32,6 +32,7 @@
                 <nav class="tui-nav">
                     <a href="#home">./home</a>
                     <a href="#about">./about</a>
+                    <a href="#experience">./experience</a>
                     <a href="#skills">./skills</a>
                     <a href="#portfolio">./portfolio</a>
                     <a href="#contact">./contact</a>
@@ -78,6 +79,7 @@
             <nav class="tui-nav" aria-label="Main navigation">
                 <a href="#home" aria-label="Go to Home section">./home</a>
                 <a href="#about" aria-label="Go to About section">./about</a>
+                <a href="#experience" aria-label="Go to Experience section">./experience</a>
                 <a href="#skills" aria-label="Go to Skills section">./skills</a>
                 <a href="#portfolio" aria-label="Go to Portfolio section">./portfolio</a>
                 <a href="#contact" aria-label="Go to Contact section">./contact</a>
@@ -132,8 +134,7 @@
                     </div>
                     <div class="hero-text">
                         <h1>Hi, I'm Tremors</h1>
-                        <p>Python-focused full-stack developer specializing in scalable web applications and developer
-                            tooling.</p>
+                        <p>Software Engineer focused on building clean, useful, and maintainable software.</p>
                         <a href="#portfolio" class="cta-button">cat ./portfolio.log</a>
                     </div>
                 </div>
@@ -144,18 +145,31 @@
                     whoami
                 </div>
                 <div class="tui-panel-body about-text">
-                    <p>I'm a Computer Science graduate and Python developer specializing in full-stack web development.
-                        I architect robust systems using Django and FastAPI while crafting interactive frontends with
-                        React. I am deeply focused on writing clean, maintainable code that delivers great user
-                        experiences.</p>
-                    <p>I also love building developer tools that solve specific problems. From custom CLI utilities to
-                        system automation scripts, I enjoy exploring the intersection of software and the operating
-                        system. My goal is to build efficient, lightweight tools that improve daily workflows.</p>
-                    <p>Currently, I'm exploring how to integrate AI/ML into practical, production-ready applications.
-                        I'm looking for a developer role where I can apply my skills in Python and modern web
-                        technologies to build reliable and practical software.</p>
+                    <p>I'm a Software Engineer who likes building software that feels simple on the surface, but has real depth when people need more from it.</p>
+                    <p>I care a lot about UI/UX, especially interfaces that feel clean, expressive, and easy to move through without getting in the way.</p>
+                    <p>I prefer software that is fast, lightweight, and practical, backed by modular code and architecture that stays maintainable as it grows.</p>
                 </div>
             </section>
+
+            <section id="experience" class="tui-panel">
+                <div class="tui-panel-header">
+                    history | grep 'jobs'
+                </div>
+                <div class="tui-panel-body portfolio-grid">
+                    <fieldset class="portfolio-item">
+                        <legend>Software Engineer</legend>
+                        <div class="portfolio-content">
+                            <p><strong>[March 2025 – Present]</strong> | <em>Independent</em> | In-House (Self-Directed)</p>
+                            <ul>
+                                <li>Build practical software with clean structure and maintainable foundations.</li>
+                                <li>Turn product ideas and workflow problems into usable, reliable interfaces.</li>
+                                <li>Improve systems through thoughtful design, iteration, and attention to detail.</li>
+                            </ul>
+                        </div>
+                    </fieldset>
+                </div>
+            </section>
+
 
             <section id="skills" class="tui-panel">
                 <div class="tui-panel-header">
@@ -163,53 +177,56 @@
                 </div>
                 <div class="tui-panel-body skills-grid">
                     <div class="skill-category">
-                        <h3>Frontend & UI/UX 💻</h3>
+                        <h3>Languages 💻</h3>
                         <ul>
                             <li>HTML5</li>
                             <li>CSS3</li>
-                            <li>JavaScript</li>
+                            <li>Python</li>
                             <li>TypeScript</li>
+                            <li>SQL</li>
+                            <li>Kotlin</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Frameworks &amp; Libraries 📦</h3>
+                        <ul>
+                            <li>FastAPI</li>
+                            <li>Django</li>
                             <li>React</li>
+                            <li>Next.js</li>
+                            <li>Jetpack Compose</li>
                         </ul>
                     </div>
                     <div class="skill-category">
-                        <h3>Backend & Databases ⚙️</h3>
+                        <h3>Databases &amp; ORM ⚙️</h3>
                         <ul>
-                            <li>Python</li>
-                            <li>Django</li>
-                            <li>FastAPI</li>
-                            <li>SQLite</li>
+                            <li>Django ORM</li>
+                            <li>SQLAlchemy</li>
                             <li>Prisma</li>
+                            <li>SQLite</li>
                             <li>PostgreSQL</li>
                         </ul>
                     </div>
                     <div class="skill-category">
-                        <h3>Data Analysis 📊</h3>
+                        <h3>AI &amp; Data Science 🧠</h3>
                         <ul>
                             <li>NumPy</li>
                             <li>Pandas</li>
                             <li>Matplotlib</li>
-                            <li>BeautifulSoup</li>
-                            <li>Streamlit</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h3>AI / ML 🧠</h3>
-                        <ul>
-                            <li>TensorFlow</li>
-                            <li>Scikit-learn</li>
-                            <li>OpenCV</li>
                             <li>Gemini API</li>
+                            <li>TensorFlow</li>
                         </ul>
                     </div>
                     <div class="skill-category">
-                        <h3>Platforms & Tools 🛠️</h3>
+                        <h3>DevOps &amp; Tooling 🛠️</h3>
                         <ul>
-                            <li>Git & GitHub</li>
-                            <li>VS Code</li>
-                            <li>Jupyter Notebook</li>
+                            <li>Git</li>
                             <li>Docker</li>
-                            <li>Windows / Linux</li>
+                            <li>Jupyter</li>
+                            <li>Zed</li>
+                            <li>Cursor</li>
+                            <li>Linux</li>
                         </ul>
                     </div>
                 </div>
@@ -223,6 +240,7 @@
                 <!-- PROJECTS START -->
 
                 <div class="tui-panel-body portfolio-grid">
+
                     <fieldset class="portfolio-item">
                         <legend>Quizzer AI</legend>
                         <div class="portfolio-content">
@@ -235,9 +253,7 @@
                                 <span>Django</span>
                                 <span>Gemini API</span>
                                 <span>HTMX</span>
-                                <span>HTML</span>
-                                <span>CSS</span>
-                                <span>JavaScript</span>
+                                <span>HTML/CSS/JS</span>
                             </div>
                             <div class="portfolio-links">
                                 <a href="https://github.com/qtremors/quizzer-ai" target="_blank"
@@ -329,9 +345,9 @@
                                 <div class="portfolio-output">
                                     <div class="live-link-output">
                                         server running on <a
-                                            href="https://qtremors.github.io/scrap/projects/demo/demo-git-nexus"
+                                            href="https://qtremors.github.io/scrap/demo/git-nexus"
                                             target="_blank"
-                                            rel="noopener noreferrer">https://qtremors.github.io/scrap/projects/demo/demo-git-nexus</a>
+                                            rel="noopener noreferrer">https://qtremors.github.io/scrap/demo/git-nexus</a>
                                     </div>
                                 </div>
                             </div>
@@ -339,11 +355,45 @@
                     </fieldset>
 
                     <fieldset class="portfolio-item status-beta">
+                        <legend>Arcile</legend>
+                        <div class="portfolio-content">
+                            <p>An advanced, smooth Android file manager built natively with Kotlin and Material Design 3. Features multi-volume OTG support, dynamic wallpaper colors, breadcrumb navigation, and a robust Trash subsystem backed by a scalable MVVM architecture.</p>
+                            <div class="tech-badges">
+                                <span>Kotlin</span>
+                                <span>Android</span>
+                                <span>Jetpack Compose</span>
+                                <span>Material 3</span>
+                                <span>MVVM</span>
+                                <span>Hilt</span>
+                            </div>
+                            <div class="portfolio-links">
+                                <a href="https://github.com/qtremors/arcile" target="_blank"
+                                    rel="noopener noreferrer" class="portfolio-command">
+                                    <span class="prompt">$</span>
+                                    <span class="command-text">git show HEAD</span>
+                                </a>
+                            </div>
+                            <div class="run-live-container">
+                                <input type="checkbox" id="run-live-toggle-arcile" class="hidden-toggle">
+                                <label for="run-live-toggle-arcile" class="portfolio-command">
+                                    <span class="prompt">$</span>
+                                    <span class="command-text">./run-live</span>
+                                </label>
+                                <div class="portfolio-output">
+                                    <div class="live-link-output">
+                                        server running on <a href="https://qtremors.github.io/arcile/" target="_blank"
+                                            rel="noopener noreferrer">https://qtremors.github.io/arcile/</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="status-tag status-beta">BETA</span>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="portfolio-item status-beta">
                         <legend>Arcade Nexus</legend>
                         <div class="portfolio-content">
-                            <p>A browser-based gaming console built with React and FastAPI, featuring an
-                                offline-first SQLite backend, a typed TypeScript Game SDK for 2D and 3D game
-                                development, local profiles, save states, achievements, and gamepad support.</p>
+                            <p>A browser-resident gaming kernel and SDK featuring an offline-first persistent backend, a typed TypeScript SDK for cross-paradigm development (2D/3D), and local profile management.</p>
                             <div class="tech-badges">
                                 <span>React</span>
                                 <span>TypeScript</span>
@@ -364,52 +414,72 @@
                         </div>
                     </fieldset>
 
-                    <fieldset class="portfolio-item">
-                        <legend>Tremors Music</legend>
-                        <div class="portfolio-content">
-                            <p>A local-first music player available as both a web application and a native Tauri
-                                desktop app. Features a Python FastAPI backend for metadata extraction and audio
-                                streaming, a React frontend with virtualized lists, and an Apple Music-inspired
-                                UI.</p>
-
-                            <div class="tech-badges">
-                                <span>Python</span>
-                                <span>FastAPI</span>
-                                <span>React</span>
-                                <span>TypeScript</span>
-                                <span>Tauri</span>
-                                <span>Framer Motion</span>
-                                <span>SQLite</span>
-                            </div>
-
-                            <div class="portfolio-links">
-                                <a href="https://github.com/qtremors/tremors-music" target="_blank"
-                                    rel="noopener noreferrer" class="portfolio-command">
-                                    <span class="prompt">$</span>
-                                    <span class="command-text">git show HEAD</span>
-                                </a>
-                            </div>
-
-                            <div class="run-live-container">
-                                <input type="checkbox" id="run-live-toggle-tremors-music" class="hidden-toggle">
-                                <label for="run-live-toggle-tremors-music" class="portfolio-command">
-                                    <span class="prompt">$</span>
-                                    <span class="command-text">./run-live</span>
-                                </label>
-                                <div class="portfolio-output">
-                                    <div class="live-link-output">
-                                        Download latest build at <a
-                                            href="https://github.com/qtremors/tremors-music/releases" target="_blank"
-                                            rel="noopener noreferrer">github.com/qtremors/tremors-music/releases</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </fieldset>
-
 
                     <!-- HIDDEN PROJECTS START -->
                     <div id="hidden-projects" class="hidden-group">
+
+                        <fieldset class="portfolio-item">
+                            <legend>Tremors Music</legend>
+                            <div class="portfolio-content">
+                                <p>A local-first music player available as both a web application and a native Tauri
+                                    desktop app. Features a Python FastAPI backend for metadata extraction and audio
+                                    streaming, a React frontend with virtualized lists, and an Apple Music-inspired
+                                    UI.</p>
+
+                                <div class="tech-badges">
+                                    <span>Python</span>
+                                    <span>FastAPI</span>
+                                    <span>React</span>
+                                    <span>TypeScript</span>
+                                    <span>Tauri</span>
+                                    <span>Framer Motion</span>
+                                    <span>SQLite</span>
+                                </div>
+
+                                <div class="portfolio-links">
+                                    <a href="https://github.com/qtremors/tremors-music" target="_blank"
+                                        rel="noopener noreferrer" class="portfolio-command">
+                                        <span class="prompt">$</span>
+                                        <span class="command-text">git show HEAD</span>
+                                    </a>
+                                </div>
+
+                                <div class="run-live-container">
+                                    <input type="checkbox" id="run-live-toggle-tremors-music" class="hidden-toggle">
+                                    <label for="run-live-toggle-tremors-music" class="portfolio-command">
+                                        <span class="prompt">$</span>
+                                        <span class="command-text">./run-live</span>
+                                    </label>
+                                    <div class="portfolio-output">
+                                        <div class="live-link-output">
+                                            Download latest build at <a
+                                                href="https://github.com/qtremors/tremors-music/releases" target="_blank"
+                                                rel="noopener noreferrer">github.com/qtremors/tremors-music/releases</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="portfolio-item">
+                            <legend>Xcrape</legend>
+                            <div class="portfolio-content">
+                                <p>An asynchronous Python web scraper powered by Playwright and BeautifulSoup4. Extracts structured data, detects 20+ technologies, captures screenshots, and archives results to SQLite all through a Material Design 3 terminal-themed UI.</p>
+                                <div class="tech-badges">
+                                    <span>Python</span>
+                                    <span>FastAPI</span>
+                                    <span>Playwright</span>
+                                    <span>SQLite</span>
+                                </div>
+                                <div class="portfolio-links">
+                                    <a href="https://github.com/qtremors/xcrape" target="_blank"
+                                        rel="noopener noreferrer" class="portfolio-command">
+                                        <span class="prompt">$</span>
+                                        <span class="command-text">git show HEAD</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </fieldset>
 
                         <fieldset class="portfolio-item">
                             <legend>Cosmos</legend>
@@ -452,14 +522,13 @@
                             <div class="portfolio-content">
                                 <p>A local-first security auditing and benchmarking toolkit for development servers.
                                     Runs 11 asynchronous scanners covering port discovery, security headers, SSL/TLS
-                                    analysis, CORS auditing, load testing, and DDoS resilience — with weighted
+                                    analysis, CORS auditing, load testing, and DDoS resilience with weighted
                                     scoring and report exports.</p>
                                 <div class="tech-badges">
                                     <span>Python</span>
                                     <span>FastAPI</span>
                                     <span>SQLite</span>
-                                    <span>HTML</span>
-                                    <span>CSS</span>
+                                    <span>HTML/CSS/JS</span>
                                 </div>
                                 <div class="portfolio-links">
                                     <a href="https://github.com/qtremors/localghost" target="_blank"
@@ -476,7 +545,7 @@
                             <div class="portfolio-content">
                                 <p>A client-side finance tracking platform built with Next.js and TypeScript. Manage
                                     transactions, set budgets with auto-reset, and track subscriptions with treemap
-                                    visualizations — all persisted locally via browser storage.</p>
+                                    visualizations all persisted locally via browser storage.</p>
                                 <div class="tech-badges">
                                     <span>Next.js</span>
                                     <span>TypeScript</span>
@@ -507,29 +576,6 @@
                         </fieldset>
 
                         <fieldset class="portfolio-item">
-                            <legend>Xcrape</legend>
-                            <div class="portfolio-content">
-                                <p>An asynchronous Python web scraper powered by Playwright and BeautifulSoup4.
-                                    Extracts structured data, detects 15+ technologies, captures screenshots, and
-                                    archives results to SQLite — all through a Material Design 3 terminal-themed
-                                    UI.</p>
-                                <div class="tech-badges">
-                                    <span>Python</span>
-                                    <span>FastAPI</span>
-                                    <span>Playwright</span>
-                                    <span>SQLite</span>
-                                </div>
-                                <div class="portfolio-links">
-                                    <a href="https://github.com/qtremors/xcrape" target="_blank"
-                                        rel="noopener noreferrer" class="portfolio-command">
-                                        <span class="prompt">$</span>
-                                        <span class="command-text">git show HEAD</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </fieldset>
-
-                        <fieldset class="portfolio-item">
                             <legend>Amanzon E-Commerce</legend>
                             <div class="portfolio-content">
                                 <p>A full-stack e-commerce platform built with Django and PostgreSQL (Supabase).
@@ -538,9 +584,7 @@
                                 <div class="tech-badges">
                                     <span>Django</span>
                                     <span>Python</span>
-                                    <span>HTML</span>
-                                    <span>CSS</span>
-                                    <span>JavaScript</span>
+                                    <span>HTML/CSS/JS</span>
                                     <span>Bootstrap</span>
                                     <span>SQL</span>
                                 </div>
@@ -596,9 +640,7 @@
                                     3 Expressive specifications in pure HTML, CSS custom properties, and vanilla
                                     JavaScript.</p>
                                 <div class="tech-badges">
-                                    <span>HTML</span>
-                                    <span>CSS</span>
-                                    <span>JavaScript</span>
+                                    <span>HTML/CSS/JS</span>
                                 </div>
                                 <div class="portfolio-links">
                                     <a href="https://github.com/qtremors/material-design" target="_blank"
@@ -679,6 +721,19 @@
                                         <span class="command-text">git show HEAD</span>
                                     </a>
                                 </div>
+                                <div class="run-live-container">
+                                    <input type="checkbox" id="run-live-toggle-diff-viewer" class="hidden-toggle">
+                                    <label for="run-live-toggle-diff-viewer" class="portfolio-command">
+                                        <span class="prompt">$</span>
+                                        <span class="command-text">./run-live</span>
+                                    </label>
+                                    <div class="portfolio-output">
+                                        <div class="live-link-output">
+                                            server running on <a href="https://diffs.vercel.app" target="_blank"
+                                                rel="noopener noreferrer">https://diffs.vercel.app</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </fieldset>
 
@@ -725,19 +780,6 @@
                                         <span class="command-text">git show HEAD</span>
                                     </a>
                                 </div>
-                                <div class="run-live-container">
-                                    <input type="checkbox" id="run-live-toggle-plant-disease-detector"
-                                        class="hidden-toggle">
-                                    <label for="run-live-toggle-plant-disease-detector" class="portfolio-command">
-                                        <span class="prompt">$</span>
-                                        <span class="command-text">./run-live</span>
-                                    </label>
-                                    <div class="portfolio-output">
-                                        <div class="live-link-output">
-                                            <span>[ No Live Demo Available ]</span>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </fieldset>
 
@@ -746,14 +788,12 @@
                             <div class="portfolio-content">
                                 <p>A Python FastAPI server that turns any mobile browser into a remote control for a
                                     desktop workstation. Supports media playback, volume control, system power
-                                    operations, remote screenshots, and browser launching — all over the local
+                                    operations, remote screenshots, and browser launching all over the local
                                     network.</p>
                                 <div class="tech-badges">
                                     <span>Python</span>
                                     <span>FastAPI</span>
-                                    <span>HTML</span>
-                                    <span>CSS</span>
-                                    <span>JavaScript</span>
+                                    <span>HTML/CSS/JS</span>
                                     <span>CLI</span>
                                 </div>
                                 <div class="portfolio-links">
@@ -762,44 +802,6 @@
                                         <span class="prompt">$</span>
                                         <span class="command-text">git show HEAD</span>
                                     </a>
-                                </div>
-                            </div>
-                        </fieldset>
-
-                        <fieldset class="portfolio-item status-archive">
-                            <legend>E-commerce Website</legend>
-                            <div class="portfolio-content">
-                                <p>An archived Django e-commerce platform with hierarchical product catalogs,
-                                    Razorpay payment integration, wishlist management, OTP email verification, and
-                                    Bootstrap-based server-side rendering.</p>
-                                <div class="tech-badges">
-                                    <span>Django</span>
-                                    <span>HTML</span>
-                                    <span>CSS</span>
-                                    <span>JavaScript</span>
-                                    <span>SQL</span>
-                                </div>
-                                <div class="portfolio-links">
-                                    <a href="https://github.com/qtremors/eshopper" target="_blank"
-                                        rel="noopener noreferrer" class="portfolio-command">
-                                        <span class="prompt">$</span>
-                                        <span class="command-text">git show HEAD</span>
-                                    </a>
-                                </div>
-                                <div class="run-live-container">
-                                    <input type="checkbox" id="run-live-toggle-eshopper" class="hidden-toggle">
-                                    <label for="run-live-toggle-eshopper" class="portfolio-command">
-                                        <span class="prompt">$</span>
-                                        <span class="command-text">./run-live</span>
-                                    </label>
-                                    <div class="portfolio-output">
-                                        <div class="live-link-output">
-                                            server running on <a href="https://tremors.pythonanywhere.com"
-                                                target="_blank"
-                                                rel="noopener noreferrer">https://tremors.pythonanywhere.com</a>
-                                        </div>
-                                    </div>
-                                    <span class="status-tag status-archive">ARCHIVED</span>
                                 </div>
                             </div>
                         </fieldset>
@@ -813,7 +815,6 @@
                                     interactive CLI.</p>
                                 <div class="tech-badges">
                                     <span>Next.js</span>
-                                    <span>React</span>
                                     <span>TypeScript</span>
                                     <span>Tailwind</span>
                                     <span>Prisma</span>
@@ -852,9 +853,7 @@
                                     and compiles HTML pages with live preview iframes and canvas-based digital
                                     rain.</p>
                                 <div class="tech-badges">
-                                    <span>HTML</span>
-                                    <span>CSS</span>
-                                    <span>JavaScript</span>
+                                    <span>HTML/CSS/JS</span>
                                     <span>GitHub</span>
                                 </div>
                                 <div class="portfolio-links">
